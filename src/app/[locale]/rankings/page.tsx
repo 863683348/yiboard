@@ -22,7 +22,7 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'rankings' });
-  const [entries, me] = await Promise.all([getStore().listRankings(50), readUser()]);
+  const [entries, me] = await Promise.all([getStore().listRankings(100), readUser()]);
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-10)' }}>

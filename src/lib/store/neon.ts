@@ -56,6 +56,7 @@ export function createNeonStore(connectionString: string): Store {
       const user: UserRecord = {
         id: row.id,
         displayName: row.displayName,
+        username: row.username ?? null,
         email: row.email ?? null,
         locale: row.locale,
         elo: row.elo,
@@ -73,6 +74,7 @@ export function createNeonStore(connectionString: string): Store {
       return {
         id: row.id,
         displayName: row.displayName,
+        username: row.username ?? null,
         email: row.email ?? null,
         locale: row.locale,
         elo: row.elo,
@@ -93,6 +95,7 @@ export function createNeonStore(connectionString: string): Store {
       return {
         id: row.id,
         displayName: row.displayName,
+        username: row.username ?? null,
         email: row.email ?? null,
         locale: row.locale,
         elo: row.elo,
@@ -103,10 +106,41 @@ export function createNeonStore(connectionString: string): Store {
       };
     },
 
-    async upgradeGuest({ userId, email, passwordHash, displayName }) {
+    async findUserByUsername(username) {
+      const rows = await db
+        .select()
+        .from(users)
+        .where(eq(users.username, username))
+        .limit(1);
+      const row = rows[0];
+      if (!row) return null;
+      return {
+        id: row.id,
+        displayName: row.displayName,
+        username: row.username ?? null,
+        email: row.email ?? null,
+        locale: row.locale,
+        elo: row.elo,
+        gamesPlayed: row.gamesPlayed,
+        gamesWon: row.gamesWon,
+        isGuest: row.isGuest,
+        createdAt: row.createdAt.toISOString(),
+      };
+    },
+
+    async getPasswordHash(userId) {
+      const rows = await db
+        .select({ passwordHash: users.passwordHash })
+        .from(users)
+        .where(eq(users.id, userId))
+        .limit(1);
+      return rows[0]?.passwordHash ?? null;
+    },
+    async upgradeGuest({ userId, username, email, passwordHash, displayName }) {
       const row = (await db
         .update(users)
         .set({
+          username: username ?? undefined,
           email,
           passwordHash,
           displayName: displayName?.trim() || undefined,
@@ -118,6 +152,7 @@ export function createNeonStore(connectionString: string): Store {
       return {
         id: row.id,
         displayName: row.displayName,
+        username: row.username ?? null,
         email: row.email ?? null,
         locale: row.locale,
         elo: row.elo,
@@ -225,7 +260,7 @@ export function createNeonStore(connectionString: string): Store {
       }));
     },
 
-    async listRankings(limit = 50) {
+    async listRankings(limit = 100) {
       const rows = await db
         .select()
         .from(users)

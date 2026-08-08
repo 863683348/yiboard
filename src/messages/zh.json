@@ -195,7 +195,15 @@
     "resultLoss": "负",
     "resultDraw": "和",
     "vsEngine": "对引擎（{difficulty}）",
-    "vsPlayer": "对玩家"
+    "vsPlayer": "对玩家",
+    "googleSignIn": "使用 Google 登录",
+    "googleSignInNote": "登录后战绩绑定到该账号，可在任意设备继续对弈。",
+    "memberBadge": "会员",
+    "signedInAs": "已登录：{email}",
+    "googleOk": "账号已绑定——战绩将跨设备同步。",
+    "googleError": "Google 登录失败，请重试。",
+    "authLink": "注册 / 登录",
+    "signOut": "退出登录"
   },
   "share": {
     "title": "弈界的一局对弈",
@@ -348,5 +356,31 @@
     "back": "返回",
     "close": "关闭",
     "skipToContent": "跳到正文"
+  },
+  "auth": {
+    "title": "账号",
+    "sub": "登录后可在任意设备同步战绩。访客也能直接玩。",
+    "tabRegister": "注册",
+    "tabLogin": "登录",
+    "username": "用户名",
+    "email": "邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "identifier": "用户名或邮箱",
+    "register": "创建账号",
+    "login": "登录",
+    "submitting": "请稍候…",
+    "switchToLogin": "已有账号？去登录",
+    "switchToRegister": "还没有账号？去注册",
+    "divider": "或",
+    "google": "使用 Google 登录",
+    "passwordMismatch": "两次输入的密码不一致。",
+    "errInvalidUsername": "用户名需为 3-20 位字母、数字或下划线，且以字母开头。",
+    "errInvalidEmail": "请输入有效的邮箱地址。",
+    "errWeakPassword": "密码至少需要 8 位。",
+    "errEmailTaken": "该邮箱已注册，请直接登录。",
+    "errUsernameTaken": "该用户名已被占用。",
+    "errInvalidCredentials": "用户名/邮箱或密码错误。",
+    "errGeneric": "出了点问题，请重试。"
   }
 }

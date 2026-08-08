@@ -195,7 +195,15 @@
     "resultLoss": "Loss",
     "resultDraw": "Draw",
     "vsEngine": "vs engine ({difficulty})",
-    "vsPlayer": "vs player"
+    "vsPlayer": "vs player",
+    "googleSignIn": "Continue with Google",
+    "googleSignInNote": "Sign in to keep your record on this account and play from any device.",
+    "memberBadge": "Member",
+    "signedInAs": "Signed in as {email}",
+    "googleOk": "Account linked — your record now syncs across devices.",
+    "googleError": "Google sign-in failed. Please try again.",
+    "authLink": "Register / Sign in",
+    "signOut": "Sign out"
   },
   "share": {
     "title": "A game on YiBoard",
@@ -348,5 +356,31 @@
     "back": "Back",
     "close": "Close",
     "skipToContent": "Skip to content"
+  },
+  "auth": {
+    "title": "Account",
+    "sub": "Keep your record across devices. Playing as a guest works too.",
+    "tabRegister": "Register",
+    "tabLogin": "Sign in",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "identifier": "Username or email",
+    "register": "Create account",
+    "login": "Sign in",
+    "submitting": "Please wait…",
+    "switchToLogin": "Already have an account? Sign in",
+    "switchToRegister": "No account yet? Register",
+    "divider": "or",
+    "google": "Continue with Google",
+    "passwordMismatch": "Passwords do not match.",
+    "errInvalidUsername": "Username must be 3-20 letters, numbers or underscores, starting with a letter.",
+    "errInvalidEmail": "Please enter a valid email address.",
+    "errWeakPassword": "Password must be at least 8 characters.",
+    "errEmailTaken": "An account with this email already exists. Sign in instead.",
+    "errUsernameTaken": "This username is already taken.",
+    "errInvalidCredentials": "Wrong username/email or password.",
+    "errGeneric": "Something went wrong. Please try again."
   }
 }

@@ -11,6 +11,8 @@ const STATUS: Record<string, number> = {
   WAITING_FOR_OPPONENT: 409,
   ILLEGAL_MOVE: 422,
   BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  CONFLICT: 409,
 };
 
 export function ok<T>(data: T, init?: ResponseInit) {

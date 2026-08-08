@@ -31,8 +31,12 @@ function outcomeFor(game: GameRecord, userId: string): 'win' | 'loss' | 'draw' {
   return iWon ? 'win' : 'loss';
 }
 
-export default async function ProfilePage(props: { params: Promise<{ locale: string }> }) {
+export default async function ProfilePage(props: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ google?: string }>;
+}) {
   const { locale } = await props.params;
+  const { google } = await props.searchParams;
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'profile' });
@@ -123,23 +127,68 @@ export default async function ProfilePage(props: { params: Promise<{ locale: str
         </div>
       </div>
 
-      {/* ---------------- 访客提示 ---------------- */}
+      {/* ---------------- 账号状态（访客 → Google 登录 / 已登录 → 显示邮箱） ---------------- */}
       {me.isGuest ? (
-        <p
-          className="yb-meta"
+        <div
           style={{
             marginTop: 'var(--space-5)',
             maxWidth: '56ch',
-            padding: 'var(--space-3) var(--space-4)',
+            padding: 'var(--space-4)',
             border: '1px solid var(--border)',
             borderRadius: 'var(--radius-sm)',
             background: 'var(--surface-2)',
           }}
         >
-          <span className="yb-chip" style={{ marginRight: 8 }}>{t('guestBadge')}</span>
-          {t('guestNote')}
-        </p>
-      ) : null}
+          <p className="yb-meta" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span className="yb-chip">{t('guestBadge')}</span>
+            {t('guestNote')}
+          </p>
+          <p className="yb-meta" style={{ marginTop: 'var(--space-3)' }}>
+            {t('googleSignInNote')}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
+            <Link href="/auth" className="yb-btn yb-btn-primary" style={{ textDecoration: 'none' }}>
+              {t('authLink')}
+            </Link>
+            {/* OAuth 发起必须是原生 <a>（302 跳 Google），不能用 Link */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/api/auth/google" className="yb-btn yb-btn-outline" style={{ textDecoration: 'none' }}>
+              {t('googleSignIn')}
+            </a>
+          </div>
+          {google === 'error' ? (
+            <p role="alert" style={{ marginTop: 'var(--space-3)', fontSize: 'var(--text-sm)', color: 'var(--accent)' }}>
+              {t('googleError')}
+            </p>
+          ) : null}
+        </div>
+      ) : (
+        <div
+          style={{
+            marginTop: 'var(--space-5)',
+            maxWidth: '56ch',
+            padding: 'var(--space-4)',
+            border: '1px solid var(--border)',
+            borderRadius: 'var(--radius-sm)',
+            background: 'var(--surface-2)',
+          }}
+        >
+          <p className="yb-meta" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span className="yb-chip yb-chip-accent">{t('memberBadge')}</span>
+            {me.email ? t('signedInAs', { email: me.email }) : me.displayName}
+          </p>
+          <form action="/api/auth/logout" method="post" style={{ marginTop: 'var(--space-3)' }}>
+            <button type="submit" className="yb-btn yb-btn-ghost yb-btn-sm">
+              {t('signOut')}
+            </button>
+          </form>
+          {google === 'ok' ? (
+            <p role="status" style={{ marginTop: 'var(--space-3)', fontSize: 'var(--text-sm)', color: 'var(--success)' }}>
+              {t('googleOk')}
+            </p>
+          ) : null}
+        </div>
+      )}
 
       {/* ---------------- 历史对局 ---------------- */}
       <section className="yb-section" style={{ maxWidth: 880 }}>

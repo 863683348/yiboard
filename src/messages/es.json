@@ -195,7 +195,15 @@
     "resultLoss": "Derrota",
     "resultDraw": "Tablas",
     "vsEngine": "contra el motor ({difficulty})",
-    "vsPlayer": "contra otra persona"
+    "vsPlayer": "contra otra persona",
+    "googleSignIn": "Continuar con Google",
+    "googleSignInNote": "Inicia sesión para conservar tu historial en esta cuenta y jugar desde cualquier dispositivo.",
+    "memberBadge": "Miembro",
+    "signedInAs": "Sesión iniciada como {email}",
+    "googleOk": "Cuenta vinculada: tu historial se sincroniza entre dispositivos.",
+    "googleError": "Error al iniciar sesión con Google. Inténtalo de nuevo.",
+    "authLink": "Registrarse / Entrar",
+    "signOut": "Cerrar sesión"
   },
   "share": {
     "title": "Una partida en YiBoard",
@@ -348,5 +356,31 @@
     "emailLabel": "Correo",
     "emailNote": "Solemos responder en 1-2 días laborables.",
     "privacyNote": "Para borrar datos o problemas de cuenta, incluye tu ID de invitado (visible en tu perfil)."
+  },
+  "auth": {
+    "title": "Cuenta",
+    "sub": "Guarda tu historial en cualquier dispositivo. También puedes jugar como invitado.",
+    "tabRegister": "Registrarse",
+    "tabLogin": "Iniciar sesión",
+    "username": "Nombre de usuario",
+    "email": "Correo",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "identifier": "Usuario o correo",
+    "register": "Crear cuenta",
+    "login": "Iniciar sesión",
+    "submitting": "Espera…",
+    "switchToLogin": "¿Ya tienes cuenta? Inicia sesión",
+    "switchToRegister": "¿Sin cuenta? Regístrate",
+    "divider": "o",
+    "google": "Continuar con Google",
+    "passwordMismatch": "Las contraseñas no coinciden.",
+    "errInvalidUsername": "El usuario debe tener 3-20 letras, números o guiones bajos, empezando por una letra.",
+    "errInvalidEmail": "Introduce un correo válido.",
+    "errWeakPassword": "La contraseña debe tener al menos 8 caracteres.",
+    "errEmailTaken": "Ya existe una cuenta con este correo. Inicia sesión.",
+    "errUsernameTaken": "Este nombre de usuario ya está en uso.",
+    "errInvalidCredentials": "Usuario/correo o contraseña incorrectos.",
+    "errGeneric": "Algo salió mal. Inténtalo de nuevo."
   }
 }

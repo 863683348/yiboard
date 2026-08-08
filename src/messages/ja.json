@@ -195,7 +195,15 @@
     "resultLoss": "負け",
     "resultDraw": "引き分け",
     "vsEngine": "エンジン戦（{difficulty}）",
-    "vsPlayer": "対人戦"
+    "vsPlayer": "対人戦",
+    "googleSignIn": "Googleでログイン",
+    "googleSignInNote": "ログインすると記録がこのアカウントに保存され、どの端末でもプレイできます。",
+    "memberBadge": "会員",
+    "signedInAs": "{email} でログイン中",
+    "googleOk": "アカウントを連携しました — 記録は端末間で同期されます。",
+    "googleError": "Googleログインに失敗しました。もう一度お試しください。",
+    "authLink": "登録 / ログイン",
+    "signOut": "ログアウト"
   },
   "share": {
     "title": "YiBoard の一局",
@@ -348,5 +356,31 @@
     "emailLabel": "メール",
     "emailNote": "通常1〜2営業日以内に返信します。",
     "privacyNote": "データ削除やアカウントの問題は、ゲストID（プロフィールに表示）を添えてください。"
+  },
+  "auth": {
+    "title": "アカウント",
+    "sub": "ログインすると記録をどの端末でも同期できます。ゲストでも遊べます。",
+    "tabRegister": "登録",
+    "tabLogin": "ログイン",
+    "username": "ユーザー名",
+    "email": "メール",
+    "password": "パスワード",
+    "confirmPassword": "確認用パスワード",
+    "identifier": "ユーザー名またはメール",
+    "register": "アカウント作成",
+    "login": "ログイン",
+    "submitting": "お待ちください…",
+    "switchToLogin": "アカウントをお持ちですか？ログイン",
+    "switchToRegister": "アカウントがありませんか？登録",
+    "divider": "または",
+    "google": "Googleでログイン",
+    "passwordMismatch": "パスワードが一致しません。",
+    "errInvalidUsername": "ユーザー名は3〜20文字の英数字・アンダースコアで、英字で始めてください。",
+    "errInvalidEmail": "有効なメールアドレスを入力してください。",
+    "errWeakPassword": "パスワードは8文字以上必要です。",
+    "errEmailTaken": "このメールは既に登録されています。ログインしてください。",
+    "errUsernameTaken": "このユーザー名は既に使われています。",
+    "errInvalidCredentials": "ユーザー名/メールまたはパスワードが違います。",
+    "errGeneric": "エラーが発生しました。もう一度お試しください。"
   }
 }

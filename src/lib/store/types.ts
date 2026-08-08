@@ -6,6 +6,8 @@
 export interface UserRecord {
   id: string;
   displayName: string;
+  /** 注册用户名（访客为 null） */
+  username: string | null;
   email: string | null;
   locale: string;
   elo: number;
@@ -94,10 +96,15 @@ export interface Store {
   createGuestUser(input: { id: string; displayName: string; locale: string }): Promise<UserRecord>;
   getUser(id: string): Promise<UserRecord | null>;
   findUserByEmail(email: string): Promise<UserRecord | null>;
+  findUserByUsername(username: string): Promise<UserRecord | null>;
+  /** 登录校验用：拿密码哈希（UserRecord 不暴露哈希，保持最小面） */
+  getPasswordHash(userId: string): Promise<string | null>;
   upgradeGuest(input: {
     userId: string;
+    username?: string;
     email: string;
-    passwordHash: string;
+    /** 密码可空：Google OAuth 等外部身份没有密码 */
+    passwordHash: string | null;
     displayName?: string;
   }): Promise<UserRecord>;
 

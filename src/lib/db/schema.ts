@@ -22,6 +22,8 @@ export const users = pgTable(
   {
     id: uuid('id').primaryKey().defaultRandom(),
     displayName: varchar('display_name', { length: 48 }).notNull(),
+    /** 注册用户名（唯一，可空——访客没有；登录可用 username 或 email） */
+    username: varchar('username', { length: 32 }),
     email: varchar('email', { length: 254 }),
     passwordHash: text('password_hash'),
     locale: varchar('locale', { length: 8 }).notNull().default('en'),
@@ -34,6 +36,7 @@ export const users = pgTable(
   },
   (table) => [
     uniqueIndex('users_email_key').on(table.email),
+    uniqueIndex('users_username_key').on(table.username),
     index('users_elo_idx').on(table.elo),
   ],
 );

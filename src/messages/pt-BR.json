@@ -195,7 +195,15 @@
     "resultLoss": "Derrota",
     "resultDraw": "Empate",
     "vsEngine": "contra o motor ({difficulty})",
-    "vsPlayer": "contra outra pessoa"
+    "vsPlayer": "contra outra pessoa",
+    "googleSignIn": "Continuar com Google",
+    "googleSignInNote": "Entre para manter seu histórico nesta conta e jogar de qualquer dispositivo.",
+    "memberBadge": "Membro",
+    "signedInAs": "Conectado como {email}",
+    "googleOk": "Conta vinculada — seu histórico agora sincroniza entre dispositivos.",
+    "googleError": "Falha no login com o Google. Tente novamente.",
+    "authLink": "Cadastrar / Entrar",
+    "signOut": "Sair"
   },
   "share": {
     "title": "Uma partida no YiBoard",
@@ -348,5 +356,31 @@
     "emailLabel": "E-mail",
     "emailNote": "Costumamos responder em 1-2 dias úteis.",
     "privacyNote": "Para exclusão de dados ou problemas de conta, inclua seu ID de convidado (visível no seu perfil)."
+  },
+  "auth": {
+    "title": "Conta",
+    "sub": "Mantenha seu histórico em qualquer dispositivo. Jogar como convidado também funciona.",
+    "tabRegister": "Cadastrar",
+    "tabLogin": "Entrar",
+    "username": "Nome de usuário",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "identifier": "Usuário ou e-mail",
+    "register": "Criar conta",
+    "login": "Entrar",
+    "submitting": "Aguarde…",
+    "switchToLogin": "Já tem conta? Entre",
+    "switchToRegister": "Não tem conta? Cadastre-se",
+    "divider": "ou",
+    "google": "Continuar com Google",
+    "passwordMismatch": "As senhas não coincidem.",
+    "errInvalidUsername": "O usuário deve ter 3-20 letras, números ou sublinhados, começando com letra.",
+    "errInvalidEmail": "Digite um e-mail válido.",
+    "errWeakPassword": "A senha deve ter pelo menos 8 caracteres.",
+    "errEmailTaken": "Já existe uma conta com este e-mail. Entre.",
+    "errUsernameTaken": "Este nome de usuário já está em uso.",
+    "errInvalidCredentials": "Usuário/e-mail ou senha incorretos.",
+    "errGeneric": "Algo deu errado. Tente novamente."
   }
 }

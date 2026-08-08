@@ -35,6 +35,7 @@ export const memoryStore: Store = {
     const record: UserRecord = {
       id,
       displayName,
+      username: null,
       email: null,
       locale,
       elo: STARTING_ELO,
@@ -59,17 +60,31 @@ export const memoryStore: Store = {
     return null;
   },
 
-  async upgradeGuest({ userId, email, passwordHash, displayName }) {
+  async findUserByUsername(username) {
+    const target = username.toLowerCase();
+    for (const user of users.values()) {
+      if (user.username?.toLowerCase() === target) return user;
+    }
+    return null;
+  },
+
+  async getPasswordHash(userId) {
+    return passwords.get(userId) ?? null;
+  },
+
+  async upgradeGuest({ userId, username, email, passwordHash, displayName }) {
     const existing = users.get(userId);
     if (!existing) throw new Error('USER_NOT_FOUND');
     const upgraded: UserRecord = {
       ...existing,
+      username: username ?? existing.username,
       email,
       displayName: displayName?.trim() || existing.displayName,
       isGuest: false,
     };
     users.set(userId, upgraded);
-    passwords.set(userId, passwordHash);
+    // Google 等外部身份没有密码：passwords map 存空串占位（登录校验走 email 归属而非密码）
+    passwords.set(userId, passwordHash ?? '');
     return upgraded;
   },
 
@@ -127,7 +142,7 @@ export const memoryStore: Store = {
     return games.filter((g) => g.blackId === userId || g.whiteId === userId).slice(0, limit);
   },
 
-  async listRankings(limit = 50) {
+  async listRankings(limit = 100) {
     return [...users.values()]
       .filter((user) => user.gamesPlayed > 0)
       .sort((a, b) => b.elo - a.elo || b.gamesWon - a.gamesWon)
