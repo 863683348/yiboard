@@ -7,6 +7,7 @@ import { CaretDown, Check, List, Moon, Sun, Translate, X } from '@phosphor-icons
 import { Link, usePathname } from '@/i18n/navigation';
 import { LOCALE_LABELS, routing, type Locale } from '@/i18n/routing';
 import { useAppearance, type BoardSkin } from '@/components/useAppearance';
+import type { UserRecord } from '@/lib/store/types';
 
 const NAV_ITEMS = [
   { href: '/play', key: 'play' },
@@ -125,7 +126,7 @@ function MenuRow({
   );
 }
 
-export function Navbar({ locale }: { locale: Locale }) {
+export function Navbar({ locale, user }: { locale: Locale; user: UserRecord | null }) {
   const t = useTranslations('nav');
   const brand = useTranslations('brand');
   const pathname = usePathname();
@@ -275,6 +276,19 @@ export function Navbar({ locale }: { locale: Locale }) {
           </Link>
         </div>
 
+        {/* 账号入口：已登录 → 我的战绩；未登录 → 登录/注册 */}
+        <div className="yb-nav-desktop" style={{ alignItems: 'center', marginLeft: 'var(--space-2)' }}>
+          {user ? (
+            <Link href="/profile" className="yb-btn yb-btn-ghost yb-btn-sm" style={{ textDecoration: 'none' }}>
+              {t('profile')}
+            </Link>
+          ) : (
+            <Link href="/auth" className="yb-btn yb-btn-outline yb-btn-sm" style={{ textDecoration: 'none' }}>
+              {t('signIn')}
+            </Link>
+          )}
+        </div>
+
         <button
           type="button"
           className="yb-btn yb-btn-ghost yb-btn-sm yb-nav-mobile"
@@ -310,6 +324,20 @@ export function Navbar({ locale }: { locale: Locale }) {
                   {t(item.key)}
                 </Link>
               ))}
+              <Link
+                href={user ? '/profile' : '/auth'}
+                style={{
+                  padding: '10px 8px',
+                  borderRadius: 'var(--radius-sm)',
+                  color: 'var(--fg)',
+                  fontWeight: 'var(--weight-emphasis)',
+                  textDecoration: 'none',
+                  borderTop: '1px solid var(--border-soft)',
+                  marginTop: 4,
+                }}
+              >
+                {user ? t('profile') : t('signIn')}
+              </Link>
             </nav>
 
             <hr className="yb-rule" style={{ marginBlock: 'var(--space-4)' }} />

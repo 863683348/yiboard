@@ -25,7 +25,8 @@
     "boardStyle": "Board",
     "boardInk": "Ink slate",
     "boardKaya": "Kaya wood",
-    "boardSlate": "Bluestone"
+    "boardSlate": "Bluestone",
+    "signIn": "Sign in / Register"
   },
   "home": {
     "eyebrow": "Free · No account required",

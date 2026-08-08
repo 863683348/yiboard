@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 
 import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
+import { readUser } from '@/lib/session';
 import { routing, type Locale } from '@/i18n/routing';
 
 import '../globals.css';
@@ -85,6 +86,7 @@ export default async function LocaleLayout(props: {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'common' });
+  const me = await readUser();
 
   return (
     <html lang={locale} data-board="ink" suppressHydrationWarning>
@@ -96,7 +98,7 @@ export default async function LocaleLayout(props: {
           <a className="yb-skip" href="#content">
             {t('skipToContent')}
           </a>
-          <Navbar locale={locale as Locale} />
+          <Navbar locale={locale as Locale} user={me} />
           <main id="content">{props.children}</main>
           <SiteFooter locale={locale as Locale} />
         </NextIntlClientProvider>

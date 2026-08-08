@@ -25,7 +25,8 @@
     "boardStyle": "棋盘",
     "boardInk": "墨石",
     "boardKaya": "榧木",
-    "boardSlate": "青石"
+    "boardSlate": "青石",
+    "signIn": "登录 / 注册"
   },
   "home": {
     "eyebrow": "免费 · 无需注册",
