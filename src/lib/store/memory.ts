@@ -223,4 +223,14 @@ export const memoryStore: Store = {
     shareCards.set(id, bumped);
     return bumped;
   },
+
+  async getStats() {
+    let aiGames = 0;
+    let friendGames = 0;
+    for (const g of games.values()) {
+      if (g.mode === 'ai') aiGames += 1;
+      else if (g.mode === 'friend') friendGames += 1;
+    }
+    return { totalUsers: users.size, aiGames, friendGames };
+  },
 };

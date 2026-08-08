@@ -8,6 +8,7 @@ import {
 } from '@phosphor-icons/react/dist/ssr';
 
 import { GomokuGame } from '@/components/GomokuGame';
+import { GlobalStats } from '@/components/GlobalStats';
 import { RankBadge } from '@/components/RankBadge';
 import { Link } from '@/i18n/navigation';
 import { RANKS, STARTING_ELO } from '@/lib/rank';
@@ -88,6 +89,11 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             </p>
           </div>
         </div>
+      </section>
+
+      {/* ---------------- 全球玩家统计（实时聚合，30s 缓存） ---------------- */}
+      <section className="yb-container">
+        <GlobalStats />
       </section>
 
       <hr className="yb-rule" />

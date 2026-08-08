@@ -92,7 +92,11 @@
       "title": "棋盘已经摆好了。",
       "sub": "选个难度开局吧。读完这句话的时间都够你下一手了。",
       "action": "玩五子棋"
-    }
+    },
+    "statsHeading": "全球玩家",
+    "statsTotal": "总计",
+    "statsAi": "人机对局",
+    "statsFriend": "在线对战"
   },
   "play": {
     "title": "五子棋",

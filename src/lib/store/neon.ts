@@ -379,5 +379,24 @@ export function createNeonStore(connectionString: string): Store {
         createdAt: row.createdAt.toISOString(),
       };
     },
+
+    async getStats() {
+      const [usersRow, aiRow, friendRow] = await Promise.all([
+        db.select({ count: sql<number>`count(*)::int` }).from(users),
+        db
+          .select({ count: sql<number>`count(*)::int` })
+          .from(games)
+          .where(eq(games.mode, 'ai')),
+        db
+          .select({ count: sql<number>`count(*)::int` })
+          .from(games)
+          .where(eq(games.mode, 'friend')),
+      ]);
+      return {
+        totalUsers: usersRow[0]?.count ?? 0,
+        aiGames: aiRow[0]?.count ?? 0,
+        friendGames: friendRow[0]?.count ?? 0,
+      };
+    },
   };
 }

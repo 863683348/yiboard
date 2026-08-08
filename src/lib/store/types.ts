@@ -125,4 +125,6 @@ export interface Store {
     payload: ShareCardPayload;
   }): Promise<ShareCardRecord>;
   getShareCard(id: string): Promise<ShareCardRecord | null>;
+  /** 首页"全球玩家"统计：总用户 / 人机对局 / 好友对局 */
+  getStats(): Promise<{ totalUsers: number; aiGames: number; friendGames: number }>;
 }

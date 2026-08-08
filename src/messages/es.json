@@ -92,7 +92,11 @@
       "title": "El tablero ya está abierto.",
       "sub": "Elige dificultad y adelante. Se tarda más en leer esta frase que en empezar.",
       "action": "Jugar al Gomoku"
-    }
+    },
+    "statsHeading": "Jugadores en línea",
+    "statsTotal": "Total",
+    "statsAi": "vs motor",
+    "statsFriend": "vs jugadores"
   },
   "play": {
     "title": "Gomoku",

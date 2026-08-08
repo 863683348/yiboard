@@ -92,7 +92,11 @@
       "title": "The board is already open.",
       "sub": "Pick a difficulty and go. It takes longer to read this sentence than to start.",
       "action": "Play Gomoku"
-    }
+    },
+    "statsHeading": "Players online",
+    "statsTotal": "Total",
+    "statsAi": "vs engine",
+    "statsFriend": "vs players"
   },
   "play": {
     "title": "Gomoku",
