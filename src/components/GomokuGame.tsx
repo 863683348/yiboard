@@ -8,6 +8,7 @@ import { Board } from '@/components/Board';
 import type { Difficulty } from '@/lib/engine/ai';
 import { BLACK, WHITE, toNotation, type Player } from '@/lib/engine/board';
 import { applyMove, boardToArray, createGame, serializeMoves, undo, type GameState } from '@/lib/engine/game';
+import { useAppearance } from '@/components/useAppearance';
 
 const DIFFICULTIES: ReadonlyArray<{ value: Difficulty; label: string; note: string }> = [
   { value: 'gentle', label: 'difficultyGentle', note: 'difficultyGentleNote' },
@@ -23,6 +24,7 @@ export interface GomokuGameProps {
 
 export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: GomokuGameProps) {
   const t = useTranslations('play');
+  const { board } = useAppearance();
   const [difficulty, setDifficulty] = useState<Difficulty>(initialDifficulty);
   const [playerColor, setPlayerColor] = useState<Player>(BLACK);
   const [game, setGame] = useState<GameState>(() => createGame(BLACK));
@@ -155,6 +157,7 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
 
   const boardEl = (
     <Board
+      theme={board}
       cells={cells}
       lastMove={game.lastMove}
       winningLine={game.winningLine}

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { ArrowsClockwise, Copy, Check, UsersThree } from '@phosphor-icons/react';
 
 import { Board } from '@/components/Board';
+import { useAppearance } from '@/components/useAppearance';
 import { BLACK, fromNotation, type Point } from '@/lib/engine/board';
 import { boardToArray, replay } from '@/lib/engine/game';
 
@@ -25,6 +26,7 @@ const POLL_MS = 1400;
 
 export function FriendGame({ initialCode }: { initialCode: string | null }) {
   const t = useTranslations('play');
+  const { board } = useAppearance();
   const [code, setCode] = useState<string | null>(initialCode);
   const [room, setRoom] = useState<RoomView | null>(null);
   const [joinCode, setJoinCode] = useState('');
@@ -202,6 +204,7 @@ export function FriendGame({ initialCode }: { initialCode: string | null }) {
     <div className="yb-play-layout">
       <div style={{ display: 'grid', justifyItems: 'center' }}>
         <Board
+          theme={board}
           cells={cells}
           lastMove={state.lastMove}
           winningLine={state.winningLine}
