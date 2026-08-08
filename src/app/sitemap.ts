@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 import { routing } from '@/i18n/routing';
 
-/** 部署时用 SITE_URL 覆盖（Vercel 自动注入 NEXT_PUBLIC_ 亦可），本地默认 localhost。 */
-const BASE = (process.env.SITE_URL ?? 'http://localhost:3000').replace(/\/$/, '');
+/** 部署时用 SITE_URL 覆盖；默认正式域名（本地 dev 不影响——sitemap 仅供生产爬取）。 */
+const BASE = (process.env.SITE_URL ?? 'https://yiboardgame.com').replace(/\/$/, '');
 
 const PATHS = ['', '/play', '/rankings', '/how-to', '/about', '/profile'] as const;
 

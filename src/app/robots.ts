@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 /** robots.txt：屏蔽 API 与访客会话相关路径，其余全开放。分享卡是公开页，允许收录。 */
 export default function robots(): MetadataRoute.Robots {
-  const base = (process.env.SITE_URL ?? 'http://localhost:3000').replace(/\/$/, '');
+  const base = (process.env.SITE_URL ?? 'https://yiboardgame.com').replace(/\/$/, '');
   return {
     rules: [
       {

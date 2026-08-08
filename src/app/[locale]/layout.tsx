@@ -25,7 +25,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yiboard.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yiboardgame.com';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
