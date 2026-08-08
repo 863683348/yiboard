@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "title": "YiBoard — Gomoku, Xiangqi and Go, playable in your browser",
+    "description": "Play Gomoku free against a real engine or a friend. No account, no download. Climb an eighteen-rung ladder from Ninth Grade to Ninth Dan. Xiangqi and Go are next.",
+    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones"
+  },
+  "brand": {
+    "name": "YiBoard",
+    "hanzi": "弈界",
+    "tagline": "Chinese strategy games, for anyone"
+  },
+  "nav": {
+    "play": "Play",
+    "rankings": "Rankings",
+    "howTo": "How to play",
+    "about": "About",
+    "profile": "Profile",
+    "pricing": "Pricing",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "boardStyle": "Board",
+    "boardInk": "Ink slate",
+    "boardKaya": "Kaya wood",
+    "boardSlate": "Bluestone"
+  },
+  "home": {
+    "eyebrow": "Free · No account required",
+    "headline": "Five stones in a line.",
+    "headlineAccent": "Three thousand years of arguing about it.",
+    "sub": "Gomoku is learnable in thirty seconds and hard to put down after that. Open the board below and make a move — nothing to install, nothing to sign up for. Xiangqi and Go follow.",
+    "ctaPrimary": "Start a match",
+    "ctaSecondary": "Play a friend",
+    "reassurance": "Your progress is saved to this browser for 180 days. Attach an email later if you want to keep it.",
+    "boardCaption": "Black moves first. Get five in an unbroken line — horizontal, vertical or diagonal.",
+    "boardHint": "Tap any intersection to start",
+    "games": {
+      "title": "Three games, one board culture",
+      "sub": "Each one teaches a different way of thinking. We are shipping them in the order that gets you playing fastest.",
+      "statusLive": "Playable now",
+      "statusNext": "In development",
+      "statusPlanned": "Planned",
+      "gomoku": {
+        "name": "Gomoku",
+        "native": "五子棋 · Wǔzǐqí",
+        "blurb": "Two colours, one grid, five in a row. The rules fit in a sentence; the tactics do not. Best entry point if you have never touched a Chinese board game."
+      },
+      "xiangqi": {
+        "name": "Xiangqi",
+        "native": "象棋 · Xiàngqí",
+        "blurb": "A river cuts the board in half. Cannons only capture by jumping over a screen. The two generals may never look at each other down an open file."
+      },
+      "go": {
+        "name": "Go",
+        "native": "围棋 · Wéiqí",
+        "blurb": "You surround territory instead of capturing a king. Still played under essentially the same rules it had two millennia ago."
+      }
+    },
+    "ladder": {
+      "title": "Eighteen rungs, borrowed from the real thing",
+      "sub": "Chinese board culture ranks players in grades and dan, not in bronze and platinum. We kept that, and mapped it onto a rating that actually moves when you win.",
+      "startNote": "Everyone starts at 1200 — Sixth Grade.",
+      "gradeLabel": "Grades",
+      "danLabel": "Dan",
+      "gradeNote": "Ninth Grade up to First Grade. You are learning shapes.",
+      "danNote": "First Dan up to Ninth Dan. You are reading four moves ahead."
+    },
+    "why": {
+      "title": "What we actually built",
+      "refereed": {
+        "title": "Online games are refereed server-side",
+        "body": "Every move in a friend match is validated by the server before it lands on either board. A patched client cannot invent a win."
+      },
+      "engine": {
+        "title": "The engine runs in your browser",
+        "body": "Our Gomoku opponent searches with alpha-beta pruning under a hard 500 ms budget, on your machine. No round trip, no queue, no rate limit."
+      },
+      "language": {
+        "title": "Written in four languages, not poured through a translator",
+        "body": "English, Español, 日本語 and Português do Brasil. Rules, tooltips and error messages included — not just the marketing page."
+      },
+      "noWall": {
+        "title": "Nothing behind a signup wall",
+        "body": "Play, rank up, share a game. Attaching an email is optional and only exists so you can carry your record to another device."
+      }
+    },
+    "finalCta": {
+      "title": "The board is already open.",
+      "sub": "Pick a difficulty and go. It takes longer to read this sentence than to start.",
+      "action": "Play Gomoku"
+    }
+  },
+  "play": {
+    "title": "Gomoku",
+    "vsAi": "Against the engine",
+    "vsFriend": "Against a friend",
+    "difficulty": "Difficulty",
+    "difficultyGentle": "Gentle",
+    "difficultyGentleNote": "Sees two moves ahead and will miss things.",
+    "difficultySteady": "Steady",
+    "difficultySteadyNote": "Four moves ahead. Punishes loose shapes.",
+    "difficultySharp": "Sharp",
+    "difficultySharpNote": "Six moves ahead within its time budget.",
+    "yourColour": "You play",
+    "black": "Black",
+    "white": "White",
+    "turnYours": "Your move",
+    "turnTheirs": "Engine is thinking",
+    "turnOpponent": "Waiting for your opponent",
+    "moveCount": "Move {count}",
+    "thinkingTime": "{ms} ms",
+    "newGame": "New game",
+    "undo": "Undo",
+    "resign": "Resign",
+    "shareGame": "Share this game",
+    "copyLink": "Copy link",
+    "copied": "Copied",
+    "wonByYou": "You won in {count} moves.",
+    "wonByEngine": "The engine won in {count} moves.",
+    "wonByOpponent": "Your opponent won in {count} moves.",
+    "draw": "Draw — the board is full.",
+    "resigned": "You resigned.",
+    "lastMove": "Last move: {notation}",
+    "illegal": "That intersection is already taken.",
+    "invite": {
+      "title": "Invite someone",
+      "body": "Send this link. They join straight into the board — no account on their side either.",
+      "code": "Room code",
+      "waiting": "Waiting for someone to join…",
+      "joined": "Your opponent is here."
+    },
+    "record": "Record: {wins}W · {losses}L · {draws}D"
+  },
+  "rankings": {
+    "title": "Rankings",
+    "sub": "Ranked friend matches only. Games against the engine build your record but do not move your rating.",
+    "position": "#",
+    "player": "Player",
+    "rank": "Rank",
+    "rating": "Rating",
+    "played": "Played",
+    "winRate": "Win rate",
+    "empty": "No ranked games yet. Be the first — invite a friend and play one.",
+    "emptyAction": "Start a friend match",
+    "you": "You"
+  },
+  "howTo": {
+    "title": "How to play Gomoku",
+    "sub": "Everything you need is on this page. It takes about two minutes.",
+    "rulesTitle": "The rules",
+    "rule1": "Black plays first. Players alternate, one stone per turn.",
+    "rule2": "Stones go on the intersections of the grid, not inside the squares.",
+    "rule3": "A stone never moves and is never captured once placed.",
+    "rule4": "The first player to line up five stones of their colour — horizontally, vertically or diagonally — wins immediately.",
+    "rule5": "If the board fills with no five in a row, the game is a draw. In practice this almost never happens.",
+    "openingTitle": "Three things that will make you better today",
+    "tip1Title": "Build two threats at once",
+    "tip1Body": "A single open three can be blocked. Two open threes that share a stone cannot — your opponent only gets one move. Almost every game is decided by the first double threat.",
+    "tip2Title": "Count the open ends, not the stones",
+    "tip2Body": "Three stones with both ends free is far stronger than four stones walled off at one end. Learn to see the gaps before you see the line.",
+    "tip3Title": "Block early, not politely",
+    "tip3Body": "Beginners answer an open three. Stronger players answer an open two when it points at a strong direction. If you are always reacting, you have already lost the initiative.",
+    "notationTitle": "Reading the notation",
+    "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
+    "cta": "Try it against the engine"
+  },
+  "about": {
+    "title": "About YiBoard",
+    "lead": "Chinese board games are not hard to learn. They are hard to find in a form that respects your time.",
+    "p1": "Most places that teach Gomoku, Xiangqi or Go want an account before you can see a board. Then a download. Then a tutorial you cannot skip. We think that ordering is backwards: play first, decide later whether you care.",
+    "p2": "So YiBoard opens with a live board on the front page. No email, no install. The engine runs locally, your progress lives in this browser, and if you ever want it on another device you attach an email and nothing else changes.",
+    "p3": "Gomoku ships first because it is the fastest way to feel why these games are good. Xiangqi comes next — a real strategic game with pieces most people outside China have never used. Go last, because it deserves to be done properly.",
+    "p4": "We are a small team. If something is broken, or a translation reads badly in your language, tell us and it gets fixed in the next release.",
+    "shopTitle": "On physical boards",
+    "shopBody": "We are working on a small line of well-made physical sets — Xiangqi in wood, Go stones in glass. Not merchandise with a logo on it. Details when they are ready.",
+    "contact": "Contact"
+  },
+  "profile": {
+    "title": "Your record",
+    "guestBadge": "Guest",
+    "guestNote": "This record lives in this browser and expires after 180 days of inactivity. Attach an email to keep it.",
+    "attachEmail": "Attach an email",
+    "rating": "Rating",
+    "rank": "Rank",
+    "toNext": "{points} points to {rank}",
+    "atCeiling": "Top of the ladder.",
+    "played": "Games played",
+    "won": "Won",
+    "history": "Recent games",
+    "historyEmpty": "No games yet.",
+    "resultWin": "Win",
+    "resultLoss": "Loss",
+    "resultDraw": "Draw",
+    "vsEngine": "vs engine ({difficulty})",
+    "vsPlayer": "vs player"
+  },
+  "share": {
+    "title": "A game on YiBoard",
+    "resultWin": "{name} won in {count} moves",
+    "resultLoss": "{name} lost in {count} moves",
+    "resultDraw": "{name} drew after {count} moves",
+    "cta": "Play your own",
+    "replay": "Replay this game",
+    "notFound": "That game link has expired or never existed.",
+    "notFoundCta": "Start a new game"
+  },
+  "footer": {
+    "tagline": "Gomoku today. Xiangqi and Go next.",
+    "play": "Play",
+    "learn": "Learn",
+    "legal": "Legal",
+    "project": "Project",
+    "rights": "© {year} YiBoard",
+    "language": "Language",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contact": "Contact Us"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "sub": "Free to play. Paid plans are on the way — everything is free until subscriptions go live.",
+    "monthly": "per month",
+    "yearly": "per year",
+    "free": {
+      "name": "Free",
+      "price": "0",
+      "note": "Playable now",
+      "features": [
+        "Gomoku vs engine or a friend",
+        "Eighteen-rung grade & dan ladder",
+        "Guest record kept for 180 days",
+        "Share your games and replay them"
+      ]
+    },
+    "plus": {
+      "name": "Plus",
+      "price": "4.99",
+      "note": "For daily players",
+      "features": [
+        "Everything in Free",
+        "No ads on the site",
+        "Deep match stats and rating trends",
+        "Game library: study classic games"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "7.99",
+      "note": "For serious players",
+      "features": [
+        "Everything in Plus",
+        "Early access to Xiangqi and Go",
+        "Unlimited saved games",
+        "Member discount on physical sets"
+      ]
+    },
+    "comingSoon": "Payments are being wired up (P1). Until then every feature is free.",
+    "cta": "Start playing free",
+    "faqTitle": "Pricing questions",
+    "faqQ1": "Do I have to pay now?",
+    "faqA1": "No. Subscriptions go live in a later phase; until then everything is free.",
+    "faqQ2": "Why a paid plan at all?",
+    "faqA2": "To keep the lights on without ads or selling data: servers, engine work and the physical set line.",
+    "faqQ3": "Can I cancel anytime?",
+    "faqA3": "Yes. Once subscriptions launch you can cancel anytime and keep the rest of your period.",
+    "popular": "Most popular"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: August 2026",
+    "lead": "We collect as little as possible. This policy says what we collect and why.",
+    "s1Title": "What we collect",
+    "s1Body": "On your first visit we write an anonymous guest identifier (a JWT, valid 180 days) in your browser to keep your record and rating. We do not collect your name, location or device details unless you attach an email.",
+    "s2Title": "Attaching an email",
+    "s2Body": "Attaching an email is optional and only syncs your record across devices. Passwords are stored as argon2 hashes; we cannot read your plaintext password.",
+    "s3Title": "What we do not do",
+    "s3Body": "We do not sell your data, do not serve personalised ads, and do not track you across the web.",
+    "s4Title": "Deleting your data",
+    "s4Body": "To delete your account and game history, email ahmedlzany423@gmail.com and we will process it within 30 days.",
+    "s5Title": "Cookies",
+    "s5Body": "Only the guest identifier and a language preference cookie. No third-party analytics.",
+    "contact": "For privacy questions, email"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "updated": "Last updated: August 2026",
+    "lead": "By using YiBoard you agree to these terms.",
+    "s1Title": "The service",
+    "s1Body": "YiBoard offers online board games: Gomoku is live now, with Xiangqi and Go coming. The service is provided as-is.",
+    "s2Title": "Accounts and guests",
+    "s2Body": "You can play as a guest without registering. Guest records live on your device; attach an email to sync across devices.",
+    "s3Title": "Fair play",
+    "s3Body": "Automated scripts, cheats and any attempt to alter game results are prohibited. All friend matches are refereed server-side; cheaters will be rejected and may be banned.",
+    "s4Title": "Intellectual property",
+    "s4Body": "YiBoard's code, design, copy and brand belong to the developer. Your game data belongs to you.",
+    "s5Title": "Disclaimer",
+    "s5Body": "To the maximum extent permitted by law, YiBoard is not liable for indirect damages arising from use of the service.",
+    "s6Title": "Changes",
+    "s6Body": "We may update these terms; continuing to use the service after changes means you accept them."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "sub": "Can't find an answer? Email ahmedlzany423@gmail.com.",
+    "q1": "Do I need an account to play?",
+    "a1": "No. Open the board and play — your progress is saved in this browser for 180 days. Attach an email only when you want it on another device.",
+    "q2": "How strong is the engine?",
+    "a2": "Three levels: Gentle (2-ply), Steady (4-ply), Sharp (6-ply). It runs alpha-beta search under a 500 ms budget, in your browser.",
+    "q3": "How do I play a friend?",
+    "a3": "On the Play page pick \"Against a friend\", create a room, and send the code or link. They join straight onto the board, no account needed.",
+    "q4": "How does the ladder work?",
+    "a4": "Friend matches settle ELO, mapped to the eighteen grades and dans from Ninth Grade to Ninth Dan. Everyone starts at 1200 (Sixth Grade). Engine games do not move your rating.",
+    "q5": "How long is my data kept?",
+    "a5": "Guest records last 180 days. With an email attached they are kept until you ask us to delete them.",
+    "q6": "When does the membership launch?",
+    "a6": "Payments are being integrated (later phase). Everything is free until then, and we will announce before launching.",
+    "q7": "Is there a mobile app?",
+    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download."
+  },
+  "blog": {
+    "title": "Blog",
+    "sub": "Development notes, board game culture, and updates from YiBoard.",
+    "p1Title": "Why Gomoku ships first",
+    "p1Excerpt": "Learnable in thirty seconds, argued about for three thousand years. Gomoku is the shortest road to showing the world why these games are good.",
+    "p1Date": "August 2026",
+    "p2Title": "Where the ladder comes from",
+    "p2Excerpt": "Ninth Grade to Ninth Dan: why we borrowed grades and dans from real Chinese board culture instead of bronze and platinum.",
+    "p2Date": "July 2026",
+    "p3Title": "Server-side refereeing: why nobody can cheat your game",
+    "p3Excerpt": "Every move is validated by the server; the client is only a display layer. That is the baseline of our anti-cheat design.",
+    "p3Date": "June 2026"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "sub": "Questions, feedback, partnerships, or just a game you want to talk about — we reply.",
+    "emailLabel": "Email",
+    "emailNote": "We usually reply within 1-2 business days.",
+    "privacyNote": "For data deletion or account issues, include your guest ID (visible on your Profile page)."
+  },
+  "common": {
+    "loading": "Loading",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "back": "Back",
+    "close": "Close",
+    "skipToContent": "Skip to content"
+  }
+}

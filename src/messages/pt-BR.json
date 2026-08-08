@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "title": "YiBoard — Gomoku, Xiangqi e Go direto no navegador",
+    "description": "Jogue Gomoku de graça contra um motor de verdade ou contra um amigo. Sem conta, sem download. Suba uma escada de dezoito degraus, do Nono Grau ao Nono Dan. Xiangqi e Go vêm depois.",
+    "ogAlt": "Um tabuleiro de Gomoku 15 por 15 com pedras pretas e brancas"
+  },
+  "brand": {
+    "name": "YiBoard",
+    "hanzi": "弈界",
+    "tagline": "Jogos de estratégia chineses, para qualquer um"
+  },
+  "nav": {
+    "play": "Jogar",
+    "rankings": "Ranking",
+    "howTo": "Como jogar",
+    "about": "O projeto",
+    "profile": "Perfil",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "boardStyle": "Tabuleiro",
+    "boardInk": "Ardósia tinta",
+    "boardKaya": "Madeira kaya",
+    "boardSlate": "Pedra azul",
+    "pricing": "Preços"
+  },
+  "home": {
+    "eyebrow": "Grátis · Sem conta",
+    "headline": "Cinco pedras em linha.",
+    "headlineAccent": "Três mil anos discutindo sobre isso.",
+    "sub": "Gomoku se aprende em trinta segundos e depois é difícil largar. Abra o tabuleiro aqui embaixo e jogue: nada para instalar, nada para cadastrar. Xiangqi e Go vêm em seguida.",
+    "ctaPrimary": "Começar partida",
+    "ctaSecondary": "Jogar com um amigo",
+    "reassurance": "Seu progresso fica salvo neste navegador por 180 dias. Se quiser manter, é só vincular um e-mail depois.",
+    "boardCaption": "As pretas abrem. Faça cinco em linha sem falhas: na horizontal, na vertical ou na diagonal.",
+    "boardHint": "Toque em qualquer interseção para começar",
+    "games": {
+      "title": "Três jogos, uma mesma cultura de tabuleiro",
+      "sub": "Cada um treina um jeito diferente de pensar. Lançamos na ordem que coloca você jogando mais rápido.",
+      "statusLive": "Já jogável",
+      "statusNext": "Em desenvolvimento",
+      "statusPlanned": "Planejado",
+      "gomoku": {
+        "name": "Gomoku",
+        "native": "五子棋 · Wǔzǐqí",
+        "blurb": "Duas cores, uma grade, cinco em linha. As regras cabem em uma frase; a tática não. Melhor porta de entrada se você nunca encostou num jogo de tabuleiro chinês."
+      },
+      "xiangqi": {
+        "name": "Xiangqi",
+        "native": "象棋 · Xiàngqí",
+        "blurb": "Um rio corta o tabuleiro ao meio. Os canhões só capturam pulando por cima de uma peça. Os dois generais nunca podem se encarar por uma coluna aberta."
+      },
+      "go": {
+        "name": "Go",
+        "native": "围棋 · Wéiqí",
+        "blurb": "Você cerca território em vez de capturar um rei. Continua sendo jogado praticamente com as mesmas regras de dois mil anos atrás."
+      }
+    },
+    "ladder": {
+      "title": "Dezoito degraus, emprestados do original",
+      "sub": "A cultura de tabuleiro chinesa classifica em graus e dans, não em bronze e platina. Mantivemos isso e mapeamos numa pontuação que realmente se mexe quando você vence.",
+      "startNote": "Todo mundo começa em 1200 — Sexto Grau.",
+      "gradeLabel": "Graus",
+      "danLabel": "Dans",
+      "gradeNote": "Do Nono Grau ao Primeiro Grau. Aqui você aprende formas.",
+      "danNote": "Do Primeiro Dan ao Nono Dan. Aqui você lê quatro jogadas à frente."
+    },
+    "why": {
+      "title": "O que a gente construiu de verdade",
+      "refereed": {
+        "title": "Partidas online são arbitradas pelo servidor",
+        "body": "Cada jogada de uma partida entre amigos é validada no servidor antes de aparecer em qualquer tabuleiro. Um cliente adulterado não inventa vitória."
+      },
+      "engine": {
+        "title": "O motor roda no seu navegador",
+        "body": "Nosso adversário de Gomoku busca com poda alfa-beta dentro de um orçamento rígido de 500 ms, na sua máquina. Sem ida e volta, sem fila, sem limite de requisições."
+      },
+      "language": {
+        "title": "Escrito em quatro idiomas, não passado num tradutor",
+        "body": "English, Español, 日本語 e Português do Brasil. Regras, dicas e mensagens de erro incluídas, não só a página de marketing."
+      },
+      "noWall": {
+        "title": "Nada atrás de um muro de cadastro",
+        "body": "Jogue, suba de rank, compartilhe uma partida. Vincular um e-mail é opcional e serve só para levar seu histórico para outro dispositivo."
+      }
+    },
+    "finalCta": {
+      "title": "O tabuleiro já está aberto.",
+      "sub": "Escolha a dificuldade e vá. Demora mais ler esta frase do que começar.",
+      "action": "Jogar Gomoku"
+    }
+  },
+  "play": {
+    "title": "Gomoku",
+    "vsAi": "Contra o motor",
+    "vsFriend": "Contra um amigo",
+    "difficulty": "Dificuldade",
+    "difficultyGentle": "Leve",
+    "difficultyGentleNote": "Enxerga duas jogadas à frente e deixa coisas passarem.",
+    "difficultySteady": "Firme",
+    "difficultySteadyNote": "Quatro jogadas à frente. Pune formas frouxas.",
+    "difficultySharp": "Afiado",
+    "difficultySharpNote": "Seis jogadas à frente dentro do orçamento de tempo.",
+    "yourColour": "Você joga de",
+    "black": "Pretas",
+    "white": "Brancas",
+    "turnYours": "Sua vez",
+    "turnTheirs": "O motor está pensando",
+    "turnOpponent": "Esperando seu adversário",
+    "moveCount": "Jogada {count}",
+    "thinkingTime": "{ms} ms",
+    "newGame": "Nova partida",
+    "undo": "Desfazer",
+    "resign": "Desistir",
+    "shareGame": "Compartilhar esta partida",
+    "copyLink": "Copiar link",
+    "copied": "Copiado",
+    "wonByYou": "Você venceu em {count} jogadas.",
+    "wonByEngine": "O motor venceu em {count} jogadas.",
+    "wonByOpponent": "Seu adversário venceu em {count} jogadas.",
+    "draw": "Empate — o tabuleiro encheu.",
+    "resigned": "Você desistiu.",
+    "lastMove": "Última jogada: {notation}",
+    "illegal": "Essa interseção já está ocupada.",
+    "invite": {
+      "title": "Chame alguém",
+      "body": "Mande este link. A pessoa entra direto no tabuleiro, também sem precisar de conta.",
+      "code": "Código da sala",
+      "waiting": "Esperando alguém entrar…",
+      "joined": "Seu adversário chegou."
+    },
+    "record": "Retrospecto: {wins}V · {losses}D · {draws}E"
+  },
+  "rankings": {
+    "title": "Ranking",
+    "sub": "Só partidas ranqueadas entre pessoas. Partidas contra o motor entram no seu histórico, mas não mexem na pontuação.",
+    "position": "#",
+    "player": "Jogador",
+    "rank": "Rank",
+    "rating": "Pontos",
+    "played": "Partidas",
+    "winRate": "Vitórias",
+    "empty": "Ainda não há partidas ranqueadas. Seja o primeiro: chame alguém e jogue uma.",
+    "emptyAction": "Começar partida com um amigo",
+    "you": "Você"
+  },
+  "howTo": {
+    "title": "Como jogar Gomoku",
+    "sub": "Tudo o que você precisa está nesta página. Leva uns dois minutos.",
+    "rulesTitle": "As regras",
+    "rule1": "As pretas abrem. Os jogadores alternam, uma pedra por vez.",
+    "rule2": "As pedras ficam nas interseções da grade, não dentro dos quadrados.",
+    "rule3": "Pedra colocada nunca se move nem é capturada.",
+    "rule4": "Quem alinhar cinco pedras da própria cor — na horizontal, vertical ou diagonal — vence na hora.",
+    "rule5": "Se o tabuleiro encher sem cinco em linha, é empate. Na prática isso quase nunca acontece.",
+    "openingTitle": "Três coisas que já melhoram seu jogo hoje",
+    "tip1Title": "Crie duas ameaças ao mesmo tempo",
+    "tip1Body": "Um três aberto dá para bloquear. Dois três abertos que compartilham uma pedra, não: seu adversário só tem uma jogada. Quase toda partida se decide na primeira ameaça dupla.",
+    "tip2Title": "Conte as pontas livres, não as pedras",
+    "tip2Body": "Três pedras com as duas pontas livres valem muito mais que quatro fechadas de um lado. Aprenda a ver os buracos antes de ver a linha.",
+    "tip3Title": "Bloqueie cedo, sem cerimônia",
+    "tip3Body": "Iniciante responde a um três aberto. Jogador forte responde a um dois aberto quando ele aponta para uma direção perigosa. Se você só reage, a iniciativa já é do outro.",
+    "notationTitle": "Lendo a notação",
+    "notationBody": "As colunas vão de A a O da esquerda; as linhas de 1 a 15 de baixo para cima. O ponto central é H8. Usamos isso nas partidas compartilhadas e no seu histórico.",
+    "cta": "Teste contra o motor"
+  },
+  "about": {
+    "title": "Sobre o YiBoard",
+    "lead": "Jogos de tabuleiro chineses não são difíceis de aprender. Difícil é achar eles num formato que respeite o seu tempo.",
+    "p1": "Quase todo lugar que ensina Gomoku, Xiangqi ou Go pede uma conta antes de deixar você ver um tabuleiro. Depois um download. Depois um tutorial que não dá para pular. Achamos a ordem invertida: primeiro jogue, depois decida se liga para isso.",
+    "p2": "Por isso o YiBoard abre com um tabuleiro vivo na home. Sem e-mail, sem instalação. O motor roda local, seu progresso vive neste navegador e, se um dia quiser em outro aparelho, é só vincular um e-mail — nada mais muda.",
+    "p3": "Gomoku sai primeiro porque é o caminho mais rápido para sentir por que esses jogos são bons. Depois vem o Xiangqi, um jogo estratégico sério com peças que quase ninguém fora da China usou. Go por último, porque merece ser feito direito.",
+    "p4": "Somos um time pequeno. Se algo estiver quebrado, ou uma tradução soar estranha no seu idioma, avise que a gente conserta na próxima versão.",
+    "shopTitle": "Sobre os tabuleiros físicos",
+    "shopBody": "Estamos preparando uma linha pequena de peças bem feitas: Xiangqi em madeira, pedras de Go em vidro. Não é brinde com logo em cima. Damos detalhes quando estiver pronto.",
+    "contact": "Contato"
+  },
+  "profile": {
+    "title": "Seu histórico",
+    "guestBadge": "Convidado",
+    "guestNote": "Este histórico vive neste navegador e expira depois de 180 dias sem uso. Vincule um e-mail para manter.",
+    "attachEmail": "Vincular um e-mail",
+    "rating": "Pontos",
+    "rank": "Rank",
+    "toNext": "{points} pontos para {rank}",
+    "atCeiling": "Topo da escada.",
+    "played": "Partidas jogadas",
+    "won": "Vitórias",
+    "history": "Partidas recentes",
+    "historyEmpty": "Nenhuma partida ainda.",
+    "resultWin": "Vitória",
+    "resultLoss": "Derrota",
+    "resultDraw": "Empate",
+    "vsEngine": "contra o motor ({difficulty})",
+    "vsPlayer": "contra outra pessoa"
+  },
+  "share": {
+    "title": "Uma partida no YiBoard",
+    "resultWin": "{name} venceu em {count} jogadas",
+    "resultLoss": "{name} perdeu em {count} jogadas",
+    "resultDraw": "{name} empatou depois de {count} jogadas",
+    "cta": "Jogue a sua",
+    "replay": "Rever esta partida",
+    "notFound": "Esse link expirou ou nunca existiu.",
+    "notFoundCta": "Começar uma partida"
+  },
+  "footer": {
+    "tagline": "Hoje Gomoku. Depois Xiangqi e Go.",
+    "play": "Jogar",
+    "learn": "Aprender",
+    "project": "Projeto",
+    "rights": "© {year} YiBoard",
+    "language": "Idioma",
+    "legal": "Jurídico",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "faq": "Perguntas frequentes",
+    "blog": "Blog",
+    "contact": "Fale conosco"
+  },
+  "common": {
+    "loading": "Carregando",
+    "error": "Algo deu errado",
+    "retry": "Tentar de novo",
+    "back": "Voltar",
+    "close": "Fechar",
+    "skipToContent": "Pular para o conteúdo"
+  },
+  "pricing": {
+    "title": "Preços",
+    "sub": "Jogar é grátis. Os planos pagos estão a caminho: tudo é gratuito até o lançamento das assinaturas.",
+    "monthly": "por mês",
+    "yearly": "por ano",
+    "free": {
+      "name": "Grátis",
+      "price": "0",
+      "note": "Jogável agora",
+      "features": [
+        "Gomoku contra o motor ou um amigo",
+        "Escada de dezoito níveis (graus e dans)",
+        "Histórico de convidado por 180 dias",
+        "Compartilhe e revise suas partidas"
+      ]
+    },
+    "plus": {
+      "name": "Plus",
+      "price": "4.99",
+      "note": "Para quem joga todo dia",
+      "features": [
+        "Tudo do Grátis",
+        "Sem anúncios",
+        "Estatísticas detalhadas de partidas",
+        "Biblioteca de partidas clássicas"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "7.99",
+      "note": "Para jogadores sérios",
+      "features": [
+        "Tudo do Plus",
+        "Acesso antecipado a Xiangqi e Go",
+        "Partidas salvas ilimitadas",
+        "Desconto em tabuleiros físicos"
+      ]
+    },
+    "comingSoon": "Os pagamentos estão em integração (próxima fase). Até lá, tudo é gratuito.",
+    "cta": "Comece a jogar grátis",
+    "faqTitle": "Perguntas sobre preços",
+    "faqQ1": "Preciso pagar agora?",
+    "faqA1": "Não. As assinaturas entram em uma fase posterior; até lá tudo é gratuito.",
+    "faqQ2": "Por que um plano pago?",
+    "faqA2": "Para manter o serviço de pé sem anúncios nem venda de dados: servidores, o motor e a linha de tabuleiros físicos.",
+    "faqQ3": "Posso cancelar quando quiser?",
+    "faqA3": "Sim. Quando as assinaturas lançarem, cancele a qualquer momento e mantenha o restante do seu período.",
+    "popular": "Mais popular"
+  },
+  "privacy": {
+    "title": "Política de Privacidade",
+    "updated": "Última atualização: agosto de 2026",
+    "lead": "Coletamos o mínimo possível. Esta política explica o que coletamos e por quê.",
+    "s1Title": "O que coletamos",
+    "s1Body": "Na primeira visita gravamos um identificador anônimo de convidado (um JWT válido por 180 dias) para manter seu histórico e pontuação. Não coletamos nome, localização ou dados do dispositivo, a menos que você vincule um e-mail.",
+    "s2Title": "Vincular um e-mail",
+    "s2Body": "É opcional e serve apenas para sincronizar seu histórico entre dispositivos. Senhas são armazenadas com hash argon2; não conseguimos ler sua senha em texto puro.",
+    "s3Title": "O que não fazemos",
+    "s3Body": "Não vendemos seus dados, não exibimos anúncios personalizados e não rastreamos você pela web.",
+    "s4Title": "Exclusão de dados",
+    "s4Body": "Para excluir sua conta e histórico, envie e-mail para ahmedlzany423@gmail.com e processaremos em 30 dias.",
+    "s5Title": "Cookies",
+    "s5Body": "Apenas o identificador de convidado e um cookie de idioma. Sem análise de terceiros.",
+    "contact": "Para dúvidas de privacidade, escreva para"
+  },
+  "terms": {
+    "title": "Termos de Serviço",
+    "updated": "Última atualização: agosto de 2026",
+    "lead": "Ao usar o YiBoard você concorda com estes termos.",
+    "s1Title": "O serviço",
+    "s1Body": "O YiBoard oferece jogos de tabuleiro online: Gomoku já disponível, com Xiangqi e Go a caminho. O serviço é fornecido como está.",
+    "s2Title": "Contas e convidados",
+    "s2Body": "Você pode jogar como convidado sem se registrar. O histórico de convidado fica no seu dispositivo; vincule um e-mail para sincronizar.",
+    "s3Title": "Jogo limpo",
+    "s3Body": "Scripts automatizados, trapaças e qualquer tentativa de alterar resultados são proibidos. Todas as partidas entre amigos são arbitradas no servidor; trapaceiros serão rejeitados e possivelmente banidos.",
+    "s4Title": "Propriedade intelectual",
+    "s4Body": "O código, design, textos e marca do YiBoard pertencem ao desenvolvedor. Seus dados de partida pertencem a você.",
+    "s5Title": "Aviso legal",
+    "s5Body": "Na máxima extensão permitida por lei, o YiBoard não se responsabiliza por danos indiretos decorrentes do uso do serviço.",
+    "s6Title": "Alterações",
+    "s6Body": "Podemos atualizar estes termos; continuar usando o serviço após alterações significa aceitá-los."
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "sub": "Não achou a resposta? Envie e-mail para ahmedlzany423@gmail.com.",
+    "q1": "Preciso de conta para jogar?",
+    "a1": "Não. Abra o tabuleiro e jogue: seu progresso fica salvo neste navegador por 180 dias. Vincule um e-mail só quando quiser usar em outro dispositivo.",
+    "q2": "Qual a força do motor?",
+    "a2": "Três níveis: Suave (2 jogadas), Constante (4) e Afiado (6). Usa busca alfa-beta com orçamento de 500 ms, no seu navegador.",
+    "q3": "Como jogar com um amigo?",
+    "a3": "Na página de jogo escolha \"Contra um amigo\", crie uma sala e envie o código ou link. Eles entram direto no tabuleiro, sem conta.",
+    "q4": "Como funciona a escada?",
+    "a4": "Partidas entre amigos liquidam ELO, mapeado para os dezoito graus e dans, de Nono Grau a Nono Dan. Todos começam em 1200 (Sexto Grau). Jogos contra o motor não mudam sua pontuação.",
+    "q5": "Por quanto tempo meus dados ficam salvos?",
+    "a5": "O histórico de convidado dura 180 dias. Com e-mail vinculado, fica salvo até você pedir exclusão.",
+    "q6": "Quando a assinatura lança?",
+    "a6": "Os pagamentos estão em integração. Tudo é gratuito até lá e avisaremos antes do lançamento.",
+    "q7": "Tem app móvel?",
+    "a7": "O YiBoard é uma web responsiva (PWA planejada): jogue em qualquer navegador móvel sem downloads."
+  },
+  "blog": {
+    "title": "Blog",
+    "sub": "Notas de desenvolvimento, cultura de jogos de tabuleiro e novidades do YiBoard.",
+    "p1Title": "Por que o Gomoku sai primeiro",
+    "p1Excerpt": "Aprende-se em trinta segundos e discute-se há três mil anos. Gomoku é o caminho mais curto para mostrar ao mundo por que esses jogos são bons.",
+    "p1Date": "Agosto de 2026",
+    "p2Title": "De onde vem a escada",
+    "p2Excerpt": "Do Nono Grau ao Nono Dan: por que pegamos emprestados graus e dans da cultura chinesa em vez de bronze e platina.",
+    "p2Date": "Julho de 2026",
+    "p3Title": "Árbitro no servidor: por que ninguém trapaceia",
+    "p3Excerpt": "Cada jogada é validada pelo servidor; o cliente é só uma camada de exibição. Essa é a base do nosso design anti-trapaça.",
+    "p3Date": "Junho de 2026"
+  },
+  "contact": {
+    "title": "Fale conosco",
+    "sub": "Dúvidas, feedback, parcerias ou uma partida que você quer comentar: respondemos.",
+    "emailLabel": "E-mail",
+    "emailNote": "Costumamos responder em 1-2 dias úteis.",
+    "privacyNote": "Para exclusão de dados ou problemas de conta, inclua seu ID de convidado (visível no seu perfil)."
+  }
+}

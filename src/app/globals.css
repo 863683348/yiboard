@@ -1,0 +1,396 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* ============================================================================
+ * 把设计 Token 桥接到 Tailwind 主题，组件里就能写 bg-surface / text-muted，
+ * 而不用出现裸 hex。命名刻意与 Token 源名错开，避免自引用死循环。
+ * ========================================================================== */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-head: var(--font-display);
+  --font-code: var(--font-mono);
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sunken: var(--surface-sunken);
+  --color-hover: var(--surface-hover);
+
+  --color-fg: var(--fg);
+  --color-fg2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-meta: var(--meta);
+
+  --color-line: var(--border);
+  --color-line-soft: var(--border-soft);
+  --color-line-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-on: var(--accent-on);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+
+  --radius-chip: var(--radius-sm);
+  --radius-card: var(--radius-md);
+  --radius-panel: var(--radius-lg);
+
+  --shadow-raised: var(--elev-raised);
+  --shadow-overlay: var(--elev-overlay);
+}
+
+/* 字体栈：拉丁字形走 next/font 本地托管，CJK 交给系统字体，
+   避免为 4 个语言拖下来十几 MB 的 Noto CJK。 */
+:root {
+  --font-display: var(--font-archivo), 'Hiragino Sans', 'Yu Gothic UI', 'Noto Sans SC',
+    'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-body: var(--font-inter), 'Hiragino Sans', 'Yu Gothic UI', 'Noto Sans SC', 'PingFang SC',
+    'Microsoft YaHei', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :lang(ja) body,
+  :lang(zh) body {
+    line-height: var(--leading-body-cjk);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--fg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .yb-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter, var(--gutter-desktop));
+  }
+
+  .yb-reading {
+    max-width: var(--container-max-reading);
+  }
+
+  .yb-section {
+    padding-block: var(--section-y, var(--section-y-desktop));
+  }
+
+  .yb-eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-emphasis);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .yb-display {
+    font-size: var(--text-display);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+    font-weight: var(--weight-announce);
+  }
+
+  .yb-h2 {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-3xl);
+    font-weight: var(--weight-announce);
+  }
+
+  .yb-h3 {
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-2xl);
+    font-weight: var(--weight-emphasis);
+  }
+
+  .yb-lead {
+    font-size: var(--text-lg);
+    line-height: var(--leading-body);
+    color: var(--fg-2);
+  }
+
+  .yb-meta {
+    font-size: var(--text-sm);
+    color: var(--meta);
+  }
+
+  /* ---- 按钮 -------------------------------------------------------------- */
+  .yb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 44px;
+    padding-inline: var(--space-5);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: var(--weight-emphasis);
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background-color var(--motion-fast) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard);
+  }
+
+  .yb-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .yb-btn-primary {
+    background: var(--accent);
+    color: var(--accent-on);
+  }
+  .yb-btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+  .yb-btn-primary:active:not(:disabled) {
+    background: var(--accent-active);
+  }
+
+  .yb-btn-outline {
+    background: transparent;
+    color: var(--fg);
+    border-color: var(--border-strong);
+  }
+  .yb-btn-outline:hover:not(:disabled) {
+    background: var(--surface-hover);
+    border-color: var(--fg-2);
+  }
+
+  .yb-btn-ghost {
+    background: transparent;
+    color: var(--fg-2);
+  }
+  .yb-btn-ghost:hover:not(:disabled) {
+    background: var(--surface-hover);
+    color: var(--fg);
+  }
+
+  .yb-btn-sm {
+    height: 34px;
+    padding-inline: var(--space-3);
+    font-size: var(--text-sm);
+  }
+
+  /* ---- 容器 -------------------------------------------------------------- */
+  .yb-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+
+  .yb-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    height: 24px;
+    padding-inline: var(--space-2);
+    border-radius: var(--radius-pill);
+    background: var(--surface-sunken);
+    color: var(--fg-2);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-emphasis);
+    letter-spacing: var(--tracking-small);
+    white-space: nowrap;
+  }
+
+  .yb-chip-accent {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  /* ---- 格律线：本设计语言的签名元素，1px 而非阴影 ------------------------ */
+  .yb-rule {
+    height: 1px;
+    background: var(--border-soft);
+    border: 0;
+  }
+
+  .yb-skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+  }
+  .yb-skip:focus {
+    left: var(--space-4);
+    top: var(--space-4);
+  }
+
+  /* ---- 导航的显隐（移动优先，900px 起切桌面） ---------------------------- */
+  .yb-nav-desktop {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .yb-nav-desktop {
+      display: flex;
+    }
+    .yb-nav-mobile {
+      display: none;
+    }
+  }
+
+  /* ---- 网格：格律语言里唯一允许的"框" ------------------------------------ */
+  .yb-grid {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .yb-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .yb-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .yb-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 720px) {
+    .yb-grid-2,
+    .yb-grid-3 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .yb-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .yb-grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* 棋盘 + 侧栏：小屏堆叠，大屏并排 */
+  .yb-play-layout {
+    display: grid;
+    gap: var(--space-6);
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 940px) {
+    .yb-play-layout {
+      grid-template-columns: minmax(0, 1fr) 320px;
+    }
+  }
+
+  .yb-hero-layout {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 940px) {
+    .yb-hero-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+      gap: var(--space-12);
+    }
+  }
+
+  /* 表格：只用横线分隔，不画竖线，不填斑马条 */
+  .yb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+  .yb-table th {
+    text-align: left;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-emphasis);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--meta);
+    padding: var(--space-3) var(--space-3);
+    border-bottom: 1px solid var(--border-strong);
+    white-space: nowrap;
+  }
+  .yb-table td {
+    padding: var(--space-3) var(--space-3);
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--fg-2);
+  }
+  .yb-table tbody tr:hover td {
+    background: var(--surface-hover);
+  }
+  .yb-num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
+
+/* 棋子落下：只减速，绝不回弹（P0：禁止弹性缓动） */
+@keyframes yb-stone-drop {
+  from {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.yb-stone-enter {
+  animation: yb-stone-drop var(--motion-stone) var(--ease-stone) both;
+  transform-origin: center;
+}

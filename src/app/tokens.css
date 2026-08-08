@@ -1,0 +1,579 @@
+/* ============================================================================
+ * 弈界 YiBoard — Design Tokens (草案 v0.1)
+ * 设计语言：格律 Lattice — 棋盘格律 · 墨石中性 · 朱印一点
+ *
+ * 架构：四层 Token
+ *   A1-identity   品牌核心，不可省略
+ *   A1-structure  结构尺度（字号阶梯 / 容器 / 节区节奏）
+ *   A2            有默认值，可被品牌覆盖
+ *   B-slot        别名槽位（指向 A 层）
+ *   C-extension   弈界专属扩展（棋盘 / 棋子 / 段位 / 计时）
+ *
+ * 主题轴（两条正交轴，不要耦合）：
+ *   1) 明暗轴   :root                     -> 浅色
+ *               [data-theme="dark"]       -> 暗色
+ *   2) 棋盘轴   [data-board="ink"]        -> 墨石（默认，中性现代）
+ *               [data-board="kaya"]       -> 榧木（传统暖木，用户可选）
+ *               [data-board="slate"]      -> 青石（冷灰高对比）
+ *
+ * [禁止] 禁止：组件内出现裸 hex（#fff / #000 除外）
+ * [禁止] 禁止：紫色->粉色渐变（#7C3AED / #A855F7 / #9333EA / #EC4899 任意组合）
+ * ============================================================================ */
+
+@layer yb-tokens {
+
+  /* ==========================================================================
+   * 1. 与主题无关的常量（尺度层）
+   * ========================================================================== */
+  :root {
+
+    /* ---- A1-structure · 字体栈 -------------------------------------------- */
+    /* Display: Archivo（可变字重 + 可变字宽，工业化几何无衬线，"木刻感"终端）  */
+    /* Body:    Inter（覆盖 Latin / Cyrillic / Greek / Vietnamese）             */
+    /* CJK:     Noto Sans SC / TC 按 locale 追加，禁止对中文施加负字距          */
+    /* Mono:    JetBrains Mono，仅用于 棋谱 / 计时 / ELO / 邀请码               */
+    --font-display: "Archivo", "Noto Sans SC", "Noto Sans TC", system-ui, sans-serif;
+    --font-body:    "Inter", "Noto Sans SC", "Noto Sans TC", system-ui, sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+    /* ---- A1-structure · 字号阶梯（8 级 + 1 个 display clamp）--------------- */
+    --text-xs:   0.75rem;   /* 12px  元信息 / 徽章 / 表尾 */
+    --text-sm:   0.875rem;  /* 14px  次级正文 / 表格 */
+    --text-base: 1rem;      /* 16px  正文基准 */
+    --text-lg:   1.125rem;  /* 18px  强调正文 / 列表主行 */
+    --text-xl:   1.25rem;   /* 20px  卡片标题 */
+    --text-2xl:  1.5rem;    /* 24px  区块标题 */
+    --text-3xl:  2rem;      /* 32px  页面标题 */
+    --text-4xl:  2.5rem;    /* 40px  次级 Hero */
+    /* C-extension：仅首页 Hook 标题使用，最多一屏一次 */
+    --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem); /* 40 -> 68px */
+
+    /* ---- A1-structure · 行高 ---------------------------------------------- */
+    --leading-tight:   1.12;  /* ≥32px 标题 */
+    --leading-snug:    1.32;  /* 20–24px 小标题 */
+    --leading-body:    1.6;   /* 正文（拉丁） */
+    --leading-body-cjk: 1.75; /* 正文（中日韩，需更大行距） */
+    --leading-mono:    1.45;  /* 棋谱 / 数字 */
+
+    /* ---- A1-structure · 字距 ---------------------------------------------- */
+    /* [注意] 以下负字距仅适用于拉丁文；:lang(zh) / :lang(ja) / :lang(ko) 一律归零 */
+    --tracking-display: -0.025em;
+    --tracking-3xl:     -0.02em;
+    --tracking-2xl:     -0.015em;
+    --tracking-body:     0em;
+    --tracking-small:    0.01em;
+    --tracking-caps:     0.08em;  /* ALL CAPS 强制 ≥0.06em */
+
+    /* ---- A1-structure · 字重（三级）--------------------------------------- */
+    /* Archivo / Inter 为可变字体，可用非整百字重；Noto Sans SC 需回落映射     */
+    --weight-read:     400;  /* 正文 */
+    --weight-emphasis: 510;  /* 小标题 / 强调 -> CJK 回落 500 */
+    --weight-announce: 590;  /* 大标题 / CTA  -> CJK 回落 700 */
+
+    /* ---- A2 · 间距（4px 基准网格，8px 节奏）------------------------------- */
+    --space-1:  4px;
+    --space-2:  8px;
+    --space-3:  12px;
+    --space-4:  16px;
+    --space-5:  20px;
+    --space-6:  24px;
+    --space-8:  32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+
+    /* ---- A2 · 圆角（4 级，卡片上限 14px，禁止 ≥24px）---------------------- */
+    --radius-sm:   6px;    /* 按钮 / 输入框 / 徽章 */
+    --radius-md:   10px;   /* 卡片 / 面板 / 下拉 */
+    --radius-lg:   14px;   /* 棋盘容器 / 模态 / 大面板 */
+    --radius-pill: 9999px; /* 棋子 / 头像 / 段位章 / 胶囊标签 */
+
+    /* ---- A1-structure · 布局 ---------------------------------------------- */
+    --container-max:          1200px;
+    --container-max-reading:  680px;  /* 教程 / 文章正文 */
+    --gutter-desktop: 24px;
+    --gutter-tablet:  16px;
+    --gutter-phone:   12px;
+    --section-y-desktop: 80px;
+    --section-y-tablet:  48px;
+    --section-y-phone:   32px;
+
+    /* ---- A2 · 动效 -------------------------------------------------------- */
+    --motion-instant: 90ms;   /* 按下 / 开关 */
+    --motion-fast:    150ms;  /* hover / 选中（跨系统收敛值） */
+    --motion-base:    200ms;  /* 展开 / Toast */
+    --motion-slow:    300ms;  /* 模态 / 页面过渡 */
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --ease-exit:     cubic-bezier(0.4, 0, 1, 1);
+    /* C-extension：落子专用缓动（只减速、不回弹 —— 棋子落下不会弹起来） */
+    --motion-stone:  160ms;
+    --ease-stone:    cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* ---- C-extension · 棋盘几何 ------------------------------------------- */
+    /* 棋盘永远是正方形，且永不进入滚动容器 */
+    --board-max:      min(640px, calc(100vh - 260px));
+    --board-max-sm:   min(100vw - (2 * var(--gutter-phone)), calc(100vh - 220px));
+    --board-padding:  var(--space-4);   /* 棋盘外边到最外侧线的留白 */
+    --board-line-w:   1px;
+    --board-line-w-edge: 1.5px;         /* 外框线略粗，形成"盘沿" */
+    --board-star-size: 6px;             /* 星位 / 天元点直径 */
+    --cell-min-touch: 28px;             /* 交叉点最小尺寸；低于此值启用两段式落子 */
+    --stone-scale:    0.86;             /* 棋子直径 / 格宽 */
+
+    /* ---- C-extension · 计时器 --------------------------------------------- */
+    --timer-font: var(--font-mono);
+    --timer-critical-threshold: 10s;    /* 文档用；实现侧读取 */
+  }
+
+  /* ==========================================================================
+   * 2. 浅色主题（默认）
+   * ========================================================================== */
+  :root,
+  :root[data-theme="light"] {
+    color-scheme: light;
+
+    /* ---- A1-identity · 表面 ----------------------------------------------- */
+    --bg:            #F3F4F5;  /* 页面底：冷中性"石"，刻意避开米色/奶油 */
+    --surface:       #FFFFFF;  /* 卡片 / 面板 */
+    --surface-sunken:#E9EBEC;  /* 内凹区：输入组 / 代码块 / 未激活 Tab 槽 */
+    --surface-hover: #F7F8F8;
+
+    /* ---- A1-identity · 前景（四级墨阶，全部 ≥4.5:1 on --surface）--------- */
+    --fg:    #16191C;  /* 17.0 : 1 */
+    --fg-2:  #3A4149;  /* 10.3 : 1 */
+    --muted: #5A626A;  /*  6.2 : 1 */
+    --meta:  #6F777F;  /*  4.6 : 1 —— 阶梯下限，禁止再淡 */
+
+    /* ---- A1-identity · 边框（格律线）-------------------------------------- */
+    --border:      #D9DDE0;  /* 主分隔：卡片边、表格外框 */
+    --border-soft: #E8EBED;  /* 次分隔：行间线、内部分组 */
+    --border-strong:#BFC5CA; /* 强分隔：区块边界、盘沿 */
+
+    /* ---- A1-identity · 强调色 · 朱砂 Cinnabar ------------------------------ */
+    /* 语义来源：象棋"红先" —— 发起对局的一方是红。因此"开始对弈"= 朱砂。      */
+    /* 使用上限：每屏可见 ≤2 处。                                              */
+    --accent:        #BE4A2F;  /* 4.97 : 1 on white OK */
+    --accent-on:     #FFFFFF;
+    --accent-hover:  color-mix(in srgb, var(--accent) 92%, #000);
+    --accent-active: color-mix(in srgb, var(--accent) 86%, #000);
+    --accent-soft:   color-mix(in srgb, var(--accent) 10%, var(--surface));
+    --accent-ring:   color-mix(in srgb, var(--accent) 30%, transparent);
+
+    /* ---- A2 · 语义色（五色：朱·青·松·姜·绛）------------------------------- */
+    --info:    #1B5E7E;  /* 石青 Azurite · 7.1 : 1 —— 链接 / 提示 / 图表主序列 */
+    --success: #2E7D5B;  /* 松绿          · 5.1 : 1 */
+    --warn:    #9A6B0A;  /* 姜黄          · 4.8 : 1 */
+    --danger:  #C0293C;  /* 绛红          · 5.8 : 1 —— 冷调，与朱砂拉开 ~20° 色相 */
+
+    --info-soft:    color-mix(in srgb, var(--info) 9%, var(--surface));
+    --success-soft: color-mix(in srgb, var(--success) 9%, var(--surface));
+    --warn-soft:    color-mix(in srgb, var(--warn) 10%, var(--surface));
+    --danger-soft:  color-mix(in srgb, var(--danger) 8%, var(--surface));
+
+    /* ---- A2 · 层级（浅色：先用环、再用影；禁止环+大模糊同时出现）--------- */
+    --elev-flat:   none;
+    --elev-ring:   0 0 0 1px var(--border);
+    --elev-raised: 0 1px 2px rgba(22, 25, 28, 0.05),
+                   0 4px 10px rgba(22, 25, 28, 0.06);
+    --elev-overlay:0 8px 28px rgba(22, 25, 28, 0.14);
+
+    /* ---- A2 · 焦点环（键盘可见，2px 实环 + 2px 偏移）---------------------- */
+    --focus-ring: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent);
+
+    /* ---- C-extension · 棋子（黑白 —— 天然色盲安全，靠明度而非色相区分）---- */
+    --stone-black:      #1B1E20;
+    --stone-black-edge: #000000;
+    --stone-black-spec: rgba(255, 255, 255, 0.22); /* 高光 */
+    --stone-white:      #FAFBFB;
+    --stone-white-edge: #C6CACD;
+    --stone-white-spec: rgba(255, 255, 255, 0.9);
+    --stone-shadow:     0 1px 2px rgba(22, 25, 28, 0.28);
+
+    /* ---- C-extension · 象棋红黑两方 ---------------------------------------- */
+    /* [注意] 红绿色盲下"红子"与"黑子"色相接近 —— 必须靠"盘面明度"区分：           */
+    /*    红方 = 浅色棋子盘面 + 深红字；黑方 = 深色棋子盘面 + 浅字。            */
+    --side-red-face:  #F4ECE4;
+    --side-red-ink:   #A32B24;
+    --side-red-edge:  #C99A86;
+    --side-black-face:#22262A;
+    --side-black-ink: #F2F4F5;
+    --side-black-edge:#0C0E10;
+
+    /* ---- C-extension · 落点标记（一律"形+色"双编码，不靠颜色单独传达）----- */
+    --move-last:   var(--accent);                                   /* 最后一手：朱环 */
+    --move-legal:  color-mix(in srgb, var(--info) 34%, transparent); /* 合法落点：青点 */
+    --move-hint:   color-mix(in srgb, var(--info) 62%, transparent); /* AI 建议：青虚环 */
+    --move-win:    var(--accent);                                   /* 成五连线：朱实线 */
+    --move-danger: var(--danger);                                   /* 禁手（Renju）：绛叉 */
+
+    /* ---- C-extension · 段位（九品+段位双轨，石色，不用金银铜）--------------- */
+    /* 方向：九品(入门) -> 一品 -> 初段 -> 九段。语义键名，避免数字歧义。 */
+    --rank-grade-entry: #7A828A;  /* 九/八/七品 · 砺石 */
+    --rank-grade-mid: #2E7D5B;  /* 六/五/四品 · 苔青 */
+    --rank-grade-high: #1B5E7E;  /* 三/二/一品 · 石青 */
+    --rank-dan: #BE4A2F; /* 初段-九段 · 朱砂 */
+  }
+
+  /* ==========================================================================
+   * 3. 暗色主题
+   *    深色下用"明度递进"表达层级，不用阴影
+   * ========================================================================== */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg:            #0F1214;
+    --surface:       #171B1E;
+    --surface-sunken:#101416;
+    --surface-hover: #1F2428;
+
+    --fg:    #E8EBED;
+    --fg-2:  #C2C8CD;
+    --muted: #98A0A7;
+    --meta:  #7E868D;
+
+    --border:       #2A3034;
+    --border-soft:  rgba(255, 255, 255, 0.06);
+    --border-strong:#3B4348;
+
+    /* 暗色下朱砂提亮为"炭上朱"，填充按钮改用深色字，比白字更耐看 */
+    --accent:        #E0664A;  /* 5.6 : 1 on --bg */
+    --accent-on:     #180B07;  /* 5.6 : 1 on --accent */
+    --accent-hover:  color-mix(in srgb, var(--accent) 92%, #FFF);
+    --accent-active: color-mix(in srgb, var(--accent) 86%, #FFF);
+    --accent-soft:   color-mix(in srgb, var(--accent) 14%, var(--surface));
+    --accent-ring:   color-mix(in srgb, var(--accent) 38%, transparent);
+
+    --info:    #58A6C8;
+    --success: #4CAF82;
+    --warn:    #D9A441;
+    --danger:  #F2555F;
+
+    --info-soft:    color-mix(in srgb, var(--info) 14%, var(--surface));
+    --success-soft: color-mix(in srgb, var(--success) 14%, var(--surface));
+    --warn-soft:    color-mix(in srgb, var(--warn) 14%, var(--surface));
+    --danger-soft:  color-mix(in srgb, var(--danger) 14%, var(--surface));
+
+    --elev-flat:   none;
+    --elev-ring:   0 0 0 1px var(--border);
+    --elev-raised: 0 0 0 1px var(--border);  /* 暗色：抬升靠 surface 提亮，不靠影 */
+    --elev-overlay:0 12px 36px rgba(0, 0, 0, 0.6);
+
+    --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+
+    --stone-black:      #14171A;
+    --stone-black-edge: #000000;
+    --stone-black-spec: rgba(255, 255, 255, 0.18);
+    --stone-white:      #EDEFF0;
+    --stone-white-edge: #9AA1A6;
+    --stone-white-spec: rgba(255, 255, 255, 0.85);
+    --stone-shadow:     0 1px 3px rgba(0, 0, 0, 0.65);
+
+    --side-red-face:  #E9DCD2;
+    --side-red-ink:   #9E2A22;
+    --side-red-edge:  #6E4B3C;
+    --side-black-face:#1A1E21;
+    --side-black-ink: #E8EBED;
+    --side-black-edge:#000000;
+
+    --rank-grade-entry: #8A9299;
+    --rank-grade-mid: #4CAF82;
+    --rank-grade-high: #58A6C8;
+    --rank-dan: #E0664A;
+  }
+
+  /* 系统偏好回落：用户未显式选择时跟随系统 */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0F1214;            --surface: #171B1E;
+      --surface-sunken: #101416;--surface-hover: #1F2428;
+      --fg: #E8EBED;            --fg-2: #C2C8CD;
+      --muted: #98A0A7;         --meta: #7E868D;
+      --border: #2A3034;        --border-soft: rgba(255,255,255,0.06);
+      --border-strong: #3B4348;
+      --accent: #E0664A;        --accent-on: #180B07;
+      --info: #58A6C8;          --success: #4CAF82;
+      --warn: #D9A441;          --danger: #F2555F;
+      --elev-raised: 0 0 0 1px var(--border);
+      --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+      --stone-black: #14171A;   --stone-white: #EDEFF0;
+      --stone-white-edge: #9AA1A6;
+      --stone-shadow: 0 1px 3px rgba(0,0,0,0.65);
+      --rank-grade-entry: #8A9299; --rank-grade-mid: #4CAF82; --rank-grade-high: #58A6C8; --rank-dan: #E0664A;
+    }
+  }
+
+  /* ==========================================================================
+   * 4. 棋盘主题轴（与明暗轴正交 —— 用户可在"墨石 / 榧木 / 青石"间自由切换）
+   * ========================================================================== */
+
+  /* 4.1 墨石 Ink Stone（默认）—— 中性现代，与产品 UI 同源 */
+  [data-board="ink"], :root:not([data-board]) {
+    --board-surface: #DCDEDF;
+    --board-line:    #9BA2A7;
+    --board-edge:    #7E868C;
+    --board-star:    #6F777F;
+    --board-coord:   #6F777F;
+    --board-frame:   var(--border-strong);
+  }
+  :root[data-theme="dark"] [data-board="ink"],
+  :root[data-theme="dark"]:not([data-board]) {
+    --board-surface: #262B2E;
+    --board-line:    #4E565B;
+    --board-edge:    #687177;
+    --board-star:    #7E868D;
+    --board-coord:   #7E868D;
+    --board-frame:   #3B4348;
+  }
+
+  /* 4.2 榧木 Kaya —— 传统暖木，仅作用于棋盘，绝不外溢到页面背景 */
+  [data-board="kaya"] {
+    --board-surface: #E3C88C;
+    --board-line:    #7A5A2E;
+    --board-edge:    #5E4420;
+    --board-star:    #5E4420;
+    --board-coord:   #6B4E28;
+    --board-frame:   #8A6636;
+  }
+  :root[data-theme="dark"] [data-board="kaya"] {
+    --board-surface: #A98547;
+    --board-line:    #5A3F1C;
+    --board-edge:    #452F13;
+    --board-star:    #452F13;
+    --board-coord:   #E8DCC2;
+    --board-frame:   #6B4E28;
+  }
+
+  /* 4.3 青石 Slate —— 高对比无障碍首选（棋子/棋线对比最大） */
+  [data-board="slate"] {
+    --board-surface: #C9CFD3;
+    --board-line:    #6B7378;
+    --board-edge:    #4E565B;
+    --board-star:    #4E565B;
+    --board-coord:   #4E565B;
+    --board-frame:   #8A9298;
+  }
+  :root[data-theme="dark"] [data-board="slate"] {
+    --board-surface: #333A3E;
+    --board-line:    #5F686E;
+    --board-edge:    #808A90;
+    --board-star:    #808A90;
+    --board-coord:   #B4BCC1;
+    --board-frame:   #4A5257;
+  }
+
+  /* ==========================================================================
+   * 5. 组件 Token（B-slot：全部指向 A 层，组件内不得出现裸 hex）
+   * ========================================================================== */
+  :root {
+
+    /* ---- 按钮 · Primary（朱砂，每屏 ≤1 个）-------------------------------- */
+    --btn-primary-bg:       var(--accent);
+    --btn-primary-fg:       var(--accent-on);
+    --btn-primary-bg-hover: var(--accent-hover);
+    --btn-primary-bg-active:var(--accent-active);
+    --btn-primary-border:   transparent;
+
+    /* ---- 按钮 · Secondary（描边，承载 90% 的次级操作）--------------------- */
+    --btn-secondary-bg:       var(--surface);
+    --btn-secondary-fg:       var(--fg);
+    --btn-secondary-border:   var(--border-strong);
+    --btn-secondary-bg-hover: var(--surface-hover);
+    --btn-secondary-border-hover: var(--accent);
+
+    /* ---- 按钮 · Ghost（工具栏 / 图标按钮）--------------------------------- */
+    --btn-ghost-bg:       transparent;
+    --btn-ghost-fg:       var(--muted);
+    --btn-ghost-bg-hover: var(--surface-sunken);
+    --btn-ghost-fg-hover: var(--fg);
+
+    /* ---- 按钮 · Destructive（认输 / 删除账号 / 清除数据）------------------ */
+    --btn-danger-bg:  var(--danger);
+    --btn-danger-fg:  #FFFFFF;
+    --btn-danger-bg-hover: color-mix(in srgb, var(--danger) 90%, #000);
+
+    /* ---- 按钮 · 共用尺度（3 档，全部 ≥44px 触摸高度或有等效热区）--------- */
+    --btn-height-sm: 32px;   /* 桌面工具栏，需外扩 44px 不可见热区 */
+    --btn-height-md: 40px;   /* 默认 */
+    --btn-height-lg: 48px;   /* 首页主 CTA / 移动端 */
+    --btn-pad-x-sm:  var(--space-3);
+    --btn-pad-x-md:  var(--space-4);
+    --btn-pad-x-lg:  var(--space-6);
+    --btn-radius:    var(--radius-sm);
+    --btn-weight:    var(--weight-emphasis);
+    --btn-gap:       var(--space-2);  /* 图标与文字间距 */
+
+    /* ---- 输入框 ------------------------------------------------------------ */
+    --input-bg:            var(--surface);
+    --input-fg:            var(--fg);
+    --input-placeholder:   var(--meta);
+    --input-border:        var(--border-strong);
+    --input-border-hover:  var(--muted);
+    --input-border-focus:  var(--accent);
+    --input-ring-focus:    var(--accent-ring);
+    --input-border-error:  var(--danger);
+    --input-bg-disabled:   var(--surface-sunken);
+    --input-fg-disabled:   var(--meta);
+    --input-height:        40px;
+    --input-radius:        var(--radius-sm);
+    --input-pad-x:         var(--space-3);
+    --input-label-fg:      var(--fg-2);   /* label 永远可见，禁止只用 placeholder */
+    --input-helper-fg:     var(--meta);
+    --input-error-fg:      var(--danger);
+
+    /* ---- 卡片（1px 环 + 无阴影；hover 时边框转朱，禁止彩色左边框）--------- */
+    --card-bg:            var(--surface);
+    --card-border:        var(--border);
+    --card-border-hover:  var(--accent);
+    --card-radius:        var(--radius-md);
+    --card-pad:           var(--space-5);
+    --card-pad-compact:   var(--space-4);
+    --card-shadow:        var(--elev-flat);  /* [禁止] 禁止与 border 同时上 blur≥16 的影 */
+
+    /* ---- 棋盘容器 ---------------------------------------------------------- */
+    --boardframe-bg:      var(--board-surface);
+    --boardframe-border:  var(--board-frame);
+    --boardframe-radius:  var(--radius-lg);
+    --boardframe-pad:     var(--board-padding);
+    --boardframe-shadow:  var(--elev-raised);
+    --boardcoord-fg:      var(--board-coord);
+    --boardcoord-size:    var(--text-xs);
+    --boardcoord-font:    var(--font-mono);
+
+    /* ---- 徽章 / 标签 -------------------------------------------------------- */
+    --badge-radius:      var(--radius-pill);
+    --badge-height:      22px;
+    --badge-pad-x:       var(--space-2);
+    --badge-font-size:   var(--text-xs);
+    --badge-weight:      var(--weight-emphasis);
+    --badge-tracking:    var(--tracking-small);
+    --badge-neutral-bg:  var(--surface-sunken);
+    --badge-neutral-fg:  var(--fg-2);
+    --badge-accent-bg:   var(--accent-soft);
+    --badge-accent-fg:   var(--accent);
+    --badge-success-bg:  var(--success-soft);
+    --badge-success-fg:  var(--success);
+    --badge-warn-bg:     var(--warn-soft);
+    --badge-warn-fg:     var(--warn);
+    --badge-danger-bg:   var(--danger-soft);
+    --badge-danger-fg:   var(--danger);
+    --badge-info-bg:     var(--info-soft);
+    --badge-info-fg:     var(--info);
+
+    /* ---- 排行榜行（格律密排：无卡片盒子，只有 1px 分隔线）----------------- */
+    --lbrow-height:       52px;
+    --lbrow-height-dense: 44px;
+    --lbrow-pad-x:        var(--space-4);
+    --lbrow-divider:      var(--border-soft);
+    --lbrow-bg-hover:     var(--surface-hover);
+    --lbrow-bg-self:      var(--accent-soft);   /* "我"的那一行 */
+    --lbrow-border-self:  var(--accent);
+    --lbrow-rank-font:    var(--font-mono);     /* 名次 / ELO 一律等宽对齐 */
+    --lbrow-rank-fg:      var(--meta);
+    --lbrow-rank-top-fg:  var(--fg);            /* 前 3 名用字重+墨色，不用金银铜 */
+    --lbrow-name-fg:      var(--fg);
+    --lbrow-metric-fg:    var(--fg-2);
+
+    /* ---- 头像（棋子形：永远正圆）------------------------------------------ */
+    --avatar-radius:  var(--radius-pill);
+    --avatar-sm:      24px;
+    --avatar-md:      32px;
+    --avatar-lg:      48px;
+    --avatar-ring:    var(--border);
+    --avatar-ring-active: var(--accent);  /* 轮到该玩家走棋 */
+
+    /* ---- Tab / 导航 --------------------------------------------------------- */
+    --tab-fg:           var(--muted);
+    --tab-fg-active:    var(--fg);
+    --tab-indicator:    var(--accent);
+    --tab-indicator-h:  2px;
+    --tab-height:       44px;
+
+    /* ---- 计时器 ------------------------------------------------------------- */
+    --timer-fg:          var(--fg);
+    --timer-fg-idle:     var(--meta);
+    --timer-fg-low:      var(--warn);     /* < 30s */
+    --timer-fg-critical: var(--danger);   /* < 10s，同时叠加脉冲动画 */
+    --timer-bg-active:   var(--surface-sunken);
+    --timer-size:        var(--text-xl);
+
+    /* ---- 图标（锁定 Phosphor Icons，三档尺寸）----------------------------- */
+    --icon-sm: 16px;   /* 行内 / 徽章内，使用 bold 权重做光学补偿 */
+    --icon-md: 20px;   /* 按钮内，regular */
+    --icon-lg: 24px;   /* 独立图标 / 导航，regular；激活态用 fill */
+    --icon-fg:        var(--muted);
+    --icon-fg-active: var(--accent);
+  }
+
+  /* ==========================================================================
+   * 6. 全局基线（无障碍必备）
+   * ========================================================================== */
+
+  /* 6.1 焦点可见 —— [禁止] 任何情况下不得 outline: none 且不给替代 */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: var(--radius-sm);
+  }
+  /* 棋盘交叉点键盘焦点：用方形准星，避免与"落点提示圆点"混淆 */
+  .yb-intersection:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+    box-shadow: none;
+  }
+
+  /* 6.2 中日韩排版覆盖：负字距会挤压汉字，一律归零并放大行距 */
+  :where(:lang(zh), :lang(zh-Hant), :lang(ja), :lang(ko)) {
+    --tracking-display: 0em;
+    --tracking-3xl:     0em;
+    --tracking-2xl:     0em;
+    --leading-body:     var(--leading-body-cjk);
+    --weight-emphasis:  500;
+    --weight-announce:  700;
+  }
+
+  /* 6.3 数字对齐：表格 / 计时 / ELO / 比分一律表格数字 */
+  :where(table, .yb-numeric, .yb-timer, .yb-rating) {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* 6.4 动效降级 */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --motion-instant: 1ms;
+      --motion-fast:    1ms;
+      --motion-base:    1ms;
+      --motion-slow:    1ms;
+      --motion-stone:   1ms;
+    }
+    *, *::before, *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* 6.5 高对比度偏好 */
+  @media (prefers-contrast: more) {
+    :root {
+      --border:      var(--border-strong);
+      --border-soft: var(--border);
+      --meta:        var(--muted);
+    }
+  }
+
+  /* 6.6 PWA 安全区（iPhone 刘海屏底部 34px） */
+  :root {
+    --safe-top:    env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --tabbar-height: calc(56px + var(--safe-bottom));
+  }
+
+  /* 6.7 响应式：容器留白按断点收敛 */
+  @media (max-width: 1023px) { :root { --gutter: var(--gutter-tablet); --section-y: var(--section-y-tablet); } }
+  @media (max-width: 639px)  { :root { --gutter: var(--gutter-phone);  --section-y: var(--section-y-phone);  } }
+  @media (min-width: 1024px) { :root { --gutter: var(--gutter-desktop);--section-y: var(--section-y-desktop);} }
+}

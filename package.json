@@ -1,0 +1,38 @@
+{
+  "name": "yiboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "弈界 YiBoard — Chinese strategy board games for the world",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types \"src/lib/**/*.test.mts\""
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.1",
+    "@phosphor-icons/react": "^2.1.10",
+    "drizzle-orm": "^0.45.2",
+    "jose": "^6.1.0",
+    "next": "16.3.0",
+    "next-intl": "^4.5.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "drizzle-kit": "^0.31.6",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.0",
+    "tailwindcss": "^4.1.16",
+    "typescript": "^5.9.3"
+  }
+}

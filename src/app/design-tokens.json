@@ -1,0 +1,435 @@
+{
+  "$meta": {
+    "product": "弈界 YiBoard",
+    "version": "0.1.0-draft",
+    "designLanguage": "格律 Lattice — 棋盘格律 / 墨石中性 / 朱印一点",
+    "owner": "颜好看 (UI/UX)",
+    "format": "DTCG-like (value + type)",
+    "notes": [
+      "本文件为前端唯一的设计取值来源。组件内禁止出现裸 hex（#fff / #000 除外）。",
+      "两条正交主题轴：mode(light|dark) 与 board(ink|kaya|slate)，不要耦合。",
+      "与 design-tokens.css 一一对应；CSS 中的 color-mix 派生值在此处给出已计算的近似值。"
+    ],
+    "scales": {
+      "DESIGN_VARIANCE": 6,
+      "MOTION_INTENSITY": 6,
+      "VISUAL_DENSITY_by_surface": {
+        "home": 4,
+        "lobby": 6,
+        "game": 5,
+        "leaderboard": 7,
+        "account": 5
+      }
+    },
+    "iconLibrary": {
+      "name": "Phosphor Icons",
+      "package": "@phosphor-icons/react",
+      "license": "MIT",
+      "lockedWeights": ["regular", "fill", "bold"],
+      "usage": {
+        "regular": "默认，用于 20px / 24px",
+        "fill": "仅用于底部导航/Tab 激活态与评分星标",
+        "bold": "仅用于 16px 行内图标的光学补偿"
+      },
+      "sizes": { "sm": 16, "md": 20, "lg": 24 },
+      "rule": "全项目仅此一套，禁止混用 Lucide/Tabler/Heroicons/Material；禁止 emoji 作功能图标"
+    }
+  },
+
+  "font": {
+    "family": {
+      "display": { "value": "Archivo, 'Noto Sans SC', 'Noto Sans TC', system-ui, sans-serif", "type": "fontFamily" },
+      "body":    { "value": "Inter, 'Noto Sans SC', 'Noto Sans TC', system-ui, sans-serif", "type": "fontFamily" },
+      "mono":    { "value": "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace", "type": "fontFamily" }
+    },
+    "size": {
+      "xs":      { "value": "0.75rem",  "type": "dimension", "px": 12 },
+      "sm":      { "value": "0.875rem", "type": "dimension", "px": 14 },
+      "base":    { "value": "1rem",     "type": "dimension", "px": 16 },
+      "lg":      { "value": "1.125rem", "type": "dimension", "px": 18 },
+      "xl":      { "value": "1.25rem",  "type": "dimension", "px": 20 },
+      "2xl":     { "value": "1.5rem",   "type": "dimension", "px": 24 },
+      "3xl":     { "value": "2rem",     "type": "dimension", "px": 32 },
+      "4xl":     { "value": "2.5rem",   "type": "dimension", "px": 40 },
+      "display": { "value": "clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem)", "type": "dimension", "note": "40->68px，仅首页 Hook 标题，一屏一次" }
+    },
+    "weight": {
+      "read":     { "value": 400, "type": "fontWeight" },
+      "emphasis": { "value": 510, "type": "fontWeight", "cjkFallback": 500 },
+      "announce": { "value": 590, "type": "fontWeight", "cjkFallback": 700 }
+    },
+    "lineHeight": {
+      "tight":   { "value": 1.12, "type": "number" },
+      "snug":    { "value": 1.32, "type": "number" },
+      "body":    { "value": 1.6,  "type": "number" },
+      "bodyCjk": { "value": 1.75, "type": "number" },
+      "mono":    { "value": 1.45, "type": "number" }
+    },
+    "tracking": {
+      "display": { "value": "-0.025em", "type": "dimension", "cjkOverride": "0em" },
+      "3xl":     { "value": "-0.02em",  "type": "dimension", "cjkOverride": "0em" },
+      "2xl":     { "value": "-0.015em", "type": "dimension", "cjkOverride": "0em" },
+      "body":    { "value": "0em",      "type": "dimension" },
+      "small":   { "value": "0.01em",   "type": "dimension" },
+      "caps":    { "value": "0.08em",   "type": "dimension", "note": "ALL CAPS 强制，中文不适用" }
+    }
+  },
+
+  "space": {
+    "1":  { "value": "4px",  "type": "dimension" },
+    "2":  { "value": "8px",  "type": "dimension" },
+    "3":  { "value": "12px", "type": "dimension" },
+    "4":  { "value": "16px", "type": "dimension" },
+    "5":  { "value": "20px", "type": "dimension" },
+    "6":  { "value": "24px", "type": "dimension" },
+    "8":  { "value": "32px", "type": "dimension" },
+    "10": { "value": "40px", "type": "dimension" },
+    "12": { "value": "48px", "type": "dimension" },
+    "16": { "value": "64px", "type": "dimension" },
+    "20": { "value": "80px", "type": "dimension" }
+  },
+
+  "radius": {
+    "sm":   { "value": "6px",    "type": "dimension", "use": "按钮 / 输入框 / 徽章" },
+    "md":   { "value": "10px",   "type": "dimension", "use": "卡片 / 面板 / 下拉" },
+    "lg":   { "value": "14px",   "type": "dimension", "use": "棋盘容器 / 模态（上限）" },
+    "pill": { "value": "9999px", "type": "dimension", "use": "棋子 / 头像 / 段位章" }
+  },
+
+  "layout": {
+    "containerMax":        { "value": "1200px", "type": "dimension" },
+    "containerMaxReading": { "value": "680px",  "type": "dimension" },
+    "gutter": {
+      "desktop": { "value": "24px", "type": "dimension" },
+      "tablet":  { "value": "16px", "type": "dimension" },
+      "phone":   { "value": "12px", "type": "dimension" }
+    },
+    "sectionY": {
+      "desktop": { "value": "80px", "type": "dimension" },
+      "tablet":  { "value": "48px", "type": "dimension" },
+      "phone":   { "value": "32px", "type": "dimension" }
+    },
+    "breakpoint": {
+      "sm": { "value": "640px",  "type": "dimension" },
+      "md": { "value": "768px",  "type": "dimension" },
+      "lg": { "value": "1024px", "type": "dimension" },
+      "xl": { "value": "1280px", "type": "dimension" }
+    },
+    "touchTargetMin": { "value": "44px", "type": "dimension", "note": "WCAG 2.5.5" }
+  },
+
+  "motion": {
+    "duration": {
+      "instant": { "value": "90ms",  "type": "duration", "use": "按下 / 开关" },
+      "fast":    { "value": "150ms", "type": "duration", "use": "hover / 选中" },
+      "base":    { "value": "200ms", "type": "duration", "use": "展开 / Toast" },
+      "slow":    { "value": "300ms", "type": "duration", "use": "模态 / 页面过渡" },
+      "stone":   { "value": "160ms", "type": "duration", "use": "落子（签名微交互）" }
+    },
+    "easing": {
+      "standard": { "value": "cubic-bezier(0.2, 0, 0, 1)",    "type": "cubicBezier" },
+      "exit":     { "value": "cubic-bezier(0.4, 0, 1, 1)",    "type": "cubicBezier" },
+      "stone":    { "value": "cubic-bezier(0.16, 1, 0.3, 1)", "type": "cubicBezier", "note": "只减速不回弹——棋子落下不会弹起" }
+    },
+    "reducedMotion": { "value": "1ms", "type": "duration", "note": "prefers-reduced-motion 下全部降级" }
+  },
+
+  "color": {
+    "light": {
+      "bg":            { "value": "#F3F4F5", "type": "color", "layer": "A1", "note": "冷中性石色，刻意避开米色/奶油" },
+      "surface":       { "value": "#FFFFFF", "type": "color", "layer": "A1" },
+      "surfaceSunken": { "value": "#E9EBEC", "type": "color", "layer": "B" },
+      "surfaceHover":  { "value": "#F7F8F8", "type": "color", "layer": "B" },
+
+      "fg":    { "value": "#16191C", "type": "color", "layer": "A1", "contrastOnSurface": "17.0:1" },
+      "fg2":   { "value": "#3A4149", "type": "color", "layer": "B",  "contrastOnSurface": "10.3:1" },
+      "muted": { "value": "#5A626A", "type": "color", "layer": "A1", "contrastOnSurface": "6.2:1" },
+      "meta":  { "value": "#6F777F", "type": "color", "layer": "B",  "contrastOnSurface": "4.6:1", "note": "阶梯下限，禁止再淡" },
+
+      "border":       { "value": "#D9DDE0", "type": "color", "layer": "A1" },
+      "borderSoft":   { "value": "#E8EBED", "type": "color", "layer": "B" },
+      "borderStrong": { "value": "#BFC5CA", "type": "color", "layer": "B" },
+
+      "accent":       { "value": "#BE4A2F", "type": "color", "layer": "A1", "name": "朱砂 Cinnabar", "contrastOnWhite": "4.97:1", "rule": "每屏可见 <=2 处" },
+      "accentOn":     { "value": "#FFFFFF", "type": "color", "layer": "A2" },
+      "accentHover":  { "value": "#AF442B", "type": "color", "layer": "A2" },
+      "accentActive": { "value": "#A34028", "type": "color", "layer": "A2" },
+      "accentSoft":   { "value": "#F9EDEA", "type": "color", "layer": "B" },
+      "accentRing":   { "value": "rgba(190, 74, 47, 0.30)", "type": "color", "layer": "B" },
+
+      "info":    { "value": "#1B5E7E", "type": "color", "layer": "A2", "name": "石青 Azurite", "contrastOnWhite": "7.1:1" },
+      "success": { "value": "#2E7D5B", "type": "color", "layer": "A2", "name": "松绿",         "contrastOnWhite": "5.1:1" },
+      "warn":    { "value": "#9A6B0A", "type": "color", "layer": "A2", "name": "姜黄",         "contrastOnWhite": "4.8:1" },
+      "danger":  { "value": "#C0293C", "type": "color", "layer": "A2", "name": "绛红",         "contrastOnWhite": "5.8:1", "note": "冷调，与朱砂拉开约 20 度色相" },
+
+      "infoSoft":    { "value": "#EBF2F5", "type": "color", "layer": "B" },
+      "successSoft": { "value": "#EDF5F1", "type": "color", "layer": "B" },
+      "warnSoft":    { "value": "#F7F1E4", "type": "color", "layer": "B" },
+      "dangerSoft":  { "value": "#F8EAEC", "type": "color", "layer": "B" }
+    },
+
+    "dark": {
+      "bg":            { "value": "#0F1214", "type": "color", "layer": "A1" },
+      "surface":       { "value": "#171B1E", "type": "color", "layer": "A1" },
+      "surfaceSunken": { "value": "#101416", "type": "color", "layer": "B" },
+      "surfaceHover":  { "value": "#1F2428", "type": "color", "layer": "B" },
+
+      "fg":    { "value": "#E8EBED", "type": "color", "layer": "A1" },
+      "fg2":   { "value": "#C2C8CD", "type": "color", "layer": "B" },
+      "muted": { "value": "#98A0A7", "type": "color", "layer": "A1" },
+      "meta":  { "value": "#7E868D", "type": "color", "layer": "B" },
+
+      "border":       { "value": "#2A3034", "type": "color", "layer": "A1" },
+      "borderSoft":   { "value": "rgba(255,255,255,0.06)", "type": "color", "layer": "B" },
+      "borderStrong": { "value": "#3B4348", "type": "color", "layer": "B" },
+
+      "accent":       { "value": "#E0664A", "type": "color", "layer": "A1", "name": "炭上朱", "contrastOnBg": "5.6:1" },
+      "accentOn":     { "value": "#180B07", "type": "color", "layer": "A2", "note": "暗色下填充按钮用深色字，比白字更耐看且对比更高" },
+      "accentHover":  { "value": "#E37258", "type": "color", "layer": "A2" },
+      "accentActive": { "value": "#E47B63", "type": "color", "layer": "A2" },
+      "accentSoft":   { "value": "#2C1D18", "type": "color", "layer": "B" },
+      "accentRing":   { "value": "rgba(224, 102, 74, 0.38)", "type": "color", "layer": "B" },
+
+      "info":    { "value": "#58A6C8", "type": "color", "layer": "A2", "contrastOnBg": "7.0:1" },
+      "success": { "value": "#4CAF82", "type": "color", "layer": "A2", "contrastOnBg": "7.0:1" },
+      "warn":    { "value": "#D9A441", "type": "color", "layer": "A2", "contrastOnBg": "8.4:1" },
+      "danger":  { "value": "#F2555F", "type": "color", "layer": "A2", "contrastOnBg": "5.7:1" },
+
+      "infoSoft":    { "value": "#182B33", "type": "color", "layer": "B" },
+      "successSoft": { "value": "#172A23", "type": "color", "layer": "B" },
+      "warnSoft":    { "value": "#2A2418", "type": "color", "layer": "B" },
+      "dangerSoft":  { "value": "#2C1A1D", "type": "color", "layer": "B" }
+    }
+  },
+
+  "elevation": {
+    "light": {
+      "flat":    { "value": "none", "type": "boxShadow" },
+      "ring":    { "value": "0 0 0 1px #D9DDE0", "type": "boxShadow" },
+      "raised":  { "value": "0 1px 2px rgba(22,25,28,0.05), 0 4px 10px rgba(22,25,28,0.06)", "type": "boxShadow" },
+      "overlay": { "value": "0 8px 28px rgba(22,25,28,0.14)", "type": "boxShadow" }
+    },
+    "dark": {
+      "flat":    { "value": "none", "type": "boxShadow" },
+      "ring":    { "value": "0 0 0 1px #2A3034", "type": "boxShadow" },
+      "raised":  { "value": "0 0 0 1px #2A3034", "type": "boxShadow", "note": "暗色靠 surface 提亮表达抬升，不靠阴影" },
+      "overlay": { "value": "0 12px 36px rgba(0,0,0,0.6)", "type": "boxShadow" }
+    },
+    "rule": "同一元素禁止同时出现 1px border 与 blur>=16px 的阴影（幽灵卡片）"
+  },
+
+  "focus": {
+    "light": { "value": "0 0 0 2px #FFFFFF, 0 0 0 4px #BE4A2F", "type": "boxShadow" },
+    "dark":  { "value": "0 0 0 2px #0F1214, 0 0 0 4px #E0664A", "type": "boxShadow" },
+    "rule": "禁止 outline:none 且不提供替代；棋盘交叉点使用方形准星以区别于圆形落点提示"
+  },
+
+  "game": {
+    "board": {
+      "geometry": {
+        "maxDesktop":    { "value": "min(640px, calc(100vh - 260px))", "type": "dimension" },
+        "maxPhone":      { "value": "min(100vw - 24px, calc(100vh - 220px))", "type": "dimension" },
+        "padding":       { "value": "16px", "type": "dimension" },
+        "lineWidth":     { "value": "1px",  "type": "dimension" },
+        "lineWidthEdge": { "value": "1.5px","type": "dimension" },
+        "starSize":      { "value": "6px",  "type": "dimension" },
+        "cellMinTouch":  { "value": "28px", "type": "dimension", "note": "低于此值必须启用两段式落子（拖拽预览 + 确认）" },
+        "stoneScale":    { "value": 0.86,   "type": "number",    "note": "棋子直径 / 格宽" }
+      },
+      "theme": {
+        "ink": {
+          "label": "墨石 Ink Stone（默认）",
+          "light": { "surface": "#DCDEDF", "line": "#9BA2A7", "edge": "#7E868C", "star": "#6F777F", "coord": "#6F777F", "frame": "#BFC5CA" },
+          "dark":  { "surface": "#262B2E", "line": "#4E565B", "edge": "#687177", "star": "#7E868D", "coord": "#7E868D", "frame": "#3B4348" }
+        },
+        "kaya": {
+          "label": "榧木 Kaya（传统暖木，仅棋盘，绝不外溢到页面背景）",
+          "light": { "surface": "#E3C88C", "line": "#7A5A2E", "edge": "#5E4420", "star": "#5E4420", "coord": "#6B4E28", "frame": "#8A6636" },
+          "dark":  { "surface": "#A98547", "line": "#5A3F1C", "edge": "#452F13", "star": "#452F13", "coord": "#E8DCC2", "frame": "#6B4E28" }
+        },
+        "slate": {
+          "label": "青石 Slate（高对比，无障碍首选）",
+          "light": { "surface": "#C9CFD3", "line": "#6B7378", "edge": "#4E565B", "star": "#4E565B", "coord": "#4E565B", "frame": "#8A9298" },
+          "dark":  { "surface": "#333A3E", "line": "#5F686E", "edge": "#808A90", "star": "#808A90", "coord": "#B4BCC1", "frame": "#4A5257" }
+        }
+      }
+    },
+    "stone": {
+      "light": {
+        "black":     { "value": "#1B1E20", "type": "color" },
+        "blackEdge": { "value": "#000000", "type": "color" },
+        "blackSpec": { "value": "rgba(255,255,255,0.22)", "type": "color" },
+        "white":     { "value": "#FAFBFB", "type": "color" },
+        "whiteEdge": { "value": "#C6CACD", "type": "color" },
+        "whiteSpec": { "value": "rgba(255,255,255,0.90)", "type": "color" },
+        "shadow":    { "value": "0 1px 2px rgba(22,25,28,0.28)", "type": "boxShadow" }
+      },
+      "dark": {
+        "black":     { "value": "#14171A", "type": "color" },
+        "blackEdge": { "value": "#000000", "type": "color" },
+        "blackSpec": { "value": "rgba(255,255,255,0.18)", "type": "color" },
+        "white":     { "value": "#EDEFF0", "type": "color" },
+        "whiteEdge": { "value": "#9AA1A6", "type": "color" },
+        "whiteSpec": { "value": "rgba(255,255,255,0.85)", "type": "color" },
+        "shadow":    { "value": "0 1px 3px rgba(0,0,0,0.65)", "type": "boxShadow" }
+      },
+      "note": "黑白棋子天然色盲安全：靠明度而非色相区分"
+    },
+    "xiangqiSide": {
+      "light": {
+        "redFace":   { "value": "#F4ECE4", "type": "color" },
+        "redInk":    { "value": "#A32B24", "type": "color" },
+        "redEdge":   { "value": "#C99A86", "type": "color" },
+        "blackFace": { "value": "#22262A", "type": "color" },
+        "blackInk":  { "value": "#F2F4F5", "type": "color" },
+        "blackEdge": { "value": "#0C0E10", "type": "color" }
+      },
+      "dark": {
+        "redFace":   { "value": "#E9DCD2", "type": "color" },
+        "redInk":    { "value": "#9E2A22", "type": "color" },
+        "redEdge":   { "value": "#6E4B3C", "type": "color" },
+        "blackFace": { "value": "#1A1E21", "type": "color" },
+        "blackInk":  { "value": "#E8EBED", "type": "color" },
+        "blackEdge": { "value": "#000000", "type": "color" }
+      },
+      "a11yRule": "红绿色盲下红子与黑子色相接近——必须靠棋子盘面明度区分：红方=浅盘面+深红字，黑方=深盘面+浅字"
+    },
+    "marker": {
+      "last":   { "light": "#BE4A2F", "dark": "#E0664A", "form": "环形描边",   "note": "最后一手" },
+      "legal":  { "light": "rgba(27,94,126,0.34)",  "dark": "rgba(88,166,200,0.34)", "form": "实心小圆点", "note": "合法落点" },
+      "hint":   { "light": "rgba(27,94,126,0.62)",  "dark": "rgba(88,166,200,0.62)", "form": "虚线环",     "note": "AI 建议" },
+      "win":    { "light": "#BE4A2F", "dark": "#E0664A", "form": "贯穿实线 + 端点圆头", "note": "成五连线" },
+      "danger": { "light": "#C0293C", "dark": "#F2555F", "form": "叉形",       "note": "Renju 禁手" },
+      "rule": "所有标记一律形状+颜色双编码，禁止只靠颜色传达"
+    },
+    "rank": {
+      "$decision": "已决 2026-08-07（总监裁定）：九品+段位双轨 + ELO 分档映射 + 英文译名。方向为国际通用降序——九品(入门) -> 一品 -> 初段 -> 九段。键名改为语义命名，避免与品级数字混淆。",
+      "palette": {
+        "gradeEntry": { "light": "#7A828A", "dark": "#8A9299", "label": "九/八/七品 · 砺石", "cssVar": "--rank-grade-entry" },
+        "gradeMid":   { "light": "#2E7D5B", "dark": "#4CAF82", "label": "六/五/四品 · 苔青", "cssVar": "--rank-grade-mid" },
+        "gradeHigh":  { "light": "#1B5E7E", "dark": "#58A6C8", "label": "三/二/一品 · 石青", "cssVar": "--rank-grade-high" },
+        "dan":        { "light": "#BE4A2F", "dark": "#E0664A", "label": "初段-九段 · 朱砂",  "cssVar": "--rank-dan" }
+      },
+      "ladder": [
+        { "zh": "九品", "en": "Ninth Grade",   "abbr": "G9", "eloMin": 0,    "eloMax": 999,  "palette": "gradeEntry" },
+        { "zh": "八品", "en": "Eighth Grade",  "abbr": "G8", "eloMin": 1000, "eloMax": 1099, "palette": "gradeEntry" },
+        { "zh": "七品", "en": "Seventh Grade", "abbr": "G7", "eloMin": 1100, "eloMax": 1199, "palette": "gradeEntry" },
+        { "zh": "六品", "en": "Sixth Grade",   "abbr": "G6", "eloMin": 1200, "eloMax": 1299, "palette": "gradeMid",  "note": "新账号起始档" },
+        { "zh": "五品", "en": "Fifth Grade",   "abbr": "G5", "eloMin": 1300, "eloMax": 1399, "palette": "gradeMid" },
+        { "zh": "四品", "en": "Fourth Grade",  "abbr": "G4", "eloMin": 1400, "eloMax": 1499, "palette": "gradeMid" },
+        { "zh": "三品", "en": "Third Grade",   "abbr": "G3", "eloMin": 1500, "eloMax": 1599, "palette": "gradeHigh" },
+        { "zh": "二品", "en": "Second Grade",  "abbr": "G2", "eloMin": 1600, "eloMax": 1699, "palette": "gradeHigh" },
+        { "zh": "一品", "en": "First Grade",   "abbr": "G1", "eloMin": 1700, "eloMax": 1799, "palette": "gradeHigh" },
+        { "zh": "初段", "en": "First Dan",     "abbr": "D1", "eloMin": 1800, "eloMax": 1899, "palette": "dan" },
+        { "zh": "二段", "en": "Second Dan",    "abbr": "D2", "eloMin": 1900, "eloMax": 1999, "palette": "dan" },
+        { "zh": "三段", "en": "Third Dan",     "abbr": "D3", "eloMin": 2000, "eloMax": 2099, "palette": "dan" },
+        { "zh": "四段", "en": "Fourth Dan",    "abbr": "D4", "eloMin": 2100, "eloMax": 2199, "palette": "dan" },
+        { "zh": "五段", "en": "Fifth Dan",     "abbr": "D5", "eloMin": 2200, "eloMax": 2299, "palette": "dan" },
+        { "zh": "六段", "en": "Sixth Dan",     "abbr": "D6", "eloMin": 2300, "eloMax": 2399, "palette": "dan" },
+        { "zh": "七段", "en": "Seventh Dan",   "abbr": "D7", "eloMin": 2400, "eloMax": 2499, "palette": "dan" },
+        { "zh": "八段", "en": "Eighth Dan",    "abbr": "D8", "eloMin": 2500, "eloMax": 2599, "palette": "dan" },
+        { "zh": "九段", "en": "Ninth Dan",     "abbr": "D9", "eloMin": 2600, "eloMax": null, "palette": "dan" }
+      ],
+      "display": {
+        "leaderboard": "zh/ja locale 用 2 字全称；其余 locale 用 abbr。均等宽右对齐 + aria-label 全称",
+        "profile": "全称双语并置，如「三品 Third Grade」",
+        "gameBar": "中文用 2 字全称，其余用 abbr + 段位章，避免撑破 56px 玩家条"
+      },
+      "badge": { "shape": "正圆石章（棋子母题）", "size": "20px", "content": "品级数字", "stroke": "对应 palette 色" },
+      "rule": "石色体系；禁止金/银/铜三色套路；禁止奖杯/奖牌 emoji；禁止环形进度圈+渐变仪表盘",
+      "eloNote": "100 分等距分档，起始 1200 落在六品。最终阈值以架构师 ELO 实现为准；K 因子导致分布偏移时整体平移区间即可，不影响任何设计 Token"
+    },
+    "timer": {
+      "normal":   { "ref": "color.{mode}.fg" },
+      "idle":     { "ref": "color.{mode}.meta" },
+      "low":      { "ref": "color.{mode}.warn",   "threshold": "30s" },
+      "critical": { "ref": "color.{mode}.danger", "threshold": "10s", "extra": "叠加脉冲动画 + 可选提示音" },
+      "font":     { "ref": "font.family.mono" },
+      "size":     { "ref": "font.size.xl" }
+    }
+  },
+
+  "component": {
+    "button": {
+      "height": { "sm": "32px", "md": "40px", "lg": "48px" },
+      "padX":   { "sm": "12px", "md": "16px", "lg": "24px" },
+      "radius": { "ref": "radius.sm" },
+      "weight": { "ref": "font.weight.emphasis" },
+      "gap":    { "value": "8px", "note": "图标与文字间距" },
+      "variants": {
+        "primary":     { "bg": "accent", "fg": "accentOn", "border": "transparent", "rule": "每屏 <=1 个" },
+        "secondary":   { "bg": "surface", "fg": "fg", "border": "borderStrong", "borderHover": "accent" },
+        "ghost":       { "bg": "transparent", "fg": "muted", "bgHover": "surfaceSunken", "fgHover": "fg" },
+        "destructive": { "bg": "danger", "fg": "#FFFFFF", "rule": "仅认输/删号/清数据；该场景内不得同时出现 primary" }
+      },
+      "states": ["default", "hover", "focus-visible", "active", "disabled", "loading"],
+      "note": "sm(32px) 在触摸端必须外扩不可见热区至 44px"
+    },
+    "input": {
+      "height": "40px",
+      "radius": { "ref": "radius.sm" },
+      "padX":   "12px",
+      "tokens": {
+        "bg": "surface", "fg": "fg", "placeholder": "meta",
+        "border": "borderStrong", "borderHover": "muted",
+        "borderFocus": "accent", "ringFocus": "accentRing",
+        "borderError": "danger", "bgDisabled": "surfaceSunken", "fgDisabled": "meta",
+        "labelFg": "fg2", "helperFg": "meta", "errorFg": "danger"
+      },
+      "rule": "label 永远可见，禁止只用 placeholder 当 label；错误信息紧贴字段下方"
+    },
+    "card": {
+      "bg": "surface", "border": "border", "borderHover": "accent",
+      "radius": { "ref": "radius.md" }, "pad": "20px", "padCompact": "16px",
+      "shadow": "none",
+      "rule": "1px 环 + 无阴影；禁止彩色左边框强调；禁止 border 与 blur>=16px 阴影同时出现"
+    },
+    "badge": {
+      "radius": { "ref": "radius.pill" }, "height": "22px", "padX": "8px",
+      "fontSize": { "ref": "font.size.xs" }, "weight": { "ref": "font.weight.emphasis" },
+      "tracking": { "ref": "font.tracking.small" },
+      "tones": ["neutral", "accent", "success", "warn", "danger", "info"]
+    },
+    "leaderboardRow": {
+      "height": "52px", "heightDense": "44px", "padX": "16px",
+      "divider": "borderSoft", "bgHover": "surfaceHover",
+      "bgSelf": "accentSoft", "borderSelf": "accent",
+      "rankFont": { "ref": "font.family.mono" },
+      "rankFg": "meta", "rankTopFg": "fg", "nameFg": "fg", "metricFg": "fg2",
+      "rule": "格律密排：无卡片盒子，仅 1px 分隔线；名次/ELO 一律 tabular-nums；前三名靠字重+墨色区分，不用金银铜"
+    },
+    "avatar": {
+      "radius": { "ref": "radius.pill" },
+      "sizes": { "sm": "24px", "md": "32px", "lg": "48px" },
+      "ring": "border", "ringActive": "accent",
+      "note": "棋子形——永远正圆；ringActive 表示轮到该玩家走棋"
+    },
+    "tab": {
+      "fg": "muted", "fgActive": "fg",
+      "indicator": "accent", "indicatorHeight": "2px", "height": "44px"
+    },
+    "icon": {
+      "sizes": { "sm": "16px", "md": "20px", "lg": "24px" },
+      "fg": "muted", "fgActive": "accent"
+    }
+  },
+
+  "pwa": {
+    "themeColor": { "light": "#F3F4F5", "dark": "#0F1214" },
+    "safeArea":   { "top": "env(safe-area-inset-top, 0px)", "bottom": "env(safe-area-inset-bottom, 0px)" },
+    "tabbarHeight": "calc(56px + env(safe-area-inset-bottom, 0px))",
+    "display": "standalone",
+    "orientation": "any"
+  },
+
+  "denylist": {
+    "colors": ["#7C3AED", "#A855F7", "#9333EA", "#EC4899", "#6366F1"],
+    "gradients": ["任何 Indigo->Pink / Purple->Pink 组合"],
+    "icons": ["emoji 作为功能图标", "混用第二套图标库"],
+    "typography": ["系统字体直出", "对中文施加负字距", "正文 <14px"],
+    "layout": ["居中式模板 Hero", "彩色左边框卡片", "圆角 >=24px 的卡片", "幽灵卡片(1px 边框 + blur>=16px 阴影)"],
+    "copy": ["Welcome to", "Lorem ipsum", "Sign up today", "Get started 作为唯一 CTA 文案", "无来源的虚构指标"],
+    "code": ["组件内裸 hex（#fff / #000 除外）"],
+    "emojiRegex": "[\\u{1F300}-\\u{1F9FF}\\u{2600}-\\u{26FF}\\u{2700}-\\u{27BF}]"
+  }
+}

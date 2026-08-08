@@ -1,0 +1,282 @@
+openapi: 3.0.3
+info:
+  title: 弈界 YiBoard API
+  version: 0.4.0
+  description: 中国战略棋类对弈独立站 MVP 接口契约（Spec v0.4 锁定）
+servers:
+  - url: https://yiboard.example.com
+    description: 生产
+components:
+  securitySchemes:
+    GuestToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    UserJWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    GuestSession:
+      type: object
+      properties:
+        guest_token:
+          type: string
+        user_id:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+    Room:
+      type: object
+      properties:
+        room_id:
+          type: string
+        invite_url:
+          type: string
+        type:
+          type: string
+          enum: [friend, ranked, ai]
+        mode:
+          type: string
+          enum: [pvp, pve]
+        status:
+          type: string
+          enum: [waiting, playing, finished]
+    GameResult:
+      type: object
+      properties:
+        game_id:
+          type: string
+        winner:
+          type: string
+        elo_delta:
+          type: integer
+        new_rank:
+          type: string
+    RankEntry:
+      type: object
+      properties:
+        user_id:
+          type: string
+        elo:
+          type: integer
+        rank:
+          type: string
+    ShareCard:
+      type: object
+      properties:
+        card_id:
+          type: string
+        card_url:
+          type: string
+        og_image:
+          type: string
+    Profile:
+      type: object
+      properties:
+        user_id:
+          type: string
+        elo:
+          type: integer
+        rank:
+          type: string
+        games_played:
+          type: integer
+        wins:
+          type: integer
+paths:
+  /api/v1/auth/guest:
+    post:
+      summary: 创建游客会话
+      security: []
+      responses:
+        '201':
+          description: 匿名会话已创建
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GuestSession'
+  /api/v1/auth/guest/upgrade:
+    post:
+      summary: 绑定邮箱升级为正式账号
+      security:
+        - GuestToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required: [email]
+      responses:
+        '200':
+          description: 升级成功，user_id 不变
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: string
+                  upgraded:
+                    type: boolean
+        '409':
+          description: 邮箱已存在冲突
+  /api/v1/auth/login:
+    post:
+      summary: 邮箱登录
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required: [email]
+      responses:
+        '200':
+          description: 登录成功，返回 JWT
+        '401':
+          description: 凭证无效
+  /api/v1/rooms:
+    post:
+      summary: 创建对弈房间
+      security:
+        - GuestToken: []
+        - UserJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [friend, ranked, ai]
+                mode:
+                  type: string
+                  enum: [pvp, pve]
+              required: [type, mode]
+      responses:
+        '201':
+          description: 房间已创建
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+  /api/v1/rooms/{id}:
+    get:
+      summary: 获取房间状态
+      security: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 房间状态
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+        '404':
+          description: 房间不存在
+  /api/v1/games:
+    post:
+      summary: 记录对局结果（由 Cloudflare DO 回调）
+      security:
+        - UserJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                room_id:
+                  type: string
+                winner:
+                  type: string
+                pgn:
+                  type: string
+              required: [room_id, winner]
+      responses:
+        '201':
+          description: 结果已记录，段位已更新
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameResult'
+  /api/v1/rankings:
+    get:
+      summary: 公开排行榜
+      security: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: ELO 降序榜单
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RankEntry'
+  /api/v1/share:
+    post:
+      summary: 生成分享棋谱卡片
+      security:
+        - GuestToken: []
+        - UserJWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                game_id:
+                  type: string
+              required: [game_id]
+      responses:
+        '201':
+          description: 卡片已生成
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShareCard'
+  /api/v1/users/me:
+    get:
+      summary: 当前用户资料
+      security:
+        - UserJWT: []
+      responses:
+        '200':
+          description: 个人资料
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+  /api/v1/webhooks/waffo:
+    post:
+      summary: Waffo 支付回调（MVP 空壳，P1 启用）
+      security: []
+      responses:
+        '200':
+          description: 已接收（MVP 不处理）
