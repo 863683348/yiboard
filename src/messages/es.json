@@ -30,6 +30,7 @@
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",
+    "visitCount": "Visitas globales: {count}",
     "headline": "Cinco piedras en línea.",
     "headlineAccent": "Tres mil años discutiendo sobre ello.",
     "sub": "El Gomoku se aprende en treinta segundos y cuesta soltarlo después. Abre el tablero de abajo y mueve: nada que instalar, nada que registrar. Xiangqi y Go llegan después.",

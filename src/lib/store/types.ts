@@ -147,4 +147,7 @@ export interface Store {
   leaveMatchQueue(userId: string): Promise<void>;
   /** 随机匹配：当前排队人数（首页热度提示用） */
   countMatchQueue(): Promise<number>;
+
+  /** 全站访问次数：原子 +1，返回最新累计值 */
+  incrementVisit(): Promise<number>;
 }

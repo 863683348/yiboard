@@ -55,6 +55,27 @@ function rowsOf<T>(result: unknown): T[] {
 const QUEUE_TTL_SECONDS = 45;
 
 /**
+ * site_visits 惰性建表：固定 id=1 的单行计数器。
+ * 不跑 drizzle push，用 IF NOT EXISTS 幂等建表。
+ */
+let siteVisitsReady: Promise<void> | null = null;
+function ensureSiteVisits(db: NeonDatabase): Promise<void> {
+  siteVisitsReady ??= (async () => {
+    await db.execute(sql`
+      create table if not exists site_visits (
+        id integer primary key check (id = 1),
+        count integer not null default 0,
+        updated_at timestamptz not null default now()
+      )
+    `);
+  })().catch((error) => {
+    siteVisitsReady = null;
+    throw error;
+  });
+  return siteVisitsReady;
+}
+
+/**
  * match_queue 惰性建表。
  * 匹配是后加的功能，线上库已有数据，跑 drizzle push 有误删风险；
  * 这里用 IF NOT EXISTS 幂等建表，进程内只执行一次（Promise 缓存）。
@@ -536,6 +557,17 @@ export function createNeonStore(connectionString: string): Store {
       await ensureMatchQueue(db);
       await pruneMatchQueue(db);
       return countWaiting(db);
+    },
+
+    async incrementVisit() {
+      await ensureSiteVisits(db);
+      const result = await db.execute<{ count: number }>(sql`
+        insert into site_visits (id, count) values (1, 1)
+        on conflict (id) do update
+          set count = site_visits.count + 1, updated_at = now()
+        returning count
+      `);
+      return rowsOf<{ count: number }>(result)[0]?.count ?? 1;
     },
   };
 }

@@ -30,6 +30,7 @@
   },
   "home": {
     "eyebrow": "Free · No account required",
+    "visitCount": "Global visits: {count}",
     "headline": "Five stones in a line.",
     "headlineAccent": "Three thousand years of arguing about it.",
     "sub": "Gomoku is learnable in thirty seconds and hard to put down after that. Open the board below and make a move — nothing to install, nothing to sign up for. Xiangqi and Go follow.",

@@ -30,6 +30,7 @@
   },
   "home": {
     "eyebrow": "Grátis · Sem conta",
+    "visitCount": "Visitas globais: {count}",
     "headline": "Cinco pedras em linha.",
     "headlineAccent": "Três mil anos discutindo sobre isso.",
     "sub": "Gomoku se aprende em trinta segundos e depois é difícil largar. Abra o tabuleiro aqui embaixo e jogue: nada para instalar, nada para cadastrar. Xiangqi e Go vêm em seguida.",

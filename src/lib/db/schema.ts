@@ -4,6 +4,7 @@
  * subscriptions / payment_events 在 MVP 建表但不写入（Waffo 接入见 ADR-008，P1）。
  */
 
+import { sql } from 'drizzle-orm';
 import {
   boolean,
   index,
@@ -57,6 +58,17 @@ export const guestSessions = pgTable(
     index('guest_sessions_user_idx').on(table.userId),
     uniqueIndex('guest_sessions_token_key').on(table.tokenHash),
   ],
+);
+
+export const siteVisits = pgTable(
+  'site_visits',
+  {
+    /** 固定唯一行（id = 1），存储全站累计访问次数 */
+    id: integer('id').primaryKey(),
+    count: integer('count').notNull().default(0),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  () => [sql`check (id = 1)`],
 );
 
 export const rooms = pgTable(

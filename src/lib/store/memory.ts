@@ -21,6 +21,7 @@ const passwords = new Map<string, string>();
 const games: GameRecord[] = [];
 const rooms = new Map<string, RoomRecord>();
 const shareCards = new Map<string, ShareCardRecord>();
+let visitCount = 0;
 
 interface QueueEntry {
   userId: string;
@@ -320,5 +321,10 @@ export const memoryStore: Store = {
 
   async countMatchQueue() {
     return pruneQueue();
+  },
+
+  async incrementVisit() {
+    visitCount += 1;
+    return visitCount;
   },
 };

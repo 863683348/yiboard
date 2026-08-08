@@ -10,6 +10,7 @@ import {
 import { GomokuGame } from '@/components/GomokuGame';
 import { GlobalStats } from '@/components/GlobalStats';
 import { RankBadge } from '@/components/RankBadge';
+import { VisitCounter } from '@/components/VisitCounter';
 import { Link } from '@/i18n/navigation';
 import { RANKS, STARTING_ELO } from '@/lib/rank';
 
@@ -46,6 +47,10 @@ export default async function HomePage(props: { params: Promise<{ locale: string
         <div className="yb-hero-layout">
           <div>
             <span className="yb-chip yb-chip-accent">{t('eyebrow')}</span>
+
+            <div style={{ marginTop: 'var(--space-3)' }}>
+              <VisitCounter />
+            </div>
 
             <h1 className="yb-display" style={{ marginTop: 'var(--space-4)' }}>
               {t('headline')}
