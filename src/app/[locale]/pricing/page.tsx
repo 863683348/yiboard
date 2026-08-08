@@ -10,7 +10,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'pricing' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('pricing') };
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('pricing', locale) };
 }
 
 const TIERS = ['free', 'plus', 'pro'] as const;

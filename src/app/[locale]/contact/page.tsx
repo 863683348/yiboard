@@ -9,7 +9,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('contact') };
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('contact', locale) };
 }
 
 const CONTACT_EMAIL = 'ahmedlzany423@gmail.com';

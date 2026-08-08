@@ -17,7 +17,7 @@ export async function generateMetadata(props: {
   return {
     title: t('title'),
     description: t('title'),
-    alternates: localeAlternates(`share/${id}`),
+    alternates: localeAlternates(`share/${id}`, locale),
     robots: { index: true, follow: true },
   };
 }

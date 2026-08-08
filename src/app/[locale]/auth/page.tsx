@@ -9,7 +9,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'auth' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('auth') };
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('auth', locale) };
 }
 
 export default async function AuthPage(props: { params: Promise<{ locale: string }> }) {

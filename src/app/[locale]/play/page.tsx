@@ -17,7 +17,7 @@ export async function generateMetadata(props: {
   return {
     title: t('title'),
     description: meta('description'),
-    alternates: localeAlternates('play'),
+    alternates: localeAlternates('play', locale),
   };
 }
 

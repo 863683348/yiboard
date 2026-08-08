@@ -9,7 +9,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'faq' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('faq') };
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('faq', locale) };
 }
 
 const ITEMS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'] as const;

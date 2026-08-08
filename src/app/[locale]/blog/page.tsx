@@ -8,7 +8,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('blog') };
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('blog', locale) };
 }
 
 const POSTS = ['p1', 'p2', 'p3'] as const;

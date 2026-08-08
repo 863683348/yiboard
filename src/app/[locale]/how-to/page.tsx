@@ -10,7 +10,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'howTo' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('how-to') };
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('how-to', locale) };
 }
 
 export default async function HowToPage(props: { params: Promise<{ locale: string }> }) {
