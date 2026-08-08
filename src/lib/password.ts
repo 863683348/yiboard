@@ -10,16 +10,21 @@
 import { randomBytes, scrypt as scryptCb, timingSafeEqual } from 'crypto';
 import { promisify } from 'util';
 
-/** 推荐成本（OWASP：交互式登录 N≥2^17）；登录延迟 ~100ms，可接受。 */
-const COST_N = 2 ** 17;
+/**
+ * 推荐成本：N=2^16, r=8, p=1（内存 128×N×r = 64MB）。
+ * 比 Node 默认（N=2^14）强 4 倍；128MB 对 Vercel serverless 单次登录可接受。
+ * 显式 maxmem 必须大于实际内存需求，否则 Node 报 memory limit exceeded。
+ */
+const COST_N = 2 ** 16;
 const COST_R = 8;
 const COST_P = 1;
-/** v1 旧格式的隐式成本（Node scrypt 默认值）。 */
+const MAX_MEM = 128 * 1024 * 1024; // 128MB
+/** v1 旧格式的隐式成本（Node scrypt 默认值 N=2^14）。 */
 const LEGACY_N = 16384;
 
 const KEY_LEN = 64;
 
-type ScryptOptions = { N: number; r: number; p: number };
+type ScryptOptions = { N: number; r: number; p: number; maxmem: number };
 
 const scrypt = promisify(scryptCb) as (
   pw: string,
@@ -30,7 +35,7 @@ const scrypt = promisify(scryptCb) as (
 
 export async function hashPassword(password: string): Promise<string> {
   const salt = randomBytes(16).toString('hex');
-  const derived = await scrypt(password, salt, KEY_LEN, { N: COST_N, r: COST_R, p: COST_P });
+  const derived = await scrypt(password, salt, KEY_LEN, { N: COST_N, r: COST_R, p: COST_P, maxmem: MAX_MEM });
   return `scrypt$${COST_N}$${COST_R}$${COST_P}$${salt}$${derived.toString('hex')}`;
 }
 
@@ -44,11 +49,11 @@ export async function verifyPassword(password: string, stored: string): Promise<
     const salt = parts[4];
     const expectedHex = parts[5];
     if (!Number.isInteger(N) || !Number.isInteger(r) || !Number.isInteger(p) || N <= 0 || r <= 0 || p <= 0) return false;
-    return verifyWith(password, salt!, expectedHex!, { N, r, p });
+    return verifyWith(password, salt!, expectedHex!, { N, r, p, maxmem: MAX_MEM });
   }
   if (parts.length === 3 && parts[0] === 'scrypt') {
     // v1 旧格式：scrypt$salt$hash —— 用默认成本，老用户登录不失效
-    return verifyWith(password, parts[1]!, parts[2]!, { N: LEGACY_N, r: 8, p: 1 });
+    return verifyWith(password, parts[1]!, parts[2]!, { N: LEGACY_N, r: 8, p: 1, maxmem: MAX_MEM });
   }
   return false;
 }
