@@ -44,6 +44,62 @@ function rowToRoom(row: typeof roomsTable.$inferSelect): RoomRecord {
   };
 }
 
+/** drizzle 的 execute 在不同驱动下返回 rows 数组或 { rows }，统一拆出来 */
+function rowsOf<T>(result: unknown): T[] {
+  if (Array.isArray(result)) return result as T[];
+  const maybe = result as { rows?: T[] } | null;
+  return maybe?.rows ?? [];
+}
+
+/** 心跳超时：超过这个秒数没轮询就当掉线 */
+const QUEUE_TTL_SECONDS = 45;
+
+/**
+ * match_queue 惰性建表。
+ * 匹配是后加的功能，线上库已有数据，跑 drizzle push 有误删风险；
+ * 这里用 IF NOT EXISTS 幂等建表，进程内只执行一次（Promise 缓存）。
+ */
+let matchQueueReady: Promise<void> | null = null;
+function ensureMatchQueue(db: NeonDatabase): Promise<void> {
+  matchQueueReady ??= (async () => {
+    await db.execute(sql`
+      create table if not exists match_queue (
+        user_id uuid primary key references users(id) on delete cascade,
+        elo integer not null default 1200,
+        locale varchar(8) not null default 'en',
+        room_code varchar(8),
+        created_at timestamptz not null default now(),
+        last_seen_at timestamptz not null default now()
+      )
+    `);
+    await db.execute(
+      sql`create index if not exists match_queue_waiting_idx on match_queue (created_at)`,
+    );
+  })().catch((error) => {
+    matchQueueReady = null; // 建表失败允许下次重试，别把错误永久缓存住
+    throw error;
+  });
+  return matchQueueReady;
+}
+
+/** 剔除心跳超时的僵尸条目 */
+async function pruneMatchQueue(db: NeonDatabase): Promise<void> {
+  await db.execute(sql`
+    delete from match_queue
+    where last_seen_at < now() - make_interval(secs => ${QUEUE_TTL_SECONDS})
+  `);
+}
+
+/** 当前真正在等待（未配对）的人数 */
+async function countWaiting(db: NeonDatabase): Promise<number> {
+  const result = await db.execute<{ count: number }>(sql`
+    select count(*)::int as count from match_queue
+    where room_code is null
+      and last_seen_at > now() - make_interval(secs => ${QUEUE_TTL_SECONDS})
+  `);
+  return rowsOf<{ count: number }>(result)[0]?.count ?? 0;
+}
+
 export function createNeonStore(connectionString: string): Store {
   const db = connect(connectionString);
 
@@ -397,6 +453,89 @@ export function createNeonStore(connectionString: string): Store {
         aiGames: aiRow[0]?.count ?? 0,
         friendGames: friendRow[0]?.count ?? 0,
       };
+    },
+
+    // ---------------- 随机匹配队列 ----------------
+
+    async joinMatchQueue({ userId, elo, locale }) {
+      await ensureMatchQueue(db);
+      await pruneMatchQueue(db);
+      // 重复点「开始匹配」先清掉自己的旧条目，避免自己跟自己配对
+      await db.execute(sql`delete from match_queue where user_id = ${userId}::uuid`);
+
+      // 等最久的优先出队 —— 先到先得
+      const candidate = await db.execute<{ user_id: string }>(sql`
+        select user_id from match_queue
+        where room_code is null
+        order by created_at asc
+        limit 1
+      `);
+      const opponentId = rowsOf<{ user_id: string }>(candidate)[0]?.user_id ?? null;
+
+      if (opponentId) {
+        // 等得久的执黑（先手）—— 对耐心的一点补偿
+        const room = await this.createRoom({ hostId: opponentId });
+        // 单条 UPDATE 原子占坑：并发下只有一个请求能抢到这个对手
+        const claimed = await db.execute<{ user_id: string }>(sql`
+          update match_queue set room_code = ${room.code}
+          where user_id = ${opponentId}::uuid and room_code is null
+          returning user_id
+        `);
+        if (rowsOf<{ user_id: string }>(claimed).length > 0) {
+          await this.joinRoom(room.code, userId);
+          return { status: 'matched', code: room.code, waitingCount: await countWaiting(db) };
+        }
+        // 被别人抢先了：关掉刚开的空房，自己转入排队
+        await db.execute(sql`update rooms set status = 'closed' where code = ${room.code}`);
+      }
+
+      const inserted = await db.execute<{ created_at: string }>(sql`
+        insert into match_queue (user_id, elo, locale)
+        values (${userId}::uuid, ${elo}, ${locale})
+        on conflict (user_id) do update
+          set elo = excluded.elo, locale = excluded.locale,
+              room_code = null, created_at = now(), last_seen_at = now()
+        returning created_at
+      `);
+      const since = rowsOf<{ created_at: string }>(inserted)[0]?.created_at;
+      return {
+        status: 'waiting',
+        since: since ? new Date(since).toISOString() : new Date().toISOString(),
+        waitingCount: await countWaiting(db),
+      };
+    },
+
+    async pollMatchQueue(userId) {
+      await ensureMatchQueue(db);
+      // 一条语句同时做心跳续命 + 读状态
+      const mine = await db.execute<{ room_code: string | null; created_at: string }>(sql`
+        update match_queue set last_seen_at = now()
+        where user_id = ${userId}::uuid
+        returning room_code, created_at
+      `);
+      const row = rowsOf<{ room_code: string | null; created_at: string }>(mine)[0];
+      if (!row) return { status: 'idle', waitingCount: await countWaiting(db) };
+
+      if (row.room_code) {
+        await db.execute(sql`delete from match_queue where user_id = ${userId}::uuid`);
+        return { status: 'matched', code: row.room_code, waitingCount: await countWaiting(db) };
+      }
+      return {
+        status: 'waiting',
+        since: new Date(row.created_at).toISOString(),
+        waitingCount: await countWaiting(db),
+      };
+    },
+
+    async leaveMatchQueue(userId) {
+      await ensureMatchQueue(db);
+      await db.execute(sql`delete from match_queue where user_id = ${userId}::uuid`);
+    },
+
+    async countMatchQueue() {
+      await ensureMatchQueue(db);
+      await pruneMatchQueue(db);
+      return countWaiting(db);
     },
   };
 }

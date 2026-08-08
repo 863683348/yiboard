@@ -52,6 +52,7 @@ export async function exchangeGoogleCode(
 
 export interface GoogleProfile {
   email?: string;
+  email_verified?: boolean;
   name?: string;
 }
 
@@ -61,4 +62,9 @@ export async function fetchGoogleProfile(accessToken: string): Promise<GooglePro
   });
   if (!res.ok) throw new Error('GOOGLE_USERINFO_FAILED');
   return (await res.json()) as GoogleProfile;
+}
+
+/** Google 账号邮箱已由 Google 验证（email_verified=true）才可用于绑定本站账号。 */
+export function hasVerifiedEmail(profile: GoogleProfile): boolean {
+  return typeof profile.email === 'string' && profile.email.length > 0 && profile.email_verified === true;
 }

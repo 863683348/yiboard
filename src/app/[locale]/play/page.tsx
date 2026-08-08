@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { FriendGame } from '@/components/FriendGame';
 import { GomokuGame } from '@/components/GomokuGame';
+import { MatchMaker } from '@/components/MatchMaker';
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
 
@@ -29,7 +30,10 @@ export default async function PlayPage(props: {
   setRequestLocale(locale);
 
   const { mode, room } = await props.searchParams;
+  // 三种模式互斥：随机匹配 > 好友房 > 人机（房间号一旦存在，直接进房优先级最高）
   const friend = mode === 'friend' || Boolean(room);
+  const match = mode === 'match' && !room;
+  const ai = !friend && !match;
   const t = await getTranslations({ locale, namespace: 'play' });
 
   return (
@@ -51,10 +55,17 @@ export default async function PlayPage(props: {
         >
           <Link
             href="/play"
-            aria-current={friend ? undefined : 'page'}
-            className={friend ? 'yb-btn yb-btn-ghost yb-btn-sm' : 'yb-btn yb-btn-outline yb-btn-sm'}
+            aria-current={ai ? 'page' : undefined}
+            className={ai ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
           >
             {t('vsAi')}
+          </Link>
+          <Link
+            href="/play?mode=match"
+            aria-current={match ? 'page' : undefined}
+            className={match ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
+          >
+            {t('vsRandom')}
           </Link>
           <Link
             href="/play?mode=friend"
@@ -66,7 +77,9 @@ export default async function PlayPage(props: {
         </nav>
       </header>
 
-      {friend ? <FriendGame initialCode={room ?? null} /> : <GomokuGame variant="full" />}
+      {match ? <MatchMaker /> : null}
+      {friend ? <FriendGame initialCode={room ?? null} /> : null}
+      {ai ? <GomokuGame variant="full" /> : null}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
 import { GUEST_COOKIE, guestCookieOptions, signGuestToken } from '@/lib/auth';
-import { exchangeGoogleCode, fetchGoogleProfile, googleCredentials } from '@/lib/google';
+import { exchangeGoogleCode, fetchGoogleProfile, googleCredentials, hasVerifiedEmail } from '@/lib/google';
 import { readUser } from '@/lib/session';
 import { getStore } from '@/lib/store';
 
@@ -29,8 +29,9 @@ export async function GET(request: Request) {
     const redirectUri = new URL('/api/auth/google/callback', url.origin).toString();
     const { access_token: accessToken } = await exchangeGoogleCode(code, creds, redirectUri);
     const profile = await fetchGoogleProfile(accessToken);
-    const email = profile.email?.toLowerCase().trim();
-    if (!email) return fail();
+    // 只接受 Google 已验证的邮箱，防未验证邮箱占用本站账号
+    if (!hasVerifiedEmail(profile)) return fail();
+    const email = profile.email!.toLowerCase().trim();
 
     const store = getStore();
     const existing = await store.findUserByEmail(email);

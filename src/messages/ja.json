@@ -137,7 +137,18 @@
       "waiting": "参加を待っています…",
       "joined": "相手が入室しました。"
     },
-    "record": "戦績：{wins}勝 · {losses}敗 · {draws}分"
+    "record": "戦績：{wins}勝 · {losses}敗 · {draws}分",
+    "vsRandom": "ランダム対戦",
+    "match": {
+      "title": "対戦相手を探す",
+      "body": "リンクも登録も不要。待っている人とすぐマッチングします——待ち時間が長い方が黒番です。",
+      "start": "相手を探す",
+      "starting": "接続中…",
+      "searching": "対戦相手を探しています",
+      "cancel": "キャンセル",
+      "queueCount": "現在 {count} 人が待機中",
+      "error": "マッチングに接続できません。もう一度お試しください。"
+    }
   },
   "rankings": {
     "title": "ランキング",
@@ -208,7 +219,16 @@
     "googleOk": "アカウントを連携しました — 記録は端末間で同期されます。",
     "googleError": "Googleログインに失敗しました。もう一度お試しください。",
     "authLink": "登録 / ログイン",
-    "signOut": "ログアウト"
+    "signOut": "ログアウト",
+    "winRateLabel": "勝率",
+    "lost": "敗",
+    "drawn": "引き分け",
+    "streak": "現在の連勝",
+    "streakWin": "{count} 連勝",
+    "streakLoss": "{count} 連敗",
+    "streakNone": "なし",
+    "recentForm": "直近 {count} 局",
+    "vsRandomPlayer": "ランダム対戦"
   },
   "share": {
     "title": "YiBoard の一局",

@@ -71,6 +71,17 @@ export interface ShareCardPayload {
   difficulty: string | null;
 }
 
+/**
+ * 随机匹配状态机：
+ * idle    —— 不在队列里（取消 / 从未入队 / 已被清理）
+ * waiting —— 排队中，waitingCount 是当前同时在等的人数（含自己）
+ * matched —— 已配对，code 是房间号，前端直接进房
+ */
+export type MatchState =
+  | { status: 'idle'; waitingCount: number }
+  | { status: 'waiting'; waitingCount: number; since: string }
+  | { status: 'matched'; waitingCount: number; code: string };
+
 export interface RankEntry {
   userId: string;
   displayName: string;
@@ -127,4 +138,13 @@ export interface Store {
   getShareCard(id: string): Promise<ShareCardRecord | null>;
   /** 首页"全球玩家"统计：总用户 / 人机对局 / 好友对局 */
   getStats(): Promise<{ totalUsers: number; aiGames: number; friendGames: number }>;
+
+  /** 随机匹配：入队；若已有人在等则当场配对并开房 */
+  joinMatchQueue(input: { userId: string; elo: number; locale: string }): Promise<MatchState>;
+  /** 随机匹配：轮询自己的状态（顺带心跳续命） */
+  pollMatchQueue(userId: string): Promise<MatchState>;
+  /** 随机匹配：主动退出队列 */
+  leaveMatchQueue(userId: string): Promise<void>;
+  /** 随机匹配：当前排队人数（首页热度提示用） */
+  countMatchQueue(): Promise<number>;
 }

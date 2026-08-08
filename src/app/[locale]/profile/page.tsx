@@ -67,6 +67,22 @@ export default async function ProfilePage(props: {
   const winRate =
     me.gamesPlayed > 0 ? Math.round((me.gamesWon / me.gamesPlayed) * 100) : 0;
 
+  // 近 20 局的胜负平 —— users 表只累计 played/won，负和和局要从对局记录里数
+  const recent = games.map((game) => outcomeFor(game, me.id));
+  const recentDraws = recent.filter((o) => o === 'draw').length;
+  // 总负场 = 总局数 - 总胜场 - 和局。和局只能从近期样本估，够用且不会算出负数
+  const totalLosses = Math.max(0, me.gamesPlayed - me.gamesWon - recentDraws);
+
+  // 当前连势：从最近一局往回数，直到结果变号（和局中断连势）
+  const streakOutcome = recent[0] ?? null;
+  let streakCount = 0;
+  if (streakOutcome === 'win' || streakOutcome === 'loss') {
+    for (const outcome of recent) {
+      if (outcome !== streakOutcome) break;
+      streakCount += 1;
+    }
+  }
+
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
       <header style={{ maxWidth: '56ch' }}>
@@ -121,8 +137,40 @@ export default async function ProfilePage(props: {
           <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-5)' }}>
             <Stat label={t('played')} value={<span className="yb-num">{me.gamesPlayed}</span>} />
             <Stat label={t('won')} value={<span className="yb-num">{me.gamesWon}</span>} />
-            <Stat label={t('rank')} value={<RankBadge elo={me.elo} size="sm" />} />
-            <Stat label="Win rate" value={<span className="yb-num">{winRate}%</span>} />
+            <Stat label={t('lost')} value={<span className="yb-num">{totalLosses}</span>} />
+            <Stat label={t('winRateLabel')} value={<span className="yb-num">{winRate}%</span>} />
+          </div>
+
+          <div
+            style={{
+              marginTop: 'var(--space-5)',
+              paddingTop: 'var(--space-5)',
+              borderTop: '1px solid var(--border)',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              gap: 'var(--space-4)',
+              flexWrap: 'wrap',
+            }}
+          >
+            <Stat
+              label={t('streak')}
+              value={
+                <span style={{ fontSize: 'var(--text-lg)' }}>
+                  {streakCount === 0
+                    ? t('streakNone')
+                    : streakOutcome === 'win'
+                      ? t('streakWin', { count: streakCount })
+                      : t('streakLoss', { count: streakCount })}
+                </span>
+              }
+            />
+            {recent.length > 0 ? (
+              <div style={{ textAlign: 'right' }}>
+                <div className="yb-meta">{t('recentForm', { count: recent.length })}</div>
+                <FormBar outcomes={recent} />
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -241,6 +289,20 @@ export default async function ProfilePage(props: {
                   <span style={{ flex: 1, fontSize: 'var(--text-sm)', color: 'var(--fg)' }}>
                     {opponent}
                   </span>
+                  {/* 积分变化：只有人人对局结算 ELO，人机局 eloDelta 恒为 0，不显示免得误导 */}
+                  {game.eloDelta !== 0 ? (
+                    <span
+                      className="yb-num"
+                      style={{
+                        fontSize: 'var(--text-xs)',
+                        fontWeight: 'var(--weight-emphasis)',
+                        color: outcome === 'win' ? 'var(--success)' : 'var(--accent)',
+                      }}
+                    >
+                      {outcome === 'win' ? '+' : '−'}
+                      {Math.abs(game.eloDelta)}
+                    </span>
+                  ) : null}
                   <span className="yb-num yb-meta" style={{ fontSize: 'var(--text-xs)' }}>
                     {game.moveCount} · {date}
                   </span>
@@ -267,6 +329,28 @@ function Stat({ label, value }: { label: string; value: React.ReactNode }) {
       <div style={{ marginTop: 4, fontSize: 'var(--text-xl)', fontWeight: 'var(--weight-emphasis)', color: 'var(--fg)' }}>
         {value}
       </div>
+    </div>
+  );
+}
+
+/** 近期战绩条：最近的在最右边，一眼看出手感是热还是冷 */
+function FormBar({ outcomes }: { outcomes: Array<'win' | 'loss' | 'draw'> }) {
+  const color = (o: 'win' | 'loss' | 'draw') =>
+    o === 'win' ? 'var(--success)' : o === 'loss' ? 'var(--accent)' : 'var(--border-strong, var(--border))';
+  return (
+    <div aria-hidden style={{ display: 'flex', gap: 3, marginTop: 6, justifyContent: 'flex-end' }}>
+      {[...outcomes].reverse().map((outcome, index) => (
+        <span
+          key={index}
+          style={{
+            width: 8,
+            height: 16,
+            borderRadius: 2,
+            background: color(outcome),
+            opacity: outcome === 'draw' ? 0.7 : 1,
+          }}
+        />
+      ))}
     </div>
   );
 }

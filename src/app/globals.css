@@ -394,3 +394,42 @@
   animation: yb-stone-drop var(--motion-stone) var(--ease-stone) both;
   transform-origin: center;
 }
+
+/* ---------------- 随机匹配：等待反馈 ---------------- */
+
+/* 扫光进度条——不是真进度，只表示"系统在找人"，别假装知道还要多久 */
+@keyframes yb-match-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+
+.yb-match-sweep {
+  display: block;
+  width: 30%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  animation: yb-match-sweep 1.4s var(--ease-standard) infinite;
+}
+
+/* 呼吸点——队列心跳还活着的信号 */
+@keyframes yb-match-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+.yb-match-pulse {
+  display: inline-block;
+  animation: yb-match-pulse 1.6s var(--ease-standard) infinite;
+}

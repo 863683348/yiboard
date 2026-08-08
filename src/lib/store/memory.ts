@@ -22,6 +22,32 @@ const games: GameRecord[] = [];
 const rooms = new Map<string, RoomRecord>();
 const shareCards = new Map<string, ShareCardRecord>();
 
+interface QueueEntry {
+  userId: string;
+  elo: number;
+  locale: string;
+  roomCode: string | null;
+  createdAt: number;
+  lastSeenAt: number;
+}
+const queue = new Map<string, QueueEntry>();
+/** 心跳超时：超过这个时间没轮询就当掉线剔除 */
+const QUEUE_TTL_MS = 45_000;
+
+/** 剔除心跳超时的条目，返回仍在等待（未配对）的人数 */
+function pruneQueue(): number {
+  const cutoff = Date.now() - QUEUE_TTL_MS;
+  let waiting = 0;
+  for (const [id, entry] of queue) {
+    if (entry.lastSeenAt < cutoff) {
+      queue.delete(id);
+      continue;
+    }
+    if (!entry.roomCode) waiting += 1;
+  }
+  return waiting;
+}
+
 function now(): string {
   return new Date().toISOString();
 }
@@ -232,5 +258,67 @@ export const memoryStore: Store = {
       else if (g.mode === 'friend') friendGames += 1;
     }
     return { totalUsers: users.size, aiGames, friendGames };
+  },
+
+  async joinMatchQueue({ userId, elo, locale }) {
+    pruneQueue();
+    queue.delete(userId); // 重复点「开始匹配」时先清掉自己的旧条目
+
+    // 找等最久的那个人配对 —— 先到先得，等待时间越长优先级越高
+    let opponent: QueueEntry | null = null;
+    for (const entry of queue.values()) {
+      if (entry.roomCode) continue;
+      if (!opponent || entry.createdAt < opponent.createdAt) opponent = entry;
+    }
+
+    if (opponent) {
+      // 等得久的执黑（先手），算是对耐心的一点补偿
+      const room = await this.createRoom({ hostId: opponent.userId });
+      await this.joinRoom(room.code, userId);
+      queue.set(opponent.userId, { ...opponent, roomCode: room.code });
+      return { status: 'matched', code: room.code, waitingCount: pruneQueue() };
+    }
+
+    const stamp = Date.now();
+    queue.set(userId, {
+      userId,
+      elo,
+      locale,
+      roomCode: null,
+      createdAt: stamp,
+      lastSeenAt: stamp,
+    });
+    return {
+      status: 'waiting',
+      since: new Date(stamp).toISOString(),
+      waitingCount: pruneQueue(),
+    };
+  },
+
+  async pollMatchQueue(userId) {
+    pruneQueue();
+    const mine = queue.get(userId);
+    if (!mine) return { status: 'idle', waitingCount: pruneQueue() };
+
+    if (mine.roomCode) {
+      queue.delete(userId); // 已配对，出队
+      return { status: 'matched', code: mine.roomCode, waitingCount: pruneQueue() };
+    }
+
+    queue.set(userId, { ...mine, lastSeenAt: Date.now() }); // 心跳续命
+    return {
+      status: 'waiting',
+      since: new Date(mine.createdAt).toISOString(),
+      waitingCount: pruneQueue(),
+    };
+  },
+
+  async leaveMatchQueue(userId) {
+    queue.delete(userId);
+    pruneQueue();
+  },
+
+  async countMatchQueue() {
+    return pruneQueue();
   },
 };

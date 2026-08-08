@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 
 type Mode = 'register' | 'login';
 
@@ -15,7 +14,7 @@ interface FormErrors {
 
 export function AuthForm() {
   const t = useTranslations('auth');
-  const router = useRouter();
+  const locale = useLocale();
   const [mode, setMode] = useState<Mode>('register');
   const [form, setForm] = useState(EMPTY);
   const [busy, setBusy] = useState(false);
@@ -65,7 +64,11 @@ export function AuthForm() {
       }
 
       const data = (await res.json()) as { redirect?: string };
-      router.push(data.redirect ?? '/profile');
+      // 硬跳转（不用 router.push）：登录/注册换了身份 cookie，但 Next 的 client router cache
+      // 会命中此前缓存的访客态 RSC payload —— 表现就是「登录后页面没变化」。
+      // 整页导航强制服务端拿新 cookie 重新渲染，Navbar / profile 同步刷新。
+      const dest = data.redirect ?? '/profile';
+      window.location.assign(dest.startsWith('/') ? `/${locale}${dest}` : dest);
     } catch {
       setError({ message: t('errGeneric') });
     } finally {

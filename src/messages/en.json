@@ -137,7 +137,18 @@
       "waiting": "Waiting for someone to join…",
       "joined": "Your opponent is here."
     },
-    "record": "Record: {wins}W · {losses}L · {draws}D"
+    "record": "Record: {wins}W · {losses}L · {draws}D",
+    "vsRandom": "Random match",
+    "match": {
+      "title": "Find an opponent",
+      "body": "No link, no sign-up. We pair you with whoever is waiting — the one who waited longest plays black.",
+      "start": "Find opponent",
+      "starting": "Connecting…",
+      "searching": "Looking for an opponent",
+      "cancel": "Cancel",
+      "queueCount": "{count} waiting right now",
+      "error": "Could not reach the queue. Try again."
+    }
   },
   "rankings": {
     "title": "Rankings",
@@ -208,7 +219,16 @@
     "googleOk": "Account linked — your record now syncs across devices.",
     "googleError": "Google sign-in failed. Please try again.",
     "authLink": "Register / Sign in",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "winRateLabel": "Win rate",
+    "lost": "Lost",
+    "drawn": "Drawn",
+    "streak": "Current streak",
+    "streakWin": "{count} in a row",
+    "streakLoss": "{count} losses",
+    "streakNone": "None yet",
+    "recentForm": "Last {count} games",
+    "vsRandomPlayer": "Random match"
   },
   "share": {
     "title": "A game on YiBoard",

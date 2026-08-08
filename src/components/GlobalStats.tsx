@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { Link } from '@/i18n/navigation';
+
 /**
  * 首页"全球玩家"统计区：服务端聚合 + 客户端拉取，30s 缓存。
  * 显示真实数字——不造假。零时显示加载骨架，错误时回退为占位。
@@ -11,10 +13,13 @@ interface Stats {
   totalUsers: number;
   aiGames: number;
   friendGames: number;
+  /** 此刻正在排队等对手的人数（心跳 45s 内有效） */
+  waitingPlayers: number;
 }
 
 export function GlobalStats() {
   const t = useTranslations('home');
+  const play = useTranslations('play');
   const [stats, setStats] = useState<Stats | null>(null);
 
   useEffect(() => {
@@ -78,6 +83,15 @@ export function GlobalStats() {
         <StatBox label={t('statsAi')} value={stats?.aiGames} />
         <StatBox label={t('statsFriend')} value={stats?.friendGames} />
       </div>
+
+      {/* 有人在排队才提示并给入口——0 人时不显示，免得点进去空等 */}
+      {stats && stats.waitingPlayers > 0 ? (
+        <p style={{ marginTop: 'var(--space-4)', textAlign: 'center' }}>
+          <Link href="/play?mode=match" className="yb-btn yb-btn-outline yb-btn-sm">
+            {play('match.queueCount', { count: stats.waitingPlayers })}
+          </Link>
+        </p>
+      ) : null}
     </section>
   );
 }

@@ -7,6 +7,11 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 30;
 
 export async function GET() {
-  const stats = await getStore().getStats();
-  return ok(stats);
+  const store = getStore();
+  const [stats, waitingPlayers] = await Promise.all([
+    store.getStats(),
+    // 队列数拿不到不影响主统计——热度提示降级为 0，不让首页整块挂掉
+    store.countMatchQueue().catch(() => 0),
+  ]);
+  return ok({ ...stats, waitingPlayers });
 }

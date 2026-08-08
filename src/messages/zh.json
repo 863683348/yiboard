@@ -137,7 +137,18 @@
       "waiting": "等待有人加入…",
       "joined": "你的对手已就位。"
     },
-    "record": "战绩：{wins}胜 · {losses}负 · {draws}和"
+    "record": "战绩：{wins}胜 · {losses}负 · {draws}和",
+    "vsRandom": "随机匹配",
+    "match": {
+      "title": "找个对手",
+      "body": "不用发链接，也不用注册。系统直接给你配一个正在等的人——等得最久的执黑先手。",
+      "start": "开始匹配",
+      "starting": "连接中…",
+      "searching": "正在寻找对手",
+      "cancel": "取消匹配",
+      "queueCount": "当前 {count} 人在排队",
+      "error": "连不上匹配队列，再试一次。"
+    }
   },
   "rankings": {
     "title": "排行榜",
@@ -208,7 +219,16 @@
     "googleOk": "账号已绑定——战绩将跨设备同步。",
     "googleError": "Google 登录失败，请重试。",
     "authLink": "注册 / 登录",
-    "signOut": "退出登录"
+    "signOut": "退出登录",
+    "winRateLabel": "胜率",
+    "lost": "负",
+    "drawn": "和",
+    "streak": "当前连势",
+    "streakWin": "{count} 连胜",
+    "streakLoss": "{count} 连败",
+    "streakNone": "暂无",
+    "recentForm": "最近 {count} 局",
+    "vsRandomPlayer": "随机匹配"
   },
   "share": {
     "title": "弈界的一局对弈",

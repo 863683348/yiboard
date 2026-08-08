@@ -137,7 +137,18 @@
       "waiting": "Esperando alguém entrar…",
       "joined": "Seu adversário chegou."
     },
-    "record": "Retrospecto: {wins}V · {losses}D · {draws}E"
+    "record": "Retrospecto: {wins}V · {losses}D · {draws}E",
+    "vsRandom": "Partida aleatória",
+    "match": {
+      "title": "Encontrar adversário",
+      "body": "Sem link, sem cadastro. Pareamos você com quem estiver esperando — quem esperou mais joga de pretas.",
+      "start": "Buscar adversário",
+      "starting": "Conectando…",
+      "searching": "Procurando adversário",
+      "cancel": "Cancelar",
+      "queueCount": "{count} na fila agora",
+      "error": "Não foi possível acessar a fila. Tente novamente."
+    }
   },
   "rankings": {
     "title": "Ranking",
@@ -208,7 +219,16 @@
     "googleOk": "Conta vinculada — seu histórico agora sincroniza entre dispositivos.",
     "googleError": "Falha no login com o Google. Tente novamente.",
     "authLink": "Cadastrar / Entrar",
-    "signOut": "Sair"
+    "signOut": "Sair",
+    "winRateLabel": "Aproveitamento",
+    "lost": "Derrotas",
+    "drawn": "Empates",
+    "streak": "Sequência atual",
+    "streakWin": "{count} seguidas",
+    "streakLoss": "{count} derrotas",
+    "streakNone": "Nenhuma",
+    "recentForm": "Últimas {count} partidas",
+    "vsRandomPlayer": "Partida aleatória"
   },
   "share": {
     "title": "Uma partida no YiBoard",

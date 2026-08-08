@@ -84,6 +84,26 @@ export const rooms = pgTable(
   ],
 );
 
+/**
+ * 随机匹配队列 —— 一人一行（user_id 主键）。
+ * room_code 为空 = 还在等；被配对方原子写入房间号后，等待方轮询即可取到房间。
+ * last_seen_at 是心跳：超过 45s 没轮询视为掉线，由下一次入队/计数顺手清理。
+ */
+export const matchQueue = pgTable(
+  'match_queue',
+  {
+    userId: uuid('user_id')
+      .primaryKey()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    elo: integer('elo').notNull().default(1200),
+    locale: varchar('locale', { length: 8 }).notNull().default('en'),
+    roomCode: varchar('room_code', { length: 8 }),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+    lastSeenAt: timestamp('last_seen_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [index('match_queue_waiting_idx').on(table.createdAt)],
+);
+
 export const games = pgTable(
   'games',
   {
