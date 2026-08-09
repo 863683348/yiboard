@@ -3,6 +3,7 @@ import { Archivo, Inter } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { headers } from 'next/headers';
 
 import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -41,8 +42,12 @@ export async function generateMetadata(props: {
     routing.locales.map((l) => [l, l === routing.defaultLocale ? '/' : `/${l}`]),
   );
 
+  // 自愈式基准域名：取请求 Host，避免 SITE_URL 环境变量残留旧域名时 canonical/OG 输出错。
+  const host = (await headers()).get('host');
+  const siteUrl = host ? `https://${host}` : SITE_URL;
+
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(siteUrl),
     title: {
       default: t('title'),
       template: '%s — YiBoard',
