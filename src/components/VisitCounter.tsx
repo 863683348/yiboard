@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 /**
- * 首页"全球访问次数"胶囊计数器。
- * 客户端入站时 POST /api/visit 原子 +1，真实累计不造假。
+ * 首页"全球访问次数"胶囊 —— 只读展示全站累计访问数。
+ * 计数由全局 PageViewTracker（根 layout）统一上报，这里不再 POST，避免首页双计。
+ * 挂载后延迟读取，让首载上报先落库，显示的是含本次访问的最新值。
  */
 export function VisitCounter() {
   const t = useTranslations('home');
@@ -13,18 +14,21 @@ export function VisitCounter() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/visit', { method: 'POST', cache: 'no-store' })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data: { count?: number } | null) => {
-        if (!cancelled && data && typeof data.count === 'number') {
-          setCount(data.count);
-        }
-      })
-      .catch(() => {
-        /* 失败静默，不显示错误 */
-      });
+    const timer = setTimeout(() => {
+      fetch('/api/visit', { cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data: { count?: number } | null) => {
+          if (!cancelled && data && typeof data.count === 'number') {
+            setCount(data.count);
+          }
+        })
+        .catch(() => {
+          /* 失败静默，不显示错误 */
+        });
+    }, 500);
     return () => {
       cancelled = true;
+      clearTimeout(timer);
     };
   }, []);
 

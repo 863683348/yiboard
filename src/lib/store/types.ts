@@ -150,4 +150,6 @@ export interface Store {
 
   /** 全站访问次数：原子 +1，返回最新累计值 */
   incrementVisit(): Promise<number>;
+  /** 全站访问次数：只读当前累计值（胶囊展示用，不计 +1） */
+  getVisitCount(): Promise<number>;
 }

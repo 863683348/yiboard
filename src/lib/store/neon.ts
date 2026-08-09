@@ -569,5 +569,13 @@ export function createNeonStore(connectionString: string): Store {
       `);
       return rowsOf<{ count: number }>(result)[0]?.count ?? 1;
     },
+
+    async getVisitCount() {
+      await ensureSiteVisits(db);
+      const result = await db.execute<{ count: number }>(sql`
+        select count from site_visits where id = 1
+      `);
+      return rowsOf<{ count: number }>(result)[0]?.count ?? 0;
+    },
   };
 }

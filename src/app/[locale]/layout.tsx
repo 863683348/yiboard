@@ -7,6 +7,7 @@ import { headers } from 'next/headers';
 
 import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
+import { PageViewTracker } from '@/components/PageViewTracker';
 import { readUser } from '@/lib/session';
 import { routing, type Locale } from '@/i18n/routing';
 
@@ -105,6 +106,7 @@ export default async function LocaleLayout(props: {
           <a className="yb-skip" href="#content">
             {t('skipToContent')}
           </a>
+          <PageViewTracker />
           <Navbar locale={locale as Locale} user={me} />
           <main id="content">{props.children}</main>
           <SiteFooter locale={locale as Locale} />

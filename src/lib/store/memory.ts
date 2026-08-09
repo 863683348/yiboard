@@ -327,4 +327,8 @@ export const memoryStore: Store = {
     visitCount += 1;
     return visitCount;
   },
+
+  async getVisitCount() {
+    return visitCount;
+  },
 };
