@@ -60,7 +60,7 @@ export async function GET(request: Request) {
       const created = await store.createGuestUser({
         id: crypto.randomUUID(),
         displayName: profile.name ?? 'YiBoard player',
-        locale: 'zh',
+        locale: 'en',
       });
       const upgraded = await store.upgradeGuest({
         userId: created.id,

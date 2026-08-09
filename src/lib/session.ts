@@ -29,7 +29,7 @@ export async function readUser(): Promise<UserRecord | null> {
   return getStore().getUser(claims.sub);
 }
 
-export async function ensureUser(locale = 'zh'): Promise<UserRecord> {
+export async function ensureUser(locale = 'en'): Promise<UserRecord> {
   const jar = await cookies();
   const store = getStore();
   const token = jar.get(GUEST_COOKIE)?.value;

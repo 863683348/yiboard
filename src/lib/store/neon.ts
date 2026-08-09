@@ -87,7 +87,7 @@ function ensureMatchQueue(db: NeonDatabase): Promise<void> {
       create table if not exists match_queue (
         user_id uuid primary key references users(id) on delete cascade,
         elo integer not null default 1200,
-        locale varchar(8) not null default 'zh',
+        locale varchar(8) not null default 'en',
         room_code varchar(8),
         created_at timestamptz not null default now(),
         last_seen_at timestamptz not null default now()
