@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     const upgraded = await store.upgradeGuest({ userId: visitor.id, username, email, passwordHash, displayName: username });
     userId = upgraded.id;
   } else {
-    const created = await store.createGuestUser({ id: crypto.randomUUID(), displayName: username, locale: 'en' });
+    const created = await store.createGuestUser({ id: crypto.randomUUID(), displayName: username, locale: 'zh' });
     const upgraded = await store.upgradeGuest({ userId: created.id, username, email, passwordHash, displayName: username });
     userId = upgraded.id;
   }

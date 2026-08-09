@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   const body = await readJson<Body>(request);
   if (!body || !body.result || !RESULTS.includes(body.result)) return fail('BAD_REQUEST');
 
-  const user = await ensureUser(body.locale ?? 'en');
+  const user = await ensureUser(body.locale ?? 'zh');
   const moves = typeof body.moves === 'string' ? body.moves : '';
   const moveCount = moves ? moves.split(',').filter(Boolean).length : 0;
   // 手数 / 棋谱串长度 / 整包大小三重上限，防超大 payload 撑爆 jsonb

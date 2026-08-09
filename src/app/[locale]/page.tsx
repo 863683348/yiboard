@@ -32,7 +32,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
     operatingSystem: 'Any modern browser',
     description: meta('description'),
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    inLanguage: ['en', 'es', 'ja', 'pt-BR'],
+    inLanguage: ['zh', 'en', 'es', 'ja', 'pt-BR'],
   };
 
   return (
