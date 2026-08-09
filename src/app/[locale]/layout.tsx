@@ -8,6 +8,7 @@ import { headers } from 'next/headers';
 import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
 import { PageViewTracker } from '@/components/PageViewTracker';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { readUser } from '@/lib/session';
 import { routing, type Locale } from '@/i18n/routing';
 
@@ -107,6 +108,7 @@ export default async function LocaleLayout(props: {
             {t('skipToContent')}
           </a>
           <PageViewTracker />
+          <GoogleAnalytics />
           <Navbar locale={locale as Locale} user={me} />
           <main id="content">{props.children}</main>
           <SiteFooter locale={locale as Locale} />
