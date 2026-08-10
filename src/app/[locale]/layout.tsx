@@ -9,7 +9,6 @@ import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
 import { PageViewTracker } from '@/components/PageViewTracker';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
-import { readUser } from '@/lib/session';
 import { routing, type Locale } from '@/i18n/routing';
 
 import '../globals.css';
@@ -95,7 +94,6 @@ export default async function LocaleLayout(props: {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'common' });
-  const me = await readUser();
 
   return (
     <html lang={locale} data-board="ink" suppressHydrationWarning>
@@ -109,7 +107,7 @@ export default async function LocaleLayout(props: {
           </a>
           <PageViewTracker />
           <GoogleAnalytics />
-          <Navbar locale={locale as Locale} user={me} />
+          <Navbar locale={locale as Locale} />
           <main id="content">{props.children}</main>
           <SiteFooter locale={locale as Locale} />
         </NextIntlClientProvider>

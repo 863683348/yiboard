@@ -22,6 +22,8 @@ export async function generateMetadata(props: {
   };
 }
 
+export const revalidate = 3600;
+
 export default async function PlayPage(props: {
   params: Promise<{ locale: string }>;
   searchParams: SearchParams;

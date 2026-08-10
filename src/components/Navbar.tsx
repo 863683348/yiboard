@@ -7,7 +7,6 @@ import { CaretDown, Check, List, Moon, SignOut, Sun, Translate, X } from '@phosp
 import { Link, usePathname } from '@/i18n/navigation';
 import { LOCALE_LABELS, routing, type Locale } from '@/i18n/routing';
 import { useAppearance, type BoardSkin } from '@/components/useAppearance';
-import type { UserRecord } from '@/lib/store/types';
 
 const NAV_ITEMS = [
   { href: '/play', key: 'play' },
@@ -126,12 +125,29 @@ function MenuRow({
   );
 }
 
-export function Navbar({ locale, user }: { locale: Locale; user: UserRecord | null }) {
+export function Navbar({ locale }: { locale: Locale }) {
   const t = useTranslations('nav');
   const brand = useTranslations('brand');
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<{ displayName: string; username: string | null } | null>(null);
   const { theme, board, setTheme, setBoard, mounted } = useAppearance();
+
+  // 客户端自取用户态（服务端不再读 cookie → 页面可静态缓存，降低 FOT）
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/me', { cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: { user?: { displayName: string; username: string | null } | null } | null) => {
+        if (!cancelled && data && data.user) setUser(data.user);
+      })
+      .catch(() => {
+        /* 失败静默：按未登录处理 */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -146,6 +162,7 @@ export function Navbar({ locale, user }: { locale: Locale; user: UserRecord | nu
     } catch {
       /* 即使请求失败也继续跳转，cookie 已失效时无副作用 */
     }
+    setUser(null);
     window.location.assign(`/${locale}`);
   }
 

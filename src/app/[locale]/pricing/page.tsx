@@ -15,6 +15,8 @@ export async function generateMetadata(props: {
 
 const TIERS = ['free', 'plus', 'pro'] as const;
 
+export const revalidate = 86400;
+
 export default async function PricingPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
   setRequestLocale(locale);

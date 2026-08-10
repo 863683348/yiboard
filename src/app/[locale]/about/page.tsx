@@ -13,6 +13,8 @@ export async function generateMetadata(props: {
   return { title: t('title'), description: t('lead'), alternates: localeAlternates('about', locale) };
 }
 
+export const revalidate = 86400;
+
 export default async function AboutPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
