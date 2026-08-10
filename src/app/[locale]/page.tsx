@@ -14,7 +14,7 @@ import { VisitCounter } from '@/components/VisitCounter';
 import { Link } from '@/i18n/navigation';
 import { RANKS, STARTING_ELO } from '@/lib/rank';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export default async function HomePage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
