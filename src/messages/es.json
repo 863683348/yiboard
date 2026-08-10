@@ -26,7 +26,8 @@
     "boardKaya": "Madera kaya",
     "boardSlate": "Piedra azul",
     "pricing": "Precios",
-    "signIn": "Entrar / Registrarse"
+    "signIn": "Entrar / Registrarse",
+    "signOut": "Cerrar sesión"
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",

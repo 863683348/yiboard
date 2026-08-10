@@ -26,7 +26,8 @@
     "boardInk": "墨石",
     "boardKaya": "榧木",
     "boardSlate": "青石",
-    "signIn": "登录 / 注册"
+    "signIn": "登录 / 注册",
+    "signOut": "退出登录"
   },
   "home": {
     "eyebrow": "免费 · 无需注册",
