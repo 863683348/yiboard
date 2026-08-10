@@ -3,7 +3,6 @@ import { Archivo, Inter } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { headers } from 'next/headers';
 
 import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -43,12 +42,12 @@ export async function generateMetadata(props: {
     routing.locales.map((l) => [l, l === routing.defaultLocale ? '/' : `/${l}`]),
   );
 
-  // 自愈式基准域名：取请求 Host，避免 SITE_URL 环境变量残留旧域名时 canonical/OG 输出错。
-  const host = (await headers()).get('host');
-  const siteUrl = host ? `https://${host}` : SITE_URL;
-
+  // metadataBase 用 env 兜底常量（官方推荐做法）。
+  // ⚠ 不要改回 headers()/request host：在 generateMetadata 里调用任何动态 API
+  // （headers/cookies）会把整条路由标记为动态渲染，revalidate/ISR 全部失效
+  // （2026-08-10 FOT 优化踩坑：因此 how-to 等页面响应头变成 private no-store）。
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t('title'),
       template: '%s — YiBoard',
