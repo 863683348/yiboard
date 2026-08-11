@@ -19,6 +19,10 @@ Disallow: /pt-BR/api/
 Sitemap: ${base}/sitemap.xml
 `;
   return new NextResponse(body, {
-    headers: { 'content-type': 'text/plain; charset=utf-8' },
+    headers: {
+      'content-type': 'text/plain; charset=utf-8',
+      // 同 sitemap.xml/route.ts：route handler 必须显式设置 Cache-Control
+      'cache-control': 'public, s-maxage=86400, stale-while-revalidate=604800',
+    },
   });
 }
