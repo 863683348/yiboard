@@ -49,10 +49,10 @@ export async function generateMetadata(props: {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: t('title'),
+      default: t('home.title'),
       template: '%s — YiBoard',
     },
-    description: t('description'),
+    description: t('home.description'),
     alternates: {
       canonical: locale === routing.defaultLocale ? '/' : `/${locale}`,
       languages: { ...languages, 'x-default': '/' },
@@ -60,15 +60,15 @@ export async function generateMetadata(props: {
     openGraph: {
       type: 'website',
       siteName: 'YiBoard',
-      title: t('title'),
-      description: t('description'),
+      title: t('home.title'),
+      description: t('home.description'),
       locale,
-      images: [{ url: '/og.png', width: 1200, height: 630, alt: t('title') }],
+      images: [{ url: '/og.png', width: 1200, height: 630, alt: t('ogAlt') }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
+      title: t('home.title'),
+      description: t('home.description'),
       images: ['/og.png'],
     },
     robots: { index: true, follow: true },

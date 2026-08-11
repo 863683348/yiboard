@@ -32,7 +32,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
     name: 'YiBoard',
     applicationCategory: 'GameApplication',
     operatingSystem: 'Any modern browser',
-    description: meta('description'),
+    description: meta('home.description'),
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     inLanguage: ['en', 'zh', 'es', 'ja', 'pt-BR'],
   };

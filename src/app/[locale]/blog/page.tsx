@@ -9,8 +9,8 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const t = await getTranslations({ locale, namespace: 'blog' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('blog', locale) };
+  const meta = await getTranslations({ locale, namespace: 'meta' });
+  return { title: meta('blog.title'), description: meta('blog.description'), alternates: localeAlternates('blog', locale) };
 }
 
 export default async function BlogPage(props: { params: Promise<{ locale: string }> }) {

@@ -1,8 +1,34 @@
 {
   "meta": {
-    "title": "YiBoard — Gomoku, Xiangqi and Go, playable in your browser",
-    "description": "Play Gomoku free against a real engine or a friend. No account, no download. Climb an eighteen-rung ladder from Ninth Grade to Ninth Dan. Xiangqi and Go are next.",
-    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones"
+    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones",
+    "home": {
+      "title": "Gomoku Online Free — Five in a Row vs AI or Real Players",
+      "description": "Play gomoku free in your browser — no account, no download. Battle the AI, invite a friend, or get matched with a real player instantly. Climb the 18-rank ladder from Ninth Grade to Ninth Dan."
+    },
+    "play": {
+      "title": "Play Gomoku Online — vs AI, Friends or Random Players",
+      "description": "Three ways to play gomoku free: challenge the built-in AI, open a friend room, or hit random match to face a real player. No sign-up required."
+    },
+    "rankings": {
+      "title": "Gomoku Rankings & Elo Ratings — Global Leaderboard",
+      "description": "See where you stand in the global gomoku ladder. Live Elo ratings across 18 ranks, from Ninth Grade to Ninth Dan."
+    },
+    "howTo": {
+      "title": "How to Play Gomoku: Rules in 5 Minutes",
+      "description": "Learn gomoku rules fast: five in a row wins, black moves first, plus basic tactics like open fours and double threats. Start your first game right now."
+    },
+    "about": {
+      "title": "About YiBoard — Free Browser Gomoku",
+      "description": "YiBoard is a free browser gomoku: no ads in the way, fair play first, and every game counts toward your rank."
+    },
+    "pricing": {
+      "title": "YiBoard Pricing — Free Forever, No Ads, No Account",
+      "description": "YiBoard is 100% free to play. No subscriptions, no ads, no account required."
+    },
+    "blog": {
+      "title": "Gomoku Strategy & Tips — YiBoard Blog",
+      "description": "Gomoku strategy guides, opening theory, and product updates from the YiBoard team."
+    }
   },
   "brand": {
     "name": "YiBoard",

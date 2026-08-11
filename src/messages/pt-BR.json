@@ -1,8 +1,34 @@
 {
   "meta": {
-    "title": "YiBoard — Gomoku, Xiangqi e Go direto no navegador",
-    "description": "Jogue Gomoku de graça contra um motor de verdade ou contra um amigo. Sem conta, sem download. Suba uma escada de dezoito degraus, do Nono Grau ao Nono Dan. Xiangqi e Go vêm depois.",
-    "ogAlt": "Um tabuleiro de Gomoku 15 por 15 com pedras pretas e brancas"
+    "ogAlt": "Um tabuleiro de Gomoku 15×15 com pedras pretas e brancas",
+    "home": {
+      "title": "Gomoku online grátis — cinco em linha contra a IA ou jogadores reais",
+      "description": "Jogue gomoku grátis no navegador, sem conta e sem download. Enfrente a IA, chame um amigo ou seja emparelhado com um jogador real na hora. Suba os 18 níveis, do Nono Grau ao Nono Dan."
+    },
+    "play": {
+      "title": "Jogar Gomoku online — contra IA, amigos ou jogadores aleatórios",
+      "description": "Três modos grátis: desafie a IA, abra uma sala privada ou use o pareamento aleatório para enfrentar um jogador real. Sem cadastro."
+    },
+    "rankings": {
+      "title": "Ranking de Gomoku e Elo — classificação global",
+      "description": "Veja sua posição na classificação global de gomoku. Elo ao vivo em 18 níveis, do Nono Grau ao Nono Dan."
+    },
+    "howTo": {
+      "title": "Como jogar Gomoku: regras em 5 minutos",
+      "description": "Aprenda rápido: cinco em linha vence, as pretas jogam primeiro, e táticas como quatros abertos e ameaças duplas."
+    },
+    "about": {
+      "title": "Sobre a YiBoard — Gomoku grátis no navegador",
+      "description": "A YiBoard é um gomoku grátis no navegador: sem anúncios, fair play e cada partida conta para o seu nível."
+    },
+    "pricing": {
+      "title": "Preços da YiBoard — grátis para sempre, sem anúncios",
+      "description": "A YiBoard é 100% grátis: sem assinatura, sem anúncios, sem conta."
+    },
+    "blog": {
+      "title": "Estratégia e dicas de Gomoku — blog da YiBoard",
+      "description": "Guias de estratégia, teoria de aberturas e novidades da equipe YiBoard."
+    }
   },
   "brand": {
     "name": "YiBoard",
