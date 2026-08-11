@@ -16,7 +16,8 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
-  return { title: meta('rankings.title'), description: meta('rankings.description'), alternates: localeAlternates('rankings', locale) };
+  return { title: meta('rankings.title'), description: meta('rankings.description'),
+    keywords: meta('rankings.keywords'), alternates: localeAlternates('rankings', locale) };
 }
 
 export default async function RankingsPage(props: { params: Promise<{ locale: string }> }) {

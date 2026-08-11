@@ -53,6 +53,7 @@ export async function generateMetadata(props: {
       template: '%s — YiBoard',
     },
     description: t('home.description'),
+    keywords: t('home.keywords'),
     alternates: {
       canonical: locale === routing.defaultLocale ? '/' : `/${locale}`,
       languages: { ...languages, 'x-default': '/' },

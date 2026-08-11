@@ -10,7 +10,8 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
-  return { title: meta('howTo.title'), description: meta('howTo.description'), alternates: localeAlternates('how-to', locale) };
+  return { title: meta('howTo.title'), description: meta('howTo.description'),
+    keywords: meta('howTo.keywords'), alternates: localeAlternates('how-to', locale) };
 }
 
 export const revalidate = 86400;

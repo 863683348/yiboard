@@ -3,31 +3,38 @@
     "ogAlt": "Un tablero de Gomoku de 15×15 con piedras negras y blancas",
     "home": {
       "title": "Gomoku en línea gratis — cinco en raya contra IA o jugadores reales",
-      "description": "Juega gomoku gratis en tu navegador, sin cuenta ni descarga. Combate a la IA, invita a un amigo o enfréntate a un jugador real al instante. Sube los 18 rangos, de Noveno Grado a Noveno Dan."
+      "description": "Juega gomoku gratis en tu navegador, sin cuenta ni descarga. Combate a la IA, invita a un amigo o enfréntate a un jugador real al instante. Sube los 18 rangos, de Noveno Grado a Noveno Dan.",
+      "keywords": "gomoku en linea gratis, jugar gomoku, cinco en raya, gomoku contra ia, gomoku con amigos, gomoku multijugador"
     },
     "play": {
       "title": "Jugar Gomoku en línea — contra IA, amigos o jugadores aleatorios",
-      "description": "Tres formas gratis de jugar: reta a la IA, abre una sala privada o emparejamiento aleatorio con un jugador real. Sin registro."
+      "description": "Tres formas gratis de jugar: reta a la IA, abre una sala privada o emparejamiento aleatorio con un jugador real. Sin registro.",
+      "keywords": "jugar gomoku en linea, gomoku contra ia, gomoku dos jugadores, gomoku emparejamiento, gomoku sala privada"
     },
     "rankings": {
       "title": "Ranking de Gomoku y Elo — clasificación mundial",
-      "description": "Mira tu posición en la clasificación mundial de gomoku. Elo en vivo en 18 rangos, de Noveno Grado a Noveno Dan."
+      "description": "Mira tu posición en la clasificación mundial de gomoku. Elo en vivo en 18 rangos, de Noveno Grado a Noveno Dan.",
+      "keywords": "ranking gomoku, elo gomoku, clasificacion gomoku, rangos gomoku"
     },
     "howTo": {
       "title": "Cómo jugar Gomoku: reglas en 5 minutos",
-      "description": "Aprende rápido: gana con cinco en raya, las negras mueven primero, y tácticas como cuartas abiertas y dobles amenazas."
+      "description": "Aprende rápido: gana con cinco en raya, las negras mueven primero, y tácticas como cuartas abiertas y dobles amenazas.",
+      "keywords": "como jugar gomoku, reglas gomoku, reglas cinco en raya, estrategia gomoku"
     },
     "about": {
       "title": "Acerca de YiBoard — Gomoku gratis en el navegador",
-      "description": "YiBoard es un gomoku gratis en el navegador: sin anuncios, juego limpio y cada partida cuenta para tu rango."
+      "description": "YiBoard es un gomoku gratis en el navegador: sin anuncios, juego limpio y cada partida cuenta para tu rango.",
+      "keywords": "yiboard, gomoku gratis, gomoku navegador"
     },
     "pricing": {
       "title": "Precios de YiBoard — gratis para siempre, sin anuncios",
-      "description": "YiBoard es 100% gratis: sin suscripciones, sin anuncios, sin cuenta."
+      "description": "YiBoard es 100% gratis: sin suscripciones, sin anuncios, sin cuenta.",
+      "keywords": "gomoku gratis, gomoku sin anuncios, gomoku sin cuenta"
     },
     "blog": {
       "title": "Estrategia y consejos de Gomoku — blog de YiBoard",
-      "description": "Guías de estrategia, teoría de aperturas y novedades del equipo de YiBoard."
+      "description": "Guías de estrategia, teoría de aperturas y novedades del equipo de YiBoard.",
+      "keywords": "estrategia gomoku, consejos gomoku, aperturas gomoku"
     }
   },
   "brand": {

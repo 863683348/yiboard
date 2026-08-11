@@ -14,6 +14,7 @@ export async function generateMetadata(props: {
   return {
     title: meta('play.title'),
     description: meta('play.description'),
+    keywords: meta('play.keywords'),
     alternates: localeAlternates('play', locale),
   };
 }
