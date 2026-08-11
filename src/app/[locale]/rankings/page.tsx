@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
+import { MineBadge } from '@/components/MineBadge';
 import { RankBadge } from '@/components/RankBadge';
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
-import { readUser } from '@/lib/session';
 import { getStore } from '@/lib/store';
 
-export const dynamic = 'force-dynamic';
+// 排行榜数据来自 Neon DB，5 分钟 ISR 重生足够；"我"的高亮已下沉到客户端
+// MineBadge（fetch /api/me），服务端不再读 session → 页面可被边缘缓存。
+export const revalidate = 300;
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
@@ -22,7 +24,7 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'rankings' });
-  const [entries, me] = await Promise.all([getStore().listRankings(100), readUser()]);
+  const entries = await getStore().listRankings(100);
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-10)' }}>
@@ -73,7 +75,6 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
             </thead>
             <tbody>
               {entries.map((entry) => {
-                const mine = me?.id === entry.userId;
                 const winRate =
                   entry.gamesPlayed > 0
                     ? Math.round((entry.gamesWon / entry.gamesPlayed) * 100)
@@ -85,11 +86,7 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
                     </td>
                     <td style={{ color: 'var(--fg)', fontWeight: 'var(--weight-emphasis)' }}>
                       {entry.displayName}
-                      {mine ? (
-                        <span className="yb-chip yb-chip-accent" style={{ marginLeft: 8 }}>
-                          {t('you')}
-                        </span>
-                      ) : null}
+                      <MineBadge userId={entry.userId} />
                     </td>
                     <td>
                       <RankBadge elo={entry.elo} size="sm" />

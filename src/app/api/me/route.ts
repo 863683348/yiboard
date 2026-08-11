@@ -9,6 +9,7 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   const user = await readUser();
   return ok({
-    user: user ? { displayName: user.displayName, username: user.username } : null,
+    // id 供排行榜 MineBadge 客户端判断"我"（rankings 页面不再服务端读 session）
+    user: user ? { id: user.id, displayName: user.displayName, username: user.username } : null,
   });
 }
