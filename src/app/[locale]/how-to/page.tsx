@@ -11,7 +11,7 @@ export async function generateMetadata(props: {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return { title: meta('howTo.title'), description: meta('howTo.description'),
-    keywords: meta('howTo.keywords'), alternates: localeAlternates('how-to', locale) };
+    keywords: meta('howTo.keywords'), openGraph: { title: meta('howTo.title'), description: meta('howTo.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('howTo.title'), description: meta('howTo.description'), images: ['/og.png'] }, alternates: localeAlternates('how-to', locale) };
 }
 
 export const revalidate = 86400;

@@ -11,7 +11,7 @@ export async function generateMetadata(props: {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return { title: meta('pricing.title'), description: meta('pricing.description'),
-    keywords: meta('pricing.keywords'), alternates: localeAlternates('pricing', locale) };
+    keywords: meta('pricing.keywords'), openGraph: { title: meta('pricing.title'), description: meta('pricing.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('pricing.title'), description: meta('pricing.description'), images: ['/og.png'] }, alternates: localeAlternates('pricing', locale) };
 }
 
 const TIERS = ['free', 'plus', 'pro'] as const;

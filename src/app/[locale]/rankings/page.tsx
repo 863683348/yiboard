@@ -17,7 +17,7 @@ export async function generateMetadata(props: {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return { title: meta('rankings.title'), description: meta('rankings.description'),
-    keywords: meta('rankings.keywords'), alternates: localeAlternates('rankings', locale) };
+    keywords: meta('rankings.keywords'), openGraph: { title: meta('rankings.title'), description: meta('rankings.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('rankings.title'), description: meta('rankings.description'), images: ['/og.png'] }, alternates: localeAlternates('rankings', locale) };
 }
 
 export default async function RankingsPage(props: { params: Promise<{ locale: string }> }) {

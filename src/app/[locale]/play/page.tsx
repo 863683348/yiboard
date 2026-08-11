@@ -15,7 +15,7 @@ export async function generateMetadata(props: {
     title: meta('play.title'),
     description: meta('play.description'),
     keywords: meta('play.keywords'),
-    alternates: localeAlternates('play', locale),
+    openGraph: { title: meta('play.title'), description: meta('play.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('play.title'), description: meta('play.description'), images: ['/og.png'] }, alternates: localeAlternates('play', locale),
   };
 }
 

@@ -11,7 +11,7 @@ export async function generateMetadata(props: {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return { title: meta('blog.title'), description: meta('blog.description'),
-    keywords: meta('blog.keywords'), alternates: localeAlternates('blog', locale) };
+    keywords: meta('blog.keywords'), openGraph: { title: meta('blog.title'), description: meta('blog.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('blog.title'), description: meta('blog.description'), images: ['/og.png'] }, alternates: localeAlternates('blog', locale) };
 }
 
 export default async function BlogPage(props: { params: Promise<{ locale: string }> }) {
