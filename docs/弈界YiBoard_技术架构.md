@@ -375,7 +375,7 @@ GameRoomDO 生成 finalize payload（含 roomId 作幂等键、完整 moves、re
 |---|---|---|---|---|
 | **五子棋 Gomoku** | **P0 必做** | 自研 minimax + α-β 剪枝 + 置换表 + 启发式排序；先出纯 TypeScript 版（Web Worker），性能不足再用 Rust → `wasm-pack` 编译 | 自有 | MVP 内 |
 | **连珠 Renju（禁手）** | P1 | 在 `@yiboard/rules` 上叠加三三/四四/长连禁手判定；引擎复用 Gomoku，评估函数加禁手惩罚项 | 自有 | MVP 后 |
-| **中国象棋 Xiangqi** | P1 | 集成 **XQWLight**（约 1500 行 C，专为嵌入设计，含开局库与置换表）→ Emscripten 编译 WASM。备选 ElephantEye（更强但体积大得多） | **必须在 P1 启动前完成许可审查**，XQWLight 常见为免费/开源但需确认具体授权文本 | 规划 |
+| **中国象棋 Xiangqi** | **下阶段**（主理人 2026-08-12 拍板：放入下阶段实现） | 集成 **ElephantEye（LGPL-2.1）** → Emscripten 编译 WASM 独立模块（嵌入闭源前端合规）。~~XQWLight（GPL-2.0）已否决：强 Copyleft，WASM 嵌入触发传染，前端须整体开源~~ | **已审查（LIC-2026-001）**：ElephantEye = LGPL-2.1 ✅；XQWLight = GPL-2.0 ❌ | 规划（下阶段） |
 | **围棋 Go** | **P2，MVP 明确不做** | KataGo 需 GPU 推理，无法客户端跑。路径：① 接入外部 GPU 推理服务（Replicate / 自建 GPU 实例）做 AI 复盘，非实时对弈；② 或直接接 OGS API 做「跳转/联合登录」而非自建 | KataGo 为 MIT，权重另有许可 | **规划占位，不进 MVP** |
 | 六子棋 Connect6 / 黑白棋 Othello | P2 | 规则简单，复用 Gomoku 引擎框架换评估函数 | 自有 | 规划 |
 
@@ -1405,7 +1405,7 @@ PRD 文化叙事需真实器物摄影（棋具、古籍、场景），**Q3 已�
 | R4 | 自研五子棋引擎强度不足，被玩家嘲笑 | 口碑受损，首局体验崩塌 | 中高 | 50 局面战术测试集做门禁；Hard 难度上线前必须与开源引擎对战 100 局胜率 ≥ 40% | MVP 内 |
 | R5 | Neon 免费额度（计算时长/存储）在流量起来后突然超限 | 服务中断 | 中 | 用量告警设在 70%；复盘页 ISR 缓存降低 DB 压力；棋谱冷数据归档 R2 | MVP 上线前 |
 | R6 | Vercel Function 冷启动影响首屏 API | 首次访问慢，跳出率高 | 中 | 关键 GET 端点尽量 ISR/静态化；Fluid Compute 已大幅缓解；必要时开 Vercel Cron 保活 | MVP 内 |
-| R7 | XQWLight 等开源引擎许可不明 | 象棋上线被迫下架或重写 | 中 | **P1 启动前完成许可审查并出具书面结论**，不合规则改用明确 GPL/MIT 的替代或自研 | P1 前 |
+| R7 | 开源象棋引擎许可不明 | 象棋上线被迫下架或重写 | 中 | **RESOLVED 2026-08-12（LIC-2026-001）**：已确认 ElephantEye=LGPL-2.1（✅ 兼容闭源，选定）；XQWLight=GPL-2.0（❌ 已否决）。采用 ElephantEye WASM 方案即消除该风险 | 已闭环 |
 | R8 | 棋谱页大量生成低质页面被 Google 判为 thin content | 全站 SEO 权重受损 | 中 | 只索引 `move_count >= 20 且非弃局` 的对局；其余 `noindex`；复盘页补充自动生成的局面解说文字 | P1 |
 | R9 | GDPR 删除请求与棋谱保留冲突 | 合规争议 | 低中 | 采用匿名化保留而非删除，并在隐私政策显式说明法律依据；建议上线前做一次外部法务审阅 | MVP 上线前 |
 | R10 | 多语言译制质量差（机翻味）导致本地用户不信任 | 出海核心竞争力失效 | 中高 | 术语表先行 + 母语者校对（志愿者激励）；上线前每语言至少 1 名母语者通读全站 | MVP 内 |
