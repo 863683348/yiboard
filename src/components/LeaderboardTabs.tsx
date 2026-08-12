@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { MineBadge } from './MineBadge';
+
 export interface LeaderboardRow {
   position: number;
   userId: string;
@@ -106,6 +108,7 @@ export function LeaderboardTabs({
                   </td>
                   <td style={{ color: 'var(--fg)', fontWeight: 'var(--weight-emphasis)' }}>
                     {r.displayName}
+                    <MineBadge userId={r.userId} />
                   </td>
                   <td style={{ color: 'var(--fg-2)' }}>{r.rankName}</td>
                   <td className="yb-num" style={{ textAlign: 'right' }}>

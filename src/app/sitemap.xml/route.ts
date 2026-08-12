@@ -77,6 +77,11 @@ ${alternates}
 </urlset>`;
 
   return new NextResponse(xml, {
-    headers: { 'content-type': 'application/xml; charset=utf-8' },
+    headers: {
+      'content-type': 'application/xml; charset=utf-8',
+      // route.ts 不走 next.config headers() 规则（该规则只作用于页面/metadata 路由），
+      // 必须在此显式设置 Cache-Control，否则每次爬虫抓取都执行函数（FOT/调用飙升）。
+      'cache-control': 'public, s-maxage=86400, stale-while-revalidate=604800',
+    },
   });
 }
