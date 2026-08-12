@@ -18,7 +18,8 @@ export async function generateMetadata(props: {
     title: t('title'),
     description: t('title'),
     alternates: localeAlternates(`share/${id}`, locale),
-    robots: { index: true, follow: true },
+    // 分享卡是社交传播用途（用户主动发链接），动态且可无限生成，收录会稀释站点质量 → noindex
+    robots: { index: false, follow: false },
   };
 }
 

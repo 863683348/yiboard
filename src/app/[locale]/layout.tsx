@@ -3,11 +3,11 @@ import { Archivo, Inter } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { headers } from 'next/headers';
 
 import { Navbar } from '@/components/Navbar';
 import { SiteFooter } from '@/components/SiteFooter';
-import { readUser } from '@/lib/session';
+import { PageViewTracker } from '@/components/PageViewTracker';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { routing, type Locale } from '@/i18n/routing';
 
 import '../globals.css';
@@ -28,6 +28,16 @@ const inter = Inter({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yiboardgame.com';
 
+/** 全站 Organization 结构化数据（layout 级注入，所有页面受益）。 */
+const ORGANIZATION_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'YiBoard',
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon.svg`,
+  description: 'Play Chinese strategy board games online — Gomoku, Renju and more. Free, no signup.',
+};
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -42,17 +52,18 @@ export async function generateMetadata(props: {
     routing.locales.map((l) => [l, l === routing.defaultLocale ? '/' : `/${l}`]),
   );
 
-  // 自愈式基准域名：取请求 Host，避免 SITE_URL 环境变量残留旧域名时 canonical/OG 输出错。
-  const host = (await headers()).get('host');
-  const siteUrl = host ? `https://${host}` : SITE_URL;
-
+  // metadataBase 用 env 兜底常量（官方推荐做法）。
+  // ⚠ 不要改回 headers()/request host：在 generateMetadata 里调用任何动态 API
+  // （headers/cookies）会把整条路由标记为动态渲染，revalidate/ISR 全部失效
+  // （2026-08-10 FOT 优化踩坑：因此 how-to 等页面响应头变成 private no-store）。
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(SITE_URL),
     title: {
-      default: t('title'),
+      default: t('home.title'),
       template: '%s — YiBoard',
     },
-    description: t('description'),
+    description: t('home.description'),
+    keywords: t('home.keywords'),
     alternates: {
       canonical: locale === routing.defaultLocale ? '/' : `/${locale}`,
       languages: { ...languages, 'x-default': '/' },
@@ -60,15 +71,15 @@ export async function generateMetadata(props: {
     openGraph: {
       type: 'website',
       siteName: 'YiBoard',
-      title: t('title'),
-      description: t('description'),
+      title: t('home.title'),
+      description: t('home.description'),
       locale,
-      images: [{ url: '/og.png', width: 1200, height: 630, alt: t('title') }],
+      images: [{ url: '/og.png', width: 1200, height: 630, alt: t('ogAlt') }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
+      title: t('home.title'),
+      description: t('home.description'),
       images: ['/og.png'],
     },
     robots: { index: true, follow: true },
@@ -93,19 +104,24 @@ export default async function LocaleLayout(props: {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'common' });
-  const me = await readUser();
 
   return (
     <html lang={locale} data-board="ink" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSONLD) }}
+        />
       </head>
       <body className={`${archivo.variable} ${inter.variable}`}>
         <NextIntlClientProvider>
           <a className="yb-skip" href="#content">
             {t('skipToContent')}
           </a>
-          <Navbar locale={locale as Locale} user={me} />
+          <PageViewTracker />
+          <GoogleAnalytics />
+          <Navbar locale={locale as Locale} />
           <main id="content">{props.children}</main>
           <SiteFooter locale={locale as Locale} />
         </NextIntlClientProvider>

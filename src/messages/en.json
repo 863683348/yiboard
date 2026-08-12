@@ -1,8 +1,41 @@
 {
   "meta": {
-    "title": "YiBoard — Gomoku, Xiangqi and Go, playable in your browser",
-    "description": "Play Gomoku free against a real engine or a friend. No account, no download. Climb an eighteen-rung ladder from Ninth Grade to Ninth Dan. Xiangqi and Go are next.",
-    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones"
+    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones",
+    "home": {
+      "title": "Gomoku Online Free — Five in a Row vs AI or Real Players",
+      "description": "Play gomoku free in your browser — no account, no download. Battle the AI, invite a friend, or get matched with a real player instantly. Climb the 18-rank ladder from Ninth Grade to Ninth Dan.",
+      "keywords": "gomoku online free, play gomoku, five in a row, gomoku vs ai, gomoku with friends, gomoku multiplayer, gomoku no download"
+    },
+    "play": {
+      "title": "Play Gomoku Online — vs AI, Friends or Random Players",
+      "description": "Three ways to play gomoku free: challenge the built-in AI, open a friend room, or hit random match to face a real player. No sign-up required.",
+      "keywords": "play gomoku online, gomoku vs ai, gomoku two player, gomoku random match, gomoku friend room, gomoku multiplayer"
+    },
+    "rankings": {
+      "title": "Gomoku Rankings & Elo Ratings — Global Leaderboard",
+      "description": "See where you stand in the global gomoku ladder. Live Elo ratings across 18 ranks, from Ninth Grade to Ninth Dan.",
+      "keywords": "gomoku rankings, gomoku elo, gomoku leaderboard, gomoku ranks, five in a row ratings, gomoku ladder"
+    },
+    "howTo": {
+      "title": "How to Play Gomoku: Rules in 5 Minutes",
+      "description": "Learn gomoku rules fast: five in a row wins, black moves first, plus basic tactics like open fours and double threats. Start your first game right now.",
+      "keywords": "how to play gomoku, gomoku rules, five in a row rules, gomoku strategy, gomoku tactics, gomoku guide"
+    },
+    "about": {
+      "title": "About YiBoard — Free Browser Gomoku",
+      "description": "YiBoard is a free browser gomoku: no ads in the way, fair play first, and every game counts toward your rank.",
+      "keywords": "yiboard, free gomoku, browser gomoku, gomoku app, no ads gomoku"
+    },
+    "pricing": {
+      "title": "YiBoard Pricing — Free Forever, No Ads, No Account",
+      "description": "YiBoard is 100% free to play. No subscriptions, no ads, no account required.",
+      "keywords": "gomoku free, gomoku no ads, gomoku no account, free browser game, free online board game"
+    },
+    "blog": {
+      "title": "Gomoku Strategy & Tips — YiBoard Blog",
+      "description": "Gomoku strategy guides, opening theory, and product updates from the YiBoard team.",
+      "keywords": "gomoku strategy, gomoku tips, gomoku openings, five in a row guide, gomoku theory"
+    }
   },
   "brand": {
     "name": "YiBoard",
@@ -13,6 +46,7 @@
     "play": "Play",
     "rankings": "Rankings",
     "howTo": "How to play",
+    "blog": "Blog",
     "about": "About",
     "profile": "Profile",
     "pricing": "Pricing",
@@ -26,7 +60,8 @@
     "boardInk": "Ink slate",
     "boardKaya": "Kaya wood",
     "boardSlate": "Bluestone",
-    "signIn": "Sign in / Register"
+    "signIn": "Sign in / Register",
+    "signOut": "Sign out"
   },
   "home": {
     "eyebrow": "Free · No account required",
@@ -182,7 +217,10 @@
     "tip3Body": "Beginners answer an open three. Stronger players answer an open two when it points at a strong direction. If you are always reacting, you have already lost the initiative.",
     "notationTitle": "Reading the notation",
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
-    "cta": "Try it against the engine"
+    "cta": "Try it against the engine",
+    "relatedTitle": "Go deeper",
+    "rulesLink": "Gomoku rules & shapes",
+    "blogLink": "Strategy blog"
   },
   "about": {
     "title": "About YiBoard",
@@ -253,6 +291,8 @@
     "terms": "Terms of Service",
     "faq": "FAQ",
     "blog": "Blog",
+    "puzzle": "Daily Puzzle",
+    "games": "Game Library",
     "contact": "Contact Us"
   },
   "pricing": {

@@ -16,7 +16,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'profile' });
-  return { title: t('title'), alternates: localeAlternates('profile', locale) };
+  return { title: t('title'), alternates: localeAlternates('profile', locale), robots: { index: false, follow: false } };
 }
 
 /** 把一局战绩换算成"我"的视角：胜 / 负 / 和 */

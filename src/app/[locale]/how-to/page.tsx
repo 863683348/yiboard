@@ -9,15 +9,19 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const t = await getTranslations({ locale, namespace: 'howTo' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('how-to', locale) };
+  const meta = await getTranslations({ locale, namespace: 'meta' });
+  return { title: meta('howTo.title'), description: meta('howTo.description'),
+    keywords: meta('howTo.keywords'), openGraph: { title: meta('howTo.title'), description: meta('howTo.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('howTo.title'), description: meta('howTo.description'), images: ['/og.png'] }, alternates: localeAlternates('how-to', locale) };
 }
+
+export const revalidate = 86400;
 
 export default async function HowToPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'howTo' });
+  const l = locale === 'zh' ? 'zh' : 'en';
   const rules = ['rule1', 'rule2', 'rule3', 'rule4', 'rule5'] as const;
   const tips = [
     { title: 'tip1Title', body: 'tip1Body' },
@@ -25,8 +29,25 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
     { title: 'tip3Title', body: 'tip3Body' },
   ] as const;
 
+  const howToJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: t('title'),
+    description: t('sub'),
+    datePublished: '2026-08-12',
+    dateModified: '2026-08-12',
+    inLanguage: l,
+    author: { '@type': 'Organization', name: 'YiBoard' },
+    publisher: { '@type': 'Organization', name: 'YiBoard' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://yiboardgame.com/how-to' },
+  };
+
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
       <header style={{ maxWidth: '58ch' }}>
         <h1 className="yb-h2">{t('title')}</h1>
         <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>
@@ -130,6 +151,22 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
           >
             A1 · H8 · O15
           </p>
+        </div>
+      </section>
+
+      {/* ---------------- 延伸阅读（内部链接，强化 SEO 抓取） ---------------- */}
+      <section className="yb-section" style={{ maxWidth: 760 }}>
+        <SectionHead
+          icon={<TextAlignLeft size={18} weight="bold" aria-hidden />}
+          title={t('relatedTitle')}
+        />
+        <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)' }}>
+          <Link href="/gomoku-rules" className="yb-card" style={{ padding: 'var(--card-pad)', textDecoration: 'none', color: 'var(--fg)' }}>
+            {t('rulesLink')}
+          </Link>
+          <Link href="/blog" className="yb-card" style={{ padding: 'var(--card-pad)', textDecoration: 'none', color: 'var(--fg)' }}>
+            {t('blogLink')}
+          </Link>
         </div>
       </section>
 

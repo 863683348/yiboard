@@ -9,8 +9,15 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const t = await getTranslations({ locale, namespace: 'auth' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('auth', locale) };
+  return {
+    title: t('title'),
+    description: t('sub'),
+    alternates: localeAlternates('auth', locale),
+    robots: { index: false, follow: false },
+  };
 }
+
+export const revalidate = 86400;
 
 export default async function AuthPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;

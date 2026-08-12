@@ -1,8 +1,41 @@
 {
   "meta": {
-    "title": "YiBoard — Gomoku, Xiangqi e Go direto no navegador",
-    "description": "Jogue Gomoku de graça contra um motor de verdade ou contra um amigo. Sem conta, sem download. Suba uma escada de dezoito degraus, do Nono Grau ao Nono Dan. Xiangqi e Go vêm depois.",
-    "ogAlt": "Um tabuleiro de Gomoku 15 por 15 com pedras pretas e brancas"
+    "ogAlt": "Um tabuleiro de Gomoku 15×15 com pedras pretas e brancas",
+    "home": {
+      "title": "Gomoku online grátis — cinco em linha contra a IA ou jogadores reais",
+      "description": "Jogue gomoku grátis no navegador, sem conta e sem download. Enfrente a IA, chame um amigo ou seja emparelhado com um jogador real na hora. Suba os 18 níveis, do Nono Grau ao Nono Dan.",
+      "keywords": "gomoku online gratis, jogar gomoku, cinco em linha, gomoku contra ia, gomoku com amigos, gomoku multiplayer"
+    },
+    "play": {
+      "title": "Jogar Gomoku online — contra IA, amigos ou jogadores aleatórios",
+      "description": "Três modos grátis: desafie a IA, abra uma sala privada ou use o pareamento aleatório para enfrentar um jogador real. Sem cadastro.",
+      "keywords": "jogar gomoku online, gomoku contra ia, gomoku dois jogadores, gomoku pareamento, gomoku sala privada"
+    },
+    "rankings": {
+      "title": "Ranking de Gomoku e Elo — classificação global",
+      "description": "Veja sua posição na classificação global de gomoku. Elo ao vivo em 18 níveis, do Nono Grau ao Nono Dan.",
+      "keywords": "ranking gomoku, elo gomoku, classificacao gomoku, niveis gomoku"
+    },
+    "howTo": {
+      "title": "Como jogar Gomoku: regras em 5 minutos",
+      "description": "Aprenda rápido: cinco em linha vence, as pretas jogam primeiro, e táticas como quatros abertos e ameaças duplas.",
+      "keywords": "como jogar gomoku, regras gomoku, regras cinco em linha, estrategia gomoku"
+    },
+    "about": {
+      "title": "Sobre a YiBoard — Gomoku grátis no navegador",
+      "description": "A YiBoard é um gomoku grátis no navegador: sem anúncios, fair play e cada partida conta para o seu nível.",
+      "keywords": "yiboard, gomoku gratis, gomoku navegador"
+    },
+    "pricing": {
+      "title": "Preços da YiBoard — grátis para sempre, sem anúncios",
+      "description": "A YiBoard é 100% grátis: sem assinatura, sem anúncios, sem conta.",
+      "keywords": "gomoku gratis, gomoku sem anuncios, gomoku sem conta"
+    },
+    "blog": {
+      "title": "Estratégia e dicas de Gomoku — blog da YiBoard",
+      "description": "Guias de estratégia, teoria de aberturas e novidades da equipe YiBoard.",
+      "keywords": "estrategia gomoku, dicas gomoku, aberturas gomoku"
+    }
   },
   "brand": {
     "name": "YiBoard",
@@ -13,6 +46,7 @@
     "play": "Jogar",
     "rankings": "Ranking",
     "howTo": "Como jogar",
+    "blog": "Blog",
     "about": "O projeto",
     "profile": "Perfil",
     "openMenu": "Abrir menu",
@@ -26,7 +60,8 @@
     "boardKaya": "Madeira kaya",
     "boardSlate": "Pedra azul",
     "pricing": "Preços",
-    "signIn": "Entrar / Cadastrar"
+    "signIn": "Entrar / Cadastrar",
+    "signOut": "Sair"
   },
   "home": {
     "eyebrow": "Grátis · Sem conta",
@@ -182,7 +217,10 @@
     "tip3Body": "Iniciante responde a um três aberto. Jogador forte responde a um dois aberto quando ele aponta para uma direção perigosa. Se você só reage, a iniciativa já é do outro.",
     "notationTitle": "Lendo a notação",
     "notationBody": "As colunas vão de A a O da esquerda; as linhas de 1 a 15 de baixo para cima. O ponto central é H8. Usamos isso nas partidas compartilhadas e no seu histórico.",
-    "cta": "Teste contra o motor"
+    "cta": "Teste contra o motor",
+    "relatedTitle": "Aprofunde-se",
+    "rulesLink": "Regras e formas do gomoku",
+    "blogLink": "Blog de estratégia"
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -253,6 +291,8 @@
     "terms": "Termos de Serviço",
     "faq": "Perguntas frequentes",
     "blog": "Blog",
+    "puzzle": "Puzzle diário",
+    "games": "Biblioteca de partidas",
     "contact": "Fale conosco"
   },
   "common": {

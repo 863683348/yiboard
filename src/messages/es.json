@@ -1,8 +1,41 @@
 {
   "meta": {
-    "title": "YiBoard — Gomoku, Xiangqi y Go desde el navegador",
-    "description": "Juega Gomoku gratis contra un motor real o contra un amigo. Sin cuenta y sin descargas. Sube una escalera de dieciocho peldaños, de Noveno Grado a Noveno Dan. Xiangqi y Go vienen después.",
-    "ogAlt": "Un tablero de Gomoku de 15 por 15 con piedras blancas y negras"
+    "ogAlt": "Un tablero de Gomoku de 15×15 con piedras negras y blancas",
+    "home": {
+      "title": "Gomoku en línea gratis — cinco en raya contra IA o jugadores reales",
+      "description": "Juega gomoku gratis en tu navegador, sin cuenta ni descarga. Combate a la IA, invita a un amigo o enfréntate a un jugador real al instante. Sube los 18 rangos, de Noveno Grado a Noveno Dan.",
+      "keywords": "gomoku en linea gratis, jugar gomoku, cinco en raya, gomoku contra ia, gomoku con amigos, gomoku multijugador"
+    },
+    "play": {
+      "title": "Jugar Gomoku en línea — contra IA, amigos o jugadores aleatorios",
+      "description": "Tres formas gratis de jugar: reta a la IA, abre una sala privada o emparejamiento aleatorio con un jugador real. Sin registro.",
+      "keywords": "jugar gomoku en linea, gomoku contra ia, gomoku dos jugadores, gomoku emparejamiento, gomoku sala privada"
+    },
+    "rankings": {
+      "title": "Ranking de Gomoku y Elo — clasificación mundial",
+      "description": "Mira tu posición en la clasificación mundial de gomoku. Elo en vivo en 18 rangos, de Noveno Grado a Noveno Dan.",
+      "keywords": "ranking gomoku, elo gomoku, clasificacion gomoku, rangos gomoku"
+    },
+    "howTo": {
+      "title": "Cómo jugar Gomoku: reglas en 5 minutos",
+      "description": "Aprende rápido: gana con cinco en raya, las negras mueven primero, y tácticas como cuartas abiertas y dobles amenazas.",
+      "keywords": "como jugar gomoku, reglas gomoku, reglas cinco en raya, estrategia gomoku"
+    },
+    "about": {
+      "title": "Acerca de YiBoard — Gomoku gratis en el navegador",
+      "description": "YiBoard es un gomoku gratis en el navegador: sin anuncios, juego limpio y cada partida cuenta para tu rango.",
+      "keywords": "yiboard, gomoku gratis, gomoku navegador"
+    },
+    "pricing": {
+      "title": "Precios de YiBoard — gratis para siempre, sin anuncios",
+      "description": "YiBoard es 100% gratis: sin suscripciones, sin anuncios, sin cuenta.",
+      "keywords": "gomoku gratis, gomoku sin anuncios, gomoku sin cuenta"
+    },
+    "blog": {
+      "title": "Estrategia y consejos de Gomoku — blog de YiBoard",
+      "description": "Guías de estrategia, teoría de aperturas y novedades del equipo de YiBoard.",
+      "keywords": "estrategia gomoku, consejos gomoku, aperturas gomoku"
+    }
   },
   "brand": {
     "name": "YiBoard",
@@ -13,6 +46,7 @@
     "play": "Jugar",
     "rankings": "Clasificación",
     "howTo": "Cómo se juega",
+    "blog": "Blog",
     "about": "El proyecto",
     "profile": "Perfil",
     "openMenu": "Abrir menú",
@@ -26,7 +60,8 @@
     "boardKaya": "Madera kaya",
     "boardSlate": "Piedra azul",
     "pricing": "Precios",
-    "signIn": "Entrar / Registrarse"
+    "signIn": "Entrar / Registrarse",
+    "signOut": "Cerrar sesión"
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",
@@ -182,7 +217,10 @@
     "tip3Body": "El principiante responde a un tres abierto. El jugador fuerte responde a un dos abierto cuando apunta en una dirección peligrosa. Si siempre reaccionas, ya perdiste la iniciativa.",
     "notationTitle": "Leer la notación",
     "notationBody": "Las columnas van de la A a la O desde la izquierda; las filas del 1 al 15 desde abajo. El punto central es H8. Lo usamos en las partidas compartidas y en tu historial.",
-    "cta": "Pruébalo contra el motor"
+    "cta": "Pruébalo contra el motor",
+    "relatedTitle": "Saber más",
+    "rulesLink": "Reglas y formas del gomoku",
+    "blogLink": "Blog de estrategia"
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -253,6 +291,8 @@
     "terms": "Términos del servicio",
     "faq": "Preguntas frecuentes",
     "blog": "Blog",
+    "puzzle": "Puzzle diario",
+    "games": "Biblioteca de partidas",
     "contact": "Contacto"
   },
   "common": {

@@ -9,9 +9,12 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const t = await getTranslations({ locale, namespace: 'about' });
-  return { title: t('title'), description: t('lead'), alternates: localeAlternates('about', locale) };
+  const meta = await getTranslations({ locale, namespace: 'meta' });
+  return { title: meta('about.title'), description: meta('about.description'),
+    keywords: meta('about.keywords'), openGraph: { title: meta('about.title'), description: meta('about.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('about.title'), description: meta('about.description'), images: ['/og.png'] }, alternates: localeAlternates('about', locale) };
 }
+
+export const revalidate = 86400;
 
 export default async function AboutPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;

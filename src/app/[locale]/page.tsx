@@ -14,6 +14,8 @@ import { VisitCounter } from '@/components/VisitCounter';
 import { Link } from '@/i18n/navigation';
 import { RANKS, STARTING_ELO } from '@/lib/rank';
 
+export const revalidate = 300;
+
 export default async function HomePage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
@@ -30,7 +32,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
     name: 'YiBoard',
     applicationCategory: 'GameApplication',
     operatingSystem: 'Any modern browser',
-    description: meta('description'),
+    description: meta('home.description'),
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     inLanguage: ['en', 'zh', 'es', 'ja', 'pt-BR'],
   };

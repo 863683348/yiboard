@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
+import { getPostSlugs } from '@/lib/blog/posts';
 import { routing } from '@/i18n/routing';
 
 /**
@@ -10,7 +11,30 @@ import { routing } from '@/i18n/routing';
  */
 export const dynamic = 'force-dynamic';
 
-const PATHS = ['', '/play', '/rankings', '/how-to', '/about', '/profile'] as const;
+/**
+ * 可索引路径（auth/profile 隐私页、share 动态卡一律 noindex，不进 sitemap）。
+ * blog 列表页收录；文章详情页由 getPostSlugs() 动态追加（每篇 × 5 语 + hreflang）。
+ */
+const PATHS = [
+  '',
+  '/play',
+  '/rankings',
+  '/how-to',
+  '/about',
+  '/pricing',
+  '/faq',
+  '/blog',
+  '/contact',
+  '/gomoku-rules',
+  '/renju-rules',
+  '/glossary',
+  '/gomoku-vs-go',
+  '/puzzle',
+  '/games',
+] as const;
+
+/** 所有可索引页面路径 = 固定页 + blog 文章详情页 */
+const INDEXABLE_PATHS = [...PATHS, ...getPostSlugs().map((slug) => `/blog/${slug}`)] as const;
 
 function href(base: string, locale: string, path: string): string {
   const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
@@ -21,7 +45,7 @@ export function GET(request: NextRequest) {
   const base = new URL(request.url).origin;
   const now = new Date().toISOString();
 
-  const entries = PATHS.flatMap((path) =>
+  const entries = INDEXABLE_PATHS.flatMap((path) =>
     routing.locales.map((locale) => ({
       url: href(base, locale, path),
       path,
