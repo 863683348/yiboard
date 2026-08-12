@@ -644,6 +644,112 @@ export const POSTS: BlogPost[] = [
         { type: 'cta', text: 'Head to YiBoard and play a free match', href: 'https://yiboardgame.com/' },
       ],
     },
+  },  {
+    slug: 'gomoku-dan-grades-vs-ranks',
+    date: '2026-08-12',
+    title: {
+      zh: '真段位 vs 青铜白银：段位制到底在衡量什么',
+      en: 'Real Ranks vs Bronze and Platinum: What Dan Grades Actually Measure',
+    },
+    description: {
+      zh: '五子棋的段位制和游戏里的青铜白银完全是两种体系：一个靠赢棋升级、一个靠分数积累。这篇讲段位制怎么来的、段位和等级分（Elo）的区别、以及为什么段位更能说明你的真实水平。',
+      en: 'Gomoku dan grades and video game ranks like Bronze and Platinum are completely different systems: one ranks by winning matches, the other by accumulating points. This post covers where dan grades come from, how they differ from Elo, and why grades tell you more about your real level.',
+    },
+    keywords: [
+      'gomoku dan grades',
+      'chinese rank system vs elo',
+      'gomoku 9 dan',
+      'what is a grade',
+      '五子棋段位',
+      '段位 vs 段位等级',
+      '五子棋等级分',
+    ],
+    content: {
+      zh: [
+        "很多第一次接触五子棋的朋友会问：你们说的段位，跟游戏里的青铜白银是一回事吗？答案是不是一回事，甚至不是同一个物种。gomoku dan grades 这套体系来自围棋，历史比电子游戏长得多，衡量的是“赢棋的能力”，不是“在线时长”。这篇把段位制讲清楚。",
+        { type: 'h2', text: '段位制是怎么来的' },
+        "段位制起源于中国魏晋时期的围棋“品”制，后经日本棋院发展成现代的段级体系：业余从 25 级往上数到 1 级，然后是业余 1 段到业余 7 段，职业段位从初段到九段。五子棋沿用了这套框架，只是棋理更简单，段位分布和围棋不完全一样。",
+        "核心思想是一个：段位由“比赛成绩”决定，不是由“参与”决定。你赢该赢的人，输给该输的人，段位就会向你的真实水平收敛。这跟青铜白银的“打够场次就能上分”完全不同。",
+        { type: 'h2', text: '段位 vs 等级分：两套“数字”' },
+        {
+          type: 'ul',
+          items: [
+            "段位（grade/dan）：离散等级，靠晋级赛和比赛成绩认定，反映绝对水平区间",
+            "等级分（Elo/rating）：连续分数，每一局按对手强弱加减分，反映相对水平",
+            "段位像学历：分档清晰，但同段位内部差距可能很大",
+            "等级分像工资：连续可比较，但数字本身没有“段”的称号感",
+          ],
+        },
+        "多数现代棋类平台两者兼用：段位给你称号和晋级目标，等级分给你精确匹配。YiBoard 的排行榜同样用等级分做匹配，段位做展示，这样新手不会被九段吓跑，高手也不会和菜鸟排到一起。",
+        { type: 'h2', text: '青铜白银的问题' },
+        "电子游戏里的段位体系大多被“参与度”污染：排位赛打得多，即使胜率不到五成，靠保底分也能缓慢上分。这导致段位和真实水平脱钩——钻石可能是“肝”出来的，而不是“赢”出来的。",
+        "五子棋段位没有保底分。你想从 3 段升到 4 段，就得在正式对局中证明你能赢过 4 段水平的对手。没有捷径，也正因如此，段位的含金量高得多。这也是 chinese rank system 和 Elo 的一个直观区别：前者重认证，后者重预测。",
+        { type: 'h2', text: '怎么看懂一个段位' },
+        {
+          type: 'ul',
+          items: [
+            "业余 1-3 段：掌握了基本定式和攻防，能稳定赢过随机落子的新手",
+            "业余 4-6 段：有成型套路，开局和中盘有章法，比赛中段属于中坚力量",
+            "业余 7 段以上：接近职业水平，对局密度和计算深度明显高一个量级",
+            "职业段位：通过职业比赛获得，代表的是全国乃至世界顶层的水平",
+          ],
+        },
+        "下次看到某个棋手是 5 段，你就知道他大概赢过哪些水平的对手，而不是知道他“玩了多少小时”。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '五子棋段位和游戏段位有什么区别？', a: '游戏段位（青铜/钻石）靠参与度和保底分积累，和真实水平会脱钩；五子棋段位靠晋级赛成绩认定，赢不了对应水平就拿不到对应段位，含金量高得多。' },
+            { q: '段位和等级分（Elo）哪个更准？', a: '等级分更精确：每局按对手强弱加减分，连续可比。段位更直观：分档清晰、有称号感。两者互补，多数平台同时使用。' },
+            { q: '业余段位最高是几段？', a: '业余段位一般到 7 段（部分地区到 8 段）。再往上就是职业段位，从初段到九段，需要通过职业比赛获得。' },
+            { q: '在 YiBoard 上怎么提升段位？', a: '多下正式对局、复盘输棋、学定式和常见骗招。YiBoard 的等级分匹配会逐渐把你送到水平相近的对手面前，赢下该赢的对局，段位自然上升。' },
+          ],
+        },
+        { type: 'cta', text: '去 YiBoard 下一盘，看看你的真实段位', href: 'https://yiboardgame.com/rankings' },
+      ],
+      en: [
+        "People new to Gomoku often ask: is your dan grade the same as Bronze or Platinum in video games? The answer is no, and they are not even the same species. Gomoku dan grades come from Go, a system far older than video games, measuring your ability to win matches, not your time online. This post explains how the grade system works.",
+        { type: 'h2', text: 'Where dan grades come from' },
+        "The grade system originated in the Chinese Wei-Jin era pin system for Go and was developed by the Nihon Ki-in into the modern dan/kyu structure: amateurs count up from 25 kyu to 1 kyu, then amateur 1 dan to 7 dan, and professional grades run from shodan to 9 dan. Gomoku inherits the same framework, with simpler tactics and a slightly different grade distribution.",
+        "The core idea is one thing: a grade is earned by match results, not by participation. Win the games you should win, lose the ones you should lose, and your grade converges on your true level. That is completely different from Bronze and Platinum, where grinding enough matches moves you up regardless of win rate.",
+        { type: 'h2', text: 'Grades vs ratings: two kinds of numbers' },
+        {
+          type: 'ul',
+          items: [
+            "Dan grade: a discrete rank earned through promotion matches, reflecting an absolute level band",
+            "Elo rating: a continuous score adjusted by opponent strength every game, reflecting relative level",
+            "A grade is like a degree: clear tiers, but big gaps inside the same tier",
+            "A rating is like a salary: continuously comparable, but no title feeling",
+          ],
+        },
+        "Most modern board game platforms use both: grades give you a title and a promotion goal, ratings give you precise matchmaking. YiBoard does the same, ratings for matching and grades for display, so beginners are not scared off by 9-dan names and strong players do not get paired with beginners.",
+        { type: 'h2', text: 'The problem with Bronze and Platinum' },
+        "Most video game rank systems are polluted by participation: play enough ranked matches and you slowly climb on floor points even below 50% win rate. Ranks drift away from real skill, diamonds can be grinded rather than earned.",
+        "Gomoku grades have no floor points. To go from 3 dan to 4 dan, you have to prove in formal games that you can beat opponents at the 4-dan level. No shortcuts, which is exactly why the grade carries weight. That is a visible difference between the chinese rank system and Elo: one certifies, the other predicts.",
+        { type: 'h2', text: 'How to read a grade' },
+        {
+          type: 'ul',
+          items: [
+            "Amateur 1-3 dan: knows basic joseki and attack/defense, reliably beats random movers",
+            "Amateur 4-6 dan: has structured patterns, solid opening and midgame, the backbone of a tournament field",
+            "Amateur 7 dan and up: close to professional, visibly deeper reading and calculation",
+            "Professional grades: earned through pro tournaments, representing national to world class play",
+          ],
+        },
+        "Next time you see a player listed as 5 dan, you know roughly which levels of opponents they have beaten, not how many hours they have played.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'What is the difference between Gomoku grades and game ranks?', a: 'Game ranks (Bronze/Diamond) accumulate through participation and floor points, drifting from real skill. Gomoku grades are earned through promotion matches; you cannot hold a grade you cannot win against. Far more meaningful.' },
+            { q: 'Which is more accurate, grades or Elo?', a: 'Elo is more precise: every game adjusts by opponent strength and it is continuously comparable. Grades are more intuitive: clear tiers with title value. They complement each other, and most platforms use both.' },
+            { q: 'What is the highest amateur grade?', a: 'Amateur grades generally go up to 7 dan (8 in some regions). Above that are professional grades, shodan to 9 dan, earned through professional tournaments.' },
+            { q: 'How do I raise my grade on YiBoard?', a: 'Play formal games, review losses, learn joseki and common traps. YiBoard\'s rating matchmaking gradually places you against opponents of similar strength; win the games you should win and your grade rises naturally.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a match on YiBoard and find your real grade', href: 'https://yiboardgame.com/rankings' },
+      ],
+    },
   },
 ];
 
