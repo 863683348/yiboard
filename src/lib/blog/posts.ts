@@ -644,359 +644,7 @@ export const POSTS: BlogPost[] = [
         { type: 'cta', text: 'Head to YiBoard and play a free match', href: 'https://yiboardgame.com/' },
       ],
     },
-  },
-  {
-    slug: 'gomoku-openings',
-    date: '2026-08-12',
-    title: {
-      zh: '五子棋开局：决定胜负的前三手',
-      en: 'Gomoku Openings: The First Three Stones That Decide the Game',
-    },
-    description: {
-      zh: '五子棋前三手基本定调。本文讲清直指/斜指两大开局族、花月浦月等经典定式，以及为什么先手要抢中心。',
-      en: 'The first three moves set the tone in Gomoku. This guide covers the direct and oblique opening families, classic joseki like Pomegranate and Po, and why first move takes the center.',
-    },
-    keywords: ['gomoku openings', 'gomoku opening theory', 'pomegranate opening', 'gomoku joseki', 'five in a row strategy'],
-    content: {
-      zh: [
-        '很多人以为五子棋随便下就行，但高水平对局里，前三手几乎就决定了走向。先手（黑棋）如果开局就抢到好形，后手要花很多步才能扳回来。这篇带你过一遍开局的基本逻辑。打开[yiboardgame.com 的对战页](/play)边读边试最好。',
-        { type: 'h2', text: '先手为什么要抢中心' },
-        '棋盘中心的点辐射范围最大，一个中心子能参与横、竖、两条斜线共四条连线，而角落的点只能参与两条。所以黑棋第一手几乎总是落在天元（正中心）附近。抢到中心，等于抢到更多"潜在的五连"。',
-        { type: 'h2', text: '两大开局族：直指与斜指' },
-        '以黑棋第一手为基准，白棋的应法分成两大族：straight（直指，白棋落在与第一手同一条横/竖线）和 oblique（斜指，白棋落在斜线方向）。这两族各自发展出一套定式。',
-        {
-          type: 'ul',
-          items: [
-            '花月（Pomegranate）：黑棋强势开局，先手优势极大',
-            '浦月（Poseidon）：同样偏向黑棋的进攻型定式',
-            '其他如云月、雨月，偏向更均衡的变化',
-          ],
-        },
-        { type: 'h2', text: '新手怎么练开局' },
-        '不用背完所有定式。先从"抢中心、保持活二以上的发展点、别让自己的形被白棋轻易堵死"三件事做起。想系统学，我们的[棋型详解](/blog/gomoku-shapes)讲清活三冲四这些基础语言。',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: '五子棋第一手一定要下中心吗？', a: '高水平几乎都下中心，因为辐射最广。休闲对局下别处也能玩，只是先手优势会变小。' },
-            { q: '花月和浦月有什么区别？', a: '两者都是黑棋进攻型开局，分支点不同，但共同点是都给黑棋很大先手优势。' },
-            { q: '需要背定式才能赢吗？', a: '不需要。理解"活二、活三、冲四"这些基础棋型，比死背定式更实用。' },
-          ],
-        },
-        { type: 'cta', text: '去 YiBoard 用开局试试手感', href: 'https://yiboardgame.com/play' },
-      ],
-      en: [
-        'Many players think Gomoku is just placing stones anywhere, but at high level the first three moves decide almost everything. If black grabs a good shape early, white spends many moves clawing back. This guide walks the basic logic of openings. Best read while playing on the [YiBoard play page](/play).',
-        { type: 'h2', text: 'Why first move takes the center' },
-        'A center stone touches the most lines: it can join four potential fives, horizontal, vertical and both diagonals, while a corner stone only joins two. That is why black almost always opens near tengen, the exact middle. The center means more possible winning lines.',
-        { type: 'h2', text: 'Two opening families: direct and oblique' },
-        'From black\u2019s first stone, white\u2019s reply splits into two families: straight (white answers on the same row or column) and oblique (white answers on a diagonal). Each family grows its own set of joseki.',
-        {
-          type: 'ul',
-          items: [
-            'Pomegranate (Huayue): an aggressive black opening with a huge first-move edge',
-            'Poseidon (Puyue): another attack-minded shape favoring black',
-            'Others like Yunyue and Yuyue lean toward more balanced play',
-          ],
-        },
-        { type: 'h2', text: 'How a beginner should practice openings' },
-        'You do not need every joseki memorized. Start with three habits: take the center, keep at least a live two developing, and do not let white block your shape for free. For the building blocks, our [shapes guide](/blog/gomoku-shapes) explains live threes and fours.',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: 'Must the first move be the center?', a: 'At serious level yes, because it reaches the most lines. Casual games elsewhere still work, just with a smaller first-move edge.' },
-            { q: 'What is the difference between Pomegranate and Poseidon?', a: 'Both are attack openings for black with different branch points, but both give black a large advantage.' },
-            { q: 'Do I need joseki to win?', a: 'No. Understanding live twos, live threes and fours beats rote memorization.' },
-          ],
-        },
-        { type: 'cta', text: 'Try openings on YiBoard right now', href: 'https://yiboardgame.com/play' },
-      ],
-    },
-  },
-  {
-    slug: 'gomoku-shapes',
-    date: '2026-08-12',
-    title: {
-      zh: '五子棋棋型详解：活三、冲四、双三',
-      en: 'Gomoku Shapes Explained: Live Three, Four, Double Three',
-    },
-    description: {
-      zh: '活三、冲四、活四、双三、双四——这些是五子棋的"攻防语言"。看懂棋型，你才看得懂自己和对手在威胁什么。',
-      en: 'Live three, four, open four, double three, double four: this is the attacking and defending language of Gomoku. Read shapes and you can see what both sides are threatening.',
-    },
-    keywords: ['gomoku shapes', 'live three gomoku', 'open four gomoku', 'double three gomoku', 'gomoku tactics'],
-    content: {
-      zh: [
-        '规则一句话就说完，但为什么有人总能赢？差别在于"棋型"——双方棋子的几何关系。一旦你学会用棋型的眼睛看棋盘，五子棋就从连连看变成了一场攻防对话。先在[yiboardgame.com 免费来一局](/play)感受一下。',
-        { type: 'h2', text: '什么是活三' },
-        '活三是指再落一子就能变成活四的三（两端都空、对方无法同时堵住两个方向）。活三是进攻的核心，因为它逼对手必须回应。相对的"眠三"只有一端能发展，威胁小很多。',
-        { type: 'h2', text: '冲四与活四' },
-        '冲四是再落一子成五、但只有一端空的四（对手必须堵那一个口，否则就输）。活四是两端都空的四，对手堵不住，必胜。所以"做出活四"是赢棋的最直接路径；"连续冲四"（VCF）是用一连串冲四逼对手走向失败的高级手段。',
-        {
-          type: 'ul',
-          items: [
-            '活三：两头空，逼对手回应',
-            '冲四：一头空，对手必须堵',
-            '活四：两头空，必胜',
-            '双三 / 双四：同时两个威胁，对手一次只能堵一个',
-          ],
-        },
-        { type: 'h2', text: '防守也是棋型' },
-        '防守时你要找的不只是"堵哪里"，而是"堵了之后对手还能不能做出活三"。好的防守会同时削弱对方的形、保住自己的发展点。更多开局思路看[开局篇](/blog/gomoku-openings)。',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: '活三和眠三有什么不同？', a: '活三两端都空，下一手能成活四；眠三只有一端能发展，威胁小。' },
-            { q: '为什么活四必胜？', a: '活四两头都能成五，对手一次只能落一子，堵一头另一头就成五。' },
-            { q: 'VCF 是什么？', a: '连续冲四胜（Victory by Continuous Fours）：用一串冲四一步步逼对手，最后成五。' },
-          ],
-        },
-        { type: 'cta', text: '在 YiBoard 练习读棋型', href: 'https://yiboardgame.com/play' },
-      ],
-      en: [
-        'The rules take one sentence, so why does someone always win? The difference is shapes, the geometry between the stones. Once you learn to read the board in shapes, Gomoku stops being a connect-the-dots game and becomes a conversation of attack and defense. Feel it on a [free match at yiboardgame.com](/play).',
-        { type: 'h2', text: 'What a live three is' },
-        'A live three is a line of three with both ends open, so one more stone makes a live four the opponent cannot block on both sides. The live three is the core of attack because it forces a reply. A broken three has only one open end and is far less threatening.',
-        { type: 'h2', text: 'Four and open four' },
-        'A four is a line of four that becomes five with one stone but has only one open end; the opponent must block that one gap or lose. An open four has both ends open and is unstoppable. So making an open four is the most direct path to a win, and a chain of fours, VCF, is the advanced way to drive the opponent to defeat.',
-        {
-          type: 'ul',
-          items: [
-            'Live three: both ends open, forces a reply',
-            'Four: one open end, opponent must block',
-            'Open four: both ends open, wins',
-            'Double three or double four: two threats at once, opponent blocks only one',
-          ],
-        },
-        { type: 'h2', text: 'Defense is shapes too' },
-        'On defense you are not just picking where to block, but whether your block still lets the opponent build a live three. Good defense weakens their shape while keeping your own options. For opening ideas see the [openings guide](/blog/gomoku-openings).',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: 'What is the difference between a live and broken three?', a: 'A live three has both ends open and becomes a live four next move; a broken three develops on one end only and is weaker.' },
-            { q: 'Why is an open four unstoppable?', a: 'Both ends can become five, and the opponent places only one stone, so blocking one end leaves the other.' },
-            { q: 'What is VCF?', a: 'Victory by Continuous Fours: a run of fours that pushes the opponent step by step until five connects.' },
-          ],
-        },
-        { type: 'cta', text: 'Practice reading shapes on YiBoard', href: 'https://yiboardgame.com/play' },
-      ],
-    },
-  },
-  {
-    slug: 'gomoku-attack-defense',
-    date: '2026-08-12',
-    title: {
-      zh: '五子棋攻防：高手到底在想什么',
-      en: 'Gomoku Attack and Defense: How Strong Players Actually Think',
-    },
-    description: {
-      zh: '高手不是算得比你远，而是每一步都在管理"威胁"。本文讲清进攻节奏、防守选择，以及先手（sente）的重要性。',
-      en: 'Strong players do not calculate farther than you, they manage threats every move. This piece covers attacking tempo, defensive choices, and why sente matters.',
-    },
-    keywords: ['gomoku attack defense', 'gomoku defense', 'gomoku strategy', 'how to win gomoku'],
-    content: {
-      zh: [
-        '新手看五子棋想的是"我下哪能连五"；高手想的是"我这手制造了几个威胁、对手能化解几个"。这篇把攻防的底层思维拆开。直接在[yiboardgame.com 对战](/play)里体会最直观。',
-        { type: 'h2', text: '威胁管理' },
-        '每一手棋的价值，取决于它制造了多少"对手必须回应"的威胁。一个活三是一个威胁，双三就是两个同时的威胁——对手一次只能堵一个，所以双三常常直接通向胜利。进攻的本质，就是不断叠加威胁。',
-        { type: 'h2', text: '先手 sente' },
-        '先手（sente）是指"轮到对方必须防守"的状态。你打出活三，对方被迫堵，你就拿着先手。高手的标志是尽量别把先手交出去：能用进攻逼对手防守，就不要自己先去防守。',
-        {
-          type: 'ul',
-          items: [
-            '进攻时优先做活三、冲四，保持先手',
-            '防守时选"堵了还能反将一军"的点，而不是随便堵',
-            '别为了堵一个眠三，放弃自己的活二发展',
-          ],
-        },
-        { type: 'h2', text: '防守的层次' },
-        '最差的防守是"哪里有子堵哪里"。好防守会预判对手下一步要做什么活三，提前占住那个发展点。想系统练，先搞懂[棋型语言](/blog/gomoku-shapes)。',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: '为什么我总是被动防守？', a: '因为你多在"堵已有威胁"，而不是"主动制造威胁"。试着每手都做一个活三或冲四。' },
-            { q: 'sente 是什么？', a: '先手：轮到对方必须应对你制造威胁的状态。保持先手是高手的核心能力。' },
-            { q: '防守应该堵哪？', a: '堵"对手下一步能做成活三"的点，而不是离你最近的子。' },
-          ],
-        },
-        { type: 'cta', text: '去 YiBoard 练攻防节奏', href: 'https://yiboardgame.com/play' },
-      ],
-      en: [
-        'Beginners wonder where they can make five; strong players wonder how many threats a move creates and how many the opponent can answer. This breaks the底层 thinking of attack and defense. The most direct feel comes from a [match at yiboardgame.com](/play).',
-        { type: 'h2', text: 'Threat management' },
-        'The value of a move is how many must-answer threats it creates. A live three is one threat; a double three is two at once, and the opponent blocks only one, so a double three often wins outright. Attack is simply stacking threats.',
-        { type: 'h2', text: 'Sente, the initiative' },
-        'Sente is the state where it is the opponent\u2019s turn to defend. You play a live three, they must block, you hold sente. The mark of a strong player is not giving it away: attack to force defense rather than defending first.',
-        {
-          type: 'ul',
-          items: [
-            'On attack, prefer live threes and fours to keep sente',
-            'On defense, pick the point that still counter-attacks, not just any block',
-            'Do not abandon your own live two to block a weak broken three',
-          ],
-        },
-        { type: 'h2', text: 'Layers of defense' },
-        'The worst defense blocks wherever a stone is. Good defense predicts the opponent\u2019s next live three and takes that development point early. To train systematically, learn the [shape language](/blog/gomoku-shapes) first.',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: 'Why am I always defending?', a: 'Because you block existing threats instead of making your own. Try creating a live three or four every move.' },
-            { q: 'What is sente?', a: 'The initiative: the opponent must answer your threat. Holding sente is a core strong-player skill.' },
-            { q: 'Where should I block?', a: 'Block the point where the opponent would make a live three next, not the stone nearest you.' },
-          ],
-        },
-        { type: 'cta', text: 'Train attack and defense on YiBoard', href: 'https://yiboardgame.com/play' },
-      ],
-    },
-  },
-  {
-    slug: 'how-to-win-gomoku',
-    date: '2026-08-12',
-    title: {
-      zh: '怎么赢五子棋：一份实战清单',
-      en: 'How to Win at Gomoku: A Practical Checklist',
-    },
-    description: {
-      zh: '从抢中心到做活四，七个能立刻用上的动作。附"为什么你总输给 AI"的诊断。',
-      en: 'Seven moves you can use right now, from taking the center to building an open four, plus a diagnosis of why you keep losing to the AI.',
-    },
-    keywords: ['how to win gomoku', 'gomoku winning strategy', 'gomoku tips', 'beat gomoku ai'],
-    content: {
-      zh: [
-        '想赢五子棋，不需要天才，需要纪律。下面七条都是立刻能用、而且和段位高低无关的动作。边看边在[yiboardgame.com 对战](/play)试最有效。',
-        {
-          type: 'ul',
-          items: [
-            '第一手抢中心，辐射最多连线',
-            '每手尽量做一个活三或冲四，保持先手',
-            '优先做活四（必胜），而不是急着连五',
-            '看到对手活三，立刻堵它的发展点',
-            '用双三、双四同时制造两个威胁',
-            '别为了堵一个弱形，放弃自己的发展',
-            '残局算清"连续冲四"（VCF）能不能成五',
-          ],
-        },
-        { type: 'h2', text: '为什么你总输给 AI' },
-        'YiBoard 的 AI 在浏览器里跑 alpha-beta 剪枝，500ms 内搜很多层。它不会漏看你的活三，也不会随便交出先手。你输，往往是因为某一手把先手交出去了，或者堵错了点。放慢一拍，先问"我这手制造了几个威胁"。',
-        { type: 'h2', text: '一个常见错误' },
-        '很多人急着"连五"，结果下出冲四被轻松堵住，还把先手送了。记住：冲四只是逼对手堵，真正赢靠活四或双威胁。更多攻防思路看[攻防篇](/blog/gomoku-attack-defense)。',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: '新手最快的提升是什么？', a: '每手都做一个活三或冲四，保持先手。这一条比记定式管用。' },
-            { q: 'AI 为什么这么难赢？', a: '它不漏看威胁、不送先手。你要把自己当成也在管理威胁，而不是只想连五。' },
-            { q: '双三一定赢吗？', a: '不一定，但两个同时威胁对手一次只能堵一个，胜率很高。注意 Renju 规则下黑棋双三是禁手。' },
-          ],
-        },
-        { type: 'cta', text: '用这份清单去赢一局', href: 'https://yiboardgame.com/play' },
-      ],
-      en: [
-        'Winning Gomoku takes discipline, not genius. The seven moves below work immediately and do not depend on your rank. Best tried while playing a [match at yiboardgame.com](/play).',
-        {
-          type: 'ul',
-          items: [
-            'Take the center first move for the most lines',
-            'Make a live three or four each move to keep sente',
-            'Build an open four (winning) instead of rushing five',
-            'Block the opponent\u2019s live three at its development point',
-            'Use double three or double four for two threats at once',
-            'Do not abandon your own development to block a weak shape',
-            'In the endgame, check if VCF can reach five',
-          ],
-        },
-        { type: 'h2', text: 'Why you keep losing to the AI' },
-        'YiBoard\u2019s AI runs alpha-beta pruning in the browser, searching many layers within 500ms. It will not miss your live three and will not give up sente. You usually lose because one move hands over the initiative or blocks the wrong point. Pause a beat and ask how many threats your move makes.',
-        { type: 'h2', text: 'One common mistake' },
-        'Many players rush to five, play a four that is easily blocked, and hand over sente. Remember: a four only forces a block; the win comes from an open four or a double threat. More on this in the [attack and defense guide](/blog/gomoku-attack-defense).',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: 'What is the fastest beginner gain?', a: 'Make a live three or four every move to hold sente. More useful than memorizing joseki.' },
-            { q: 'Why is the AI so hard to beat?', a: 'It misses no threats and gives no sente. Treat yourself as managing threats, not just making five.' },
-            { q: 'Does a double three always win?', a: 'Not always, but two simultaneous threats beat one block, so the win rate is high. Note black\u2019s double three is forbidden under Renju rules.' },
-          ],
-        },
-        { type: 'cta', text: 'Use this checklist and win a game', href: 'https://yiboardgame.com/play' },
-      ],
-    },
-  },
-  {
-    slug: 'is-gomoku-solved',
-    date: '2026-08-12',
-    title: {
-      zh: '"五子棋被破解了吗"：已解决到底是什么意思',
-      en: 'Is Gomoku Solved? What "Solved" Really Means',
-    },
-    description: {
-      zh: '无禁手五子棋在数学上已被证明先手必胜；Renju 用禁手把先手优势压下去。本文讲清"破解"二字背后的真相。',
-      en: 'Standard Gomoku without forbidden moves is mathematically proven a first-player win; Renju uses forbidden moves to tame that edge. This piece explains what "solved" actually means.',
-    },
-    keywords: ['is gomoku solved', 'gomoku solved', 'gomoku first player win', 'renju rules'],
-    content: {
-      zh: [
-        '常有人问"五子棋是不是已经被电脑下透了"。答案是：看规则。这篇把"破解"二字背后的真相讲清楚，也顺带解释为什么竞技五子棋要加禁手。',
-        { type: 'h2', text: '无禁手：先手必胜已被证明' },
-        '在没有任何禁手、标准 15×15 棋盘上，数学家已经证明：先手（黑棋）有必胜策略。也就是说，只要黑棋每一步都按最优走，白棋无论如何都赢不了。这就是为什么休闲五子棋先手很占优。',
-        { type: 'h2', text: 'Renju 怎么把先手压下去' },
-        '为了让对局公平，竞技规则 Renju 给黑棋加了禁手：三三、四四、长连都判黑负。这样先手优势被大幅削弱，黑白更均衡。想了解具体禁手，看我们的[Renju 规则页](/renju-rules)。',
-        {
-          type: 'ul',
-          items: [
-            '无禁手五子棋：黑棋有数学必胜策略',
-            'Renju：禁手限制黑棋，趋于公平',
-            '棋盘大小（13/15/19）不改变"先手占优"的根本',
-          ],
-        },
-        { type: 'h2', text: '那我还能愉快玩吗' },
-        '能。对真人来说，"必胜策略"意味着每一步都要绝对精确，稍有偏差优势就消失——所以休闲对局照样精彩。YiBoard 默认无禁手、免费、[打开就能玩](/play)，先手优势只是让游戏更刺激，不影响乐趣。',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: '五子棋真的被破解了吗？', a: '无禁手规则下，先手必胜已被数学证明。但 Renju 等带禁手规则没有被先手一方完全破解。' },
-            { q: '既然先手必胜，后手还有必要玩吗？', a: '对人类而言，先手优势极小，稍错一步就消失，所以后手照样有得玩。' },
-            { q: '为什么竞技五子棋要禁手？', a: '为了抵消先手的数学优势，让黑白更公平。' },
-          ],
-        },
-        { type: 'cta', text: '去 YiBoard 下一局（无禁手，免费）', href: 'https://yiboardgame.com/play' },
-      ],
-      en: [
-        'People often ask whether Gomoku has been "solved" by computers. The answer is: it depends on the rules. This explains what "solved" really means and why competitive Gomoku adds forbidden moves.',
-        { type: 'h2', text: 'No forbidden moves: first player proven to win' },
-        'On a standard 15 by 15 board with no forbidden moves, mathematicians have proven that the first player, black, has a winning strategy. That means if black plays perfectly every move, white can never win. This is why first move is such an edge in casual Gomoku.',
-        { type: 'h2', text: 'How Renju tames the first move' },
-        'To make play fair, the competitive rules of Renju add forbidden moves for black: double three, double four and overline all lose for black. This sharply cuts the first-move edge and balances the colors. For the exact moves see our [Renju rules page](/renju-rules).',
-        {
-          type: 'ul',
-          items: [
-            'Gomoku without forbidden moves: black has a proven win',
-            'Renju: forbidden moves limit black toward fairness',
-            'Board size, 13, 15 or 19, does not change first-move advantage',
-          ],
-        },
-        { type: 'h2', text: 'Can I still just enjoy it' },
-        'Yes. For a human, a "winning strategy" means playing perfectly every single move; one slip and the edge vanishes, so casual games stay exciting. YiBoard defaults to no forbidden moves, free, and [playable instantly](/play); the first-move edge just makes it livelier, not less fun.',
-        { type: 'h2', text: 'FAQ' },
-        {
-          type: 'faq',
-          items: [
-            { q: 'Is Gomoku really solved?', a: 'Without forbidden moves, first-player win is proven. With forbidden-move rules like Renju, it is not fully solved for the first player.' },
-            { q: 'If first move wins, why play second?', a: 'For humans the edge is tiny and vanishes with one mistake, so second player still has a game.' },
-            { q: 'Why do competitive rules forbid moves?', a: 'To offset the proven first-move advantage and balance black and white.' },
-          ],
-        },
-        { type: 'cta', text: 'Play a game on YiBoard, free, no forbidden moves', href: 'https://yiboardgame.com/play' },
-      ],
-    },
-  },
-  {
+  },  {
     slug: 'gomoku-dan-grades-vs-ranks',
     date: '2026-08-12',
     title: {
@@ -1102,8 +750,97 @@ export const POSTS: BlogPost[] = [
         { type: 'cta', text: 'Play a match on YiBoard and find your real grade', href: 'https://yiboardgame.com/rankings' },
       ],
     },
-  }
-
+  },  {
+    slug: 'share-gomoku-game-link',
+    date: '2026-08-13',
+    title: {
+      zh: '分享对局：一局棋也是一张名片',
+      en: 'Share a Game: A Match Is a Calling Card',
+    },
+    description: {
+      zh: '棋下得好，不如把棋局分享出去。YiBoard 的对局分享链接让一局棋变成一张名片：发给朋友、发到群里、或者存进自己的收藏。这篇讲怎么分享、分享链接里有什么、以及为什么复盘才是涨棋最快的路。',
+      en: 'Playing well is good, sharing the game is better. YiBoard match links turn a single game into a calling card: send it to a friend, drop it in a group chat, or save it for yourself. This post covers how to share, what a match link contains, and why reviewing is the fastest way to improve.',
+    },
+    keywords: [
+      'share board game link',
+      'share gomoku game',
+      'replay share',
+      'gomoku match link',
+      '五子棋 分享对局',
+      '棋局复盘',
+      '五子棋 观战',
+    ],
+    content: {
+      zh: [
+        "五子棋有个其他棋类少见的优势：一局棋很快，快则三分钟，慢也不超过十分钟。这意味着一局棋可以当社交货币用——你下出一手妙手，直接把对局甩到群里，比文字描述一百遍都直观。share gomoku game 这件事，YiBoard 把它做成了链接：复制、粘贴、对方点开就能看整局回放。",
+        { type: 'h2', text: '分享链接里有什么' },
+        "每个 YiBoard 对局都有一个独立链接，打开后是完整的棋盘回放：每一步棋的顺序、双方用时、胜负结果，全部在里面。对方不需要注册，不需要下载，浏览器打开就能看。这对“甩链接”这个动作来说很重要，门槛越低，分享越频繁。",
+        {
+          type: 'ul',
+          items: [
+            "完整回放：每一步棋按顺序播放，可以暂停、跳步、回退",
+            "双方信息：棋手名和结果一目了然",
+            "观战友好：没下过五子棋的人也能看懂回放",
+            "零门槛：对方打开链接即可看，无需账号",
+          ],
+        },
+        { type: 'h2', text: '分享的三种场景' },
+        "第一种：赢了甩战绩。跟朋友炫耀一局漂亮的胜利，或者展示自己的妙手，链接就是证据。第二种：复盘求指点。输了把链接发给棋力更高的朋友，请他指出问题手——文字复盘说不清楚的地方，链接一点就懂。第三种：教学素材。教新人下棋时，把典型对局甩过去，比口头讲解十遍有效。",
+        "这三种场景的共同点是：分享把对局从“发生过的一件事”变成了“可以反复查看的资料”。这本身就是棋力提升的基础。",
+        { type: 'h2', text: '为什么复盘是最快的涨棋路' },
+        "职业棋手的时间分配里，复盘占的比例比下棋本身还高。原因很简单：下棋时你凭直觉决策，复盘时你才看清直觉错在哪。特别是输掉的对局，错手往往是同一个模式的重复，复盘一次就能抓住。",
+        "用链接复盘的流程：把输棋链接发给自己，第二天再看一遍，重点找三步——最后一步（致命的）、中盘转折、开局失先。找出这三步，这局棋就没白输。",
+        { type: 'h2', text: '把一局棋变成名片' },
+        "对经常在群里约棋的人来说，分享链接还有一个隐形作用：建立“这个人棋还行”的口碑。别人看过你的对局回放，就知道你的真实水平，约棋的时候心里有底，也不会出现实力悬殊到没有游戏体验的局。从这个角度看，一局棋确实是一张名片。",
+        "想试试？去 <a href='/play'>对局大厅</a> 下一局，然后用分享按钮生成你的第一个对局链接。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: "YiBoard 的对局链接要登录才能看吗？", a: "不用。对方打开链接即可看完整回放，无需注册或下载，这是分享零门槛的设计。" },
+            { q: "分享链接会过期吗？", a: "不会。对局记录和链接长期有效，你可以把经典对局存进收藏反复回看。" },
+            { q: "能分享给不会下五子棋的人吗？", a: "能。回放界面很直观，没下过棋的人也能看懂一步步的落子顺序，适合教学场景。" },
+            { q: "怎么复盘自己的对局？", a: "打开对局链接，重点找三步：最后一步、中盘转折、开局失先。找出这三步，一局棋就没白下。" },
+          ],
+        },
+        { type: 'cta', text: '去对局大厅下一局 →', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        "Gomoku has an advantage most board games lack: a game is fast, three minutes for a quick one, under ten for a long fight. That makes a match usable as social currency. You make a brilliant move, drop the game link in a group chat, and it beats a hundred words of description. share gomoku game in YiBoard is exactly that: copy, paste, the other side opens a full replay.",
+        { type: 'h2', text: 'What a match link contains' },
+        "Every YiBoard match has its own link that opens a complete board replay: move order, both players' clocks, the result. The viewer needs no account, no download, just a browser. That matters because the lower the barrier, the more people share.",
+        {
+          type: 'ul',
+          items: [
+            "Full replay: every move in order, pause, skip and rewind supported",
+            "Both players shown with the result at a glance",
+            "Spectator-friendly: even people who never played gomoku can follow",
+            "Zero barrier: open the link and watch, no account needed",
+          ],
+        },
+        { type: 'h2', text: 'Three sharing scenarios' },
+        "First, show off a win. Send a beautiful victory to friends, your clever move is the evidence. Second, ask for a review. Lose a game and send the link to a stronger friend, asking where the mistake is; text explanations fail where a link succeeds. Third, teaching. Teaching a beginner, send typical games and let them study, more effective than ten verbal explanations.",
+        "What these have in common: sharing turns a match from something that happened into material you can review. That is the foundation of improvement.",
+        { type: 'h2', text: 'Why review is the fastest way to improve' },
+        "Pro players spend more time reviewing than playing. The reason is simple: during a game you decide on instinct, during review you see where instinct failed. Losing games especially, the same pattern of mistakes repeats, and one review catches it.",
+        "The link-based review loop: send your lost game to yourself, look at it the next day, find three moves, the last one, the mid-game turning point, the opening misstep. Find those three and the game was not wasted.",
+        { type: 'h2', text: 'A match as a calling card' },
+        "For people who play regularly in groups, sharing has a hidden effect: it builds a reputation of being decent at the game. Once people have seen your replay, they know your level, matchmaking gets fairer, and no one suffers a completely one-sided game. In that sense, a match really is a calling card.",
+        "Want to try it? Play one game in the <a href='/play'>match lobby</a>, then use the share button to create your first match link.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: "Do viewers need an account to open a match link?", a: "No. The link opens a full replay in the browser, no registration or download, by design." },
+            { q: "Do match links expire?", a: "No. Match records and links stay valid, so you can save classic games to favorites and revisit them." },
+            { q: "Can I share with someone who never played gomoku?", a: "Yes. The replay UI is intuitive, and the move order is easy to follow, which makes it good for teaching." },
+            { q: "How do I review my own games?", a: "Open the match link and look for three moves: the last one, the mid-game turning point, the opening misstep. Find those three and the game was not wasted." },
+          ],
+        },
+        { type: 'cta', text: 'Play a game in the lobby →', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
