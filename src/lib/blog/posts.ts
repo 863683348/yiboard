@@ -951,7 +951,168 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'board-games-browser-revival',
+    date: '2026-08-15',
+    title: {
+      zh: "棋类游戏凭什么在浏览器里复兴？",
+      en: "Why Board Games Deserve a Browser Revival",
+    },
+    description: {
+      zh: '棋类天然适合浏览器：规则简单、回合制不要求低延迟、分享链接即可开局、跨设备零安装。这篇讲传统棋类线上化的难点，以及 Web 为什么比 App 更适合棋类。',
+      en: 'Board games are a natural fit for the browser: simple rules, turn-based play that tolerates latency, share-a-link matchmaking, and zero-install cross-device play. This piece covers the real challenges of bringing traditional board games online and why the web beats native apps for this genre.',
+    },
+    keywords: ['classic games browser', 'chinese classics online', 'board games web revival', 'play tradition games', 'gomoku online', 'board game community'],
+    content: {
+      zh: [
+        "说个最近的经历。上周和大学室友视频下五子棋，他人在深圳，我在杭州，一人一杯咖啡，谁都没装新软件，就一个网页链接，开了十五分钟。棋到中盘他说了句：\"这要是放十年前，得下个 300MB 的客户端。\"",
+        "他说到点子上了。围棋、象棋、五子棋这些中国经典棋类，其实是最适合跑在浏览器里的游戏。它们不靠画面炫技，不依赖反应速度，核心就是规则、思考和一次次落子。而这些东西，网页全都给得起。",
+        {
+                "type": "h2",
+                "text": "棋类天生就是\"网页友好型\"游戏"
+        },
+        "先看游戏本身。棋类是回合制，一局对弈里你的操作密度极低，你走一步，对方想两分钟，这在技术上意味着什么？意味着对延迟的要求低到可以忽略。在线麻将、卡牌游戏也一样，但棋类更纯粹。",
+        "再看规则。五子棋、象棋、围棋的规则简单到可以写进几行代码，判负、禁手、劫争这些特殊规则，现代浏览器引擎跑起来毫无压力。不需要高性能 GPU，不需要几十 GB 的安装包，一个页面加几段逻辑就够。",
+        "然后是设备。网页在哪都能开：办公室的笔记本、客厅的平板、手机浏览器。你不需要在每台设备上装 App、同步存档，一个链接就够了。",
+        {
+                "type": "h2",
+                "text": "线上化真正的难点，从来不是技术"
+        },
+        "棋类搬到线上，难的不是代码，是三件小事：**礼仪、认输和计时**。",
+        "线下对弈，礼仪靠人：落子后不说话，对手思考时别催。线上没人盯着，就需要产品兜底。现在很多网页棋类平台做\"落子音效+思考提示\"，就是替代线下那种仪式感。",
+        "认输是个更微妙的事。线下可以投子、可以推枰，线上你得有个明确的\"认输\"按钮，还得处理得了\"对方不认输、就是不落子\"的僵局。好一点的平台会给超时判负、给主动认输，把这种尴尬摊到明面上解决。",
+        "计时也麻烦。线下棋馆有钟，线上得有\"不加时\"的读秒和\"加时\"的缓棋机制。新手刚接触的时候，读秒就是一道劝退门槛，所以对新手友好的平台会把计时做成可调、可关的。",
+        {
+                "type": "h2",
+                "text": "为什么 Web 比 App 更适合棋类"
+        },
+        "App 能做的，网页都能做，但反过来不一定。棋类这个品类，Web 有三个 App 给不了的东西。",
+        "第一是**零安装**。点开即玩，不占内存，不弹更新。对用户来说，\"打开一个链接\"和\"下载一个软件\"的心理成本差着数量级。第二是**链接即开局**。约战只发一个 URL，对方点开就进同一张棋盘，没有好友系统、没有房间号，这是网页的天然能力。第三是**排行榜和分享**。棋局结束一键生成对局链接，复盘也好、炫耀也罢，都绕不开分享，而分享正是网页的强项。",
+        {
+                "type": "h2",
+                "text": "新手需要的功能，网页全给得起"
+        },
+        "线下棋馆对新手并不友好，你会被高手虐得体无完肤。网页棋类在这方面是反过来的，因为它可以做线下做不到的事：",
+        {
+                "type": "ul",
+                "items": [
+                        "**悔棋**：下错了撤销一步，新手不用为自己的手误买单",
+                        "**提示**：看不明白的时候要个建议，AI 会给下一步的参考",
+                        "**复盘**：整局棋录下来，想看的随时回放",
+                        "**友谊局无计时**：没人催你，慢慢想"
+                ]
+        },
+        "这些功能加起来，就是\"把新手当人看\"。老棋友照样能找到深度，新人有台阶上，两边不打架。",
+        {
+                "type": "h2",
+                "text": "中文经典棋类的特殊价值"
+        },
+        "围棋的韵味、象棋的攻守、五子棋的直白，这几种棋放在一起，本身就是一种文化传承。它们规则简单、变化无穷，是最适合用来\"教新手入门传统棋类\"的载体。我们做这个平台的时候，最初的念头就很朴素：让这些棋不只在棋馆和老年活动室里活着，也活在年轻人的浏览器标签页里。",
+        "**Q：网页棋类会不会卡？**",
+        "A：不会。棋类每步操作产生的数据极小，网页引擎处理绰绰有余，网络延迟影响也很小。你担心的\"卡\"通常来自动画或音效渲染，那些都可以关。",
+        "**Q：不注册能玩吗？**",
+        "A：能。用链接直接开局不需要注册。要保存战绩、上排行榜，才需要一个轻量账号，几分钟就能建好。",
+        "**Q：新手不会下棋怎么办？**",
+        "A：平台上有 AI 陪练和提示功能，规则也写在显眼的位置。先和 AI 下几局，比和人对弈轻松，等感觉对了再进人场。",
+        "**Q：手机浏览器玩体验好吗？**",
+        "A：可以。棋类对触摸屏很友好，落子就是点一下。屏幕小的时候可以放大棋盘，不会误触。",
+        "**Q：这些棋类游戏收费吗？**",
+        "A：基础对战免费。高级复盘、AI 分析这类功能会区分会员，但核心的\"点开即玩\"永远不设门槛。",
+        {
+                "type": "h2",
+                "text": "让传统棋类活回浏览器"
+        },
+        "棋类游戏值得在浏览器里复兴，不是因为它技术先进，而是因为它足够古老、足够纯粹。一个链接，一盘棋，两个人，隔着几千公里也能坐到同一张棋盘前。这是我们做这件事的全部理由。",
+        "**",
+        {
+                "type": "cta",
+                "text": "打开任意一局，链接即开局 →",
+                "href": "/"
+        },
+        "**",
+        {
+                "type": "cta",
+                "text": "了解更多关于这个项目 →",
+                "href": "/about"
+        }
+],
+      en: [
+        "Here's something from last week. A college roommate and I played Gomoku over a video call, him in Shenzhen, me in Hangzhou, each with a cup of coffee, nobody installing a thing. One web link, fifteen minutes, done. Mid-game he said, \"Ten years ago this would've meant downloading a 300MB client.\"",
+        "He nailed it. Chinese classics like Go, Xiangqi, and Gomoku are the games most naturally suited to running in a browser. They don't rely on flashy graphics or reaction speed. The core is rules, thinking, and one move at a time. The web can handle all of that.",
+        {
+                "type": "h2",
+                "text": "Board games are built for the browser"
+        },
+        "Look at the game first. Board games are turn-based. Your input density is tiny, you move, your opponent thinks for two minutes. Technically that means the latency requirement is almost irrelevant. Mahjong and card games work the same way, but board games are the purest case.",
+        "Then there's the ruleset. Gomoku, Xiangqi, and Go have rules simple enough to fit in a few lines of code. Special cases like forbidden moves, ko fights, and stalemate detection run effortlessly in a modern browser engine. No high-end GPU, no giant install, just a page and some logic.",
+        "And devices. The web opens anywhere: the office laptop, the tablet in the living room, the phone in your pocket. No app to install on every machine, no save file to sync. One link is enough.",
+        {
+                "type": "h2",
+                "text": "The real online difficulty was never technical"
+        },
+        "Moving board games online is hard not because of code, but because of three small things: **etiquette, resignation, and timing**.",
+        "Offline, etiquette lives in people. You don't talk after you place a stone. You don't rush your opponent's thinking. Online, nobody is watching, so the product has to fill in. That's why good web platforms add move sounds and thinking indicators, recreating that offline ritual.",
+        "Resignation is subtler. Offline you can just push your stones over. Online you need an explicit \"resign\" button, and you have to handle the standoff where one player refuses to resign and also refuses to move. Solid platforms add timeout losses and clean resignation flows, bringing that awkwardness out into the open.",
+        "Timing is the third headache. Offline clubs have chess clocks. Online you need countdown timers with no increments, plus friendly games with no clock at all. A hard countdown is a wall for beginners, so beginner-friendly platforms make timing adjustable, even switchable.",
+        {
+                "type": "h2",
+                "text": "Why the web beats an app for board games"
+        },
+        "Anything an app can do, the web can do too. The reverse isn't true. For this category, the web offers three things an app can't.",
+        "First, **zero install**. Open and play. No storage taken, no update prompts. The psychological gap between \"clicking a link\" and \"downloading software\" is an order of magnitude. Second, **link equals game room**. To set up a match you send one URL, the other person clicks and lands on the same board. No friend systems, no room codes. That's native web behavior. Third, **leaderboards and sharing**. When a game ends, generate a replay link in one click. Reviewing it, showing it off, it all runs through sharing, and sharing is where the web lives.",
+        {
+                "type": "h2",
+                "text": "Features beginners need, the web delivers free"
+        },
+        "Offline clubs are rough on beginners. You get crushed by veterans until you quit. Web board games flip that, because they can do things a physical room can't:",
+        {
+                "type": "ul",
+                "items": [
+                        "**Undo**: misclicked? Take it back. Beginners don't pay for a finger slip.",
+                        "**Hints**: stuck? Ask for a suggestion and the AI shows a reference move.",
+                        "**Replay**: the whole game is recorded, ready to rewatch whenever you want.",
+                        "**Unlimited-time friendlies**: nobody pressures you, think as long as you like."
+                ]
+        },
+        "Put together, that's a product that treats beginners like people. Old hands still find depth, new players have a ladder to climb, and the two never collide.",
+        {
+                "type": "h2",
+                "text": "The special value of Chinese classic games"
+        },
+        "The elegance of Go, the attack and defense of Xiangqi, the plainness of Gomoku. Together these games carry a cultural inheritance. Their rules are simple and their possibilities are endless, which makes them the best vehicle for teaching someone traditional board games from scratch. When we started this platform, the thought was plain: let these games live not just in chess halls and senior activity rooms, but in young people's browser tabs too.",
+        "**Q: Will web board games lag?**",
+        "A: No. Each move produces a tiny amount of data that browser engines handle easily, and network latency matters little here. The \"lag\" people worry about usually comes from animations or sound rendering, and you can turn those off.",
+        "**Q: Can I play without registering?**",
+        "A: Yes. Link-based matches need no account. You only register, which takes minutes, when you want to keep records or climb the leaderboard.",
+        "**Q: What if I've never played before?**",
+        "A: There's an AI sparring partner and a hint feature, and the rules sit somewhere visible. Play a few games against the AI first, it's gentler than facing humans, and jump into the player pool when you feel ready.",
+        "**Q: Does it work well on a phone browser?**",
+        "A: It does. Board games are touch-friendly, a move is one tap. On small screens you can zoom the board, and mis-taps are rare.",
+        "**Q: Are these games paid?**",
+        "A: Basic matches are free. Advanced replay and AI analysis sit behind a membership, but the core, open-and-play experience, never does.",
+        {
+                "type": "h2",
+                "text": "Bring traditional games back to the browser"
+        },
+        "Board games deserve a browser revival not because the tech is advanced, but because they're old and pure enough to fit. One link, one board, two people, sitting at the same table from a thousand kilometers apart. That's the whole reason we built this.",
+        "**",
+        {
+                "type": "cta",
+                "text": "Start any game, the link is the room →",
+                "href": "/"
+        },
+        "**",
+        {
+                "type": "cta",
+                "text": "Read more about this project →",
+                "href": "/about"
+        }
+],
+    },
+  },
+
 ];
+
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
