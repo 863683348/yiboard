@@ -27,7 +27,8 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   const lang = (isZh ? 'zh' : 'en') as 'zh' | 'en';
   const canonical = hrefFor(locale as Locale, slug);
   return {
-    title: `${post.title[lang]} — YiBoard`,
+    // 只给裸标题，品牌后缀由 layout 的 title.template ('%s — YiBoard') 统一追加，避免 "— YiBoard — YiBoard"
+    title: post.title[lang],
     description: post.description[lang],
     keywords: post.keywords,
     alternates: {
