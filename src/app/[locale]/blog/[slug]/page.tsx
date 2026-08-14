@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-import { getPostBySlug, getPostSlugs, type PostBlock } from '@/lib/blog/posts';
+import { getPostBySlug, getPostSlugs, POSTS, type PostBlock, type BlogPost } from '@/lib/blog/posts';
 import { routing, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 
@@ -11,6 +11,32 @@ type Params = { locale: string; slug: string };
 // Canonical 与 hreflang：en 无前缀（默认语言），zh 带 /zh 前缀；es/ja/pt-BR 回退英文内容但保留各自 URL。
 function hrefFor(locale: Locale, slug: string) {
   return locale === routing.defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+}
+
+// 相关文章：按标题+描述英文关键词重合度取 3 篇（排除自身），文章间内链。
+function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
+  const current = getPostBySlug(slug);
+  if (!current) return [];
+  const tokenize = (s: string) =>
+    new Set(
+      (s || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .split(/\s+/)
+        .filter((w) => w.length > 3)
+    );
+  const curTokens = tokenize(
+    current.title.en + ' ' + current.description.en + ' ' + (current.keywords || []).join(' ')
+  );
+  const scored = POSTS.filter((p) => p.slug !== slug)
+    .map((p) => {
+      const t = tokenize(p.title.en + ' ' + p.description.en + ' ' + (p.keywords || []).join(' '));
+      let score = 0;
+      curTokens.forEach((w) => { if (t.has(w)) score++; });
+      return { p, score };
+    })
+    .sort((a, b) => b.score - a.score || (a.p.date < b.p.date ? 1 : -1));
+  return scored.slice(0, limit).map((s) => s.p);
 }
 
 export function generateStaticParams() {
@@ -183,6 +209,29 @@ export default async function BlogPostPage(props: { params: Promise<Params> }) {
             </ol>
           </section>
         )}
+
+        {(() => {
+          const related = getRelatedPosts(slug);
+          if (!related.length) return null;
+          return (
+            <section style={{ marginTop: 'var(--space-10)' }}>
+              <h2 className="yb-h3">Related</h2>
+              <ul style={{ marginTop: 'var(--space-4)', display: 'grid', gap: 'var(--space-3)', listStyle: 'none', padding: 0 }}>
+                {related.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={hrefFor(locale as Locale, p.slug)}
+                      style={{ textDecoration: 'underline', fontWeight: 600 }}
+                    >
+                      {p.title[lang]}
+                    </Link>
+                    <p style={{ marginTop: 'var(--space-1)', fontSize: 'var(--text-xs)', color: 'var(--fg-2)' }}>{p.date}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })()}
 
         <div style={{ marginTop: 'var(--space-10)', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--border-soft)' }}>
           <p style={{ fontSize: 'var(--text-sm)' }}>
