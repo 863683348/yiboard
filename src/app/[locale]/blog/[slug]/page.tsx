@@ -1,159 +1,196 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
-import type { ReactNode } from 'react';
+import { notFound } from 'next/navigation';
 
-import { Link } from '@/i18n/navigation';
-import { localeAlternates } from '@/i18n/metadata';
 import { getPostBySlug, getPostSlugs, type PostBlock } from '@/lib/blog/posts';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
+import { Link } from '@/i18n/navigation';
 
-/** 每篇文章 × 每种语言都预生成（5 语 × 7 篇 = 35 个静态页）。 */
+type Params = { locale: string; slug: string };
+
+// Canonical 与 hreflang：en 无前缀（默认语言），zh 带 /zh 前缀；es/ja/pt-BR 回退英文内容但保留各自 URL。
+function hrefFor(locale: Locale, slug: string) {
+  return locale === routing.defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+}
+
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     getPostSlugs().map((slug) => ({ locale, slug })),
   );
 }
 
-/** 非 zh/en 语言（es/ja/pt-BR）回退英文内容。 */
-function langFor(locale: string): 'zh' | 'en' {
-  return locale === 'zh' ? 'zh' : 'en';
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const { locale, slug } = await props.params;
+  const post = getPostBySlug(slug);
+  if (!post) return {};
+  const isZh = locale === 'zh';
+  const lang = (isZh ? 'zh' : 'en') as 'zh' | 'en';
+  const canonical = hrefFor(locale as Locale, slug);
+  return {
+    title: `${post.title[lang]} — YiBoard`,
+    description: post.description[lang],
+    keywords: post.keywords,
+    alternates: {
+      canonical,
+      languages: Object.fromEntries(routing.locales.map((l) => [l, hrefFor(l, slug)])),
+    },
+  };
 }
 
-/** 解析正文里的 markdown 链接 `[text](/path)` → next-intl Link；纯文本原样返回。 */
-function renderRichText(text: string, locale: string, keyPrefix: string): ReactNode[] {
-  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g).filter(Boolean);
-  return parts.map((part, i) => {
-    const m = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
-    if (!m) return part;
-    const [label, url] = [m[1]!, m[2]!];
-    // 外链直接 <a>；站内相对路径走 next-intl Link 自动带语言前缀
-    if (/^https?:\/\//.test(url)) {
-      return (
-        <a key={`${keyPrefix}-${i}`} href={url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
-          {label}
-        </a>
-      );
-    }
-    return (
-      <Link key={`${keyPrefix}-${i}`} href={url} style={{ textDecoration: 'underline' }}>
-        {label}
-      </Link>
-    );
-  });
-}
-
-/** 渲染内容块：段落 / h2 / 列表 / FAQ / CTA。 */
-function Block({ block, locale }: { block: PostBlock; locale: string }) {
-  if (typeof block === 'string') {
-    return <p style={{ marginTop: 'var(--space-3)' }}>{renderRichText(block, locale, 'p')}</p>;
-  }
-  if (block.type === 'h2') {
-    return (
-      <h2 className="yb-h3" style={{ marginTop: 'var(--space-8)' }}>
-        {block.text}
-      </h2>
-    );
-  }
+function Block({ block, lang }: { block: PostBlock; lang: 'zh' | 'en' }) {
+  if (typeof block === 'string') return <p style={{ marginTop: 'var(--space-3)', lineHeight: 1.7 }}>{block}</p>;
+  if (block.type === 'h2') return <h2 className="yb-h3" style={{ marginTop: 'var(--space-8)' }}>{block.text}</h2>;
   if (block.type === 'ul') {
     return (
-      <ul style={{ marginTop: 'var(--space-3)', paddingLeft: '1.5em', display: 'grid', gap: 'var(--space-2)' }}>
-        {block.items.map((item, i) => (
-          <li key={i}>{renderRichText(item, locale, `li-${i}`)}</li>
+      <ul style={{ marginTop: 'var(--space-3)', paddingLeft: 'var(--space-5)', display: 'grid', gap: 'var(--space-2)', lineHeight: 1.6 }}>
+        {block.items.map((it, i) => (
+          <li key={i} style={{ fontSize: 'var(--text-sm)' }}>{it}</li>
         ))}
       </ul>
     );
   }
   if (block.type === 'faq') {
     return (
-      <div style={{ marginTop: 'var(--space-3)', display: 'grid', gap: 'var(--space-4)' }}>
-        {block.items.map((item, i) => (
-          <details key={i} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
-            <summary style={{ fontWeight: 600, cursor: 'pointer' }}>{item.q}</summary>
-            <p style={{ marginTop: 'var(--space-2)', color: 'var(--fg-2)' }}>{item.a}</p>
+      <div style={{ marginTop: 'var(--space-4)' }}>
+        {block.items.map((it, i) => (
+          <details key={i} style={{ marginTop: 'var(--space-3)', border: '1px solid var(--border-soft)', borderRadius: 8, padding: 'var(--space-3)' }}>
+            <summary style={{ fontWeight: 600, cursor: 'pointer' }}>{it.q}</summary>
+            <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>{it.a}</p>
           </details>
         ))}
       </div>
     );
   }
-  // cta
-  return (
-    <p style={{ marginTop: 'var(--space-6)' }}>
-      <Link href={block.href} className="yb-btn yb-btn-primary">
-        {block.text}
-      </Link>
-    </p>
-  );
+  if (block.type === 'cta') {
+    return (
+      <p style={{ marginTop: 'var(--space-8)' }}>
+        <a
+          href={block.href}
+          style={{
+            display: 'inline-block',
+            padding: 'var(--space-3) var(--space-6)',
+            background: 'var(--accent)',
+            color: 'var(--accent-on)',
+            borderRadius: 8,
+            fontWeight: 600,
+            textDecoration: 'none',
+          }}
+        >
+          {block.text}
+        </a>
+      </p>
+    );
+  }
+  return null;
 }
 
-export async function generateMetadata(props: {
-  params: Promise<{ locale: string; slug: string }>;
-}): Promise<Metadata> {
-  const { locale, slug } = await props.params;
-  const post = getPostBySlug(slug);
-  if (!post) return {};
-  const lang = langFor(locale);
-  const title = post.title[lang];
-  const description = post.description[lang];
-  return {
-    title,
-    description,
-    keywords: post.keywords,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      publishedTime: post.date,
-      images: [{ url: '/og.png', width: 1200, height: 630 }],
-    },
-    twitter: { card: 'summary_large_image', title, description, images: ['/og.png'] },
-    alternates: localeAlternates(`/blog/${slug}`, locale),
-  };
-}
-
-export default async function BlogPostPage(props: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
+export default async function BlogPostPage(props: { params: Promise<Params> }) {
   const { locale, slug } = await props.params;
   setRequestLocale(locale);
   const post = getPostBySlug(slug);
   if (!post) notFound();
-  const lang = langFor(locale);
+
+  // 非 en/zh 语言回退英文内容（URL 保留该语言前缀，canonical 指向该 URL；如需严格避免重复可后续改为重定向）
+  const isZh = locale === 'zh';
+  const lang = (isZh ? 'zh' : 'en') as 'zh' | 'en';
+  const canonical = hrefFor(locale as Locale, slug);
+
+  const faqItems = post.content[lang].filter((b): b is Extract<PostBlock, { type: 'faq' }> => typeof b !== 'string' && b.type === 'faq').flatMap((b) => b.items);
+  const howTo = post.howTo?.[lang as 'zh' | 'en'] ?? post.howTo?.en;
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title[lang],
-    description: post.description[lang],
-    datePublished: post.date,
-    inLanguage: lang,
-    author: { '@type': 'Organization', name: 'YiBoard' },
-    publisher: { '@type': 'Organization', name: 'YiBoard' },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://yiboardgame.com/blog/${slug}`,
-    },
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'YiBoard', item: 'https://yiboardgame.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://yiboardgame.com/blog' },
+          { '@type': 'ListItem', position: 3, name: post.title[lang], item: `https://yiboardgame.com${canonical}` },
+        ],
+      },
+      {
+        '@type': 'Article',
+        headline: post.title[lang],
+        description: post.description[lang],
+        datePublished: post.date,
+        dateModified: post.date,
+        inLanguage: isZh ? 'zh' : 'en',
+        author: { '@type': 'Organization', name: 'YiBoard', url: 'https://yiboardgame.com' },
+        publisher: { '@type': 'Organization', name: 'YiBoard', url: 'https://yiboardgame.com' },
+        url: `https://yiboardgame.com${canonical}`,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `https://yiboardgame.com${canonical}` },
+      },
+      ...(faqItems.length
+        ? [{
+            '@type': 'FAQPage',
+            mainEntity: faqItems.map((it) => ({
+              '@type': 'Question',
+              name: it.q,
+              acceptedAnswer: { '@type': 'Answer', text: it.a },
+            })),
+          }]
+        : []),
+      ...(howTo
+        ? [{
+            '@type': 'HowTo',
+            name: howTo.name,
+            step: howTo.steps.map((s, i) => ({
+              '@type': 'HowToStep',
+              position: i + 1,
+              name: s.name,
+              text: s.text,
+            })),
+          }]
+        : []),
+    ],
   };
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      <nav style={{ marginBottom: 'var(--space-6)', fontSize: 'var(--text-xs)', color: 'var(--fg-2)' }}>
+        <Link href="/" style={{ textDecoration: 'underline' }}>YiBoard</Link>
+        {' › '}
+        <Link href="/blog" style={{ textDecoration: 'underline' }}>Blog</Link>
+        {' › '}
+        <span>{post.title[lang]}</span>
+      </nav>
+
       <article style={{ maxWidth: 720 }}>
-        <p className="yb-meta" style={{ fontSize: 'var(--text-xs)' }}>
-          <time dateTime={post.date}>{post.date}</time>
-        </p>
-        <h1 className="yb-h2" style={{ marginTop: 'var(--space-2)' }}>
-          {post.title[lang]}
-        </h1>
-        <p className="yb-lead" style={{ marginTop: 'var(--space-3)', color: 'var(--fg-2)' }}>
-          {post.description[lang]}
-        </p>
-        {post.content[lang].map((block, i) => (
-          <Block key={i} block={block} locale={locale} />
-        ))}
+        <p className="yb-meta" style={{ fontSize: 'var(--text-xs)' }}>{post.date}</p>
+        <h1 className="yb-h2">{post.title[lang]}</h1>
+        <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>{post.description[lang]}</p>
+
+        <div style={{ marginTop: 'var(--space-8)' }}>
+          {post.content[lang].map((b, i) => (
+            <Block key={i} block={b} lang={lang} />
+          ))}
+        </div>
+
+        {howTo && (
+          <section style={{ marginTop: 'var(--space-10)' }}>
+            <h2 className="yb-h3">{howTo.name}</h2>
+            <ol style={{ marginTop: 'var(--space-4)', paddingLeft: 'var(--space-6)', display: 'grid', gap: 'var(--space-4)', lineHeight: 1.6 }}>
+              {howTo.steps.map((s, i) => (
+                <li key={i}>
+                  <strong>{s.name}</strong>
+                  <p style={{ marginTop: 'var(--space-1)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>{s.text}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        <div style={{ marginTop: 'var(--space-10)', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--border-soft)' }}>
+          <p style={{ fontSize: 'var(--text-sm)' }}>
+            YiBoard (yiboardgame.com) — 中华棋类，浏览器即玩，免费无注册。{' '}
+            <Link href="/play" style={{ textDecoration: 'underline' }}>去下一局</Link>{' '}
+            · <Link href="/blog" style={{ textDecoration: 'underline' }}>更多博客</Link>{' '}
+            · <Link href="/how-to" style={{ textDecoration: 'underline' }}>玩法指南</Link>
+          </p>
+        </div>
       </article>
     </div>
   );
