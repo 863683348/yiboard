@@ -64,6 +64,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // P0-1 域名归一化：www.yiboardgame.com → https://yiboardgame.com（301 永久）。
+  // http→https 由 Vercel 边缘自动处理；此处只补齐 www 这一支，避免 GSC 出现多 host 重复版本。
+  // 与 layout / sitemap / robots 的 canonical 基准（https://yiboardgame.com）保持一致。
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.yiboardgame.com' }],
+        destination: 'https://yiboardgame.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
