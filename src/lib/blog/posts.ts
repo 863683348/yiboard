@@ -841,6 +841,87 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'think-offline-win-online',
+    date: '2026-08-14',
+    title: {
+      zh: '离线也能想，在线才能赢',
+      en: 'Think Offline, Win Online',
+    },
+    description: {
+      zh: 'YiBoard 把活拆开：离线想棋，在线棋牌社区接结果。为什么和陌生人下棋、匹配棋类游戏的设计、实时五子棋能拉开差距。',
+      en: 'YiBoard splits the work: you think offline, the online board game community plays the result. Why playing with strangers, matchmaking design, and live gomoku change the game.',
+    },
+    keywords: ['online board game community', 'play with strangers', 'matchmaking board game', 'live gomoku', 'gomoku online', 'yi board game'],
+    content: {
+      zh: [
+        '大多数棋类 App 都默认你「在线」和「动脑」必须同时发生。YiBoard 偏不这么干。最费脑子的那个环节，想棋，你离线、按自己的节奏来；等到上了「在线棋牌社区」，社区接的是你想好的结果。我老惦记这个点子，因为它真的改变了我下棋的方式。我能在地铁上拆一个局面，水烧开时顺手记一条变化，等脑子清楚了才坐下来打一局实时对战。棋盘不在乎你在哪想的，对手只看到一个更干脆、更快的你。',
+        { type: 'h2', text: '和陌生人下棋，省掉尴尬的部分' },
+        '去棋社随机坐到一张桌子前，挺怵人的。到了线上，「和陌生人下棋」去掉了怵人的部分，留下了好玩的部分。在 YiBoard 上你不用先聊两句才开局：排队、匹配、开下。没有简介要读，也不用装什么段位。对面那个陌生人，就是一块棋盘。比起社交更爱棋本身的人，会松一口气。而且单局短，遇到不对付的对手也就输三分钟，不是搭进去一整晚。',
+        { type: 'h2', text: '会读你水平的匹配棋类游戏' },
+        '大多数「匹配」只是一个数字。YiBoard 的匹配棋类游戏逻辑看的是你「怎么赢」，而不只是「赢没赢」。它给近况加权，看你能活下来的开局，也看你栽进去的开局。所以它找的对手，近到有意义，又不至于每局都像抛硬币。我有几周明显感觉它注意到我涨了，下一拨排队就难了一点，是那种良性的难。你不是在跟永远追不上的人硬磨段位。',
+        { type: 'h2', text: '实时五子棋是验证想法最快的方式' },
+        '我最喜欢的是这个：实时五子棋把「一个念头」在十分钟之内变成「证据」。你离线读了双三陷阱，当晚试一把，第三局就知道自己那套成不成立。反馈环很紧，因为棋快、棋盘诚实。没有骰子，没有隐藏信息，只有你和那条你信的变化。要是它破了，你亲眼看见破在哪。这种练习，慢棋给不了。',
+        { type: 'h2', text: '离线时你到底能做什么' },
+        {
+          type: 'ul',
+          items: [
+            '复盘一局输棋，标出那步断送全局的棋',
+            '对着浏览器里的 AI 练开局，没有倒计时催你',
+            '存三个看不懂的局面，通勤发呆时翻出来琢磨',
+            '列一张匹配计划：谁你赢、谁赢你、下一步学什么',
+          ],
+        },
+        '这些都不需要大厅。它们只需要安静的十分钟，而我们大多数人拥有的安静十分钟，比自己承认的要多。',
+        { type: 'h2', text: '把研究带进排行榜' },
+        '离线苦练的意义，全在线上结果。当你带着清楚的计划进排位，排行榜就不再是随机的。你不是在盼着自己涨，而是在执行已经测过的东西。YiBoard 的排位天梯奖励的正是这个：稳的、想过的棋，胜过运气连胜。打开[排行榜](/rankings)，你会看到顶端那些名字，都是先想清楚的人。',
+        { type: 'h2', text: '常见问题' },
+        {
+          type: 'faq',
+          items: [
+            { q: '在 YiBoard 上研究棋，必须在线吗？', a: '不用。想棋、复盘、练开局，都在浏览器里完成，没有对手也没有倒计时。只有想打实时对战时，你才上线。' },
+            { q: '新手也会被公平匹配吗？', a: '会。它从你头几局给你定档，不是拿一个旧分硬套，所以你第一天不会被丢进一堆老手堆里。' },
+            { q: '手机上能下实时五子棋吗？', a: '能。棋盘是响应式的，单局又短，等公交的功夫就够认真来一局。' },
+            { q: '离线研究会体现在排位里吗？', a: '会，是间接地。你离线做的计划，就是线上执行的计划，而排行榜反映的是执行。' },
+          ],
+        },
+        { type: 'cta', text: '离线想、在线赢，就在 yiboardgame.com →', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        'Most board game apps assume you\'re online and focused at the same moment. YiBoard flips that. You do the hard part, the thinking, offline and on your own clock. Then the online board game community picks up the result and runs with it. I keep coming back to this idea because it actually changes how I play. I can pick a position apart on the train, scribble a line while the coffee brews, and only sit down to a live match once my head is clear. The board doesn\'t care where the thinking happened. Your opponent just sees a cleaner, faster you.',
+        { type: 'h2', text: 'Play with strangers without the awkward part' },
+        'Walking up to a random table at a club is scary. Online, \'play with strangers\' loses the scariness and keeps the good parts. On YiBoard you don\'t chat your way into a game; you queue, you get matched, you play. No bios to read, no reputation to fake. The stranger across the board is just a board. For anyone who likes the game more than the small talk, that\'s a relief. And because matches are short, a bad pairing costs you three minutes, not an evening.',
+        { type: 'h2', text: 'A matchmaking board game that reads your level' },
+        'Most \'matchmaking\' is just a number. YiBoard\'s matchmaking board game logic looks at how you actually win, not only whether you do. It weights recent form, the openings you survive, the ones that eat you alive. So the opponent it finds is close enough to matter but not so close that every game is a coin flip. I\'ve had weeks where it clearly noticed I\'d leveled up, and the next queue felt harder in a good way. You\'re not grinding ranks against people you\'ll never catch.',
+        { type: 'h2', text: 'Live gomoku is the fastest way to test an idea' },
+        'Here\'s what I love: live gomoku turns a thought into proof in under ten minutes. You read about a double-three trap offline, you try it tonight, and by the third game you know whether it holds. The feedback loop is tight because the game is fast and the board is honest. No dice, no hidden information, just you and the line you believed in. If it breaks, you saw exactly where. That\'s a kind of practice a slow game can\'t give you.',
+        { type: 'h2', text: 'What you can actually do offline' },
+        {
+          type: 'ul',
+          items: [
+            'Study a lost game and mark the one move that ended it',
+            'Drill an opening against the browser AI with no timer breathing down your neck',
+            'Save three positions you don\'t understand yet and revisit them on a dull commute',
+            'Sketch a matchmaking plan: who you beat, who beats you, what to learn next',
+          ],
+        },
+        'None of this needs a lobby. It needs a quiet ten minutes, which most of us have more of than we admit.',
+        { type: 'h2', text: 'Bring the study to the rankings' },
+        'The point of all that offline work is the online result. When you carry a clear plan into a ranked match, the rankings stop feeling random. You\'re not hoping to climb; you\'re executing something you already tested. YiBoard\'s ranked ladder rewards exactly this: steady, studied play over lucky streaks. Open the [rankings](/rankings) and you\'ll see the names near the top are the ones who clearly thought first.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Do I need to be online to study on YiBoard?', a: 'No. The thinking, the review, the opening drills all happen in the browser with no opponent and no clock. You only go online when you want a live match.' },
+            { q: 'Is matchmaking fair for new players?', a: 'Yes. It seeds you from your first few games rather than a stored rating, so you\'re not dropped into a wall of veterans on day one.' },
+            { q: 'Can I play live gomoku on my phone?', a: 'Yes. The board is responsive and the matches are short, which makes a bus stop a reasonable place for a real game.' },
+            { q: 'Will my offline study show up in my ranked games?', a: 'It does, indirectly. The plans you make offline are the ones you execute online, and the rankings reflect the execution.' },
+          ],
+        },
+        { type: 'cta', text: 'Think offline, win online at yiboardgame.com →', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
