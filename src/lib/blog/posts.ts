@@ -19,6 +19,11 @@ export interface BlogPost {
   description: { zh: string; en: string };
   keywords: string[];
   content: { zh: PostBlock[]; en: PostBlock[] };
+  // 可选：结构化 HowTo（用于 HowTo JSON-LD 争取富媒体结果）。按语言分键，缺失语言回退 en。
+  howTo?: {
+    zh?: { name: string; steps: { name: string; text: string }[] };
+    en?: { name: string; steps: { name: string; text: string }[] };
+  };
 }
 
 export const POSTS: BlogPost[] = [
@@ -243,14 +248,14 @@ export const POSTS: BlogPost[] = [
     slug: 'how-to-play-gomoku',
     date: '2026-08-07',
     title: {
-      zh: '五子棋 30 秒入门',
-      en: 'How to Play Gomoku in 30 Seconds',
+      zh: '五子棋玩法：规则、开局与必胜思路',
+      en: 'How to Play Gomoku: Rules, Openings & Winning Strategy',
     },
     description: {
-      zh: '黑白交替落子，五子连线即胜。五子棋规则一句话讲完，但胜负之间全是讲究。这篇带你 30 秒学会，再给你几个立刻能用的开局思路。',
-      en: 'Black and white alternate, five in a row wins. The rules of Gomoku fit in one sentence, but the gap between winning and losing is all judgment. Learn it in 30 seconds, then grab a few openings that work now.',
+      zh: '五子棋（连五子）怎么玩？30 秒看懂规则、搞懂活三与冲四、掌握三个立刻能用的开局，再到 yiboardgame.com 免费开一局。新手友好完整指南。',
+      en: 'Learn how to play Gomoku (Five in a Row): the 30-second rules, the key shapes like live three and open four, three opening moves that work right away, and where to play free in your browser. A beginner-friendly guide.',
     },
-    keywords: ['how to play gomoku', 'gomoku rules', 'five in a row rules', 'gomoku for beginners', 'gomoku openings'],
+    keywords: ['how to play gomoku', 'gomoku rules', 'five in a row rules', 'gomoku for beginners', 'gomoku openings', 'gomoku strategy', 'play gomoku free'],
     content: {
       zh: [
         '五子棋（gomoku）的规则简单到可以一句话说完：黑白双方轮流在棋盘交叉点落子，先把五个子连成一线（横、竖、斜都算）的人获胜。没有吃子、没有回合限制。但正因为规则少，胜负全靠判断，这篇在 30 秒教会你规则之外，再送你几个新手马上能用的思路。',
@@ -326,6 +331,30 @@ export const POSTS: BlogPost[] = [
         },
         { type: 'cta', text: 'Learn it in 30 seconds, play a match now', href: 'https://yiboardgame.com/play' },
       ],
+    },
+    howTo: {
+      en: {
+        name: 'How to Play Gomoku: Step by Step',
+        steps: [
+          { name: 'Set up the board', text: 'Use a 15x15 grid of intersections. Stones are placed on the intersections, not inside the squares.' },
+          { name: 'Learn the turn order', text: 'Black moves first, then players alternate, placing exactly one stone per turn.' },
+          { name: 'Know the win condition', text: 'The first player to line up five stones in a row, horizontally, vertically, or diagonally, wins.' },
+          { name: 'Read the key shapes', text: 'A live three (open at both ends) forces a response; an open four must be blocked immediately. These shapes are the language of attack.' },
+          { name: 'Use three opening moves', text: 'Take the center, build live twos that support each other, and always block the opponent’s open four or live three first.' },
+          { name: 'Play a real match', text: 'Open yiboardgame.com/play for free human-vs-AI or online matchmaking, no signup required.' },
+        ],
+      },
+      zh: {
+        name: '五子棋玩法分步指南',
+        steps: [
+          { name: '摆好棋盘', text: '使用 15×15 的交叉点网格，棋子落在交叉点上，而不是格子里。' },
+          { name: '了解落子顺序', text: '黑棋先走，双方轮流，每回合只落一子。' },
+          { name: '记住获胜条件', text: '率先把五子连成一线（横、竖、两条对角线皆可）的一方获胜。' },
+          { name: '看懂关键棋形', text: '活三（两端都开放）逼对手应手，冲四（一端开放的四连）必须立刻封堵；这是进攻的语言。' },
+          { name: '用三个开局思路', text: '先占中心、摆出互相呼应的活二、对手冲四或活三时永远先封堵。' },
+          { name: '开一局实战', text: '打开 yiboardgame.com/play，免费人机对战或在线匹配，无需注册。' },
+        ],
+      },
     },
   },
   {
