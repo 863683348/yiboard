@@ -1110,7 +1110,6 @@ export const POSTS: BlogPost[] = [
 ],
     },
   },
-
   {
     slug: 'no-ads-no-tracking-just-games',
     date: '2026-08-16',
@@ -1207,9 +1206,11 @@ export const POSTS: BlogPost[] = [
                 "text": "privacy commitment",
                 "href": "/privacy"
         }
-      ]
+
+      ],
     },
   },
+
   {
     slug: 'one-minute-to-play',
     date: '2026-08-17',
@@ -1337,8 +1338,8 @@ export const POSTS: BlogPost[] = [
                 "href": "/about"
         }
       ]
-    },
-  }
+    }
+  },
 ];
 
 
