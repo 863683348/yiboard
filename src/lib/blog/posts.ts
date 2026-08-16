@@ -1111,6 +1111,234 @@ export const POSTS: BlogPost[] = [
     },
   },
 
+  {
+    slug: 'no-ads-no-tracking-just-games',
+    date: '2026-08-16',
+    title: {
+      zh: "零广告、零追踪、只有游戏",
+      en: "No Ads, No Tracking, Just Games",
+    },
+    description: {
+      zh: '棋类游戏网站为什么能零广告零追踪？这篇讲清楚在线棋类站点的商业模型：不卖数据、不插广告，靠什么活；以及 privacy first game 对玩家的实际好处。',
+      en: 'Why can a board game site run with no ads and no tracking? This post explains the business model behind privacy-first game sites, how they survive without selling data, and what no tracking means for players.',
+    },
+    keywords: ['privacy first game', 'no ads game site', 'no tracking browser game', 'clean game experience', 'board game privacy', 'gomoku online'],
+    content: {
+      zh: [
+        "打开一个游戏网站，先关三个弹窗广告，再点掉一个\"同意 Cookie\"，等 30 秒预热……这种体验大家太熟了。所以当 YiBoard 说自己是零广告零追踪时，第一反应多半是：那你们靠什么活？",
+        "这个问题问得对。先把话说明白：**不做广告、不卖数据，不等于网站不花钱**。服务器要租，域名要续费，代码要人维护。区别在于钱从哪来。privacy first game 的路径不是没有商业模式，而是商业模式里没有\"你的数据\"这一项。",
+        {
+                "type": "h2",
+                "text": "零广告零追踪到底指什么"
+        },
+        "拆开看有三层：不展示第三方广告、不植入分析追踪脚本、不把对局数据卖给任何人。广告 SDK 常常自带追踪器，所以\"不插广告\"和\"不追踪\"在技术上是同一件事的两面——砍掉一个，另一个通常也没了。",
+        "对玩家的实际好处很具体：没有弹窗打断对局，页面加载更快，没有跨站追踪器把你的棋局和购物记录绑在一起。棋下到残局时，不会突然飘出一个真人秀广告。",
+        {
+                "type": "h2",
+                "text": "没有广告，靠什么活"
+        },
+        "常见的有三种：订阅、打赏、增值功能。棋类站点的用户画像很特殊——愿意花时间下棋的人，通常也愿意为纯粹的体验付费。",
+        "订阅制的逻辑是：你要的是干净、无干扰的对局环境，那这本身就值得付费。免费用户照常能下棋，订阅用户解锁的是排位数据、复盘工具、无等待队列这类增量价值，而不是\"付费去广告\"这种反人性的设计。",
+        {
+                "type": "h2",
+                "text": "为什么棋类站特别适合这条路"
+        },
+        "不是所有游戏都能零广告生存。棋类有几个先天优势：对局时间长，用户黏性高，社区氛围稳定。广告主的逻辑是打断你、让你分心，而棋类的核心价值恰好是专注——两者天然冲突。",
+        "玩家因为\"干净\"留下来，留下来之后自然产生付费意愿，付费维持\"干净\"。这个循环一旦转起来，比任何广告网络都健康。",
+        {
+                "type": "h2",
+                "text": "玩家怎么验证一个站点是否真的无追踪"
+        },
+        "不用信宣传，自己查：浏览器开发者工具打开网络面板，下一盘棋，看有没有请求发往第三方域名；或者看隐私政策里\"我们收集什么\"那一节——写\"只存对局记录\"的，和写\"用于广告优化\"的，一眼就能分辨。",
+        "**零广告零追踪，网站怎么赚钱？** 靠订阅和增值功能。免费用户正常下棋，付费解锁排位数据、复盘工具等增量价值。商业模式里没有\"你的数据\"这一项。",
+        "**没有广告会不会偷偷追踪？** 不会，而且技术上很难藏。任何追踪脚本都会产生网络请求，开发者工具里一目了然。不信任就自己查，查完就放心。",
+        "**零广告的游戏体验值多少钱？** 对棋类玩家来说很值：没有弹窗打断残局思考，没有追踪器拖慢页面。干净本身是稀缺品，尤其在免费游戏普遍靠广告变现的今天。",
+        "想亲自体验一把零广告零追踪的棋局？来",
+        {
+                "type": "cta",
+                "text": "YiBoard 下盘棋",
+                "href": "/play"
+        },
+        "或者先看看我们的",
+        {
+                "type": "cta",
+                "text": "隐私承诺",
+                "href": "/privacy"
+        }
+      ],
+      en: [
+        "Open a game site and the routine starts: dismiss three popup ads, click through a cookie banner, wait through a 30-second warmup. Everyone knows that dance. So when YiBoard says no ads, no tracking, the first reaction is usually: then how do you pay for it?",
+        "Fair question. Let's be clear: no ads and no data selling does not mean the site costs nothing. Servers rent, domains renew, code needs maintenance. The difference is where the money comes from. A privacy first game site is not a site without a business model. It is a site whose model simply has no room for \"your data\".",
+        {
+                "type": "h2",
+                "text": "What no ads, no tracking actually means"
+        },
+        "Three layers: no third-party ads, no analytics trackers, no selling match data to anyone. Ad SDKs ship with trackers built in, so \"no ads\" and \"no tracking\" are technically two sides of the same decision. Cut one and the other usually disappears.",
+        "The player-facing benefits are concrete: no popups interrupting a match, faster page loads, no cross-site trackers tying your games to your shopping history. No reality-show ad floating in during an endgame.",
+        {
+                "type": "h2",
+                "text": "How a no-ad site stays alive"
+        },
+        "Three common paths: subscription, donations, and value-add features. Board game players have a special profile: people who spend hours on a match tend to pay for a clean experience.",
+        "The subscription logic is simple: if you want a clean, distraction-free place to play, that is worth paying for. Free players play normally; subscribers unlock ranked stats, review tools, and no-wait queues. Not \"pay to remove ads\", which is a hostile design, but genuine added value.",
+        {
+                "type": "h2",
+                "text": "Why board games fit this model especially well"
+        },
+        "Not every genre can survive without ads. Board games have built-in advantages: long matches, sticky users, a calm community. The advertiser's logic is to interrupt and distract you. A board game's core value is focus. The two are in direct conflict.",
+        "Players stay because it is clean, staying builds willingness to pay, payment keeps it clean. Once that loop turns, it is healthier than any ad network.",
+        {
+                "type": "h2",
+                "text": "How players can verify a site really has no trackers"
+        },
+        "Do not trust the marketing. Open the browser dev tools network panel, play a match, and check whether any request goes to a third-party domain. Or read the privacy policy's \"what we collect\" section: \"we only store match records\" versus \"used for ad optimization\" tells you everything in one glance.",
+        "**How does a no-ads, no-tracking site make money?** Subscriptions and value-add features. Free players play normally; paying unlocks ranked stats, review tools, and similar. The model has no room for \"your data\".",
+        "**Could a no-ad site secretly track?** No, and it would be hard to hide. Any tracking script produces network requests visible in the dev tools. Check it yourself, then relax.",
+        "**What is a clean game experience worth?** For board game players, a lot: no popups breaking endgame thinking, no trackers slowing the page. Clean is scarce, especially in a free-game world built on ad monetization.",
+        "Want to play a match with zero ads and zero tracking? Head over to",
+        {
+                "type": "cta",
+                "text": "YiBoard and play",
+                "href": "/play"
+        },
+        "or read our",
+        {
+                "type": "cta",
+                "text": "privacy commitment",
+                "href": "/privacy"
+        }
+      ]
+    },
+  },
+  {
+    slug: 'one-minute-to-play',
+    date: '2026-08-17',
+    title: {
+      zh: "YiBoard 的北极星：一小时内入门",
+      en: "The North Star: A Game in One Minute",
+    },
+    description: {
+      zh: 'instant play games 为什么是棋类网站的北极星：一个链接就是一个房间、零注册开局、五秒钟把对面拉上桌，以及为什么“快到不想关”才是留人的关键。',
+      en: 'Why instant play games are the north star for a board game site: one link is the room, zero sign-up, five seconds to pull an opponent to the table, and why "fast enough to not want to close" is what keeps players.',
+    },
+    keywords: ['instant play games', 'one minute to play', 'fastest game start', 'zero friction gaming', 'no registration games', 'browser board game'],
+    content: {
+      zh: [
+        "每个产品都该有一个北极星指标，YiBoard 的北极星是：从打开链接到开始下棋，不超过一分钟。instant play games 不是功能，是产品哲学——浏览器即玩的意义，就是把“我想下棋”到“我已经在下棋”之间的距离压到最短。",
+        {
+                "type": "h2",
+                "text": "为什么一分钟这么重要"
+        },
+        "棋类游戏的流失点不在对局中，在开局前。想下棋的人打开网站，如果先要注册、再要匹配、再要等，那盘棋大概率不会发生。一分钟内上桌，等于在冲动消退前把棋局递到你面前。",
+        "对线下约棋也一样。两个朋友想下盘五子棋，谁愿意先下载 App、再互相加好友？一个链接发过去，对方点开就能下，这就是 instant play games 的完整价值。",
+        {
+                "type": "h2",
+                "text": "一个链接就是一个房间"
+        },
+        "YiBoard 的核心设计是链接即房间。你创建对局，把链接发给对手，对方打开就是这盘棋。没有注册、没有匹配队列、没有“对方已离线”。链接本身就是棋盘。",
+        "这解决了一个真实问题：棋类游戏最大的门槛不是规则，是“凑齐两个人”。链接即房间把凑人的成本降到了发一条消息。",
+        {
+                "type": "h2",
+                "text": "零注册怎么防作弊"
+        },
+        "很多人会问：不注册，怎么保证对方认真下？YiBoard 的答案是服务器端裁判。每一手都在服务器校验，改客户端也改不了棋盘状态。注册表管身份，裁判管公正，两者不必绑定。",
+        "段位系统同样不需要注册才能看：真实段位制（Grade/Dan，1200 分起）让每盘棋都有意义，输了想翻盘，赢了想保级，这就是留存。",
+        {
+                "type": "h2",
+                "text": "一分钟上桌的实操路径"
+        },
+        "把“打开链接到落子”拆开看，每一步都不该有摩擦：",
+        {
+                "type": "ul",
+                "items": [
+                        "打开页面：无广告、无弹窗、无 Cookie 墙",
+                        "创建对局：一个点击，得到链接",
+                        "发给对手：微信、邮件、随便什么",
+                        "对手点开：棋盘已在，直接落子"
+                ]
+        },
+        "加起来不到一分钟。这就是 one minute to play 的产品化：不是更快加载，而是把“开一局”这个动作本身变轻。",
+        {
+                "type": "h2",
+                "text": "快到不想关"
+        },
+        "留人的秘诀不是“功能多”，是“快到不想关”。想下棋时点开就下，下完想走就走，下次想下棋还会来。浏览器即玩的平台，赢在每一次“想玩就能玩”。",
+        "**零注册能保证棋品吗？** 靠服务器端裁判。每一手服务端校验，改客户端不能作弊。身份和公正分开，注册不是必要前提。",
+        "**一个链接能开几盘棋？** 每个链接对应一个对局。想下多盘就多发几个链接，或者用站内匹配。链接即房间，房间就是那一盘。",
+        "**手机上好操作吗？** 好。棋盘可缩放，一手一tap，误触概率低，和桌面端体验一致。",
+        "**下完这盘还能复盘吗？** 基础对局免费，深度复盘和 AI 分析在会员里，但“打开就能下”这件事永远免费。",
+        "想现在就开一盘？",
+        {
+                "type": "cta",
+                "text": "去下一盘棋 →",
+                "href": "/"
+        },
+        "**",
+        {
+                "type": "cta",
+                "text": "看看我们为什么做浏览器即玩 →",
+                "href": "/about"
+        }
+      ],
+      en: [
+        "Every product needs a north star metric. YiBoard's is: from opening the link to making your first move, under one minute. Instant play games are not a feature, they are the product philosophy. Browser play exists to compress the distance between 'I want to play' and 'I am already playing' down to almost nothing.",
+        {
+                "type": "h2",
+                "text": "Why one minute matters"
+        },
+        "Board games lose players before the game, not during it. Someone wants to play, opens the site, and if they have to register, matchmake, and wait, that game probably never happens. Getting to the board in under a minute means putting the game in front of them before the impulse fades.",
+        "The same logic applies offline. Two friends want a quick game of gomoku. Who downloads an app and adds each other as friends first? One link sent, the other side clicks and plays. That is the whole value of instant play games.",
+        {
+                "type": "h2",
+                "text": "One link is the room"
+        },
+        "YiBoard's core design is link-as-room. You create a game, send the link to your opponent, and they open it straight into that board. No sign-up, no matchmaking queue, no 'opponent is offline'. The link is the board.",
+        "This solves a real problem: the biggest barrier in board games is not the rules, it is gathering two people. Link-as-room drops the cost of gathering to sending one message.",
+        {
+                "type": "h2",
+                "text": "How zero sign-up stays fair"
+        },
+        "People ask: without registration, how do you know the opponent plays fair? The answer is server-side arbitration. Every move is validated on the server, so editing your client cannot change the board state. Registration manages identity; the referee manages fairness. They do not have to be bound together.",
+        "The ranking system also works without sign-up: real grades (Grade/Dan, starting at 1200) give every game meaning. Lose and you want a rematch, win and you want to protect your rank. That is retention.",
+        {
+                "type": "h2",
+                "text": "The one-minute path to the board"
+        },
+        "Break 'open link to first move' down and no step should have friction:",
+        {
+                "type": "ul",
+                "items": [
+                        "Open the page: no ads, no pop-ups, no cookie walls",
+                        "Create a game: one click, get the link",
+                        "Send it: WeChat, email, anything",
+                        "Opponent opens it: the board is there, first move now"
+                ]
+        },
+        "Under a minute in total. That is one minute to play, productized: not faster loading, but making the act of starting a game lighter.",
+        {
+                "type": "h2",
+                "text": "Fast enough to not want to close"
+        },
+        "Retention is not about feature count. It is about being fast enough to not want to close. Open and play when you want to play, leave when you are done, come back next time you want a game. Browser play wins on every single 'playable right now'.",
+        "**Can zero sign-up guarantee fair play?** Through server-side arbitration. Every move is validated server-side, so client edits cannot cheat. Identity and fairness are separate; registration is not a prerequisite.",
+        "**How many games per link?** One link is one game. Want more games, send more links or use in-site matchmaking. Link is the room, the room is that game.",
+        "**Is it comfortable on mobile?** Yes. The board zooms, a move is one tap, mis-taps are rare, and the experience matches desktop.",
+        "**Can I review the game after?** Basic matches are free. Deep replay and AI analysis sit behind membership, but open-and-play is always free.",
+        "Ready for a game right now?",
+        {
+                "type": "cta",
+                "text": "Go play a game →",
+                "href": "/"
+        },
+        "**",
+        {
+                "type": "cta",
+                "text": "Why we built browser play →",
+                "href": "/about"
+        }
+      ]
+    },
+  }
 ];
 
 
