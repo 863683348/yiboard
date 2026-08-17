@@ -1340,10 +1340,365 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+{
+    slug: "connect-5-omok-vs-gomoku",
+    date: "2026-08-17",
+    title: {
+      zh: "Connect 5 Omok 与 Gomoku 是同一个游戏吗？三个变体的规则差异",
+      en: "Connect 5 Omok vs Gomoku: How the Three Names Compare",
+    },
+    description: {
+      zh: "Connect 5、Omok、Gomoku 都指同一种五子棋类游戏，但规则细节（盘大小、禁手、开局）有差异。这篇讲清三者关系，并教你五分钟开始下一局。",
+      en: "Connect 5, Omok and Gomoku are three names for the same five-in-a-row family. The rules overlap on 99 percent, but board size, opening move, and forbidden-move variations do differ. Here is the clearest side-by-side, plus you.",
+    },
+    keywords: ["connect 5 omok vs gomoku", "connect 5 omok", "omok vs gomoku", "gomoku vs connect 5", "five in a row game", "gomoku for beginners"],
+    content: {
+      zh: [
+        "如果搜索“五子棋”相关的游戏，你会撞到至少三个名字：Gomoku（欧美主流叫法）、Omok（韩国与日本“五目並べ”的罗马字）、Connect 5（iOS/移动端常见），甚至还能看到 Caro Five、Wuziqi、5-in-a-row。本篇用一张表把它们讲清。",
+        { type: 'h2', text: '三者本质是同一个游戏' },
+        "三者规则的核心完全相同：15×15（或 13×13）棋盘，黑白双方轮流落子，先在横、竖、斜任一方向连成五子者获胜。所谓“Gomoku”这个词来自日语“五目並べ”(gomoku narabe)，“Omok”是它在韩语里的简称；Connect 5 是西方对这类游戏的商业命名。本质规则无差异。",
+        { type: 'h2', text: '真正的差异：盘大小与开局' },
+        "Gomoku 历史上使用 15×15 标准盘，但 13×13、19×19 也都能玩。Connect 5 多见于手机端 App，盘大小常被压到 13×13 或更小，匹配快速对战节奏。开局方面，三者都是黑先，但 Renju（连珠）规则下黑棋有禁手限制，这是后续演化，与本篇对比项无关。",
+        {
+          type: 'ul',
+          items: [
+            'Gomoku：15×15 为主，国际通行的竞赛标准',
+            'Connect 5：13×13 或 11×11，移动端典型尺寸',
+            'Omok：通常 15×15，与 Gomoku 同盘但叫法不同',
+            'Renju：15×15 但有禁手（专业玩法，不属于本篇讨论范围）',
+          ],
+        },
+        { type: 'h2', text: '玩法层面没有差异' },
+        "无论是哪种叫法，落子规则都是：黑先、白后，每次落一子，先连五者赢。这意味着你在 Gomoku 上练就的“活三”“冲四”战术在 Connect 5、Omok 上同样可用，跨平台切换零成本。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Connect 5 Omok 和 Gomoku 是同一款游戏吗？', a: '本质规则相同：连五子获胜。差异在盘大小与商业命名（Connect 5 是 iOS 端常用名）。' },
+            { q: 'Omok 是五子棋吗？', a: '是。Omok 是 Gomoku（韩语版）的简称，在韩国与日本的休闲玩家中通用。' },
+            { q: 'Connect 5 和 Gomoku 哪个更难？', a: '难度取决于对手与盘大小，不取决于名字。规则本质相同。' },
+          ],
+        },
+        { type: 'cta', text: '五分钟免费开局 YiBoard 五子棋', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        "Search for five-in-a-row games and you will hit three names: Gomoku (the default in the West), Omok (Korean and Japanese five-in-a-row romanization), and Connect 5 (the mobile-app branding). This post lines them up and gets you playing in five minutes, plus you.",
+        { type: 'h2', text: 'They are the same game at the core' },
+        "All three share the same rule: take turns placing stones on a grid, first to align five in a row, column, or diagonal wins. The word Gomoku comes from the Japanese gomoku narabe. Omok is the Korean romanization of the same word. Connect 5 is a Western commercial label for the same family. Rule overlap is about 99 percent.",
+        { type: 'h2', text: 'The real differences: board size and openings' },
+        "Gomoku historically uses a 15 by 15 board, though 13 by 13 and 19 by 19 work fine. Connect 5 is usually a mobile-app name where 13 by 13 or smaller boards speed up matches. Omok typically uses 15 by 15. All three are black-first, but professional Renju adds forbidden-move rules that are out of scope here.",
+        {
+          type: 'ul',
+          items: [
+            'Gomoku: 15 by 15, the international default',
+            'Connect 5: 13 by 13 or 11 by 11, typical mobile sizes',
+            'Omok: usually 15 by 15, same board as Gomoku',
+            'Renju: 15 by 15 with forbidden moves (not in this comparison)',
+          ],
+        },
+        { type: 'h2', text: 'No rule differences at the play level' },
+        "Whichever name you search for, the placement and winning rule is identical. That means the open-three and open-four tactics you learn on a Gomoku board transfer 100 percent to Omok or Connect 5, with zero adjustment. The only skill that varies is the opponent.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Are Connect 5 Omok and Gomoku the same game?', a: 'Same core rule: first to five in a row wins. Differences are mainly board size and commercial branding.' },
+            { q: 'Is Omok a kind of Gomoku?', a: 'Yes. Omok is the Korean romanization of Gomoku (the same Japanese-origin word), popular in Korea and Japan.' },
+            { q: 'Is Connect 5 harder than Gomoku?', a: 'Difficulty depends on the opponent and board size, not the name. The rules are essentially identical.' },
+          ],
+        },
+        { type: 'cta', text: 'Try Gomoku on YiBoard in your browser', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
+{
+    slug: "gomoku-vs-omok",
+    date: "2026-08-17",
+    title: {
+      zh: "Gomoku vs Omok：欧美叫法与日韩叫法的同与不同",
+      en: "Gomoku vs Omok: Same Game, Different Names",
+    },
+    description: {
+      zh: "Gomoku 在欧美通用，Omok 在日韩通用，但本质规则完全相同。本篇讲清两个叫法的来源、各自的圈层，以及如何在浏览器里直接开局。",
+      en: "Gomoku is the Western default. Omok is the Korean and Japanese default. Same game, same rules, different names. Where each name is used, why, and how to start playing today, plus you.",
+    },
+    keywords: ["gomoku vs omok", "how to play omok", "omok rules", "gomoku omok difference", "five in a row game", "learn omok"],
+    content: {
+      zh: [
+        "Gomoku 是欧美玩家最常用的五子棋名称，Omok 则是日韩玩家的默认叫法。两者其实指同一种游戏，规则没有差异，差异在棋盘叫法、文化圈层与平台覆盖。本篇用一篇文章讲清。",
+        { type: 'h2', text: 'Gomoku 与 Omok 的来源' },
+        "Gomoku 来自日语“五目並べ”(gomoku narabe)，“五目”意为五个棋子，“並べ”意为排列。它是日本江户时代的家庭棋类游戏，后来随日本文化的国际传播被欧美接受，固定写法为 Gomoku。Omok 是同一个词在韩语中的标准罗马字写法，由汉字词“五目”派生而来，在韩国及部分日本地区与 Gomoku 完全等价使用。",
+        { type: 'h2', text: '圈层与平台差异' },
+        "名字不同的最大原因不是规则，而是玩家社区。Gomoku 在欧美 AI 引擎讨论、五子棋 Facebook 群组、Gomoku.com（全球最大五子棋独立站）里使用；Omok 在韩国围棋频道、日本“五目並べ”App、韩国棋盘游戏社区里使用。YiBoard 与两者都覆盖，你搜任一关键词都能进入。",
+        { type: 'ul', items: [
+          '欧美搜索多见 Gomoku、Five in a Row、Five in Line',
+          '日韩搜索多见 Omok、オモック、五目並べ',
+          '商业 App 命名（Connect 5）偏向移动端',
+          '中韩日母语者更可能搜五子棋、오목、五目並べ',
+        ] },
+        { type: 'h2', text: '规则完全相同' },
+        "无论是 Gomoku 还是 Omok，落子规则、胜负判定、棋盘大小都一致。YiBoard 的游戏引擎对所有玩家都是同一套，你在 YiBoard 上练就的战术可直接在任何平台复用。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Omok 和 Gomoku 哪个先有的？', a: 'Gomoku 来自日语五目並べ，历史可追溯到江户时代；Omok 是韩语对同一词的派生，约 20 世纪通行。两者无先后差异。' },
+            { q: 'Omok 和 Gomoku 的 AI 引擎互通吗？', a: '理论上互通，任何 15×15 五子棋 AI 引擎对两种叫法的输入输出都有效，差别在用户界面文字。' },
+            { q: '在中国玩五子棋该搜哪个？', a: '中文用户直接搜五子棋或五子连珠。YiBoard 支持中文界面与五子棋内容。' },
+          ],
+        },
+        { type: 'cta', text: '现在就在浏览器里免费开局五子棋', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        "Gomoku is the default name in the West. Omok is the default name in Korea and Japan. Same game, same rules, same board. The difference is cultural naming, not play. Here is where each name comes from, where each is used, and how to play today, plus you.",
+        { type: 'h2', text: 'Where the two names come from' },
+        "Gomoku comes from the Japanese gomoku narabe, where gomoku means five stones and narabe means line them up. The game spread to the West via Japanese cultural exports and stuck as Gomoku. Omok is the standard Korean romanization of the same Japanese word and is used interchangeably in Korea and parts of Japan.",
+        { type: 'h2', text: 'Where each name shows up' },
+        "The split is mostly about community, not rule. Gomoku dominates English-language AI engine discussions, Facebook groups, and Gomoku.com. Omok dominates Korean board game channels, Japanese five-in-a-row apps, and Korean go communities. YiBoard covers both, so searching either term gets you to the same game.",
+        {
+          type: 'ul',
+          items: [
+            'English search: Gomoku, Five in a Row, Five in Line',
+            'Korean and Japanese search: Omok, オモック, 五目並べ',
+            'Mobile app branding: Connect 5 (mostly iOS and Android)',
+            'Chinese search: 五子棋, 五子连珠',
+          ],
+        },
+        { type: 'h2', text: 'Zero rule differences' },
+        "Placements, win conditions, and board size are identical. The YiBoard game engine treats every player the same regardless of which search term brought them in.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Did Omok or Gomoku come first?', a: 'Gomoku narabe dates to Edo-period Japan (17th-19th century). Omok is the Korean romanization that became standard in the 20th century. No earlier or later, same word, two spellings.' },
+            { q: 'Are Omok and Gomoku AI engines interchangeable?', a: 'Yes. Any 15 by 15 five-in-a-row engine handles both. The user interface is the only thing that differs.' },
+            { q: 'Which search term should I use in China?', a: 'Chinese players search 五子棋 or 五子连珠. YiBoard supports Chinese UI natively.' },
+          ],
+        },
+        { type: 'cta', text: 'Open the YiBoard Gomoku board and play in 30 seconds', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
+{
+    slug: "gomoku-vs-connect-4",
+    date: "2026-08-17",
+    title: {
+      zh: "Gomoku vs Connect 4：规则、胜负判定与策略差异",
+      en: "Gomoku vs Connect 4: Rules, Win Conditions, and Strategy Compared",
+    },
+    description: {
+      zh: "Gomoku（五子棋）与 Connect 4（四连棋）是两款常被新手搞混的“连子游戏”。本篇对比规则、棋盘、玩法与策略，附 YiBoard 快速开局链接。",
+      en: "Gomoku and Connect 4 are the two games new players confuse most. Both involve lining up pieces, but the rules differ on board size, gravity, win length, and strategy. Side by side here, plus a link to try Gomoku now.",
+    },
+    keywords: ["gomoku vs connect 4", "connect 4 vs gomoku", "five in a row vs four in a row", "connect four game rules", "board game comparison", "gomoku for beginners"],
+    content: {
+      zh: [
+        "Gomoku（五子棋）与 Connect 4（四连棋）都是“把棋子连成一条线获胜”的游戏，但胜负线长度、棋盘大小、是否受重力影响都不同。本篇把核心差异一列列出来。",
+        { type: 'h2', text: '核心差异一览' },
+        "Gomoku 在 15×15 棋盘上，黑白双方在任意空格落子（不受重力），先连成五子获胜。Connect 4 在 7×6 立式棋盘上，受重力影响（棋子必须从上方落入，落到最低空格），先连成四子获胜。两者听起来相似，但策略空间差别巨大：重力机制让 Connect 4 的走法空间远比 Gomoku 小，AI 引擎能在毫秒内算完所有变化。",
+        {
+          type: 'ul',
+          items: [
+            'Gomoku：15×15 棋盘，连五获胜，无重力',
+            'Connect 4：7×6 立式棋盘，连四获胜，有重力',
+            'Gomoku AI：α-β 剪枝 + 置换表，专业级很强',
+            'Connect 4 AI：1988 年已被数学家 Allis 完全破解',
+          ],
+        },
+        { type: 'h2', text: '规则详解' },
+        "Gomoku：黑先白后，双方轮流在任意空格落子，先在横、竖、斜任一方向连成五子者获胜（无禁手版本）。Connect 4：红先黄后（或黑先白后，因厂商而异），从棋盘顶部空格放入棋子（重力使其落到最低），先在横、竖、斜任一方向连成四子者获胜。",
+        { type: 'h2', text: '策略差异：开放 vs 重力' },
+        "Gomoku 的棋盘是平的，每一步都有 225 个落子点（15×15），策略围绕“形”（活三、冲四、活四）展开。Connect 4 因为重力限制，每列最多 6 个棋子，且只能从底部向上叠，AI 几乎能完全算清。Gomoku 更开放、变化更多，因此职业玩家群远大于 Connect 4。",
+        { type: 'h2', text: '新手该从哪个开始？' },
+        "Gomoku 规则简单（连五获胜）、上手即玩，YiBoard 浏览器直接开局；Connect 4 在 Hasbro 实体产品中更常见。如果你想要“开放可玩、随时上线对战”的体验，Gomoku 是更好的选择。如果你喜欢“快速决策、看 AI 怎么算”的体验，Connect 4 也有乐趣。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Gomoku 和 Connect 4 哪个更难？', a: 'Gomoku 因开放棋盘（225 个落子点）比 Connect 4 复杂得多，Connect 4 已被数学证明 AI 必胜。' },
+            { q: 'Connect 4 是五子棋吗？', a: '不是。Connect 4 是连四获胜，Gomoku 是连五获胜，规则本质不同。' },
+            { q: '新手玩 Gomoku 还是 Connect 4？', a: '两者规则都简单。Gomoku 策略深度大，适合长期投入；Connect 4 一局短（5 分钟内），适合碎片时间。' },
+          ],
+        },
+        { type: 'cta', text: '现在就在 YiBoard 免费开局 Gomoku', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        "Gomoku and Connect 4 are the two games new players mix up most often. Both reward lining up pieces, but the rules differ on board size, gravity, win length, and strategy. Here is the cleanest side-by-side, plus a fast path to play Gomoku right now.",
+        { type: 'h2', text: 'The five core differences' },
+        "Gomoku plays on a 15 by 15 board with no gravity: any empty intersection is legal. First to align five stones in a row, column, or diagonal wins. Connect 4 plays on a 7 by 6 vertical board with gravity: pieces fall to the lowest empty cell in the chosen column. First to align four pieces wins. The gravity rule shrinks the branching factor so dramatically that Connect 4 was solved by computer scientists in 1988, while Gomoku (without forbidden-move rules) remains open.",
+        {
+          type: 'ul',
+          items: [
+            'Gomoku: 15 by 15, five in a row, no gravity',
+            'Connect 4: 7 by 6 vertical, four in a row, with gravity',
+            'Gomoku AI: alpha-beta with transposition tables, very strong',
+            'Connect 4 AI: solved since 1988 (first player wins with perfect play)',
+          ],
+        },
+        { type: 'h2', text: 'Rule detail' },
+        "Gomoku: black moves first, then white. Each turn a player places one stone on any empty intersection. First to align five in any row, column, or diagonal wins (assuming no Renju forbidden moves). Connect 4: red (or black, by manufacturer) moves first, the other color follows. Each turn a player drops a piece into one of the seven columns; the piece falls to the lowest empty row. First to align four in any row, column, or diagonal wins.",
+        { type: 'h2', text: 'Strategy difference: open vs gravity' },
+        "Gomoku has 225 open intersections per turn and a branching factor that makes full search intractable. Strategy lives in shapes (open three, open four, blocked four). Connect 4 collapses the branching factor because of gravity, which is why it was solved decades ago. If you want open-ended play with deep strategy, Gomoku is the better choice. If you want short, sharp decision-making, Connect 4 is satisfying too.",
+        { type: 'h2', text: 'Which one to start with' },
+        "Gomoku rules take 30 seconds to learn, no installation needed, and YiBoard lets you play in your browser immediately. Connect 4 is most familiar as a Hasbro tabletop product. Both are beginner-friendly. Gomoku is the right pick if you want a long-running skill curve and online opponents. Connect 4 is the right pick if you want a five-minute decision puzzle.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Is Gomoku harder than Connect 4?', a: 'Yes. Gomoku has 225 open intersections per turn and unsolved endgame; Connect 4 was solved by Allis in 1988 with first-player-win proof.' },
+            { q: 'Is Connect 4 a kind of Gomoku?', a: 'No. Connect 4 wins on four in a row. Gomoku wins on five in a row. The win condition is the defining difference.' },
+            { q: 'Which is better for a beginner?', a: 'Both have trivial rules. Pick Gomoku if you want online play and a long skill curve. Pick Connect 4 if you want short matches and an AI you can fully solve.' },
+          ],
+        },
+        { type: 'cta', text: 'Open the YiBoard Gomoku board and play in 30 seconds', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
+{
+    slug: "gomoku-vs-tic-tac-toe",
+    date: "2026-08-17",
+    title: {
+      zh: "Gomoku vs Tic-Tac-Toe：五子棋与井字棋的规则和策略对比",
+      en: "Gomoku vs Tic-Tac-Toe: Rules and Strategy Compared",
+    },
+    description: {
+      zh: "五子棋与井字棋都要求连成一条线获胜，但棋盘大小、连线长度与策略深度完全不同。本文对比两者规则与玩法，带你快速上手五子棋。",
+      en: "Gomoku and Tic-Tac-Toe both reward lining up pieces, but the board size, win length, and strategic depth could not be more different. Compare the rules side by side and start playing gomoku today.",
+    },
+    keywords: ["gomoku vs tic tac toe", "tic tac toe vs gomoku", "five in a row vs tic tac toe", "gomoku strategy", "tic tac toe rules", "gomoku for beginners"],
+    content: {
+      zh: [
+        "Tic-Tac-Toe（井字棋/圈叉棋）和 Gomoku（五子棋）都是“先连成一线者胜”的抽象策略游戏，但两者在棋盘规模、获胜线长度和策略深度上差异巨大。本篇讲清它们的关系，并教你用五分钟学会更有深度的五子棋。",
+        { type: 'h2', text: '核心差异一览' },
+        "井字棋用 3×3 棋盘，双方轮流在格子里画 X/O，先横向、竖向或斜向连成三子者胜。因为棋盘极小、变化有限，井字棋已被完全解出，只要双方不犯错，结果必然是平局。五子棋用 15×15 棋盘，轮流落子，先连成五子者胜，变化数以百万计，远未解出。",
+        {
+          type: 'ul',
+          items: [
+            'Tic-Tac-Toe：3×3 棋盘，连三获胜，已被完全解出',
+            'Gomoku：15×15 棋盘，连五获胜，仍未被解出',
+            'Tic-Tac-Toe：约 2.5 万种可能对局',
+            'Gomoku：分支因子极大，AI 仍需启发式搜索',
+          ],
+        },
+        { type: 'h2', text: '为什么五子棋比井字棋难得多' },
+        "井字棋第一步只有 9 个选择，且很快进入强制平局线。五子棋第一步有 225 个落子点，棋形（活三、冲四、活四、双活三等）构成无限组合。井字棋是“学会即精通”的游戏，五子棋则是“学会五分钟、精通一生”的游戏，这正是 YiBoard 选它做入口棋种的原因。",
+        { type: 'h2', text: '新手从哪个开始' },
+        "如果你从未玩过连子游戏，井字棋是零成本的概念入门；但如果你想体验真正的策略深度、在线对战和段位成长，五子棋是更好的选择，规则 30 秒学会，策略足够吃一辈子。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Tic-Tac-Toe 和 Gomoku 是同一个游戏吗？', a: '不是。井字棋 3×3 连三胜，五子棋 15×15 连五胜。只是同属“连子”家族。' },
+            { q: 'Tic-Tac-Toe 为什么总是平局？', a: '因为棋盘只有 3×3，双方只要不犯错，先手无法强制获胜，最优对局必然是平局。' },
+            { q: 'Gomoku 有平局吗？', a: '理论上有（棋盘填满无人连五），但实际几乎不会发生，因为 15×15 棋盘极大。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费开始你的第一局五子棋', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        "Tic-Tac-Toe and Gomoku belong to the same family of alignment games, yet they could not be more different in scale. Tic-Tac-Toe is solved, tiny, and always a draw between perfect players. Gomoku is open, deep, and still unsolved. Here is the comparison, plus a fast path to playing gomoku.",
+        { type: 'h2', text: 'The core differences' },
+        "Tic-Tac-Toe plays on a 3 by 3 grid. Players mark X and O in empty cells, and the first to align three in a row, column, or diagonal wins. The game is solved: perfect play always ends in a draw. Gomoku plays on a 15 by 15 board, first to align five stones wins, and the game is far from solved, the branching factor is enormous and engines still rely on heuristic search.",
+        {
+          type: 'ul',
+          items: [
+            'Tic-Tac-Toe: 3 by 3 grid, three in a row wins, fully solved',
+            'Gomoku: 15 by 15 board, five in a row wins, unsolved',
+            'Tic-Tac-Toe: about 255,000 possible games',
+            'Gomoku: enormous branching factor, deep search required',
+          ],
+        },
+        { type: 'h2', text: 'Why Gomoku is far deeper' },
+        "Tic-Tac-Toe has at most 9 opening moves and quickly converges to the forced-draw line. Gomoku has 225 opening points, and shapes like open threes, open fours, and double threats create unbounded combinations. Tic-Tac-Toe is a learn-in-a-minute, master-in-a-minute game. Gomoku takes five minutes to learn and a lifetime to master, exactly why YiBoard chose it as the entry game.",
+        { type: 'h2', text: 'Which to start with' },
+        "If you have never played an alignment game, Tic-Tac-Toe is a zero-cost conceptual primer. If you want real strategic depth, online opponents, and a rank ladder, Gomoku wins outright: rules in 30 seconds, depth for life.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Are Tic-Tac-Toe and Gomoku the same game?', a: 'No. Tic-Tac-Toe is 3 by 3 with three in a row winning. Gomoku is 15 by 15 with five in a row winning. They only share the alignment family.' },
+            { q: 'Why does Tic-Tac-Toe always end in a draw?', a: 'The 3 by 3 grid is too small for the first player to force a win; with perfect play the best outcome is always a draw.' },
+            { q: 'Can Gomoku end in a draw?', a: 'Theoretically yes, if the board fills with no five in a row, but with a 15 by 15 board this almost never happens in practice.' },
+          ],
+        },
+        { type: 'cta', text: 'Start your first Gomoku game on YiBoard free', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
+{
+    slug: "gomoku-vs-othello",
+    date: "2026-08-17",
+    title: {
+      zh: "Gomoku vs Othello：五子棋与黑白棋，哪个更适合你",
+      en: "Gomoku vs Othello: Which Alignment Game Fits You",
+    },
+    description: {
+      zh: "五子棋与黑白棋（Reversi/Othello）是两种风格迥异的经典策略游戏。本篇对比规则、学习曲线与策略深度，帮你决定先玩哪个。",
+      en: "Gomoku and Othello (Reversi) are two classic strategy games with very different feels. Compare rules, learning curve, and depth here, and decide which to try first, with a link to play gomoku free now.",
+    },
+    keywords: ["gomoku vs othello", "othello vs gomoku", "reversi vs gomoku", "gomoku or othello", "board game comparison", "gomoku strategy"],
+    content: {
+      zh: [
+        "Othello（黑白棋/奥赛罗，经典桌游版称 Reversi 翻转棋）和 Gomoku（五子棋）常被放在一起比较，因为两者都有黑白色棋子、都在方盘上玩。但它们的核心机制完全不同：五子棋是“连子”，黑白棋是“翻子”。本篇讲清差异。",
+        { type: 'h2', text: '核心机制完全不同' },
+        "五子棋的目标是让自己的棋子先连成五子；黑白棋的目标是终局时自己颜色的棋子更多。黑白棋的关键动作是“夹住”，落子在一条直线上夹住对方棋子，把被夹的棋子翻成自己的颜色。规则 2 分钟学会，但“争先、翻子、控制角”的策略非常深。",
+        {
+          type: 'ul',
+          items: [
+            'Gomoku：连五获胜，落子即定，棋子不动',
+            'Othello：终局比数量，落子可翻转对方棋子',
+            'Gomoku：15×15 棋盘，225 个落子点',
+            'Othello：8×8 棋盘，64 格，开局四子交叉',
+          ],
+        },
+        { type: 'h2', text: '学习曲线与受众' },
+        "五子棋规则 30 秒学会，战术（活三、冲四）直观，适合休闲玩家和家庭对战，也适合作为入门棋种。黑白棋规则同样简单，但“翻转”机制让新手常陷入“吃子越多反而越被动”的陷阱，需要更深的局面判断。两者都值得玩，如果你想要在线对战和段位系统，YiBoard 的五子棋是最好的起点。",
+        { type: 'h2', text: '哪个更适合你' },
+        "想快速上手、直观进攻、边玩边聊，选五子棋。喜欢“计算终局、把控全局、翻转翻盘”的智斗感，选黑白棋。两者互补，不冲突。",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Othello 和 Gomoku 哪个更难？', a: '都易学难精。黑白棋的“翻转”机制需要更深的终局计算；五子棋的连五策略更直观。难度取决于你想投入多深。' },
+            { q: 'Othello 的“翻转”是什么意思？', a: '当你在一条直线上用自己的棋子夹住对方棋子时，被夹的对方棋子翻转为你的颜色，这是黑白棋最独特的机制。' },
+            { q: '新手该玩 Gomoku 还是 Othello？', a: '想快速上手和在线对战选 Gomoku（YiBoard 免费开局）；喜欢终局智斗选 Othello。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费开始你的第一局五子棋', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        "Othello (marketed as Reversi in classic board-game editions) and Gomoku are often compared because both use black and white stones on a square board. The mechanics, however, are completely different: Gomoku is about alignment, Othello is about flipping. Here is the side-by-side.",
+        { type: 'h2', text: 'Completely different core mechanics' },
+        "Gomoku: the goal is to be the first to align five stones in a row. Stones never move once placed. Othello: the goal is to have more stones of your color when the board is full. The key action is outflanking, you place a stone that sandwiches the stones of the opponent on a line, flipping them to your color. Rules take two minutes to learn, but corner control and endgame counting run deep.",
+        {
+          type: 'ul',
+          items: [
+            'Gomoku: five in a row wins, stones are fixed',
+            'Othello: majority at the end wins, stones flip',
+            'Gomoku: 15 by 15 board, 225 intersections',
+            'Othello: 8 by 8 board, 64 squares, four stones to start',
+          ],
+        },
+        { type: 'h2', text: 'Learning curve and audience' },
+        "Gomoku rules take 30 seconds to learn and tactics like open threes and open fours are intuitive, great for casual and family play, and as an entry game. Othello rules are equally simple, but the flipping mechanic tempts beginners into the classic trap of eating stones while losing position. Both are worth playing. If you want online opponents and a rank system, the Gomoku of YiBoard is the best on-ramp.",
+        { type: 'h2', text: 'Which fits you' },
+        "Want to learn fast, attack intuitively, and chat while you play? Pick Gomoku. Love endgame counting, global control, and comeback flips? Pick Othello. They complement each other, so you do not have to choose one forever.",
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Which is harder, Othello or Gomoku?', a: 'Both are easy to learn and hard to master. Othello demands deeper endgame calculation because of flipping. The alignment tactics of Gomoku are more intuitive. It depends how deep you want to go.' },
+            { q: 'What does flipping mean in Othello?', a: 'When you place a stone that sandwiches the stones of the opponent on a line, those stones flip to your color, the signature mechanic of Othello.' },
+            { q: 'Should a beginner play Gomoku or Othello?', a: 'Pick Gomoku for instant play and online matches (free on YiBoard). Pick Othello if you love endgame mind games.' },
+          ],
+        },
+        { type: 'cta', text: 'Start your first Gomoku game on YiBoard free', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  }
 ];
 
-
-export function getPostBySlug(slug: string): BlogPost | undefined {
+(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
 }
 
