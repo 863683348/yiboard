@@ -1695,7 +1695,128 @@ export const POSTS: BlogPost[] = [
         { type: 'cta', text: 'Start your first Gomoku game on YiBoard free', href: 'https://yiboardgame.com/play' },
       ],
     },
-  }
+  },
+  {
+    slug: 'gomoku-opening-patterns',
+    date: '2026-08-19',
+    title: {
+      zh: '五子棋必胜开局套路',
+      en: 'Gomoku Opening Patterns That Win',
+    },
+    description: {
+      zh: '五子棋必胜开局套路：最稳的花月、浦月开局，新手也能用的安全起手，以及那些在开局就葬送胜机的常见错误。',
+      en: 'Gomoku opening patterns that win: the reliable Hanagetsu and Umezuki openings, safe first moves for casual players, and the mistakes that lose games before they start.',
+    },
+    keywords: ['gomoku strategy', 'gomoku openings', 'best gomoku first moves', 'gomoku tactics', 'gomoku opening patterns', 'five in a row strategy'],
+    content: {
+      zh: [
+        '五子棋开局决定了整盘棋的走向。很多人以为先手随便下都赢，其实前几手就埋下了胜负的种子。这篇讲清楚最实用的 gomoku 开局套路：从最稳的“花月”“浦月”，到新手也能用的安全起手，帮你把 gomoku strategy 从“凭感觉”变成“有章法”。想直接上手，去 yiboardgame.com 的[对战页](/play)免费来一局。',
+        { type: 'h2', text: '先手为什么这么重要' },
+        '五子棋先手有天然优势，这正是不少规则给黑棋加了禁手（双三、双四）的原因。所以开局不单是“把子放哪”，而是“怎么搭出一个同时在两个方向制造威胁的棋形”。',
+        { type: 'h2', text: '最稳的两种开局：花月与浦月' },
+        {
+          type: 'ul',
+          items: [
+            '花月：斜向展开，早期就能形成活三威胁',
+            '浦月：纵/横展开，对中央控制力强',
+            '两者在标准连珠理论里都属于“必胜开局”，黑棋正确应对可强制取胜',
+          ],
+        },
+        { type: 'h2', text: '新手安全的起手方式' },
+        {
+          type: 'ul',
+          items: [
+            '尽量靠近中央，角落留给你的发展空间太小',
+            '搭连片棋形，而不是零散孤子',
+            '至少保持两个方向开放，别只走一条线',
+          ],
+        },
+        { type: 'h2', text: '常见的 gomoku openings 错误' },
+        {
+          type: 'ul',
+          items: [
+            '孤军深入，把子下得远离自己的阵营',
+            '只顾自己的进攻，忽略对方的活三',
+            '还没第二个威胁就贸然进攻',
+          ],
+        },
+        { type: 'h2', text: 'best gomoku first moves 实战建议' },
+        {
+          type: 'ul',
+          items: [
+            '早占要点，而不是随便找空位落子',
+            '始终保持两个方向的威胁',
+            '学会读活三与冲四，它们决定谁先赢',
+          ],
+        },
+        { type: 'h2', text: '用 gomoku tactics 收尾' },
+        '开局布好之后，中盘就是把那些早期棋形转化成必胜。想三十秒看懂规则，看[玩法页](/how-to)；想知道为什么五子棋是 YiBoard 的头牌，看[五子棋先上线](/blog/why-gomoku-ships-first)。然后就下棋吧——棋形在盘上学比在脑子里背快得多。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '五子棋最好的开局是什么？', a: '对黑棋而言，花月和浦月是经典的必胜开局；日常玩的话，靠近中央、连片起步最稳妥。' },
+            { q: '新手需要懂禁手吗？', a: '只有黑棋受禁手（双三、双四）限制。新手先专注搭双向威胁，等被禁手坑过几局，规则自然就懂了。' },
+            { q: '怎么提升五子棋策略？', a: '先学几个标准开局，再把它们真正下出来。YiBoard 的免费棋盘让你无需注册就能对着浏览器 AI 试棋形。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局五子棋', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        'Gomoku openings set the tone for the entire game. A lot of beginners think the first player wins no matter what, but the real fight is in the first few moves. This guide covers the opening patterns that actually win: from the rock-solid Hanagetsu and Umezuki to safe first moves a casual player can use, so your gomoku strategy stops being a vibe and starts being a plan. Want to try it now? Play a free match on the [play page](/play) at yiboardgame.com.',
+        { type: 'h2', text: 'Why the first move matters' },
+        'In Gomoku the first player has a built-in edge, which is exactly why rule sets add forbidden moves (double-three, double-four) for Black. That means your opening is not just where to put a stone but how to build a shape that threatens in two directions at once.',
+        { type: 'h2', text: 'The two most reliable openings' },
+        {
+          type: 'ul',
+          items: [
+            'Hanagetsu (花月): a diagonal build that creates an early live-three threat',
+            'Umezuki (浦月): a vertical or horizontal build with strong central control',
+            'Both are winning openings in standard renju theory, meaning Black can force a win with correct play',
+          ],
+        },
+        { type: 'h2', text: 'Safe first moves for casual players' },
+        {
+          type: 'ul',
+          items: [
+            'Play near the center; corners give you less room to develop',
+            'Build connected shapes instead of isolated stones',
+            'Keep at least two directions open so you are never a one-trick line',
+          ],
+        },
+        { type: 'h2', text: 'Common gomoku openings mistakes' },
+        {
+          type: 'ul',
+          items: [
+            'Rushing a lone stone far from your group',
+            'Ignoring the opponent\'s live three while chasing your own',
+            'Attacking before you have a second threat to back it up',
+          ],
+        },
+        { type: 'h2', text: 'Best gomoku first moves in practice' },
+        {
+          type: 'ul',
+          items: [
+            'Occupy key points early, not just any empty spot',
+            'Maintain threats in two directions at once',
+            'Learn to read live threes and open fours; they decide who wins',
+          ],
+        },
+        { type: 'h2', text: 'Closing with gomoku tactics' },
+        'Once the opening is set, the middle game is about converting those early shapes into a forced win. The [how-to page](/how-to) explains the rules in thirty seconds, and [why Gomoku ships first](/blog/why-gomoku-ships-first) shows why it is YiBoard\u2019s flagship game. Then just play: the patterns stick faster on the board than in your head.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'What is the best Gomoku opening?', a: 'For Black, Hanagetsu and Umezuki are the classic winning openings; for casual play, a centered, connected start is safest.' },
+            { q: 'Do I need forbidden moves as a beginner?', a: 'Only Black is restricted by forbidden moves (double-three, double-four). As a beginner, focus on building two-way threats; the rules will make sense once you have lost a few games to them.' },
+            { q: 'How do I improve my Gomoku strategy?', a: 'Study a handful of standard openings, then play them out. The YiBoard board lets you test shapes against the browser AI without signing up.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free Gomoku match on YiBoard', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
 ];
 
 (slug: string): BlogPost | undefined {
