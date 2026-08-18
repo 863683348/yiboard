@@ -1819,7 +1819,7 @@ export const POSTS: BlogPost[] = [
   },
 ];
 
-(slug: string): BlogPost | undefined {
+export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
 }
 
