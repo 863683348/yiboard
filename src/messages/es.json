@@ -1,41 +1,8 @@
 {
   "meta": {
-    "ogAlt": "Un tablero de Gomoku de 15×15 con piedras negras y blancas",
-    "home": {
-      "title": "Gomoku en línea gratis — cinco en raya contra IA o jugadores reales",
-      "description": "Juega gomoku gratis en tu navegador, sin cuenta ni descarga. Combate a la IA, invita a un amigo o enfréntate a un jugador real al instante. Sube los 18 rangos, de Noveno Grado a Noveno Dan.",
-      "keywords": "gomoku en linea gratis, jugar gomoku, cinco en raya, gomoku contra ia, gomoku con amigos, gomoku multijugador"
-    },
-    "play": {
-      "title": "Jugar Gomoku en línea — contra IA, amigos o jugadores aleatorios",
-      "description": "Tres formas gratis de jugar: reta a la IA, abre una sala privada o emparejamiento aleatorio con un jugador real. Sin registro.",
-      "keywords": "jugar gomoku en linea, gomoku contra ia, gomoku dos jugadores, gomoku emparejamiento, gomoku sala privada"
-    },
-    "rankings": {
-      "title": "Ranking de Gomoku y Elo — clasificación mundial",
-      "description": "Mira tu posición en la clasificación mundial de gomoku. Elo en vivo en 18 rangos, de Noveno Grado a Noveno Dan.",
-      "keywords": "ranking gomoku, elo gomoku, clasificacion gomoku, rangos gomoku"
-    },
-    "howTo": {
-      "title": "Cómo jugar Gomoku: reglas en 5 minutos",
-      "description": "Aprende rápido: gana con cinco en raya, las negras mueven primero, y tácticas como cuartas abiertas y dobles amenazas.",
-      "keywords": "como jugar gomoku, reglas gomoku, reglas cinco en raya, estrategia gomoku"
-    },
-    "about": {
-      "title": "Acerca de YiBoard — Gomoku gratis en el navegador",
-      "description": "YiBoard es un gomoku gratis en el navegador: sin anuncios, juego limpio y cada partida cuenta para tu rango.",
-      "keywords": "yiboard, gomoku gratis, gomoku navegador"
-    },
-    "pricing": {
-      "title": "Precios de YiBoard — gratis para siempre, sin anuncios",
-      "description": "YiBoard es 100% gratis: sin suscripciones, sin anuncios, sin cuenta.",
-      "keywords": "gomoku gratis, gomoku sin anuncios, gomoku sin cuenta"
-    },
-    "blog": {
-      "title": "Estrategia y consejos de Gomoku — blog de YiBoard",
-      "description": "Guías de estrategia, teoría de aperturas y novedades del equipo de YiBoard.",
-      "keywords": "estrategia gomoku, consejos gomoku, aperturas gomoku"
-    }
+    "title": "YiBoard — Juega Gomoku Gratis Online · Sin Descarga",
+    "description": "Juega Gomoku gratis online contra IA o amigos. Sin cuenta, sin descarga. Sube la escalera de 18 peldaños del Noveno Grado al Noveno Dan. Xiangqi y Go próximamente.",
+    "ogAlt": "Un tablero de Gomoku 15x15 con piedras blancas y negras"
   },
   "brand": {
     "name": "YiBoard",
@@ -46,7 +13,6 @@
     "play": "Jugar",
     "rankings": "Clasificación",
     "howTo": "Cómo se juega",
-    "blog": "Blog",
     "about": "El proyecto",
     "profile": "Perfil",
     "openMenu": "Abrir menú",
@@ -61,14 +27,14 @@
     "boardSlate": "Piedra azul",
     "pricing": "Precios",
     "signIn": "Entrar / Registrarse",
-    "signOut": "Cerrar sesión"
+    "blog": "Blog"
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",
     "visitCount": "Visitas globales: {count}",
     "headline": "Cinco piedras en línea.",
     "headlineAccent": "Tres mil años discutiendo sobre ello.",
-    "sub": "Empieza con el Gomoku en cinco minutos. Quédate por mil años de estrategia china. Abre el tablero de abajo y mueve: nada que instalar, nada que registrar. Xiangqi y Go llegan después.",
+    "sub": "El Gomoku se aprende en treinta segundos y cuesta soltarlo después. Abre el tablero de abajo y mueve: nada que instalar, nada que registrar. Xiangqi y Go llegan después.",
     "ctaPrimary": "Empezar partida",
     "ctaSecondary": "Jugar con un amigo",
     "reassurance": "Tu progreso se guarda en este navegador durante 180 días. Si quieres conservarlo, añade un correo más adelante.",
@@ -135,92 +101,15 @@
     "statsFriend": "vs jugadores"
   },
   "play": {
-    "title": "Gomoku",
-    "vsAi": "Contra el motor",
-    "vsFriend": "Contra un amigo",
-    "difficulty": "Dificultad",
-    "difficultyGentle": "Suave",
-    "difficultyGentleNote": "Ve dos jugadas por delante y se le escapan cosas.",
-    "difficultySteady": "Firme",
-    "difficultySteadyNote": "Cuatro jugadas por delante. Castiga las formas flojas.",
-    "difficultySharp": "Afilado",
-    "difficultySharpNote": "Seis jugadas por delante dentro de su presupuesto de tiempo.",
-    "yourColour": "Juegas con",
-    "black": "Negras",
-    "white": "Blancas",
-    "turnYours": "Te toca",
-    "turnTheirs": "El motor está pensando",
-    "turnOpponent": "Esperando a tu rival",
-    "moveCount": "Jugada {count}",
-    "thinkingTime": "{ms} ms",
-    "newGame": "Nueva partida",
-    "undo": "Deshacer",
-    "resign": "Abandonar",
-    "shareGame": "Compartir esta partida",
-    "copyLink": "Copiar enlace",
-    "copied": "Copiado",
-    "wonByYou": "Ganaste en {count} jugadas.",
-    "wonByEngine": "El motor ganó en {count} jugadas.",
-    "wonByOpponent": "Tu rival ganó en {count} jugadas.",
-    "draw": "Tablas: el tablero está lleno.",
-    "resigned": "Has abandonado.",
-    "lastMove": "Última jugada: {notation}",
-    "illegal": "Esa intersección ya está ocupada.",
-    "invite": {
-      "title": "Invita a alguien",
-      "body": "Envía este enlace. Entra directo al tablero, tampoco necesita cuenta.",
-      "code": "Código de sala",
-      "waiting": "Esperando a que alguien entre…",
-      "joined": "Tu rival ya está aquí."
-    },
-    "record": "Historial: {wins}V · {losses}D · {draws}E",
-    "vsRandom": "Partida aleatoria",
-    "match": {
-      "title": "Buscar rival",
-      "body": "Sin enlace ni registro. Te emparejamos con quien esté esperando: quien lleve más tiempo juega con negras.",
-      "start": "Buscar rival",
-      "starting": "Conectando…",
-      "searching": "Buscando rival",
-      "cancel": "Cancelar",
-      "queueCount": "{count} esperando ahora",
-      "error": "No se pudo conectar con la cola. Inténtalo de nuevo."
-    }
+    "title": "Juega Gomoku Online Gratis – vs IA o Amigos"
   },
   "rankings": {
-    "title": "Clasificación",
-    "sub": "Solo partidas clasificatorias entre personas. Las partidas contra el motor cuentan en tu historial pero no mueven tu puntuación.",
-    "position": "#",
-    "player": "Jugador",
-    "rank": "Rango",
-    "rating": "Puntos",
-    "played": "Jugadas",
-    "winRate": "Victorias",
-    "empty": "Todavía no hay partidas clasificatorias. Sé el primero: invita a alguien y juega una.",
-    "emptyAction": "Empezar partida con un amigo",
-    "you": "Tú"
+    "title": "Tabla de Clasificación de Gomoku – Del Noveno Grado al Noveno Dan",
+    "sub": "Ve a los mejores jugadores en partidas entre personas. Súperalos y sube la escalera de 18 peldaños."
   },
   "howTo": {
-    "title": "Cómo se juega al Gomoku",
-    "sub": "Todo lo que necesitas está en esta página. Son unos dos minutos.",
-    "rulesTitle": "Las reglas",
-    "rule1": "Las negras abren. Se alterna, una piedra por turno.",
-    "rule2": "Las piedras van sobre las intersecciones de la cuadrícula, no dentro de los cuadros.",
-    "rule3": "Una piedra colocada no se mueve nunca ni se captura.",
-    "rule4": "Gana de inmediato quien alinee cinco piedras de su color en horizontal, vertical o diagonal.",
-    "rule5": "Si el tablero se llena sin cinco en raya, hay tablas. En la práctica casi nunca ocurre.",
-    "openingTitle": "Tres cosas que te harán mejor hoy mismo",
-    "tip1Title": "Crea dos amenazas a la vez",
-    "tip1Body": "Un tres abierto se bloquea. Dos treses abiertos que comparten una piedra, no: tu rival solo tiene una jugada. Casi todas las partidas se deciden en la primera amenaza doble.",
-    "tip2Title": "Cuenta los extremos libres, no las piedras",
-    "tip2Body": "Tres piedras con los dos extremos libres valen mucho más que cuatro tapadas por un lado. Aprende a ver los huecos antes que la línea.",
-    "tip3Title": "Bloquea pronto, no por cortesía",
-    "tip3Body": "El principiante responde a un tres abierto. El jugador fuerte responde a un dos abierto cuando apunta en una dirección peligrosa. Si siempre reaccionas, ya perdiste la iniciativa.",
-    "notationTitle": "Leer la notación",
-    "notationBody": "Las columnas van de la A a la O desde la izquierda; las filas del 1 al 15 desde abajo. El punto central es H8. Lo usamos en las partidas compartidas y en tu historial.",
-    "cta": "Pruébalo contra el motor",
-    "relatedTitle": "Saber más",
-    "rulesLink": "Reglas y formas del gomoku",
-    "blogLink": "Blog de estrategia"
+    "title": "Cómo Jugar Gomoku: Reglas Gratis Online y Guía de Estrategia",
+    "sub": "Aprende las reglas del Gomoku en 2 minutos. Domina estrategias de apertura como dobles amenazas y bloqueo temprano – juega gratis online ahora."
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -291,8 +180,6 @@
     "terms": "Términos del servicio",
     "faq": "Preguntas frecuentes",
     "blog": "Blog",
-    "puzzle": "Puzzle diario",
-    "games": "Biblioteca de partidas",
     "contact": "Contacto"
   },
   "common": {
@@ -304,53 +191,8 @@
     "skipToContent": "Saltar al contenido"
   },
   "pricing": {
-    "title": "Precios",
-    "sub": "Jugar es gratis. Los planes de pago están en camino: todo es gratuito hasta que los lanzemos.",
-    "monthly": "al mes",
-    "yearly": "al año",
-    "free": {
-      "name": "Gratis",
-      "price": "0",
-      "note": "Jugable ahora",
-      "features": [
-        "Gomoku contra el motor o un amigo",
-        "Escalera de dieciocho grados y danes",
-        "Historial de invitado por 180 días",
-        "Comparte y repasa tus partidas"
-      ]
-    },
-    "plus": {
-      "name": "Plus",
-      "price": "4.99",
-      "note": "Para jugadores diarios",
-      "features": [
-        "Todo lo de Gratis",
-        "Sin anuncios",
-        "Estadísticas profundas de partidas",
-        "Biblioteca de partidas clásicas"
-      ]
-    },
-    "pro": {
-      "name": "Pro",
-      "price": "7.99",
-      "note": "Para jugadores serios",
-      "features": [
-        "Todo lo de Plus",
-        "Acceso anticipado a Xiangqi y Go",
-        "Partidas guardadas ilimitadas",
-        "Descuento en tableros físicos"
-      ]
-    },
-    "comingSoon": "Los pagos están en integración (fase posterior). Hasta entonces, todo es gratis.",
-    "cta": "Empieza gratis",
-    "faqTitle": "Preguntas sobre precios",
-    "faqQ1": "¿Tengo que pagar ahora?",
-    "faqA1": "No. Las suscripciones llegarán en una fase posterior; hasta entonces todo es gratis.",
-    "faqQ2": "¿Por qué un plan de pago?",
-    "faqA2": "Para sostener el servicio sin anuncios ni venta de datos: servidores, el motor y la línea de tableros físicos.",
-    "faqQ3": "¿Puedo cancelar cuando quiera?",
-    "faqA3": "Sí. Cuando lancen las suscripciones, puedes cancelar en cualquier momento y conservar el resto de tu periodo.",
-    "popular": "Más popular"
+    "title": "Precios de Gomoku – Gratis para Jugar, Planes Pro Próximamente",
+    "sub": "Comienza a jugar Gomoku online gratis ahora. Planes Plus y Pro con estadísticas avanzadas, sin anuncios y acceso anticipado a Xiangqi & Go próximamente."
   },
   "privacy": {
     "title": "Política de privacidad",
@@ -386,22 +228,8 @@
     "s6Body": "Podemos actualizar estos términos; seguir usando el servicio tras los cambios implica aceptarlos."
   },
   "faq": {
-    "title": "Preguntas frecuentes",
-    "sub": "¿No encuentras la respuesta? Escribe a ahmedlzany423@gmail.com.",
-    "q1": "¿Necesito cuenta para jugar?",
-    "a1": "No. Abre el tablero y juega: tu progreso se guarda en este navegador 180 días. Vincula un correo solo cuando quieras llevarlo a otro dispositivo.",
-    "q2": "¿Qué nivel tiene el motor?",
-    "a2": "Tres niveles: Suave (2 jugadas), Constante (4) y Afilado (6). Usa búsqueda alfa-beta con presupuesto de 500 ms, en tu navegador.",
-    "q3": "¿Cómo juego contra un amigo?",
-    "a3": "En la página de juego elige «Contra un amigo», crea una sala y envía el código o enlace. Entran directo al tablero, sin cuenta.",
-    "q4": "¿Cómo funciona la escalera?",
-    "a4": "Las partidas entre amigos liquidan ELO, mapeado a los dieciocho grados y danes, de Noveno Grado a Noveno Dan. Todos empiezan en 1200 (Sexto Grado). Las partidas contra el motor no mueven tu puntuación.",
-    "q5": "¿Cuánto dura mi historial?",
-    "a5": "El de invitado dura 180 días. Con correo vinculado se conserva hasta que pidas borrarlo.",
-    "q6": "¿Cuándo llega la suscripción?",
-    "a6": "Los pagos están en integración. Todo es gratis hasta entonces y lo anunciaremos antes de lanzar.",
-    "q7": "¿Hay app móvil?",
-    "a7": "YiBoard es una web responsive (PWA prevista): juega en cualquier navegador móvil sin descargas."
+    "title": "FAQ de Gomoku – Reglas, Fuerza del Motor y Cómo Jugar Gratis",
+    "sub": "Preguntas comunes sobre YiBoard Gomoku: juego sin cuenta, tres niveles de motor, sistema de clasificación de 18 peldaños y cómo jugar con amigos."
   },
   "blog": {
     "title": "Blog",
