@@ -9,14 +9,11 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const meta = await getTranslations({ locale, namespace: 'meta' });
-  return { title: meta('pricing.title'), description: meta('pricing.description'),
-    keywords: meta('pricing.keywords'), openGraph: { title: meta('pricing.title'), description: meta('pricing.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('pricing.title'), description: meta('pricing.description'), images: ['/og.png'] }, alternates: localeAlternates('pricing', locale) };
+  const t = await getTranslations({ locale, namespace: 'pricing' });
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('pricing', locale) };
 }
 
 const TIERS = ['free', 'plus', 'pro'] as const;
-
-export const revalidate = 86400;
 
 export default async function PricingPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
@@ -26,97 +23,116 @@ export default async function PricingPage(props: { params: Promise<{ locale: str
   const faq = ['faqQ1', 'faqQ2', 'faqQ3'] as const;
   const faqA = ['faqA1', 'faqA2', 'faqA3'] as const;
 
+  const pricingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'YiBoard Gomoku Online',
+    description: 'Free online Gomoku game with AI and multiplayer.',
+    brand: { '@type': 'Brand', name: 'YiBoard' },
+    offers: [
+      { '@type': 'Offer', name: 'Free Tier', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+      { '@type': 'Offer', name: 'Plus Plan', price: '4.99', priceCurrency: 'USD', availability: 'https://schema.org/ComingSoon', description: 'No ads, deep stats, game library' },
+      { '@type': 'Offer', name: 'Pro Plan', price: '7.99', priceCurrency: 'USD', availability: 'https://schema.org/ComingSoon', description: 'Early access to Xiangqi & Go, unlimited saves' },
+    ],
+  };
+
   return (
-    <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
-      <header style={{ maxWidth: '56ch' }}>
-        <h1 className="yb-h2">{t('title')}</h1>
-        <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>
-          {t('sub')}
-        </p>
-      </header>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingSchema) }}
+      />
+      <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
+        <header style={{ maxWidth: '56ch' }}>
+          <h1 className="yb-h2">{t('title')}</h1>
+          <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>
+            {t('sub')}
+          </p>
+        </header>
 
-      {/* ---------------- 三档 ---------------- */}
-      <div className="yb-grid yb-grid-3" style={{ marginTop: 'var(--space-8)' }}>
-        {TIERS.map((tier) => {
-          const free = tier === 'free';
-          const popular = tier === 'plus';
-          return (
-            <article
-              key={tier}
-              className="yb-card"
-              style={{
-                padding: 'var(--card-pad)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--space-4)',
-                border: popular ? '1.5px solid var(--accent)' : undefined,
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-                <h2 className="yb-h3">{t(`${tier}.name`)}</h2>
-                {popular ? <span className="yb-chip yb-chip-accent">{t('popular')}</span> : null}
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-3xl)', fontWeight: 700, color: 'var(--fg)' }}>
-                  {free ? t(`${tier}.price`) : `$${t(`${tier}.price`)}`}
-                </span>
-                {!free ? <span className="yb-meta">{t('monthly')}</span> : null}
-              </div>
-
-              <p className="yb-meta">{t(`${tier}.note`)}</p>
-
-              <ul
+        {/* ---------------- 三档 ---------------- */}
+        <div className="yb-grid yb-grid-3" style={{ marginTop: 'var(--space-8)' }}>
+          {TIERS.map((tier) => {
+            const free = tier === 'free';
+            const popular = tier === 'plus';
+            return (
+              <article
+                key={tier}
+                className="yb-card"
                 style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: 0,
-                  display: 'grid',
-                  gap: 'var(--space-2)',
-                  flexGrow: 1,
+                  padding: 'var(--card-pad)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--space-4)',
+                  border: popular ? '1.5px solid var(--accent)' : undefined,
                 }}
               >
-                {Array.from({ length: 4 }, (_, i) => (
-                  <li
-                    key={i}
-                    style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'flex-start', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}
-                  >
-                    <Check size={15} weight="bold" aria-hidden style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} />
-                    {t(`${tier}.features.${i}`)}
-                  </li>
-                ))}
-              </ul>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                  <h2 className="yb-h3">{t(`${tier}.name`)}</h2>
+                  {popular ? <span className="yb-chip yb-chip-accent">{t('popular')}</span> : null}
+                </div>
 
-              {free ? (
-                <Link href="/play" className="yb-btn yb-btn-primary" style={{ justifyContent: 'center' }}>
-                  {t('cta')}
-                </Link>
-              ) : (
-                <span
-                  className="yb-btn yb-btn-outline"
-                  style={{ justifyContent: 'center', opacity: 0.65, cursor: 'default' }}
-                  aria-disabled="true"
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-3xl)', fontWeight: 700, color: 'var(--fg)' }}>
+                    {free ? t(`${tier}.price`) : `$${t(`${tier}.price`)}`}
+                  </span>
+                  {!free ? <span className="yb-meta">{t('monthly')}</span> : null}
+                </div>
+
+                <p className="yb-meta">{t(`${tier}.note`)}</p>
+
+                <ul
+                  style={{
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0,
+                    display: 'grid',
+                    gap: 'var(--space-2)',
+                    flexGrow: 1,
+                  }}
                 >
-                  {t('comingSoon')}
-                </span>
-              )}
-            </article>
-          );
-        })}
-      </div>
+                  {Array.from({ length: 4 }, (_, i) => (
+                    <li
+                      key={i}
+                      style={{ display: 'flex', gap: 'var(--space-2)', alignItems: 'flex-start', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}
+                    >
+                      <Check size={15} weight="bold" aria-hidden style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} />
+                      {t(`${tier}.features.${i}`)}
+                    </li>
+                  ))}
+                </ul>
 
-      {/* ---------------- 定价 FAQ ---------------- */}
-      <section className="yb-section" style={{ maxWidth: 720 }}>
-        <h2 className="yb-h3">{t('faqTitle')}</h2>
-        <div className="yb-card" style={{ padding: 'var(--card-pad)', marginTop: 'var(--space-5)', display: 'grid', gap: 'var(--space-4)' }}>
-          {faq.map((q, i) => (
-            <div key={q}>
-              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)' }}>{t(q)}</h3>
-              <p style={{ marginTop: 4, fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>{t(faqA[i]!)}</p>
-            </div>
-          ))}
+                {free ? (
+                  <Link href="/play" className="yb-btn yb-btn-primary" style={{ justifyContent: 'center' }}>
+                    {t('cta')}
+                  </Link>
+                ) : (
+                  <span
+                    className="yb-btn yb-btn-outline"
+                    style={{ justifyContent: 'center', opacity: 0.65, cursor: 'default' }}
+                    aria-disabled="true"
+                  >
+                    {t('comingSoon')}
+                  </span>
+                )}
+              </article>
+            );
+          })}
         </div>
-      </section>
-    </div>
+
+        {/* ---------------- 定价 FAQ ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 720 }}>
+          <h2 className="yb-h3">{t('faqTitle')}</h2>
+          <div className="yb-card" style={{ padding: 'var(--card-pad)', marginTop: 'var(--space-5)', display: 'grid', gap: 'var(--space-4)' }}>
+            {faq.map((q, i) => (
+              <div key={q}>
+                <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)' }}>{t(q)}</h3>
+                <p style={{ marginTop: 4, fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>{t(faqA[i]!)}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
