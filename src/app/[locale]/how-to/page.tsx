@@ -9,19 +9,15 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const meta = await getTranslations({ locale, namespace: 'meta' });
-  return { title: meta('howTo.title'), description: meta('howTo.description'),
-    keywords: meta('howTo.keywords'), openGraph: { title: meta('howTo.title'), description: meta('howTo.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('howTo.title'), description: meta('howTo.description'), images: ['/og.png'] }, alternates: localeAlternates('how-to', locale) };
+  const t = await getTranslations({ locale, namespace: 'howTo' });
+  return { title: t('title'), description: t('sub'), alternates: localeAlternates('how-to', locale) };
 }
-
-export const revalidate = 86400;
 
 export default async function HowToPage(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'howTo' });
-  const l = locale === 'zh' ? 'zh' : 'en';
   const rules = ['rule1', 'rule2', 'rule3', 'rule4', 'rule5'] as const;
   const tips = [
     { title: 'tip1Title', body: 'tip1Body' },
@@ -29,154 +25,146 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
     { title: 'tip3Title', body: 'tip3Body' },
   ] as const;
 
-  const howToJsonLd = {
+  const howToSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: t('title'),
-    description: t('sub'),
-    datePublished: '2026-08-12',
-    dateModified: '2026-08-12',
-    inLanguage: l,
-    author: { '@type': 'Organization', name: 'YiBoard' },
-    publisher: { '@type': 'Organization', name: 'YiBoard' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://yiboardgame.com/how-to' },
+    '@type': 'HowTo',
+    name: 'How to Play Gomoku',
+    description: 'Learn Gomoku rules in 2 minutes and master key opening strategies.',
+    totalTime: 'PT2M',
+    supply: [
+      { '@type': 'HowToSupply', name: 'Gomoku board (15x15)' },
+      { '@type': 'HowToSupply', name: 'Black and white stones' },
+    ],
+    step: [
+      { '@type': 'HowToStep', name: 'Set up the board', text: 'Place the 15x15 grid with black and white stones. Black moves first.' },
+      { '@type': 'HowToStep', name: 'Take turns placing stones', text: 'Players alternate, placing one stone on an intersection per turn.' },
+      { '@type': 'HowToStep', name: 'Goal: five in a row', text: 'First player to align five stones of their color horizontally, vertically, or diagonally wins immediately.' },
+      { '@type': 'HowToStep', name: 'Master double threats', text: 'Create two open threes that share a stone — your opponent can only block one.' },
+      { '@type': 'HowToStep', name: 'Block early and aggressively', text: 'Respond to open twos in strong directions, not just open threes.' },
+    ],
   };
 
   return (
-    <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
+    <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
-      <header style={{ maxWidth: '58ch' }}>
-        <h1 className="yb-h2">{t('title')}</h1>
-        <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>
-          {t('sub')}
-        </p>
-      </header>
-
-      {/* ---------------- 规则 ---------------- */}
-      <section className="yb-section" style={{ maxWidth: 760 }}>
-        <SectionHead
-          icon={<ListNumbers size={18} weight="bold" aria-hidden />}
-          title={t('rulesTitle')}
-        />
-        <ol
-          style={{
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-            display: 'grid',
-            gap: 'var(--space-3)',
-          }}
-        >
-          {rules.map((key, i) => (
-            <li
-              key={key}
-              style={{
-                display: 'flex',
-                gap: 'var(--space-4)',
-                alignItems: 'flex-start',
-                padding: 'var(--space-4)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-md)',
-                background: 'var(--surface-2)',
-              }}
-            >
-              <span
-                aria-hidden
-                style={{
-                  flexShrink: 0,
-                  width: 28,
-                  height: 28,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 'var(--radius-pill)',
-                  border: '1.5px solid var(--accent)',
-                  color: 'var(--accent)',
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'var(--text-sm)',
-                  fontWeight: 700,
-                }}
-              >
-                {i + 1}
-              </span>
-              <p style={{ margin: 0, fontSize: 'var(--text-base)', color: 'var(--fg)', maxWidth: '58ch' }}>
-                {t(key)}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* ---------------- 三个进阶贴士 ---------------- */}
-      <section className="yb-section" style={{ maxWidth: 760 }}>
-        <SectionHead
-          icon={<Lightbulb size={18} weight="bold" aria-hidden />}
-          title={t('openingTitle')}
-        />
-        <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-4)' }}>
-          {tips.map((tip) => (
-            <article key={tip.title} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
-              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)' }}>
-                {t(tip.title)}
-              </h3>
-              <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
-                {t(tip.body)}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------------- 记谱说明 ---------------- */}
-      <section className="yb-section" style={{ maxWidth: 760 }}>
-        <SectionHead
-          icon={<TextAlignLeft size={18} weight="bold" aria-hidden />}
-          title={t('notationTitle')}
-        />
-        <div className="yb-card" style={{ padding: 'var(--card-pad)' }}>
-          <p style={{ fontSize: 'var(--text-sm)', color: 'var(--fg-2)', margin: 0 }}>
-            {t('notationBody')}
+      <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
+        <header style={{ maxWidth: '58ch' }}>
+          <h1 className="yb-h2">{t('title')}</h1>
+          <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>
+            {t('sub')}
           </p>
-          <p
-            className="yb-num"
+        </header>
+
+        {/* ---------------- 规则 ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead
+            icon={<ListNumbers size={18} weight="bold" aria-hidden />}
+            title={t('rulesTitle')}
+          />
+          <ol
             style={{
-              marginTop: 'var(--space-4)',
-              fontSize: 'var(--text-base)',
-              color: 'var(--fg)',
-              letterSpacing: '0.08em',
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'grid',
+              gap: 'var(--space-3)',
             }}
           >
-            A1 · H8 · O15
-          </p>
-        </div>
-      </section>
+            {rules.map((key, i) => (
+              <li
+                key={key}
+                style={{
+                  display: 'flex',
+                  gap: 'var(--space-4)',
+                  alignItems: 'flex-start',
+                  padding: 'var(--space-4)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius-md)',
+                  background: 'var(--surface-2)',
+                }}
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    flexShrink: 0,
+                    width: 28,
+                    height: 28,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: 'var(--radius-pill)',
+                    border: '1.5px solid var(--accent)',
+                    color: 'var(--accent)',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'var(--text-sm)',
+                    fontWeight: 700,
+                  }}
+                >
+                  {i + 1}
+                </span>
+                <p style={{ margin: 0, fontSize: 'var(--text-base)', color: 'var(--fg)', maxWidth: '58ch' }}>
+                  {t(key)}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-      {/* ---------------- 延伸阅读（内部链接，强化 SEO 抓取） ---------------- */}
-      <section className="yb-section" style={{ maxWidth: 760 }}>
-        <SectionHead
-          icon={<TextAlignLeft size={18} weight="bold" aria-hidden />}
-          title={t('relatedTitle')}
-        />
-        <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)' }}>
-          <Link href="/gomoku-rules" className="yb-card" style={{ padding: 'var(--card-pad)', textDecoration: 'none', color: 'var(--fg)' }}>
-            {t('rulesLink')}
-          </Link>
-          <Link href="/blog" className="yb-card" style={{ padding: 'var(--card-pad)', textDecoration: 'none', color: 'var(--fg)' }}>
-            {t('blogLink')}
-          </Link>
-        </div>
-      </section>
+        {/* ---------------- 三个进阶贴士 ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead
+            icon={<Lightbulb size={18} weight="bold" aria-hidden />}
+            title={t('openingTitle')}
+          />
+          <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-4)' }}>
+            {tips.map((tip) => (
+              <article key={tip.title} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
+                <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)' }}>
+                  {t(tip.title)}
+                </h3>
+                <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
+                  {t(tip.body)}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      {/* ---------------- CTA ---------------- */}
-      <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
-        <Link href="/play" className="yb-btn yb-btn-primary">
-          {t('cta')}
-        </Link>
-      </section>
-    </div>
+        {/* ---------------- 记谱说明 ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead
+            icon={<TextAlignLeft size={18} weight="bold" aria-hidden />}
+            title={t('notationTitle')}
+          />
+          <div className="yb-card" style={{ padding: 'var(--card-pad)' }}>
+            <p style={{ fontSize: 'var(--text-sm)', color: 'var(--fg-2)', margin: 0 }}>
+              {t('notationBody')}
+            </p>
+            <p
+              className="yb-num"
+              style={{
+                marginTop: 'var(--space-4)',
+                fontSize: 'var(--text-base)',
+                color: 'var(--fg)',
+                letterSpacing: '0.08em',
+              }}
+            >
+              A1 · H8 · O15
+            </p>
+          </div>
+        </section>
+
+        {/* ---------------- CTA ---------------- */}
+        <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
+          <Link href="/play" className="yb-btn yb-btn-primary">
+            {t('cta')}
+          </Link>
+        </section>
+      </div>
+    </>
   );
 }
 
