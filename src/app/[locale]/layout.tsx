@@ -28,16 +28,6 @@ const inter = Inter({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yiboardgame.com';
 
-/** 全站 Organization 结构化数据（layout 级注入，所有页面受益）。 */
-const ORGANIZATION_JSONLD = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'YiBoard',
-  url: SITE_URL,
-  logo: `${SITE_URL}/icon.svg`,
-  description: 'Play Chinese strategy board games online — Gomoku, Renju and more. Free, no signup.',
-};
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -52,18 +42,17 @@ export async function generateMetadata(props: {
     routing.locales.map((l) => [l, l === routing.defaultLocale ? '/' : `/${l}`]),
   );
 
-  // metadataBase 用 env 兜底常量（官方推荐做法）。
-  // ⚠ 不要改回 headers()/request host：在 generateMetadata 里调用任何动态 API
-  // （headers/cookies）会把整条路由标记为动态渲染，revalidate/ISR 全部失效
-  // （2026-08-10 FOT 优化踩坑：因此 how-to 等页面响应头变成 private no-store）。
+  // 基准域名直接用环境变量（Vercel 项目设置 NEXT_PUBLIC_SITE_URL 可控），
+  // 不再读 request headers，避免整站被强制动态渲染、推高 ISR/FOT。
+  const siteUrl = SITE_URL;
+
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(siteUrl),
     title: {
-      default: t('home.title'),
+      default: t('title'),
       template: '%s — YiBoard',
     },
-    description: t('home.description'),
-    keywords: t('home.keywords'),
+    description: t('description'),
     alternates: {
       canonical: locale === routing.defaultLocale ? '/' : `/${locale}`,
       languages: { ...languages, 'x-default': '/' },
@@ -71,15 +60,15 @@ export async function generateMetadata(props: {
     openGraph: {
       type: 'website',
       siteName: 'YiBoard',
-      title: t('home.title'),
-      description: t('home.description'),
+      title: t('title'),
+      description: t('description'),
       locale,
-      images: [{ url: '/og.png', width: 1200, height: 630, alt: t('ogAlt') }],
+      images: [{ url: '/og.png', width: 1200, height: 630, alt: t('title') }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('home.title'),
-      description: t('home.description'),
+      title: t('title'),
+      description: t('description'),
       images: ['/og.png'],
     },
     robots: { index: true, follow: true },
@@ -109,11 +98,11 @@ export default async function LocaleLayout(props: {
     <html lang={locale} data-board="ink" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSONLD) }}
-        />
-      </head>
+            <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"YiBoard","url":"https://yiboardgame.com","logo":"https://yiboardgame.com/og.png","sameAs":[],"description":"Free online Gomoku, Xiangqi, and Go games. No account, no download."},{"@type":"WebSite","name":"YiBoard","url":"https://yiboardgame.com","description":"Play Gomoku free online against AI or friends.","potentialAction":{"@type":"SearchAction","target":"https://yiboardgame.com/blog?q={search_term_string}","query-input":"required name=search_term_string"}}]}) }}
+      />
+    </head>
       <body className={`${archivo.variable} ${inter.variable}`}>
         <NextIntlClientProvider>
           <a className="yb-skip" href="#content">
