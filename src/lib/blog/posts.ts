@@ -1826,3 +1826,90 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 export function getPostSlugs(): string[] {
   return POSTS.map((p) => p.slug);
 }
+  ,
+  {
+    slug: "gomoku-rank-explained",
+    date: "2026-08-20",
+    title: {
+      en: "How to Read the Gomoku Rank System",
+      zh: "段位系统怎么读：1200 分是什么水平",
+    },
+    excerpt: {
+      en: "Gomoku uses a grade/dan system rooted in Chinese board game tradition. This guide explains how YiBoard's ranking works, what 1200 points means, and how to track your progress.",
+      zh: "五子棋使用源自中国棋类传统的级段位系统。本文讲解 YiBoard 的排名机制、1200 分代表什么水平，以及如何追踪你的进步。",
+    },
+    body: [
+      {
+        type: "p",
+        text: "When you open YiBoard's rankings, you will not see bronze, silver, or gold. Instead, you will see grades (级) and dan (段) — a system that has been used in Chinese board games for over a thousand years. Everyone starts at 1200 points, which corresponds to 6th grade (六级). This guide explains how the system works and what your score means.",
+      },
+      { type: "h2", text: "The grade and dan system" },
+      {
+        type: "p",
+        text: "The Gomoku ranking system has two parts:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Grades (级位): From 9th grade (weakest) to 1st grade ( strongest). Numbers go down as you get better.",
+          "Dan (段位): From 1st dan to 9th dan. Dan is the professional tier, with 9th dan being the highest.",
+        ],
+      },
+      {
+        type: "p",
+        text: "YiBoard starts everyone at 1200 points / 6th grade. Wins add points, losses subtract them. The exact point movement depends on the rating difference between players — beating a higher-rated opponent gives you more points than beating a lower-rated one.",
+      },
+      { type: "h2", text: "What 1200 points means" },
+      {
+        type: "p",
+        text: "1200 points is the starting point for everyone. It is not a measure of skill — it is a neutral baseline. After your first few games, your score will reflect your actual ability relative to the community.",
+      },
+      {
+        type: "table",
+        data: {
+          headers: ["Score Range", "Rank", "Description"],
+          rows: [
+            ["Below 1000", "7th-9th grade", "Beginner, learning the basics"],
+            ["1000-1200", "6th-5th grade", "Intermediate, understanding openings"],
+            ["1200-1400", "4th-2nd grade", "Advanced, consistent winner"],
+            ["1400-1600", "1st dan", "Expert, tournament-level play"],
+            ["Above 1600", "2nd-9th dan", "Master level, rare in casual play"],
+          ],
+        },
+      },
+      { type: "h2", text: "How to improve your rank" },
+      {
+        type: "ul",
+        items: [
+          "Study standard openings: Hanagetsu and Umezuki are the most reliable for Black.",
+          "Play regularly: Consistency matters more than intensity. 3 games a day is better than 10 games once a week.",
+          "Review your losses: Understand why you lost before playing the next game.",
+          "Use the YiBoard board to test shapes: Practice forbidden moves and winning patterns without playing a full game.",
+        ],
+      },
+      { type: "h2", text: "FAQ" },
+      {
+        type: "faq",
+        items: [
+          {
+            q: "Is the Gomoku rank system the same as chess rating?",
+            a: "No. Chess uses Elo rating with a single number. Gomoku uses a hybrid system: a point score that maps to grade/dan ranks. The point system is more granular and easier to understand for beginners.",
+          },
+          {
+            q: "Can I see my rank history?",
+            a: "Yes. YiBoard tracks your score history and shows your rank progression over time. Check the rankings page for detailed stats.",
+          },
+          {
+            q: "Does forbidden move affect ranking?",
+            a: "Forbidden moves only apply to Black. They do not affect the point system directly, but they do affect your win rate. Learning forbidden move rules is essential for reaching higher dan ranks.",
+          },
+        ],
+      },
+      {
+        type: "cta",
+        text: "Play Gomoku and test your rank →",
+        href: "https://yiboardgame.com/play",
+      },
+    ],
+  },
+];
