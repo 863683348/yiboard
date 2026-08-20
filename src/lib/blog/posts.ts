@@ -1912,4 +1912,39 @@ export function getPostSlugs(): string[] {
       },
     ],
   },
+
+  {
+    slug: "invite-friend-to-match",
+    date: "2026-08-21",
+    title: {
+      en: "How to Invite a Friend to a Gomoku Match on YiBoard",
+      zh: "怎么邀请朋友来一局五子棋",
+    },
+    excerpt: {
+      en: "Gomoku is better with friends. Learn three ways to invite friends to play on YiBoard: share links, private rooms, and QR codes.",
+      zh: "五子棋和朋友一起玩更有趣。学习三种邀请方式：分享链接、私密房间和二维码。",
+    },
+    body: [
+      { type: "p", text: "The core fun of Gomoku lies in the competition. Practicing alone can improve your skills, but real-time matches with friends create genuine tension and surprise." },
+      { type: "h2", text: "Three Ways to Invite Friends" },
+      { type: "h3", text: "Method 1: Share Game Link" },
+      { type: "p", text: "Open the YiBoard Gomoku page, click Invite Friends, copy the generated link, and send it via WeChat, QQ, or email. Your friend clicks the link to enter the match directly." },
+      { type: "h3", text: "Method 2: Create Private Room" },
+      { type: "p", text: "Enter the game lobby, select Create Private Room, set a room password (optional), and share the room number with your friend. They enter the number to join." },
+      { type: "h3", text: "Method 3: Scan QR Code" },
+      { type: "p", text: "Click QR Code on the game page and let your friend scan it. This automatically jumps to the match page." },
+      { type: "h2", text: "Important Notes" },
+      { type: "ul", items: [
+        "Ensure both parties have stable network connections",
+        "Private rooms recommend setting passwords",
+        "You can restart immediately after the match ends",
+      ] },
+      { type: "h2", text: "FAQ" },
+      { type: "faq", items: [
+        { q: "Do friends need to be on the same device?", a: "No. Both parties can play on different devices in different locations." },
+        { q: "Will match records be saved?", a: "Yes, both parties can view historical match records." },
+      ] },
+      { type: "cta", text: "Play Gomoku with friends on YiBoard", href: "https://yiboardgame.com/play" },
+    ],
+  }
 ];
