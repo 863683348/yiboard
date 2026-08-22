@@ -2666,6 +2666,20 @@ export const POSTS: BlogPost[] = [
     ]
   }
 }
+
+  {
+    "id": 40,
+    "slug": "xiangqi-rules-the-river-the-cannons",
+    "title": { "zh": "象棋基础规则（开发预览）", "en": "Xiangqi Rules: The River, the Cannons" },
+    "date": "2026-08-23",
+    "excerpt": { "zh": "象棋的河界与炮的移动规则详解", "en": "Xiangqi river boundary and cannon movement rules explained." },
+    "category": "rules",
+    "body": {
+      "en": "<h2>The River (河)</h2><p>The river divides the board in half. Some pieces cannot cross: advisors and generals stay on their side. Cannons and pawns can cross.</p><h2>The Cannon (炮)</h2><p>Cannons move like chariots horizontally and vertically, but must jump over exactly one piece (screen) to capture. No screen = no capture.</p><h2>FAQ</h2><ul><li>Can the general cross the river? No.</li><li>How does the cannon capture? Must jump over one piece.</li><li>Can pawns cross the river? Yes, and they gain sideways movement after crossing.</li></ul>",
+      "zh": "<h2>河界</h2><p>河界将棋盘分为两半。部分棋子不能过河：士和将留在本侧。炮和兵可以过河。</p><h2>炮的移动</h2><p>炮沿直线移动，但吃子时必须恰好跳过一枚棋子（炮架）。无炮架不能吃子。</p><h2>常见问题</h2><ul><li>将可以过河吗？不可以。</li><li>炮如何吃子？必须跳过一枚棋子。</li><li>兵可以过河吗？可以，过河后获得横走能力。</li></ul>"
+    }
+  },
+
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
