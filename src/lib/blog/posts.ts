@@ -1817,6 +1817,855 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+
+{
+  "slug": "gomoku-rank-explained",
+  "date": "2026-08-20",
+  "title": {
+    "en": "How to Read the Gomoku Rank System",
+    "zh": "段位系统怎么读：1200 分是什么水平"
+  },
+  "description": {
+    "en": "Gomoku uses a grade/dan system rooted in Chinese board game tradition. This guide explains how YiBoard’s ranking works, what 1200 points means, and how to track your progress.",
+    "zh": "五子棋使用源自中国棋类传统的级段位系统。本文讲解 YiBoard 的排名机制、1200 分代表什么水平，以及如何追踪你的进步。"
+  },
+  "keywords": [
+    "gomoku rank system",
+    "gomoku rating",
+    "gomoku dan",
+    "gomoku grades",
+    "gomoku leaderboard"
+  ],
+  "content": {
+    "en": [
+      "When you open YiBoard’s rankings, you will not see bronze, silver, or gold. Instead, you will see grades (级) and dan (段) — a system that has been used in Chinese board games for over a thousand years. Everyone starts at 1200 points, which corresponds to 6th grade (六级). This guide explains how the system works and what your score means.",
+      {
+        "type": "h2",
+        "text": "The grade and dan system"
+      },
+      "The Gomoku ranking system has two parts:",
+      {
+        "type": "ul",
+        "items": [
+          "Grades (级位): from 9th grade (weakest) to 1st grade (strongest). Numbers go down as you get better.",
+          "Dan (段位): from 1st dan to 9th dan. Dan is the professional tier, with 9th dan being the highest."
+        ]
+      },
+      "YiBoard starts everyone at 1200 points / 6th grade. Wins add points, losses subtract them. The exact point movement depends on the rating difference between players — beating a higher-rated opponent gives you more points than beating a lower-rated one.",
+      {
+        "type": "h2",
+        "text": "What 1200 points means"
+      },
+      "1200 points is the starting point for everyone. It is not a measure of skill — it is a neutral baseline. After your first few games, your score will reflect your actual ability relative to the community.",
+      {
+        "type": "h2",
+        "text": "Score ranges at a glance"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Below 1000 · 7th–9th grade — beginner, learning the basics",
+          "1000–1200 · 6th–5th grade — intermediate, understanding openings",
+          "1200–1400 · 4th–2nd grade — advanced, consistent winner",
+          "1400–1600 · 1st dan — expert, tournament-level play",
+          "Above 1600 · 2nd–9th dan — master level, rare in casual play"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "How to improve your rank"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Study standard openings: Hanagetsu and Umezuki are the most reliable for Black.",
+          "Play regularly: consistency matters more than intensity. Three games a day beats ten games once a week.",
+          "Review your losses: understand why you lost before playing the next game.",
+          "Use the YiBoard board to test shapes: practice winning patterns without playing a full game."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Is the Gomoku rank system the same as chess rating?",
+            "a": "No. Chess uses a single Elo number. Gomoku uses a hybrid system: a point score that maps to grade/dan ranks. The point system is more granular and easier for beginners to read."
+          },
+          {
+            "q": "Can I see my rank history?",
+            "a": "Yes. YiBoard tracks your score history and shows your rank progression over time. Check the rankings page for detailed stats."
+          },
+          {
+            "q": "Do forbidden moves affect ranking?",
+            "a": "Forbidden moves only apply to Black in rulesets that use them. They affect your win rate and therefore your points, so learning them is essential for reaching higher dan ranks."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "Play Gomoku and test your rank",
+        "href": "https://yiboardgame.com/play"
+      }
+    ],
+    "zh": [
+      "打开 YiBoard 的排行榜，你不会看到青铜、白银、黄金。你会看到级和段——这套体系在中国棋类里已经用了上千年。每个人从 1200 分（六级）起步。这篇说明整个机制，以及你的分数到底代表什么。",
+      {
+        "type": "h2",
+        "text": "级与段"
+      },
+      "五子棋段位系统分两段：",
+      {
+        "type": "ul",
+        "items": [
+          "级位：从九级（最弱）到一级（最强），数字越小越强。",
+          "段位：从初段到九段，段是职业层级，九段最高。"
+        ]
+      },
+      "YiBoard 让所有人从 1200 分 / 六级起步。赢棋加分、输棋减分，具体浮动取决于双方分差——赢高分对手比赢低分对手涨得多。",
+      {
+        "type": "h2",
+        "text": "1200 分意味着什么"
+      },
+      "1200 分是所有人的起点，它不代表水平，只是一个中立基线。打几局之后，你的分数就会相对社区反映真实实力。",
+      {
+        "type": "h2",
+        "text": "分数段一览"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "1000 以下 · 七~九级——新手，正在学基础",
+          "1000–1200 · 六~五级——中级，开始懂开局",
+          "1200–1400 · 四~二级——进阶，稳定取胜",
+          "1400–1600 · 初段——高手，接近比赛水准",
+          "1600 以上 · 二~九段——大师级，休闲对局里很少见"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "怎么提升段位"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "学标准开局：花月、浦月是黑棋最可靠的开局。",
+          "规律对局：持续性比强度更重要，每天三局好过一周十局。",
+          "复盘败局：下下一局之前，先弄明白上一局为什么输。",
+          "用 YiBoard 棋盘练形：不下一整局也能练必胜棋形。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "五子棋段位和国际象棋等级分一样吗？",
+            "a": "不一样。国际象棋是单一 Elo 数字，五子棋是混合体系：分数映射到级/段。分数更细，对新手更友好。"
+          },
+          {
+            "q": "能看到段位历史吗？",
+            "a": "可以。YiBoard 会记录你的分数历史并展示段位成长轨迹，排行榜页有详细统计。"
+          },
+          {
+            "q": "禁手影响段位吗？",
+            "a": "在使用禁手的规则里，禁手只约束黑方。它不影响分数机制本身，但会影响胜率，所以想上高段必须学禁手。"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "下一局，测测你的段位",
+        "href": "https://yiboardgame.com/play"
+      }
+    ]
+  }
+},
+{
+  "slug": "invite-friend-to-match",
+  "date": "2026-08-21",
+  "title": {
+    "en": "How to Invite a Friend to a Gomoku Match on YiBoard",
+    "zh": "怎么邀请朋友来一局五子棋"
+  },
+  "description": {
+    "en": "Gomoku is better with friends. Learn three ways to invite friends to play on YiBoard: share links, private rooms, and QR codes.",
+    "zh": "五子棋和朋友一起玩更有趣。学习三种邀请方式：分享链接、私密房间和二维码。"
+  },
+  "keywords": [
+    "gomoku with friends",
+    "gomoku multiplayer",
+    "play gomoku with friends",
+    "invite friend gomoku",
+    "gomoku private room"
+  ],
+  "content": {
+    "en": [
+      "The core fun of Gomoku lies in the competition. Practicing alone can improve your skills, but real-time matches with friends create genuine tension and surprise.",
+      {
+        "type": "h2",
+        "text": "Three ways to invite friends"
+      },
+      {
+        "type": "h2",
+        "text": "Method 1: share the game link"
+      },
+      "Open the YiBoard Gomoku page, copy the generated link, and send it via WeChat, QQ, or email. Your friend clicks the link to enter the match directly.",
+      {
+        "type": "h2",
+        "text": "Method 2: create a private room"
+      },
+      "Enter the game lobby, create a private room, set a room password (optional), and share the room number. Your friend enters the number to join.",
+      {
+        "type": "h2",
+        "text": "Method 3: scan the QR code"
+      },
+      "Open the QR code on the game page and let your friend scan it. It jumps straight to the match.",
+      {
+        "type": "h2",
+        "text": "Important notes"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Make sure both sides have a stable network connection.",
+          "Private rooms should set a password.",
+          "You can start a new round immediately after a match ends."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Do friends need to be on the same device?",
+            "a": "No. Both players can be on different devices in different locations."
+          },
+          {
+            "q": "Are match records saved?",
+            "a": "Yes, both sides can view historical match records."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "Play Gomoku with friends on YiBoard",
+        "href": "https://yiboardgame.com/play"
+      }
+    ],
+    "zh": [
+      "五子棋的核心乐趣在于对弈。独自练习能提升棋力，但和朋友的实时对局才有真正的紧张与惊喜。",
+      {
+        "type": "h2",
+        "text": "三种邀请朋友的方式"
+      },
+      {
+        "type": "h2",
+        "text": "方式一：分享对局链接"
+      },
+      "打开 YiBoard 五子棋页，复制生成的链接，通过微信、QQ 或邮件发给朋友，对方点开即入局。",
+      {
+        "type": "h2",
+        "text": "方式二：创建私密房间"
+      },
+      "进入大厅，创建私密房间，可设置房间密码，把房间号发给朋友，对方输入号码加入。",
+      {
+        "type": "h2",
+        "text": "方式三：扫码加入"
+      },
+      "打开对局页的二维码，让朋友扫码，自动跳转进入对局。",
+      {
+        "type": "h2",
+        "text": "注意事项"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "双方网络要稳定。",
+          "私密房间建议设密码。",
+          "一局结束后可立刻开下一局。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "朋友必须和我在同一台设备吗？",
+            "a": "不用。双方可以在不同地点、不同设备上对局。"
+          },
+          {
+            "q": "对局记录会保存吗？",
+            "a": "会。双方都能查看历史对局记录。"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "和朋友来一局五子棋",
+        "href": "https://yiboardgame.com/play"
+      }
+    ]
+  }
+},
+{
+  "slug": "gomoku-openings-guide",
+  "date": "2026-08-22",
+  "title": {
+    "en": "Gomoku Openings: The First Moves That Decide the Game",
+    "zh": "五子棋开局指南：决定胜负的前几步"
+  },
+  "description": {
+    "en": "The opening decides more Gomoku games than any other phase. Learn the strongest first moves, the difference between freestyle and forbidden-move rules, and why Black holds the initiative.",
+    "zh": "开局比任何阶段都更能决定五子棋胜负。学会最强的前几手、无禁手与有禁手规则的区别，以及为什么黑棋握有先手优势。"
+  },
+  "keywords": [
+    "gomoku openings",
+    "五子棋开局",
+    "gomoku black advantage",
+    "freestyle gomoku rules",
+    "gomoku first move",
+    "五子棋必胜开局"
+  ],
+  "content": {
+    "en": [
+      "Most casual Gomoku games are decided in the first ten moves — not because of traps, but because the opening sets up the attacking shapes (open threes, broken threes, fours) that everything else builds on. Learn the fundamentals here, then put them to the test on the board.",
+      {
+        "type": "h2",
+        "text": "Black moves first: the initiative is real"
+      },
+      "In freestyle (no forbidden moves) Gomoku, Black opens with a serious advantage. The classic approach is to keep the initiative: build an open three as early as possible and force White to answer instead of building their own attack.",
+      {
+        "type": "h2",
+        "text": "The two strongest opening moves"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Flower Moon (花月): Black’s first move plus the 8/8 diagonal response — the classic winning opening that leads to a forced win with correct play.",
+          "Plum Moon (浦月): the second most reliable black opening, built around the center and two diagonals."
+        ]
+      },
+      "Both are attacking openings: they create two or three threats at once, and White must address each one. If White defends passively, Black converts the open three into a five.",
+      {
+        "type": "h2",
+        "text": "Freestyle vs forbidden-move rules"
+      },
+      "Under freestyle rules (what YiBoard uses by default), double-three, double-four, and overlines are all legal for both sides. Under forbidden-move (Renju) rules, Black is banned from double-three, double-four, and overline — which rebalances the game toward White and changes the whole opening theory.",
+      {
+        "type": "h2",
+        "text": "A simple opening plan for beginners"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Play your first stone near the center — corners and edges are weak.",
+          "On your second move, keep your stones diagonally close to the first one so they threaten two lines at once.",
+          "After that, always look for the move that creates the most threats (an open three or a four), even if it means ignoring your opponent’s stones for a moment.",
+          "If you cannot attack, defend the opponent’s open three immediately — a single open three almost always becomes a five."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "What is the best first move in Gomoku?",
+            "a": "The center point (or one of the two points right next to it) is universally strongest. From there you can extend in any direction and build two lines at once."
+          },
+          {
+            "q": "Is there a winning strategy for Black?",
+            "a": "In freestyle rules, yes in theory: with perfect play Black can force a win from the center opening (Flower Moon is the classic example). In practice this requires deep calculation and sharp play."
+          },
+          {
+            "q": "Does YiBoard use forbidden moves?",
+            "a": "No. YiBoard’s default is freestyle: double-three, double-four, and overlines are all legal for both sides. We keep it simple so anyone can jump in and play."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "Try the Flower Moon opening against our AI",
+        "href": "https://yiboardgame.com/play"
+      }
+    ],
+    "zh": [
+      "大多数休闲五子棋对局在前十手内就已分出高下——不是因为陷阱，而是因为开局决定了后面的进攻棋形（活三、眠三、冲四）能不能搭起来。先在这里搞懂基础，再去棋盘上试试。",
+      {
+        "type": "h2",
+        "text": "黑棋先手：优势是真实的"
+      },
+      "在无禁手的自由规则下，黑棋先手有明显优势。经典思路是始终握紧先手：尽早做出一个活三，逼白棋应而不是自己发展攻势。",
+      {
+        "type": "h2",
+        "text": "两个最强开局"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "花月：黑方首子加 8/8 斜线应对，经典必胜开局，正确行棋可形成强制胜。",
+          "浦月：黑方第二可靠的开局，围绕中心与两条斜线构建。"
+        ]
+      },
+      "两者都是进攻型开局：同时制造两个以上的威胁，白棋必须逐一应对。如果白棋消极防守，黑棋会把活三直接连成五。",
+      {
+        "type": "h2",
+        "text": "无禁手 vs 有禁手"
+      },
+      "无禁手规则（YiBoard 默认）下，双三、双四、长连对双方都合法。有禁手（连珠）规则下，黑棋被禁止下双三、双四和长连——这重新平衡了棋局、偏向白棋，也彻底改变开局理论。",
+      {
+        "type": "h2",
+        "text": "给新手的简单开局计划"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "第一子尽量靠近天元——角落和边线都很弱。",
+          "第二子与第一子保持斜向靠近，让两颗子同时威胁两条线。",
+          "之后每一步都找威胁最多的那一手（活三或冲四），哪怕暂时不理对方的子。",
+          "如果不能进攻，立刻挡对方的活三——一个活三几乎必然会变成五连。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "五子棋第一步下哪里最好？",
+            "a": "天元（或紧挨它的两点）普遍最强。从这里可以向任意方向延伸，一次搭建两条线。"
+          },
+          {
+            "q": "黑棋有必胜策略吗？",
+            "a": "无禁手规则下理论上有：完美行棋时黑棋可从中心开局强制获胜（花月是经典例子）。实战中需要很深的计算和精准的落子。"
+          },
+          {
+            "q": "YiBoard 用禁手规则吗？",
+            "a": "不用。YiBoard 默认无禁手：双三、双四、长连对双方都合法。我们保持简单，让任何人都能直接开玩。"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "拿花月开局去挑战 AI",
+        "href": "https://yiboardgame.com/play"
+      }
+    ]
+  },
+  "howTo": {
+    "en": {
+      "name": "A simple opening plan for beginners",
+      "steps": [
+        {
+          "name": "Open near the center",
+          "text": "Play your first stone at or next to the center point so it can extend in any direction."
+        },
+        {
+          "name": "Build two lines at once",
+          "text": "Place your second stone diagonally close to the first, threatening two lines instead of one."
+        },
+        {
+          "name": "Make the most threatening move",
+          "text": "On every turn, look for the move that creates the most open threes or fours, even if it ignores your opponent for a moment."
+        },
+        {
+          "name": "Defend when you cannot attack",
+          "text": "Block the opponent’s open three immediately — a single open three almost always becomes a five."
+        }
+      ]
+    },
+    "zh": {
+      "name": "给新手的简单开局计划",
+      "steps": [
+        {
+          "name": "靠近天元开局",
+          "text": "第一子下在天元或紧挨它的位置，以便向任意方向延伸。"
+        },
+        {
+          "name": "一次搭两条线",
+          "text": "第二子与第一子斜向靠近，同时威胁两条线而不是一条。"
+        },
+        {
+          "name": "走威胁最多的那手",
+          "text": "每一步都找能制造最多活三或冲四的落点，哪怕暂时不理对方的子。"
+        },
+        {
+          "name": "不能进攻就防守",
+          "text": "对方一出现活三就立刻挡——一个活三几乎必然变成五连。"
+        }
+      ]
+    }
+  }
+},
+{
+  "slug": "gomoku-defense-guide",
+  "date": "2026-08-22",
+  "title": {
+    "en": "How to Defend in Gomoku: Stop the Four, Block the Double-Three",
+    "zh": "五子棋防守要点：挡冲四、防双三"
+  },
+  "description": {
+    "en": "Defense wins as many Gomoku games as attack. Learn to spot open threes and fours, decide whether to block or extend, and avoid the passive defending that loses games.",
+    "zh": "五子棋里防守赢的棋和进攻一样多。学会识别活三与冲四、判断该挡还是该长，避开消极防守必输的陷阱。"
+  },
+  "keywords": [
+    "gomoku defense",
+    "how to defend gomoku",
+    "五子棋防守",
+    "block open three gomoku",
+    "gomoku four block",
+    "五子棋怎么防守"
+  ],
+  "content": {
+    "en": [
+      "New players lose most of their games by reacting one move too late: they defend the open three, but only after it already became a four. Good defense is about seeing threats one move earlier and knowing when blocking is the wrong move. This is the fastest skill to improve your win rate.",
+      {
+        "type": "h2",
+        "text": "The threat hierarchy you must know"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Five: the game is over.",
+          "Open four (活四): already unstoppable — two winning points, your opponent can only pick one.",
+          "Four (冲四): must be blocked immediately; one move of delay and it is a five.",
+          "Open three (活三): the real danger. An open three becomes an open four next move, which is game over. Block it the moment it appears.",
+          "Broken three (眠三): a sleeping threat. Not urgent by itself, but never give your opponent two of them at once."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "When to block vs when to extend"
+      },
+      "The classic beginner mistake is defending every single move. If your opponent makes a weak move that creates no threat, use that turn to extend your own attack instead — a move that builds your own open three is worth more than a block that gains nothing.",
+      "Only block when the opponent has an immediate threat (an open three, a four, or a move that creates two threats at once). Everything else is a chance to counterattack.",
+      {
+        "type": "h2",
+        "text": "The double-three trap"
+      },
+      "The most common winning pattern is a move that creates two open threes (or an open three and a four) at once. You can only block one of them — next turn the other one wins. Whenever the board has room for this, assume your opponent is aiming at it and play a move that prevents both threats from forming.",
+      {
+        "type": "h2",
+        "text": "A simple defense checklist"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Scan for open threes first — they are the seeds of every loss.",
+          "Count open ends: a three with both ends open is twice as dangerous.",
+          "Block the side that gives your opponent more space, not the closer side.",
+          "If you must choose between blocking and making your own open three, make your own open three."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "How do I stop an open four?",
+            "a": "You cannot. An open four has two winning points, so it is already a forced win. The only defense is not letting the opponent create one — which means blocking open threes early."
+          },
+          {
+            "q": "Should I always block the open three?",
+            "a": "Yes. If there is an open three on the board, it is almost always correct to block it immediately. The only exception is when you already have a forced win of your own."
+          },
+          {
+            "q": "Why do I keep losing even though I defend every move?",
+            "a": "Because passive defense hands the initiative to your opponent. Every move where you block without creating a threat of your own lets them build a new attack. Defense must be combined with counterattack."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "Practice defense against our AI",
+        "href": "https://yiboardgame.com/play"
+      }
+    ],
+    "zh": [
+      "新手输掉的棋，绝大多数输在慢一步：他们确实挡了活三，但往往在活三变成冲四之后才动手。好的防守是早一步看清威胁，并且知道什么时候挡反而是错的。这是提升胜率最快的技能。",
+      {
+        "type": "h2",
+        "text": "必须记住的威胁等级"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "五连：对局结束。",
+          "活四：已无法阻止——两个取胜点，对方只能堵一个。",
+          "冲四：必须立刻堵，慢一手就是五连。",
+          "活三：真正的危险。活三下一手就变活四，而活四等于终局。一出现就要挡。",
+          "眠三：沉睡的威胁，单独不紧急，但绝不能让对方同时做出两个。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "该挡还是该长"
+      },
+      "新手最常见的错误是见子就挡。如果对方走了一步不构成威胁的弱棋，你该用这一手去发展自己的攻势——一个能做成自己活三的棋，比一个毫无收益的防守强得多。",
+      "只有当对方存在即时威胁（活三、冲四，或一手棋同时制造两个威胁）时才需要挡。其余情况都是反击的机会。",
+      {
+        "type": "h2",
+        "text": "双三陷阱"
+      },
+      "最常见的制胜棋形是一手棋同时做出两个活三（或一个活三加一个冲四）。你只能堵其中一个，下一手另一个就赢了。只要盘面还有空间，就要假定对方在瞄准这个，提前下出阻止两个威胁同时成形的棋。",
+      {
+        "type": "h2",
+        "text": "简单防守清单"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "先扫活三——它是每一盘败局的种子。",
+          "数两端：两端都开放的三，危险翻倍。",
+          "堵对方空间更大的那一端，而不是更近的那一端。",
+          "如果必须在挡和做自己的活三之间选，做自己的活三。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "怎么阻止活四？",
+            "a": "阻止不了。活四有两个取胜点，已经是强制胜。唯一的防守是别让对方做出活四——也就是早点挡活三。"
+          },
+          {
+            "q": "每次都要挡活三吗？",
+            "a": "只要盘面上有活三，几乎总是应该立刻挡。唯一例外是你自己已经有强制胜。"
+          },
+          {
+            "q": "我每手都防守，为什么还是输？",
+            "a": "因为消极防守把先手让给了对方。你每挡一手却没有制造自己的威胁，对方就能再造一个新攻势。防守必须配合反击。"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "拿 AI 练防守",
+        "href": "https://yiboardgame.com/play"
+      }
+    ]
+  },
+  "howTo": {
+    "en": {
+      "name": "A simple defense checklist",
+      "steps": [
+        {
+          "name": "Scan for open threes first",
+          "text": "They are the seed of every loss. Find them before they become fours."
+        },
+        {
+          "name": "Count open ends",
+          "text": "A three with both ends open is twice as dangerous as one with a single end."
+        },
+        {
+          "name": "Block the side with more space",
+          "text": "Prefer to block the end that gives your opponent more room to extend."
+        },
+        {
+          "name": "Counterattack, don’t just block",
+          "text": "When there is no immediate threat, use your turn to build your own open three instead of defending."
+        }
+      ]
+    },
+    "zh": {
+      "name": "简单防守清单",
+      "steps": [
+        {
+          "name": "先扫活三",
+          "text": "它是一盘败局的种子，要在变成冲四之前发现它。"
+        },
+        {
+          "name": "数开放端",
+          "text": "两端都开放的三，危险是一端开放的三的两倍。"
+        },
+        {
+          "name": "堵空间更大的那一端",
+          "text": "优先堵对方延伸空间更大的那一端。"
+        },
+        {
+          "name": "不要只挡，要反击",
+          "text": "没有即时威胁时，用这一手做自己的活三，而不是纯防守。"
+        }
+      ]
+    }
+  }
+},
+{
+  "slug": "gomoku-ai-thinking-revealed",
+  "date": "2026-08-22",
+  "title": {
+    "en": "We Opened Up Our Gomoku AI’s Brain: How It Picks Every Move",
+    "zh": "我们把五子棋 AI 的思考过程公开了：它每步棋是怎么选的"
+  },
+  "description": {
+    "en": "YiBoard’s AI is a transparent local engine — no black box. We show you the search depth, the nodes it explored, and the heuristics it weighs on every single move.",
+    "zh": "YiBoard 的 AI 是一个透明本地引擎，不是黑盒。每一步棋，我们都展示它搜索的深度、评估的节点数和权衡的棋形启发。"
+  },
+  "keywords": [
+    "gomoku AI",
+    "五子棋 AI",
+    "how gomoku AI works",
+    "gomoku minimax",
+    "gomoku engine algorithm",
+    "五子棋算法"
+  ],
+  "content": {
+    "en": [
+      "Most online Gomoku sites treat their AI as a black box: you click, it plays, you never know why. On YiBoard we went the other way. The engine runs locally in your browser, and we show you how it thinks — the search depth, the number of nodes evaluated, and the shapes it weighs. Here is how it works.",
+      {
+        "type": "h2",
+        "text": "A classic minimax search with alpha-beta pruning"
+      },
+      "The engine is a minimax search with alpha-beta pruning, running entirely in your browser. It evaluates the board position, searches a few moves ahead, and prunes branches that cannot beat the current best. The deeper the difficulty tier, the deeper the search — and the more nodes it evaluates before deciding.",
+      {
+        "type": "h2",
+        "text": "What it actually looks at"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Open threes and broken threes: the seeds of every attack.",
+          "Fours and open fours: immediate wins and forced moves.",
+          "Defensive value: shapes that stop the opponent’s threats.",
+          "Position: center stones weigh more than edge stones in the opening."
+        ]
+      },
+      "These heuristics are the taste of the engine — two engines with the same search depth can play very differently depending on how they value an open three versus a four.",
+      {
+        "type": "h2",
+        "text": "Why we surface the thinking, not hide it"
+      },
+      "Watching a strong player think is the fastest way to improve. Our thinking view shows a move-by-move breakdown — depth reached, nodes explored, milliseconds spent — so you can see when the engine found a forced win, and when it merely chose the least bad defense. It turns the AI into a free coach.",
+      {
+        "type": "h2",
+        "text": "Three difficulty tiers, three budgets"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Gentle: shallow search, quick moves, makes the occasional obvious mistake — good for learning.",
+          "Steady: a balanced budget that plays solid, consistent Gomoku.",
+          "Sharp: deep search, aggressive pursuit of open threes and fours — the engine plays like it is trying to win, because it is."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Is the AI a large language model?",
+            "a": "No. The engine is a deterministic minimax search with alpha-beta pruning. That means it is fast, runs offline in the browser, and every move is reproducible from the same board state."
+          },
+          {
+            "q": "Can the AI beat me at max difficulty?",
+            "a": "At Sharp difficulty the engine plays very strong Gomoku and will punish opening mistakes hard. Beating it consistently requires real opening knowledge and defense discipline."
+          },
+          {
+            "q": "Does the AI cheat by peeking at my strategy?",
+            "a": "No. It only sees the public board position — the same information you have. It wins through search depth and evaluation, not by reading your mind."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "Watch the AI think on the board",
+        "href": "https://yiboardgame.com/play"
+      }
+    ],
+    "zh": [
+      "大多数在线五子棋站把 AI 当黑盒：你点、它下、你永远不知道为什么。YiBoard 反其道而行：引擎在你的浏览器里本地运行，我们把它的思考过程展示给你——搜索深度、评估的节点数、权衡的棋形。下面是它的工作原理。",
+      {
+        "type": "h2",
+        "text": "经典 minimax 搜索 + alpha-beta 剪枝"
+      },
+      "引擎是带 alpha-beta 剪枝的 minimax 搜索，完全在浏览器本地运行。它评估盘面、向前搜索若干手、剪掉不可能优于当前最优解的分支。档位越深，搜索越深——落子前评估的节点也越多。",
+      {
+        "type": "h2",
+        "text": "它到底在看什么"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "活三与眠三：一切攻势的种子。",
+          "冲四与活四：即时的胜机与强制应手。",
+          "防守价值：能挡住对方威胁的棋形。",
+          "位置：开局时中心子比边线子权重更高。"
+        ]
+      },
+      "这些启发式就是引擎的棋感——两个搜索深度相同的引擎，会因为对活三和冲四的估值不同而下出完全不同的棋。",
+      {
+        "type": "h2",
+        "text": "为什么要公开思考过程"
+      },
+      "看高手思考是提升最快的路径。我们的思考视图展示每一步的分解——到达的深度、探索的节点、花费的毫秒——让你看清引擎什么时候发现了强制胜，什么时候只是选了损失最小的防守。AI 变成了一位免费教练。",
+      {
+        "type": "h2",
+        "text": "三档难度，三种预算"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Gentle 温和：浅搜索、快落子，偶尔犯明显的错误——适合学习。",
+          "Steady 稳健：均衡的预算，下出扎实稳定的五子棋。",
+          "Sharp 锋锐：深搜索，激进追求活三与冲四——引擎下棋的方式就像它在努力赢棋，因为它确实在赢。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "这个 AI 是大语言模型吗？",
+            "a": "不是。它是确定性的 minimax 搜索 + alpha-beta 剪枝。因此它很快、离线也能在浏览器跑，而且同一盘面永远走出同样的棋。"
+          },
+          {
+            "q": "最高难度下 AI 能赢我吗？",
+            "a": "Sharp 档的引擎棋力很强，会狠狠惩罚开局错误。要稳定赢它，你需要真正的开局知识和防守纪律。"
+          },
+          {
+            "q": "AI 会偷看我的策略吗？",
+            "a": "不会。它只看到公开的盘面——和你看到的信息一样。它靠搜索深度和评估赢棋，不靠读心。"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "text": "上棋盘看 AI 思考",
+        "href": "https://yiboardgame.com/play"
+      }
+    ]
+  }
+}
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
@@ -1826,125 +2675,3 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 export function getPostSlugs(): string[] {
   return POSTS.map((p) => p.slug);
 }
-  ,
-  {
-    slug: "gomoku-rank-explained",
-    date: "2026-08-20",
-    title: {
-      en: "How to Read the Gomoku Rank System",
-      zh: "段位系统怎么读：1200 分是什么水平",
-    },
-    excerpt: {
-      en: "Gomoku uses a grade/dan system rooted in Chinese board game tradition. This guide explains how YiBoard's ranking works, what 1200 points means, and how to track your progress.",
-      zh: "五子棋使用源自中国棋类传统的级段位系统。本文讲解 YiBoard 的排名机制、1200 分代表什么水平，以及如何追踪你的进步。",
-    },
-    body: [
-      {
-        type: "p",
-        text: "When you open YiBoard's rankings, you will not see bronze, silver, or gold. Instead, you will see grades (级) and dan (段) — a system that has been used in Chinese board games for over a thousand years. Everyone starts at 1200 points, which corresponds to 6th grade (六级). This guide explains how the system works and what your score means.",
-      },
-      { type: "h2", text: "The grade and dan system" },
-      {
-        type: "p",
-        text: "The Gomoku ranking system has two parts:",
-      },
-      {
-        type: "ul",
-        items: [
-          "Grades (级位): From 9th grade (weakest) to 1st grade ( strongest). Numbers go down as you get better.",
-          "Dan (段位): From 1st dan to 9th dan. Dan is the professional tier, with 9th dan being the highest.",
-        ],
-      },
-      {
-        type: "p",
-        text: "YiBoard starts everyone at 1200 points / 6th grade. Wins add points, losses subtract them. The exact point movement depends on the rating difference between players — beating a higher-rated opponent gives you more points than beating a lower-rated one.",
-      },
-      { type: "h2", text: "What 1200 points means" },
-      {
-        type: "p",
-        text: "1200 points is the starting point for everyone. It is not a measure of skill — it is a neutral baseline. After your first few games, your score will reflect your actual ability relative to the community.",
-      },
-      {
-        type: "table",
-        data: {
-          headers: ["Score Range", "Rank", "Description"],
-          rows: [
-            ["Below 1000", "7th-9th grade", "Beginner, learning the basics"],
-            ["1000-1200", "6th-5th grade", "Intermediate, understanding openings"],
-            ["1200-1400", "4th-2nd grade", "Advanced, consistent winner"],
-            ["1400-1600", "1st dan", "Expert, tournament-level play"],
-            ["Above 1600", "2nd-9th dan", "Master level, rare in casual play"],
-          ],
-        },
-      },
-      { type: "h2", text: "How to improve your rank" },
-      {
-        type: "ul",
-        items: [
-          "Study standard openings: Hanagetsu and Umezuki are the most reliable for Black.",
-          "Play regularly: Consistency matters more than intensity. 3 games a day is better than 10 games once a week.",
-          "Review your losses: Understand why you lost before playing the next game.",
-          "Use the YiBoard board to test shapes: Practice forbidden moves and winning patterns without playing a full game.",
-        ],
-      },
-      { type: "h2", text: "FAQ" },
-      {
-        type: "faq",
-        items: [
-          {
-            q: "Is the Gomoku rank system the same as chess rating?",
-            a: "No. Chess uses Elo rating with a single number. Gomoku uses a hybrid system: a point score that maps to grade/dan ranks. The point system is more granular and easier to understand for beginners.",
-          },
-          {
-            q: "Can I see my rank history?",
-            a: "Yes. YiBoard tracks your score history and shows your rank progression over time. Check the rankings page for detailed stats.",
-          },
-          {
-            q: "Does forbidden move affect ranking?",
-            a: "Forbidden moves only apply to Black. They do not affect the point system directly, but they do affect your win rate. Learning forbidden move rules is essential for reaching higher dan ranks.",
-          },
-        ],
-      },
-      {
-        type: "cta",
-        text: "Play Gomoku and test your rank →",
-        href: "https://yiboardgame.com/play",
-      },
-    ],
-  },
-
-  {
-    slug: "invite-friend-to-match",
-    date: "2026-08-21",
-    title: {
-      en: "How to Invite a Friend to a Gomoku Match on YiBoard",
-      zh: "怎么邀请朋友来一局五子棋",
-    },
-    excerpt: {
-      en: "Gomoku is better with friends. Learn three ways to invite friends to play on YiBoard: share links, private rooms, and QR codes.",
-      zh: "五子棋和朋友一起玩更有趣。学习三种邀请方式：分享链接、私密房间和二维码。",
-    },
-    body: [
-      { type: "p", text: "The core fun of Gomoku lies in the competition. Practicing alone can improve your skills, but real-time matches with friends create genuine tension and surprise." },
-      { type: "h2", text: "Three Ways to Invite Friends" },
-      { type: "h3", text: "Method 1: Share Game Link" },
-      { type: "p", text: "Open the YiBoard Gomoku page, click Invite Friends, copy the generated link, and send it via WeChat, QQ, or email. Your friend clicks the link to enter the match directly." },
-      { type: "h3", text: "Method 2: Create Private Room" },
-      { type: "p", text: "Enter the game lobby, select Create Private Room, set a room password (optional), and share the room number with your friend. They enter the number to join." },
-      { type: "h3", text: "Method 3: Scan QR Code" },
-      { type: "p", text: "Click QR Code on the game page and let your friend scan it. This automatically jumps to the match page." },
-      { type: "h2", text: "Important Notes" },
-      { type: "ul", items: [
-        "Ensure both parties have stable network connections",
-        "Private rooms recommend setting passwords",
-        "You can restart immediately after the match ends",
-      ] },
-      { type: "h2", text: "FAQ" },
-      { type: "faq", items: [
-        { q: "Do friends need to be on the same device?", a: "No. Both parties can play on different devices in different locations." },
-        { q: "Will match records be saved?", a: "Yes, both parties can view historical match records." },
-      ] },
-      { type: "cta", text: "Play Gomoku with friends on YiBoard", href: "https://yiboardgame.com/play" },
-    ],
-  }
-];
