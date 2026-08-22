@@ -27,7 +27,8 @@
     "boardKaya": "Kaya wood",
     "boardSlate": "Bluestone",
     "signIn": "Sign in / Register",
-    "blog": "Blog"
+    "blog": "Blog",
+    "glossary": "Glossary"
   },
   "home": {
     "eyebrow": "Free · No account required",
@@ -150,7 +151,14 @@
       "cancel": "Cancel",
       "queueCount": "{count} waiting right now",
       "error": "Could not reach the queue. Try again."
-    }
+    },
+    "vsAiAi": "AI vs AI",
+    "autoModeHint": "Watch two engines battle. Every finished game saves as a replay.",
+    "thinkingLine": "Think: depth {depth} · {nodes} nodes · {ms} ms",
+    "aiBlack": "Black AI",
+    "aiWhite": "White AI",
+    "replayReady": "Replay saved",
+    "watchReplay": "Watch the replay"
   },
   "rankings": {
     "title": "Gomoku Leaderboard – Climb from 9th Grade to 9th Dan",
@@ -183,7 +191,8 @@
     "tip3Body": "Beginners answer an open three. Stronger players answer an open two when it points at a strong direction. If you are always reacting, you have already lost the initiative.",
     "notationTitle": "Reading the notation",
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
-    "cta": "Try it against the engine"
+    "cta": "Try it against the engine",
+    "glossaryLink": "Gomoku glossary"
   },
   "about": {
     "title": "About YiBoard",
@@ -307,18 +316,18 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "updated": "Last updated: August 2026",
-    "lead": "We collect as little as possible. This policy says what we collect and why.",
+    "updated": "Last updated: August 22, 2026",
+    "lead": "We collect as little as possible. This policy says what we collect, how advertising works on this site, and the choices you have.",
     "s1Title": "What we collect",
     "s1Body": "On your first visit we write an anonymous guest identifier (a JWT, valid 180 days) in your browser to keep your record and rating. We do not collect your name, location or device details unless you attach an email.",
     "s2Title": "Attaching an email",
     "s2Body": "Attaching an email is optional and only syncs your record across devices. Passwords are stored as argon2 hashes; we cannot read your plaintext password.",
-    "s3Title": "What we do not do",
-    "s3Body": "We do not sell your data, do not serve personalised ads, and do not track you across the web.",
-    "s4Title": "Deleting your data",
-    "s4Body": "To delete your account and game history, email ahmedlzany423@gmail.com and we will process it within 30 days.",
-    "s5Title": "Cookies",
-    "s5Body": "Only the guest identifier and a language preference cookie. No third-party analytics.",
+    "s3Title": "Advertising",
+    "s3Body": "This website displays advertisements served by Google AdSense. Third-party vendors, including Google, use cookies (including the DoubleClick/DART cookie) to serve ads based on your visits to this site and other websites. You can opt out of personalized advertising via Google Ads Settings (https://www.google.com/settings/ads) or www.aboutads.info/choices. For details on how Google uses data, see https://policies.google.com/technologies/ads.",
+    "s4Title": "Cookies",
+    "s4Body": "We set a guest identifier (JWT, valid 180 days) and a language preference cookie. Third-party vendors including Google may also set advertising cookies, as described in the Advertising section. You can control these through your browser settings and the opt-out links above.",
+    "s5Title": "Deleting your data and your rights",
+    "s5Body": "To delete your account and game history, email ahmedlzany423@gmail.com and we will process it within 30 days. Depending on your location, you may have rights under laws such as the GDPR (EU) or CCPA (California) to access, correct, or delete your personal data; contact us to exercise them. We do not sell your personal data.",
     "contact": "For privacy questions, email"
   },
   "terms": {
@@ -409,5 +418,24 @@
     "errUsernameTaken": "This username is already taken.",
     "errInvalidCredentials": "Wrong username/email or password.",
     "errGeneric": "Something went wrong. Please try again."
+  },
+  "glossary": {
+    "title": "Gomoku Glossary – Live Threes, Fours, Double Threes & Forbidden Moves",
+    "sub": "The terms every Gomoku player needs: open twos, live threes, sleeping threes, double threes, four-threes and more — explained in plain language with practical tips.",
+    "chip": "Glossary",
+    "howToLink": "New to the game?",
+    "howToLinkCta": "Read how to play in 2 minutes",
+    "cta": "Put it into practice — play free"
+  },
+  "replays": {
+    "title": "AI vs AI Gomoku Replay",
+    "subtitle": "Watch two engines battle it out",
+    "resultBlack": "Black won in {count} moves",
+    "resultWhite": "White won in {count} moves",
+    "resultDraw": "Draw — the board is full",
+    "meta": "AI vs AI Gomoku replay — watch the full engine battle, move by move, freestyle Gomoku.",
+    "cta": "Play Gomoku free",
+    "notFound": "Replay not found",
+    "notFoundCta": "Go play"
   }
 }

@@ -27,7 +27,8 @@
     "boardKaya": "榧木",
     "boardSlate": "青石",
     "signIn": "登录 / 注册",
-    "blog": "博客"
+    "blog": "博客",
+    "glossary": "术语表"
   },
   "home": {
     "eyebrow": "免费 · 无需注册",
@@ -101,7 +102,14 @@
     "statsFriend": "在线对战"
   },
   "play": {
-    "title": "免费在线五子棋 – 对战 AI 或好友"
+    "title": "免费在线五子棋 – 对战 AI 或好友",
+    "vsAiAi": "双 AI 对战",
+    "autoModeHint": "围观两个引擎互搏。每盘结束自动保存为回放。",
+    "thinkingLine": "思考：深度 {depth} · {nodes} 节点 · {ms} 毫秒",
+    "aiBlack": "黑方 AI",
+    "aiWhite": "白方 AI",
+    "replayReady": "回放已保存",
+    "watchReplay": "查看回放"
   },
   "rankings": {
     "title": "五子棋排行榜 – 从九品晋升九段",
@@ -109,7 +117,8 @@
   },
   "howTo": {
     "title": "五子棋怎么玩：免费在线规则与策略指南",
-    "sub": "2 分钟学会五子棋规则。掌握双威胁、早堵等开局策略——立即免费在线对战。"
+    "sub": "2 分钟学会五子棋规则。掌握双威胁、早堵等开局策略——立即免费在线对战。",
+    "glossaryLink": "五子棋术语表"
   },
   "about": {
     "title": "关于弈界",
@@ -174,18 +183,18 @@
   },
   "privacy": {
     "title": "隐私政策",
-    "updated": "最近更新：2026 年 8 月",
-    "lead": "我们尽量少收集数据。这份政策说明我们收集什么、为什么收集。",
+    "updated": "最近更新：2026 年 8 月 22 日",
+    "lead": "我们尽量少收集数据。这份政策说明我们收集什么、站内广告如何运作，以及你有哪些选择。",
     "s1Title": "我们收集什么",
     "s1Body": "首次访问时，我们会在你的浏览器写入一个匿名访客标识（JWT，有效期 180 天），用来保存战绩与段位。我们不收集姓名、位置或设备信息，除非你主动绑定邮箱。",
     "s2Title": "邮箱绑定",
     "s2Body": "绑定邮箱是可选项，仅用于跨设备同步战绩。密码经加密哈希存储（argon2），我们无法读取你的明文密码。",
-    "s3Title": "我们不做什么",
-    "s3Body": "不出售你的数据；不投放基于个人信息的广告；不追踪跨站行为。",
-    "s4Title": "数据删除",
-    "s4Body": "想删除你的账号与对局记录，发邮件到 ahmedlzany423@gmail.com，我们会在 30 天内处理。",
-    "s5Title": "Cookie 说明",
-    "s5Body": "仅使用上述访客标识 Cookie 与语言偏好。我们没有第三方分析追踪。",
+    "s3Title": "广告",
+    "s3Body": "本站展示由 Google AdSense 投放的广告。包括 Google 在内的第三方供应商会使用 Cookie（包括 DoubleClick/DART Cookie），基于你访问本站及其他网站的行为投放广告。你可以通过 Google 广告设置（https://www.google.com/settings/ads）或 www.aboutads.info/choices 关闭个性化广告。Google 如何使用数据的详情见 https://policies.google.com/technologies/ads。",
+    "s4Title": "Cookie 说明",
+    "s4Body": "我们设置访客标识 Cookie（JWT，有效期 180 天）和语言偏好 Cookie。包括 Google 在内的第三方供应商也可能按广告部分的说明设置广告 Cookie。你可以通过浏览器设置和上述退出门链接进行管理。",
+    "s5Title": "数据删除与你的权利",
+    "s5Body": "想删除你的账号与对局记录，发邮件到 ahmedlzany423@gmail.com，我们会在 30 天内处理。根据你所在地区的法律（如欧盟 GDPR 或加州 CCPA），你有权访问、更正或删除你的个人数据，可通过邮件联系我们行使。我们不出售你的个人数据。",
     "contact": "隐私相关问题请联系"
   },
   "terms": {
@@ -276,5 +285,24 @@
     "errUsernameTaken": "该用户名已被占用。",
     "errInvalidCredentials": "用户名/邮箱或密码错误。",
     "errGeneric": "出了点问题，请重试。"
+  },
+  "glossary": {
+    "title": "五子棋术语表 – 活三、四三、双三与禁手全解析",
+    "sub": "每个五子棋玩家都该懂的术语：活二、活三、眠三、双三、四三、禁手……用大白话讲清楚，附实战要点。",
+    "chip": "术语表",
+    "howToLink": "刚接触五子棋？",
+    "howToLinkCta": "2 分钟学会玩法",
+    "cta": "学完练一手 —— 免费对弈"
+  },
+  "replays": {
+    "title": "五子棋 AI 对战回放",
+    "subtitle": "围观两个引擎互搏",
+    "resultBlack": "黑方在 {count} 手内获胜",
+    "resultWhite": "白方在 {count} 手内获胜",
+    "resultDraw": "和棋——棋盘已满",
+    "meta": "五子棋 AI vs AI 对局回放——完整观看两个引擎的每一步攻防，无禁手自由规则。",
+    "cta": "免费下一局",
+    "notFound": "回放不存在",
+    "notFoundCta": "去下棋"
   }
 }

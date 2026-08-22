@@ -23,12 +23,14 @@ function PlayGateInner() {
 
   const friend = mode === 'friend' || Boolean(room);
   const match = mode === 'match' && !room;
-  const ai = !friend && !match;
+  const aivsai = mode === 'aivsai' && !friend && !match;
+  const ai = !friend && !match && !aivsai;
 
   return (
     <>
       {match ? <MatchMaker /> : null}
       {friend ? <FriendGame initialCode={room ?? null} /> : null}
+      {aivsai ? <GomokuGame variant="full" autoMode /> : null}
       {ai ? <GomokuGame variant="full" /> : null}
     </>
   );

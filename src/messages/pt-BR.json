@@ -27,7 +27,8 @@
     "boardSlate": "Pedra azul",
     "pricing": "Preços",
     "signIn": "Entrar / Cadastrar",
-    "blog": "Blog"
+    "blog": "Blog",
+    "glossary": "Glossário"
   },
   "home": {
     "eyebrow": "Grátis · Sem conta",
@@ -101,7 +102,14 @@
     "statsFriend": "vs jogadores"
   },
   "play": {
-    "title": "Jogue Gomoku Online Grátis – vs IA ou Amigos"
+    "title": "Jogue Gomoku Online Grátis – vs IA ou Amigos",
+    "vsAiAi": "IA contra IA",
+    "autoModeHint": "Assista dois motores batalharem. Cada partida terminada vira um replay.",
+    "thinkingLine": "Análise: profundidade {depth} · {nodes} nós · {ms} ms",
+    "aiBlack": "IA preta",
+    "aiWhite": "IA branca",
+    "replayReady": "Replay salvo",
+    "watchReplay": "Ver replay"
   },
   "rankings": {
     "title": "Ranking de Gomoku – Do 9º Grau ao 9º Dan",
@@ -109,7 +117,8 @@
   },
   "howTo": {
     "title": "Como Jogar Gomoku: Regras Grátis Online e Guia de Estratégia",
-    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas e bloqueio precoce – jogue grátis online agora."
+    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas e bloqueio precoce – jogue grátis online agora.",
+    "glossaryLink": "Glossário de Gomoku"
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -196,18 +205,18 @@
   },
   "privacy": {
     "title": "Política de Privacidade",
-    "updated": "Última atualização: agosto de 2026",
-    "lead": "Coletamos o mínimo possível. Esta política explica o que coletamos e por quê.",
+    "updated": "Última atualização: 22 de agosto de 2026",
+    "lead": "Coletamos o mínimo possível. Esta política explica o que coletamos, como a publicidade funciona neste site e quais são suas escolhas.",
     "s1Title": "O que coletamos",
     "s1Body": "Na primeira visita gravamos um identificador anônimo de convidado (um JWT válido por 180 dias) para manter seu histórico e pontuação. Não coletamos nome, localização ou dados do dispositivo, a menos que você vincule um e-mail.",
     "s2Title": "Vincular um e-mail",
     "s2Body": "É opcional e serve apenas para sincronizar seu histórico entre dispositivos. Senhas são armazenadas com hash argon2; não conseguimos ler sua senha em texto puro.",
-    "s3Title": "O que não fazemos",
-    "s3Body": "Não vendemos seus dados, não exibimos anúncios personalizados e não rastreamos você pela web.",
-    "s4Title": "Exclusão de dados",
-    "s4Body": "Para excluir sua conta e histórico, envie e-mail para ahmedlzany423@gmail.com e processaremos em 30 dias.",
-    "s5Title": "Cookies",
-    "s5Body": "Apenas o identificador de convidado e um cookie de idioma. Sem análise de terceiros.",
+    "s3Title": "Publicidade",
+    "s3Body": "Este site exibe anúncios servidos pelo Google AdSense. Fornecedores terceiros, incluindo o Google, usam cookies (incluindo o cookie DoubleClick/DART) para exibir anúncios com base nas suas visitas a este e a outros sites. Você pode desativar a publicidade personalizada nas Configurações de anúncios do Google (https://www.google.com/settings/ads) ou em www.aboutads.info/choices. Para saber como o Google usa os dados, consulte https://policies.google.com/technologies/ads.",
+    "s4Title": "Cookies",
+    "s4Body": "Definimos um identificador de visitante (JWT, válido por 180 dias) e um cookie de preferência de idioma. Fornecedores terceiros, incluindo o Google, também podem definir cookies de publicidade, conforme descrito na seção Publicidade. Você pode gerenciá-los nas configurações do navegador e pelos links de desativação acima.",
+    "s5Title": "Exclusão de dados e seus direitos",
+    "s5Body": "Para excluir sua conta e histórico de partidas, envie um e-mail para ahmedlzany423@gmail.com e processaremos em até 30 dias. Dependendo da sua localização, você pode ter direitos sob leis como o GDPR (UE) ou o CCPA (Califórnia) para acessar, corrigir ou excluir seus dados pessoais; entre em contato para exercê-los. Não vendemos seus dados pessoais.",
     "contact": "Para dúvidas de privacidade, escreva para"
   },
   "terms": {
@@ -276,5 +285,24 @@
     "errUsernameTaken": "Este nome de usuário já está em uso.",
     "errInvalidCredentials": "Usuário/e-mail ou senha incorretos.",
     "errGeneric": "Algo deu errado. Tente novamente."
+  },
+  "glossary": {
+    "title": "Glossário de Gomoku – Três abertos, quatro, duplos três e regras",
+    "sub": "Os termos que todo jogador de Gomoku precisa, explicados de forma clara e com dicas práticas.",
+    "chip": "Glossário",
+    "howToLink": "Novo no jogo?",
+    "howToLinkCta": "Aprenda a jogar em 2 minutos",
+    "cta": "Coloque em prática — jogue grátis"
+  },
+  "replays": {
+    "title": "Replay de Gomoku IA contra IA",
+    "subtitle": "Assista dois motores batalharem",
+    "resultBlack": "Pretas venceram em {count} movimentos",
+    "resultWhite": "Brancas venceram em {count} movimentos",
+    "resultDraw": "Empate — o tabuleiro está cheio",
+    "meta": "Replay de Gomoku IA contra IA — assista a batalha completa entre motores, movimento a movimento.",
+    "cta": "Jogue Gomoku grátis",
+    "notFound": "Replay não encontrado",
+    "notFoundCta": "Ir jogar"
   }
 }

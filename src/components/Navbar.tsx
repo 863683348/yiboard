@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { CaretDown, Check, List, Moon, SignOut, Sun, Translate, X } from '@phosphor-icons/react';
+import { CaretDown, Check, List, Moon, Sun, Translate, X } from '@phosphor-icons/react';
 
 import { Link, usePathname } from '@/i18n/navigation';
 import { LOCALE_LABELS, routing, type Locale } from '@/i18n/routing';
@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: '/rankings', key: 'rankings' },
   { href: '/pricing', key: 'pricing' },
   { href: '/how-to', key: 'howTo' },
+  { href: '/glossary', key: 'glossary' },
   { href: '/blog', key: 'blog' },
   { href: '/about', key: 'about' },
 ] as const;
@@ -131,43 +132,25 @@ export function Navbar({ locale }: { locale: Locale }) {
   const brand = useTranslations('brand');
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [user, setUser] = useState<{ displayName: string; username: string | null } | null>(null);
   const { theme, board, setTheme, setBoard, mounted } = useAppearance();
-
-  // 客户端自取用户态（服务端不再读 cookie → 页面可静态缓存，降低 FOT）
-  useEffect(() => {
-    let cancelled = false;
-    fetch('/api/me', { cache: 'no-store' })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data: { user?: { displayName: string; username: string | null } | null } | null) => {
-        if (!cancelled && data && data.user) setUser(data.user);
-      })
-      .catch(() => {
-        /* 失败静默：按未登录处理 */
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  const isDark = theme === 'dark';
-
-  /** 登出：调 API 清 cookie 后硬跳转（不命中 Router Cache，确保 navbar 立即变回未登录态）。 */
-  async function signOut() {
+  // 登录态改由客户端读 guest cookie 判断，避免服务端 cookies() 把整站拖成动态渲染。
+  // 仅在导航栏切换 Profile/SignIn，不影响页面正文，水合后瞬时校正。
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' });
+      const c = document.cookie;
+      setLoggedIn(/(?:^|;\s*)(?:__Host-)?yb_guest=/.test(c));
     } catch {
-      /* 即使请求失败也继续跳转，cookie 已失效时无副作用 */
+      setLoggedIn(false);
     }
-    setUser(null);
-    window.location.assign(`/${locale}`);
-  }
+  }, []);
 
-  const accountName = user ? (user.username ?? user.displayName) : null;
+  const isDark = theme === 'dark';
 
   return (
     <header
@@ -306,73 +289,12 @@ export function Navbar({ locale }: { locale: Locale }) {
           </Link>
         </div>
 
-        {/* 账号入口：已登录 → 用户名下拉（我的战绩 / 退出登录）；未登录 → 登录/注册 */}
+        {/* 账号入口：已登录 → 我的战绩；未登录 → 登录/注册 */}
         <div className="yb-nav-desktop" style={{ alignItems: 'center', marginLeft: 'var(--space-2)' }}>
-          {user && accountName ? (
-            <Dropdown
-              label={accountName}
-              trigger={
-                <span
-                  style={{
-                    fontSize: 'var(--text-sm)',
-                    fontWeight: 'var(--weight-medium)',
-                    maxWidth: 160,
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {accountName}
-                </span>
-              }
-            >
-              {(close) => (
-                <>
-                  <Link
-                    href="/profile"
-                    role="menuitem"
-                    onClick={close}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--space-2)',
-                      padding: '8px 10px',
-                      borderRadius: 'var(--radius-sm)',
-                      color: 'var(--fg)',
-                      fontSize: 'var(--text-sm)',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {t('profile')}
-                  </Link>
-                  <button
-                    type="button"
-                    role="menuitem"
-                    onClick={() => {
-                      close();
-                      void signOut();
-                    }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--space-2)',
-                      width: '100%',
-                      padding: '8px 10px',
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'transparent',
-                      border: 0,
-                      color: 'var(--fg-2)',
-                      fontSize: 'var(--text-sm)',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <SignOut size={14} aria-hidden />
-                    {t('signOut')}
-                  </button>
-                </>
-              )}
-            </Dropdown>
+          {loggedIn ? (
+            <Link href="/profile" className="yb-btn yb-btn-ghost yb-btn-sm" style={{ textDecoration: 'none' }}>
+              {t('profile')}
+            </Link>
           ) : (
             <Link href="/auth" className="yb-btn yb-btn-outline yb-btn-sm" style={{ textDecoration: 'none' }}>
               {t('signIn')}
@@ -415,55 +337,20 @@ export function Navbar({ locale }: { locale: Locale }) {
                   {t(item.key)}
                 </Link>
               ))}
-              {user ? (
-                <>
-                  <Link
-                    href="/profile"
-                    style={{
-                      padding: '10px 8px',
-                      borderRadius: 'var(--radius-sm)',
-                      color: 'var(--fg)',
-                      fontWeight: 'var(--weight-emphasis)',
-                      textDecoration: 'none',
-                      borderTop: '1px solid var(--border-soft)',
-                      marginTop: 4,
-                    }}
-                  >
-                    {t('profile')}
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => void signOut()}
-                    style={{
-                      padding: '10px 8px',
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'transparent',
-                      border: 0,
-                      color: 'var(--fg-2)',
-                      fontWeight: 'var(--weight-body)',
-                      textAlign: 'left',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {t('signOut')}
-                  </button>
-                </>
-              ) : (
-                <Link
-                  href="/auth"
-                  style={{
-                    padding: '10px 8px',
-                    borderRadius: 'var(--radius-sm)',
-                    color: 'var(--fg)',
-                    fontWeight: 'var(--weight-emphasis)',
-                    textDecoration: 'none',
-                    borderTop: '1px solid var(--border-soft)',
-                    marginTop: 4,
-                  }}
-                >
-                  {t('signIn')}
-                </Link>
-              )}
+              <Link
+                href={loggedIn ? '/profile' : '/auth'}
+                style={{
+                  padding: '10px 8px',
+                  borderRadius: 'var(--radius-sm)',
+                  color: 'var(--fg)',
+                  fontWeight: 'var(--weight-emphasis)',
+                  textDecoration: 'none',
+                  borderTop: '1px solid var(--border-soft)',
+                  marginTop: 4,
+                }}
+              >
+                {loggedIn ? t('profile') : t('signIn')}
+              </Link>
             </nav>
 
             <hr className="yb-rule" style={{ marginBlock: 'var(--space-4)' }} />

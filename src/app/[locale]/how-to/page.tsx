@@ -162,6 +162,13 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
           <Link href="/play" className="yb-btn yb-btn-primary">
             {t('cta')}
           </Link>
+          <Link
+            href="/glossary"
+            className="yb-btn yb-btn-outline"
+            style={{ marginLeft: 'var(--space-3)' }}
+          >
+            {t('glossaryLink')}
+          </Link>
         </section>
       </div>
     </>

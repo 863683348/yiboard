@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { routing } from '@/i18n/routing';
 import { getPostSlugs } from '@/lib/blog/posts';
+import { getStore } from '@/lib/store';
 
 /**
  * sitemap.xml — 基准域名固定为 canonical https://yiboardgame.com（与 layout 的 metadataBase 一致）。
@@ -13,14 +14,17 @@ export const dynamic = 'force-dynamic';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yiboardgame.com';
 
-const PATHS = ['', '/play', '/rankings', '/how-to', '/about', '/profile', '/blog'] as const;
+const PATHS = ['', '/play', '/rankings', '/how-to', '/glossary', '/about', '/profile', '/blog'] as const;
+
+/** 与 /replays/[id] 页一致：低于该手数的 AI 对局 noindex，也不进 sitemap。 */
+const MIN_INDEX_MOVES = 12;
 
 function href(base: string, locale: string, path: string): string {
   const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
   return `${base}${prefix}${path}`;
 }
 
-export function GET() {
+export async function GET() {
   const base = SITE_URL;
   const now = new Date().toISOString();
 
@@ -45,7 +49,21 @@ export function GET() {
     })),
   );
 
-  const entries = [...staticEntries, ...blogEntries];
+  // AI vs AI replays (programmatic pages): only notable games, per-locale hreflang.
+  const replays = await getStore().listShareCards(200);
+  const replayEntries = replays
+    .filter((c) => c.payload.kind === 'replay' && c.payload.moveCount >= MIN_INDEX_MOVES)
+    .flatMap((c) =>
+      routing.locales.map((locale) => ({
+        url: href(base, locale, `/replays/${c.id}`),
+        path: `/replays/${c.id}`,
+        languages: Object.fromEntries(
+          routing.locales.map((l) => [l, href(base, l, `/replays/${c.id}`)]),
+        ),
+      })),
+    );
+
+  const entries = [...staticEntries, ...blogEntries, ...replayEntries];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

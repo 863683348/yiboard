@@ -14,7 +14,6 @@ import { games, shareCards, users, rooms as roomsTable } from '../db/schema';
 import type {
   GameRecord,
   GameResult,
-  PeriodRankEntry,
   RankEntry,
   RecordGameInput,
   RoomRecord,
@@ -50,19 +49,6 @@ function rowsOf<T>(result: unknown): T[] {
   if (Array.isArray(result)) return result as T[];
   const maybe = result as { rows?: T[] } | null;
   return maybe?.rows ?? [];
-}
-
-/** ShareCardRow → ShareCardRecord（DB 用 snake_case，接口用 camelCase） */
-function rowToShareCard(row: typeof shareCards.$inferSelect): ShareCardRecord {
-  return {
-    id: row.id,
-    gameId: row.gameId ?? null,
-    ownerId: row.ownerId ?? null,
-    locale: row.locale,
-    payload: row.payload as ShareCardRecord['payload'],
-    views: row.views,
-    createdAt: row.createdAt.toISOString(),
-  };
 }
 
 /** 心跳超时：超过这个秒数没轮询就当掉线 */
@@ -372,60 +358,6 @@ export function createNeonStore(connectionString: string): Store {
       );
     },
 
-    async listPeriodLeaders(period, limit = 50) {
-      const days = period === 'week' ? 7 : 30;
-      const rows = await db.execute<{
-        user_id: string;
-        display_name: string;
-        elo: number;
-        games: number;
-        wins: number;
-      }>(sql`
-        with recent as (
-          select * from games
-          where mode = 'friend'
-            and created_at >= now() - make_interval(days => ${days})
-        )
-        select u.id as user_id,
-               u.display_name,
-               u.elo,
-               count(*)::int as games,
-               sum(
-                 case
-                   when recent.result = 'black' and recent.black_id = u.id then 1
-                   when recent.result = 'white' and recent.white_id = u.id then 1
-                   else 0
-                 end
-               )::int as wins
-        from recent
-        join users u on u.id = recent.black_id or u.id = recent.white_id
-        group by u.id, u.display_name, u.elo
-        order by wins desc, u.elo desc
-        limit ${limit}
-      `);
-      return rowsOf<{ user_id: string; display_name: string; elo: number; games: number; wins: number }>(
-        rows,
-      ).map(
-        (row, offset): PeriodRankEntry => ({
-          userId: row.user_id,
-          displayName: row.display_name,
-          elo: row.elo,
-          wins: row.wins,
-          gamesPlayed: row.games,
-          position: offset + 1,
-        }),
-      );
-    },
-
-    async listPublicShareCards(limit = 24) {
-      const rows = await db
-        .select()
-        .from(shareCards)
-        .orderBy(desc(shareCards.views), desc(shareCards.createdAt))
-        .limit(limit);
-      return rows.map(rowToShareCard);
-    },
-
     async createRoom({ hostId }) {
       let code = newRoomCode();
       // 碰撞重试：唯一索引兜底，极小概率
@@ -523,6 +455,23 @@ export function createNeonStore(connectionString: string): Store {
         views: row.views + 1,
         createdAt: row.createdAt.toISOString(),
       };
+    },
+
+    async listShareCards(limit = 100) {
+      const rows = await db
+        .select()
+        .from(shareCards)
+        .orderBy(desc(shareCards.createdAt))
+        .limit(limit);
+      return rows.map((row) => ({
+        id: row.id,
+        gameId: row.gameId ?? null,
+        ownerId: row.ownerId ?? null,
+        locale: row.locale,
+        payload: row.payload as ShareCardRecord['payload'],
+        views: row.views,
+        createdAt: row.createdAt.toISOString(),
+      }));
     },
 
     async getStats() {

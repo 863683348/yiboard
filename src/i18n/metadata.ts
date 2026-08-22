@@ -6,7 +6,9 @@
 import { routing } from './routing';
 
 export function localeAlternates(path: string, locale: string) {
-  const href = (l: string) => (l === routing.defaultLocale ? `/${path}` : `/${l}${path}`);
+  // 规范化 path：确保带前导斜杠，否则非默认语言分支会拼成 /zhhow-to（404）。
+  const p = path ? (path.startsWith('/') ? path : `/${path}`) : '';
+  const href = (l: string) => (l === routing.defaultLocale ? (p || '/') : `/${l}${p}`);
   return {
     // canonical = 当前语言版本的页面自身（hreflang 多语站每语言独立 canonical，避免全指向英文）
     canonical: href(locale),

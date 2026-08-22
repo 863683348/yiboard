@@ -1,8 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { ArrowCounterClockwise, ArrowsClockwise, Flag, ShareNetwork } from '@phosphor-icons/react';
+import { useLocale, useTranslations } from 'next-intl';
+import { ArrowCounterClockwise, ArrowsClockwise, Flag, Robot, ShareNetwork } from '@phosphor-icons/react';
 
 import { Board } from '@/components/Board';
 import type { Difficulty } from '@/lib/engine/ai';
@@ -20,31 +20,52 @@ export interface GomokuGameProps {
   /** hero 只给棋盘 + 一行状态；full 带完整控制面板 */
   variant?: 'hero' | 'full';
   initialDifficulty?: Difficulty;
+  /** 双 AI 观战：引擎替双方走子，终局自动存回放（/replays/[id]） */
+  autoMode?: boolean;
 }
 
-export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: GomokuGameProps) {
+/** 单次引擎思考的元数据（AI 自己产出的"思考过程"：搜索深度 / 评估节点数 / 耗时） */
+interface ThinkEntry {
+  side: Player;
+  depth: number;
+  nodes: number;
+  ms: number;
+}
+
+export function GomokuGame({
+  variant = 'full',
+  initialDifficulty = 'steady',
+  autoMode = false,
+}: GomokuGameProps) {
   const t = useTranslations('play');
+  const locale = useLocale();
   const { board } = useAppearance();
   const [difficulty, setDifficulty] = useState<Difficulty>(initialDifficulty);
   const [playerColor, setPlayerColor] = useState<Player>(BLACK);
   const [game, setGame] = useState<GameState>(() => createGame(BLACK));
   const [thinking, setThinking] = useState(false);
   const [thinkMs, setThinkMs] = useState<number | null>(null);
+  const [lastThink, setLastThink] = useState<{ depth: number; nodes: number; ms: number } | null>(null);
+  const [thinkLog, setThinkLog] = useState<ThinkEntry[]>([]);
   const [resigned, setResigned] = useState(false);
   const [shareUrl, setShareUrl] = useState<string | null>(null);
+  const [replayUrl, setReplayUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const startedAt = useRef<number | null>(null);
   const reported = useRef(false);
+  const replaySaved = useRef(false);
 
   const cells = useMemo(() => boardToArray(game.board), [game]);
   const over = game.status !== 'playing' || resigned;
-  const enginesTurn = !over && game.turn !== playerColor;
+  const enginesTurn = !over && (autoMode ? true : game.turn !== playerColor);
 
   /* 引擎在自己的回合出手。
      - 搜索模块用动态 import 切出去：首屏只发棋盘 SVG，引擎代码等到真要走棋才下载（ADR-010）。
-     - 放进 setTimeout 让浏览器先把玩家那一手画出来再进搜索，否则 450ms 预算看起来像掉帧。 */
+     - 放进 setTimeout 让浏览器先把玩家那一手画出来再进搜索，否则 450ms 预算看起来像掉帧。
+     - autoMode（双 AI）：谁走引擎替谁走，思考元数据（深度/节点/耗时）记入 thinkLog 分侧展示。 */
   useEffect(() => {
-    if (over || game.turn === playerColor) return;
+    if (over) return;
+    if (!autoMode && game.turn === playerColor) return;
 
     let cancelled = false;
     setThinking(true);
@@ -52,10 +73,13 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
     const timer = setTimeout(() => {
       void import('@/lib/engine/ai').then(({ chooseMove }) => {
         if (cancelled) return;
-        const result = chooseMove(game.board, game.turn, difficulty);
+        const side = game.turn;
+        const result = chooseMove(game.board, side, difficulty);
         setThinking(false);
         if (!result) return;
         setThinkMs(result.elapsedMs);
+        setLastThink({ depth: result.depth, nodes: result.nodes, ms: result.elapsedMs });
+        setThinkLog((prev) => [...prev, { side, depth: result.depth, nodes: result.nodes, ms: result.elapsedMs }]);
         setGame((prev) =>
           prev === game ? (applyMove(prev, result.point.x, result.point.y) ?? prev) : prev,
         );
@@ -66,7 +90,7 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [game, playerColor, difficulty, over]);
+  }, [game, playerColor, difficulty, over, autoMode]);
 
   /* 对局结束后把结果送回服务端，写进战绩。人机不动 ELO（Spec §9 AC-07）。 */
   useEffect(() => {
@@ -89,16 +113,45 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
     });
   }, [game, difficulty, playerColor]);
 
+  /* 双 AI 观战：终局自动存回放（/replays/[id]）。只对 autoMode 生效，失败不打断观战。 */
+  useEffect(() => {
+    if (!autoMode || game.status === 'playing' || replaySaved.current) return;
+    replaySaved.current = true;
+
+    void fetch('/api/replays', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        result: game.status === 'draw' ? 'draw' : game.winner === BLACK ? 'black' : 'white',
+        moves: serializeMoves(game.moves),
+        blackDifficulty: difficulty,
+        whiteDifficulty: difficulty,
+        locale,
+      }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: { url?: string } | null) => {
+        if (data?.url) setReplayUrl(new URL(data.url, window.location.origin).toString());
+      })
+      .catch(() => {
+        /* 回放保存失败不该打断观战 */
+      });
+  }, [autoMode, game, difficulty, locale]);
+
   const reset = useCallback(
     (color: Player = playerColor) => {
       setGame(createGame(BLACK));
       setPlayerColor(color);
       setThinkMs(null);
+      setLastThink(null);
+      setThinkLog([]);
       setResigned(false);
       setShareUrl(null);
+      setReplayUrl(null);
       setCopied(false);
       startedAt.current = Date.now();
       reported.current = false;
+      replaySaved.current = false;
     },
     [playerColor],
   );
@@ -216,7 +269,15 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
           </div>
           <p className="yb-meta" style={{ marginTop: 6 }}>
             {t('moveCount', { count: game.moves.length })}
-            {thinkMs !== null ? ` · ${t('thinkingTime', { ms: Math.round(thinkMs) })}` : ''}
+            {lastThink
+              ? ` · ${t('thinkingLine', {
+                  depth: lastThink.depth,
+                  nodes: lastThink.nodes,
+                  ms: Math.round(lastThink.ms),
+                })}`
+              : thinkMs !== null
+                ? ` · ${t('thinkingTime', { ms: Math.round(thinkMs) })}`
+                : ''}
           </p>
         </div>
 
@@ -259,26 +320,45 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
           </div>
         </fieldset>
 
-        <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
-          <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
-            {t('yourColour')}
-          </legend>
-          <div style={{ display: 'flex', gap: 6 }}>
-            {([BLACK, WHITE] as const).map((color) => (
-              <button
-                key={color}
-                type="button"
-                aria-pressed={playerColor === color}
-                onClick={() => reset(color)}
-                className={playerColor === color ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
-                style={{ flex: 1 }}
-              >
-                <StoneDot black={color === BLACK} />
-                {color === BLACK ? t('black') : t('white')}
-              </button>
-            ))}
+        {autoMode ? (
+          <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+            <p className="yb-meta" style={{ margin: 0 }}>
+              <Robot size={14} weight="bold" aria-hidden style={{ verticalAlign: -2, marginRight: 6 }} />
+              {t('autoModeHint')}
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-2)' }}>
+              <ThinkColumn
+                title={t('aiBlack')}
+                black
+                entries={thinkLog.filter((e) => e.side === BLACK)}
+              />
+              <ThinkColumn title={t('aiWhite')} entries={thinkLog.filter((e) => e.side === WHITE)} />
+            </div>
           </div>
-        </fieldset>
+        ) : null}
+
+        {!autoMode ? (
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
+              {t('yourColour')}
+            </legend>
+            <div style={{ display: 'flex', gap: 6 }}>
+              {([BLACK, WHITE] as const).map((color) => (
+                <button
+                  key={color}
+                  type="button"
+                  aria-pressed={playerColor === color}
+                  onClick={() => reset(color)}
+                  className={playerColor === color ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
+                  style={{ flex: 1 }}
+                >
+                  <StoneDot black={color === BLACK} />
+                  {color === BLACK ? t('black') : t('white')}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+        ) : null}
 
         <hr className="yb-rule" />
 
@@ -287,29 +367,31 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
             <ArrowsClockwise size={16} aria-hidden />
             {t('newGame')}
           </button>
-          <div style={{ display: 'flex', gap: 6 }}>
-            <button
-              type="button"
-              className="yb-btn yb-btn-outline yb-btn-sm"
-              style={{ flex: 1 }}
-              onClick={takeBack}
-              disabled={game.moves.length === 0 || thinking}
-            >
-              <ArrowCounterClockwise size={15} aria-hidden />
-              {t('undo')}
-            </button>
-            <button
-              type="button"
-              className="yb-btn yb-btn-ghost yb-btn-sm"
-              style={{ flex: 1 }}
-              onClick={() => setResigned(true)}
-              disabled={over || game.moves.length === 0}
-            >
-              <Flag size={15} aria-hidden />
-              {t('resign')}
-            </button>
-          </div>
-          {game.status !== 'playing' ? (
+          {!autoMode ? (
+            <div style={{ display: 'flex', gap: 6 }}>
+              <button
+                type="button"
+                className="yb-btn yb-btn-outline yb-btn-sm"
+                style={{ flex: 1 }}
+                onClick={takeBack}
+                disabled={game.moves.length === 0 || thinking}
+              >
+                <ArrowCounterClockwise size={15} aria-hidden />
+                {t('undo')}
+              </button>
+              <button
+                type="button"
+                className="yb-btn yb-btn-ghost yb-btn-sm"
+                style={{ flex: 1 }}
+                onClick={() => setResigned(true)}
+                disabled={over || game.moves.length === 0}
+              >
+                <Flag size={15} aria-hidden />
+                {t('resign')}
+              </button>
+            </div>
+          ) : null}
+          {!autoMode && game.status !== 'playing' ? (
             <button type="button" className="yb-btn yb-btn-outline yb-btn-sm" onClick={() => void share()}>
               <ShareNetwork size={15} aria-hidden />
               {copied ? t('copied') : t('shareGame')}
@@ -326,6 +408,16 @@ export function GomokuGame({ variant = 'full', initialDifficulty = 'steady' }: G
             >
               {shareUrl}
             </output>
+          ) : null}
+          {autoMode && replayUrl ? (
+            <a
+              href={replayUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="yb-btn yb-btn-outline yb-btn-sm"
+            >
+              {t('replayReady')} — {t('watchReplay')}
+            </a>
           ) : null}
         </div>
       </aside>
@@ -360,5 +452,61 @@ function StoneDot({ black }: { black: boolean }) {
         border: `1px solid ${black ? 'var(--stone-black-edge)' : 'var(--stone-white-edge)'}`,
       }}
     />
+  );
+}
+
+/** 双 AI 观战：某一侧的思考日志（最近 6 条），展示引擎每次落子的搜索深度 / 节点数 / 耗时。 */
+function ThinkColumn({
+  title,
+  black,
+  entries,
+}: {
+  title: string;
+  black?: boolean;
+  entries: ThinkEntry[];
+}) {
+  const total = entries.length;
+  const recent = entries.slice(-6).reverse();
+  return (
+    <div
+      style={{
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-sm)',
+        padding: 8,
+        minHeight: 88,
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          fontSize: 'var(--text-xs)',
+          fontWeight: 'var(--weight-emphasis)',
+          color: 'var(--fg-2)',
+          marginBottom: 6,
+        }}
+      >
+        {black !== undefined ? <StoneDot black={black} /> : null}
+        {title}
+      </div>
+      {recent.length === 0 ? (
+        <div style={{ fontSize: 'var(--text-xs)', color: 'var(--meta)' }}>—</div>
+      ) : (
+        recent.map((e, i) => (
+          <div
+            key={i}
+            style={{
+              fontSize: 'var(--text-xs)',
+              color: 'var(--meta)',
+              fontFamily: 'var(--font-mono)',
+              lineHeight: 1.7,
+            }}
+          >
+            #{total - recent.length + i + 1} · d{e.depth} · {e.nodes} · {e.ms}ms
+          </div>
+        ))
+      )}
+    </div>
   );
 }
