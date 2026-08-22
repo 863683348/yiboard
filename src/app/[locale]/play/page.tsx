@@ -9,13 +9,12 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  
+  const t = await getTranslations({ locale, namespace: 'play' });
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return {
-    title: meta('play.title'),
-    description: meta('play.description'),
-    keywords: meta('play.keywords'),
-    openGraph: { title: meta('play.title'), description: meta('play.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('play.title'), description: meta('play.description'), images: ['/og.png'] }, alternates: localeAlternates('play', locale),
+    title: t('title'),
+    description: meta('description'),
+    alternates: localeAlternates('play', locale),
   };
 }
 
@@ -54,6 +53,12 @@ export default async function PlayPage(props: {
             className="yb-btn yb-btn-outline yb-btn-sm"
           >
             {t('vsAi')}
+          </Link>
+          <Link
+            href="/play?mode=aivsai"
+            className="yb-btn yb-btn-ghost yb-btn-sm"
+          >
+            {t('vsAiAi')}
           </Link>
           <Link
             href="/play?mode=match"

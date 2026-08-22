@@ -27,7 +27,8 @@
     "boardSlate": "Pedra azul",
     "pricing": "Preços",
     "signIn": "Entrar / Cadastrar",
-    "blog": "Blog"
+    "blog": "Blog",
+    "glossary": "Glossário"
   },
   "home": {
     "eyebrow": "Grátis · Sem conta",
@@ -101,7 +102,14 @@
     "statsFriend": "vs jogadores"
   },
   "play": {
-    "title": "Jogue Gomoku Online Grátis – vs IA ou Amigos"
+    "title": "Jogue Gomoku Online Grátis – vs IA ou Amigos",
+    "vsAiAi": "IA contra IA",
+    "autoModeHint": "Assista dois motores batalharem. Cada partida terminada vira um replay.",
+    "thinkingLine": "Análise: profundidade {depth} · {nodes} nós · {ms} ms",
+    "aiBlack": "IA preta",
+    "aiWhite": "IA branca",
+    "replayReady": "Replay salvo",
+    "watchReplay": "Ver replay"
   },
   "rankings": {
     "title": "Ranking de Gomoku – Do 9º Grau ao 9º Dan",
@@ -109,7 +117,8 @@
   },
   "howTo": {
     "title": "Como Jogar Gomoku: Regras Grátis Online e Guia de Estratégia",
-    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas e bloqueio precoce – jogue grátis online agora."
+    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas e bloqueio precoce – jogue grátis online agora.",
+    "glossaryLink": "Glossário de Gomoku"
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -276,5 +285,24 @@
     "errUsernameTaken": "Este nome de usuário já está em uso.",
     "errInvalidCredentials": "Usuário/e-mail ou senha incorretos.",
     "errGeneric": "Algo deu errado. Tente novamente."
+  },
+  "glossary": {
+    "title": "Glossário de Gomoku – Três abertos, quatro, duplos três e regras",
+    "sub": "Os termos que todo jogador de Gomoku precisa, explicados de forma clara e com dicas práticas.",
+    "chip": "Glossário",
+    "howToLink": "Novo no jogo?",
+    "howToLinkCta": "Aprenda a jogar em 2 minutos",
+    "cta": "Coloque em prática — jogue grátis"
+  },
+  "replays": {
+    "title": "Replay de Gomoku IA contra IA",
+    "subtitle": "Assista dois motores batalharem",
+    "resultBlack": "Pretas venceram em {count} movimentos",
+    "resultWhite": "Brancas venceram em {count} movimentos",
+    "resultDraw": "Empate — o tabuleiro está cheio",
+    "meta": "Replay de Gomoku IA contra IA — assista a batalha completa entre motores, movimento a movimento.",
+    "cta": "Jogue Gomoku grátis",
+    "notFound": "Replay não encontrado",
+    "notFoundCta": "Ir jogar"
   }
 }

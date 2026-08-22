@@ -27,7 +27,8 @@
     "boardSlate": "Piedra azul",
     "pricing": "Precios",
     "signIn": "Entrar / Registrarse",
-    "blog": "Blog"
+    "blog": "Blog",
+    "glossary": "Glosario"
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",
@@ -101,7 +102,14 @@
     "statsFriend": "vs jugadores"
   },
   "play": {
-    "title": "Juega Gomoku Online Gratis – vs IA o Amigos"
+    "title": "Juega Gomoku Online Gratis – vs IA o Amigos",
+    "vsAiAi": "IA contra IA",
+    "autoModeHint": "Mira dos motores enfrentarse. Cada partida terminada se guarda como repetición.",
+    "thinkingLine": "Análisis: profundidad {depth} · {nodes} nodos · {ms} ms",
+    "aiBlack": "IA negras",
+    "aiWhite": "IA blancas",
+    "replayReady": "Repetición guardada",
+    "watchReplay": "Ver repetición"
   },
   "rankings": {
     "title": "Tabla de Clasificación de Gomoku – Del Noveno Grado al Noveno Dan",
@@ -109,7 +117,8 @@
   },
   "howTo": {
     "title": "Cómo Jugar Gomoku: Reglas Gratis Online y Guía de Estrategia",
-    "sub": "Aprende las reglas del Gomoku en 2 minutos. Domina estrategias de apertura como dobles amenazas y bloqueo temprano – juega gratis online ahora."
+    "sub": "Aprende las reglas del Gomoku en 2 minutos. Domina estrategias de apertura como dobles amenazas y bloqueo temprano – juega gratis online ahora.",
+    "glossaryLink": "Glosario de Gomoku"
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -276,5 +285,24 @@
     "errUsernameTaken": "Este nombre de usuario ya está en uso.",
     "errInvalidCredentials": "Usuario/correo o contraseña incorrectos.",
     "errGeneric": "Algo salió mal. Inténtalo de nuevo."
+  },
+  "glossary": {
+    "title": "Glosario de Gomoku – Tres abiertos, cuatros, dobles tres y reglas",
+    "sub": "Los términos que todo jugador de Gomoku necesita, explicados con claridad y con consejos prácticos.",
+    "chip": "Glosario",
+    "howToLink": "¿Nuevo en el juego?",
+    "howToLinkCta": "Aprende a jugar en 2 minutos",
+    "cta": "Ponlo en práctica — juega gratis"
+  },
+  "replays": {
+    "title": "Repetición de Gomoku IA contra IA",
+    "subtitle": "Mira dos motores enfrentarse",
+    "resultBlack": "Negras ganaron en {count} movimientos",
+    "resultWhite": "Blancas ganaron en {count} movimientos",
+    "resultDraw": "Empate — el tablero está lleno",
+    "meta": "Repetición de Gomoku IA contra IA — mira la batalla completa entre motores, movimiento a movimiento.",
+    "cta": "Juega Gomoku gratis",
+    "notFound": "Repetición no encontrada",
+    "notFoundCta": "Ir a jugar"
   }
 }

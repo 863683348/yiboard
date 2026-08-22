@@ -27,7 +27,8 @@
     "boardKaya": "榧木",
     "boardSlate": "青石",
     "signIn": "登录 / 注册",
-    "blog": "博客"
+    "blog": "博客",
+    "glossary": "术语表"
   },
   "home": {
     "eyebrow": "免费 · 无需注册",
@@ -101,7 +102,14 @@
     "statsFriend": "在线对战"
   },
   "play": {
-    "title": "免费在线五子棋 – 对战 AI 或好友"
+    "title": "免费在线五子棋 – 对战 AI 或好友",
+    "vsAiAi": "双 AI 对战",
+    "autoModeHint": "围观两个引擎互搏。每盘结束自动保存为回放。",
+    "thinkingLine": "思考：深度 {depth} · {nodes} 节点 · {ms} 毫秒",
+    "aiBlack": "黑方 AI",
+    "aiWhite": "白方 AI",
+    "replayReady": "回放已保存",
+    "watchReplay": "查看回放"
   },
   "rankings": {
     "title": "五子棋排行榜 – 从九品晋升九段",
@@ -109,7 +117,8 @@
   },
   "howTo": {
     "title": "五子棋怎么玩：免费在线规则与策略指南",
-    "sub": "2 分钟学会五子棋规则。掌握双威胁、早堵等开局策略——立即免费在线对战。"
+    "sub": "2 分钟学会五子棋规则。掌握双威胁、早堵等开局策略——立即免费在线对战。",
+    "glossaryLink": "五子棋术语表"
   },
   "about": {
     "title": "关于弈界",
@@ -276,5 +285,24 @@
     "errUsernameTaken": "该用户名已被占用。",
     "errInvalidCredentials": "用户名/邮箱或密码错误。",
     "errGeneric": "出了点问题，请重试。"
+  },
+  "glossary": {
+    "title": "五子棋术语表 – 活三、四三、双三与禁手全解析",
+    "sub": "每个五子棋玩家都该懂的术语：活二、活三、眠三、双三、四三、禁手……用大白话讲清楚，附实战要点。",
+    "chip": "术语表",
+    "howToLink": "刚接触五子棋？",
+    "howToLinkCta": "2 分钟学会玩法",
+    "cta": "学完练一手 —— 免费对弈"
+  },
+  "replays": {
+    "title": "五子棋 AI 对战回放",
+    "subtitle": "围观两个引擎互搏",
+    "resultBlack": "黑方在 {count} 手内获胜",
+    "resultWhite": "白方在 {count} 手内获胜",
+    "resultDraw": "和棋——棋盘已满",
+    "meta": "五子棋 AI vs AI 对局回放——完整观看两个引擎的每一步攻防，无禁手自由规则。",
+    "cta": "免费下一局",
+    "notFound": "回放不存在",
+    "notFoundCta": "去下棋"
   }
 }

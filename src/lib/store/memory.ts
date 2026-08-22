@@ -7,7 +7,6 @@ import { newRoomCode } from '../auth';
 import { STARTING_ELO, rankFromElo, updateElo } from '../rank';
 import type {
   GameRecord,
-  PeriodRankEntry,
   RankEntry,
   RecordGameInput,
   RoomRecord,
@@ -190,56 +189,6 @@ export const memoryStore: Store = {
       });
   },
 
-  async listPeriodLeaders(period, limit = 50) {
-    const days = period === 'week' ? 7 : 30;
-    const cutoff = Date.now() - days * 86400_000;
-    const recent = games.filter(
-      (g) => g.mode === 'friend' && new Date(g.createdAt).getTime() >= cutoff,
-    );
-    const agg = new Map<string, { wins: number; games: number; displayName: string; elo: number }>();
-    for (const g of recent) {
-      for (const [id, side] of [
-        [g.blackId, 'black'],
-        [g.whiteId, 'white'],
-      ] as const) {
-        if (!id) continue;
-        const user = users.get(id);
-        if (!user) continue;
-        const a = agg.get(id) ?? {
-          wins: 0,
-          games: 0,
-          displayName: user.displayName,
-          elo: user.elo,
-        };
-        a.games += 1;
-        if (g.result === side) a.wins += 1;
-        agg.set(id, a);
-      }
-    }
-    return [...agg.entries()]
-      .map(([userId, v]): PeriodRankEntry => ({
-        userId,
-        displayName: v.displayName,
-        elo: v.elo,
-        wins: v.wins,
-        gamesPlayed: v.games,
-        position: 0,
-      }))
-      .sort((a, b) => b.wins - a.wins || b.elo - a.elo)
-      .slice(0, limit)
-      .map((entry, offset) => ({ ...entry, position: offset + 1 }));
-  },
-
-  async listPublicShareCards(limit = 24) {
-    return [...shareCards.values()]
-      .sort(
-        (a, b) =>
-          b.views - a.views ||
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-      )
-      .slice(0, limit);
-  },
-
   async createRoom({ hostId }) {
     let code = newRoomCode();
     while (rooms.has(code)) code = newRoomCode();
@@ -300,6 +249,12 @@ export const memoryStore: Store = {
     const bumped = { ...card, views: card.views + 1 };
     shareCards.set(id, bumped);
     return bumped;
+  },
+
+  async listShareCards(limit = 100) {
+    return [...shareCards.values()]
+      .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+      .slice(0, limit);
   },
 
   async getStats() {
