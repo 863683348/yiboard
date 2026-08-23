@@ -98,6 +98,18 @@ export interface RankEntry {
   position: number;
 }
 
+/** 周/月榜单行：按周期内胜场排名（仅统计 friend 真人局） */
+export interface PeriodRankEntry {
+  userId: string;
+  displayName: string;
+  elo: number;
+  /** 周期内胜场数 */
+  wins: number;
+  /** 周期内总对局数 */
+  gamesPlayed: number;
+  position: number;
+}
+
 export interface RecordGameInput {
   mode: GameMode;
   blackId: string | null;
@@ -127,6 +139,10 @@ export interface Store {
   recordGame(input: RecordGameInput): Promise<{ game: GameRecord; eloDelta: number }>;
   listGamesForUser(userId: string, limit?: number): Promise<GameRecord[]>;
   listRankings(limit?: number): Promise<RankEntry[]>;
+  /** 周/月榜：按周期内胜场排名（仅 friend 真人局） */
+  listPeriodLeaders(period: 'week' | 'month', limit?: number): Promise<PeriodRankEntry[]>;
+  /** 公开棋谱库：按浏览量排序的分享卡 */
+  listPublicShareCards(limit?: number): Promise<ShareCardRecord[]>;
 
   createRoom(input: { hostId: string }): Promise<RoomRecord>;
   getRoomByCode(code: string): Promise<RoomRecord | null>;
