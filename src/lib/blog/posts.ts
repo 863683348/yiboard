@@ -2269,7 +2269,7 @@ export const POSTS: BlogPost[] = [
       }
     ]
   },
-  "howTo": {
+    howTo: {
     "en": {
       "name": "A simple opening plan for beginners",
       "steps": [
@@ -2313,7 +2313,7 @@ export const POSTS: BlogPost[] = [
       ]
     }
   }
-},
+  },
 {
   "slug": "gomoku-defense-guide",
   "date": "2026-08-22",
@@ -2469,7 +2469,7 @@ export const POSTS: BlogPost[] = [
       }
     ]
   },
-  "howTo": {
+    howTo: {
     "en": {
       "name": "A simple defense checklist",
       "steps": [
@@ -2513,7 +2513,7 @@ export const POSTS: BlogPost[] = [
       ]
     }
   }
-},
+  },
 {
   "slug": "gomoku-ai-thinking-revealed",
   "date": "2026-08-22",
@@ -2665,21 +2665,70 @@ export const POSTS: BlogPost[] = [
       }
     ]
   }
-}
-
-  {
-    "id": 40,
-    "slug": "xiangqi-rules-the-river-the-cannons",
-    "title": { "zh": "象棋基础规则（开发预览）", "en": "Xiangqi Rules: The River, the Cannons" },
-    "date": "2026-08-23",
-    "excerpt": { "zh": "象棋的河界与炮的移动规则详解", "en": "Xiangqi river boundary and cannon movement rules explained." },
-    "category": "rules",
-    "body": {
-      "en": "<h2>The River (河)</h2><p>The river divides the board in half. Some pieces cannot cross: advisors and generals stay on their side. Cannons and pawns can cross.</p><h2>The Cannon (炮)</h2><p>Cannons move like chariots horizontally and vertically, but must jump over exactly one piece (screen) to capture. No screen = no capture.</p><h2>FAQ</h2><ul><li>Can the general cross the river? No.</li><li>How does the cannon capture? Must jump over one piece.</li><li>Can pawns cross the river? Yes, and they gain sideways movement after crossing.</li></ul>",
-      "zh": "<h2>河界</h2><p>河界将棋盘分为两半。部分棋子不能过河：士和将留在本侧。炮和兵可以过河。</p><h2>炮的移动</h2><p>炮沿直线移动，但吃子时必须恰好跳过一枚棋子（炮架）。无炮架不能吃子。</p><h2>常见问题</h2><ul><li>将可以过河吗？不可以。</li><li>炮如何吃子？必须跳过一枚棋子。</li><li>兵可以过河吗？可以，过河后获得横走能力。</li></ul>"
-    }
+},
+{
+    slug: 'xiangqi-rules-the-river-the-cannons',
+    date: '2026-08-23',
+    title: {
+      zh: '象棋基础规则：河界与炮',
+      en: 'Xiangqi Rules: The River, the Cannons',
+    },
+    description: {
+      zh: '象棋的河界把棋盘分成两半：士与将留守本侧，炮和兵可以过河。本文讲清河界规则与炮的独特吃法——跳吃炮架。',
+      en: 'The river divides the Xiangqi board in half: advisors and the general stay home, cannons and pawns can cross. Learn the river rule and the cannon’s unique screen-jumping capture.',
+    },
+    keywords: ['xiangqi rules', 'xiangqi river', 'xiangqi cannon', 'chinese chess rules', 'xiangqi how to play'],
+    content: {
+      en: [
+        'The river (河) splits the Xiangqi board into two halves. Knowing who can cross is the first thing to memorise: advisors and the general never cross; cannons, pawns, chariots, horses and elephants’ movement depends on the piece.',
+        { type: 'h2', text: 'Who can cross the river' },
+        {
+          type: 'ul',
+          items: [
+            'Advisors (士) and the General (将) stay on their own side — always.',
+            'Cannons (炮) and pawns (兵) can cross freely.',
+            'Chariots (车) and horses (马) cross freely; elephants (象) stay on their own side.',
+          ],
+        },
+        { type: 'h2', text: 'The cannon: the piece that jumps' },
+        'Cannons move like chariots in straight lines, but they capture differently: a cannon must jump over exactly one piece (a screen, 炮架) to take an enemy piece. No screen, no capture.',
+        { type: 'h2', text: 'Common questions' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Can the general cross the river?', a: 'No. The general never leaves its palace.' },
+            { q: 'How does the cannon capture?', a: 'It must jump over exactly one piece to capture.' },
+            { q: 'Can pawns cross the river?', a: 'Yes, and after crossing they gain sideways movement.' },
+          ],
+        },
+        { type: 'cta', text: 'Play Gomoku now while Xiangqi is in development', href: 'https://yiboardgame.com/play' },
+      ],
+      zh: [
+        '河界（河）把象棋棋盘分成两半。记住谁能过河是第一步：士与将永远留在本侧；炮、兵、车、马、象的移动则要看棋子种类。',
+        { type: 'h2', text: '谁能过河' },
+        {
+          type: 'ul',
+          items: [
+            '士与将（帅）永远留在本侧。',
+            '炮和兵可以自由过河。',
+            '车和马自由过河；象（相）留在本侧。',
+          ],
+        },
+        { type: 'h2', text: '炮：会跳的棋子' },
+        '炮沿直线移动，但吃子方式独特：炮必须恰好跳过一枚棋子（炮架）才能吃掉对方。没有炮架就不能吃子。',
+        { type: 'h2', text: '常见问题' },
+        {
+          type: 'faq',
+          items: [
+            { q: '将可以过河吗？', a: '不可以。将永远不出九宫。' },
+            { q: '炮如何吃子？', a: '必须恰好跳过一枚棋子才能吃子。' },
+            { q: '兵可以过河吗？', a: '可以，过河后获得横走能力。' },
+          ],
+        },
+        { type: 'cta', text: '象棋开发中，先来免费下一局五子棋', href: 'https://yiboardgame.com/play' },
+      ],
+    },
   },
-
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
