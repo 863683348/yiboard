@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { localeAlternates } from '@/i18n/metadata';
 import { POSTS } from '@/lib/blog/posts';
+import { routing, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 
 export async function generateMetadata(props: {
@@ -14,13 +15,39 @@ export async function generateMetadata(props: {
     keywords: meta('blog.keywords'), openGraph: { title: meta('blog.title'), description: meta('blog.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('blog.title'), description: meta('blog.description'), images: ['/og.png'] }, alternates: localeAlternates('blog', locale) };
 }
 
-export default async function BlogPage(props: { params: Promise<{ locale: string }> }) {
+export const dynamic = 'force-dynamic';
+
+// 站内搜索：匹配标题 / 摘要 / 关键词（中英都算），供 sitelinks searchbox（SearchAction /blog?q=）真实使用。
+function matchPost(post: (typeof POSTS)[number], q: string): boolean {
+  const hay = [
+    post.title.zh, post.title.en,
+    post.description.zh, post.description.en,
+    ...(post.keywords ?? []),
+  ].join(' ').toLowerCase();
+  return hay.includes(q);
+}
+
+export default async function BlogPage(props: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ q?: string }>;
+}) {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
-  const t = await getTranslations({ locale, namespace: 'blog' });
+  const sp = await props.searchParams;
+  // 重复参数（?q=a&q=b）时 Next 给数组，取首项，避免 .trim() 抛 TypeError 导致 500
+  const qParam = Array.isArray(sp.q) ? sp.q[0] : sp.q;
+  const rawQ = (qParam ?? '').trim();
+  const q = rawQ.toLowerCase();
   const isZh = locale === 'zh';
   const lang = isZh ? 'zh' : 'en';
+  const searching = q.length > 0;
+  const posts = [...POSTS]
+    .filter((p) => !searching || matchPost(p, q))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const t = await getTranslations({ locale, namespace: 'blog' });
+  const blogHref = locale === routing.defaultLocale ? '/blog' : `/${locale}/blog`;
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
@@ -31,10 +58,62 @@ export default async function BlogPage(props: { params: Promise<{ locale: string
         </p>
       </header>
 
-      <div className="yb-grid yb-grid-1" style={{ maxWidth: 760, marginTop: 'var(--space-8)', gap: 'var(--space-4)' }}>
-        {[...POSTS]
-          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-          .map((post) => (
+      <form
+        action={blogHref}
+        method="get"
+        role="search"
+        aria-label={t('searchLabel')}
+        style={{
+          display: 'flex',
+          gap: 'var(--space-3)',
+          maxWidth: 560,
+          marginTop: 'var(--space-6)',
+        }}
+      >
+        <input
+          type="search"
+          name="q"
+          defaultValue={rawQ}
+          placeholder={t('searchPlaceholder')}
+          aria-label={t('searchLabel')}
+          style={{
+            flex: 1,
+            padding: 'var(--space-3) var(--space-4)',
+            border: '1px solid var(--border)',
+            borderRadius: 'var(--radius-md)',
+            background: 'var(--surface-2)',
+            color: 'var(--fg)',
+            fontSize: 'var(--text-base)',
+          }}
+        />
+        <button
+          type="submit"
+          className="yb-btn yb-btn-primary"
+          style={{ whiteSpace: 'nowrap' }}
+        >
+          {t('searchButton')}
+        </button>
+        {searching && (
+          <Link
+            href="/blog"
+            className="yb-btn yb-btn-outline"
+            style={{ whiteSpace: 'nowrap' }}
+          >
+            {t('clearSearch')}
+          </Link>
+        )}
+      </form>
+
+      {searching && (
+        <p className="yb-meta" style={{ marginTop: 'var(--space-4)' }}>
+          {posts.length
+            ? t('resultsCount', { count: posts.length, q: rawQ })
+            : t('noResults', { q: rawQ })}
+        </p>
+      )}
+
+      <div className="yb-grid yb-grid-1" style={{ maxWidth: 760, marginTop: 'var(--space-6)', gap: 'var(--space-4)' }}>
+        {posts.map((post) => (
           <article key={post.slug} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
             <p className="yb-meta" style={{ fontSize: 'var(--text-xs)' }}>
               {post.date}
@@ -49,6 +128,14 @@ export default async function BlogPage(props: { params: Promise<{ locale: string
             </p>
           </article>
         ))}
+
+        {searching && posts.length === 0 && (
+          <p style={{ fontSize: 'var(--text-base)', color: 'var(--fg-2)' }}>
+            <Link href="/blog" style={{ textDecoration: 'underline' }}>
+              {t('allPosts')}
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );

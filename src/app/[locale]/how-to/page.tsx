@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Lightbulb, ListNumbers, TextAlignLeft } from '@phosphor-icons/react/dist/ssr';
+import { Lightbulb, ListNumbers, TextAlignLeft, BookOpen } from '@phosphor-icons/react/dist/ssr';
 
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
@@ -157,6 +157,19 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
           </div>
         </section>
 
+        {/* ---------------- 相关规则指南 ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead
+            icon={<BookOpen size={18} weight="bold" aria-hidden />}
+            title={t('relatedTitle')}
+          />
+          <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)' }}>
+            <RelatedLink href="/gomoku-rules" label={t('nav.gomokuRules')} />
+            <RelatedLink href="/renju-rules" label={t('nav.renjuRules')} />
+            <RelatedLink href="/gomoku-vs-go" label={t('nav.gomokuVsGo')} />
+          </div>
+        </section>
+
         {/* ---------------- CTA ---------------- */}
         <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
           <Link href="/play" className="yb-btn yb-btn-primary">
@@ -179,6 +192,30 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
         </section>
       </div>
     </>
+  );
+}
+
+function RelatedLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--surface-2)',
+        textDecoration: 'none',
+        color: 'var(--fg)',
+        fontSize: 'var(--text-base)',
+        fontWeight: 'var(--weight-emphasis)',
+      }}
+    >
+      {label}
+      <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
+    </Link>
   );
 }
 

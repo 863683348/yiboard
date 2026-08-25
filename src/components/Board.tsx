@@ -18,6 +18,8 @@ export interface BoardProps {
   lastMove?: Point | null;
   winningLine?: readonly Point[] | null;
   theme?: BoardTheme;
+  /** 引擎建议的落子点（hint 功能）：空点位上画一圈青色虚线环 */
+  hintMove?: Point | null;
   /** 传入则棋盘可交互；不传则纯展示（首屏 SEO 直出用这个） */
   onPlay?: (x: number, y: number) => void;
   disabled?: boolean;
@@ -37,6 +39,7 @@ export function Board({
   cells,
   lastMove = null,
   winningLine = null,
+  hintMove = null,
   theme = 'ink',
   onPlay,
   disabled = false,
@@ -139,6 +142,25 @@ export function Board({
             stroke="var(--move-last)"
             strokeWidth={2.4}
           />
+        ) : null}
+
+        {/* 引擎建议落子：青色虚线环（hint）。仅空点显示，让用户知道该下哪。 */}
+        {hintMove ? (
+          (() => {
+            const i = hintMove.y * BOARD_SIZE + hintMove.x;
+            if (cells[i] !== 0) return null;
+            return (
+              <circle
+                cx={cx(hintMove.x)}
+                cy={cx(hintMove.y)}
+                r={STONE_R * 0.62}
+                fill="none"
+                stroke="var(--move-hint)"
+                strokeWidth={2.6}
+                strokeDasharray="5 4"
+              />
+            );
+          })()
         ) : null}
 
         {/* 五连：朱砂实线贯穿 */}

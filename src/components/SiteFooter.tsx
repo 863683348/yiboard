@@ -16,6 +16,9 @@ const COLUMNS = [
     heading: 'learn' as const,
     links: [
       { href: '/how-to', label: 'nav.howTo' },
+      { href: '/gomoku-rules', label: 'nav.gomokuRules' },
+      { href: '/renju-rules', label: 'nav.renjuRules' },
+      { href: '/gomoku-vs-go', label: 'nav.gomokuVsGo' },
       { href: '/blog', label: 'nav.blog' },
       { href: '/puzzle', label: 'footer.puzzle' },
       { href: '/games', label: 'footer.games' },

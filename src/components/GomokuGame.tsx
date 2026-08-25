@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowCounterClockwise, ArrowsClockwise, Flag, Robot, ShareNetwork } from '@phosphor-icons/react';
+import { ArrowCounterClockwise, ArrowsClockwise, Flag, Lightbulb, Robot, ShareNetwork } from '@phosphor-icons/react';
 
 import { Board } from '@/components/Board';
 import type { Difficulty } from '@/lib/engine/ai';
@@ -51,6 +51,8 @@ export function GomokuGame({
   const [shareUrl, setShareUrl] = useState<string | null>(null);
   const [replayUrl, setReplayUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [hintMove, setHintMove] = useState<{ x: number; y: number } | null>(null);
+  const [hintLoading, setHintLoading] = useState(false);
   const startedAt = useRef<number | null>(null);
   const reported = useRef(false);
   const replaySaved = useRef(false);
@@ -149,6 +151,8 @@ export function GomokuGame({
       setShareUrl(null);
       setReplayUrl(null);
       setCopied(false);
+      setHintMove(null);
+      setHintLoading(false);
       startedAt.current = Date.now();
       reported.current = false;
       replaySaved.current = false;
@@ -159,6 +163,7 @@ export function GomokuGame({
   const play = useCallback(
     (x: number, y: number) => {
       if (over || thinking || game.turn !== playerColor) return;
+      setHintMove(null);
       setGame((prev) => applyMove(prev, x, y) ?? prev);
     },
     [over, thinking, game.turn, playerColor],
@@ -170,7 +175,22 @@ export function GomokuGame({
     setGame((prev) => undo(prev, prev.moves.length >= 2 ? 2 : 1));
     setResigned(false);
     reported.current = false;
+    setHintMove(null);
   }, [thinking]);
+
+  /* 提示（hint）：用与引擎相同的选择器求一步建议落子，在棋盘上画青色虚线环。
+     - 只在玩家回合可用（autoMode 双 AI 观战下没有意义）。
+     - 与 AI 走棋共用 chooseMove，保证"提示 = 引擎会怎么下"，不说空话。 */
+  const getHint = useCallback(() => {
+    if (over || thinking || enginesTurn || hintLoading) return;
+    setHintLoading(true);
+    void import('@/lib/engine/ai').then(({ chooseMove }) => {
+      const result = chooseMove(game.board, game.turn, difficulty);
+      setHintLoading(false);
+      if (!result) return;
+      setHintMove(result.point);
+    });
+  }, [over, thinking, enginesTurn, hintLoading, game.board, game.turn, difficulty]);
 
   const share = useCallback(async () => {
     const response = await fetch('/api/share', {
@@ -214,6 +234,7 @@ export function GomokuGame({
       cells={cells}
       lastMove={game.lastMove}
       winningLine={game.winningLine}
+      hintMove={hintMove}
       onPlay={play}
       disabled={over || thinking || enginesTurn}
       ariaLabel={t('title')}
@@ -373,6 +394,20 @@ export function GomokuGame({
                 type="button"
                 className="yb-btn yb-btn-outline yb-btn-sm"
                 style={{ flex: 1 }}
+                onClick={getHint}
+                disabled={over || thinking || enginesTurn || hintLoading || game.moves.length === 0}
+              >
+                <Lightbulb size={15} aria-hidden />
+                {hintLoading ? t('hintLoading') : hintMove ? t('hintClear') : t('hint')}
+              </button>
+            </div>
+          ) : null}
+          {!autoMode ? (
+            <div style={{ display: 'flex', gap: 6 }}>
+              <button
+                type="button"
+                className="yb-btn yb-btn-outline yb-btn-sm"
+                style={{ flex: 1 }}
                 onClick={takeBack}
                 disabled={game.moves.length === 0 || thinking}
               >
@@ -390,6 +425,11 @@ export function GomokuGame({
                 {t('resign')}
               </button>
             </div>
+          ) : null}
+          {hintMove && game.turn === playerColor && !over ? (
+            <p className="yb-meta" style={{ margin: 0 }}>
+              {t('hintDone', { notation: toNotation(hintMove.x, hintMove.y) })}
+            </p>
           ) : null}
           {!autoMode && game.status !== 'playing' ? (
             <button type="button" className="yb-btn yb-btn-outline yb-btn-sm" onClick={() => void share()}>

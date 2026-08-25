@@ -46,7 +46,10 @@
     "pricing": "Preços",
     "signIn": "Entrar / Cadastrar",
     "blog": "Blog",
-    "glossary": "Glossário"
+    "glossary": "Glossário",
+    "gomokuRules": "Regras do Gomoku",
+    "renjuRules": "Regras de Renju",
+    "gomokuVsGo": "Gomoku vs Go"
   },
   "home": {
     "eyebrow": "Grátis · Sem conta",
@@ -176,7 +179,11 @@
       "cancel": "Cancelar",
       "queueCount": "{count} esperando agora",
       "error": "Não foi possível conectar à fila. Tente novamente."
-    }
+    },
+    "hint": "Dica",
+    "hintLoading": "Pensando…",
+    "hintDone": "Sugestão: {notation}",
+    "hintClear": "Limpar dica"
   },
   "rankings": {
     "title": "Ranking de Gomoku – Do 9º Grau ao 9º Dan",
@@ -211,7 +218,8 @@
     "notationBody": "As colunas vão de A a O a partir da esquerda; as linhas vão de 1 a 15 a partir da base. O ponto central é H8. Usamos isso em partidas compartilhadas e no seu histórico.",
     "cta": "Experimente contra o motor",
     "glossaryLink": "Glossário de Gomoku",
-    "faqLink": "Perguntas frequentes"
+    "faqLink": "Perguntas frequentes",
+    "relatedTitle": "Guias de regras relacionadas"
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -408,7 +416,14 @@
     "p2Date": "Julho de 2026",
     "p3Title": "Árbitro no servidor: por que ninguém trapaceia",
     "p3Excerpt": "Cada jogada é validada pelo servidor; o cliente é só uma camada de exibição. Essa é a base do nosso design anti-trapaça.",
-    "p3Date": "Junho de 2026"
+    "p3Date": "Junho de 2026",
+    "searchLabel": "Buscar posts",
+    "searchPlaceholder": "Buscar posts…",
+    "searchButton": "Buscar",
+    "clearSearch": "Limpar",
+    "noResults": "Nenhum post corresponde a \"{q}\". Tente outro termo ou veja todos os posts.",
+    "resultsCount": "{count} resultado(s) para \"{q}\"",
+    "allPosts": "Ver todos os posts"
   },
   "contact": {
     "title": "Fale conosco",
@@ -449,7 +464,8 @@
     "chip": "Glossário",
     "howToLink": "Novo no jogo?",
     "howToLinkCta": "Aprenda a jogar em 2 minutos",
-    "cta": "Coloque em prática — jogue grátis"
+    "cta": "Coloque em prática — jogue grátis",
+    "relatedTitle": "Guias de regras"
   },
   "replays": {
     "title": "Replay de Gomoku IA contra IA",

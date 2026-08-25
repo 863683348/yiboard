@@ -46,7 +46,10 @@
     "pricing": "料金",
     "signIn": "ログイン / 登録",
     "blog": "ブログ",
-    "glossary": "用語集"
+    "glossary": "用語集",
+    "gomokuRules": "五目並べのルール",
+    "renjuRules": "連珠のルール",
+    "gomokuVsGo": "五目並べ vs 囲碁"
   },
   "home": {
     "eyebrow": "無料 · 登録不要",
@@ -176,7 +179,11 @@
       "cancel": "キャンセル",
       "queueCount": "現在 {count} 人が待機中",
       "error": "キューに接続できませんでした。もう一度お試しください。"
-    }
+    },
+    "hint": "ヒント",
+    "hintLoading": "思考中…",
+    "hintDone": "推奨手：{notation}",
+    "hintClear": "ヒントを消す"
   },
   "rankings": {
     "title": "五目並べランキング – 九級から九段へ",
@@ -211,7 +218,8 @@
     "notationBody": "列は左から A から O、行は下から 1 から 15。中心点は H8 です。共有対局と履歴でこの記法を使います。",
     "cta": "エンジンと対戦してみる",
     "glossaryLink": "五目並べ用語集",
-    "faqLink": "よくある質問"
+    "faqLink": "よくある質問",
+    "relatedTitle": "関連ルールガイド"
   },
   "about": {
     "title": "YiBoard について",
@@ -408,7 +416,14 @@
     "p2Date": "2026年7月",
     "p3Title": "サーバー側審判：なぜ誰も不正できないか",
     "p3Excerpt": "すべての手はサーバーが検証します。クライアントは表示層にすぎません。これがアンチチートの基盤です。",
-    "p3Date": "2026年6月"
+    "p3Date": "2026年6月",
+    "searchLabel": "記事を検索",
+    "searchPlaceholder": "記事を検索…",
+    "searchButton": "検索",
+    "clearSearch": "クリア",
+    "noResults": "「{q}」に一致する記事はありません。別の語で試すか、全記事をご覧ください。",
+    "resultsCount": "「{q}」に {count} 件",
+    "allPosts": "すべての記事を見る"
   },
   "contact": {
     "title": "お問い合わせ",
@@ -449,7 +464,8 @@
     "chip": "用語集",
     "howToLink": "はじめての方へ",
     "howToLinkCta": "2分で遊び方を読む",
-    "cta": "実戦で試す — 無料で対局"
+    "cta": "実戦で試す — 無料で対局",
+    "relatedTitle": "ルールガイド"
   },
   "replays": {
     "title": "五目並べ AI同士リプレイ",

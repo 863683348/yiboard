@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { setRequestLocale } from 'next-intl/server';
-import { Flag, Circle, SquaresFour, WarningCircle, TextAa, Question } from '@phosphor-icons/react/dist/ssr';
+import { Flag, Circle, SquaresFour, WarningCircle, TextAa, Question, BookOpen } from '@phosphor-icons/react/dist/ssr';
 
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
@@ -317,6 +317,16 @@ export default async function GomokuRulesPage(props: { params: Promise<{ locale:
         </div>
       </section>
 
+      <section className="yb-section" style={{ maxWidth: 760 }}>
+        <SectionHead icon={<BookOpen size={18} weight="bold" aria-hidden />} title={lang === 'zh' ? '相关指南' : 'Related guides'} />
+        <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)' }}>
+          <RelatedLink href="/renju-rules" label={lang === 'zh' ? '连珠规则（禁手详解）' : 'Renju rules (forbidden moves)'} />
+          <RelatedLink href="/gomoku-vs-go" label={lang === 'zh' ? '五子棋 vs 围棋' : 'Gomoku vs Go'} />
+          <RelatedLink href="/how-to" label={lang === 'zh' ? '快速玩法说明' : 'How to play gomoku'} />
+          <RelatedLink href="/glossary" label={lang === 'zh' ? '完整术语表' : 'Full glossary'} />
+        </div>
+      </section>
+
       <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
         <Link href="/play" className="yb-btn yb-btn-primary">
           {c.cta}
@@ -325,6 +335,30 @@ export default async function GomokuRulesPage(props: { params: Promise<{ locale:
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
+  );
+}
+
+function RelatedLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--surface-2)',
+        textDecoration: 'none',
+        color: 'var(--fg)',
+        fontSize: 'var(--text-base)',
+        fontWeight: 'var(--weight-emphasis)',
+      }}
+    >
+      {label}
+      <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
+    </Link>
   );
 }
 

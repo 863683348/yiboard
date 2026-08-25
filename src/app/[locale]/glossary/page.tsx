@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { BookOpen, Lightbulb } from '@phosphor-icons/react/dist/ssr';
-
 import { GLOSSARY } from '@/lib/glossary';
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
@@ -108,6 +107,16 @@ export default async function GlossaryPage(props: {
           </div>
         </section>
 
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead icon={<BookOpen size={18} weight="bold" aria-hidden />} title={t('relatedTitle')} />
+          <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)' }}>
+            <RelatedLink href="/gomoku-rules" label={t('nav.gomokuRules')} />
+            <RelatedLink href="/renju-rules" label={t('nav.renjuRules')} />
+            <RelatedLink href="/gomoku-vs-go" label={t('nav.gomokuVsGo')} />
+            <RelatedLink href="/how-to" label={t('nav.howTo')} />
+          </div>
+        </section>
+
         <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
           <Link href="/play" className="yb-btn yb-btn-primary">
             {t('cta')}
@@ -115,5 +124,54 @@ export default async function GlossaryPage(props: {
         </section>
       </div>
     </>
+  );
+}
+
+function RelatedLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--surface-2)',
+        textDecoration: 'none',
+        color: 'var(--fg)',
+        fontSize: 'var(--text-base)',
+        fontWeight: 'var(--weight-emphasis)',
+      }}
+    >
+      {label}
+      <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
+    </Link>
+  );
+}
+
+function SectionHead({ icon, title }: { icon: React.ReactNode; title: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-5)' }}>
+      <span
+        aria-hidden
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 36,
+          height: 36,
+          borderRadius: 'var(--radius-sm)',
+          border: '1px solid var(--border)',
+          color: 'var(--accent)',
+        }}
+      >
+        {icon}
+      </span>
+      <h2 className="yb-h3" style={{ margin: 0 }}>
+        {title}
+      </h2>
+    </div>
   );
 }

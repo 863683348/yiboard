@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
@@ -7,6 +8,44 @@ import { routing, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 
 type Params = { locale: string; slug: string };
+
+// 博客正文用轻量 markdown 链接语法 [文字](/内部路径) 或 [文字](https://外部)。
+// 此前 Block 直接输出原始字符串，内链从未真正渲染成 <a>（还向用户展示裸 markdown）。
+// renderInline 把这类语法解析为真实链接；其余文本原样输出。
+const INLINE_LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+
+function renderInline(text: string): ReactNode {
+  if (!text.includes('[')) return text;
+  const parts: ReactNode[] = [];
+  let last = 0;
+  let k = 0;
+  let m: RegExpExecArray | null;
+  const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    const href = m[2] ?? '';
+    // 协议白名单：仅站内相对路径与 http(s) 可作链接；javascript:/data: 等一律按纯文本输出（纵深防御，正文当前均为开发维护的 posts.ts）
+    const safeScheme = href.startsWith('/') || /^https?:\/\//i.test(href);
+    if (href.startsWith('/')) {
+      parts.push(
+        <Link key={k++} href={href} style={{ textDecoration: 'underline', color: 'var(--accent)' }}>
+          {m[1]}
+        </Link>
+      );
+    } else if (safeScheme) {
+      parts.push(
+        <a key={k++} href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', color: 'var(--accent)' }}>
+          {m[1]}
+        </a>
+      );
+    } else {
+      parts.push(text.slice(m.index, m.index + m[0].length));
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts.length ? parts : text;
+}
 
 // Canonical 与 hreflang：en 无前缀（默认语言），zh 带 /zh 前缀；es/ja/pt-BR 回退英文内容但保留各自 URL。
 function hrefFor(locale: Locale, slug: string) {
@@ -65,13 +104,13 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
 }
 
 function Block({ block, lang }: { block: PostBlock; lang: 'zh' | 'en' }) {
-  if (typeof block === 'string') return <p style={{ marginTop: 'var(--space-3)', lineHeight: 1.7 }}>{block}</p>;
+  if (typeof block === 'string') return <p style={{ marginTop: 'var(--space-3)', lineHeight: 1.7 }}>{renderInline(block)}</p>;
   if (block.type === 'h2') return <h2 className="yb-h3" style={{ marginTop: 'var(--space-8)' }}>{block.text}</h2>;
   if (block.type === 'ul') {
     return (
       <ul style={{ marginTop: 'var(--space-3)', paddingLeft: 'var(--space-5)', display: 'grid', gap: 'var(--space-2)', lineHeight: 1.6 }}>
         {block.items.map((it, i) => (
-          <li key={i} style={{ fontSize: 'var(--text-sm)' }}>{it}</li>
+          <li key={i} style={{ fontSize: 'var(--text-sm)' }}>{renderInline(it)}</li>
         ))}
       </ul>
     );
@@ -82,7 +121,7 @@ function Block({ block, lang }: { block: PostBlock; lang: 'zh' | 'en' }) {
         {block.items.map((it, i) => (
           <details key={i} style={{ marginTop: 'var(--space-3)', border: '1px solid var(--border-soft)', borderRadius: 8, padding: 'var(--space-3)' }}>
             <summary style={{ fontWeight: 600, cursor: 'pointer' }}>{it.q}</summary>
-            <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>{it.a}</p>
+            <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>{renderInline(it.a)}</p>
           </details>
         ))}
       </div>

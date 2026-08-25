@@ -46,7 +46,10 @@
     "boardSlate": "Bluestone",
     "signIn": "Sign in / Register",
     "blog": "Blog",
-    "glossary": "Glossary"
+    "glossary": "Glossary",
+    "gomokuRules": "Gomoku rules",
+    "renjuRules": "Renju rules",
+    "gomokuVsGo": "Gomoku vs Go"
   },
   "home": {
     "eyebrow": "Free · No account required",
@@ -176,7 +179,11 @@
     "aiBlack": "Black AI",
     "aiWhite": "White AI",
     "replayReady": "Replay saved",
-    "watchReplay": "Watch the replay"
+    "watchReplay": "Watch the replay",
+    "hint": "Hint",
+    "hintLoading": "Thinking…",
+    "hintDone": "Suggested: {notation}",
+    "hintClear": "Clear hint"
   },
   "rankings": {
     "title": "Gomoku Leaderboard – Climb from 9th Grade to 9th Dan",
@@ -211,7 +218,8 @@
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
     "cta": "Try it against the engine",
     "glossaryLink": "Gomoku glossary",
-    "faqLink": "Gomoku FAQ"
+    "faqLink": "Gomoku FAQ",
+    "relatedTitle": "Related rules guides"
   },
   "about": {
     "title": "About YiBoard",
@@ -400,7 +408,14 @@
     "p2Date": "July 2026",
     "p3Title": "Server-side refereeing: why nobody can cheat your game",
     "p3Excerpt": "Every move is validated by the server; the client is only a display layer. That is the baseline of our anti-cheat design.",
-    "p3Date": "June 2026"
+    "p3Date": "June 2026",
+    "searchLabel": "Search posts",
+    "searchPlaceholder": "Search posts…",
+    "searchButton": "Search",
+    "clearSearch": "Clear",
+    "noResults": "No posts match \"{q}\". Try another term or browse all posts.",
+    "resultsCount": "{count} result(s) for \"{q}\"",
+    "allPosts": "Browse all posts"
   },
   "contact": {
     "title": "Contact Us",
@@ -449,7 +464,8 @@
     "chip": "Glossary",
     "howToLink": "New to the game?",
     "howToLinkCta": "Read how to play in 2 minutes",
-    "cta": "Put it into practice — play free"
+    "cta": "Put it into practice — play free",
+    "relatedTitle": "Rules guides"
   },
   "replays": {
     "title": "AI vs AI Gomoku Replay",

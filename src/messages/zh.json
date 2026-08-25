@@ -46,7 +46,10 @@
     "boardSlate": "青石",
     "signIn": "登录 / 注册",
     "blog": "博客",
-    "glossary": "术语表"
+    "glossary": "术语表",
+    "gomokuRules": "五子棋规则",
+    "renjuRules": "连珠规则",
+    "gomokuVsGo": "五子棋 vs 围棋"
   },
   "home": {
     "eyebrow": "免费 · 无需注册",
@@ -176,7 +179,11 @@
       "cancel": "取消",
       "queueCount": "当前 {count} 人在排队",
       "error": "无法连接匹配队列，请重试。"
-    }
+    },
+    "hint": "提示",
+    "hintLoading": "思考中…",
+    "hintDone": "建议落子：{notation}",
+    "hintClear": "清除提示"
   },
   "rankings": {
     "title": "五子棋排行榜 – 从九品晋升九段",
@@ -211,7 +218,8 @@
     "notationBody": "列从左到右为 A 到 O；行从下到上为 1 到 15。中心点是 H8。我们在分享对局和历史记录中使用这套记法。",
     "cta": "与引擎对战试试",
     "glossaryLink": "五子棋术语表",
-    "faqLink": "五子棋常见问题"
+    "faqLink": "五子棋常见问题",
+    "relatedTitle": "相关规则指南"
   },
   "about": {
     "title": "关于弈界",
@@ -384,7 +392,14 @@
     "p2Date": "2026 年 7 月",
     "p3Title": "服务端仲裁：为什么你的对局没人能作弊",
     "p3Excerpt": "每一步都经服务端校验，客户端只是显示层。这是防作弊的底线设计。",
-    "p3Date": "2026 年 6 月"
+    "p3Date": "2026 年 6 月",
+    "searchLabel": "搜索文章",
+    "searchPlaceholder": "搜索文章…",
+    "searchButton": "搜索",
+    "clearSearch": "清除",
+    "noResults": "没有找到与「{q}」匹配的文章。换个关键词，或浏览全部文章。",
+    "resultsCount": "「{q}」共 {count} 篇",
+    "allPosts": "浏览全部文章"
   },
   "contact": {
     "title": "联系我们",
@@ -449,7 +464,8 @@
     "chip": "术语表",
     "howToLink": "刚接触五子棋？",
     "howToLinkCta": "2 分钟学会玩法",
-    "cta": "学完练一手 —— 免费对弈"
+    "cta": "学完练一手 —— 免费对弈",
+    "relatedTitle": "规则指南"
   },
   "replays": {
     "title": "五子棋 AI 对战回放",

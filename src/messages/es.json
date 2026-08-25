@@ -46,7 +46,10 @@
     "pricing": "Precios",
     "signIn": "Entrar / Registrarse",
     "blog": "Blog",
-    "glossary": "Glosario"
+    "glossary": "Glosario",
+    "gomokuRules": "Reglas de Gomoku",
+    "renjuRules": "Reglas de Renju",
+    "gomokuVsGo": "Gomoku vs Go"
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",
@@ -176,7 +179,11 @@
       "cancel": "Cancelar",
       "queueCount": "{count} esperando ahora",
       "error": "No se pudo conectar con la cola. Inténtalo de nuevo."
-    }
+    },
+    "hint": "Pista",
+    "hintLoading": "Pensando…",
+    "hintDone": "Sugerencia: {notation}",
+    "hintClear": "Quitar pista"
   },
   "rankings": {
     "title": "Tabla de Clasificación de Gomoku – Del Noveno Grado al Noveno Dan",
@@ -211,7 +218,8 @@
     "notationBody": "Las columnas van de la A a la O desde la izquierda; las filas van del 1 al 15 desde abajo. El punto central es H8. Lo usamos en partidas compartidas y en tu historial.",
     "cta": "Pruébalo contra el motor",
     "glossaryLink": "Glosario de Gomoku",
-    "faqLink": "Preguntas frecuentes"
+    "faqLink": "Preguntas frecuentes",
+    "relatedTitle": "Guías de reglas relacionadas"
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -408,7 +416,14 @@
     "p2Date": "Julio de 2026",
     "p3Title": "Árbitro en el servidor: por qué nadie puede hacer trampa",
     "p3Excerpt": "Cada jugada la valida el servidor; el cliente es solo una capa de visualización. Esa es la base de nuestro diseño anti-trampas.",
-    "p3Date": "Junio de 2026"
+    "p3Date": "Junio de 2026",
+    "searchLabel": "Buscar artículos",
+    "searchPlaceholder": "Buscar artículos…",
+    "searchButton": "Buscar",
+    "clearSearch": "Limpiar",
+    "noResults": "No hay artículos que coincidan con \"{q}\". Prueba otro término o mira todos.",
+    "resultsCount": "{count} resultado(s) para \"{q}\"",
+    "allPosts": "Ver todos los artículos"
   },
   "contact": {
     "title": "Contacto",
@@ -449,7 +464,8 @@
     "chip": "Glosario",
     "howToLink": "¿Nuevo en el juego?",
     "howToLinkCta": "Aprende a jugar en 2 minutos",
-    "cta": "Ponlo en práctica — juega gratis"
+    "cta": "Ponlo en práctica — juega gratis",
+    "relatedTitle": "Guías de reglas"
   },
   "replays": {
     "title": "Repetición de Gomoku IA contra IA",

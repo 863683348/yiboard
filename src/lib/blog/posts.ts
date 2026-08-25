@@ -281,7 +281,7 @@ export const POSTS: BlogPost[] = [
           ],
         },
         { type: 'h2', text: '去 yiboardgame.com 实战' },
-        '规则看完就够开一局了。[对战页](/play)支持人机对战和在线匹配，注册可选。想再深入一点，[玩法页](/how-to)有完整的进阶说明。',
+        '规则看完就够开一局了。[对战页](/play)支持人机对战和在线匹配，注册可选。想再深入一点，[玩法页](/how-to)有完整的进阶说明；想逐条看懂自由规则与禁手区别，[五子棋规则](/gomoku-rules)和[连珠规则](/renju-rules)讲得更细。',
         { type: 'h2', text: 'FAQ' },
         {
           type: 'faq',
@@ -318,7 +318,7 @@ export const POSTS: BlogPost[] = [
           ],
         },
         { type: 'h2', text: 'Go play on yiboardgame.com' },
-        'You now know enough for a full match. The [play page](/play) offers both human vs AI and online matchmaking, with signup optional. Want to go deeper? The [how-to page](/how-to) has the full advanced guide.',
+        'You now know enough for a full match. The [play page](/play) offers both human vs AI and online matchmaking, with signup optional. Want to go deeper? The [how-to page](/how-to) has the full advanced guide, and the [Gomoku rules](/gomoku-rules) and [Renju rules](/renju-rules) pages spell out freestyle vs forbidden-move play in detail.',
         { type: 'h2', text: 'FAQ' },
         {
           type: 'faq',
@@ -1750,7 +1750,7 @@ export const POSTS: BlogPost[] = [
           ],
         },
         { type: 'h2', text: '用 gomoku tactics 收尾' },
-        '开局布好之后，中盘就是把那些早期棋形转化成必胜。想三十秒看懂规则，看[玩法页](/how-to)；想知道为什么五子棋是 YiBoard 的头牌，看[五子棋先上线](/blog/why-gomoku-ships-first)。然后就下棋吧——棋形在盘上学比在脑子里背快得多。',
+        '开局布好之后，中盘就是把那些早期棋形转化成必胜。想三十秒看懂规则，看[玩法页](/how-to)；想逐条看懂无禁手与禁手的区别，[五子棋规则](/gomoku-rules)和[连珠规则](/renju-rules)有详解；想知道为什么五子棋是 YiBoard 的头牌，看[五子棋先上线](/blog/why-gomoku-ships-first)。然后就下棋吧——棋形在盘上学比在脑子里背快得多。',
         { type: 'h2', text: 'FAQ' },
         {
           type: 'faq',
@@ -1803,7 +1803,7 @@ export const POSTS: BlogPost[] = [
           ],
         },
         { type: 'h2', text: 'Closing with gomoku tactics' },
-        'Once the opening is set, the middle game is about converting those early shapes into a forced win. The [how-to page](/how-to) explains the rules in thirty seconds, and [why Gomoku ships first](/blog/why-gomoku-ships-first) shows why it is YiBoard\u2019s flagship game. Then just play: the patterns stick faster on the board than in your head.',
+        'Once the opening is set, the middle game is about converting those early shapes into a forced win. The [how-to page](/how-to) explains the rules in thirty seconds, the [Gomoku rules](/gomoku-rules) and [Renju rules](/renju-rules) pages cover freestyle vs forbidden moves in depth, and [why Gomoku ships first](/blog/why-gomoku-ships-first) shows why it is YiBoard\u2019s flagship game. Then just play: the patterns stick faster on the board than in your head.',
         { type: 'h2', text: 'FAQ' },
         {
           type: 'faq',
@@ -2163,7 +2163,7 @@ export const POSTS: BlogPost[] = [
         "type": "h2",
         "text": "Freestyle vs forbidden-move rules"
       },
-      "Under freestyle rules (what YiBoard uses by default), double-three, double-four, and overlines are all legal for both sides. Under forbidden-move (Renju) rules, Black is banned from double-three, double-four, and overline — which rebalances the game toward White and changes the whole opening theory.",
+      "Under freestyle rules (what YiBoard uses by default), double-three, double-four, and overlines are all legal for both sides. Under forbidden-move ([Renju](/renju-rules)) rules, Black is banned from double-three, double-four, and overline — which rebalances the game toward White and changes the whole opening theory. For the full freestyle rulebook see the [Gomoku rules](/gomoku-rules) page.",
       {
         "type": "h2",
         "text": "A simple opening plan for beginners"
@@ -2227,7 +2227,7 @@ export const POSTS: BlogPost[] = [
         "type": "h2",
         "text": "无禁手 vs 有禁手"
       },
-      "无禁手规则（YiBoard 默认）下，双三、双四、长连对双方都合法。有禁手（连珠）规则下，黑棋被禁止下双三、双四和长连——这重新平衡了棋局、偏向白棋，也彻底改变开局理论。",
+      "无禁手规则（YiBoard 默认）下，双三、双四、长连对双方都合法。有禁手（[连珠](/renju-rules)）规则下，黑棋被禁止下双三、双四和长连——这重新平衡了棋局、偏向白棋，也彻底改变开局理论。完整自由规则见[五子棋规则](/gomoku-rules)页。",
       {
         "type": "h2",
         "text": "给新手的简单开局计划"
