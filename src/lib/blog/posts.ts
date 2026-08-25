@@ -2269,7 +2269,7 @@ export const POSTS: BlogPost[] = [
       }
     ]
   },
-    howTo: {
+  "howTo": {
     "en": {
       "name": "A simple opening plan for beginners",
       "steps": [
@@ -2313,7 +2313,7 @@ export const POSTS: BlogPost[] = [
       ]
     }
   }
-  },
+},
 {
   "slug": "gomoku-defense-guide",
   "date": "2026-08-22",
@@ -2469,7 +2469,7 @@ export const POSTS: BlogPost[] = [
       }
     ]
   },
-    howTo: {
+  "howTo": {
     "en": {
       "name": "A simple defense checklist",
       "steps": [
@@ -2513,7 +2513,7 @@ export const POSTS: BlogPost[] = [
       ]
     }
   }
-  },
+},
 {
   "slug": "gomoku-ai-thinking-revealed",
   "date": "2026-08-22",
@@ -2666,123 +2666,88 @@ export const POSTS: BlogPost[] = [
     ]
   }
 },
-{
-    slug: 'xiangqi-rules-the-river-the-cannons',
-    date: '2026-08-23',
-    title: {
-      zh: '象棋基础规则：河界与炮',
-      en: 'Xiangqi Rules: The River, the Cannons',
+  {
+    "slug": "how-to-save-game-records-yiboard",
+    "date": "2026-08-25",
+    "title": {
+      "zh": "怎么保存我的战绩",
+      "en": "How to Save My Game Records on YiBoard"
     },
-    description: {
-      zh: '象棋的河界把棋盘分成两半：士与将留守本侧，炮和兵可以过河。本文讲清河界规则与炮的独特吃法——跳吃炮架。',
-      en: 'The river divides the Xiangqi board in half: advisors and the general stay home, cannons and pawns can cross. Learn the river rule and the cannon’s unique screen-jumping capture.',
+    "description": {
+      "zh": "在 YiBoard 下完一盘棋后，如何保存你的战绩？自动保存、历史回放、导出分享一次讲清。",
+      "en": "After finishing a game on YiBoard, how do you save your game records? Auto-save, history replay, and export in one guide."
     },
-    keywords: ['xiangqi rules', 'xiangqi river', 'xiangqi cannon', 'chinese chess rules', 'xiangqi how to play'],
-    content: {
-      en: [
-        'The river (河) splits the Xiangqi board into two halves. Knowing who can cross is the first thing to memorise: advisors and the general never cross; cannons, pawns, chariots, horses and elephants’ movement depends on the piece.',
-        { type: 'h2', text: 'Who can cross the river' },
-        {
-          type: 'ul',
-          items: [
-            'Advisors (士) and the General (将) stay on their own side — always.',
-            'Cannons (炮) and pawns (兵) can cross freely.',
-            'Chariots (车) and horses (马) cross freely; elephants (象) stay on their own side.',
-          ],
-        },
-        { type: 'h2', text: 'The cannon: the piece that jumps' },
-        'Cannons move like chariots in straight lines, but they capture differently: a cannon must jump over exactly one piece (a screen, 炮架) to take an enemy piece. No screen, no capture.',
-        { type: 'h2', text: 'Common questions' },
-        {
-          type: 'faq',
-          items: [
-            { q: 'Can the general cross the river?', a: 'No. The general never leaves its palace.' },
-            { q: 'How does the cannon capture?', a: 'It must jump over exactly one piece to capture.' },
-            { q: 'Can pawns cross the river?', a: 'Yes, and after crossing they gain sideways movement.' },
-          ],
-        },
-        { type: 'cta', text: 'Play Gomoku now while Xiangqi is in development', href: 'https://yiboardgame.com/play' },
-      ],
-      zh: [
-        '河界（河）把象棋棋盘分成两半。记住谁能过河是第一步：士与将永远留在本侧；炮、兵、车、马、象的移动则要看棋子种类。',
-        { type: 'h2', text: '谁能过河' },
-        {
-          type: 'ul',
-          items: [
-            '士与将（帅）永远留在本侧。',
-            '炮和兵可以自由过河。',
-            '车和马自由过河；象（相）留在本侧。',
-          ],
-        },
-        { type: 'h2', text: '炮：会跳的棋子' },
-        '炮沿直线移动，但吃子方式独特：炮必须恰好跳过一枚棋子（炮架）才能吃掉对方。没有炮架就不能吃子。',
-        { type: 'h2', text: '常见问题' },
-        {
-          type: 'faq',
-          items: [
-            { q: '将可以过河吗？', a: '不可以。将永远不出九宫。' },
-            { q: '炮如何吃子？', a: '必须恰好跳过一枚棋子才能吃子。' },
-            { q: '兵可以过河吗？', a: '可以，过河后获得横走能力。' },
-          ],
-        },
-        { type: 'cta', text: '象棋开发中，先来免费下一局五子棋', href: 'https://yiboardgame.com/play' },
-      ],
-    },
-  },
-{
-  slug: "go-for-beginners-surround-not-capture",
-  date: "2026-08-24",
-  title: {
-    en: "Go for Beginners: Surround, Not Capture",
-    zh: "围棋入门：围地而不是吃子",
-  },
-  description: {
-    en: "Learn the ancient game of Go (Weiqi) in 10 minutes. Unlike chess where you capture the king, Go is about surrounding territory — the player who controls the most area wins.",
-    zh: "10 分钟学会古老的围棋。与国际象棋不同，围棋是关于包围领土——控制最多区域的人获胜。",
-  },
-  keywords: ["go board game basics", "how to play go", "go rules for beginners", "learn weiqi basics"],
-  content: {
-    en: [
-      "Go is often called the oldest board game still played today. Over 3,000 years old, it's simpler than chess in rules but infinitely deeper in strategy. If you've never played, this guide will get you from zero to your first game in under 10 minutes.",
-      { type: "h2", text: "The Goal: Surround More Territory" },
-      "Unlike chess, where you capture the king, Go is about surrounding territory. The player who controls the most area when the game ends wins. It's a game of enclosure, not elimination.",
-      { type: "h2", text: "The Board and Pieces" },
-      "• Board: 19×19 lines (beginners often start with 9×9 or 13×13)\n• Stones: Black and white rounds, placed on intersections\n• First move: Black always goes first\n• Alternating turns: Players alternate placing one stone per turn",
-      { type: "h2", text: "Basic Rules" },
-      "1. Place stones on intersections, not in squares\n2. Stones connect when placed adjacent (horizontally or vertically)\n3. Groups share liberties — the empty points adjacent to the group\n4. Capture: When a group has zero liberties, it's removed from the board\n5. Ko rule: You can't immediately recapture a single stone that was just captured\n6. Passing: Either player can pass. Two consecutive passes end the game",
-      { type: "h2", text: "How Scoring Works" },
-      "At the end of the game:\n1. Count enclosed territory: Empty points completely surrounded by your stones\n2. Count captured stones: Each captured stone counts as one point\n3. Komi: White gets 6.5 points compensation for going second\nThe player with the higher total wins.",
-      { type: "h2", text: "First Game Tips" },
-      "• Start small: Play on a 9×9 board first\n• Don't try to capture everything: Focus on building solid frameworks\n• Learn opening patterns: The first 20-30 moves have standard patterns\n• Play frequently: Aim for 3-5 games per week",
-      { type: "h2", text: "FAQ" },
-      { type: "faq", items: [
-        { q: "Is Go harder than chess?", a: "They're different, not harder or easier. Go has simpler rules but a larger board and more possible moves per turn." },
-        { q: "How long does a game take?", a: "A beginner game on 9×9 takes 15-30 minutes. A full 19×19 game can take 1-3 hours." },
-        { q: "Do I need special equipment?", a: "You can play Go entirely free on yiboardgame.com with no downloads or signup." },
-      ] },
-      { type: "cta", text: "Play Go for free on YiBoard", href: "https://yiboardgame.com/play" },
+    "keywords": [
+      "yiboard 保存战绩",
+      "五子棋战绩保存",
+      "yiboard game records",
+      "how to save gomoku games"
     ],
-    zh: [
-      "围棋常被称为仍在玩的最古老的棋盘游戏。超过 3000 年历史，规则比国际象棋简单，但策略深度无限。如果你从未玩过，本指南将在 10 分钟内让你从零开始你的第一局游戏。",
-      { type: "h2", text: "目标：包围更多领土" },
-      "与国际象棋不同，国际象棋的目标是捕获国王，围棋是关于包围领土。游戏结束时控制最多区域的人获胜。",
-      { type: "h2", text: "棋盘和棋子" },
-      "• 棋盘：19×19 线（初学者通常从 9×9 或 13×13 开始）\n• 棋子：黑白圆形，放置在交叉点上\n• 第一步：黑棋总是先走\n• 交替回合：玩家轮流每次放置一个棋子",
-      { type: "h2", text: "基本规则" },
-      "1. 在交叉点上放置棋子，不在方格内\n2. 棋子连接当放置在相邻位置时\n3. 小组共享气——小组相邻的空点\n4. 捕获：当小组没有气时，从棋盘上移除\n5. 劫规则：你不能立即重新捕获刚刚被捕获的单个棋子\n6. 虚着：任何玩家都可以虚着。连续两个虚着结束游戏",
-      { type: "h2", text: "计分方式" },
-      "游戏结束时：\n1. 计算围空：被你的棋子完全包围的空点\n2. 计算捕获的棋子：每个捕获的棋子算一分\n3. 贴目：白棋获得 6.5 点补偿\n总分高的玩家获胜。",
-      { type: "h2", text: "第一局游戏技巧" },
-      "• 从小开始：先在 9×9 棋盘上玩\n• 不要试图捕获一切：专注于建立稳固的框架\n• 学习开局模式：前 20-30 步有标准模式\n• 经常玩：目标是每周 3-5 局",
-      { type: "h2", text: "常见问题" },
-      { type: "faq", items: [
-        { q: "围棋比国际象棋难吗？", a: "它们不同，不是更难或更容易。围棋有更简单的规则但有更大的棋盘。" },
-        { q: "一局游戏需要多长时间？", a: "初学者在 9×9 棋盘上的游戏需要 15-30 分钟。完整的 19×19 游戏可能需要 1-3 小时。" },
-        { q: "我需要特殊设备吗？", a: "你可以在 yiboardgame.com 完全免费玩围棋，无需下载或注册。" },
-      ] },
-      { type: "cta", text: "在 YiBoard 免费玩围棋", href: "https://yiboardgame.com/play" },
-    ],
-  }},
+    "content": {
+      "en": [
+        "YiBoard automatically saves every game by default. As long as you're logged in, all your historical matches will be automatically linked to your account. No manual saving required.",
+        {
+          "type": "h2",
+          "text": "How to view your records"
+        },
+        "Open the My Records page to see all saved games across Gomoku, Xiangqi, Go and more. Each game can be replayed, shared, or exported.",
+        {
+          "type": "h2",
+          "text": "Playing without an account"
+        },
+        "If you play without logging in, games are stored in your browser's local storage. They won't sync across devices, so log in if you want a permanent record.",
+        {
+          "type": "h2",
+          "text": "Exporting your games"
+        },
+        "You can export games in standard formats for analysis or sharing. This is handy if you want to review your games with an engine or share a memorable match with a friend.",
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Can I save records without logging in?",
+              "a": "Unlogged games are saved in browser local storage, but they won't sync across devices. Log in to keep records permanently."
+            },
+            {
+              "q": "Can I export my game records?",
+              "a": "Yes. You can export games in standard formats for analysis or sharing."
+            }
+          ]
+        }
+      ],
+      "zh": [
+        "YiBoard 会自动保存你的每一盘对局。只要登录账号，所有历史战绩都会自动关联到你的账户，无需手动操作。",
+        {
+          "type": "h2",
+          "text": "如何查看历史战绩"
+        },
+        "进入「我的战绩」页面，可以看到所有已保存的对局列表，包括五子棋、象棋、围棋等所有棋类。每局都可以回放、分享或导出。",
+        {
+          "type": "h2",
+          "text": "不登录会怎样"
+        },
+        "不登录对局会保存在浏览器的本地存储中，无法跨设备同步。想要永久保存战绩，建议登录账号。",
+        {
+          "type": "h2",
+          "text": "导出对局"
+        },
+        "你可以把对局导出为标准格式，用于分析或分享。想用引擎复盘，或把一盘好棋发给朋友，都很方便。",
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "不登录能保存战绩吗？",
+              "a": "不登录对局保存在浏览器本地存储，无法跨设备同步。登录后可以永久保存。"
+            },
+            {
+              "q": "可以把对局导出吗？",
+              "a": "可以。对局可以导出为标准格式，方便分析或分享。"
+            }
+          ]
+        }
+      ]
+    }
+  }
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
