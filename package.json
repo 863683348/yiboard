@@ -10,6 +10,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "validate:posts": "node scripts/validate-posts.mjs",
+    "check:live-blog": "node scripts/check-live-blog.mjs",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "node --test --experimental-strip-types \"src/lib/**/*.test.mts\""

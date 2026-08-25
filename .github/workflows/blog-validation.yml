@@ -1,0 +1,42 @@
+name: blog-data-validation
+
+# YiBoard 数据层 CI 门禁
+# 目的：防止并发会话 / 误操作破坏 src/lib/blog/posts.ts（历史教训：多次 force-push
+# 造成孤儿对象、重复 slug、语法错误、帖子丢失，线上/仓库三方不一致）。
+# 任何 push 到 main 或 PR 都必须通过 posts 校验 + 类型检查 + 引擎测试，否则阻断。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: blog-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate blog posts schema (guard against broken posts.ts)
+        run: node scripts/validate-posts.mjs
+
+      - name: Type-check
+        run: npm run type-check
+
+      - name: Engine tests
+        run: npm test
