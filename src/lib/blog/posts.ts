@@ -2747,6 +2747,63 @@ export const POSTS: BlogPost[] = [
         }
       ]
     }
+  },
+  {
+    "slug": "how-to-read-the-leaderboards",
+    "date": "2026-08-26",
+    "title": {
+      "zh": "如何阅读 YiBoard 排行榜：从零到精通",
+      "en": "How to Read the YiBoard Leaderboards: From Zero to Pro"
+    },
+    "description": {
+      "zh": "五子棋、象棋、围棋排行榜怎么读？ELO 评分、段位系统和排名算法全解析。",
+      "en": "How to read GoMoku, Xiangqi and Go leaderboards? ELO rating, rank system and ranking algorithm explained."
+    },
+    "keywords": ["yiboard leaderboard", "gomoku ranking", "xiangqi elo", "go ranking system"],
+    "content": {
+      "zh": [
+        { "type": "h2", "text": "排行榜是什么？" },
+        "YiBoard 的排行榜记录了你在五子棋、象棋和围棋中的表现。每个游戏有独立的排名系统，但都基于 ELO 评分算法。",
+        { "type": "h2", "text": "ELO 评分基础" },
+        "ELO 评分是一种相对实力评估系统。赢高分对手获得大量积分，输低分对手损失少量积分。这意味着：",
+        { "type": "ul", "items": [
+          "新手升级快（因为对手普遍分低）",
+          "高手升级慢（需要持续赢高分对手）",
+          "评分反映的是相对实力，不是绝对水平"
+        ]},
+        { "type": "h2", "text": "三个游戏的排名差异" },
+        "五子棋：排名最活跃，更新最快，适合入门",
+        "象棋：策略深度高，评分分布更广，高手区竞争激烈",
+        "围棋：规则最复杂，排名系统最完善，适合长期进阶",
+        { "type": "faq", "items": [
+          { "q": "排行榜多久更新一次？", "a": "每局结束后实时更新。" },
+          { "q": "ELO 评分会消失吗？", "a": "长期不活跃会导致评分衰减，但不会清零。" },
+          { "q": "如何提高排名？", "a": "多下棋、分析对局、学习开局库。" }
+        ]},
+        { "type": "cta", "text": "开始下棋，冲击排行榜 →", "href": "https://yiboardgame.com" }
+      ],
+      "en": [
+        { "type": "h2", "text": "What Are the Leaderboards?" },
+        "YiBoard's leaderboards track your performance across Gomoku, Xiangqi, and Go. Each game has its own ranking system, all based on the ELO rating algorithm.",
+        { "type": "h2", "text": "ELO Rating Basics" },
+        "ELO is a relative strength assessment system. Beat a higher-rated opponent and you gain significant points; lose to a lower-rated one and you lose few. This means:",
+        { "type": "ul", "items": [
+          "Beginners rank up fast (opponents are generally low-rated)",
+          "Experts rank up slowly (need to consistently beat high-rated opponents)",
+          "Rating reflects relative strength, not absolute skill"
+        ]},
+        { "type": "h2", "text": "Ranking Differences Across Games" },
+        "Gomoku: most active ranking, fastest updates, best for beginners",
+        "Xiangqi: deeper strategy, wider rating distribution, fierce competition at top",
+        "Go: most complex rules, most mature ranking system, best for long-term improvement",
+        { "type": "faq", "items": [
+          { "q": "How often do leaderboards update?", "a": "Instantly after each game." },
+          { "q": "Can my ELO rating disappear?", "a": "Inactivity causes rating decay, but it never resets to zero." },
+          { "q": "How do I improve my ranking?", "a": "Play more, analyze games, and study opening libraries." }
+        ]},
+        { "type": "cta", "text": "Start playing and climb the leaderboard →", "href": "https://yiboardgame.com" }
+      ]
+    }
   }
 ];
 
