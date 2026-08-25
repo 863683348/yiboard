@@ -2,7 +2,25 @@
   "meta": {
     "title": "YiBoard — Play Gomoku Free Online · No Download Required",
     "description": "Play Gomoku online for free against AI or friends. No account, no download. Climb the 18-rung ladder from 9th Grade to 9th Dan. Xiangqi and Go coming soon.",
-    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones"
+    "ogAlt": "A 15 by 15 Gomoku grid with black and white stones",
+    "about": {
+      "title": "About YiBoard — Free Online Gomoku, Built by Players",
+      "description": "YiBoard is a free, no-download Gomoku platform. Play against AI or friends, climb from 9th Grade to 9th Dan, and enjoy a clean, fast board in any browser.",
+      "keywords": "gomoku, about yiboard, free gomoku, gomoku ranking system"
+    },
+    "blog": {
+      "title": "Gomoku Blog — Strategy, Rules & News",
+      "description": "Gomoku strategy guides, rule explanations and news from YiBoard. Learn openings, tactics, and how the 18-rung ranking ladder works.",
+      "keywords": "gomoku blog, gomoku strategy, gomoku rules, gomoku tips"
+    },
+    "home": {
+      "description": "Play Gomoku online for free against AI or friends. No account, no download. Climb the 18-rung ladder from 9th Grade to 9th Dan."
+    },
+    "rankings": {
+      "title": "Gomoku Rankings — 18-Rung Ladder from 9th Grade to 9th Dan",
+      "description": "Climb the YiBoard Gomoku ranking ladder: 18 levels from 9th Grade to 9th Dan. See the full rank table and how your rating is calculated.",
+      "keywords": "gomoku rankings, gomoku dan, gomoku grades, gomoku ladder"
+    }
   },
   "brand": {
     "name": "YiBoard",
@@ -192,7 +210,8 @@
     "notationTitle": "Reading the notation",
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
     "cta": "Try it against the engine",
-    "glossaryLink": "Gomoku glossary"
+    "glossaryLink": "Gomoku glossary",
+    "faqLink": "Gomoku FAQ"
   },
   "about": {
     "title": "About YiBoard",
@@ -263,7 +282,9 @@
     "terms": "Terms of Service",
     "faq": "FAQ",
     "blog": "Blog",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "games": "Games",
+    "puzzle": "Puzzle"
   },
   "pricing": {
     "title": "Gomoku Pricing – Free to Play, Pro Plans Coming Soon",
@@ -363,7 +384,10 @@
     "q6": "When does the membership launch?",
     "a6": "Payments are being integrated (later phase). Everything is free until then, and we will announce before launching.",
     "q7": "Is there a mobile app?",
-    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download."
+    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download.",
+    "rulesCta": "How to play",
+    "playCta": "Play now",
+    "contactCta": "Contact us"
   },
   "blog": {
     "title": "Blog",

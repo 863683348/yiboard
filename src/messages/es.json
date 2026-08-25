@@ -2,7 +2,25 @@
   "meta": {
     "title": "YiBoard — Juega Gomoku Gratis Online · Sin Descarga",
     "description": "Juega Gomoku gratis online contra IA o amigos. Sin cuenta, sin descarga. Sube la escalera de 18 peldaños del Noveno Grado al Noveno Dan. Xiangqi y Go próximamente.",
-    "ogAlt": "Un tablero de Gomoku 15x15 con piedras blancas y negras"
+    "ogAlt": "Un tablero de Gomoku 15x15 con piedras blancas y negras",
+    "about": {
+      "title": "Sobre YiBoard — Gomoku Gratis Online, Creado por Jugadores",
+      "description": "YiBoard es una plataforma de Gomoku gratis y sin descarga. Juega contra IA o amigos, sube del Noveno Grado al Noveno Dan y disfruta de un tablero limpio y rápido en cualquier navegador.",
+      "keywords": "gomoku, sobre yiboard, gomoku gratis, sistema de rango gomoku"
+    },
+    "blog": {
+      "title": "Blog de Gomoku — Estrategia, Reglas y Noticias",
+      "description": "Guías de estrategia de Gomoku, explicaciones de reglas y noticias de YiBoard. Aprende aperturas, tácticas y cómo funciona la escalera de 18 peldaños.",
+      "keywords": "blog gomoku, estrategia gomoku, reglas gomoku, consejos gomoku"
+    },
+    "home": {
+      "description": "Juega Gomoku gratis online contra IA o amigos. Sin cuenta, sin descarga. Sube la escalera de 18 peldaños del Noveno Grado al Noveno Dan."
+    },
+    "rankings": {
+      "title": "Ranking de Gomoku — Escalera de 18 Peldaños del 9º Grado al 9º Dan",
+      "description": "Sube la escalera de ranking de Gomoku de YiBoard: 18 niveles del 9º Grado al 9º Dan. Mira la tabla completa de rangos y cómo se calcula tu puntuación.",
+      "keywords": "ranking gomoku, dan gomoku, grados gomoku, escalera gomoku"
+    }
   },
   "brand": {
     "name": "YiBoard",
@@ -192,7 +210,8 @@
     "notationTitle": "Cómo leer la notación",
     "notationBody": "Las columnas van de la A a la O desde la izquierda; las filas van del 1 al 15 desde abajo. El punto central es H8. Lo usamos en partidas compartidas y en tu historial.",
     "cta": "Pruébalo contra el motor",
-    "glossaryLink": "Glosario de Gomoku"
+    "glossaryLink": "Glosario de Gomoku",
+    "faqLink": "Preguntas frecuentes"
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -263,7 +282,9 @@
     "terms": "Términos del servicio",
     "faq": "Preguntas frecuentes",
     "blog": "Blog",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "games": "Juegos",
+    "puzzle": "Puzzle"
   },
   "common": {
     "loading": "Cargando",
@@ -371,7 +392,10 @@
     "q6": "¿Cuándo se lanza la membresía?",
     "a6": "Los pagos se están integrando (fase posterior). Todo es gratis hasta entonces, y lo anunciaremos antes de lanzar.",
     "q7": "¿Hay una app móvil?",
-    "a7": "YiBoard es una app web responsive (PWA planificada), así que se juega en cualquier navegador móvil sin descargas."
+    "a7": "YiBoard es una app web responsive (PWA planificada), así que se juega en cualquier navegador móvil sin descargas.",
+    "rulesCta": "Cómo jugar",
+    "playCta": "Jugar ahora",
+    "contactCta": "Contáctanos"
   },
   "blog": {
     "title": "Blog",

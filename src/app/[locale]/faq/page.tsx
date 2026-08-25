@@ -71,9 +71,23 @@ export default async function FaqPage(props: { params: Promise<{ locale: string 
           ))}
         </div>
 
-        <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
+        <section
+          style={{
+            maxWidth: 760,
+            marginTop: 'var(--space-10)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'var(--space-3)',
+          }}
+        >
+          <Link href="/how-to" className="yb-btn yb-btn-primary">
+            {t('rulesCta')}
+          </Link>
+          <Link href="/play" className="yb-btn yb-btn-outline">
+            {t('playCta')}
+          </Link>
           <Link href="/contact" className="yb-btn yb-btn-outline">
-            {t('sub')}
+            {t('contactCta')}
           </Link>
         </section>
       </div>

@@ -169,6 +169,13 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
           >
             {t('glossaryLink')}
           </Link>
+          <Link
+            href="/faq"
+            className="yb-btn yb-btn-outline"
+            style={{ marginLeft: 'var(--space-3)' }}
+          >
+            {t('faqLink')}
+          </Link>
         </section>
       </div>
     </>
