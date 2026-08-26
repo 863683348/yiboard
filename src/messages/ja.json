@@ -134,12 +134,18 @@
     "vsAi": "エンジンと対戦",
     "vsFriend": "友達と対戦",
     "difficulty": "難易度",
+    "difficultyNovice": "入門",
+    "difficultyNoviceNote": "目の前の脅威にだけ反応します。初めての方に最適。",
     "difficultyGentle": "Gentle",
     "difficultyGentleNote": "2 手先まで見え、見落としがあります。",
     "difficultySteady": "Steady",
     "difficultySteadyNote": "4 手先まで見え、ゆるい形を咎めます。",
     "difficultySharp": "Sharp",
     "difficultySharpNote": "時間内で 6 手先まで読みます。",
+    "difficultyMaster": "マスター",
+    "difficultyMasterNote": "より広く深く読み、対戦相手を圧迫します。",
+    "difficultyGrandmaster": "グランドマスター",
+    "difficultyGrandmasterNote": "時間制限内の最大探索深度。勝つのが非常に難しい。",
     "yourColour": "あなたの石",
     "black": "黒",
     "white": "白",
@@ -222,7 +228,15 @@
     "cta": "エンジンと対戦してみる",
     "glossaryLink": "五目並べ用語集",
     "faqLink": "よくある質問",
-    "relatedTitle": "関連ルールガイド"
+    "relatedTitle": "関連ルールガイド",
+    "faqTitle": "五目並べよくある質問",
+    "faq": [
+      { "q": "五目並べで何個並べたら勝ちですか？", "a": "自分の石を横・縦・斜めのいずれかに5個並べると即勝ちです。黒が先手です。" },
+      { "q": "五目並べとコネクト4・囲碁は同じですか？", "a": "違います。五目並べは15×15盤で5個並べたら勝ち。コネクト4は7×6盤に縦に落とします。囲碁は並べるのではなく地を取り合うゲームです。" },
+      { "q": "6個並んだら勝ちになりますか？", "a": "自由ルールではなります — 長い連続も勝ちで、YiBoardでは勝ち数を6や7に設定することも可能。連珠ルールでは黒の長連は禁手です。" },
+      { "q": "初心者にはどの盤サイズがおすすめ？", "a": "9×9はテンポが速く戦術練習に最適。13×13はカジュアルと戦略のバランス。15×15は伝統的な公式サイズ。YiBoardでは3つをいつでも切り替えられます。" },
+      { "q": "YiBoardは無料ですか？", "a": "無料、登録不要、ダウンロード不要。ブラウザですぐエンジンや友達と対戦できます。" }
+    ]
   },
   "about": {
     "title": "YiBoard について",
@@ -426,7 +440,17 @@
     "clearSearch": "クリア",
     "noResults": "「{q}」に一致する記事はありません。別の語で試すか、全記事をご覧ください。",
     "resultsCount": "「{q}」に {count} 件",
-    "allPosts": "すべての記事を見る"
+    "allPosts": "すべての記事を見る",
+    "explore": {
+      "title": "もっと見る",
+      "howTo": "ルール",
+      "rules": "五目並べのルール",
+      "renju": "連珠のルール",
+      "glossary": "用語集",
+      "faq": "よくある質問",
+      "puzzle": "毎日の詰め問題",
+      "games": "棋譜ライブラリ"
+    }
   },
   "contact": {
     "title": "お問い合わせ",

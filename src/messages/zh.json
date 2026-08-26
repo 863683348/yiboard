@@ -134,12 +134,18 @@
     "vsAi": "人机对战",
     "vsFriend": "好友对战",
     "difficulty": "难度",
+    "difficultyNovice": "入门",
+    "difficultyNoviceNote": "只应对眼前的威胁，适合初次上手。",
     "difficultyGentle": "温和",
     "difficultyGentleNote": "只看两步棋，容易漏招。",
     "difficultySteady": "稳健",
     "difficultySteadyNote": "看四步棋，惩罚松散棋形。",
     "difficultySharp": "犀利",
     "difficultySharpNote": "在时间预算内看六步棋。",
+    "difficultyMaster": "大师",
+    "difficultyMasterNote": "搜索更广更深，落子更有压迫感。",
+    "difficultyGrandmaster": "特级大师",
+    "difficultyGrandmasterNote": "时间上限内的最大搜索深度，极难战胜。",
     "yourColour": "你执",
     "black": "黑",
     "white": "白",
@@ -222,7 +228,15 @@
     "cta": "与引擎对战试试",
     "glossaryLink": "五子棋术语表",
     "faqLink": "五子棋常见问题",
-    "relatedTitle": "相关规则指南"
+    "relatedTitle": "相关规则指南",
+    "faqTitle": "五子棋常见问题",
+    "faq": [
+      { "q": "五子棋连成几子算赢？", "a": "自己的棋子横、竖、斜任意方向连成 5 子即胜。黑棋先行。" },
+      { "q": "五子棋和四子棋、围棋一样吗？", "a": "不一样。五子棋在 15×15 棋盘上五连即胜；四子棋是 7×6 棋盘竖直落子；围棋比的是围地而非连线。" },
+      { "q": "六连子算赢吗？", "a": "自由规则下算赢——更长的连子仍然获胜，YiBoard 上还能把连珠数设为 6 或 7；连珠规则下黑棋长连为禁手。" },
+      { "q": "新手选多大棋盘合适？", "a": "9×9 节奏快、适合练战术；13×13 兼顾休闲与策略；15×15 是经典比赛尺寸。YiBoard 三种尺寸随时可切换。" },
+      { "q": "YiBoard 免费吗？", "a": "免费、无需注册、无需下载，浏览器打开即可与引擎或好友对战。" }
+    ]
   },
   "about": {
     "title": "关于弈界",
@@ -402,7 +416,17 @@
     "clearSearch": "清除",
     "noResults": "没有找到与「{q}」匹配的文章。换个关键词，或浏览全部文章。",
     "resultsCount": "「{q}」共 {count} 篇",
-    "allPosts": "浏览全部文章"
+    "allPosts": "浏览全部文章",
+    "explore": {
+      "title": "继续探索",
+      "howTo": "玩法说明",
+      "rules": "五子棋规则",
+      "renju": "连珠规则",
+      "glossary": "术语表",
+      "faq": "常见问题",
+      "puzzle": "每日棋题",
+      "games": "棋谱库"
+    }
   },
   "contact": {
     "title": "联系我们",

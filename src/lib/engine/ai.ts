@@ -23,7 +23,7 @@ import {
 } from './board';
 import { SCORE, deltaAfterMove, heuristicAt } from './patterns';
 
-export type Difficulty = 'gentle' | 'steady' | 'sharp';
+export type Difficulty = 'novice' | 'gentle' | 'steady' | 'sharp' | 'master' | 'grandmaster';
 
 export interface MoveResult {
   point: Point;
@@ -42,9 +42,13 @@ interface Profile {
 }
 
 const PROFILES: Record<Difficulty, Profile> = {
+  // 6 档难度：低档靠小深度 + 高随机性（犯人类式小错），高档靠更大宽度/更深搜索。
+  novice: { maxDepth: 1, width: 4, budgetMs: 80, spread: 4 },
   gentle: { maxDepth: 2, width: 6, budgetMs: 120, spread: 3 },
-  steady: { maxDepth: 4, width: 8, budgetMs: 300, spread: 1 },
+  steady: { maxDepth: 4, width: 8, budgetMs: 250, spread: 2 },
   sharp: { maxDepth: 6, width: 10, budgetMs: 450, spread: 1 },
+  master: { maxDepth: 6, width: 16, budgetMs: 500, spread: 1 },
+  grandmaster: { maxDepth: 8, width: 18, budgetMs: 500, spread: 1 },
 };
 
 const WIN_SCORE = 100_000_000;

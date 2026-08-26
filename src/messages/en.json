@@ -127,12 +127,18 @@
     "vsAi": "Against the engine",
     "vsFriend": "Against a friend",
     "difficulty": "Difficulty",
+    "difficultyNovice": "Novice",
+    "difficultyNoviceNote": "Only reacts to immediate threats — a good first opponent.",
     "difficultyGentle": "Gentle",
     "difficultyGentleNote": "Sees two moves ahead and will miss things.",
     "difficultySteady": "Steady",
     "difficultySteadyNote": "Four moves ahead. Punishes loose shapes.",
     "difficultySharp": "Sharp",
     "difficultySharpNote": "Six moves ahead within its time budget.",
+    "difficultyMaster": "Master",
+    "difficultyMasterNote": "Reads deeper with a wider search — punishing to play against.",
+    "difficultyGrandmaster": "Grandmaster",
+    "difficultyGrandmasterNote": "Maximum search depth under the time ceiling. Very hard to beat.",
     "yourColour": "You play",
     "black": "Black",
     "white": "White",
@@ -222,7 +228,15 @@
     "cta": "Try it against the engine",
     "glossaryLink": "Gomoku glossary",
     "faqLink": "Gomoku FAQ",
-    "relatedTitle": "Related rules guides"
+    "relatedTitle": "Related rules guides",
+    "faqTitle": "Gomoku FAQ",
+    "faq": [
+      { "q": "How many stones in a row do you need to win at Gomoku?", "a": "Five stones of your color in a row — horizontally, vertically or diagonally — wins immediately. Black moves first." },
+      { "q": "Is Gomoku the same as Connect 4 or Go?", "a": "No. Gomoku is five-in-a-row on a 15×15 board; Connect 4 drops pieces vertically into a 7×6 grid; Go is about surrounding territory, not alignment." },
+      { "q": "Does six in a row count as a win in Gomoku?", "a": "In freestyle Gomoku yes — a longer line still wins, and on YiBoard you can even set the win count to 6 or 7. Under renju rules Black's overline is forbidden." },
+      { "q": "Which board size is best for a beginner?", "a": "9×9 is fast and great for practising tactics; 13×13 balances casual and strategic play; 15×15 is the classic tournament size. YiBoard lets you switch between all three." },
+      { "q": "Is YiBoard free to play?", "a": "Yes. Free, no account and no download — play against the engine or a friend right in your browser." }
+    ]
   },
   "about": {
     "title": "About YiBoard",
@@ -418,7 +432,17 @@
     "clearSearch": "Clear",
     "noResults": "No posts match \"{q}\". Try another term or browse all posts.",
     "resultsCount": "{count} result(s) for \"{q}\"",
-    "allPosts": "Browse all posts"
+    "allPosts": "Browse all posts",
+    "explore": {
+      "title": "Keep exploring",
+      "howTo": "How to play",
+      "rules": "Gomoku rules",
+      "renju": "Renju rules",
+      "glossary": "Glossary",
+      "faq": "FAQ",
+      "puzzle": "Daily puzzle",
+      "games": "Game library"
+    }
   },
   "contact": {
     "title": "Contact Us",

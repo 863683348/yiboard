@@ -134,12 +134,18 @@
     "vsAi": "Contra el motor",
     "vsFriend": "Contra un amigo",
     "difficulty": "Dificultad",
+    "difficultyNovice": "Novato",
+    "difficultyNoviceNote": "Solo reacciona a amenazas inmediatas — un buen primer rival.",
     "difficultyGentle": "Gentle",
     "difficultyGentleNote": "Ve dos movimientos por delante y puede fallar cosas.",
     "difficultySteady": "Steady",
     "difficultySteadyNote": "Cuatro movimientos por delante. Castiga formas sueltas.",
     "difficultySharp": "Sharp",
     "difficultySharpNote": "Seis movimientos por delante dentro de su presupuesto de tiempo.",
+    "difficultyMaster": "Maestro",
+    "difficultyMasterNote": "Lee más profundo con una búsqueda más amplia: castigador de jugar contra.",
+    "difficultyGrandmaster": "Gran maestro",
+    "difficultyGrandmasterNote": "Profundidad de búsqueda máxima bajo el límite de tiempo. Muy difícil de vencer.",
     "yourColour": "Juegas con",
     "black": "Negras",
     "white": "Blancas",
@@ -222,7 +228,15 @@
     "cta": "Pruébalo contra el motor",
     "glossaryLink": "Glosario de Gomoku",
     "faqLink": "Preguntas frecuentes",
-    "relatedTitle": "Guías de reglas relacionadas"
+    "relatedTitle": "Guías de reglas relacionadas",
+    "faqTitle": "Preguntas frecuentes de Gomoku",
+    "faq": [
+      { "q": "¿Cuántas fichas seguidas necesitas para ganar en Gomoku?", "a": "Cinco fichas de tu color en línea — horizontal, vertical o diagonal — ganan de inmediato. Las negras juegan primero." },
+      { "q": "¿Es Gomoku lo mismo que Connect 4 o Go?", "a": "No. Gomoku es cinco en línea en un tablero de 15×15; Connect 4 deja caer fichas verticalmente en una cuadrícula de 7×6; Go trata de rodear territorio, no de alinear." },
+      { "q": "¿Seis en línea cuenta como victoria en Gomoku?", "a": "En Gomoku estilo libre sí — una línea más larga sigue ganando, y en YiBoard incluso puedes fijar la victoria en 6 o 7. Bajo reglas renju, la línea larga de las negras está prohibida." },
+      { "q": "¿Qué tamaño de tablero es mejor para un principiante?", "a": "El 9×9 es rápido e ideal para practicar táctica; el 13×13 equilibra juego casual y estratégico; el 15×15 es el tamaño clásico de torneo. YiBoard te deja cambiar entre los tres." },
+      { "q": "¿YiBoard es gratis?", "a": "Sí. Gratis, sin cuenta y sin descargas: juega contra el motor o contra un amigo en tu navegador." }
+    ]
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -426,7 +440,17 @@
     "clearSearch": "Limpiar",
     "noResults": "No hay artículos que coincidan con \"{q}\". Prueba otro término o mira todos.",
     "resultsCount": "{count} resultado(s) para \"{q}\"",
-    "allPosts": "Ver todos los artículos"
+    "allPosts": "Ver todos los artículos",
+    "explore": {
+      "title": "Sigue explorando",
+      "howTo": "Cómo se juega",
+      "rules": "Reglas de Gomoku",
+      "renju": "Reglas de Renju",
+      "glossary": "Glosario",
+      "faq": "Preguntas frecuentes",
+      "puzzle": "Puzzle diario",
+      "games": "Biblioteca de partidas"
+    }
   },
   "contact": {
     "title": "Contacto",

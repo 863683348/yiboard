@@ -18,9 +18,12 @@ import { applyMove, boardToArray, createGame, serializeMoves, undo, type GameSta
 import { useAppearance } from '@/components/useAppearance';
 
 const DIFFICULTIES: ReadonlyArray<{ value: Difficulty; label: string; note: string }> = [
+  { value: 'novice', label: 'difficultyNovice', note: 'difficultyNoviceNote' },
   { value: 'gentle', label: 'difficultyGentle', note: 'difficultyGentleNote' },
   { value: 'steady', label: 'difficultySteady', note: 'difficultySteadyNote' },
   { value: 'sharp', label: 'difficultySharp', note: 'difficultySharpNote' },
+  { value: 'master', label: 'difficultyMaster', note: 'difficultyMasterNote' },
+  { value: 'grandmaster', label: 'difficultyGrandmaster', note: 'difficultyGrandmasterNote' },
 ];
 
 const BOARD_SIZES = [9, 13, 15] as const;

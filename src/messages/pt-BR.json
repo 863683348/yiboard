@@ -134,12 +134,18 @@
     "vsAi": "Contra o motor",
     "vsFriend": "Contra um amigo",
     "difficulty": "Dificuldade",
+    "difficultyNovice": "Novato",
+    "difficultyNoviceNote": "Só reage a ameaças imediatas — um bom primeiro adversário.",
     "difficultyGentle": "Gentle",
     "difficultyGentleNote": "Vê duas jogadas à frente e pode errar coisas.",
     "difficultySteady": "Steady",
     "difficultySteadyNote": "Quatro jogadas à frente. Pune formas soltas.",
     "difficultySharp": "Sharp",
     "difficultySharpNote": "Seis jogadas à frente dentro do orçamento de tempo.",
+    "difficultyMaster": "Mestre",
+    "difficultyMasterNote": "Lê mais fundo com uma busca mais ampla — punitivo de enfrentar.",
+    "difficultyGrandmaster": "Grão-mestre",
+    "difficultyGrandmasterNote": "Profundidade máxima de busca sob o limite de tempo. Muito difícil de vencer.",
     "yourColour": "Você joga com",
     "black": "Pretas",
     "white": "Brancas",
@@ -222,7 +228,15 @@
     "cta": "Experimente contra o motor",
     "glossaryLink": "Glossário de Gomoku",
     "faqLink": "Perguntas frequentes",
-    "relatedTitle": "Guias de regras relacionadas"
+    "relatedTitle": "Guias de regras relacionadas",
+    "faqTitle": "Perguntas frequentes sobre Gomoku",
+    "faq": [
+      { "q": "Quantas pedras seguidas você precisa para vencer no Gomoku?", "a": "Cinco pedras da sua cor em linha — horizontal, vertical ou diagonal — vencem na hora. As pretas jogam primeiro." },
+      { "q": "Gomoku é o mesmo que Connect 4 ou Go?", "a": "Não. Gomoku é cinco em linha num tabuleiro de 15×15; Connect 4 solta peças verticalmente numa grade de 7×6; Go é sobre cercar território, não alinhar." },
+      { "q": "Seis em linha conta como vitória no Gomoku?", "a": "No Gomoku estilo livre, sim — uma linha maior ainda vence, e no YiBoard você pode até definir a vitória em 6 ou 7. Nas regras de renju, a linha longa das pretas é proibida." },
+      { "q": "Qual tamanho de tabuleiro é melhor para iniciantes?", "a": "O 9×9 é rápido e ótimo para praticar tática; o 13×13 equilibra jogo casual e estratégico; o 15×15 é o tamanho clássico de torneio. O YiBoard deixa você alternar entre os três." },
+      { "q": "O YiBoard é gratuito?", "a": "Sim. Grátis, sem conta e sem download: jogue contra o motor ou contra um amigo direto no navegador." }
+    ]
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -426,7 +440,17 @@
     "clearSearch": "Limpar",
     "noResults": "Nenhum post corresponde a \"{q}\". Tente outro termo ou veja todos os posts.",
     "resultsCount": "{count} resultado(s) para \"{q}\"",
-    "allPosts": "Ver todos os posts"
+    "allPosts": "Ver todos os posts",
+    "explore": {
+      "title": "Continue explorando",
+      "howTo": "Como jogar",
+      "rules": "Regras do Gomoku",
+      "renju": "Regras de Renju",
+      "glossary": "Glossário",
+      "faq": "Perguntas frequentes",
+      "puzzle": "Puzzle diário",
+      "games": "Biblioteca de partidas"
+    }
   },
   "contact": {
     "title": "Fale conosco",
