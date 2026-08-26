@@ -2804,6 +2804,89 @@ export const POSTS: BlogPost[] = [
         { "type": "cta", "text": "Start playing and climb the leaderboard →", "href": "https://yiboardgame.com" }
       ]
     }
+  },
+  {
+    "slug": "gomoku-board-sizes-and-win-counts",
+    "date": "2026-08-26",
+    "title": {
+      "zh": "五子棋棋盘尺寸与连珠数：9×9、13×13、15×15 与 5/6/7 连珠",
+      "en": "Gomoku Board Sizes and Win Counts: 9×9, 13×13, 15×15 and 5/6/7-in-a-Row"
+    },
+    "description": {
+      "zh": "五子棋不止 15×15 和五连珠。棋盘尺寸如何改变对局节奏、9×9 与 13×13 是什么体验、6 连珠与 7 连珠变体怎么玩——YiBoard 全部免费，无需注册。",
+      "en": "Gomoku is more than 15×15 and five-in-a-row. How board size changes the game, what 9×9 and 13×13 feel like, and how 6- and 7-in-a-row variants work — all free and no sign-up on YiBoard."
+    },
+    "keywords": ["gomoku board size", "9x9 gomoku", "13x13 gomoku", "6 in a row gomoku", "freestyle gomoku rules", "gomoku win count"],
+    "content": {
+      "zh": [
+        "五子棋的棋盘尺寸和连珠数不是摆设：9×9、13×13、15×15 三种棋盘配合 5/6/7 连珠，会带来完全不同的对局体验。过去线上五子棋几乎只有 15×15 加五连珠一种玩法，YiBoard 现在把[棋盘尺寸](/play)和连珠数开放给你自由选择——不用注册，打开就能换。",
+        { "type": "h2", "text": "为什么棋盘尺寸重要" },
+        "棋盘越大，局面的可能性越多，先手的优势越小。9×9 上黑棋的先行优势非常明显，一局常常二三十手就结束；15×15 是经典尺寸，给攻防转换留足了空间。简单说：小棋盘练战术，大棋盘练战略。",
+        { "type": "h2", "text": "三种尺寸怎么选" },
+        "不同尺寸适合不同节奏，YiBoard 的[对战页](/play)可以随时切换：",
+        { "type": "ul", "items": [
+          "9×9：快局、战术密集，适合练习杀棋和碎片时间对战，先手优势最明显",
+          "13×13：休闲与策略的平衡点，多数线上休闲局的选择",
+          "15×15：锦标赛与经典对局的尺寸，先手优势最温和，适合深度思考"
+        ]},
+        { "type": "h2", "text": "连珠数 5/6/7：自由规则" },
+        "标准五子棋是五连珠。把连珠数调成 6 或 7，就是自由规则（freestyle）的变体：先把任意连续 6 子（或 7 子）连成一线者获胜。因为需要的连线更长，对局时间拉长，先手优势被进一步削弱，长连也不会被误判为输。想逐条看懂自由规则与禁手的区别，可以看[五子棋规则](/gomoku-rules)和[连珠规则](/renju-rules)。",
+        { "type": "h2", "text": "在 YiBoard 怎么切换" },
+        "打开[对战页](/play)，在棋盘旁选择 9×9 / 13×13 / 15×15 和连珠 5/6/7，切换即开新局；和好友对战可以在开房前选定同一变体。分享的对局链接与回放也会保留这套规则，[邀请好友](/blog/invite-friend-to-match)来一局同尺寸的对战吧。",
+        { "type": "h2", "text": "FAQ" },
+        { "type": "faq", "items": [
+          { "q": "9×9 棋盘先手优势大吗？", "a": "大。黑棋更容易速攻，适合短局；想练防守和战略，可以选更大的棋盘。" },
+          { "q": "6 连珠和 7 连珠有什么区别？", "a": "需要更长的连线，对局更久、先手优势更小，适合不想太快结束的玩家。" },
+          { "q": "变体对局会被记录吗？", "a": "会。战绩、分享链接和回放都保留你选择的棋盘与连珠规则。" },
+          { "q": "需要注册吗？", "a": "不需要。YiBoard 无需注册，打开即玩。" }
+        ]},
+        { "type": "cta", "text": "免费体验 9×9 / 13×13 / 15×15 五子棋 →", "href": "https://yiboardgame.com/play" }
+      ],
+      "en": [
+        "Board size and win count are not decoration in Gomoku: 9×9, 13×13 and 15×15 boards paired with 5-, 6- or 7-in-a-row produce genuinely different games. Online Gomoku has long meant one thing — 15×15 and five-in-a-row. YiBoard now lets you pick your own [board size](/play) and win count, free and with no sign-up.",
+        { "type": "h2", "text": "Why Board Size Matters" },
+        "The bigger the board, the more possibilities and the smaller Black's first-move advantage. On a 9×9 board Black's initiative is pronounced and games often end in twenty to thirty moves; 15×15 is the classic size that gives attack and defence room to breathe. In short: small boards train tactics, large boards train strategy.",
+        { "type": "h2", "text": "Which Size Should You Pick" },
+        "Different sizes suit different rhythms, and you can switch any time on the [play page](/play):",
+        { "type": "ul", "items": [
+          "9×9: fast, tactical games — great for quick rounds and practising kill shots; the first-move edge is strongest here",
+          "13×13: a balanced middle ground and a natural pick for casual online play",
+          "15×15: the classic tournament size with the mildest first-move edge — ideal for deep strategy"
+        ]},
+        { "type": "h2", "text": "Win Counts 5, 6 and 7: Freestyle Gomoku" },
+        "Standard Gomoku is five-in-a-row. Set the win count to 6 or 7 and you get a freestyle variant: the first player to line up that many stones in a row wins. Because the line is longer, games run longer, the first-move advantage shrinks further, and an overline never costs you the game. For the difference between freestyle and renju rule sets, see our [gomoku rules](/gomoku-rules) and [renju rules](/renju-rules) pages.",
+        { "type": "h2", "text": "Switching on YiBoard" },
+        "Open the [play page](/play), choose 9×9 / 13×13 / 15×15 next to the board and a win count of 5 / 6 / 7 — switching starts a fresh game. When you play a friend you pick the same variant before the room opens, and shared links and replays keep that variant too. [Invite a friend](/blog/invite-friend-to-match) and try a match at your chosen size.",
+        { "type": "h2", "text": "FAQ" },
+        { "type": "faq", "items": [
+          { "q": "Is the first-move advantage big on a 9×9 board?", "a": "Yes. Black can attack fast, which suits short games; pick a bigger board if you want to train defence and strategy." },
+          { "q": "What is the difference between 6-in-a-row and 7-in-a-row?", "a": "A longer line to build means longer games and an even smaller first-move edge — ideal if you don't want the match to end too quickly." },
+          { "q": "Are variant games recorded?", "a": "Yes. Results, shared links and replays all keep the board size and win count you chose." },
+          { "q": "Do I need an account?", "a": "No. YiBoard needs no sign-up — open the page and play." }
+        ]},
+        { "type": "cta", "text": "Try 9×9 / 13×13 / 15×15 Gomoku for free →", "href": "https://yiboardgame.com/play" }
+      ]
+    },
+    "howTo": {
+      "zh": {
+        "name": "如何在 YiBoard 切换棋盘尺寸与连珠数",
+        "steps": [
+          { "name": "打开对战页", "text": "访问 yiboardgame.com/play。" },
+          { "name": "选择棋盘尺寸", "text": "点击棋盘旁的 9×9、13×13 或 15×15。" },
+          { "name": "选择连珠数", "text": "点击 5、6 或 7，决定需要连成几子获胜。" },
+          { "name": "开始对局", "text": "切换会自动开始新对局，无需注册。" }
+        ]
+      },
+      "en": {
+        "name": "How to change board size and win count on YiBoard",
+        "steps": [
+          { "name": "Open the play page", "text": "Go to yiboardgame.com/play." },
+          { "name": "Choose a board size", "text": "Tap 9×9, 13×13 or 15×15 next to the board." },
+          { "name": "Choose a win count", "text": "Tap 5, 6 or 7 for how many stones in a row you need to win." },
+          { "name": "Start playing", "text": "Switching starts a fresh game automatically — no account needed." }
+        ]
+      }
+    }
   }
 ];
 
