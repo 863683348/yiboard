@@ -25,22 +25,39 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
     { title: 'tip3Title', body: 'tip3Body' },
   ] as const;
 
+  const faqItems = Array.from({ length: 5 }, (_, i) => ({
+    q: t(`faq.${i}.q`),
+    a: t(`faq.${i}.a`),
+  }));
+
   const howToSchema = {
     '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'How to Play Gomoku',
-    description: 'Learn Gomoku rules in 2 minutes and master key opening strategies.',
-    totalTime: 'PT2M',
-    supply: [
-      { '@type': 'HowToSupply', name: 'Gomoku board (15x15)' },
-      { '@type': 'HowToSupply', name: 'Black and white stones' },
-    ],
-    step: [
-      { '@type': 'HowToStep', name: 'Set up the board', text: 'Place the 15x15 grid with black and white stones. Black moves first.' },
-      { '@type': 'HowToStep', name: 'Take turns placing stones', text: 'Players alternate, placing one stone on an intersection per turn.' },
-      { '@type': 'HowToStep', name: 'Goal: five in a row', text: 'First player to align five stones of their color horizontally, vertically, or diagonally wins immediately.' },
-      { '@type': 'HowToStep', name: 'Master double threats', text: 'Create two open threes that share a stone — your opponent can only block one.' },
-      { '@type': 'HowToStep', name: 'Block early and aggressively', text: 'Respond to open twos in strong directions, not just open threes.' },
+    '@graph': [
+      {
+        '@type': 'HowTo',
+        name: 'How to Play Gomoku',
+        description: 'Learn Gomoku rules in 2 minutes and master key opening strategies.',
+        totalTime: 'PT2M',
+        supply: [
+          { '@type': 'HowToSupply', name: 'Gomoku board (15x15)' },
+          { '@type': 'HowToSupply', name: 'Black and white stones' },
+        ],
+        step: [
+          { '@type': 'HowToStep', name: 'Set up the board', text: 'Place the 15x15 grid with black and white stones. Black moves first.' },
+          { '@type': 'HowToStep', name: 'Take turns placing stones', text: 'Players alternate, placing one stone on an intersection per turn.' },
+          { '@type': 'HowToStep', name: 'Goal: five in a row', text: 'First player to align five stones of their color horizontally, vertically, or diagonally wins immediately.' },
+          { '@type': 'HowToStep', name: 'Master double threats', text: 'Create two open threes that share a stone — your opponent can only block one.' },
+          { '@type': 'HowToStep', name: 'Block early and aggressively', text: 'Respond to open twos in strong directions, not just open threes.' },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((it) => ({
+          '@type': 'Question',
+          name: it.q,
+          acceptedAnswer: { '@type': 'Answer', text: it.a },
+        })),
+      },
     ],
   };
 
@@ -167,6 +184,27 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
             <RelatedLink href="/gomoku-rules" label={t('nav.gomokuRules')} />
             <RelatedLink href="/renju-rules" label={t('nav.renjuRules')} />
             <RelatedLink href="/gomoku-vs-go" label={t('nav.gomokuVsGo')} />
+          </div>
+        </section>
+
+        {/* ---------------- FAQ ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead
+            icon={<Lightbulb size={18} weight="bold" aria-hidden />}
+            title={t('faqTitle')}
+          />
+          <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+            {faqItems.map((it, i) => (
+              <details
+                key={i}
+                style={{ border: '1px solid var(--border-soft)', borderRadius: 8, padding: 'var(--space-3)' }}
+              >
+                <summary style={{ fontWeight: 600, cursor: 'pointer' }}>{it.q}</summary>
+                <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', lineHeight: 1.6, color: 'var(--fg-2)' }}>
+                  {it.a}
+                </p>
+              </details>
+            ))}
           </div>
         </section>
 

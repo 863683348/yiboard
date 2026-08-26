@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { getPostBySlug, getPostSlugs, POSTS, type PostBlock, type BlogPost } from '@/lib/blog/posts';
@@ -153,6 +153,7 @@ function Block({ block, lang }: { block: PostBlock; lang: 'zh' | 'en' }) {
 export default async function BlogPostPage(props: { params: Promise<Params> }) {
   const { locale, slug } = await props.params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'blog' });
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
@@ -271,6 +272,39 @@ export default async function BlogPostPage(props: { params: Promise<Params> }) {
             </section>
           );
         })()}
+
+        {/* 信息页导航：把链接权重从博客正文导向规则/玩法/术语/FAQ/棋题/棋谱等信息页（打破"全链 /play"的单点内链结构） */}
+        <section style={{ marginTop: 'var(--space-10)' }}>
+          <h2 className="yb-h3">{t('explore.title')}</h2>
+          <ul style={{ marginTop: 'var(--space-4)', display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)', listStyle: 'none', padding: 0 }}>
+            {[
+              { href: '/how-to', label: t('explore.howTo') },
+              { href: '/gomoku-rules', label: t('explore.rules') },
+              { href: '/renju-rules', label: t('explore.renju') },
+              { href: '/glossary', label: t('explore.glossary') },
+              { href: '/faq', label: t('explore.faq') },
+              { href: '/puzzle', label: t('explore.puzzle') },
+              { href: '/games', label: t('explore.games') },
+            ].map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  style={{
+                    display: 'inline-block',
+                    padding: 'var(--space-2) var(--space-3)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 999,
+                    fontSize: 'var(--text-sm)',
+                    textDecoration: 'none',
+                    color: 'var(--fg)',
+                  }}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <div style={{ marginTop: 'var(--space-10)', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--border-soft)' }}>
           <p style={{ fontSize: 'var(--text-sm)' }}>
