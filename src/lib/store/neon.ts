@@ -38,6 +38,9 @@ function rowToRoom(row: typeof roomsTable.$inferSelect): RoomRecord {
     hostId: row.hostId,
     guestId: row.guestId,
     status: row.status as RoomRecord['status'],
+    // 旧数据缺省 15×15 / 五连
+    size: row.size ?? 15,
+    winCount: row.winCount ?? 5,
     moves: row.moves ?? '',
     result: (row.result ?? null) as GameResult | null,
     createdAt: row.createdAt.toISOString(),
@@ -123,6 +126,26 @@ async function pruneMatchQueue(db: NeonDatabase): Promise<void> {
     delete from match_queue
     where last_seen_at < now() - make_interval(secs => ${QUEUE_TTL_SECONDS})
   `);
+}
+
+/**
+ * rooms 表加变体列（棋盘尺寸/连珠数）。rooms 是既有表，drizzle push 有风险，
+ * 用幂等 ALTER 补齐；进程内只执行一次（Promise 缓存）。
+ */
+let roomVariantsReady: Promise<void> | null = null;
+function ensureRoomVariants(db: NeonDatabase): Promise<void> {
+  roomVariantsReady ??= (async () => {
+    await db.execute(
+      sql`alter table rooms add column if not exists size integer not null default 15`,
+    );
+    await db.execute(
+      sql`alter table rooms add column if not exists win_count integer not null default 5`,
+    );
+  })().catch((error) => {
+    roomVariantsReady = null; // 失败允许下次重试，别把错误永久缓存住
+    throw error;
+  });
+  return roomVariantsReady;
 }
 
 /** 当前真正在等待（未配对）的人数 */
@@ -426,7 +449,8 @@ export function createNeonStore(connectionString: string): Store {
       return rows.map(rowToShareCard);
     },
 
-    async createRoom({ hostId }) {
+    async createRoom({ hostId, size = 15, winCount = 5 }) {
+      await ensureRoomVariants(db);
       let code = newRoomCode();
       // 碰撞重试：唯一索引兜底，极小概率
       for (let attempt = 0; attempt < 5; attempt += 1) {
@@ -436,7 +460,7 @@ export function createNeonStore(connectionString: string): Store {
       }
       const row = (await db
         .insert(roomsTable)
-        .values({ code, hostId, status: 'waiting', moves: '' })
+        .values({ code, hostId, status: 'waiting', moves: '', size, winCount })
         .returning())[0]!;
       return rowToRoom(row);
     },

@@ -183,7 +183,10 @@
     "hint": "Dica",
     "hintLoading": "Pensando…",
     "hintDone": "Sugestão: {notation}",
-    "hintClear": "Limpar dica"
+    "hintClear": "Limpar dica",
+    "boardSize": "Tamanho do tabuleiro",
+    "winCount": "Vitória",
+    "variantNote": "Trocar o tamanho ou a vitória inicia uma nova partida."
   },
   "rankings": {
     "title": "Ranking de Gomoku – Do 9º Grau ao 9º Dan",

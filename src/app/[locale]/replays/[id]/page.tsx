@@ -118,7 +118,13 @@ export default async function ReplayPage(props: {
             </p>
           </header>
 
-          <ShareReplay moves={payload.moves} result={payload.result} ariaLabel={t('title')} />
+          <ShareReplay
+            moves={payload.moves}
+            result={payload.result}
+            ariaLabel={t('title')}
+            size={payload.size}
+            winCount={payload.winCount}
+          />
 
           <div style={{ display: 'flex', gap: 'var(--space-3)', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/play" className="yb-btn yb-btn-primary">

@@ -8,7 +8,16 @@
  * 的长连接时，这一层逻辑原样复用，只替换调用方（ADR-006）。
  */
 
-import { BLACK, WHITE, fromNotation, toNotation, type Player, type Point } from './engine/board';
+import {
+  BLACK,
+  BOARD_SIZE,
+  DEFAULT_WIN_COUNT,
+  WHITE,
+  fromNotation,
+  toNotation,
+  type Player,
+  type Point,
+} from './engine/board';
 import { applyMove, createGame, type GameState } from './engine/game';
 import { getStore } from './store';
 import type { GameResult, RoomRecord } from './store/types';
@@ -20,6 +29,10 @@ export interface RoomView {
   status: RoomRecord['status'];
   /** 坐标记号序列，客户端据此重放 */
   moves: string[];
+  /** 棋盘边长（9/13/15） */
+  size: number;
+  /** 连珠数（5/6/7） */
+  winCount: number;
   /** 请求者执什么颜色；不是这房间的人则为 null（只能旁观） */
   yourSide: Side | null;
   turn: Side;
@@ -37,18 +50,18 @@ export type RoomError =
   | 'ILLEGAL_MOVE'
   | 'WAITING_FOR_OPPONENT';
 
-export function parseMoves(serialized: string): Point[] {
+export function parseMoves(serialized: string, size: number = BOARD_SIZE): Point[] {
   if (!serialized) return [];
   return serialized
     .split(',')
-    .map((token) => fromNotation(token.trim()))
+    .map((token) => fromNotation(token.trim(), size))
     .filter((point): point is Point => point !== null);
 }
 
 /** 从棋谱重放出权威盘面。房间里不缓存棋盘，只存棋谱——重放成本可以忽略。 */
 function replayRoom(room: RoomRecord): GameState {
-  let state = createGame(BLACK);
-  for (const move of parseMoves(room.moves)) {
+  let state = createGame(BLACK, room.size ?? BOARD_SIZE, room.winCount ?? DEFAULT_WIN_COUNT);
+  for (const move of parseMoves(room.moves, room.size ?? BOARD_SIZE)) {
     state = applyMove(state, move.x, move.y) ?? state;
   }
   return state;
@@ -70,6 +83,8 @@ export function toView(room: RoomRecord, userId: string): RoomView {
     code: room.code,
     status: room.status,
     moves,
+    size: room.size ?? BOARD_SIZE,
+    winCount: room.winCount ?? DEFAULT_WIN_COUNT,
     yourSide: sideOf(room, userId),
     turn: moves.length % 2 === 0 ? 'black' : 'white',
     result: room.result,
@@ -121,7 +136,7 @@ export async function playRoomMove(
   const next = applyMove(state, x, y);
   if (!next) return { ok: false, error: 'ILLEGAL_MOVE' };
 
-  const moves = room.moves ? `${room.moves},${toNotation(x, y)}` : toNotation(x, y);
+  const moves = room.moves ? `${room.moves},${toNotation(x, y, room.size ?? BOARD_SIZE)}` : toNotation(x, y, room.size ?? BOARD_SIZE);
   let result: GameResult | null = null;
   if (next.status === 'won') result = next.winner === BLACK ? 'black' : 'white';
   else if (next.status === 'draw') result = 'draw';

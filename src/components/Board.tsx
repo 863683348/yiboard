@@ -1,20 +1,28 @@
 /**
  * 棋盘 —— 纯 SVG，服务端可直出（ADR-010：首屏静态 SVG 先出，引擎懒加载）。
  * 所有颜色走 --board-* / --stone-* Token，组件内零裸 hex。
+ * 支持可变尺寸（9/13/15/19）：边长从 cells 长度反推，或由 size prop 显式指定（默认 15）。
  */
 
-import { BOARD_SIZE, toNotation, type Point } from '@/lib/engine/board';
+import { toNotation, type Point } from '@/lib/engine/board';
 
 const STEP = 40;
 const PAD = 30;
-const VIEW = (BOARD_SIZE - 1) * STEP + PAD * 2;
-const STONE_R = (STEP * 0.86) / 2;
-const STAR_INDEXES = [3, 7, 11];
+
+/** 星位 / 天元：按尺寸给标准点位，奇数边长的中心天元始终在。 */
+function starIndexesFor(size: number): number[] {
+  if (size === 9) return [2, 4, 6];
+  if (size === 13) return [3, 6, 9];
+  if (size === 15) return [3, 7, 11];
+  return [Math.floor(size / 2)];
+}
 
 export type BoardTheme = 'ink' | 'kaya' | 'slate';
 
 export interface BoardProps {
   cells: readonly number[];
+  /** 棋盘边长；缺省从 cells.length 反推（空盘默认 15） */
+  size?: number;
   lastMove?: Point | null;
   winningLine?: readonly Point[] | null;
   theme?: BoardTheme;
@@ -31,12 +39,9 @@ function cx(i: number): number {
   return PAD + i * STEP;
 }
 
-function isStar(x: number, y: number): boolean {
-  return STAR_INDEXES.includes(x) && STAR_INDEXES.includes(y);
-}
-
 export function Board({
   cells,
+  size: sizeProp,
   lastMove = null,
   winningLine = null,
   hintMove = null,
@@ -46,8 +51,15 @@ export function Board({
   ariaLabel,
   className,
 }: BoardProps) {
+  const size =
+    sizeProp ?? (cells.length > 0 ? Math.round(Math.sqrt(cells.length)) : 15);
+  const VIEW = (size - 1) * STEP + PAD * 2;
+  const STONE_R = (STEP * 0.86) / 2;
+  const STAR_INDEXES = starIndexesFor(size);
   const interactive = Boolean(onPlay) && !disabled;
-  const lines = Array.from({ length: BOARD_SIZE }, (_, i) => i);
+  const lines = Array.from({ length: size }, (_, i) => i);
+  const isStar = (x: number, y: number) =>
+    STAR_INDEXES.includes(x) && STAR_INDEXES.includes(y);
 
   return (
     <div
@@ -71,13 +83,13 @@ export function Board({
         aria-label={ariaLabel}
         style={{ display: 'block', touchAction: 'manipulation' }}
       >
-        {/* 格律：横竖各 15 条 1px 线 */}
+        {/* 格律：横竖各 size 条 1px 线 */}
         <g stroke="var(--board-line)" strokeWidth={1.2} shapeRendering="crispEdges">
           {lines.map((i) => (
-            <line key={`h${i}`} x1={cx(0)} y1={cx(i)} x2={cx(BOARD_SIZE - 1)} y2={cx(i)} />
+            <line key={`h${i}`} x1={cx(0)} y1={cx(i)} x2={cx(size - 1)} y2={cx(i)} />
           ))}
           {lines.map((i) => (
-            <line key={`v${i}`} x1={cx(i)} y1={cx(0)} x2={cx(i)} y2={cx(BOARD_SIZE - 1)} />
+            <line key={`v${i}`} x1={cx(i)} y1={cx(0)} x2={cx(i)} y2={cx(size - 1)} />
           ))}
         </g>
 
@@ -85,8 +97,8 @@ export function Board({
         <rect
           x={cx(0)}
           y={cx(0)}
-          width={(BOARD_SIZE - 1) * STEP}
-          height={(BOARD_SIZE - 1) * STEP}
+          width={(size - 1) * STEP}
+          height={(size - 1) * STEP}
           fill="none"
           stroke="var(--board-edge)"
           strokeWidth={2}
@@ -106,8 +118,8 @@ export function Board({
         <g>
           {cells.map((cell, i) => {
             if (cell === 0) return null;
-            const x = i % BOARD_SIZE;
-            const y = Math.floor(i / BOARD_SIZE);
+            const x = i % size;
+            const y = Math.floor(i / size);
             const black = cell === 1;
             const isLast = lastMove?.x === x && lastMove?.y === y;
 
@@ -147,7 +159,7 @@ export function Board({
         {/* 引擎建议落子：青色虚线环（hint）。仅空点显示，让用户知道该下哪。 */}
         {hintMove ? (
           (() => {
-            const i = hintMove.y * BOARD_SIZE + hintMove.x;
+            const i = hintMove.y * size + hintMove.x;
             if (cells[i] !== 0) return null;
             return (
               <circle
@@ -163,7 +175,7 @@ export function Board({
           })()
         ) : null}
 
-        {/* 五连：朱砂实线贯穿 */}
+        {/* 连珠线：朱砂实线贯穿 */}
         {winningLine && winningLine.length >= 2 ? (
           <line
             x1={cx(winningLine[0]!.x)}
@@ -182,8 +194,8 @@ export function Board({
           <g>
             {cells.map((cell, i) => {
               if (cell !== 0) return null;
-              const x = i % BOARD_SIZE;
-              const y = Math.floor(i / BOARD_SIZE);
+              const x = i % size;
+              const y = Math.floor(i / size);
               return (
                 <rect
                   key={`t${i}`}
@@ -194,7 +206,7 @@ export function Board({
                   fill="transparent"
                   role="button"
                   tabIndex={0}
-                  aria-label={toNotation(x, y)}
+                  aria-label={toNotation(x, y, size)}
                   style={{ cursor: 'pointer' }}
                   onClick={() => onPlay?.(x, y)}
                   onKeyDown={(event) => {

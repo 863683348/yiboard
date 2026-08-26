@@ -3,11 +3,13 @@
  *
  * 硬约束（Spec §9 AC-03）：单步思考 < 500ms。
  * 手段：候选着法收缩（只看已有棋子 2 格邻域）+ 启发排序 + 时间预算熔断。
+ * 支持可变棋盘尺寸（9/13/15）与连珠数（5/6/7）：中心/候选池/终局判定均读实际配置。
  */
 
 import {
-  BOARD_SIZE,
+  DEFAULT_WIN_COUNT,
   at,
+  boardSize,
   findWinningLine,
   hasNeighbor,
   isFull,
@@ -46,7 +48,6 @@ const PROFILES: Record<Difficulty, Profile> = {
 };
 
 const WIN_SCORE = 100_000_000;
-const CENTER = Math.floor(BOARD_SIZE / 2);
 
 interface SearchContext {
   board: Board;
@@ -55,15 +56,17 @@ interface SearchContext {
   width: number;
   deadline: number;
   maxDepth: number;
+  winCount: number;
   nodes: number;
   timedOut: boolean;
 }
 
 function candidates(board: Board, side: Player, width: number): Point[] {
+  const size = boardSize(board);
   const scored: Array<{ point: Point; value: number }> = [];
 
-  for (let y = 0; y < BOARD_SIZE; y += 1) {
-    for (let x = 0; x < BOARD_SIZE; x += 1) {
+  for (let y = 0; y < size; y += 1) {
+    for (let x = 0; x < size; x += 1) {
       if (at(board, x, y) !== 0) continue;
       if (!hasNeighbor(board, x, y, 2)) continue;
       scored.push({ point: { x, y }, value: heuristicAt(board, x, y, side) });
@@ -102,7 +105,7 @@ function search(
     ctx.nodes += 1;
 
     let value: number;
-    if (findWinningLine(ctx.board, move.x, move.y)) {
+    if (findWinningLine(ctx.board, move.x, move.y, ctx.winCount)) {
       const ply = ctx.maxDepth - depth;
       value = isMax ? WIN_SCORE - ply : -WIN_SCORE + ply;
     } else {
@@ -126,13 +129,14 @@ function search(
   return best;
 }
 
-/** 战术速判：一步成五 / 必须封堵对手成五。命中直接返回，不进搜索。 */
-function tacticalMove(board: Board, player: Player): Point | null {
+/** 战术速判：一步成连（winCount）/ 必须封堵对手成连。命中直接返回，不进搜索。 */
+function tacticalMove(board: Board, player: Player, winCount: number): Point | null {
   const foe = opponent(player);
+  const size = boardSize(board);
   const pool: Point[] = [];
 
-  for (let y = 0; y < BOARD_SIZE; y += 1) {
-    for (let x = 0; x < BOARD_SIZE; x += 1) {
+  for (let y = 0; y < size; y += 1) {
+    for (let x = 0; x < size; x += 1) {
       if (at(board, x, y) !== 0) continue;
       if (!hasNeighbor(board, x, y, 2)) continue;
       pool.push({ x, y });
@@ -141,14 +145,14 @@ function tacticalMove(board: Board, player: Player): Point | null {
 
   for (const point of pool) {
     place(board, point.x, point.y, player);
-    const win = findWinningLine(board, point.x, point.y);
+    const win = findWinningLine(board, point.x, point.y, winCount);
     unplace(board, point.x, point.y);
     if (win) return point;
   }
 
   for (const point of pool) {
     place(board, point.x, point.y, foe);
-    const lose = findWinningLine(board, point.x, point.y);
+    const lose = findWinningLine(board, point.x, point.y, winCount);
     unplace(board, point.x, point.y);
     if (lose) return point;
   }
@@ -160,15 +164,17 @@ export function chooseMove(
   board: Board,
   player: Player,
   difficulty: Difficulty = 'steady',
+  winCount: number = DEFAULT_WIN_COUNT,
 ): MoveResult | null {
   const startedAt = Date.now();
   const profile = PROFILES[difficulty];
+  const center = Math.floor(boardSize(board) / 2);
 
   if (isFull(board)) return null;
 
   if (stoneCount(board) === 0) {
     return {
-      point: { x: CENTER, y: CENTER },
+      point: { x: center, y: center },
       score: 0,
       depth: 0,
       nodes: 0,
@@ -176,7 +182,7 @@ export function chooseMove(
     };
   }
 
-  const tactical = tacticalMove(board, player);
+  const tactical = tacticalMove(board, player, winCount);
   if (tactical) {
     return {
       point: tactical,
@@ -194,13 +200,14 @@ export function chooseMove(
     width: profile.width,
     deadline: startedAt + profile.budgetMs,
     maxDepth: profile.maxDepth,
+    winCount,
     nodes: 0,
     timedOut: false,
   };
 
   const roots = candidates(board, player, profile.width);
   if (roots.length === 0) {
-    return { point: { x: CENTER, y: CENTER }, score: 0, depth: 0, nodes: 0, elapsedMs: 0 };
+    return { point: { x: center, y: center }, score: 0, depth: 0, nodes: 0, elapsedMs: 0 };
   }
 
   let ranked: Array<{ point: Point; score: number }> = roots.map((point) => ({ point, score: 0 }));
@@ -218,7 +225,7 @@ export function chooseMove(
       ctx.nodes += 1;
 
       let value: number;
-      if (findWinningLine(board, point.x, point.y)) {
+      if (findWinningLine(board, point.x, point.y, winCount)) {
         value = WIN_SCORE;
       } else {
         value = search(ctx, depth - 1, alpha, Infinity, false, delta);

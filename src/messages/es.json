@@ -183,7 +183,10 @@
     "hint": "Pista",
     "hintLoading": "Pensando…",
     "hintDone": "Sugerencia: {notation}",
-    "hintClear": "Quitar pista"
+    "hintClear": "Quitar pista",
+    "boardSize": "Tamaño del tablero",
+    "winCount": "Victoria",
+    "variantNote": "Cambiar el tamaño o la victoria inicia una partida nueva."
   },
   "rankings": {
     "title": "Tabla de Clasificación de Gomoku – Del Noveno Grado al Noveno Dan",

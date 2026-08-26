@@ -240,7 +240,7 @@ export const memoryStore: Store = {
       .slice(0, limit);
   },
 
-  async createRoom({ hostId }) {
+  async createRoom({ hostId, size = 15, winCount = 5 }) {
     let code = newRoomCode();
     while (rooms.has(code)) code = newRoomCode();
     const room: RoomRecord = {
@@ -250,6 +250,8 @@ export const memoryStore: Store = {
       hostId,
       guestId: null,
       status: 'waiting',
+      size,
+      winCount,
       moves: '',
       result: null,
       createdAt: now(),

@@ -6,7 +6,14 @@ import { ArrowCounterClockwise, ArrowsClockwise, Flag, Lightbulb, Robot, ShareNe
 
 import { Board } from '@/components/Board';
 import type { Difficulty } from '@/lib/engine/ai';
-import { BLACK, WHITE, toNotation, type Player } from '@/lib/engine/board';
+import {
+  BLACK,
+  BOARD_SIZE,
+  DEFAULT_WIN_COUNT,
+  WHITE,
+  toNotation,
+  type Player,
+} from '@/lib/engine/board';
 import { applyMove, boardToArray, createGame, serializeMoves, undo, type GameState } from '@/lib/engine/game';
 import { useAppearance } from '@/components/useAppearance';
 
@@ -16,12 +23,19 @@ const DIFFICULTIES: ReadonlyArray<{ value: Difficulty; label: string; note: stri
   { value: 'sharp', label: 'difficultySharp', note: 'difficultySharpNote' },
 ];
 
+const BOARD_SIZES = [9, 13, 15] as const;
+const WIN_COUNTS = [5, 6, 7] as const;
+
 export interface GomokuGameProps {
   /** hero 只给棋盘 + 一行状态；full 带完整控制面板 */
   variant?: 'hero' | 'full';
   initialDifficulty?: Difficulty;
   /** 双 AI 观战：引擎替双方走子，终局自动存回放（/replays/[id]） */
   autoMode?: boolean;
+  /** 初始棋盘尺寸（9/13/15，默认 15） */
+  initialSize?: number;
+  /** 初始连珠数（5/6/7，默认 5） */
+  initialWinCount?: number;
 }
 
 /** 单次引擎思考的元数据（AI 自己产出的"思考过程"：搜索深度 / 评估节点数 / 耗时） */
@@ -36,13 +50,17 @@ export function GomokuGame({
   variant = 'full',
   initialDifficulty = 'steady',
   autoMode = false,
+  initialSize = BOARD_SIZE,
+  initialWinCount = DEFAULT_WIN_COUNT,
 }: GomokuGameProps) {
   const t = useTranslations('play');
   const locale = useLocale();
   const { board } = useAppearance();
   const [difficulty, setDifficulty] = useState<Difficulty>(initialDifficulty);
   const [playerColor, setPlayerColor] = useState<Player>(BLACK);
-  const [game, setGame] = useState<GameState>(() => createGame(BLACK));
+  const [size, setSize] = useState<number>(initialSize);
+  const [winCount, setWinCount] = useState<number>(initialWinCount);
+  const [game, setGame] = useState<GameState>(() => createGame(BLACK, initialSize, initialWinCount));
   const [thinking, setThinking] = useState(false);
   const [thinkMs, setThinkMs] = useState<number | null>(null);
   const [lastThink, setLastThink] = useState<{ depth: number; nodes: number; ms: number } | null>(null);
@@ -76,7 +94,7 @@ export function GomokuGame({
       void import('@/lib/engine/ai').then(({ chooseMove }) => {
         if (cancelled) return;
         const side = game.turn;
-        const result = chooseMove(game.board, side, difficulty);
+        const result = chooseMove(game.board, side, difficulty, game.winCount);
         setThinking(false);
         if (!result) return;
         setThinkMs(result.elapsedMs);
@@ -107,7 +125,7 @@ export function GomokuGame({
         difficulty,
         playerColor: playerColor === BLACK ? 'black' : 'white',
         result: game.status === 'draw' ? 'draw' : game.winner === BLACK ? 'black' : 'white',
-        moves: serializeMoves(game.moves),
+        moves: serializeMoves(game.moves, game.size),
         durationMs: Date.now() - (startedAt.current ?? Date.now()),
       }),
     }).catch(() => {
@@ -125,7 +143,7 @@ export function GomokuGame({
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
         result: game.status === 'draw' ? 'draw' : game.winner === BLACK ? 'black' : 'white',
-        moves: serializeMoves(game.moves),
+        moves: serializeMoves(game.moves, game.size),
         blackDifficulty: difficulty,
         whiteDifficulty: difficulty,
         locale,
@@ -141,8 +159,8 @@ export function GomokuGame({
   }, [autoMode, game, difficulty, locale]);
 
   const reset = useCallback(
-    (color: Player = playerColor) => {
-      setGame(createGame(BLACK));
+    (color: Player = playerColor, boardSize: number = size, win: number = winCount) => {
+      setGame(createGame(BLACK, boardSize, win));
       setPlayerColor(color);
       setThinkMs(null);
       setLastThink(null);
@@ -157,7 +175,18 @@ export function GomokuGame({
       reported.current = false;
       replaySaved.current = false;
     },
-    [playerColor],
+    [playerColor, size, winCount],
+  );
+
+  /** 切换棋盘尺寸/连珠：更新配置并开新局（保留执色）。 */
+  const changeVariant = useCallback(
+    (newSize: number, newWin: number) => {
+      if (newSize === size && newWin === winCount) return;
+      setSize(newSize);
+      setWinCount(newWin);
+      reset(playerColor, newSize, newWin);
+    },
+    [size, winCount, playerColor, reset],
   );
 
   const play = useCallback(
@@ -185,7 +214,7 @@ export function GomokuGame({
     if (over || thinking || enginesTurn || hintLoading) return;
     setHintLoading(true);
     void import('@/lib/engine/ai').then(({ chooseMove }) => {
-      const result = chooseMove(game.board, game.turn, difficulty);
+      const result = chooseMove(game.board, game.turn, difficulty, game.winCount);
       setHintLoading(false);
       if (!result) return;
       setHintMove(result.point);
@@ -199,7 +228,7 @@ export function GomokuGame({
       body: JSON.stringify({
         result: game.status === 'draw' ? 'draw' : game.winner === BLACK ? 'black' : 'white',
         playerColor: playerColor === BLACK ? 'black' : 'white',
-        moves: serializeMoves(game.moves),
+        moves: serializeMoves(game.moves, game.size),
         difficulty,
       }),
     });
@@ -231,6 +260,7 @@ export function GomokuGame({
   const boardEl = (
     <Board
       theme={board}
+      size={game.size}
       cells={cells}
       lastMove={game.lastMove}
       winningLine={game.winningLine}
@@ -276,7 +306,7 @@ export function GomokuGame({
         <p className="yb-meta" style={{ textAlign: 'center' }}>
           {game.lastMove
             ? t('lastMove', {
-                notation: toNotation(game.lastMove.x, game.lastMove.y),
+                notation: toNotation(game.lastMove.x, game.lastMove.y, game.size),
               })
             : null}
         </p>
@@ -303,6 +333,51 @@ export function GomokuGame({
         </div>
 
         <hr className="yb-rule" />
+
+        {/* 棋盘尺寸与连珠数：切换会开新局。9/13/15 × 5/6/7 组合对标主流平台 */}
+        <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+          <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
+            {t('boardSize')}
+          </legend>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {BOARD_SIZES.map((s) => (
+              <button
+                key={s}
+                type="button"
+                aria-pressed={size === s}
+                onClick={() => changeVariant(s, winCount)}
+                className={size === s ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
+                style={{ flex: 1 }}
+              >
+                {s}×{s}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+          <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
+            {t('winCount')}
+          </legend>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {WIN_COUNTS.map((w) => (
+              <button
+                key={w}
+                type="button"
+                aria-pressed={winCount === w}
+                onClick={() => changeVariant(size, w)}
+                className={winCount === w ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
+                style={{ flex: 1 }}
+              >
+                {w}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <p className="yb-meta" style={{ margin: 0 }}>
+          {t('variantNote')}
+        </p>
 
         <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
           <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
@@ -428,7 +503,7 @@ export function GomokuGame({
           ) : null}
           {hintMove && game.turn === playerColor && !over ? (
             <p className="yb-meta" style={{ margin: 0 }}>
-              {t('hintDone', { notation: toNotation(hintMove.x, hintMove.y) })}
+              {t('hintDone', { notation: toNotation(hintMove.x, hintMove.y, game.size) })}
             </p>
           ) : null}
           {!autoMode && game.status !== 'playing' ? (

@@ -42,6 +42,10 @@ export interface RoomRecord {
   hostId: string;
   guestId: string | null;
   status: 'waiting' | 'playing' | 'closed';
+  /** 棋盘边长（9/13/15）。旧数据缺省 15。 */
+  size?: number;
+  /** 连珠数（5/6/7）。旧数据缺省 5。 */
+  winCount?: number;
   /** 服务端权威棋谱，逗号分隔的坐标记号（H8,I9,…）。客户端只是显示层。 */
   moves: string;
   result: GameResult | null;
@@ -69,6 +73,10 @@ export interface ShareCardPayload {
   moveCount: number;
   moves: string;
   difficulty: string | null;
+  /** 棋盘边长（9/13/15）。旧数据缺省 15。 */
+  size?: number;
+  /** 连珠数（5/6/7）。旧数据缺省 5。 */
+  winCount?: number;
   /** 卡片类型：user=用户手动分享；replay=AI vs AI 自动回放（用于 /replays 索引与 noindex 阈值） */
   kind?: 'user' | 'replay';
   /** AI vs AI 回放：双方引擎档位 */
@@ -144,7 +152,7 @@ export interface Store {
   /** 公开棋谱库：按浏览量排序的分享卡 */
   listPublicShareCards(limit?: number): Promise<ShareCardRecord[]>;
 
-  createRoom(input: { hostId: string }): Promise<RoomRecord>;
+  createRoom(input: { hostId: string; size?: number; winCount?: number }): Promise<RoomRecord>;
   getRoomByCode(code: string): Promise<RoomRecord | null>;
   joinRoom(code: string, guestId: string): Promise<RoomRecord | null>;
   /** 只由 lib/rooms.ts 在校验通过后调用；路由层不直接碰 */

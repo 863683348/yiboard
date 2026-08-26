@@ -183,7 +183,10 @@
     "hint": "Hint",
     "hintLoading": "Thinking…",
     "hintDone": "Suggested: {notation}",
-    "hintClear": "Clear hint"
+    "hintClear": "Clear hint",
+    "boardSize": "Board size",
+    "winCount": "Win",
+    "variantNote": "Switching board size or win count starts a new game."
   },
   "rankings": {
     "title": "Gomoku Leaderboard – Climb from 9th Grade to 9th Dan",

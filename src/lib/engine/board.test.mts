@@ -8,6 +8,7 @@ import assert from 'node:assert/strict';
 import {
   BLACK,
   WHITE,
+  boardSize,
   createBoard,
   findWinningLine,
   fromNotation,
@@ -79,4 +80,72 @@ test('落子合法性：越界与占用点均非法', () => {
 test('index 计算：y 行优先', () => {
   assert.equal(index(0, 0), 0);
   assert.equal(index(7, 7), 7 * 15 + 7);
+});
+
+/* ---------------- 变体棋盘：9/13/15 尺寸 + 5/6/7 连珠 ---------------- */
+
+test('9×9 棋盘：长度/边长/边界校验', () => {
+  const b = createBoard(9);
+  assert.equal(b.length, 81);
+  assert.equal(boardSize(b), 9);
+  assert.equal(index(8, 8, 9), 8 * 9 + 8);
+  assert.equal(isLegalMove(b, 0, 0), true);
+  assert.equal(isLegalMove(b, 8, 8), true);
+  assert.equal(isLegalMove(b, 9, 0), false);
+  assert.equal(isLegalMove(b, 0, 9), false);
+  assert.equal(isLegalMove(b, -1, 0), false);
+});
+
+test('13×13 棋盘：长度/边长', () => {
+  const b = createBoard(13);
+  assert.equal(b.length, 169);
+  assert.equal(boardSize(b), 13);
+  assert.equal(index(12, 12, 13), 12 * 13 + 12);
+});
+
+test('6 连珠判胜、5 连不判胜（9×9 变体）', () => {
+  const b = createBoard(9);
+  // 5 连：不算胜
+  for (let x = 1; x <= 5; x += 1) place(b, x, 4, BLACK);
+  assert.equal(findWinningLine(b, 5, 4, 6), null);
+  // 补到 6 连：判胜并返回整条线
+  place(b, 6, 4, BLACK);
+  const line = findWinningLine(b, 6, 4, 6);
+  assert.ok(line);
+  assert.equal(line.length, 6);
+  assert.deepEqual(line[0], { x: 1, y: 4 });
+  assert.deepEqual(line[5], { x: 6, y: 4 });
+});
+
+test('7 连珠判胜（13×13 变体）', () => {
+  const b = createBoard(13);
+  for (let y = 3; y <= 9; y += 1) place(b, 6, y, WHITE);
+  const line = findWinningLine(b, 6, 9, 7);
+  assert.ok(line);
+  assert.equal(line.length, 7);
+});
+
+test('6 连珠下 4 连不判胜', () => {
+  const b = createBoard(9);
+  for (let y = 1; y <= 4; y += 1) place(b, 2, y, BLACK);
+  assert.equal(findWinningLine(b, 2, 4, 6), null);
+});
+
+test('变体记谱往返：9×9 与 13×13', () => {
+  // 9×9：列 A–I，行 1–9
+  assert.deepEqual(fromNotation('A1', 9), { x: 0, y: 8 });
+  assert.deepEqual(fromNotation('I9', 9), { x: 8, y: 0 });
+  assert.equal(toNotation(0, 8, 9), 'A1');
+  assert.equal(toNotation(8, 0, 9), 'I9');
+  // 13×13：列 A–M，行 1–13
+  assert.deepEqual(fromNotation('M1', 13), { x: 12, y: 12 });
+  assert.equal(toNotation(12, 12, 13), 'M1');
+  assert.equal(toNotation(4, 4, 13), 'E9');
+});
+
+test('变体记谱越界：超出当前尺寸返回 null', () => {
+  assert.deepEqual(fromNotation('I9', 9), { x: 8, y: 0 }); // 合法
+  assert.equal(fromNotation('O15', 9), null); // 列 O 超出 9×9
+  assert.equal(fromNotation('A10', 9), null); // 行 10 超出 9×9
+  assert.equal(fromNotation('M13', 9), null); // 13×13 记号放到 9×9 上非法
 });

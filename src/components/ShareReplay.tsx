@@ -14,33 +14,40 @@ const STEP_MS = 650;
 /**
  * 分享页对局回放：默认停在终局，点 Replay 从空盘逐步走到终局。
  * 纯展示，不走引擎；只重放服务端存的棋谱（防作弊，Spec §9）。
+ * 支持变体：size（9/13/15）与 winCount（5/6/7），缺省 15×15/五连。
  */
 export function ShareReplay({
   moves,
   result,
   ariaLabel,
+  size = 15,
+  winCount = 5,
 }: {
   moves: string;
   result: GameResult;
   ariaLabel: string;
+  size?: number;
+  winCount?: number;
 }) {
   const t = useTranslations('share');
-  const points = useMemo<Point[]>(() => parseMoves(moves), [moves]);
+  const points = useMemo<Point[]>(() => parseMoves(moves, size), [moves, size]);
   const total = points.length;
   const [step, setStep] = useState(total);
   const [playing, setPlaying] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const view = useMemo(() => {
-    const board = createBoard();
+    const board = createBoard(size);
     const upto = points.slice(0, step);
     upto.forEach((p, i) => place(board, p.x, p.y, i % 2 === 0 ? BLACK : WHITE));
     const last = upto.length ? upto[upto.length - 1]! : null;
     const finished = step >= total;
     const winningLine =
-      finished && last && result !== 'draw' ? findWinningLine(board, last.x, last.y) : null;
+      finished && last && result !== 'draw'
+        ? findWinningLine(board, last.x, last.y, winCount)
+        : null;
     return { cells: Array.from(board), last, winningLine };
-  }, [points, step, total, result]);
+  }, [points, step, total, result, size, winCount]);
 
   useEffect(() => {
     if (!playing) return;
@@ -72,6 +79,7 @@ export function ShareReplay({
     <div style={{ display: 'grid', gap: 'var(--space-3)', justifyItems: 'center' }}>
       <Board
         cells={view.cells}
+        size={size}
         lastMove={view.last}
         winningLine={view.winningLine}
         ariaLabel={ariaLabel}

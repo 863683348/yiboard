@@ -10,9 +10,13 @@ interface Body {
   difficulty?: string | null;
   playerColor?: 'black' | 'white' | null;
   locale?: string;
+  size?: number;
+  winCount?: number;
 }
 
 const RESULTS: readonly GameResult[] = ['black', 'white', 'draw'];
+const SIZES = [9, 13, 15] as const;
+const WIN_COUNTS = [5, 6, 7] as const;
 
 /** 15×15 满盘最多 225 手；300 给足余量，超过即视为伪造棋谱。 */
 const MAX_MOVES = 300;
@@ -24,6 +28,15 @@ const MAX_PAYLOAD_BYTES = 16 * 1024;
 export async function POST(request: Request) {
   const body = await readJson<Body>(request);
   if (!body || !body.result || !RESULTS.includes(body.result)) return fail('BAD_REQUEST');
+
+  // 变体配置（可选，缺省 15×15/五连）；非法或连珠>尺寸即拒
+  const size = body.size ?? 15;
+  const winCount = body.winCount ?? 5;
+  if (!(SIZES as readonly number[]).includes(size)) return fail('BAD_REQUEST', 'INVALID_SIZE');
+  if (!(WIN_COUNTS as readonly number[]).includes(winCount)) {
+    return fail('BAD_REQUEST', 'INVALID_WIN_COUNT');
+  }
+  if (winCount > size) return fail('BAD_REQUEST', 'INVALID_VARIANT');
 
   const user = await ensureUser(body.locale ?? 'en');
   const moves = typeof body.moves === 'string' ? body.moves : '';
@@ -46,6 +59,8 @@ export async function POST(request: Request) {
       moveCount,
       moves,
       difficulty: body.difficulty ?? null,
+      size,
+      winCount,
     },
   });
 

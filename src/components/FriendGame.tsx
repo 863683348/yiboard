@@ -6,7 +6,7 @@ import { ArrowsClockwise, Copy, Check, UsersThree } from '@phosphor-icons/react'
 
 import { Board } from '@/components/Board';
 import { useAppearance } from '@/components/useAppearance';
-import { BLACK, fromNotation, type Point } from '@/lib/engine/board';
+import { BLACK, BOARD_SIZE, DEFAULT_WIN_COUNT, fromNotation, type Point } from '@/lib/engine/board';
 import { boardToArray, replay } from '@/lib/engine/game';
 
 type Side = 'black' | 'white';
@@ -15,6 +15,8 @@ interface RoomView {
   code: string;
   status: 'waiting' | 'playing' | 'closed';
   moves: string[];
+  size: number;
+  winCount: number;
   yourSide: Side | null;
   turn: Side;
   result: 'black' | 'white' | 'draw' | null;
@@ -23,6 +25,8 @@ interface RoomView {
 }
 
 const POLL_MS = 1400;
+const BOARD_SIZES = [9, 13, 15] as const;
+const WIN_COUNTS = [5, 6, 7] as const;
 
 export function FriendGame({ initialCode }: { initialCode: string | null }) {
   const t = useTranslations('play');
@@ -33,13 +37,27 @@ export function FriendGame({ initialCode }: { initialCode: string | null }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [size, setSize] = useState<number>(BOARD_SIZE);
+  const [winCount, setWinCount] = useState<number>(DEFAULT_WIN_COUNT);
   const pending = useRef(false);
 
   const points = useMemo<Point[]>(
-    () => (room?.moves ?? []).map(fromNotation).filter((p): p is Point => p !== null),
-    [room?.moves],
+    () =>
+      (room?.moves ?? [])
+        .map((n) => fromNotation(n, room?.size ?? BOARD_SIZE))
+        .filter((p): p is Point => p !== null),
+    [room?.moves, room?.size],
   );
-  const state = useMemo(() => replay(points, BLACK), [points]);
+  const state = useMemo(
+    () =>
+      replay(
+        points,
+        BLACK,
+        room?.size ?? BOARD_SIZE,
+        room?.winCount ?? DEFAULT_WIN_COUNT,
+      ),
+    [points, room?.size, room?.winCount],
+  );
   const cells = useMemo(() => boardToArray(state.board), [state]);
 
   const pull = useCallback(async (target: string) => {
@@ -71,7 +89,11 @@ export function FriendGame({ initialCode }: { initialCode: string | null }) {
   const createRoom = useCallback(async () => {
     setBusy(true);
     try {
-      const response = await fetch('/api/rooms', { method: 'POST' });
+      const response = await fetch('/api/rooms', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ size, winCount }),
+      });
       if (!response.ok) return;
       const view = (await response.json()) as RoomView;
       setRoom(view);
@@ -80,7 +102,7 @@ export function FriendGame({ initialCode }: { initialCode: string | null }) {
     } finally {
       setBusy(false);
     }
-  }, []);
+  }, [size, winCount]);
 
   const join = useCallback(() => {
     const target = joinCode.trim().toUpperCase();
@@ -135,6 +157,46 @@ export function FriendGame({ initialCode }: { initialCode: string | null }) {
         <p className="yb-meta" style={{ marginTop: 'var(--space-2)' }}>
           {t('invite.body')}
         </p>
+
+        {/* 变体配置：开房时决定棋盘尺寸与连珠数，双方共享同一变体 */}
+        <fieldset style={{ border: 0, padding: 0, margin: 0, marginTop: 'var(--space-6)' }}>
+          <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
+            {t('boardSize')}
+          </legend>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {BOARD_SIZES.map((s) => (
+              <button
+                key={s}
+                type="button"
+                aria-pressed={size === s}
+                onClick={() => setSize(s)}
+                className={size === s ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
+                style={{ flex: 1 }}
+              >
+                {s}×{s}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset style={{ border: 0, padding: 0, margin: 0, marginTop: 'var(--space-4)' }}>
+          <legend className="yb-eyebrow" style={{ marginBottom: 'var(--space-3)' }}>
+            {t('winCount')}
+          </legend>
+          <div style={{ display: 'flex', gap: 6 }}>
+            {WIN_COUNTS.map((w) => (
+              <button
+                key={w}
+                type="button"
+                aria-pressed={winCount === w}
+                onClick={() => setWinCount(w)}
+                className={winCount === w ? 'yb-btn yb-btn-outline yb-btn-sm' : 'yb-btn yb-btn-ghost yb-btn-sm'}
+                style={{ flex: 1 }}
+              >
+                {w}
+              </button>
+            ))}
+          </div>
+        </fieldset>
 
         <button
           type="button"
@@ -205,6 +267,7 @@ export function FriendGame({ initialCode }: { initialCode: string | null }) {
       <div style={{ display: 'grid', justifyItems: 'center' }}>
         <Board
           theme={board}
+          size={room?.size ?? BOARD_SIZE}
           cells={cells}
           lastMove={state.lastMove}
           winningLine={state.winningLine}

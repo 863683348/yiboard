@@ -82,6 +82,10 @@ export const rooms = pgTable(
       .references(() => users.id, { onDelete: 'cascade' }),
     guestId: uuid('guest_id').references(() => users.id, { onDelete: 'set null' }),
     status: varchar('status', { length: 16 }).notNull().default('waiting'),
+    /** 棋盘边长（9/13/15），默认 15 */
+    size: integer('size').notNull().default(15),
+    /** 连珠数（5/6/7），默认 5 */
+    winCount: integer('win_count').notNull().default(5),
     /** 服务端权威棋谱：逗号分隔坐标记号（H8,I9,…），客户端只是显示层 */
     moves: text('moves').notNull().default(''),
     /** 终局结果：black / white / draw / null（未结束） */

@@ -6,7 +6,16 @@
  * 防止同一批棋子被弱棋型重复计分。
  */
 
-import { at, DIRECTIONS, lineThrough, opponent, type Board, type Cell, type Player } from './board';
+import {
+  at,
+  boardSize,
+  DIRECTIONS,
+  lineThrough,
+  opponent,
+  type Board,
+  type Cell,
+  type Player,
+} from './board';
 
 export const SCORE = {
   FIVE: 10_000_000,
@@ -101,16 +110,17 @@ export function deltaAfterMove(
   player: Player,
 ): number {
   const foe = opponent(player);
+  const size = boardSize(board);
 
   const beforeSelf = scoreLinesThrough(board, x, y, player);
   const beforeFoe = scoreLinesThrough(board, x, y, foe);
 
-  board[y * 15 + x] = player;
+  board[y * size + x] = player;
 
   const afterSelf = scoreLinesThrough(board, x, y, player);
   const afterFoe = scoreLinesThrough(board, x, y, foe);
 
-  board[y * 15 + x] = 0;
+  board[y * size + x] = 0;
 
   return afterSelf - beforeSelf - (afterFoe - beforeFoe);
 }
@@ -121,14 +131,15 @@ export function deltaAfterMove(
  */
 export function heuristicAt(board: Board, x: number, y: number, player: Player): number {
   const foe = opponent(player);
+  const size = boardSize(board);
   const offense = scoreLinesThrough(board, x, y, player);
   const defense = scoreLinesThrough(board, x, y, foe);
 
-  board[y * 15 + x] = player;
+  board[y * size + x] = player;
   const offenseAfter = scoreLinesThrough(board, x, y, player);
-  board[y * 15 + x] = foe;
+  board[y * size + x] = foe;
   const defenseAfter = scoreLinesThrough(board, x, y, foe);
-  board[y * 15 + x] = 0;
+  board[y * size + x] = 0;
 
   return (offenseAfter - offense) + (defenseAfter - defense) * 0.9;
 }
@@ -136,34 +147,35 @@ export function heuristicAt(board: Board, x: number, y: number, player: Player):
 /** 整盘静态评估（己方视角）。仅用于根节点校准，搜索内部走增量。 */
 export function evaluateBoard(board: Board, player: Player): number {
   const foe = opponent(player);
+  const size = boardSize(board);
   let self = 0;
   let against = 0;
 
   // 行
-  for (let y = 0; y < 15; y += 1) {
+  for (let y = 0; y < size; y += 1) {
     const row: Cell[] = [];
-    for (let x = 0; x < 15; x += 1) row.push(at(board, x, y));
+    for (let x = 0; x < size; x += 1) row.push(at(board, x, y));
     self += scoreSerializedLine(serializeLine(row, player));
     against += scoreSerializedLine(serializeLine(row, foe));
   }
   // 列
-  for (let x = 0; x < 15; x += 1) {
+  for (let x = 0; x < size; x += 1) {
     const col: Cell[] = [];
-    for (let y = 0; y < 15; y += 1) col.push(at(board, x, y));
+    for (let y = 0; y < size; y += 1) col.push(at(board, x, y));
     self += scoreSerializedLine(serializeLine(col, player));
     against += scoreSerializedLine(serializeLine(col, foe));
   }
   // 两组对角线
-  for (let start = -14; start <= 14; start += 1) {
+  for (let start = -(size - 1); start <= size - 1; start += 1) {
     const main: Cell[] = [];
     const anti: Cell[] = [];
-    for (let i = 0; i < 15; i += 1) {
+    for (let i = 0; i < size; i += 1) {
       const mx = i;
       const my = i - start;
-      if (my >= 0 && my < 15) main.push(at(board, mx, my));
+      if (my >= 0 && my < size) main.push(at(board, mx, my));
       const ax = i;
-      const ay = start + 14 - i;
-      if (ay >= 0 && ay < 15) anti.push(at(board, ax, ay));
+      const ay = start + (size - 1) - i;
+      if (ay >= 0 && ay < size) anti.push(at(board, ax, ay));
     }
     if (main.length >= 5) {
       self += scoreSerializedLine(serializeLine(main, player));

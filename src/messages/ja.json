@@ -183,7 +183,10 @@
     "hint": "ヒント",
     "hintLoading": "思考中…",
     "hintDone": "推奨手：{notation}",
-    "hintClear": "ヒントを消す"
+    "hintClear": "ヒントを消す",
+    "boardSize": "盤のサイズ",
+    "winCount": "連珠",
+    "variantNote": "サイズや連珠を変更すると新しい対局が始まります。"
   },
   "rankings": {
     "title": "五目並べランキング – 九級から九段へ",

@@ -183,7 +183,10 @@
     "hint": "提示",
     "hintLoading": "思考中…",
     "hintDone": "建议落子：{notation}",
-    "hintClear": "清除提示"
+    "hintClear": "清除提示",
+    "boardSize": "棋盘尺寸",
+    "winCount": "连珠",
+    "variantNote": "切换尺寸或连珠数会开始新对局。"
   },
   "rankings": {
     "title": "五子棋排行榜 – 从九品晋升九段",
