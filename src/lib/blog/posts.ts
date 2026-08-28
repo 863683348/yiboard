@@ -1340,6 +1340,93 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: "play-gomoku-against-ai",
+    date: "2026-08-29",
+    title: {
+      zh: "怎么和 AI 对战练习",
+      en: "How to Practice Against the AI",
+    },
+    description: {
+      zh: "五子棋 AI 对手是最好的练习伙伴：没有情绪、不会分心、随时可以复盘。这篇讲清楚怎么和 AI 对战、怎么利用它提升水平。",
+      en: "The AI opponent is the best practice partner: no emotions, no distractions, always available for review. Here's how to play against AI and use it to improve.",
+    },
+    keywords: ["gomoku ai practice", "play gomoku against ai", "gomoku strategy practice", "五子棋 AI 对战", "gomoku training"],
+    content: {
+      zh: [
+        "和真人对战有压力，和 AI 对战没有。AI 不会因为你输了三局就生气，也不会因为你问了一个基础问题就嘲笑你。这正是它作为练习工具的优势：无限耐心、随时可复盘、每一步都可以反复思考。在 yiboardgame.com 的对战页直接挑战 AI，不用注册，不用等待。",
+        { type: "h2", text: "AI 对手有多强" },
+        "YiBoard 的 AI 基于 alpha-beta 剪枝，500ms 搜索预算。这意味着它不会下出世界冠军级别的棋，但比绝大多数业余玩家强。对初学者来说，这是完美的对手——你不会被打得毫无还手之力，但每一局都要求你认真思考。随着你水平提升，AI 的 500ms 预算自然成为你的成长天花板，推动你去研究禁手规则和开局理论。",
+        { type: "h2", text: "怎么开始和 AI 对战" },
+        {
+          type: "ul",
+          items: [
+            "打开 yiboardgame.com/play，直接点击"与 AI 对战"按钮",
+            "选择执黑或执白（推荐先执黑，学习先手优势）",
+            "AI 会在你每步 500ms 内给出最强回应",
+            "对局结束后可立即复盘，分析每一手的得失",
+          ],
+        },
+        { type: "h2", text: "怎么利用 AI 练习提升" },
+        "和 AI 对战最值钱的部分不是胜负，是复盘。每一局结束后，回看关键节点：哪一手是转折点？哪一步如果换成别的走法结果会不同？AI 不会告诉你答案，但提出这些问题本身就是最好的学习方式。",
+        {
+          type: "ul",
+          items: [
+            "每周固定打 5-10 局，对手都是 AI",
+            "每局结束后复盘至少 3 手关键棋",
+            "记录自己常犯的失误类型（漏防、贪攻、禁手违规）",
+            "针对弱点定向练习：如果总漏防，就多打防守局",
+          ],
+        },
+        { type: "h2", text: "FAQ" },
+        {
+          type: "faq",
+          items: [
+            { q: "AI 对手会作弊吗？", a: "不会。AI 在浏览器本地运行，每步 500ms 搜索预算，和你水平相当。" },
+            { q: "和 AI 对战需要注册吗？", a: "不需要。打开 yiboardgame.com/play 直接开始。注册只为跨设备保存战绩。" },
+            { q: "AI 什么水平？能当教练吗？", a: "比业余新手强，比高手弱。它不会主动教你，但复盘是你最好的学习工具。" },
+          ],
+        },
+        { type: "cta", text: "去和 AI 下一局 →", href: "https://yiboardgame.com/play" },
+      ],
+      en: [
+        "Playing against a real person comes with pressure. Playing against AI doesn't. The AI won't get mad because you lost three games in a row, and it won't laugh at your basic questions. That's exactly why it's the best practice tool: infinite patience, instant review, and every move can be thought through repeatedly. Challenge the AI directly on the play page at yiboardgame.com — no signup, no waiting.",
+        { type: "h2", text: "How strong is the AI opponent" },
+        "YiBoard's AI uses alpha-beta pruning with a 500ms search budget. It won't play world-champion level moves, but it's stronger than most casual players. For beginners, that's perfect — you won't get crushed, but every game demands real thought. As your level grows, the AI's 500ms budget naturally becomes your ceiling, pushing you to study forbidden-move rules and opening theory.",
+        { type: "h2", text: "How to start playing against AI" },
+        {
+          type: "ul",
+          items: [
+            "Open yiboardgame.com/play and click the 'Play vs AI' button",
+            "Choose black or white (start with black to learn the first-move advantage)",
+            "The AI responds within your 500ms budget per move",
+            "Review every game immediately after it ends",
+          ],
+        },
+        { type: "h2", text: "How to use AI to improve" },
+        "The most valuable part of playing AI isn't winning or losing — it's the review. After each game, look back at the key moments: which move was the turning point? What would have happened if you'd played differently? The AI won't give you answers, but asking these questions is itself the best way to learn.",
+        {
+          type: "ul",
+          items: [
+            "Play 5-10 games per week against AI consistently",
+            "Review at least 3 key moves after every game",
+            "Track your common mistake patterns (missed blocks, over-attack, forbidden move violations)",
+            "Target your weaknesses: if you keep missing blocks, play more defensive games",
+          ],
+        },
+        { type: "h2", text: "FAQ" },
+        {
+          type: "faq",
+          items: [
+            { q: "Does the AI cheat?", a: "No. The AI runs locally in your browser with a 500ms search budget — it's at your level, not above it." },
+            { q: "Do I need to sign up to play AI?", a: "No. Open yiboardgame.com/play and start immediately. Signup is only for saving records across devices." },
+            { q: "What level is the AI? Can it coach me?", a: "Stronger than a casual beginner, weaker than an expert. It won't teach you proactively, but reviewing your games is the best learning tool you have." },
+          ],
+        },
+        { type: "cta", text: "Play a game against the AI →", href: "https://yiboardgame.com/play" },
+      ],
+    },
+  },
 ];
 
 
