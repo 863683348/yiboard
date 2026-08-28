@@ -61,7 +61,13 @@
     "boardKaya": "榧木",
     "boardSlate": "青石",
     "signIn": "登录 / 注册",
-    "signOut": "退出登录"
+    "signOut": "退出登录",
+    "blog": "博客",
+    "glossary": "术语表",
+    "gomokuRules": "五子棋规则",
+    "renjuRules": "连珠规则",
+    "gomokuVsGo": "五子棋 vs 围棋",
+    "games": "游戏"
   },
   "home": {
     "eyebrow": "免费 · 无需注册",
@@ -88,7 +94,8 @@
       "xiangqi": {
         "name": "象棋",
         "native": "象棋 · Xiàngqí",
-        "blurb": "一条楚河汉界把棋盘分成两半。炮要隔子才能吃。两将不能隔着一条直线面面相觑。"
+        "blurb": "一条楚河汉界把棋盘分成两半。炮要隔子才能吃。两将不能隔着一条直线面面相觑。",
+        "status": "现已可玩"
       },
       "go": {
         "name": "围棋",
@@ -132,7 +139,8 @@
     "statsHeading": "全球玩家",
     "statsTotal": "总计",
     "statsAi": "人机对局",
-    "statsFriend": "在线对战"
+    "statsFriend": "在线对战",
+    "ctaXiangqi": "开始象棋"
   },
   "play": {
     "title": "五子棋",

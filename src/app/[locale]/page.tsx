@@ -121,13 +121,17 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             blurb={t('games.gomoku.blurb')}
             status={t('games.statusLive')}
             live
+            href="/play"
             action={t('ctaPrimary')}
           />
           <GameCard
             name={t('games.xiangqi.name')}
             native={t('games.xiangqi.native')}
             blurb={t('games.xiangqi.blurb')}
-            status={t('games.statusNext')}
+            status={t('games.statusLive')}
+            live
+            href="/xiangqi"
+            action={t('ctaXiangqi')}
           />
           <GameCard
             name={t('games.go.name')}
@@ -232,6 +236,7 @@ function GameCard({
   status,
   live = false,
   action,
+  href = '/play',
 }: {
   name: string;
   native: string;
@@ -239,6 +244,7 @@ function GameCard({
   status: string;
   live?: boolean;
   action?: string;
+  href?: string;
 }) {
   return (
     <article
@@ -261,7 +267,7 @@ function GameCard({
       <p style={{ fontSize: 'var(--text-sm)', color: 'var(--fg-2)', flexGrow: 1 }}>{blurb}</p>
       {live && action ? (
         <Link
-          href="/play"
+          href={href}
           style={{
             fontSize: 'var(--text-sm)',
             fontWeight: 'var(--weight-emphasis)',

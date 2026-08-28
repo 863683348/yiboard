@@ -61,7 +61,13 @@
     "boardKaya": "Kaya wood",
     "boardSlate": "Bluestone",
     "signIn": "Sign in / Register",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "blog": "Blog",
+    "glossary": "Glossary",
+    "gomokuRules": "Gomoku rules",
+    "renjuRules": "Renju rules",
+    "gomokuVsGo": "Gomoku vs Go",
+    "games": "Games"
   },
   "home": {
     "eyebrow": "Free · No account required",
@@ -88,7 +94,8 @@
       "xiangqi": {
         "name": "Xiangqi",
         "native": "象棋 · Xiàngqí",
-        "blurb": "A river cuts the board in half. Cannons only capture by jumping over a screen. The two generals may never look at each other down an open file."
+        "blurb": "A river cuts the board in half. Cannons only capture by jumping over a screen. The two generals may never look at each other down an open file.",
+        "status": "Playable now"
       },
       "go": {
         "name": "Go",
@@ -132,7 +139,8 @@
     "statsHeading": "Players online",
     "statsTotal": "Total",
     "statsAi": "vs engine",
-    "statsFriend": "vs players"
+    "statsFriend": "vs players",
+    "ctaXiangqi": "Play Xiangqi"
   },
   "play": {
     "title": "Gomoku",
