@@ -1,7 +1,7 @@
 /** 弈界 YiBoard — 象棋 AI（minimax + alpha-beta 剪枝） */
 
-import { legalMoves, cloneBoard, gameStatus } from './rules'
-import { type XQBoard, type XQColor, type XQMove, XQ_SIZE } from './types'
+import { legalMoves, cloneBoard, gameStatus } from './rules.ts'
+import { type XQBoard, type XQColor, type XQMove, XQ_SIZE } from './types.ts'
 
 export type XQDifficulty = 'novice' | 'gentle' | 'steady' | 'sharp'
 

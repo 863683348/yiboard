@@ -144,13 +144,7 @@ export function XiangqiBoard({
             <g
               key={`p${i}`}
               className={isLastPos ? 'yb-stone-enter' : undefined}
-              style={{ cursor: interactive && cell.color === 'red' ? 'pointer' : 'default' }}
-              onClick={() => {
-                if (!interactive || disabled) return
-                if (cell.color !== 'red') return
-                if (isLegal || selected === i) onPlay?.(i)
-                else if (cell) { /* select this piece */ }
-              }}
+              style={{ pointerEvents: 'none' }} /* 事件统一由底部热区处理，避免重复触发 */
             >
               {/* 棋子底色圆 */}
               <circle
@@ -192,20 +186,23 @@ export function XiangqiBoard({
           )
         })}
 
-        {/* 交互热区（仅红方可点击） */}
+        {/* 交互热区：覆盖全部 90 个格点（含空格与目标格），点击逻辑交给 XiangqiGame 判定 */}
         {interactive ? (
           <g>
-            {board.map((cell, i) => {
-              if (!cell || cell.color !== 'red') return null
+            {board.map((_, i) => {
               const x = i % XQ_COLS
               const y = Math.floor(i / XQ_COLS)
+              const isLegalTarget = legalTargets?.includes(i) ?? false
+              const cursor = isLegalTarget || (board[i] !== null && board[i]!.color === 'red')
+                ? 'pointer'
+                : 'default'
               return (
                 <circle
                   key={`t${i}`}
                   cx={cx(x)} cy={cy(y)}
                   r={STEP * 0.44}
                   fill="transparent"
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor }}
                   onClick={() => onPlay?.(i)}
                 />
               )

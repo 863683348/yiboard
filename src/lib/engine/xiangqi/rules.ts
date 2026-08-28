@@ -1,23 +1,33 @@
 /** 弈界 YiBoard — 象棋走法规则 */
 
-import type { Cell, PieceType, XQBoard, XQColor, XQMove, GameStatus } from './types'
-import { XQ_ROWS, XQ_COLS, XQ_SIZE, idx, xy } from './types'
+import type { Cell, PieceType, XQBoard, XQColor, XQMove, GameStatus } from './types.ts'
+import { XQ_ROWS, XQ_COLS, XQ_SIZE, idx, xy } from './types.ts'
 
 export function createBoard(): XQBoard {
   const b: XQBoard = Array(XQ_SIZE).fill(null)
-  const setup: [string, XQColor, number][] = [
-    ['r','black',0],['n','black',1],['b','black',2],['a','black',3],
-    ['k','black',4],['a','black',5],['b','black',6],['n','black',7],['r','black',8],
-    ['c','black',18],['c','black',54],
-    ['p','black',27],['p','black',45],['p','black',63],['p','black',81],['p','black',99],
-    ['r','red',72],['n','red',81],['b','red',90],['a','red',99],
-    ['k','red',108],['a','red',117],['b','red',126],['n','red',135],['r','red',144],
-    ['c','red',126],['c','red',162],
-    ['p','red',135],['p','red',153],['p','red',171],['p','red',189],['p','red',207],
-  ]
-  for (const [type, color, i] of setup) {
-    b[i] = { type: type as import('./types').PieceType, color }
+
+  // 黑方（上方，y=0 底线 / y=2 炮 / y=3 卒）
+  const blackBack: PieceType[] = ['r', 'n', 'b', 'a', 'k', 'a', 'b', 'n', 'r']
+  for (let x = 0; x < XQ_COLS; x++) {
+    b[idx(x, 0)] = { type: blackBack[x]!, color: 'black' }
   }
+  b[idx(1, 2)] = { type: 'c', color: 'black' }
+  b[idx(7, 2)] = { type: 'c', color: 'black' }
+  for (const x of [0, 2, 4, 6, 8]) {
+    b[idx(x, 3)] = { type: 'p', color: 'black' }
+  }
+
+  // 红方（下方，y=9 底线 / y=7 炮 / y=6 兵）
+  const redBack: PieceType[] = ['r', 'n', 'b', 'a', 'k', 'a', 'b', 'n', 'r']
+  for (let x = 0; x < XQ_COLS; x++) {
+    b[idx(x, 9)] = { type: redBack[x]!, color: 'red' }
+  }
+  b[idx(1, 7)] = { type: 'c', color: 'red' }
+  b[idx(7, 7)] = { type: 'c', color: 'red' }
+  for (const x of [0, 2, 4, 6, 8]) {
+    b[idx(x, 6)] = { type: 'p', color: 'red' }
+  }
+
   return b
 }
 
