@@ -4,7 +4,7 @@ import { defineRouting } from 'next-intl/routing';
  * 2026-08-09 用户要求：默认语言为英文、打开 / 恒为英文（不被浏览器语言带偏）→ defaultLocale=en + localeDetection:false；
  * 用户想换语言时通过导航栏切换器手动选择（中文在 /zh）。 */
 export const routing = defineRouting({
-  locales: ['en', 'zh', 'es', 'ja', 'pt-BR'],
+  locales: ['en', 'zh', 'es', 'ja', 'pt-BR', 'ko'],
   defaultLocale: 'en',
   localePrefix: 'as-needed',
   localeDetection: false,
@@ -18,4 +18,5 @@ export const LOCALE_LABELS: Record<Locale, string> = {
   es: 'Español',
   ja: '日本語',
   'pt-BR': 'Português (BR)',
+  'ko': '한국어',
 };
