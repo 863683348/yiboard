@@ -75,7 +75,9 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
     ],
   }
 
-  const related = XIANGQI_OPENINGS.filter((o) => o.slug !== opening.slug).slice(0, 4)
+  const sameCat = XIANGQI_OPENINGS.filter((o) => o.category === opening.category && o.slug !== opening.slug)
+  const otherCat = XIANGQI_OPENINGS.filter((o) => o.category !== opening.category && o.slug !== opening.slug)
+  const related = [...sameCat, ...otherCat].slice(0, 4)
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
