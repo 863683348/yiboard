@@ -1361,7 +1361,7 @@ export const POSTS: BlogPost[] = [
         {
           type: "ul",
           items: [
-            "打开 yiboardgame.com/play，直接点击"与 AI 对战"按钮",
+            "打开 yiboardgame.com/play，直接点击“与 AI 对战”按钮",
             "选择执黑或执白（推荐先执黑，学习先手优势）",
             "AI 会在你每步 500ms 内给出最强回应",
             "对局结束后可立即复盘，分析每一手的得失",
