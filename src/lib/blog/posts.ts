@@ -2841,16 +2841,7 @@ export const POSTS: BlogPost[] = [
           { "q": "需要注册吗？", "a": "不需要。YiBoard 无需注册，打开即玩。" }
         ]},
         { "type": "cta", "text": "免费体验 9×9 / 13×13 / 15×15 五子棋 →", "href": "https://yiboardgame.com/play" }
-    
-  {
-    id: 21,
-    slug: "five-beginner-mistakes-gomoku",
-    title: { zh: "新手别踩的五个坑", en: "Five Beginner Mistakes to Avoid in Gomoku" },
-    date: "2026-08-28",
-    excerpt: { zh: "错误 1：只进攻，不防守", en: "## 1. Mistake 1: Only Attacking, Never Defending..." },
-    content: `<p><h2>1. Mistake 1: Only Attacking, Never Defending | 错误 1：只进攻，不防守</h2></p><p></p><p>New players focus entirely on building their own lines. They ignore opponent threats until it's too late.</p><p></p><p><strong>The fix:</strong> After every move, ask "Does my opponent have a three-in-a-row that I need to block?" Defense isn't passive — it's proactive threat elimination.</p><p></p><p><strong>Example:</strong> Your opponent has `OO_X` (open three). If you don't block immediately, they play the fourth and create an unstoppable four. | 新玩家完全专注于构建自己的线。他们忽略对手威胁直到太晚。</p><p></p><p><strong>修复：</strong> 每次移动后，问"我是否有需要阻挡的对手三连珠？"防守不是被动的——是主动威胁消除。</p><p></p><p><strong>例子：</strong> 你的对手有 `OO_X`（开放三连）。如果你不立即阻挡，他们下第四颗创造不可阻挡的四连。</p><p></p><p>---</p><p></p><p><h2>2. Mistake 2: Playing Linearly | 错误 2：线性思考</h2></p><p></p><p>Beginners think in straight lines — horizontal, vertical, diagonal. But Gomoku rewards multi-directional thinking.</p><p></p><p><strong>The fix:</strong> Every stone you place should potentially create multiple threats. Look for moves that build both offensive and defensive patterns simultaneously.</p><p></p><p><strong>Example:</strong> Instead of extending one line, place a stone that creates two separate two-in-a-rows. Your opponent can only block one. | 新手线性思考——水平、垂直、对角线。但五子棋奖励多方向思考。</p><p></p><p><strong>修复：</strong> 你放的每颗石头应该潜在创建多个威胁。寻找同时构建进攻和防守模式的移动。</p><p></p><p><strong>例子：</strong> 不要扩展一条线，放置一颗创建两个独立二连珠的石头。你的对手只能阻挡一个。</p><p></p><p>---</p><p></p><p><h2>3. Mistake 3: Ignoring the Center | 错误 3：忽视中心</h2></p><p></p><p>The board center controls more territory than edges. Beginners often play near the edges, limiting their options.</p><p></p><p><strong>The fix:</strong> Prioritize center control. Stones near the center have more directions to build lines. Edge stones are restrictive — they can only extend in one or two directions.</p><p></p><p><strong>Rule of thumb:</strong> Your first 10-15 stones should be within the central 5×5 area. | 棋盘中心控制更多领土而非边缘。新手经常在边缘下棋，限制他们的选项。</p><p></p><p><strong>修复：</strong> 优先控制中心。中心附近的石头有更多方向构建线。边缘石头是限制性的——只能向一或两个方向扩展。</p><p></p><p><strong>经验法则：</strong> 前 10-15 颗石头应该在中央 5×5 区域内。</p><p></p><p>---</p><p></p><p><h2>4. Mistake 4: Missing Forks | 错误 4：忽略双杀</h2></p><p></p><p>A fork is a move that creates two simultaneous winning threats. Your opponent can only block one, guaranteeing your win.</p><p></p><p><strong>The fix:</strong> Always look for fork opportunities. A good fork setup involves:</p><p><li>Two separate lines that can both become five-in-a-row</li></p><p><li>The opponent has no single move that blocks both</li></p><p><li>The forks are created simultaneously or in sequence | 双杀是一个创建两个同时获胜威胁的移动。你的对手只能阻挡一个，保证你获胜。</li></p><p></p><p><strong>修复：</strong> 始终寻找双杀机会。好的双杀设置包括：</p><p><li>两个独立都能成为五连珠的线</li></p><p><li>对手没有单移动阻挡两者</li></p><p><li>双杀同时或顺序创建</li></p><p></p><p>---</p><p></p><p><h2>5. Mistake 5: Playing Reactive Instead of Proactive | 错误 5：被动反应而非主动</h2></p><p></p><p>Beginners react to their opponent's moves. Advanced players set traps and force responses.</p><p></p><p><strong>The fix:</strong> Think 2-3 moves ahead. Instead of just blocking, ask "What do I want my opponent to do next?" Create situations where their best move still leads to your advantage.</p><p></p><p><strong>Example:</strong> Instead of blocking an open three directly, place a stone that both blocks AND creates your own threat. Your opponent must respond to you, not the other way around. | 新手反应他们对手的移动。高级玩家设置陷阱并强制回应。</p><p></p><p><strong>修复：</strong> 提前想 2-3 步。不要只是阻挡，问"我希望对手下一步做什么？"创建情境，他们的最佳移动仍然导致你的优势。</p><p></p><p><strong>例子：</strong> 不要直接阻挡开放三，放置一颗既阻挡又创建你自己威胁的石头。你的对手必须回应你，而非反过来。</p><p></p><p>---</p><p></p><p><h2>Quick Reference: The 5 Mistakes | 快速参考：5 个错误</h2></p><p></p><p>| Mistake | Symptom | Fix |</p><p>|---------|---------|-----|</p><p>| Only attacking | Losing to blocked attempts | Check opponent threats after every move |</p><p>| Linear thinking | Missing diagonal opportunities | Look for multi-directional moves |</p><p>| Ignoring center | Playing on edges | Control central 5×5 area early |</p><p>| Missing forks | Losing to double threats | Practice fork patterns |</p><p>| Playing reactive | Always one step behind | Think 2-3 moves ahead | | 错误 | 症状 | 修复 |</p><p>| 只进攻 | 被阻挡的攻击输掉 | 每次移动后检查对手威胁 |</p><p>| 线性思考 | 错过对角线机会 | 寻找多方向移动 |</p><p>| 忽视中心 | 在边缘下棋 | 早期控制中央 5×5 区域 |</p><p>| 忽略双杀 | 被双威胁输掉 | 练习双杀模式 |</p><p>| 被动反应 | 永远慢一步 | 提前想 2-3 步 |</p><p></p><p>---</p><p></p><p><h2>Practice Drills | 练习 drills</h2></p><p></p><p><strong>Drill 1: Defense First</strong></p><p>Play 10 games where your only goal is to block every opponent three. No attacking allowed. This builds defensive habits.</p><p></p><p><strong>Drill 2: Fork Hunt</strong></p><p>Set up positions with hidden forks. Try to find them before playing. This trains pattern recognition.</p><p></p><p><strong>Drill 3: Center Control</strong></p><p>Play games where you must place your first 10 stones in the center 5×5. This teaches board geometry. | 练习 1：防守优先</p><p>玩 10 局，唯一目标是阻挡每个对手三连。不允许进攻。这建立防守习惯。</p><p></p><p>练习 2：双杀搜索</p><p>设置隐藏双杀的位置。在玩之前尝试找到它们。这训练模式识别。</p><p></p><p>练习 3：中心控制</p><p>玩你必须在前 10 颗石头放在中央 5×5 的游戏。这教导棋盘几何。</p><p></p><p>---</p><p></p><p><h2>About yiboardgame.com | 关于 yiboardgame.com</h2></p><p></p><p>Practice these skills in our free Gomoku game. [yiboardgame.com/play](/play) offers unlimited games against AI with adjustable difficulty. Track your progress in [replay analysis](/blog/gomoku-replay-analysis). | 在我们的免费五子棋游戏中练习这些技能。[yiboardgame.com/play](/play) 提供无限游戏对抗可调整难度的 AI。在 [复盘分析](/blog/gomoku-replay-analysis) 跟踪你的进度。</p><p></p><p>---</p><p></p><p><h2>FAQ | 常见问题</h2></p><p></p><p><strong>Q: What's the hardest beginner mistake to fix?</strong> | A: Playing reactive instead of proactive. It requires thinking ahead, which feels unnatural at first. Practice with the "think 3 moves ahead" drill. | 最难改的新手错误是什么？被动反应而非主动。这需要提前思考，最初感觉不自然。用"提前想 3 步"练习。</p><p></p><p><strong>Q: Should I memorize fork patterns?</strong> | A: Yes — fork patterns are like vocabulary in language. The more you recognize, the faster you spot them in games. | 我应该记住双杀模式吗？是的——双杀模式像语言词汇。你识别越多，游戏中 spotting 越快。</p><p></p><p><strong>Q: Is Gomoku easy to learn but hard to master?</strong> | A: Exactly. The rules take 5 minutes to learn. Mastery takes years of pattern recognition and strategic thinking. | 五子棋易学难精吗？正是。规则 5 分钟学会。精通需要数年模式识别和战略思考。</p><p></p><p><strong>Q: How do I improve my center control?</strong> | A: Practice the "first 10 stones in center" drill. Also, study professional games to see how masters control the board. | 如何提高中心控制？练习"前 10 颗石头在中心"drill。也研究专业游戏看大师如何控制棋盘。</p>`,
-  },
-  ],
+      ],
       "en": [
         "Board size and win count are not decoration in Gomoku: 9×9, 13×13 and 15×15 boards paired with 5-, 6- or 7-in-a-row produce genuinely different games. Online Gomoku has long meant one thing — 15×15 and five-in-a-row. YiBoard now lets you pick your own [board size](/play) and win count, free and with no sign-up.",
         { "type": "h2", "text": "Why Board Size Matters" },
@@ -2895,6 +2886,78 @@ export const POSTS: BlogPost[] = [
           { "name": "Start playing", "text": "Switching starts a fresh game automatically — no account needed." }
         ]
       }
+  },
+  {
+    slug: "five-beginner-mistakes-gomoku",
+    date: "2026-08-28",
+    title: {
+      zh: "新手别踩的五个坑",
+      en: "Five Beginner Mistakes to Avoid in Gomoku"
+    },
+    description: {
+      zh: "新手最常犯的错误：只进攻不防守、线性思考、忽视中心、忽略双杀、被动反应。每错都配修复方案和实战例子。",
+      en: "The five most common beginner mistakes in Gomoku: only attacking, linear thinking, ignoring the center, missing forks, and playing reactive. Each mistake comes with a fix and practical examples."
+    },
+    keywords: ["gomoku beginner mistakes", "gomoku tips for beginners", "how to improve gomoku", "gomoku defense", "gomoku forks"],
+    content: {
+      zh: [
+        "新手最容易犯的五个错误，几乎每个人都会踩一遍。下面逐个说明症状、修复方法和实战例子——看完就能用。",
+        { type: "h2", text: "错误 1：只进攻，不防守" },
+        "新手通常一门心思构建自己的线，忽略对手的威胁直到来不及阻挡。",
+        "**修复：** 每走一步后问自己：对手有没有需要阻挡的三连？防守不是被动的，而是主动消除威胁。",
+        "**例子：** 对手有开放三连（OO_X）。如果不立即阻挡，对方下第四颗就会形成不可阻挡的四连。",
+        { type: "h2", text: "错误 2：线性思考" },
+        "新手只在水平、垂直、对角线方向思考。但五子棋奖励多方向思考。",
+        "**修复：** 你放的每颗子应该潜在创建多个威胁。寻找同时构建进攻和防守模式的落点。",
+        "**例子：** 不要只扩展一条线，放置一颗能创建两个独立二连珠的子。对手只能阻挡一个。",
+        { type: "h2", text: "错误 3：忽视中心" },
+        "棋盘中心控制更多领地而非边缘。新手经常在边缘落子，限制自己的选项。",
+        "**修复：** 优先控制中心。中心附近的子有更多方向构建线。边缘的子是受限的——只能向一或两个方向扩展。",
+        "**经验法则：** 前 10-15 颗子应该落在中央 5×5 区域内。",
+        { type: "h2", text: "错误 4：忽略双杀" },
+        "双杀是同时创建两个获胜威胁的落点。对手只能阻挡一个，保证你获胜。",
+        "**修复：** 始终寻找双杀机会。好的双杀设置包括：两个独立都能成为五连的线、对手没有单移动阻挡两者。",
+        { type: "h2", text: "错误 5：被动反应而非主动" },
+        "新手反应对手的移动。高级玩家设置陷阱并强制回应。",
+        "**修复：** 提前想 2-3 步。不要只是阻挡，问：我希望对手下一步做什么？",
+        { type: "h2", text: "快速参考：5 个错误" },
+        "| 错误 | 症状 | 修复 |",
+        "| 只进攻 | 被阻挡的攻击输掉 | 每次移动后检查对手威胁 |",
+        "| 线性思考 | 错过对角线机会 | 寻找多方向移动 |",
+        "| 忽视中心 | 在边缘下棋 | 早期控制中央 5×5 区域 |",
+        "| 忽略双杀 | 被双威胁输掉 | 练习双杀模式 |",
+        "| 被动反应 | 永远慢一步 | 提前想 2-3 步 |",
+        { type: "cta", text: "免费练习五子棋策略 →", href: "https://yiboardgame.com/play" }
+      ],
+      en: [
+        "The five most common beginner mistakes — almost everyone makes them all at least once. Here's each one with symptoms, fixes, and practical examples you can use immediately.",
+        { type: "h2", text: "Mistake 1: Only Attacking, Never Defending" },
+        "New players focus entirely on building their own lines and ignore opponent threats until it's too late.",
+        "**The fix:** After every move, ask "Does my opponent have a three-in-a-row that I need to block?" Defense isn't passive — it's proactive threat elimination.",
+        "**Example:** Your opponent has an open three (OO_X). If you don't block immediately, they play the fourth and create an unstoppable four.",
+        { type: "h2", text: "Mistake 2: Playing Linearly" },
+        "Beginners think in straight lines — horizontal, vertical, diagonal. But Gomoku rewards multi-directional thinking.",
+        "**The fix:** Every stone you place should potentially create multiple threats. Look for moves that build both offensive and defensive patterns simultaneously.",
+        "**Example:** Instead of extending one line, place a stone that creates two separate two-in-a-rows. Your opponent can only block one.",
+        { type: "h2", text: "Mistake 3: Ignoring the Center" },
+        "The board center controls more territory than edges. Beginners often play near the edges, limiting their options.",
+        "**The fix:** Prioritize center control. Stones near the center have more directions to build lines. Edge stones are restrictive — they can only extend in one or two directions.",
+        "**Rule of thumb:** Your first 10-15 stones should be within the central 5×5 area.",
+        { type: "h2", text: "Mistake 4: Missing Forks" },
+        "A fork is a move that creates two simultaneous winning threats. Your opponent can only block one, guaranteeing your win.",
+        "**The fix:** Always look for fork opportunities. A good fork setup involves two separate lines that can both become five-in-a-row, and no single opponent move that blocks both.",
+        { type: "h2", text: "Mistake 5: Playing Reactive Instead of Proactive" },
+        "Beginners react to their opponent's moves. Advanced players set traps and force responses.",
+        "**The fix:** Think 2-3 moves ahead. Instead of just blocking, ask "What do I want my opponent to do next?"",
+        { type: "h2", text: "Quick Reference: The 5 Mistakes" },
+        "| Mistake | Symptom | Fix |",
+        "| Only attacking | Losing to blocked attempts | Check opponent threats after every move |",
+        "| Linear thinking | Missing diagonal opportunities | Look for multi-directional moves |",
+        "| Ignoring center | Playing on edges | Control central 5×5 area early |",
+        "| Missing forks | Losing to double threats | Practice fork patterns |",
+        "| Playing reactive | Always one step behind | Think 2-3 moves ahead |",
+        { type: "cta", text: "Practice these skills free →", href: "https://yiboardgame.com/play" }
+      ]
     }
   }
 ];

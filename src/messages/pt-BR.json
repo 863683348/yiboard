@@ -14,7 +14,7 @@
       "keywords": "blog gomoku, estratégia gomoku, regras gomoku, dicas gomoku"
     },
     "home": {
-      "description": "Jogue Gomoku online grátis contra IA ou amigos. Sem conta, sem download. Suba a escada de 18 degraus do 9º Grau ao 9º Dan."
+      "description": "Jogue Gomoku online grátis contra IA ou amigos. Aprenda as regras do gomoku em 2 minutos. Sem conta, sem download. Suba a escada de 18 degraus."
     },
     "rankings": {
       "title": "Ranking de Gomoku — Escada de 18 Degraus do 9º Grau ao 9º Dan",
@@ -209,7 +209,7 @@
   },
   "howTo": {
     "title": "Como Jogar Gomoku: Regras Grátis Online e Guia de Estratégia",
-    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas e bloqueio precoce – jogue grátis online agora.",
+    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas, três abertos e bloqueio precoce – jogue grátis online agora.",
     "rulesTitle": "As regras",
     "rule1": "As pretas jogam primeiro. Os jogadores alternam, uma pedra por turno.",
     "rule2": "As pedras vão nas interseções da grade, não dentro dos quadrados.",
@@ -231,11 +231,26 @@
     "relatedTitle": "Guias de regras relacionadas",
     "faqTitle": "Perguntas frequentes sobre Gomoku",
     "faq": [
-      { "q": "Quantas pedras seguidas você precisa para vencer no Gomoku?", "a": "Cinco pedras da sua cor em linha — horizontal, vertical ou diagonal — vencem na hora. As pretas jogam primeiro." },
-      { "q": "Gomoku é o mesmo que Connect 4 ou Go?", "a": "Não. Gomoku é cinco em linha num tabuleiro de 15×15; Connect 4 solta peças verticalmente numa grade de 7×6; Go é sobre cercar território, não alinhar." },
-      { "q": "Seis em linha conta como vitória no Gomoku?", "a": "No Gomoku estilo livre, sim — uma linha maior ainda vence, e no YiBoard você pode até definir a vitória em 6 ou 7. Nas regras de renju, a linha longa das pretas é proibida." },
-      { "q": "Qual tamanho de tabuleiro é melhor para iniciantes?", "a": "O 9×9 é rápido e ótimo para praticar tática; o 13×13 equilibra jogo casual e estratégico; o 15×15 é o tamanho clássico de torneio. O YiBoard deixa você alternar entre os três." },
-      { "q": "O YiBoard é gratuito?", "a": "Sim. Grátis, sem conta e sem download: jogue contra o motor ou contra um amigo direto no navegador." }
+      {
+        "q": "Quantas pedras seguidas você precisa para vencer no Gomoku?",
+        "a": "Cinco pedras da sua cor em linha — horizontal, vertical ou diagonal — vencem na hora. As pretas jogam primeiro."
+      },
+      {
+        "q": "Gomoku é o mesmo que Connect 4 ou Go?",
+        "a": "Não. Gomoku é cinco em linha num tabuleiro de 15×15; Connect 4 solta peças verticalmente numa grade de 7×6; Go é sobre cercar território, não alinhar."
+      },
+      {
+        "q": "Seis em linha conta como vitória no Gomoku?",
+        "a": "No Gomoku estilo livre, sim — uma linha maior ainda vence, e no YiBoard você pode até definir a vitória em 6 ou 7. Nas regras de renju, a linha longa das pretas é proibida."
+      },
+      {
+        "q": "Qual tamanho de tabuleiro é melhor para iniciantes?",
+        "a": "O 9×9 é rápido e ótimo para praticar tática; o 13×13 equilibra jogo casual e estratégico; o 15×15 é o tamanho clássico de torneio. O YiBoard deixa você alternar entre os três."
+      },
+      {
+        "q": "O YiBoard é gratuito?",
+        "a": "Sim. Grátis, sem conta e sem download: jogue contra o motor ou contra um amigo direto no navegador."
+      }
     ]
   },
   "about": {

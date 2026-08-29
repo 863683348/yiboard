@@ -14,7 +14,7 @@
       "keywords": "gomoku blog, gomoku strategy, gomoku rules, gomoku tips"
     },
     "home": {
-      "description": "Play Gomoku online for free against AI or friends. No account, no download. Climb the 18-rung ladder from 9th Grade to 9th Dan."
+      "description": "Play Gomoku online for free against AI or friends. Learn gomoku rules in 2 minutes. No account, no download. Climb the 18-rung ladder from 9th Grade to 9th Dan."
     },
     "rankings": {
       "title": "Gomoku Rankings — 18-Rung Ladder from 9th Grade to 9th Dan",
@@ -209,7 +209,7 @@
   },
   "howTo": {
     "title": "How to Play Gomoku: Free Online Rules & Strategy Guide",
-    "sub": "Learn Gomoku rules in 2 minutes. Master opening strategies like double threats and early blocking — then play free online now.",
+    "sub": "Learn Gomoku rules in 2 minutes. Master double threats, open threes, and early blocking strategies — then play free online now.",
     "rulesTitle": "The rules",
     "rule1": "Black plays first. Players alternate, one stone per turn.",
     "rule2": "Stones go on the intersections of the grid, not inside the squares.",
@@ -231,11 +231,26 @@
     "relatedTitle": "Related rules guides",
     "faqTitle": "Gomoku FAQ",
     "faq": [
-      { "q": "How many stones in a row do you need to win at Gomoku?", "a": "Five stones of your color in a row — horizontally, vertically or diagonally — wins immediately. Black moves first." },
-      { "q": "Is Gomoku the same as Connect 4 or Go?", "a": "No. Gomoku is five-in-a-row on a 15×15 board; Connect 4 drops pieces vertically into a 7×6 grid; Go is about surrounding territory, not alignment." },
-      { "q": "Does six in a row count as a win in Gomoku?", "a": "In freestyle Gomoku yes — a longer line still wins, and on YiBoard you can even set the win count to 6 or 7. Under renju rules Black's overline is forbidden." },
-      { "q": "Which board size is best for a beginner?", "a": "9×9 is fast and great for practising tactics; 13×13 balances casual and strategic play; 15×15 is the classic tournament size. YiBoard lets you switch between all three." },
-      { "q": "Is YiBoard free to play?", "a": "Yes. Free, no account and no download — play against the engine or a friend right in your browser." }
+      {
+        "q": "How many stones in a row do you need to win at Gomoku?",
+        "a": "Five stones of your color in a row — horizontally, vertically or diagonally — wins immediately. Black moves first."
+      },
+      {
+        "q": "Is Gomoku the same as Connect 4 or Go?",
+        "a": "No. Gomoku is five-in-a-row on a 15×15 board; Connect 4 drops pieces vertically into a 7×6 grid; Go is about surrounding territory, not alignment."
+      },
+      {
+        "q": "Does six in a row count as a win in Gomoku?",
+        "a": "In freestyle Gomoku yes — a longer line still wins, and on YiBoard you can even set the win count to 6 or 7. Under renju rules Black's overline is forbidden."
+      },
+      {
+        "q": "Which board size is best for a beginner?",
+        "a": "9×9 is fast and great for practising tactics; 13×13 balances casual and strategic play; 15×15 is the classic tournament size. YiBoard lets you switch between all three."
+      },
+      {
+        "q": "Is YiBoard free to play?",
+        "a": "Yes. Free, no account and no download — play against the engine or a friend right in your browser."
+      }
     ]
   },
   "about": {
