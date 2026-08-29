@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { routing } from '@/i18n/routing';
 import { getPostSlugs } from '@/lib/blog/posts';
+import { XIANGQI_OPENING_SLUGS } from '@/lib/xiangqi/openings';
 
 /**
  * sitemap.xml — 基准域名固定为 canonical https://yiboardgame.com（与 layout 的 metadataBase 一致）。
@@ -33,6 +34,8 @@ const PATHS = [
   '/renju-rules',
   '/gomoku-vs-go',
   '/xiangqi',
+  '/learn-xiangqi',
+  '/xiangqi/openings',
 ] as const;
 
 /** 与 /replays/[id] 页一致：低于该手数的 AI 对局 noindex，也不进 sitemap。 */
@@ -68,7 +71,18 @@ export function GET() {
     })),
   );
 
-  const entries = [...staticEntries, ...blogEntries];
+  // Xiangqi openings: each opening detail page exists for every locale.
+  const openingEntries = XIANGQI_OPENING_SLUGS.flatMap((slug) =>
+    routing.locales.map((locale) => ({
+      url: href(base, locale, `/xiangqi/openings/${slug}`),
+      path: `/xiangqi/openings/${slug}`,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, href(base, l, `/xiangqi/openings/${slug}`)]),
+      ),
+    })),
+  );
+
+  const entries = [...staticEntries, ...blogEntries, ...openingEntries];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
