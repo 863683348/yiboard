@@ -200,6 +200,14 @@
     --side-black-ink: #F2F4F5;
     --side-black-edge:#0C0E10;
 
+    /* 象棋棋子别名（--piece-* → --side-*），供 XiangqiBoard 使用 */
+    --piece-red:        var(--side-red-ink);
+    --piece-red-bg:     var(--side-red-face);
+    --piece-red-border: var(--side-red-edge);
+    --piece-black:      var(--side-black-ink);
+    --piece-black-bg:   var(--side-black-face);
+    --piece-black-border: var(--side-black-edge);
+
     /* ---- C-extension · 落点标记（一律"形+色"双编码，不靠颜色单独传达）----- */
     --move-last:   var(--accent);                                   /* 最后一手：朱环 */
     --move-legal:  color-mix(in srgb, var(--info) 34%, transparent); /* 合法落点：青点 */
@@ -276,6 +284,14 @@
     --side-black-ink: #E8EBED;
     --side-black-edge:#000000;
 
+    /* 象棋棋子别名（--piece-* → --side-*），供 XiangqiBoard 使用 */
+    --piece-red:        var(--side-red-ink);
+    --piece-red-bg:     var(--side-red-face);
+    --piece-red-border: var(--side-red-edge);
+    --piece-black:      var(--side-black-ink);
+    --piece-black-bg:   var(--side-black-face);
+    --piece-black-border: var(--side-black-edge);
+
     --rank-grade-entry: #8A9299;
     --rank-grade-mid: #4CAF82;
     --rank-grade-high: #58A6C8;
@@ -300,6 +316,10 @@
       --stone-black: #14171A;   --stone-white: #EDEFF0;
       --stone-white-edge: #9AA1A6;
       --stone-shadow: 0 1px 3px rgba(0,0,0,0.65);
+      --side-red-face: #E9DCD2; --side-red-ink: #9E2A22; --side-red-edge: #6E4B3C;
+      --side-black-face: #1A1E21; --side-black-ink: #E8EBED; --side-black-edge: #000000;
+      --piece-red: var(--side-red-ink); --piece-red-bg: var(--side-red-face); --piece-red-border: var(--side-red-edge);
+      --piece-black: var(--side-black-ink); --piece-black-bg: var(--side-black-face); --piece-black-border: var(--side-black-edge);
       --rank-grade-entry: #8A9299; --rank-grade-mid: #4CAF82; --rank-grade-high: #58A6C8; --rank-dan: #E0664A;
     }
   }
@@ -361,6 +381,25 @@
     --board-star:    #808A90;
     --board-coord:   #B4BCC1;
     --board-frame:   #4A5257;
+  }
+
+  /* 4.4 象棋 Xiangqi —— 复用墨石配色（棋盘主题轴对 9×10 盘同样生效） */
+  [data-board="xiangqi"] {
+    --board-surface: #DCDEDF;
+    --board-line:    #9BA2A7;
+    --board-edge:    #7E868C;
+    --board-star:    #6F777F;
+    --board-coord:   #6F777F;
+    --board-frame:   var(--border-strong);
+    --board-max:     min(520px, calc(100vh - 200px));  /* 竖长盘：宽度上限收窄，防超高 */
+  }
+  :root[data-theme="dark"] [data-board="xiangqi"] {
+    --board-surface: #262B2E;
+    --board-line:    #4E565B;
+    --board-edge:    #687177;
+    --board-star:    #7E868D;
+    --board-coord:   #7E868D;
+    --board-frame:   #3B4348;
   }
 
   /* ==========================================================================

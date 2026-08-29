@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 
 import { routing } from '@/i18n/routing';
 import { getPostSlugs } from '@/lib/blog/posts';
-import { getStore } from '@/lib/store';
 
 /**
  * sitemap.xml — 基准域名固定为 canonical https://yiboardgame.com（与 layout 的 metadataBase 一致）。
@@ -33,6 +32,7 @@ const PATHS = [
   '/gomoku-rules',
   '/renju-rules',
   '/gomoku-vs-go',
+  '/xiangqi',
 ] as const;
 
 /** 与 /replays/[id] 页一致：低于该手数的 AI 对局 noindex，也不进 sitemap。 */
@@ -43,7 +43,7 @@ function href(base: string, locale: string, path: string): string {
   return `${base}${prefix}${path}`;
 }
 
-export async function GET() {
+export function GET() {
   const base = SITE_URL;
   const now = new Date().toISOString();
 
@@ -68,21 +68,7 @@ export async function GET() {
     })),
   );
 
-  // AI vs AI replays (programmatic pages): only notable games, per-locale hreflang.
-  const replays = await getStore().listShareCards(200);
-  const replayEntries = replays
-    .filter((c) => c.payload.kind === 'replay' && c.payload.moveCount >= MIN_INDEX_MOVES)
-    .flatMap((c) =>
-      routing.locales.map((locale) => ({
-        url: href(base, locale, `/replays/${c.id}`),
-        path: `/replays/${c.id}`,
-        languages: Object.fromEntries(
-          routing.locales.map((l) => [l, href(base, l, `/replays/${c.id}`)]),
-        ),
-      })),
-    );
-
-  const entries = [...staticEntries, ...blogEntries, ...replayEntries];
+  const entries = [...staticEntries, ...blogEntries];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

@@ -1,25 +1,40 @@
 {
   "meta": {
-    "title": "YiBoard — Play Gomoku Free Online · No Download Required",
-    "description": "Play Gomoku online for free against AI or friends. No account, no download. Climb the 18-rung ladder from 9th Grade to 9th Dan. Xiangqi and Go coming soon.",
     "ogAlt": "A 15 by 15 Gomoku grid with black and white stones",
-    "about": {
-      "title": "About YiBoard — Free Online Gomoku, Built by Players",
-      "description": "YiBoard is a free, no-download Gomoku platform. Play against AI or friends, climb from 9th Grade to 9th Dan, and enjoy a clean, fast board in any browser.",
-      "keywords": "gomoku, about yiboard, free gomoku, gomoku ranking system"
-    },
-    "blog": {
-      "title": "Gomoku Blog — Strategy, Rules & News",
-      "description": "Gomoku strategy guides, rule explanations and news from YiBoard. Learn openings, tactics, and how the 18-rung ranking ladder works.",
-      "keywords": "gomoku blog, gomoku strategy, gomoku rules, gomoku tips"
-    },
     "home": {
-      "description": "Play Gomoku online for free against AI or friends. Learn gomoku rules in 2 minutes. No account, no download. Climb the 18-rung ladder from 9th Grade to 9th Dan."
+      "title": "Gomoku Online Free — Five in a Row vs AI or Real Players",
+      "description": "Play gomoku free in your browser — no account, no download. Battle the AI, invite a friend, or get matched with a real player instantly. Climb the 18-rank ladder from Ninth Grade to Ninth Dan.",
+      "keywords": "gomoku online free, play gomoku, five in a row, gomoku vs ai, gomoku with friends, gomoku multiplayer, gomoku no download"
+    },
+    "play": {
+      "title": "Play Gomoku Online — vs AI, Friends or Random Players",
+      "description": "Three ways to play gomoku free: challenge the built-in AI, open a friend room, or hit random match to face a real player. No sign-up required.",
+      "keywords": "play gomoku online, gomoku vs ai, gomoku two player, gomoku random match, gomoku friend room, gomoku multiplayer"
     },
     "rankings": {
-      "title": "Gomoku Rankings — 18-Rung Ladder from 9th Grade to 9th Dan",
-      "description": "Climb the YiBoard Gomoku ranking ladder: 18 levels from 9th Grade to 9th Dan. See the full rank table and how your rating is calculated.",
-      "keywords": "gomoku rankings, gomoku dan, gomoku grades, gomoku ladder"
+      "title": "Gomoku Rankings & Elo Ratings — Global Leaderboard",
+      "description": "See where you stand in the global gomoku ladder. Live Elo ratings across 18 ranks, from Ninth Grade to Ninth Dan.",
+      "keywords": "gomoku rankings, gomoku elo, gomoku leaderboard, gomoku ranks, five in a row ratings, gomoku ladder"
+    },
+    "howTo": {
+      "title": "How to Play Gomoku: Rules in 5 Minutes",
+      "description": "Learn gomoku rules fast: five in a row wins, black moves first, plus basic tactics like open fours and double threats. Start your first game right now.",
+      "keywords": "how to play gomoku, gomoku rules, five in a row rules, gomoku strategy, gomoku tactics, gomoku guide"
+    },
+    "about": {
+      "title": "About YiBoard — Free Browser Gomoku",
+      "description": "YiBoard is a free browser gomoku: no ads in the way, fair play first, and every game counts toward your rank.",
+      "keywords": "yiboard, free gomoku, browser gomoku, gomoku app, no ads gomoku"
+    },
+    "pricing": {
+      "title": "YiBoard Pricing — Free Forever, No Ads, No Account",
+      "description": "YiBoard is 100% free to play. No subscriptions, no ads, no account required.",
+      "keywords": "gomoku free, gomoku no ads, gomoku no account, free browser game, free online board game"
+    },
+    "blog": {
+      "title": "Gomoku Strategy & Tips — YiBoard Blog",
+      "description": "Gomoku strategy guides, opening theory, and product updates from the YiBoard team.",
+      "keywords": "gomoku strategy, gomoku tips, gomoku openings, five in a row guide, gomoku theory"
     }
   },
   "brand": {
@@ -31,6 +46,7 @@
     "play": "Play",
     "rankings": "Rankings",
     "howTo": "How to play",
+    "blog": "Blog",
     "about": "About",
     "profile": "Profile",
     "pricing": "Pricing",
@@ -45,18 +61,20 @@
     "boardKaya": "Kaya wood",
     "boardSlate": "Bluestone",
     "signIn": "Sign in / Register",
+    "signOut": "Sign out",
     "blog": "Blog",
     "glossary": "Glossary",
     "gomokuRules": "Gomoku rules",
     "renjuRules": "Renju rules",
-    "gomokuVsGo": "Gomoku vs Go"
+    "gomokuVsGo": "Gomoku vs Go",
+    "games": "Games"
   },
   "home": {
     "eyebrow": "Free · No account required",
     "visitCount": "Global visits: {count}",
     "headline": "Five stones in a line.",
     "headlineAccent": "Three thousand years of arguing about it.",
-    "sub": "Gomoku is learnable in thirty seconds and hard to put down after that. Open the board below and make a move — nothing to install, nothing to sign up for. Xiangqi and Go follow.",
+    "sub": "Start with Gomoku in five minutes. Stay for a thousand years of Chinese strategy. Open the board below and make a move — nothing to install, nothing to sign up for. Xiangqi and Go follow.",
     "ctaPrimary": "Start a match",
     "ctaSecondary": "Play a friend",
     "reassurance": "Your progress is saved to this browser for 180 days. Attach an email later if you want to keep it.",
@@ -76,7 +94,8 @@
       "xiangqi": {
         "name": "Xiangqi",
         "native": "象棋 · Xiàngqí",
-        "blurb": "A river cuts the board in half. Cannons only capture by jumping over a screen. The two generals may never look at each other down an open file."
+        "blurb": "A river cuts the board in half. Cannons only capture by jumping over a screen. The two generals may never look at each other down an open file.",
+        "status": "Playable now"
       },
       "go": {
         "name": "Go",
@@ -120,25 +139,20 @@
     "statsHeading": "Players online",
     "statsTotal": "Total",
     "statsAi": "vs engine",
-    "statsFriend": "vs players"
+    "statsFriend": "vs players",
+    "ctaXiangqi": "Play Xiangqi"
   },
   "play": {
-    "title": "Play Gomoku Online Free – vs AI or Friends",
+    "title": "Gomoku",
     "vsAi": "Against the engine",
     "vsFriend": "Against a friend",
     "difficulty": "Difficulty",
-    "difficultyNovice": "Novice",
-    "difficultyNoviceNote": "Only reacts to immediate threats — a good first opponent.",
     "difficultyGentle": "Gentle",
     "difficultyGentleNote": "Sees two moves ahead and will miss things.",
     "difficultySteady": "Steady",
     "difficultySteadyNote": "Four moves ahead. Punishes loose shapes.",
     "difficultySharp": "Sharp",
     "difficultySharpNote": "Six moves ahead within its time budget.",
-    "difficultyMaster": "Master",
-    "difficultyMasterNote": "Reads deeper with a wider search — punishing to play against.",
-    "difficultyGrandmaster": "Grandmaster",
-    "difficultyGrandmasterNote": "Maximum search depth under the time ceiling. Very hard to beat.",
     "yourColour": "You play",
     "black": "Black",
     "white": "White",
@@ -178,25 +192,11 @@
       "cancel": "Cancel",
       "queueCount": "{count} waiting right now",
       "error": "Could not reach the queue. Try again."
-    },
-    "vsAiAi": "AI vs AI",
-    "autoModeHint": "Watch two engines battle. Every finished game saves as a replay.",
-    "thinkingLine": "Think: depth {depth} · {nodes} nodes · {ms} ms",
-    "aiBlack": "Black AI",
-    "aiWhite": "White AI",
-    "replayReady": "Replay saved",
-    "watchReplay": "Watch the replay",
-    "hint": "Hint",
-    "hintLoading": "Thinking…",
-    "hintDone": "Suggested: {notation}",
-    "hintClear": "Clear hint",
-    "boardSize": "Board size",
-    "winCount": "Win",
-    "variantNote": "Switching board size or win count starts a new game."
+    }
   },
   "rankings": {
-    "title": "Gomoku Leaderboard – Climb from 9th Grade to 9th Dan",
-    "sub": "See the top ranked players in friend matches. Beat them and climb the eighteen-rung ladder from 9th Grade to 9th Dan.",
+    "title": "Rankings",
+    "sub": "Ranked friend matches only. Games against the engine build your record but do not move your rating.",
     "position": "#",
     "player": "Player",
     "rank": "Rank",
@@ -208,8 +208,8 @@
     "you": "You"
   },
   "howTo": {
-    "title": "How to Play Gomoku: Free Online Rules & Strategy Guide",
-    "sub": "Learn Gomoku rules in 2 minutes. Master double threats, open threes, and early blocking strategies — then play free online now.",
+    "title": "How to play Gomoku",
+    "sub": "Everything you need is on this page. It takes about two minutes.",
     "rulesTitle": "The rules",
     "rule1": "Black plays first. Players alternate, one stone per turn.",
     "rule2": "Stones go on the intersections of the grid, not inside the squares.",
@@ -226,32 +226,9 @@
     "notationTitle": "Reading the notation",
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
     "cta": "Try it against the engine",
-    "glossaryLink": "Gomoku glossary",
-    "faqLink": "Gomoku FAQ",
-    "relatedTitle": "Related rules guides",
-    "faqTitle": "Gomoku FAQ",
-    "faq": [
-      {
-        "q": "How many stones in a row do you need to win at Gomoku?",
-        "a": "Five stones of your color in a row — horizontally, vertically or diagonally — wins immediately. Black moves first."
-      },
-      {
-        "q": "Is Gomoku the same as Connect 4 or Go?",
-        "a": "No. Gomoku is five-in-a-row on a 15×15 board; Connect 4 drops pieces vertically into a 7×6 grid; Go is about surrounding territory, not alignment."
-      },
-      {
-        "q": "Does six in a row count as a win in Gomoku?",
-        "a": "In freestyle Gomoku yes — a longer line still wins, and on YiBoard you can even set the win count to 6 or 7. Under renju rules Black's overline is forbidden."
-      },
-      {
-        "q": "Which board size is best for a beginner?",
-        "a": "9×9 is fast and great for practising tactics; 13×13 balances casual and strategic play; 15×15 is the classic tournament size. YiBoard lets you switch between all three."
-      },
-      {
-        "q": "Is YiBoard free to play?",
-        "a": "Yes. Free, no account and no download — play against the engine or a friend right in your browser."
-      }
-    ]
+    "relatedTitle": "Go deeper",
+    "rulesLink": "Gomoku rules & shapes",
+    "blogLink": "Strategy blog"
   },
   "about": {
     "title": "About YiBoard",
@@ -322,13 +299,13 @@
     "terms": "Terms of Service",
     "faq": "FAQ",
     "blog": "Blog",
-    "contact": "Contact Us",
-    "games": "Games",
-    "puzzle": "Puzzle"
+    "puzzle": "Daily Puzzle",
+    "games": "Game Library",
+    "contact": "Contact Us"
   },
   "pricing": {
-    "title": "Gomoku Pricing – Free to Play, Pro Plans Coming Soon",
-    "sub": "Start playing Gomoku online for free. Plus and Pro plans with advanced stats, no ads, and early access to Xiangqi & Go coming soon.",
+    "title": "Pricing",
+    "sub": "Free to play. Paid plans are on the way — everything is free until subscriptions go live.",
     "monthly": "per month",
     "yearly": "per year",
     "free": {
@@ -377,18 +354,18 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "updated": "Last updated: August 22, 2026",
-    "lead": "We collect as little as possible. This policy says what we collect, how advertising works on this site, and the choices you have.",
+    "updated": "Last updated: August 2026",
+    "lead": "We collect as little as possible. This policy says what we collect and why.",
     "s1Title": "What we collect",
     "s1Body": "On your first visit we write an anonymous guest identifier (a JWT, valid 180 days) in your browser to keep your record and rating. We do not collect your name, location or device details unless you attach an email.",
     "s2Title": "Attaching an email",
     "s2Body": "Attaching an email is optional and only syncs your record across devices. Passwords are stored as argon2 hashes; we cannot read your plaintext password.",
-    "s3Title": "Advertising",
-    "s3Body": "This website displays advertisements served by Google AdSense. Third-party vendors, including Google, use cookies (including the DoubleClick/DART cookie) to serve ads based on your visits to this site and other websites. You can opt out of personalized advertising via Google Ads Settings (https://www.google.com/settings/ads) or www.aboutads.info/choices. For details on how Google uses data, see https://policies.google.com/technologies/ads.",
-    "s4Title": "Cookies",
-    "s4Body": "We set a guest identifier (JWT, valid 180 days) and a language preference cookie. Third-party vendors including Google may also set advertising cookies, as described in the Advertising section. You can control these through your browser settings and the opt-out links above.",
-    "s5Title": "Deleting your data and your rights",
-    "s5Body": "To delete your account and game history, email ahmedlzany423@gmail.com and we will process it within 30 days. Depending on your location, you may have rights under laws such as the GDPR (EU) or CCPA (California) to access, correct, or delete your personal data; contact us to exercise them. We do not sell your personal data.",
+    "s3Title": "What we do not do",
+    "s3Body": "We do not sell your data, do not serve personalised ads, and do not track you across the web.",
+    "s4Title": "Deleting your data",
+    "s4Body": "To delete your account and game history, email ahmedlzany423@gmail.com and we will process it within 30 days.",
+    "s5Title": "Cookies",
+    "s5Body": "Only the guest identifier and a language preference cookie. No third-party analytics.",
     "contact": "For privacy questions, email"
   },
   "terms": {
@@ -409,8 +386,8 @@
     "s6Body": "We may update these terms; continuing to use the service after changes means you accept them."
   },
   "faq": {
-    "title": "Gomoku FAQ – Rules, Engine Strength & How to Play Free",
-    "sub": "Common questions about YiBoard Gomoku: account-free play, three engine difficulty levels, the 18-rung ranking system, and how to play with friends.",
+    "title": "Frequently Asked Questions",
+    "sub": "Can't find an answer? Email ahmedlzany423@gmail.com.",
     "q1": "Do I need an account to play?",
     "a1": "No. Open the board and play — your progress is saved in this browser for 180 days. Attach an email only when you want it on another device.",
     "q2": "How strong is the engine?",
@@ -424,10 +401,7 @@
     "q6": "When does the membership launch?",
     "a6": "Payments are being integrated (later phase). Everything is free until then, and we will announce before launching.",
     "q7": "Is there a mobile app?",
-    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download.",
-    "rulesCta": "How to play",
-    "playCta": "Play now",
-    "contactCta": "Contact us"
+    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download."
   },
   "blog": {
     "title": "Blog",
@@ -440,24 +414,7 @@
     "p2Date": "July 2026",
     "p3Title": "Server-side refereeing: why nobody can cheat your game",
     "p3Excerpt": "Every move is validated by the server; the client is only a display layer. That is the baseline of our anti-cheat design.",
-    "p3Date": "June 2026",
-    "searchLabel": "Search posts",
-    "searchPlaceholder": "Search posts…",
-    "searchButton": "Search",
-    "clearSearch": "Clear",
-    "noResults": "No posts match \"{q}\". Try another term or browse all posts.",
-    "resultsCount": "{count} result(s) for \"{q}\"",
-    "allPosts": "Browse all posts",
-    "explore": {
-      "title": "Keep exploring",
-      "howTo": "How to play",
-      "rules": "Gomoku rules",
-      "renju": "Renju rules",
-      "glossary": "Glossary",
-      "faq": "FAQ",
-      "puzzle": "Daily puzzle",
-      "games": "Game library"
-    }
+    "p3Date": "June 2026"
   },
   "contact": {
     "title": "Contact Us",
@@ -499,25 +456,5 @@
     "errUsernameTaken": "This username is already taken.",
     "errInvalidCredentials": "Wrong username/email or password.",
     "errGeneric": "Something went wrong. Please try again."
-  },
-  "glossary": {
-    "title": "Gomoku Glossary – Live Threes, Fours, Double Threes & Forbidden Moves",
-    "sub": "The terms every Gomoku player needs: open twos, live threes, sleeping threes, double threes, four-threes and more — explained in plain language with practical tips.",
-    "chip": "Glossary",
-    "howToLink": "New to the game?",
-    "howToLinkCta": "Read how to play in 2 minutes",
-    "cta": "Put it into practice — play free",
-    "relatedTitle": "Rules guides"
-  },
-  "replays": {
-    "title": "AI vs AI Gomoku Replay",
-    "subtitle": "Watch two engines battle it out",
-    "resultBlack": "Black won in {count} moves",
-    "resultWhite": "White won in {count} moves",
-    "resultDraw": "Draw — the board is full",
-    "meta": "AI vs AI Gomoku replay — watch the full engine battle, move by move, freestyle Gomoku.",
-    "cta": "Play Gomoku free",
-    "notFound": "Replay not found",
-    "notFoundCta": "Go play"
   }
 }

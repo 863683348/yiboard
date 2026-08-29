@@ -10,6 +10,7 @@ import { useAppearance, type BoardSkin } from '@/components/useAppearance';
 
 const NAV_ITEMS = [
   { href: '/play', key: 'play' },
+  { href: '/games', key: 'games' },
   { href: '/rankings', key: 'rankings' },
   { href: '/pricing', key: 'pricing' },
   { href: '/how-to', key: 'howTo' },
