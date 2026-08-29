@@ -221,3 +221,19 @@ export function applyMove(state: { board: XQBoard; turn: XQColor }, move: XQMove
   b[move.from] = null
   return { board: b, turn: state.turn === 'red' ? 'black' : 'red' }
 }
+
+/**
+ * UI 悔棋（undo）辅助：给定历史快照的轮次序列（'red' = 玩家行棋点），
+ * 返回应将 history 切片到的长度，以"撤回到上一个玩家行棋点"——
+ * 即同时撤销玩家上一步与 AI 的应手。
+ * 例：['red','black','red'] -> 1（回到初始）；
+ *     ['red','black','red','black','red'] -> 3（回到上一个红方回合）。
+ * 若 AI 尚未应手（如 ['red','black']），则一并撤销玩家这一步。
+ */
+export function undoTargetIndex(turns: XQColor[]): number {
+  if (turns.length <= 1) return turns.length
+  let j = turns.length - 2
+  while (j >= 0 && turns[j] !== 'red') j--
+  if (j < 0) j = 0
+  return j + 1
+}

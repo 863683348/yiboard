@@ -5,7 +5,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-import { createBoard, legalMoves, gameStatus, isInCheck, applyMove } from './rules.ts'
+import { createBoard, legalMoves, gameStatus, isInCheck, applyMove, undoTargetIndex } from './rules.ts'
 import { bestMove } from './ai.ts'
 import { idx, XQ_SIZE } from './types.ts'
 
@@ -80,4 +80,16 @@ test('AI returns a legal move', () => {
   assert.ok(m)
   const legal = legalMoves(b, 'black')
   assert.ok(legal.some(l => l.from === m!.from && l.to === m!.to))
+})
+
+test('undoTargetIndex reverts to previous player turn', () => {
+  // 空 / 单快照：保持不变
+  assert.equal(undoTargetIndex([]), 0)
+  assert.equal(undoTargetIndex(['red']), 1)
+  // 玩家落子后 AI 尚未应手：连这一步一起撤销
+  assert.equal(undoTargetIndex(['red', 'black']), 1)
+  // 一个完整回合后：回到初始（玩家上一步 + AI 应手一并撤销）
+  assert.equal(undoTargetIndex(['red', 'black', 'red']), 1)
+  // 两个完整回合后：回到上一个红方行棋点
+  assert.equal(undoTargetIndex(['red', 'black', 'red', 'black', 'red']), 3)
 })

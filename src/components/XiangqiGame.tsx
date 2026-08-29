@@ -11,6 +11,7 @@ import {
   legalMoves,
   gameStatus,
   applyMove,
+  undoTargetIndex,
   cloneBoard,
   type XQBoard,
   type XQColor,
@@ -26,6 +27,15 @@ const DIFFICULTIES: ReadonlyArray<{ value: XQDifficulty; label: string }> = [
   { value: 'steady', label: 'difficultySteady' },
   { value: 'sharp', label: 'difficultySharp' },
 ]
+
+/** 历史快照：每次落子后记录完整局面，用于悔棋还原 */
+interface XQSnapshot {
+  board: XQBoard
+  turn: XQColor
+  status: 'playing' | 'check' | 'checkmate' | 'stalemate'
+  winner: XQColor | null
+  lastMove: XQMove | null
+}
 
 export interface XiangqiGameProps {
   variant?: 'hero' | 'full'
@@ -46,7 +56,10 @@ export default function XiangqiGame({
   const [selected, setSelected] = useState<number | null>(null)
   const [legalTargets, setLegalTargets] = useState<number[] | null>(null)
   const [thinking, setThinking] = useState(false)
-  const [moveCount, setMoveCount] = useState(0)
+  const [history, setHistory] = useState<XQSnapshot[]>(() => [
+    { board: createBoard(), turn: 'red', status: 'playing', winner: null, lastMove: null },
+  ])
+  const moveCount = history.length - 1
   const [copied, setCopied] = useState(false)
   const aiTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -69,16 +82,15 @@ export default function XiangqiGame({
     if (!move) return
 
     const result = applyMove({ board, turn: 'red' }, move)
+    const { status: s, winner: w } = gameStatus(result.board, 'black')
     setBoard(result.board)
     setLastMove(move)
     setSelected(null)
     setLegalTargets(null)
     setTurn(result.turn)
-    setMoveCount(c => c + 1)
-
-    const { status: s, winner: w } = gameStatus(result.board, 'black')
     setStatus(s as 'playing' | 'check' | 'checkmate' | 'stalemate')
     if (w) setWinner(w)
+    setHistory(h => [...h, { board: result.board, turn: result.turn, status: s as 'playing' | 'check' | 'checkmate' | 'stalemate', winner: w ?? null, lastMove: move }])
   }, [board, selected])
 
   // AI responds to black's turn
@@ -89,13 +101,13 @@ export default function XiangqiGame({
       const move = bestMove(board, 'black', difficulty)
       if (move) {
         const result = applyMove({ board, turn: 'black' }, move)
+        const { status: s, winner: w } = gameStatus(result.board, 'red')
         setBoard(result.board)
         setLastMove(move)
         setTurn(result.turn)
-        setMoveCount(c => c + 1)
-        const { status: s, winner: w } = gameStatus(result.board, 'red')
         setStatus(s as 'playing' | 'check' | 'checkmate' | 'stalemate')
         if (w) setWinner(w)
+        setHistory(h => [...h, { board: result.board, turn: result.turn, status: s as 'playing' | 'check' | 'checkmate' | 'stalemate', winner: w ?? null, lastMove: move }])
       }
       setThinking(false)
     }, 400)
@@ -106,12 +118,23 @@ export default function XiangqiGame({
     const b = createBoard()
     setBoard(b); setTurn('red'); setStatus('playing')
     setWinner(null); setLastMove(null); setSelected(null)
-    setLegalTargets(null); setMoveCount(0)
+    setLegalTargets(null)
+    setHistory([{ board: b, turn: 'red', status: 'playing', winner: null, lastMove: null }])
   }
 
   const handleUndo = () => {
-    if (moveCount < 2) return
-    handleNewGame()
+    if (history.length <= 1) return
+    // 撤回到上一个玩家行棋点：同时撤销玩家上一步 + AI 的应手（若 AI 还没应手则连这一步一起撤）
+    const next = history.slice(0, undoTargetIndex(history.map(h => h.turn)))
+    const snap = next[next.length - 1]!
+    setHistory(next)
+    setBoard(snap.board)
+    setTurn(snap.turn)
+    setStatus(snap.status)
+    setWinner(snap.winner)
+    setLastMove(snap.lastMove)
+    setSelected(null)
+    setLegalTargets(null)
   }
 
   const handleResign = () => {
@@ -178,7 +201,7 @@ export default function XiangqiGame({
           <button className="yb-btn yb-btn-primary yb-btn-sm" onClick={handleNewGame}>
             {t('newGame')}
           </button>
-          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={moveCount === 0}>
+          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={history.length <= 1}>
             <ArrowCounterClockwise size={14} />
             {t('undo')}
           </button>
@@ -198,7 +221,7 @@ export default function XiangqiGame({
             className="yb-btn yb-btn-ghost yb-btn-sm"
             value={difficulty}
             onChange={e => setDifficulty(e.target.value as XQDifficulty)}
-            disabled={moveCount > 0}
+            disabled={history.length > 1}
             aria-label={t('difficulty')}
           >
             {DIFFICULTIES.map(d => (
