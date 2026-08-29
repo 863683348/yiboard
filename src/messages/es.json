@@ -125,7 +125,8 @@
     "statsHeading": "Jugadores en línea",
     "statsTotal": "Total",
     "statsAi": "vs motor",
-    "statsFriend": "vs jugadores"
+    "statsFriend": "vs jugadores",
+    "ctaGo": "Jugar al Go"
   },
   "play": {
     "title": "Juega Gomoku Online Gratis – vs IA o Amigos",

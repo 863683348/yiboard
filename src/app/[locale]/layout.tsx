@@ -100,7 +100,7 @@ export default async function LocaleLayout(props: {
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
             <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"YiBoard","url":"https://yiboardgame.com","logo":"https://yiboardgame.com/og.png","sameAs":["https://github.com/863683348/yiboard"],"description":"Free online Gomoku and Xiangqi games. No account, no download."},{"@type":"WebSite","name":"YiBoard","url":"https://yiboardgame.com","description":"Play Gomoku and Xiangqi free online against AI or friends.","potentialAction":{"@type":"SearchAction","target":"https://yiboardgame.com/blog?q={search_term_string}","query-input":"required name=search_term_string"}}]}) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"YiBoard","url":"https://yiboardgame.com","logo":"https://yiboardgame.com/og.png","sameAs":["https://github.com/863683348/yiboard"],"description":"Free online Gomoku, Xiangqi, and Go games. No account, no download."},{"@type":"WebSite","name":"YiBoard","url":"https://yiboardgame.com","description":"Play Gomoku, Xiangqi, and Go free online against AI or friends.","potentialAction":{"@type":"SearchAction","target":"https://yiboardgame.com/blog?q={search_term_string}","query-input":"required name=search_term_string"}}]}) }}
       />
     </head>
       <body className={`${archivo.variable} ${inter.variable}`}>

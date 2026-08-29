@@ -230,6 +230,8 @@ export default async function GomokuVsGoPage(props: { params: Promise<{ locale: 
           <RelatedLink href="/gomoku-rules" label={lang === 'zh' ? '五子棋规则' : 'Gomoku rules'} />
           <RelatedLink href="/renju-rules" label={lang === 'zh' ? '连珠规则（禁手）' : 'Renju rules (forbidden moves)'} />
           <RelatedLink href="/how-to" label={lang === 'zh' ? '快速玩法说明' : 'How to play gomoku'} />
+          <RelatedLink href="/go" label={lang === 'zh' ? '免费在线玩围棋' : 'Play Go online free'} />
+          <RelatedLink href="/go-rules" label={lang === 'zh' ? '围棋规则' : 'Go rules'} />
         </div>
       </section>
 

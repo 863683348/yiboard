@@ -36,6 +36,8 @@ const PATHS = [
   '/xiangqi',
   '/learn-xiangqi',
   '/xiangqi/openings',
+  '/go',
+  '/go-rules',
 ] as const;
 
 /** 与 /replays/[id] 页一致：低于该手数的 AI 对局 noindex，也不进 sitemap。 */

@@ -137,7 +137,10 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             name={t('games.go.name')}
             native={t('games.go.native')}
             blurb={t('games.go.blurb')}
-            status={t('games.statusPlanned')}
+            status={t('games.statusLive')}
+            live
+            href="/go"
+            action={t('ctaGo')}
           />
         </div>
       </section>

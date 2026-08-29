@@ -125,7 +125,8 @@
     "statsHeading": "プレイヤー数",
     "statsTotal": "合計",
     "statsAi": "対エンジン",
-    "statsFriend": "対プレイヤー"
+    "statsFriend": "対プレイヤー",
+    "ctaGo": "囲碁をプレイ"
   },
   "play": {
     "title": "五目並べを無料でオンラインプレイ – AI や友人と対戦",

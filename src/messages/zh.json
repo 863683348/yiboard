@@ -140,7 +140,8 @@
     "statsTotal": "总计",
     "statsAi": "人机对局",
     "statsFriend": "在线对战",
-    "ctaXiangqi": "开始象棋"
+    "ctaXiangqi": "开始象棋",
+    "ctaGo": "开始围棋"
   },
   "play": {
     "title": "五子棋",

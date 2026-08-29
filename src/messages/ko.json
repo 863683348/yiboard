@@ -139,7 +139,8 @@
     "statsTotal": "Total",
     "statsAi": "vs engine",
     "statsFriend": "vs players",
-    "ctaXiangqi": "Play Xiangqi"
+    "ctaXiangqi": "Play Xiangqi",
+    "ctaGo": "바둑 하기"
   },
   "play": {
     "title": "Gomoku",
