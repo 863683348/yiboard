@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import { routing } from '@/i18n/routing';
-import { getPostSlugs } from '@/lib/blog/posts';
+import { getPostSlugs, getAllTags } from '@/lib/blog/posts';
 import { XIANGQI_OPENING_SLUGS } from '@/lib/xiangqi/openings';
 
 /**
@@ -84,7 +84,18 @@ export function GET() {
     })),
   );
 
-  const entries = [...staticEntries, ...blogEntries, ...openingEntries];
+  // Blog tag archives: /blog/tag/<tag> for each tag, every locale.
+  const tagEntries = getAllTags().flatMap((tag) =>
+    routing.locales.map((locale) => ({
+      url: href(base, locale, `/blog/tag/${tag}`),
+      path: `/blog/tag/${tag}`,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, href(base, l, `/blog/tag/${tag}`)]),
+      ),
+    })),
+  );
+
+  const entries = [...staticEntries, ...blogEntries, ...openingEntries, ...tagEntries];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

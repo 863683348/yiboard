@@ -126,6 +126,24 @@ export default async function BlogPage(props: {
             <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
               {post.description[lang as 'zh' | 'en']}
             </p>
+            <div style={{ marginTop: 'var(--space-3)', display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+              {post.tags.map((tg) => (
+                <Link
+                  key={tg}
+                  href={`/blog/tag/${tg}`}
+                  style={{
+                    fontSize: 'var(--text-xs)',
+                    padding: '2px var(--space-3)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 999,
+                    textDecoration: 'none',
+                    color: 'var(--fg)',
+                  }}
+                >
+                  #{tg}
+                </Link>
+              ))}
+            </div>
           </article>
         ))}
 

@@ -230,6 +230,25 @@ export default async function BlogPostPage(props: { params: Promise<Params> }) {
         <h1 className="yb-h2">{post.title[lang]}</h1>
         <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>{post.description[lang]}</p>
 
+        <div style={{ marginTop: 'var(--space-4)', display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+          {post.tags.map((tg) => (
+            <Link
+              key={tg}
+              href={`/blog/tag/${tg}`}
+              style={{
+                fontSize: 'var(--text-xs)',
+                padding: '2px var(--space-3)',
+                border: '1px solid var(--border)',
+                borderRadius: 999,
+                textDecoration: 'none',
+                color: 'var(--fg)',
+              }}
+            >
+              #{tg}
+            </Link>
+          ))}
+        </div>
+
         <div style={{ marginTop: 'var(--space-8)' }}>
           {post.content[lang].map((b, i) => (
             <Block key={i} block={b} lang={lang} />

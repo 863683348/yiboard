@@ -18,6 +18,8 @@ export interface BlogPost {
   title: { zh: string; en: string };
   description: { zh: string; en: string };
   keywords: string[];
+  /** Topical-cluster tags — drives /blog/[tag] indexes and internal linking. */
+  tags: string[];
   content: { zh: PostBlock[]; en: PostBlock[] };
   // 可选：结构化 HowTo（用于 HowTo JSON-LD 争取富媒体结果）。按语言分键，缺失语言回退 en。
   howTo?: {
@@ -30,6 +32,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'why-gomoku-ships-first',
     date: '2026-08-04',
+    tags: ['gomoku', 'product'],
     title: {
       zh: '为什么五子棋先上线',
       en: 'Why Gomoku Ships First',
@@ -105,6 +108,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'where-the-ladder-comes-from',
     date: '2026-08-05',
+    tags: ['gomoku', 'strategy'],
     title: {
       zh: '段位制从哪来',
       en: 'Where the Ladder Comes From',
@@ -176,6 +180,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'server-side-refereeing-anti-cheat',
     date: '2026-08-06',
+    tags: ['gomoku', 'engineering'],
     title: {
       zh: '服务器端裁判：为什么没人能作弊',
       en: 'Server-side Refereeing: Why Nobody Can Cheat Your Game',
@@ -247,6 +252,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'how-to-play-gomoku',
     date: '2026-08-07',
+    tags: ['gomoku', 'rules', 'strategy'],
     title: {
       zh: '五子棋玩法：规则、开局与必胜思路',
       en: 'How to Play Gomoku: Rules, Openings & Winning Strategy',
@@ -360,6 +366,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'why-no-signup-needed',
     date: '2026-08-08',
+    tags: ['product', 'privacy'],
     title: {
       zh: '为什么 YiBoard 不需要注册',
       en: 'Why YiBoard Needs No Signup',
@@ -431,6 +438,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'alpha-beta-engine-in-browser',
     date: '2026-08-09',
+    tags: ['gomoku', 'engineering'],
     title: {
       zh: '真引擎：浏览器里的 alpha-beta',
       en: 'A Real Engine in Your Browser: Alpha-Beta in 500ms',
@@ -504,6 +512,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'five-languages-from-day-one',
     date: '2026-08-10',
+    tags: ['product', 'multilingual'],
     title: {
       zh: '五语从第一天做起',
       en: 'Five Languages From Day One',
@@ -577,6 +586,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'free-is-a-design-choice',
     date: '2026-08-11',
+    tags: ['product'],
     title: {
       zh: '免费不是营销，是理念',
       en: 'Free Is a Design Choice, Not Marketing',
@@ -676,6 +686,7 @@ export const POSTS: BlogPost[] = [
   },  {
     slug: 'gomoku-dan-grades-vs-ranks',
     date: '2026-08-12',
+    tags: ['gomoku', 'strategy'],
     title: {
       zh: '真段位 vs 青铜白银：段位制到底在衡量什么',
       en: 'Real Ranks vs Bronze and Platinum: What Dan Grades Actually Measure',
@@ -782,6 +793,7 @@ export const POSTS: BlogPost[] = [
   },  {
     slug: 'share-gomoku-game-link',
     date: '2026-08-13',
+    tags: ['gomoku', 'product'],
     title: {
       zh: '分享对局：一局棋也是一张名片',
       en: 'Share a Game: A Match Is a Calling Card',
@@ -873,6 +885,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'think-offline-win-online',
     date: '2026-08-14',
+    tags: ['gomoku', 'product'],
     title: {
       zh: '离线也能想，在线才能赢',
       en: 'Think Offline, Win Online',
@@ -954,6 +967,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'board-games-browser-revival',
     date: '2026-08-15',
+    tags: ['product'],
     title: {
       zh: "棋类游戏凭什么在浏览器里复兴？",
       en: "Why Board Games Deserve a Browser Revival",
@@ -1113,6 +1127,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'no-ads-no-tracking-just-games',
     date: '2026-08-16',
+    tags: ['product', 'privacy'],
     title: {
       zh: "零广告、零追踪、只有游戏",
       en: "No Ads, No Tracking, Just Games",
@@ -1214,6 +1229,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'one-minute-to-play',
     date: '2026-08-17',
+    tags: ['gomoku', 'product'],
     title: {
       zh: "YiBoard 的北极星：一小时内入门",
       en: "The North Star: A Game in One Minute",
@@ -1343,6 +1359,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: "play-gomoku-against-ai",
     date: "2026-08-29",
+    tags: ['gomoku', 'strategy', 'ai'],
     title: {
       zh: "怎么和 AI 对战练习",
       en: "How to Practice Against the AI",
@@ -1433,6 +1450,19 @@ export const POSTS: BlogPost[] = [
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
 }
+
+export function getAllTags(): string[] {
+  const set = new Set<string>();
+  for (const p of POSTS) for (const t of p.tags) set.add(t);
+  return [...set].sort();
+}
+
+export function getPostsByTag(tag: string): BlogPost[] {
+  return POSTS.filter((p) => p.tags.includes(tag)).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+}
+
 
 export function getPostSlugs(): string[] {
   return POSTS.map((p) => p.slug);
