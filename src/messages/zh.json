@@ -169,6 +169,7 @@
     "thinkingTime": "{ms} 毫秒",
     "newGame": "新对局",
     "undo": "悔棋",
+    "undoHint": "悔棋（按 Z）",
     "resign": "认输",
     "shareGame": "分享这局",
     "copyLink": "复制链接",

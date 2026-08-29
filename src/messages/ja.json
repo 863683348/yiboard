@@ -178,6 +178,7 @@
     "thinkingTime": "{ms} ms",
     "newGame": "新しい対局",
     "undo": "待った",
+    "undoHint": "待った（Z キー）",
     "resign": "投了",
     "shareGame": "この対局を共有",
     "copyLink": "リンクをコピー",

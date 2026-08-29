@@ -110,7 +110,7 @@ export default function GoGame({
     setHistory((h) => [...h, next]);
   };
 
-  const handleUndo = () => {
+  const handleUndo = useCallback(() => {
     if (history.length <= 1) return;
     // 撤回到上一个玩家行棋点：同时撤销玩家上一步 + AI 的应手（若 AI 还没应手则连这一步一起撤）
     const next = history.slice(0, undoTargetIndex(history.map((h) => h.turn)));
@@ -118,7 +118,18 @@ export default function GoGame({
     setHistory(next);
     setGame(snap);
     setThinking(false);
-  };
+  }, [history]);
+
+  // 键盘快捷键：Z 或 Ctrl/Cmd+Z 触发悔棋；忽略 Alt 组合避免与其它快捷键冲突
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() !== 'z' || e.altKey) return;
+      e.preventDefault();
+      handleUndo();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [handleUndo]);
 
   const handleResign = () => {
     setGame(resign(game, 'black'));
@@ -199,7 +210,7 @@ export default function GoGame({
           <button className="yb-btn yb-btn-primary yb-btn-sm" onClick={handleNewGame}>
             {t('newGame')}
           </button>
-          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={history.length <= 1 || thinking}>
+          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={history.length <= 1 || thinking} title={t('undoHint')} aria-label={t('undoHint')}>
             <ArrowCounterClockwise size={14} />
             {t('undo')}
           </button>

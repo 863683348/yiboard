@@ -178,6 +178,7 @@
     "thinkingTime": "{ms} ms",
     "newGame": "Nova partida",
     "undo": "Desfazer",
+    "undoHint": "Desfazer (tecla Z)",
     "resign": "Desistir",
     "shareGame": "Compartilhar esta partida",
     "copyLink": "Copiar link",

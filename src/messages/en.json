@@ -169,6 +169,7 @@
     "thinkingTime": "{ms} ms",
     "newGame": "New game",
     "undo": "Undo",
+    "undoHint": "Undo (press Z)",
     "resign": "Resign",
     "shareGame": "Share this game",
     "copyLink": "Copy link",
