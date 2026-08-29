@@ -13,7 +13,30 @@ export const dynamic = 'force-dynamic';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yiboardgame.com';
 
-const PATHS = ['', '/play', '/rankings', '/how-to', '/about', '/profile', '/blog'] as const;
+const PATHS = [
+  '',
+  '/play',
+  '/rankings',
+  '/how-to',
+  '/glossary',
+  '/about',
+  '/profile',
+  '/blog',
+  '/faq',
+  '/pricing',
+  '/terms',
+  '/privacy',
+  '/contact',
+  '/games',
+  '/puzzle',
+  '/gomoku-rules',
+  '/renju-rules',
+  '/gomoku-vs-go',
+  '/xiangqi',
+] as const;
+
+/** 与 /replays/[id] 页一致：低于该手数的 AI 对局 noindex，也不进 sitemap。 */
+const MIN_INDEX_MOVES = 12;
 
 function href(base: string, locale: string, path: string): string {
   const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;

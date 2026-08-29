@@ -42,7 +42,6 @@ export default async function XiangqiPage({ params }: { params: Promise<{ locale
     applicationCategory: 'Game',
     operatingSystem: 'Web Browser',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.6', ratingCount: '128' },
   }
 
   return (

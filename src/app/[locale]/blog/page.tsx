@@ -14,7 +14,22 @@ export async function generateMetadata(props: {
     keywords: meta('blog.keywords'), openGraph: { title: meta('blog.title'), description: meta('blog.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('blog.title'), description: meta('blog.description'), images: ['/og.png'] }, alternates: localeAlternates('blog', locale) };
 }
 
-export default async function BlogPage(props: { params: Promise<{ locale: string }> }) {
+export const revalidate = 3600;
+
+// 站内搜索：匹配标题 / 摘要 / 关键词（中英都算），供 sitelinks searchbox（SearchAction /blog?q=）真实使用。
+function matchPost(post: (typeof POSTS)[number], q: string): boolean {
+  const hay = [
+    post.title.zh, post.title.en,
+    post.description.zh, post.description.en,
+    ...(post.keywords ?? []),
+  ].join(' ').toLowerCase();
+  return hay.includes(q);
+}
+
+export default async function BlogPage(props: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ q?: string }>;
+}) {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
