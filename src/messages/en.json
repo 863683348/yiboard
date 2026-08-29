@@ -62,7 +62,6 @@
     "boardSlate": "Bluestone",
     "signIn": "Sign in / Register",
     "signOut": "Sign out",
-    "blog": "Blog",
     "glossary": "Glossary",
     "gomokuRules": "Gomoku rules",
     "renjuRules": "Renju rules",
@@ -193,7 +192,18 @@
       "cancel": "Cancel",
       "queueCount": "{count} waiting right now",
       "error": "Could not reach the queue. Try again."
-    }
+    },
+    "vsAiAi": "AI vs AI",
+    "autoModeHint": "Watch two engines battle. Each finished game is saved as a replay.",
+    "aiBlack": "AI (Black)",
+    "aiWhite": "AI (White)",
+    "replayReady": "Replay saved",
+    "watchReplay": "Watch replay",
+    "hintLoading": "Thinking…",
+    "hintClear": "Clear hint",
+    "boardSize": "Board size",
+    "winCount": "Win",
+    "variantNote": "Changing the board size or win condition starts a new game."
   },
   "rankings": {
     "title": "Rankings",
@@ -229,7 +239,10 @@
     "cta": "Try it against the engine",
     "relatedTitle": "Go deeper",
     "rulesLink": "Gomoku rules & shapes",
-    "blogLink": "Strategy blog"
+    "blogLink": "Strategy blog",
+    "glossaryLink": "Gomoku Glossary",
+    "faqLink": "FAQ",
+    "faqTitle": "Gomoku FAQ"
   },
   "about": {
     "title": "About YiBoard",
@@ -402,7 +415,10 @@
     "q6": "When does the membership launch?",
     "a6": "Payments are being integrated (later phase). Everything is free until then, and we will announce before launching.",
     "q7": "Is there a mobile app?",
-    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download."
+    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download.",
+    "rulesCta": "How to play",
+    "playCta": "Play now",
+    "contactCta": "Contact us"
   },
   "blog": {
     "title": "Blog",
@@ -415,7 +431,12 @@
     "p2Date": "July 2026",
     "p3Title": "Server-side refereeing: why nobody can cheat your game",
     "p3Excerpt": "Every move is validated by the server; the client is only a display layer. That is the baseline of our anti-cheat design.",
-    "p3Date": "June 2026"
+    "p3Date": "June 2026",
+    "searchLabel": "Search articles",
+    "searchPlaceholder": "Search articles…",
+    "searchButton": "Search",
+    "clearSearch": "Clear",
+    "allPosts": "View all posts"
   },
   "contact": {
     "title": "Contact Us",
@@ -457,5 +478,15 @@
     "errUsernameTaken": "This username is already taken.",
     "errInvalidCredentials": "Wrong username/email or password.",
     "errGeneric": "Something went wrong. Please try again."
+  },
+  "glossary": {
+    "howToLink": "New to the game?",
+    "howToLinkCta": "Learn to play in 2 minutes",
+    "relatedTitle": "Rule guides"
+  },
+  "replays": {
+    "resultDraw": "Draw — board is full",
+    "notFound": "Replay not found",
+    "notFoundCta": "Go play"
   }
 }

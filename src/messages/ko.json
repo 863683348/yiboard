@@ -192,7 +192,18 @@
       "cancel": "Cancel",
       "queueCount": "{count} waiting right now",
       "error": "Could not reach the queue. Try again."
-    }
+    },
+    "vsAiAi": "AI 대 AI",
+    "autoModeHint": "두 엔진이 대결하는 것을 관전하세요. 종료된 대국은 리플레이로 저장됩니다.",
+    "aiBlack": "AI (흑)",
+    "aiWhite": "AI (백)",
+    "replayReady": "리플레이 저장됨",
+    "watchReplay": "리플레이 보기",
+    "hintLoading": "생각 중…",
+    "hintClear": "힌트 지우기",
+    "boardSize": "판 크기",
+    "winCount": "승",
+    "variantNote": "판 크기나 승리 조건을 변경하면 새 대국이 시작됩니다."
   },
   "rankings": {
     "title": "Rankings",
@@ -228,7 +239,10 @@
     "cta": "Try it against the engine",
     "relatedTitle": "Go deeper",
     "rulesLink": "Gomoku rules & shapes",
-    "blogLink": "Strategy blog"
+    "blogLink": "Strategy blog",
+    "glossaryLink": "오목 용어집",
+    "faqLink": "자주 묻는 질문",
+    "faqTitle": "오목 자주 묻는 질문"
   },
   "about": {
     "title": "About YiBoard",
@@ -401,7 +415,10 @@
     "q6": "When does the membership launch?",
     "a6": "Payments are being integrated (later phase). Everything is free until then, and we will announce before launching.",
     "q7": "Is there a mobile app?",
-    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download."
+    "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download.",
+    "rulesCta": "게임 방법",
+    "playCta": "지금 플레이",
+    "contactCta": "문의하기"
   },
   "blog": {
     "title": "Blog",
@@ -414,7 +431,12 @@
     "p2Date": "July 2026",
     "p3Title": "Server-side refereeing: why nobody can cheat your game",
     "p3Excerpt": "Every move is validated by the server; the client is only a display layer. That is the baseline of our anti-cheat design.",
-    "p3Date": "June 2026"
+    "p3Date": "June 2026",
+    "searchLabel": "글 검색",
+    "searchPlaceholder": "글 검색…",
+    "searchButton": "검색",
+    "clearSearch": "지우기",
+    "allPosts": "모든 글 보기"
   },
   "contact": {
     "title": "Contact Us",
@@ -456,5 +478,15 @@
     "errUsernameTaken": "This username is already taken.",
     "errInvalidCredentials": "Wrong username/email or password.",
     "errGeneric": "Something went wrong. Please try again."
+  },
+  "glossary": {
+    "howToLink": "게임이 처음이신가요?",
+    "howToLinkCta": "2분 안에 배우기",
+    "relatedTitle": "규칙 가이드"
+  },
+  "replays": {
+    "resultDraw": "무승부 — 판이 가득 참",
+    "notFound": "리플레이를 찾을 수 없습니다",
+    "notFoundCta": "플레이하러 가기"
   }
 }

@@ -62,7 +62,6 @@
     "boardSlate": "青石",
     "signIn": "登录 / 注册",
     "signOut": "退出登录",
-    "blog": "博客",
     "glossary": "术语表",
     "gomokuRules": "五子棋规则",
     "renjuRules": "连珠规则",
@@ -193,7 +192,18 @@
       "cancel": "取消匹配",
       "queueCount": "当前 {count} 人在排队",
       "error": "连不上匹配队列，再试一次。"
-    }
+    },
+    "vsAiAi": "AI 对 AI",
+    "autoModeHint": "观看两个引擎对战。每局结束的对局都会保存为复盘。",
+    "aiBlack": "AI（黑方）",
+    "aiWhite": "AI（白方）",
+    "replayReady": "复盘已保存",
+    "watchReplay": "观看复盘",
+    "hintLoading": "思考中…",
+    "hintClear": "清除提示",
+    "boardSize": "棋盘尺寸",
+    "winCount": "胜",
+    "variantNote": "更改棋盘尺寸或胜负条件会开始新对局。"
   },
   "rankings": {
     "title": "排行榜",
@@ -229,7 +239,10 @@
     "cta": "先去和引擎下一局",
     "relatedTitle": "深入阅读",
     "rulesLink": "五子棋规则与棋型",
-    "blogLink": "策略博客"
+    "blogLink": "策略博客",
+    "glossaryLink": "五子棋术语表",
+    "faqLink": "常见问题",
+    "faqTitle": "五子棋常见问题"
   },
   "about": {
     "title": "关于弈界",
@@ -386,7 +399,10 @@
     "q6": "会员什么时候上线？",
     "a6": "会员订阅正在接入支付（P1），上线前全部功能免费。上线后会提前公布。",
     "q7": "会做移动端 App 吗？",
-    "a7": "弈界是响应式网页（PWA 化规划中），手机浏览器直接玩，无需下载。"
+    "a7": "弈界是响应式网页（PWA 化规划中），手机浏览器直接玩，无需下载。",
+    "rulesCta": "玩法",
+    "playCta": "立即对局",
+    "contactCta": "联系我们"
   },
   "blog": {
     "title": "博客",
@@ -399,7 +415,12 @@
     "p2Date": "2026 年 7 月",
     "p3Title": "服务端仲裁：为什么你的对局没人能作弊",
     "p3Excerpt": "每一步都经服务端校验，客户端只是显示层。这是防作弊的底线设计。",
-    "p3Date": "2026 年 6 月"
+    "p3Date": "2026 年 6 月",
+    "searchLabel": "搜索文章",
+    "searchPlaceholder": "搜索文章…",
+    "searchButton": "搜索",
+    "clearSearch": "清除",
+    "allPosts": "查看全部文章"
   },
   "contact": {
     "title": "联系我们",
@@ -457,5 +478,15 @@
     "errUsernameTaken": "该用户名已被占用。",
     "errInvalidCredentials": "用户名/邮箱或密码错误。",
     "errGeneric": "出了点问题，请重试。"
+  },
+  "glossary": {
+    "howToLink": "刚接触这个游戏？",
+    "howToLinkCta": "2 分钟学会玩法",
+    "relatedTitle": "规则指南"
+  },
+  "replays": {
+    "resultDraw": "平局 — 棋盘已满",
+    "notFound": "未找到复盘",
+    "notFoundCta": "去对局"
   }
 }
