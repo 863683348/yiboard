@@ -14,7 +14,9 @@
       "keywords": "五目並べブログ, 五目並べ戦略, 五目並べルール, 五目並べコツ"
     },
     "home": {
-      "description": "五目並べを無料でオンラインプレイ。AI や友人相手。登録もインストールも不要。五目並べルールを2分で学び、九級から九段まで十八段階のラダーを登れる。"
+      "description": "五目並べを無料でオンラインプレイ。AI や友人相手。登録もインストールも不要。五目並べルールを2分で学び、九級から九段まで十八段階のラダーを登れる。",
+      "keywords": "gomoku online free, play gomoku, five in a row, gomoku vs ai, gomoku with friends, gomoku multiplayer, gomoku no download",
+      "title": "無料五目並べオンライン — AIや実際のプレイヤーと五目並べ"
     },
     "rankings": {
       "title": "五目並べ段位 — 九級から九段までの十八段階ラダー",
@@ -25,6 +27,16 @@
       "title": "五目並べの遊び方：5分でルールをマスター",
       "description": "五目並べのルールを素早く学ぶ：5個並べで勝ち、黒先手、オープンフォーやダブルスリーなどの基本戦術も解説。今すぐ第一弾を始めてみよう。",
       "keywords": "五目並べ 遊び方,gomoku ルール,五目並べ 戦略,五目並べ 初心者,フリーゲーム"
+    },
+    "play": {
+      "description": "無料で五目並べを楽しむ3つの方法：内蔵AIに挑戦、友達とルームを開く、ランダム対戦で実際のプレイヤーと対局。登録不要。",
+      "keywords": "play gomoku online, gomoku vs ai, gomoku two player, gomoku random match, gomoku friend room, gomoku multiplayer",
+      "title": "五目並べオンラインを遊ぶ — AI・友達・ランダム対戦"
+    },
+    "pricing": {
+      "description": "YiBoardは100%無料で遊べます。サブスクリプション、広告、アカウント登録は不要です。",
+      "keywords": "gomoku free, gomoku no ads, gomoku no account, free browser game, free online board game",
+      "title": "YiBoardの料金 — 永久無料、広告なし、アカウント不要"
     }
   },
   "brand": {
@@ -54,7 +66,9 @@
     "glossary": "用語集",
     "gomokuRules": "五目並べのルール",
     "renjuRules": "連珠のルール",
-    "gomokuVsGo": "五目並べ vs 囲碁"
+    "gomokuVsGo": "五目並べ vs 囲碁",
+    "games": "ゲーム",
+    "signOut": "ログアウト"
   },
   "home": {
     "eyebrow": "無料 · 登録不要",
@@ -81,7 +95,8 @@
       "xiangqi": {
         "name": "シャンチー",
         "native": "象棋 · Xiàngqí",
-        "blurb": "盤の中央を河が横切ります。砲は駒を一つ飛び越えないと取れません。両軍の将と帥は、開いた縦の筋で向かい合ってはいけません。"
+        "blurb": "盤の中央を河が横切ります。砲は駒を一つ飛び越えないと取れません。両軍の将と帥は、開いた縦の筋で向かい合ってはいけません。",
+        "status": "今すぐプレイ可能"
       },
       "go": {
         "name": "囲碁",
@@ -126,7 +141,8 @@
     "statsTotal": "合計",
     "statsAi": "対エンジン",
     "statsFriend": "対プレイヤー",
-    "ctaGo": "囲碁をプレイ"
+    "ctaGo": "囲碁をプレイ",
+    "ctaXiangqi": "象棋を遊ぶ"
   },
   "play": {
     "title": "五目並べを無料でオンラインプレイ – AI や友人と対戦",
@@ -257,7 +273,9 @@
         "q": "YiBoardは無料ですか？",
         "a": "無料、登録不要、ダウンロード不要。ブラウザですぐエンジンや友達と対戦できます。"
       }
-    ]
+    ],
+    "blogLink": "戦略ブログ",
+    "rulesLink": "五目並べのルールと形"
   },
   "about": {
     "title": "YiBoard について",

@@ -14,7 +14,9 @@
       "keywords": "blog gomoku, estrategia gomoku, reglas gomoku, consejos gomoku"
     },
     "home": {
-      "description": "Juega Gomoku gratis online contra IA o amigos. Aprende las reglas del gomoku en 2 minutos. Sin cuenta, sin descarga. Sube la escalera de 18 peldaños."
+      "description": "Juega Gomoku gratis online contra IA o amigos. Aprende las reglas del gomoku en 2 minutos. Sin cuenta, sin descarga. Sube la escalera de 18 peldaños.",
+      "keywords": "gomoku online free, play gomoku, five in a row, gomoku vs ai, gomoku with friends, gomoku multiplayer, gomoku no download",
+      "title": "Gomoku Online Gratis — Cinco en línea contra IA o jugadores reales"
     },
     "rankings": {
       "title": "Ranking de Gomoku — Escalera de 18 Peldaños del 9º Grado al 9º Dan",
@@ -25,6 +27,16 @@
       "title": "Cómo Jugar Gomoku: Reglas en 5 Minutos",
       "description": "Aprende las reglas del gomoku rápido: cinco en línea gana, negras mueven primero, más tácticas básicas como cuatros abiertos y dobles amenazas. Comienza tu primera partida ahora.",
       "keywords": "cómo jugar gomoku, reglas gomoku, gomoku para principiantes, juego gomoku online gratis, cinco en raya"
+    },
+    "play": {
+      "description": "Tres formas de jugar Gomoku gratis: reta a la IA integrada, abre una sala con amigos o pulsa partida aleatoria para enfrentar a un jugador real. Sin registro.",
+      "keywords": "play gomoku online, gomoku vs ai, gomoku two player, gomoku random match, gomoku friend room, gomoku multiplayer",
+      "title": "Juega Gomoku Online — contra IA, amigos o jugadores aleatorios"
+    },
+    "pricing": {
+      "description": "YiBoard es 100% gratis para jugar. Sin suscripciones, sin anuncios, sin cuenta.",
+      "keywords": "gomoku free, gomoku no ads, gomoku no account, free browser game, free online board game",
+      "title": "Precios de YiBoard — Gratis para siempre, sin anuncios ni cuenta"
     }
   },
   "brand": {
@@ -54,7 +66,9 @@
     "glossary": "Glosario",
     "gomokuRules": "Reglas de Gomoku",
     "renjuRules": "Reglas de Renju",
-    "gomokuVsGo": "Gomoku vs Go"
+    "gomokuVsGo": "Gomoku vs Go",
+    "games": "Juegos",
+    "signOut": "Cerrar sesión"
   },
   "home": {
     "eyebrow": "Gratis · Sin cuenta",
@@ -81,7 +95,8 @@
       "xiangqi": {
         "name": "Xiangqi",
         "native": "象棋 · Xiàngqí",
-        "blurb": "Un río parte el tablero. Los cañones solo capturan saltando por encima de una pieza. Los dos generales nunca pueden mirarse por una columna abierta."
+        "blurb": "Un río parte el tablero. Los cañones solo capturan saltando por encima de una pieza. Los dos generales nunca pueden mirarse por una columna abierta.",
+        "status": "Disponible ahora"
       },
       "go": {
         "name": "Go",
@@ -126,7 +141,8 @@
     "statsTotal": "Total",
     "statsAi": "vs motor",
     "statsFriend": "vs jugadores",
-    "ctaGo": "Jugar al Go"
+    "ctaGo": "Jugar al Go",
+    "ctaXiangqi": "Jugar al Xiangqi"
   },
   "play": {
     "title": "Juega Gomoku Online Gratis – vs IA o Amigos",
@@ -257,7 +273,9 @@
         "q": "¿YiBoard es gratis?",
         "a": "Sí. Gratis, sin cuenta y sin descargas: juega contra el motor o contra un amigo en tu navegador."
       }
-    ]
+    ],
+    "blogLink": "Blog de estrategia",
+    "rulesLink": "Reglas y formas del Gomoku"
   },
   "about": {
     "title": "Sobre YiBoard",
