@@ -33,6 +33,32 @@ export default async function XiangqiPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale)
   const isZh = locale === 'zh'
 
+  const faqItems = isZh
+    ? [
+        { q: '什么是中国象棋（象棋）？', a: '中国象棋是一种两人对弈的策略棋盘游戏，在 9×10 的格线上进行，双方各 16 枚棋子，目标是将死对方的将（帅）。' },
+        { q: '象棋和国际象棋有什么不同？', a: '象棋用 9×10 的棋盘，有将、士、象、马、車、炮、兵七种棋子；国际象棋用 8×8 棋盘和王、后、车、象、马、兵。象棋的炮必须隔子吃，马有蹩腿，将帅不能对面。' },
+        { q: '怎么才算赢象棋？', a: '当对方的将（帅）被将军且无法解将（不能走、不能挡、不能吃子），即被将死，游戏结束，你获胜。' },
+        { q: '可以免费在线玩象棋吗？', a: '可以。在 YiBoard 打开 /xiangqi 即可免费与 AI 对战，无需注册、无需下载。' },
+        { q: '象棋棋子分别代表什么？', a: '将/帅是统帅，士/仕护卫九宫，象/相负责防线，马是骑兵，車是战车，炮是远程火力，兵/卒是步兵。' },
+      ]
+    : [
+        { q: 'What is Xiangqi (Chinese Chess)?', a: 'Xiangqi is a two-player strategy board game played on a 9×10 grid. Each side has 16 pieces, and the goal is to checkmate the opponent\'s general.' },
+        { q: 'How is Xiangqi different from international chess?', a: 'Xiangqi uses a 9×10 board and seven piece types (general, advisor, elephant, horse, chariot, cannon, soldier). The cannon captures by jumping over a screen, the horse is blocked when adjacent, and the two generals may not face each other.' },
+        { q: 'How do you win at Xiangqi?', a: 'You win by delivering checkmate — putting the opponent\'s general in check with no legal escape (no move, block, or capture).' },
+        { q: 'Can I play Xiangqi online for free?', a: 'Yes. On YiBoard, open /xiangqi to play free against AI — no signup, no download.' },
+        { q: 'What do the Xiangqi pieces represent?', a: 'The general commands, advisors guard the palace, elephants defend, horses are cavalry, chariots are rooks, cannons are ranged attackers, and soldiers are infantry.' },
+      ]
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  }
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -49,6 +75,10 @@ export default async function XiangqiPage({ params }: { params: Promise<{ locale
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
       <header style={{ marginBottom: 'var(--space-6)' }}>
         <h1 className="yb-h2">
@@ -88,6 +118,18 @@ export default async function XiangqiPage({ params }: { params: Promise<{ locale
             </>
           )}
         </ul>
+      </section>
+
+      <section style={{ marginTop: 'var(--space-10)', maxWidth: 720 }}>
+        <h2 className="yb-h3">{isZh ? '常见问题' : 'Frequently Asked Questions'}</h2>
+        <dl style={{ marginTop: 'var(--space-3)', lineHeight: 1.8 }}>
+          {faqItems.map((item) => (
+            <div key={item.q} style={{ marginBottom: 'var(--space-4)' }}>
+              <dt style={{ fontWeight: 600 }}>{item.q}</dt>
+              <dd style={{ marginTop: 'var(--space-1)' }}>{item.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </div>
   )

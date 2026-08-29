@@ -9,8 +9,17 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const t = await getTranslations({ locale, namespace: 'howTo' });
-  return { title: t('title'), description: t('sub'), alternates: localeAlternates('how-to', locale) };
+  const tHowTo = await getTranslations({ locale, namespace: 'howTo' });
+  const tMeta = await getTranslations({ locale, namespace: 'meta.howTo' });
+  const title = tMeta('title') || tHowTo('title');
+  const description = tMeta('description') || tHowTo('sub');
+  const keywords = tMeta('keywords') ? tMeta('keywords').split(',').map((k) => k.trim()) : undefined;
+  return {
+    title,
+    description,
+    keywords,
+    alternates: localeAlternates('how-to', locale),
+  };
 }
 
 export default async function HowToPage(props: { params: Promise<{ locale: string }> }) {
@@ -18,6 +27,7 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'howTo' });
+  const tMeta = await getTranslations({ locale, namespace: 'meta.howTo' });
   const rules = ['rule1', 'rule2', 'rule3', 'rule4', 'rule5'] as const;
   const tips = [
     { title: 'tip1Title', body: 'tip1Body' },
@@ -35,8 +45,8 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
     '@graph': [
       {
         '@type': 'HowTo',
-        name: 'How to Play Gomoku',
-        description: 'Learn Gomoku rules in 2 minutes and master key opening strategies.',
+        name: tMeta('title') || t('title'),
+        description: tMeta('description') || t('sub'),
         totalTime: 'PT2M',
         supply: [
           { '@type': 'HowToSupply', name: 'Gomoku board (15x15)' },
