@@ -340,3 +340,19 @@ export function legalMoves(state: GoState, color: GoColor = state.turn): { x: nu
   }
   return moves;
 }
+
+/**
+ * UI 悔棋（undo）辅助：给定历史快照的轮次序列（'black' = 玩家行棋点），
+ * 返回应将 history 切片到的长度，以"撤回到上一个玩家行棋点"——
+ * 即同时撤销玩家上一步与 AI 的应手（白棋）。
+ * 例：['black','white','black'] -> 1（回到初始）；
+ *     ['black','white','black','white','black'] -> 3（回到上一个黑方回合）。
+ * 若 AI 尚未应手（如 ['black','white']），则一并撤销玩家这一步。
+ */
+export function undoTargetIndex(turns: GoColor[]): number {
+  if (turns.length <= 1) return turns.length;
+  let j = turns.length - 2;
+  while (j >= 0 && turns[j] !== 'black') j--;
+  if (j < 0) j = 0;
+  return j + 1;
+}

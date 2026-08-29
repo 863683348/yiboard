@@ -11,6 +11,7 @@ import {
   pass,
   isLegalMove,
   calculateScore,
+  undoTargetIndex,
   idx,
   type GoState,
 } from './index.ts';
@@ -139,4 +140,34 @@ test('数子法：黑围住角上空点计入黑方领地', () => {
   const scores = calculateScore(g);
   // 黑领地 = (0,0) 1 点；黑子 2；黑得分 = 3
   assert.equal(scores.black, 3);
+});
+
+test('undoTargetIndex reverts to previous player (black) turn', () => {
+  // 与 xiangqi 同语义：黑=玩家行棋点
+  assert.equal(undoTargetIndex([]), 0);
+  assert.equal(undoTargetIndex(['black']), 1);
+  // 玩家黑棋走一步、AI 白棋尚未应手 -> 连这一步一起撤回到初始
+  assert.equal(undoTargetIndex(['black', 'white']), 1);
+  // 黑→白→黑 -> 回到初始（上一个黑方回合）
+  assert.equal(undoTargetIndex(['black', 'white', 'black']), 1);
+  // 黑→白→黑→白→黑 -> 回到上一个黑方回合（index 2）
+  assert.equal(undoTargetIndex(['black', 'white', 'black', 'white', 'black']), 3);
+});
+
+test('undo via history snapshot stack restores captured stones', () => {
+  let g = createGame(9);
+  const a = placeStone(g, 1, 0, 'black')!; // 黑占(1,0)，轮白
+  const b = placeStone(a, 0, 0, 'white')!; // 白占(0,0)，轮黑
+  const c = placeStone(b, 0, 1, 'black')!; // 黑封(0,1) → 提掉白(0,0)，轮白
+  assert.equal(c.blackPrisoners, 1, '黑提掉 1 子（blackPrisoners 计黑所提）');
+  assert.equal(c.board[0], null, '白(0,0)已被提');
+
+  // 真实对局快照栈：初始 + 黑1 + 白1 + 黑提子（turn 序列：black, white, black, white）
+  const history = [g, a, b, c];
+  const target = history.slice(0, undoTargetIndex(history.map((h) => h.turn)));
+  const restored = target[target.length - 1]!;
+  // 撤回到上一个黑方回合 = 白1 之后、提子之前
+  assert.equal(restored.board[0], 'white', '悔棋后白(0,0)恢复');
+  assert.equal(restored.blackPrisoners, 0, '提子计数清零');
+  assert.equal(restored.turn, 'black');
 });

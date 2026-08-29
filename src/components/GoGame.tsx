@@ -2,7 +2,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Flag, Lightbulb, ShareNetwork } from '@phosphor-icons/react';
+import { ArrowCounterClockwise, Flag, Lightbulb, ShareNetwork } from '@phosphor-icons/react';
 import { useTranslations } from 'next-intl';
 
 import { GoBoard } from '@/components/GoBoard';
@@ -13,6 +13,7 @@ import {
   resign,
   bestMove,
   suggestedMove,
+  undoTargetIndex,
   type GoState,
   type GoDifficulty,
   type GoBoardSize,
@@ -50,10 +51,14 @@ export default function GoGame({
   const [difficulty, setDifficulty] = useState<GoDifficulty>(initialDifficulty);
   const [thinking, setThinking] = useState(false);
   const [copied, setCopied] = useState(false);
+  /** 历史快照栈：每次落子后记录完整局面，用于悔棋还原（含提子数、打劫历史） */
+  const [history, setHistory] = useState<GoState[]>(() => [createGame(initialSize)]);
   const aiTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleNewGame = useCallback(() => {
-    setGame(createGame(size));
+    const g = createGame(size);
+    setGame(g);
+    setHistory([g]);
     setThinking(false);
   }, [size]);
 
@@ -67,6 +72,7 @@ export default function GoGame({
       const next = placeStone(game, x, y, 'black');
       if (!next) return;
       setGame(next);
+      setHistory((h) => [...h, next]);
     },
     [game, thinking]
   );
@@ -80,9 +86,14 @@ export default function GoGame({
       if (move) {
         if (move.type === 'place' && move.x !== undefined && move.y !== undefined) {
           const next = placeStone(game, move.x, move.y, 'white');
-          if (next) setGame(next);
+          if (next) {
+            setGame(next);
+            setHistory((h) => [...h, next]);
+          }
         } else if (move.type === 'pass') {
-          setGame(pass(game, 'white'));
+          const next = pass(game, 'white');
+          setGame(next);
+          setHistory((h) => [...h, next]);
         }
       }
       setThinking(false);
@@ -94,7 +105,19 @@ export default function GoGame({
 
   const handlePass = () => {
     if (game.turn !== 'black' || game.status !== 'playing' || thinking) return;
-    setGame(pass(game, 'black'));
+    const next = pass(game, 'black');
+    setGame(next);
+    setHistory((h) => [...h, next]);
+  };
+
+  const handleUndo = () => {
+    if (history.length <= 1) return;
+    // 撤回到上一个玩家行棋点：同时撤销玩家上一步 + AI 的应手（若 AI 还没应手则连这一步一起撤）
+    const next = history.slice(0, undoTargetIndex(history.map((h) => h.turn)));
+    const snap = next[next.length - 1]!;
+    setHistory(next);
+    setGame(snap);
+    setThinking(false);
   };
 
   const handleResign = () => {
@@ -175,6 +198,10 @@ export default function GoGame({
         <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', alignItems: 'center' }}>
           <button className="yb-btn yb-btn-primary yb-btn-sm" onClick={handleNewGame}>
             {t('newGame')}
+          </button>
+          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={history.length <= 1 || thinking}>
+            <ArrowCounterClockwise size={14} />
+            {t('undo')}
           </button>
           <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handlePass} disabled={disabled}>
             {passLabel}
