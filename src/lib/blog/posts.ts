@@ -2886,6 +2886,7 @@ export const POSTS: BlogPost[] = [
           { "name": "Start playing", "text": "Switching starts a fresh game automatically — no account needed." }
         ]
       }
+    }
   },
   {
     slug: "five-beginner-mistakes-gomoku",
@@ -2933,7 +2934,7 @@ export const POSTS: BlogPost[] = [
         "The five most common beginner mistakes — almost everyone makes them all at least once. Here's each one with symptoms, fixes, and practical examples you can use immediately.",
         { type: "h2", text: "Mistake 1: Only Attacking, Never Defending" },
         "New players focus entirely on building their own lines and ignore opponent threats until it's too late.",
-        "**The fix:** After every move, ask "Does my opponent have a three-in-a-row that I need to block?" Defense isn't passive — it's proactive threat elimination.",
+        "**The fix:** After every move, ask \"Does my opponent have a three-in-a-row that I need to block?\" Defense isn't passive — it's proactive threat elimination.",
         "**Example:** Your opponent has an open three (OO_X). If you don't block immediately, they play the fourth and create an unstoppable four.",
         { type: "h2", text: "Mistake 2: Playing Linearly" },
         "Beginners think in straight lines — horizontal, vertical, diagonal. But Gomoku rewards multi-directional thinking.",
@@ -2948,7 +2949,7 @@ export const POSTS: BlogPost[] = [
         "**The fix:** Always look for fork opportunities. A good fork setup involves two separate lines that can both become five-in-a-row, and no single opponent move that blocks both.",
         { type: "h2", text: "Mistake 5: Playing Reactive Instead of Proactive" },
         "Beginners react to their opponent's moves. Advanced players set traps and force responses.",
-        "**The fix:** Think 2-3 moves ahead. Instead of just blocking, ask "What do I want my opponent to do next?"",
+        "**The fix:** Think 2-3 moves ahead. Instead of just blocking, ask \"What do I want my opponent to do next?\"",
         { type: "h2", text: "Quick Reference: The 5 Mistakes" },
         "| Mistake | Symptom | Fix |",
         "| Only attacking | Losing to blocked attempts | Check opponent threats after every move |",
