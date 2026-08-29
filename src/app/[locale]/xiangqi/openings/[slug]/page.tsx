@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { localeAlternates } from '@/i18n/metadata'
-import { XIANGQI_OPENINGS, getXiangqiOpening, localized, type XiangqiLocale } from '@/lib/xiangqi/openings'
+import { XIANGQI_OPENINGS, getXiangqiOpening, localized, slugify, type XiangqiLocale } from '@/lib/xiangqi/openings'
 
 export const revalidate = 3600
 
@@ -109,10 +109,18 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
         <h2 className="yb-h3">{isZh ? '常见应手' : 'Common Replies' }</h2>
         <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)', marginTop: 'var(--space-5)' }}>
           {opening.replies.map((r, i) => (
-            <article key={i} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
-              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)', margin: 0 }}>{localized(r.name, loc)}</h3>
-              <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 0 }}>{localized(r.note, loc)}</p>
-            </article>
+            <Link
+              key={i}
+              href={`/xiangqi/openings/${slug}/matchup/${slugify(r.name.en ?? '')}`}
+              className="yb-card"
+              style={{ padding: 'var(--card-pad)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', textDecoration: 'none', color: 'var(--fg)' }}
+            >
+              <span>
+                <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)', margin: 0 }}>{localized(r.name, loc)}</h3>
+                <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 0 }}>{localized(r.note, loc)}</p>
+              </span>
+              <span aria-hidden style={{ color: 'var(--accent)', flexShrink: 0, marginLeft: 'var(--space-4)' }}>→</span>
+            </Link>
           ))}
         </div>
       </section>

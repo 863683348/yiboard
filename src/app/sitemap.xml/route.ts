@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { routing } from '@/i18n/routing';
 import { getPostSlugs, getAllTags } from '@/lib/blog/posts';
-import { XIANGQI_OPENING_SLUGS } from '@/lib/xiangqi/openings';
+import { XIANGQI_OPENING_SLUGS, getMatchups } from '@/lib/xiangqi/openings';
 
 /**
  * sitemap.xml — 基准域名固定为 canonical https://yiboardgame.com（与 layout 的 metadataBase 一致）。
@@ -95,7 +95,18 @@ export function GET() {
     })),
   );
 
-  const entries = [...staticEntries, ...blogEntries, ...openingEntries, ...tagEntries];
+  // Xiangqi opening matchups: opening × reply pairs (each exists for every locale).
+  const matchupEntries = getMatchups().flatMap((m) =>
+    routing.locales.map((locale) => ({
+      url: href(base, locale, `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`),
+      path: `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, href(base, l, `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`)]),
+      ),
+    })),
+  );
+
+  const entries = [...staticEntries, ...blogEntries, ...openingEntries, ...tagEntries, ...matchupEntries];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

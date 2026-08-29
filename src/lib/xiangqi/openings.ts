@@ -788,3 +788,37 @@ export const XIANGQI_OPENING_SLUGS = XIANGQI_OPENINGS.map((o) => o.slug);
 export function getXiangqiOpening(slug: string): XiangqiOpening | undefined {
   return XIANGQI_OPENINGS.find((o) => o.slug === slug);
 }
+
+export interface XiangqiMatchup {
+  openingSlug: string;
+  replySlug: string;
+  opening: XiangqiOpening;
+  reply: XiangqiOpeningReply;
+}
+
+export function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+/** All opening × reply pairs — the basis for /xiangqi/openings/[slug]/matchup/[reply]. */
+export function getMatchups(): XiangqiMatchup[] {
+  const out: XiangqiMatchup[] = [];
+  for (const o of XIANGQI_OPENINGS) {
+    for (const r of o.replies) {
+      out.push({
+        openingSlug: o.slug,
+        replySlug: slugify(r.name.en ?? ""),
+        opening: o,
+        reply: r,
+      });
+    }
+  }
+  return out;
+}
+
+export function getMatchup(openingSlug: string, replySlug: string): XiangqiMatchup | undefined {
+  return getMatchups().find((m) => m.openingSlug === openingSlug && m.replySlug === replySlug);
+}
