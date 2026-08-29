@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { localeAlternates } from '@/i18n/metadata'
-import { XIANGQI_OPENINGS, getXiangqiOpening } from '@/lib/xiangqi/openings'
+import { XIANGQI_OPENINGS, getXiangqiOpening, localized, type XiangqiLocale } from '@/lib/xiangqi/openings'
 
 export const revalidate = 3600
 
@@ -16,19 +16,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const opening = getXiangqiOpening(slug)
   if (!opening) return {}
   const isZh = locale === 'zh'
+  const loc = locale as XiangqiLocale
+  const name = localized(opening.name, loc)
+  const summary = localized(opening.summary, loc)
   return {
-    title: isZh ? `${opening.nameZh}：象棋开局详解` : `${opening.nameEn}: Xiangqi Opening Explained`,
-    description: isZh ? opening.summaryZh : opening.summaryEn,
+    title: `${name}${isZh ? '：象棋开局详解' : ': Xiangqi Opening Explained'}`,
+    description: summary,
     alternates: localeAlternates(`xiangqi/openings/${slug}`, locale),
     openGraph: {
-      title: isZh ? `${opening.nameZh}（象棋开局）` : `${opening.nameEn} (Xiangqi Opening)`,
-      description: isZh ? opening.summaryZh : opening.summaryEn,
+      title: `${name}${isZh ? '（象棋开局）' : ' (Xiangqi Opening)'}`,
+      description: summary,
       images: [{ url: '/og.png', width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: isZh ? `${opening.nameZh}（象棋开局）` : `${opening.nameEn} (Xiangqi Opening)`,
-      description: isZh ? opening.summaryZh : opening.summaryEn,
+      title: `${name}${isZh ? '（象棋开局）' : ' (Xiangqi Opening)'}`,
+      description: summary,
       images: ['/og.png'],
     },
   }
@@ -40,22 +43,23 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
   const opening = getXiangqiOpening(slug)
   if (!opening) notFound()
   const isZh = locale === 'zh'
+  const loc = locale as XiangqiLocale
 
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: opening.faq.map((f) => ({
       '@type': 'Question',
-      name: isZh ? f.qZh : f.qEn,
-      acceptedAnswer: { '@type': 'Answer', text: isZh ? f.aZh : f.aEn },
+      name: localized(f.q, loc),
+      acceptedAnswer: { '@type': 'Answer', text: localized(f.a, loc) },
     })),
   }
 
   const gameLd = {
     '@context': 'https://schema.org',
     '@type': 'Game',
-    name: isZh ? opening.nameZh : opening.nameEn,
-    description: isZh ? opening.summaryZh : opening.summaryEn,
+    name: localized(opening.name, loc),
+    description: localized(opening.summary, loc),
     genre: 'Board game',
     numberOfPlayers: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 2 },
     gameBoard: 'Xiangqi (9×10 grid)',
@@ -64,13 +68,13 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
   const howToLd = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: isZh ? `如何走出${opening.nameZh}` : `How to play the ${opening.nameEn}`,
-    description: isZh ? opening.strategyZh : opening.strategyEn,
+    name: `${isZh ? '如何走出' : 'How to play the '}${localized(opening.name, loc)}`,
+    description: localized(opening.strategy, loc),
     totalTime: 'PT3M',
     step: [
       { '@type': 'HowToStep', name: isZh ? '摆好棋盘' : 'Set up the board', text: isZh ? '双方按初始位置摆好棋子，红方先走。' : 'Set up both armies on their start points; Red moves first.' },
-      { '@type': 'HowToStep', name: isZh ? '红方起手' : 'Red\'s first move', text: isZh ? `红方走 ${opening.movesZh}。` : opening.movesEn },
-      { '@type': 'HowToStep', name: isZh ? '黑方应对' : 'Black\'s reply', text: isZh ? `黑方常见应法：${opening.replies[0]?.nameZh ?? ''}。` : `Black often answers with ${opening.replies[0]?.nameEn ?? ''}.` },
+      { '@type': 'HowToStep', name: isZh ? '红方起手' : 'Red\'s first move', text: isZh ? `红方走 ${opening.movesZh}。` : `Red plays ${opening.movesZh}. ${localized(opening.moves, loc)}` },
+      { '@type': 'HowToStep', name: isZh ? '黑方应对' : 'Black\'s reply', text: `${isZh ? '黑方常见应法：' : 'Black often answers with '}${localized(opening.replies[0]?.name, loc) ?? ''}${isZh ? '。' : '.'}` },
       { '@type': 'HowToStep', name: isZh ? '继续出动大子' : 'Develop the major pieces', text: isZh ? '随后出车、跳马，按战略思路争夺局面。' : 'Then develop chariots and horses, contesting the position per the strategic plan.' },
     ],
   }
@@ -89,25 +93,25 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
         <p style={{ fontSize: 'var(--text-sm)', color: 'var(--accent)', fontWeight: 600, marginBottom: 'var(--space-2)' }}>
           <Link href="/xiangqi/openings" style={{ color: 'inherit', textDecoration: 'none' }}>← {isZh ? '开局库' : 'Openings'}</Link>
         </p>
-        <h1 className="yb-h2">{isZh ? opening.nameZh : opening.nameEn}</h1>
+        <h1 className="yb-h2">{localized(opening.name, loc)}</h1>
         <p className="yb-num" style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-lg)', letterSpacing: '0.08em' }}>
           {opening.movesZh}
         </p>
-        <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>{isZh ? opening.summaryZh : opening.summaryEn}</p>
+        <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>{localized(opening.summary, loc)}</p>
       </header>
 
       <section style={{ marginTop: 'var(--space-10)', maxWidth: 820 }}>
         <h2 className="yb-h3">{isZh ? '战略思路' : 'Strategic Ideas' }</h2>
-        <p style={{ marginTop: 'var(--space-3)', color: 'var(--fg-2)', lineHeight: 1.8 }}>{isZh ? opening.strategyZh : opening.strategyEn}</p>
+        <p style={{ marginTop: 'var(--space-3)', color: 'var(--fg-2)', lineHeight: 1.8 }}>{localized(opening.strategy, loc)}</p>
       </section>
 
       <section style={{ marginTop: 'var(--space-10)', maxWidth: 820 }}>
         <h2 className="yb-h3">{isZh ? '常见应手' : 'Common Replies' }</h2>
         <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)', marginTop: 'var(--space-5)' }}>
-          {opening.replies.map((r) => (
-            <article key={r.nameEn} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
-              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)', margin: 0 }}>{isZh ? r.nameZh : r.nameEn}</h3>
-              <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 0 }}>{isZh ? r.noteZh : r.noteEn}</p>
+          {opening.replies.map((r, i) => (
+            <article key={i} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
+              <h3 style={{ fontSize: 'var(--text-base)', fontWeight: 'var(--weight-emphasis)', margin: 0 }}>{localized(r.name, loc)}</h3>
+              <p style={{ marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)', lineHeight: 1.6, marginBottom: 0 }}>{localized(r.note, loc)}</p>
             </article>
           ))}
         </div>
@@ -116,10 +120,10 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
       <section style={{ marginTop: 'var(--space-10)', maxWidth: 820 }}>
         <h2 className="yb-h3">{isZh ? '常见问题' : 'FAQ' }</h2>
         <dl style={{ marginTop: 'var(--space-3)', lineHeight: 1.8 }}>
-          {opening.faq.map((f) => (
-            <div key={f.qEn} style={{ marginBottom: 'var(--space-4)' }}>
-              <dt style={{ fontWeight: 600 }}>{isZh ? f.qZh : f.qEn}</dt>
-              <dd style={{ marginTop: 'var(--space-1)' }}>{isZh ? f.aZh : f.aEn}</dd>
+          {opening.faq.map((f, i) => (
+            <div key={i} style={{ marginBottom: 'var(--space-4)' }}>
+              <dt style={{ fontWeight: 600 }}>{localized(f.q, loc)}</dt>
+              <dd style={{ marginTop: 'var(--space-1)' }}>{localized(f.a, loc)}</dd>
             </div>
           ))}
         </dl>
@@ -135,7 +139,7 @@ export default async function XiangqiOpeningDetailPage({ params }: { params: Pro
               className="yb-card"
               style={{ padding: 'var(--card-pad)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', textDecoration: 'none', color: 'var(--fg)' }}
             >
-              <span><strong style={{ fontSize: 'var(--text-base)' }}>{isZh ? o.nameZh : o.nameEn}</strong> <span style={{ marginLeft: 'var(--space-2)', fontFamily: 'var(--font-display)' }}>{o.movesZh}</span></span>
+              <span><strong style={{ fontSize: 'var(--text-base)' }}>{localized(o.name, loc)}</strong> <span style={{ marginLeft: 'var(--space-2)', fontFamily: 'var(--font-display)' }}>{o.movesZh}</span></span>
               <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
             </Link>
           ))}

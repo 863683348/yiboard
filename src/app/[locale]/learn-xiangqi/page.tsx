@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { localeAlternates } from '@/i18n/metadata'
-import { XIANGQI_OPENINGS } from '@/lib/xiangqi/openings'
+import { XIANGQI_OPENINGS, localized, type XiangqiLocale } from '@/lib/xiangqi/openings'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -33,6 +33,7 @@ export default async function LearnXiangqiPage({ params }: { params: Promise<{ l
   const { locale } = await params
   setRequestLocale(locale)
   const isZh = locale === 'zh'
+  const loc = locale as XiangqiLocale
 
   const faqItems = isZh
     ? [
@@ -168,7 +169,7 @@ export default async function LearnXiangqiPage({ params }: { params: Promise<{ l
               }}
             >
               <span>
-                <strong style={{ fontSize: 'var(--text-base)' }}>{isZh ? o.nameZh : o.nameEn}</strong>
+                <strong style={{ fontSize: 'var(--text-base)' }}>{localized(o.name, loc)}</strong>
                 <span style={{ display: 'block', marginTop: 'var(--space-1)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
                   {o.movesZh}
                 </span>

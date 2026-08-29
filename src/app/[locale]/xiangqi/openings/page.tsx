@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { localeAlternates } from '@/i18n/metadata'
-import { XIANGQI_OPENINGS } from '@/lib/xiangqi/openings'
+import { XIANGQI_OPENINGS, localized, type XiangqiLocale } from '@/lib/xiangqi/openings'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -34,6 +34,7 @@ export default async function XiangqiOpeningsIndexPage({ params }: { params: Pro
   const { locale } = await params
   setRequestLocale(locale)
   const isZh = locale === 'zh'
+  const loc = locale as XiangqiLocale
   const count = XIANGQI_OPENINGS.length
 
   const itemListLd = {
@@ -44,7 +45,7 @@ export default async function XiangqiOpeningsIndexPage({ params }: { params: Pro
       '@type': 'ListItem',
       position: i + 1,
       url: `/${locale === 'en' ? '' : locale + '/'}${'xiangqi/openings/'}${o.slug}`,
-      name: isZh ? o.nameZh : o.nameEn,
+      name: localized(o.name, loc),
     })),
   }
 
@@ -79,12 +80,12 @@ export default async function XiangqiOpeningsIndexPage({ params }: { params: Pro
               }}
             >
               <span>
-                <strong style={{ fontSize: 'var(--text-base)' }}>{isZh ? o.nameZh : o.nameEn}</strong>
+                <strong style={{ fontSize: 'var(--text-base)' }}>{localized(o.name, loc)}</strong>
                 <span style={{ display: 'block', marginTop: 'var(--space-1)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)', fontFamily: 'var(--font-display)' }}>
                   {o.movesZh}
                 </span>
                 <span style={{ display: 'block', marginTop: 'var(--space-2)', fontSize: 'var(--text-sm)', color: 'var(--fg-2)', lineHeight: 1.6 }}>
-                  {isZh ? o.summaryZh : o.summaryEn}
+                  {localized(o.summary, loc)}
                 </span>
               </span>
               <span aria-hidden style={{ color: 'var(--accent)', flexShrink: 0 }}>→</span>
