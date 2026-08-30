@@ -122,7 +122,7 @@ export default function XiangqiGame({
     setHistory([{ board: b, turn: 'red', status: 'playing', winner: null, lastMove: null }])
   }
 
-  const handleUndo = () => {
+  const handleUndo = useCallback(() => {
     if (history.length <= 1) return
     // 撤回到上一个玩家行棋点：同时撤销玩家上一步 + AI 的应手（若 AI 还没应手则连这一步一起撤）
     const next = history.slice(0, undoTargetIndex(history.map(h => h.turn)))
@@ -135,7 +135,18 @@ export default function XiangqiGame({
     setLastMove(snap.lastMove)
     setSelected(null)
     setLegalTargets(null)
-  }
+  }, [history])
+
+  // 键盘快捷键：Z 或 Ctrl/Cmd+Z 触发悔棋；忽略 Alt 组合避免与其它快捷键冲突
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() !== 'z' || e.altKey) return
+      e.preventDefault()
+      handleUndo()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [handleUndo])
 
   const handleResign = () => {
     setStatus('checkmate')
@@ -201,7 +212,7 @@ export default function XiangqiGame({
           <button className="yb-btn yb-btn-primary yb-btn-sm" onClick={handleNewGame}>
             {t('newGame')}
           </button>
-          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={history.length <= 1}>
+          <button className="yb-btn yb-btn-ghost yb-btn-sm" onClick={handleUndo} disabled={history.length <= 1} title={t('undoHint')} aria-label={t('undoHint')}>
             <ArrowCounterClockwise size={14} />
             {t('undo')}
           </button>

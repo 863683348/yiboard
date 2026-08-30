@@ -210,6 +210,17 @@ export function GomokuGame({
     setHintMove(null);
   }, [thinking]);
 
+  // 键盘快捷键：Z 或 Ctrl/Cmd+Z 触发悔棋；忽略 Alt 组合避免与其它快捷键冲突
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() !== 'z' || e.altKey) return;
+      e.preventDefault();
+      takeBack();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [takeBack]);
+
   /* 提示（hint）：用与引擎相同的选择器求一步建议落子，在棋盘上画青色虚线环。
      - 只在玩家回合可用（autoMode 双 AI 观战下没有意义）。
      - 与 AI 走棋共用 chooseMove，保证"提示 = 引擎会怎么下"，不说空话。 */
@@ -488,6 +499,8 @@ export function GomokuGame({
                 style={{ flex: 1 }}
                 onClick={takeBack}
                 disabled={game.moves.length === 0 || thinking}
+                title={t('undoHint')}
+                aria-label={t('undoHint')}
               >
                 <ArrowCounterClockwise size={15} aria-hidden />
                 {t('undo')}
