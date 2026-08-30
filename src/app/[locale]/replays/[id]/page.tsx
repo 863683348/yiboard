@@ -9,9 +9,6 @@ import { getStore } from '@/lib/store';
 
 export const dynamic = 'force-dynamic';
 
-/** 低于该手数的 AI 对局没有信息量，noindex 防薄内容。 */
-const MIN_INDEX_MOVES = 12;
-
 export async function generateMetadata(props: {
   params: Promise<{ locale: string; id: string }>;
 }): Promise<Metadata> {
@@ -41,10 +38,8 @@ export async function generateMetadata(props: {
     title: `${resultTitle} — ${t('title')}`,
     description: t('meta'),
     alternates: localeAlternates(`replays/${id}`, locale),
-    robots:
-      payload.moveCount >= MIN_INDEX_MOVES
-        ? { index: true, follow: true }
-        : { index: false, follow: true },
+    // 棋谱为 UGC 式动态分享内容（每个分享 = 一个 URL），统一 noindex 防止索引膨胀；保留 follow 传递内链权重。
+    robots: { index: false, follow: true },
   };
 }
 

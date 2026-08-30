@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-import { routing } from '@/i18n/routing';
-import { getPostSlugs, getAllTags } from '@/lib/blog/posts';
+import { routing, BLOG_LOCALES } from '@/i18n/routing';
+import { getPostSlugs, getAllTags, POSTS, getPostBySlug } from '@/lib/blog/posts';
 import { XIANGQI_OPENING_SLUGS, getMatchups } from '@/lib/xiangqi/openings';
 
 /**
@@ -40,87 +40,113 @@ const PATHS = [
   '/go-rules',
 ] as const;
 
-/** 与 /replays/[id] 页一致：低于该手数的 AI 对局 noindex，也不进 sitemap。 */
-const MIN_INDEX_MOVES = 12;
-
 function href(base: string, locale: string, path: string): string {
   const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
   return `${base}${prefix}${path}`;
 }
 
+/**
+ * 真实 lastmod：
+ * - 博客文章：用文章自身的发布日期（post.date），反映真实更新时间。
+ * - 其余页面（静态页、开局库、开局应手、标签归档）：无独立内容日期，用全站最近一次内容更新
+ *   作代理——取最新一篇博文的日期。这样 lastmod 是稳定真实日期，而非每天请求的 now()，
+ *   避免 Google 误以为每页天天变动而无效重抓。
+ */
+const SITE_LASTMOD = (POSTS.map((p) => p.date).sort().at(-1) ?? '2026-08-30');
+
+type Entry = {
+  url: string;
+  path: string;
+  lastmod: string;
+  languages: Record<string, string>;
+};
+
+/** 生成某 path 的 hreflang 映射：含 x-default（指向默认语言版本）。 */
+function langMap(base: string, path: string, locales: readonly string[]): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const l of locales) map[l] = href(base, l, path);
+  map['x-default'] = href(base, routing.defaultLocale, path);
+  return map;
+}
+
 export function GET() {
   const base = SITE_URL;
-  const now = new Date().toISOString();
 
-  const staticEntries = PATHS.flatMap((path) =>
-    routing.locales.map((locale) => ({
+  // 静态页：博客索引 /blog 只取 BLOG_LOCALES（en/zh）；其余页面全量 locales。
+  const staticEntries: Entry[] = PATHS.flatMap((path) => {
+    const locales = path === '/blog' ? BLOG_LOCALES : routing.locales;
+    return locales.map((locale) => ({
       url: href(base, locale, path),
       path,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, href(base, l, path)]),
-      ),
-    })),
-  );
+      lastmod: SITE_LASTMOD,
+      languages: langMap(base, path, locales),
+    }));
+  });
 
-  // Blog posts: each article exists for every locale (non-en/zh fall back to English content).
-  const blogEntries = getPostSlugs().flatMap((slug) =>
-    routing.locales.map((locale) => ({
-      url: href(base, locale, `/blog/${slug}`),
-      path: `/blog/${slug}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, href(base, l, `/blog/${slug}`)]),
-      ),
-    })),
-  );
+  // 博客文章：仅 en/zh 有真实内容，故只输出这两语 + x-default；lastmod 用文章发布日期。
+  const blogEntries: Entry[] = getPostSlugs().flatMap((slug) => {
+    const post = getPostBySlug(slug);
+    const lastmod = post?.date ?? SITE_LASTMOD;
+    const path = `/blog/${slug}`;
+    return BLOG_LOCALES.map((locale) => ({
+      url: href(base, locale, path),
+      path,
+      lastmod,
+      languages: langMap(base, path, BLOG_LOCALES),
+    }));
+  });
 
-  // Xiangqi openings: each opening detail page exists for every locale.
-  const openingEntries = XIANGQI_OPENING_SLUGS.flatMap((slug) =>
-    routing.locales.map((locale) => ({
-      url: href(base, locale, `/xiangqi/openings/${slug}`),
-      path: `/xiangqi/openings/${slug}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, href(base, l, `/xiangqi/openings/${slug}`)]),
-      ),
-    })),
-  );
+  // 象棋开局详情页：各语言有真实本地化内容，全量 locales。
+  const openingEntries: Entry[] = XIANGQI_OPENING_SLUGS.flatMap((slug) => {
+    const path = `/xiangqi/openings/${slug}`;
+    return routing.locales.map((locale) => ({
+      url: href(base, locale, path),
+      path,
+      lastmod: SITE_LASTMOD,
+      languages: langMap(base, path, routing.locales),
+    }));
+  });
 
-  // Blog tag archives: /blog/tag/<tag> for each tag, every locale.
-  const tagEntries = getAllTags().flatMap((tag) =>
-    routing.locales.map((locale) => ({
-      url: href(base, locale, `/blog/tag/${tag}`),
-      path: `/blog/tag/${tag}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, href(base, l, `/blog/tag/${tag}`)]),
-      ),
-    })),
-  );
+  // 博客标签归档：同博客，仅 en/zh。
+  const tagEntries: Entry[] = getAllTags().flatMap((tag) => {
+    const path = `/blog/tag/${tag}`;
+    return BLOG_LOCALES.map((locale) => ({
+      url: href(base, locale, path),
+      path,
+      lastmod: SITE_LASTMOD,
+      languages: langMap(base, path, BLOG_LOCALES),
+    }));
+  });
 
-  // Xiangqi opening matchups: opening × reply pairs (each exists for every locale).
-  const matchupEntries = getMatchups().flatMap((m) =>
-    routing.locales.map((locale) => ({
-      url: href(base, locale, `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`),
-      path: `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, href(base, l, `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`)]),
-      ),
-    })),
-  );
+  // 开局应手页：各语言有真实本地化内容，全量 locales。
+  const matchupEntries: Entry[] = getMatchups().flatMap((m) => {
+    const path = `/xiangqi/openings/${m.openingSlug}/matchup/${m.replySlug}`;
+    return routing.locales.map((locale) => ({
+      url: href(base, locale, path),
+      path,
+      lastmod: SITE_LASTMOD,
+      languages: langMap(base, path, routing.locales),
+    }));
+  });
 
-  const entries = [...staticEntries, ...blogEntries, ...openingEntries, ...tagEntries, ...matchupEntries];
+  const entries: Entry[] = [
+    ...staticEntries,
+    ...blogEntries,
+    ...openingEntries,
+    ...tagEntries,
+    ...matchupEntries,
+  ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries
   .map((e) => {
-    const alternates = [
-      `<xhtml:link rel="alternate" hreflang="x-default" href="${href(base, routing.defaultLocale, e.path)}"/>`,
-      ...routing.locales.map(
-        (l) => `<xhtml:link rel="alternate" hreflang="${l}" href="${e.languages[l]}"/>`,
-      ),
-    ].join('\n');
+    const alternates = Object.entries(e.languages)
+      .map(([l, url]) => `<xhtml:link rel="alternate" hreflang="${l}" href="${url}"/>`)
+      .join('\n');
     return `  <url>
     <loc>${e.url}</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${e.lastmod}</lastmod>
     <changefreq>${e.path === '' ? 'weekly' : 'monthly'}</changefreq>
     <priority>${e.path === '' ? '1.0' : '0.8'}</priority>
 ${alternates}
