@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { getAllTags, getPostsByTag, POSTS, type BlogPost } from '@/lib/blog/posts';
-import { routing, type Locale } from '@/i18n/routing';
+import { routing, BLOG_LOCALES, type Locale } from '@/i18n/routing';
 import { localeAlternates } from '@/i18n/metadata';
 import { Link } from '@/i18n/navigation';
 
@@ -43,10 +43,12 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
     ? `阅读 YiBoard 博客中所有关于${label}的文章。`
     : `Read every YiBoard blog post tagged with ${label}.`;
   const path = `blog/tag/${tag}`;
+  // 博客标签归档仅 en/zh 有真实内容；其余语言版本 noindex 且不进 hreflang（收缩策略）。
+  const inBlog = BLOG_LOCALES.includes(locale as Locale);
   return {
     title,
     description,
-    alternates: localeAlternates(path, locale),
+    alternates: localeAlternates(path, locale, BLOG_LOCALES),
     openGraph: {
       title,
       description,
@@ -58,6 +60,7 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
       description,
       images: ['/og.png'],
     },
+    ...(inBlog ? {} : { robots: { index: false, follow: true } }),
   };
 }
 

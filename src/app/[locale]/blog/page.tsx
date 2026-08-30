@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { localeAlternates } from '@/i18n/metadata';
 import { POSTS } from '@/lib/blog/posts';
-import { routing, type Locale } from '@/i18n/routing';
+import { routing, BLOG_LOCALES, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 
 export async function generateMetadata(props: {
@@ -11,8 +11,17 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { locale } = await props.params;
   const meta = await getTranslations({ locale, namespace: 'meta' });
-  return { title: meta('blog.title'), description: meta('blog.description'),
-    keywords: meta('blog.keywords'), openGraph: { title: meta('blog.title'), description: meta('blog.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] }, twitter: { card: 'summary_large_image', title: meta('blog.title'), description: meta('blog.description'), images: ['/og.png'] }, alternates: localeAlternates('blog', locale) };
+  // 博客仅 en/zh 有真实内容；其余语言版本的博客索引 noindex 且不进 hreflang（收缩策略）。
+  const inBlog = BLOG_LOCALES.includes(locale as Locale);
+  return {
+    title: meta('blog.title'),
+    description: meta('blog.description'),
+    keywords: meta('blog.keywords'),
+    openGraph: { title: meta('blog.title'), description: meta('blog.description'), images: [{ url: '/og.png', width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title: meta('blog.title'), description: meta('blog.description'), images: ['/og.png'] },
+    alternates: localeAlternates('blog', locale, BLOG_LOCALES),
+    ...(inBlog ? {} : { robots: { index: false, follow: true } }),
+  };
 }
 
 export const revalidate = 3600;

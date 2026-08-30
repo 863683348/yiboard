@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { getPostBySlug, getPostSlugs, POSTS, type PostBlock, type BlogPost } from '@/lib/blog/posts';
-import { routing, type Locale } from '@/i18n/routing';
+import { routing, BLOG_LOCALES, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 
 type Params = { locale: string; slug: string };
@@ -52,6 +52,9 @@ function hrefFor(locale: Locale, slug: string) {
   return locale === routing.defaultLocale ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
 }
 
+// 博客实体（与 layout.tsx 的 Organization 一致：同名、同 URL、同 GitHub sameAs、同 logo），强化 E-E-A-T 实体一致性。
+const YIBOARD_SAMEAS = ['https://github.com/863683348/yiboard'];
+
 // 相关文章：按标题+描述英文关键词重合度取 3 篇（排除自身），文章间内链。
 function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
   const current = getPostBySlug(slug);
@@ -91,6 +94,8 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   const isZh = locale === 'zh';
   const lang = (isZh ? 'zh' : 'en') as 'zh' | 'en';
   const canonical = hrefFor(locale as Locale, slug);
+  // 仅 en/zh 有真实博客内容；es/ja/ko/pt-BR 回退英文属占位，统一 noindex（博客收缩策略）。
+  const inBlog = BLOG_LOCALES.includes(locale as Locale);
   return {
     // 只给裸标题，品牌后缀由 layout 的 title.template ('%s — YiBoard') 统一追加，避免 "— YiBoard — YiBoard"
     title: post.title[lang],
@@ -98,8 +103,14 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
     keywords: post.keywords,
     alternates: {
       canonical,
-      languages: Object.fromEntries(routing.locales.map((l) => [l, hrefFor(l, slug)])),
+      // 博客 hreflang 只列 en/zh + x-default；非内容语言不进 hreflang（避免英文正文以 4 个外语 URL 重复曝光）。
+      languages: {
+        en: hrefFor('en', slug),
+        zh: hrefFor('zh', slug),
+        'x-default': hrefFor(routing.defaultLocale, slug),
+      },
     },
+    ...(inBlog ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
@@ -183,8 +194,24 @@ export default async function BlogPostPage(props: { params: Promise<Params> }) {
         datePublished: post.date,
         dateModified: post.date,
         inLanguage: isZh ? 'zh' : 'en',
-        author: { '@type': 'Organization', name: 'YiBoard', url: 'https://yiboardgame.com' },
-        publisher: { '@type': 'Organization', name: 'YiBoard', url: 'https://yiboardgame.com' },
+        author: {
+          '@type': 'Organization',
+          name: 'YiBoard',
+          url: 'https://yiboardgame.com',
+          sameAs: YIBOARD_SAMEAS,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'YiBoard',
+          url: 'https://yiboardgame.com',
+          sameAs: YIBOARD_SAMEAS,
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://yiboardgame.com/og.png',
+            width: 1200,
+            height: 630,
+          },
+        },
         url: `https://yiboardgame.com${canonical}`,
         mainEntityOfPage: { '@type': 'WebPage', '@id': `https://yiboardgame.com${canonical}` },
       },
