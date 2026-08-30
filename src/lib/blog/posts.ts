@@ -1444,8 +1444,83 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'spectator-mode-watch-and-learn',
+    date: '2026-08-30',
+    tags: ['gomoku', 'learning'],
+    title: {
+      zh: '观战功能说明：从观看中学习',
+      en: 'Spectator Mode: Watch and Learn',
+    },
+    description: {
+      zh: '提高五子棋水平的最佳方式之一是观看高手对局。观战模式让你观察策略、学习模式，并发展自己的棋感。',
+      en: 'One of the best ways to improve at Gomoku is to watch others play. Spectator mode lets you observe strategies, learn patterns, and develop your game sense.',
+    },
+    keywords: ['watch gomoku game', 'spectate board game', 'watch gomoku match', 'learn from watching', '五子棋 观战', '学习 Gomoku'],
+    content: {
+      zh: [
+        '提高五子棋水平的最佳方式之一是观看别人下棋。观战模式让你观察策略、学习模式，并发展自己的棋感。',
+        { type: 'h2', text: '为什么观看有助于学习' },
+        'Regular play helps you learn tactics. Watching helps you learn strategy. By observing experienced players, you internalize patterns without the pressure of making moves yourself.',
+        { type: 'h2', text: '如何有效使用观战模式' },
+        {
+          type: 'ul',
+          items: [
+            '观看不同水平的玩家：高手学习高级策略，同等水平学习可借鉴的决策',
+            '暂停并分析：在关键时刻暂停，问自己"这步棋为什么有效？"',
+            '做笔记：记下有趣的模式、策略或陷阱',
+            '与他人讨论：不同视角揭示你可能错过的见解',
+          ],
+        },
+        { type: 'h2', text: '应该关注什么' },
+        { type: 'h2', text: '开局策略' },
+        '顶级玩家如何开局？他们控制中心还是从边缘构建？',
+        { type: 'h2', text: '中盘战术' },
+        '观察玩家如何平衡进攻和防守。注意他们何时攻击，何时巩固。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '我能实时观看比赛吗？', a: '是的，观战模式让你实时观看正在进行的比赛。' },
+            { q: '有回放可用吗？', a: '许多平台提供游戏回放，让你以自己的节奏研究比赛。' },
+            { q: '应该在玩之前还是之后观看？', a: '两者都有好处。玩之前观看学习策略，玩之后观看分析自己的比赛。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费观战 →', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        'One of the best ways to improve at Gomoku is to watch others play. Spectator mode lets you observe strategies, learn patterns, and develop your own game sense.',
+        { type: 'h2', text: 'Why Watching Helps You Learn' },
+        'Regular play helps you learn tactics. Watching helps you learn strategy. By observing experienced players, you internalize patterns without the pressure of making moves yourself.',
+        { type: 'h2', text: 'How to Use Spectator Mode Effectively' },
+        {
+          type: 'ul',
+          items: [
+            'Watch different skill levels: learn advanced strategies from top players, relatable decisions from your level',
+            'Pause and analyze: pause at key moments and ask "why did this move work?"',
+            'Take notes: jot down interesting patterns, strategies, or traps',
+            'Discuss with others: different perspectives reveal insights you might have missed',
+          ],
+        },
+        { type: 'h2', text: 'What to Look For' },
+        { type: 'h2', text: 'Opening Strategies' },
+        'How do top players start? Do they control the center or build from the edges?',
+        { type: 'h2', text: 'Midgame Tactics' },
+        'Watch how players balance offense and defense. Notice when they attack and when they solidify.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Can I watch games in real-time?', a: 'Yes, spectator mode lets you watch live games as they happen.' },
+            { q: 'Are there replays available?', a: 'Many platforms offer game replays so you can study matches at your own pace.' },
+            { q: 'Should I watch before or after playing?', a: 'Both have benefits. Watch before to learn strategies, watch after to analyze your own games.' },
+          ],
+        },
+        { type: 'cta', text: 'Watch games free on YiBoard →', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  }
 ];
-
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
