@@ -67,6 +67,10 @@
     "gomokuRules": "五目並べのルール",
     "renjuRules": "連珠のルール",
     "gomokuVsGo": "五目並べ vs 囲碁",
+    "xiangqi": "象棋",
+    "go": "囲碁",
+    "reversi": "リバーシ",
+    "chess": "チェス",
     "games": "ゲーム",
     "signOut": "ログアウト"
   },
@@ -124,8 +128,8 @@
         "body": "五目並べの相手はアルファベータ枝刈りで探索し、500ミリ秒の上限を厳守します。通信の往復も待ち行列も回数制限もありません。"
       },
       "language": {
-        "title": "四言語で書き下ろし。翻訳機に通しただけではありません",
-        "body": "English、Español、日本語、Português do Brasil。宣伝文だけでなく、ルール・ツールチップ・エラーメッセージまで含みます。"
+        "title": "五言語で書き下ろし。翻訳機に通しただけではありません",
+        "body": "English、中文、Español、日本語、Português do Brasil。宣伝文だけでなく、ルール・ツールチップ・エラーメッセージまで含みます。"
       },
       "noWall": {
         "title": "登録の壁の向こうには何も置いていません",
@@ -228,6 +232,7 @@
     "winRate": "勝率",
     "empty": "まだランク対局がありません。最初の一局を友達とどうぞ。",
     "emptyAction": "友達対局を始める",
+    "moreGamesTitle": "別の盤にも挑戦",
     "you": "あなた"
   },
   "howTo": {
@@ -276,7 +281,8 @@
       }
     ],
     "blogLink": "戦略ブログ",
-    "rulesLink": "五目並べのルールと形"
+    "rulesLink": "五目並べのルールと形",
+    "moreGamesTitle": "別の盤にも挑戦"
   },
   "about": {
     "title": "YiBoard について",
@@ -460,7 +466,8 @@
     "a7": "YiBoard はレスポンシブ Web アプリです（PWA 予定）。ダウンロード不要で、どのモバイルブラウザでも遊べます。",
     "rulesCta": "遊び方",
     "playCta": "今すぐ対局",
-    "contactCta": "お問い合わせ"
+    "contactCta": "お問い合わせ",
+    "moreGamesTitle": "別の盤にも挑戦"
   },
   "blog": {
     "title": "ブログ",
@@ -532,7 +539,14 @@
     "howToLink": "はじめての方へ",
     "howToLinkCta": "2分で遊び方を読む",
     "cta": "実戦で試す — 無料で対局",
-    "relatedTitle": "ルールガイド"
+    "relatedTitle": "ルールガイド",
+    "moreGamesTitle": "別の盤にも挑戦",
+    "nav": {
+      "gomokuRules": "五目並べのルール",
+      "renjuRules": "連珠のルール",
+      "gomokuVsGo": "五目並べ vs 囲碁",
+      "howTo": "ルール"
+    }
   },
   "replays": {
     "title": "五目並べ AI同士リプレイ",

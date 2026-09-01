@@ -38,6 +38,12 @@ const PATHS = [
   '/xiangqi/openings',
   '/go',
   '/go-rules',
+  '/reversi',
+  '/reversi-rules',
+  '/chess',
+  '/chess-rules',
+  '/tsumego',
+  '/tsumego-rules',
 ] as const;
 
 function href(base: string, locale: string, path: string): string {

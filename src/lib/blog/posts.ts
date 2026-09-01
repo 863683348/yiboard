@@ -1518,8 +1518,312 @@ export const POSTS: BlogPost[] = [
         },
         { type: 'cta', text: 'Watch games free on YiBoard →', href: 'https://yiboardgame.com/play' },
       ],
+    
     },
-  }
+  },
+
+  {
+    slug: "keyboard-friendly-board-games",
+    date: "2026-08-31",
+    tags: ["accessibility","keyboard controls","board games"],
+    title: {
+      zh: "键盘友好的棋类游戏： accessibility 为所有人",
+      en: "Keyboard-Friendly Board Games",
+    },
+    description: {
+      zh: "了解如何使用键盘玩棋类游戏，为行动不便玩家提供无障碍选项。",
+      en: "Learn how to play board games using only your keyboard. Accessible gaming for players with mobility challenges.",
+    },
+    keywords: ["accessibility","keyboard controls","board games"],
+    content: {
+      zh: [
+  "---",
+  "title: \"Keyboard-Friendly Board Games: Accessibility for Everyone\"",
+  "description: \"Learn how to play board games using only your keyboard. Accessible gaming options for players with mobility challenges or preference for keyboard controls.\"",
+  "pubDate: 2026-08-31",
+  "tags: [\"accessibility\", \"keyboard controls\", \"board games\", \"inclusive gaming\"]",
+  "category: \"guide\"",
+  "relatedSkins: []",
+  "---",
+  "Board games should be accessible to everyone, regardless of physical ability. Keyboard-friendly controls make games playable for users with mobility challenges, and many gamers simply prefer the precision of keyboard input.",
+  "Accessibility Benefits:",
+  {
+    "type": "ul",
+    "items": [
+      "Players with limited hand mobility can participate",
+      "Users with motor impairments can play comfortably",
+      "Reduces fatigue during long gaming sessions",
+      "Supports screen reader users in digital implementations"
+    ]
+  },
+  "Performance Benefits:",
+  {
+    "type": "ul",
+    "items": [
+      "Faster input for competitive play",
+      "Precise mouse-less navigation",
+      "Consistent control scheme across games",
+      "Reduces hand strain during extended play"
+    ]
+  },
+  {
+    "type": "h2",
+    "text": "Gomoku (Five in a Row)"
+  },
+  "| Key | Action |",
+  "|-----|--------|",
+  "| Arrow Keys | Move cursor on board |",
+  "| Enter/Space | Place stone |",
+  "| Tab | Switch between player/AI |",
+  "| R | Reset game |",
+  "| Esc | Return to menu |",
+  {
+    "type": "h2",
+    "text": "Chess"
+  },
+  "| Key | Action |",
+  "|-----|--------|",
+  "| Arrow Keys | Select piece, move |",
+  "| Numpad 1-9 | Quick move (advanced) |",
+  "| Enter | Confirm move |",
+  "| U | Undo last move |",
+  "| H | Show hints |",
+  {
+    "type": "h2",
+    "text": "Xiangqi (Chinese Chess)"
+  },
+  "| Key | Action |",
+  "|-----|--------|",
+  "| Arrow Keys | Navigate board |",
+  "| Enter | Select/move piece |",
+  "| 1-9 | Quick piece selection |",
+  "| S | Show possible moves |",
+  "| D |悔棋 (Undo) |",
+  "If you're building a board game, consider these accessibility features:",
+  "1. **Full keyboard navigation** — All interactive elements reachable via Tab",
+  "2. **Visual keyboard shortcuts** — Display keys on buttons and controls",
+  "3. **Sound feedback** — Audio cues for moves and actions",
+  "4. **High contrast mode** — For players with visual impairments",
+  "5. **Adjustable speed** — Control game pace for different needs",
+  "For Players:",
+  {
+    "type": "ul",
+    "items": [
+      "Practice the control scheme before competitive play",
+      "Use muscle memory for common moves",
+      "Consider ergonomic keyboard positioning",
+      "Take breaks to prevent strain"
+    ]
+  },
+  "For Developers:",
+  {
+    "type": "ul",
+    "items": [
+      "Test with keyboard-only navigation",
+      "Provide visible focus indicators",
+      "Support both mouse and keyboard input",
+      "Document all keyboard shortcuts"
+    ]
+  },
+  "Technology is making board games more accessible than ever:",
+  {
+    "type": "ul",
+    "items": [
+      "AI-powered screen readers for visual boards",
+      "Haptic feedback controllers",
+      "Voice control integration",
+      "Cloud gaming with keyboard optimization"
+    ]
+  },
+  "Keyboard-friendly controls open board gaming to more players. Whether for accessibility needs or personal preference, proper keyboard support improves the experience for everyone.",
+  "At YiBoard, we're committed to making Chinese board games accessible. Our Gomoku game supports full keyboard navigation — try it and let us know what improvements you'd like to see."
+],
+      en: [
+  "---",
+  "title: \"Keyboard-Friendly Board Games: Accessibility for Everyone\"",
+  "description: \"Learn how to play board games using only your keyboard. Accessible gaming options for players with mobility challenges or preference for keyboard controls.\"",
+  "pubDate: 2026-08-31",
+  "tags: [\"accessibility\", \"keyboard controls\", \"board games\", \"inclusive gaming\"]",
+  "category: \"guide\"",
+  "relatedSkins: []",
+  "---",
+  "Board games should be accessible to everyone, regardless of physical ability. Keyboard-friendly controls make games playable for users with mobility challenges, and many gamers simply prefer the precision of keyboard input.",
+  "Accessibility Benefits:",
+  {
+    "type": "ul",
+    "items": [
+      "Players with limited hand mobility can participate",
+      "Users with motor impairments can play comfortably",
+      "Reduces fatigue during long gaming sessions",
+      "Supports screen reader users in digital implementations"
+    ]
+  },
+  "Performance Benefits:",
+  {
+    "type": "ul",
+    "items": [
+      "Faster input for competitive play",
+      "Precise mouse-less navigation",
+      "Consistent control scheme across games",
+      "Reduces hand strain during extended play"
+    ]
+  },
+  {
+    "type": "h2",
+    "text": "Gomoku (Five in a Row)"
+  },
+  "| Key | Action |",
+  "|-----|--------|",
+  "| Arrow Keys | Move cursor on board |",
+  "| Enter/Space | Place stone |",
+  "| Tab | Switch between player/AI |",
+  "| R | Reset game |",
+  "| Esc | Return to menu |",
+  {
+    "type": "h2",
+    "text": "Chess"
+  },
+  "| Key | Action |",
+  "|-----|--------|",
+  "| Arrow Keys | Select piece, move |",
+  "| Numpad 1-9 | Quick move (advanced) |",
+  "| Enter | Confirm move |",
+  "| U | Undo last move |",
+  "| H | Show hints |",
+  {
+    "type": "h2",
+    "text": "Xiangqi (Chinese Chess)"
+  },
+  "| Key | Action |",
+  "|-----|--------|",
+  "| Arrow Keys | Navigate board |",
+  "| Enter | Select/move piece |",
+  "| 1-9 | Quick piece selection |",
+  "| S | Show possible moves |",
+  "| D |悔棋 (Undo) |",
+  "If you're building a board game, consider these accessibility features:",
+  "1. **Full keyboard navigation** — All interactive elements reachable via Tab",
+  "2. **Visual keyboard shortcuts** — Display keys on buttons and controls",
+  "3. **Sound feedback** — Audio cues for moves and actions",
+  "4. **High contrast mode** — For players with visual impairments",
+  "5. **Adjustable speed** — Control game pace for different needs",
+  "For Players:",
+  {
+    "type": "ul",
+    "items": [
+      "Practice the control scheme before competitive play",
+      "Use muscle memory for common moves",
+      "Consider ergonomic keyboard positioning",
+      "Take breaks to prevent strain"
+    ]
+  },
+  "For Developers:",
+  {
+    "type": "ul",
+    "items": [
+      "Test with keyboard-only navigation",
+      "Provide visible focus indicators",
+      "Support both mouse and keyboard input",
+      "Document all keyboard shortcuts"
+    ]
+  },
+  "Technology is making board games more accessible than ever:",
+  {
+    "type": "ul",
+    "items": [
+      "AI-powered screen readers for visual boards",
+      "Haptic feedback controllers",
+      "Voice control integration",
+      "Cloud gaming with keyboard optimization"
+    ]
+  },
+  "Keyboard-friendly controls open board gaming to more players. Whether for accessibility needs or personal preference, proper keyboard support improves the experience for everyone.",
+  "At YiBoard, we're committed to making Chinese board games accessible. Our Gomoku game supports full keyboard navigation — try it and let us know what improvements you'd like to see."
+],
+    },
+  },
+  {
+    slug: 'gomoku-rank-explained',
+    date: '2026-09-02',
+    tags: ['gomoku', 'ranking', 'strategy'],
+    title: {
+      zh: '五子棋段位详解：YiBoard 怎么给你算分',
+      en: 'Gomoku Rank Explained: How YiBoard Rates Every Player',
+    },
+    description: {
+      zh: 'YiBoard 的五子棋段位从 1200 分（六级）起步，每一局胜负都会移动你的分数。这篇把评分怎么算、级位和段位怎么对应分数、为什么没有赛季重置，一次性讲清楚。',
+      en: "YiBoard's gomoku rank starts everyone at 1200, Sixth Grade, and moves with every win and loss. Here is exactly how the rating works, how grades and dans map to your score, and why no season resets it.",
+    },
+    keywords: ['gomoku rank explained', 'gomoku rating system', 'how gomoku ranking works', 'gomoku elo rating', 'gomoku grade dan', 'yiboard rank'],
+    content: {
+      zh: [
+        '打开 YiBoard 的[排行榜](/rankings)你会看到一串数字：所有人都从 1200 分、六级起步，往九段的方向爬。但这个数字到底代表什么、一局棋怎么让它动？这篇用大白话把 YiBoard 的五子棋段位机制讲清楚。',
+        { type: 'h2', text: '起点：1200 分，六级' },
+        '每个新账号都从 1200 分开始，对应六级。你不选段位，也不会被丢进“新手专属”的小池子。1200 这个起点把你和所有人放在同一把尺子上，前几局胜负会很快把你送到真实水平附近。',
+        { type: 'h2', text: '一局棋怎么改你的分数' },
+        '每局结束，系统比较你和对手的分差：赢更强的对手加得更多，赢更弱的对手加得更少；输给更强的对手掉得少，输给更弱的对手掉得多。摆动幅度由分差决定，本质上和 Elo 的期望胜率模型一致。',
+        '段位是连续的，所以单局绝不会把你自己从一个段位“跳”到下一个。它是对你真实水平缓慢而诚实的收敛。',
+        { type: 'h2', text: '级位与段位：两段阶梯' },
+        {
+          type: 'ul',
+          items: [
+            '级位（kyu）从九级到一级：入门到熟练这一段',
+            '段位（dan）从一段到九段：高手到职业这一段',
+            '一级紧挨一段之下，两段叠成一条从九级到九段的完整阶梯',
+            '你的分数会自动映射到这条阶梯上，所以看到的称号永远和数字同步',
+          ],
+        },
+        { type: 'h2', text: '为什么没有赛季重置' },
+        'YiBoard 不会每个赛季清零。你的历史是你的：八月打到的段位，十二月还是你的。没有保底分、没有参与度加成，段位只在结果推动它时才移动——这正是 YiBoard 上的高段位“含金量”的来源。',
+        { type: 'h2', text: '段位是防作弊的' },
+        '每一步棋都由服务端校验，评分算法让“送分”或“刷分”无所遁形。这套系统的意义是反映真实对局结果，而不是奖励在线时长。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 上的 1200 分是什么意思？', a: '1200 分对应六级，是所有账号的起点。赢棋加分、输棋减分，分数决定你的级位或段位。' },
+            { q: '赢一局能加多少分？', a: '取决于分差。赢强手加得多、赢弱手加得少，分差越小摆动越小。' },
+            { q: '一局能让我掉一整个段位吗？', a: '不会。评分是连续的，每局只挪一点点，单局只会推你一下，不会跨段位瞬移。' },
+            { q: 'YiBoard 会每个赛季重置段位吗？', a: '不会。YiBoard 的评分是持续的，没有赛季重置，你打到的段位一直属于你。' },
+          ],
+        },
+        { type: 'cta', text: '看看排行榜上你现在排第几', href: 'https://yiboardgame.com/rankings' },
+      ],
+      en: [
+        "If you have opened the YiBoard [leaderboard](/rankings) you have seen the numbers: everyone starts at 1200, Sixth Grade, and climbs toward Ninth Dan. But what does the number actually mean, and how does one game move it? This is the plain-English explanation of how YiBoard's gomoku rank works.",
+        { type: 'h2', text: 'The starting point: 1200, Sixth Grade' },
+        'Every new YiBoard account begins at 1200 points, mapped to Sixth Grade. You do not pick a tier, and you are not dropped into a beginner-only pool. The 1200 start puts you on the same ruler as everyone else; your first wins and losses quickly find your real level.',
+        { type: 'h2', text: 'How one game changes your score' },
+        "Each match compares your rating with your opponent's. Beat a stronger player and you gain more points; beat a weaker one and you gain fewer. Lose to a stronger player and you drop little; lose to a weaker one and you drop more. The size of the swing depends on the rating gap, exactly like an Elo expected-score model.",
+        'The rank is continuous, so a single game never jumps you from one dan to the next by itself. It is a slow, honest convergence on your true strength.',
+        { type: 'h2', text: 'Grades and dans: the two bands' },
+        {
+          type: 'ul',
+          items: [
+            'Grades (kyu) run from Ninth Grade up to First Grade: the beginner-to-proficient band',
+            'Dans run from First Dan up to Ninth Dan: the expert-to-professional band',
+            'First Grade sits just below First Dan; the two bands stack into one ladder from Ninth Grade to Ninth Dan',
+            'Your score maps onto this ladder automatically, so the title you see is always in sync with your number',
+          ],
+        },
+        { type: 'h2', text: 'Why there is no season reset' },
+        "YiBoard does not wipe ratings every season. Your history is yours: a dan you earned in August is still a dan in December. No floor points, no participation padding — the rank only moves when results move it, which is why a high dan on YiBoard actually means something.",
+        { type: 'h2', text: 'Rank is cheat-resistant' },
+        'Every move is validated server-side, and the rating math makes score dumping or win-farming detectable. The point of the system is to reflect real match results, not to reward activity.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'What does 1200 mean on YiBoard?', a: '1200 is Sixth Grade, the start for every account. Wins raise it, losses lower it, and the score maps to your grade or dan.' },
+            { q: 'How many points do I get for a win?', a: 'It depends on the rating gap. Beating a much stronger player adds more than beating a much weaker one; the swing shrinks as the gap shrinks.' },
+            { q: 'Can my rank drop a full dan in one game?', a: 'No. The rating is continuous and moves a little each game, so a single result nudges you, it does not teleport you across bands.' },
+            { q: 'Does YiBoard reset ranks each season?', a: 'No. YiBoard ratings are continuous with no season reset, so your earned rank stays yours.' },
+          ],
+        },
+        { type: 'cta', text: 'Check the leaderboard and see where you stand', href: 'https://yiboardgame.com/rankings' },
+      ],
+    },
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

@@ -13,7 +13,7 @@ export async function generateMetadata(props: {
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return {
     title: t('title'),
-    description: meta('description'),
+    description: t('description'),
     alternates: localeAlternates('play', locale),
   };
 }
@@ -30,6 +30,7 @@ export default async function PlayPage(props: {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'play' });
+  const playT = await getTranslations({ locale, namespace: 'meta' });
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-8)' }}>
@@ -76,6 +77,42 @@ export default async function PlayPage(props: {
       </header>
 
       <PlayGate />
+
+      <section style={{ maxWidth: 760, marginTop: 'var(--space-12)' }}>
+        <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>
+          {playT('moreGamesTitle')}
+        </h2>
+        <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-3)' }}>
+          <RelatedLink href="/xiangqi" label={playT('nav.xiangqi')} />
+          <RelatedLink href="/go" label={playT('nav.go')} />
+          <RelatedLink href="/reversi" label={playT('nav.reversi')} />
+          <RelatedLink href="/chess" label={playT('nav.chess')} />
+        </div>
+      </section>
     </div>
+  );
+}
+
+function RelatedLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--surface-2)',
+        textDecoration: 'none',
+        color: 'var(--fg)',
+        fontSize: 'var(--text-base)',
+        fontWeight: 'var(--weight-emphasis)',
+      }}
+    >
+      {label}
+      <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
+    </Link>
   );
 }

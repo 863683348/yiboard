@@ -66,6 +66,10 @@
     "gomokuRules": "오목 규칙",
     "renjuRules": "렌주 규칙",
     "gomokuVsGo": "오목 vs 바둑",
+    "xiangqi": "샹치",
+    "go": "바둑",
+    "reversi": "리버시",
+    "chess": "체스",
     "games": "게임"
   },
   "home": {
@@ -122,8 +126,8 @@
         "body": "Our Gomoku opponent searches with alpha-beta pruning under a hard 500 ms budget, on your machine. No round trip, no queue, no rate limit."
       },
       "language": {
-        "title": "Written in four languages, not poured through a translator",
-        "body": "English, Español, 日本語 and Português do Brasil. Rules, tooltips and error messages included — not just the marketing page."
+        "title": "다섯 가지 언어로 작성, 번역기에만 의존하지 않음",
+        "body": "English, 中文, Español, 日本語, Português do Brasil. 규칙·툴팁·오류 메시지까지 포함 — 마케팅 페이지만 번역한 것이 아닙니다."
       },
       "noWall": {
         "title": "Nothing behind a signup wall",
@@ -223,6 +227,7 @@
     "winRate": "Win rate",
     "empty": "No ranked games yet. Be the first — invite a friend and play one.",
     "emptyAction": "Start a friend match",
+    "moreGamesTitle": "다른 판도 해보기",
     "you": "You"
   },
   "howTo": {
@@ -249,7 +254,8 @@
     "blogLink": "Strategy blog",
     "glossaryLink": "오목 용어집",
     "faqLink": "자주 묻는 질문",
-    "faqTitle": "오목 자주 묻는 질문"
+    "faqTitle": "오목 자주 묻는 질문",
+    "moreGamesTitle": "다른 판도 해보기"
   },
   "about": {
     "title": "About YiBoard",
@@ -425,7 +431,8 @@
     "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download.",
     "rulesCta": "게임 방법",
     "playCta": "지금 플레이",
-    "contactCta": "문의하기"
+    "contactCta": "문의하기",
+    "moreGamesTitle": "다른 판도 해보기"
   },
   "blog": {
     "title": "Blog",
@@ -487,9 +494,20 @@
     "errGeneric": "Something went wrong. Please try again."
   },
   "glossary": {
+    "chip": "용어집",
+    "title": "용어집",
+    "sub": "오목의 핵심 개념을 쉽게 설명합니다. 각 용어에는 정의와 실전에서 바로 써먹을 팁이 포함되어 있습니다.",
     "howToLink": "게임이 처음이신가요?",
     "howToLinkCta": "2분 안에 배우기",
-    "relatedTitle": "규칙 가이드"
+    "cta": "대국 시작",
+    "relatedTitle": "규칙 가이드",
+    "moreGamesTitle": "다른 판도 해보기",
+    "nav": {
+      "gomokuRules": "오목 규칙",
+      "renjuRules": "렌주 규칙",
+      "gomokuVsGo": "오목 vs 바둑",
+      "howTo": "규칙 배우기"
+    }
   },
   "replays": {
     "resultDraw": "무승부 — 판이 가득 참",

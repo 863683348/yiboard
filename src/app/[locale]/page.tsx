@@ -105,7 +105,7 @@ export default async function HomePage(props: { params: Promise<{ locale: string
 
       <hr className="yb-rule" />
 
-      {/* ---------------- 三种棋 ---------------- */}
+      {/* ---------------- 六种棋 ---------------- */}
       <section className="yb-container yb-section">
         <header style={{ maxWidth: '58ch' }}>
           <h2 className="yb-h2">{t('games.title')}</h2>
@@ -141,6 +141,33 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             live
             href="/go"
             action={t('ctaGo')}
+          />
+          <GameCard
+            name={t('games.reversi.name')}
+            native={t('games.reversi.native')}
+            blurb={t('games.reversi.blurb')}
+            status={t('games.statusLive')}
+            live
+            href="/reversi"
+            action={t('ctaReversi')}
+          />
+          <GameCard
+            name={t('games.chess.name')}
+            native={t('games.chess.native')}
+            blurb={t('games.chess.blurb')}
+            status={t('games.statusLive')}
+            live
+            href="/chess"
+            action={t('ctaChess')}
+          />
+          <GameCard
+            name={t('games.tsumego.name')}
+            native={t('games.tsumego.native')}
+            blurb={t('games.tsumego.blurb')}
+            status={t('games.statusLive')}
+            live
+            href="/tsumego"
+            action={t('ctaTsumego')}
           />
         </div>
       </section>

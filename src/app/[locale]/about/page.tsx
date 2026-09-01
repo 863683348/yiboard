@@ -22,7 +22,7 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
 
   const t = await getTranslations({ locale, namespace: 'about' });
   const nav = await getTranslations({ locale, namespace: 'nav' });
-  const contactEmail = 'hello@yiboard.com';
+  const contactEmail = 'ahmedlzany423@gmail.com';
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>

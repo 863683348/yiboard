@@ -67,6 +67,10 @@
     "gomokuRules": "Regras do Gomoku",
     "renjuRules": "Regras de Renju",
     "gomokuVsGo": "Gomoku vs Go",
+    "xiangqi": "Xiangqi",
+    "go": "Go",
+    "reversi": "Reversi",
+    "chess": "Xadrez",
     "games": "Jogos",
     "signOut": "Sair"
   },
@@ -124,8 +128,8 @@
         "body": "Nosso adversário de Gomoku busca com poda alfa-beta dentro de um orçamento rígido de 500 ms, na sua máquina. Sem ida e volta, sem fila, sem limite de requisições."
       },
       "language": {
-        "title": "Escrito em quatro idiomas, não passado num tradutor",
-        "body": "English, Español, 日本語 e Português do Brasil. Regras, dicas e mensagens de erro incluídas, não só a página de marketing."
+        "title": "Escrito em cinco idiomas, não passado num tradutor",
+        "body": "English, 中文, Español, 日本語 e Português do Brasil. Regras, dicas e mensagens de erro incluídas, não só a página de marketing."
       },
       "noWall": {
         "title": "Nada atrás de um muro de cadastro",
@@ -228,6 +232,7 @@
     "winRate": "% vitórias",
     "empty": "Ainda não há partidas ranqueadas. Seja o primeiro — convide um amigo e jogue uma.",
     "emptyAction": "Começar uma partida de amigo",
+    "moreGamesTitle": "Experimente outro tabuleiro",
     "you": "Você"
   },
   "howTo": {
@@ -276,7 +281,8 @@
       }
     ],
     "blogLink": "Blog de estratégia",
-    "rulesLink": "Regras e formatos do Gomoku"
+    "rulesLink": "Regras e formatos do Gomoku",
+    "moreGamesTitle": "Experimente outro tabuleiro"
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -460,7 +466,8 @@
     "a7": "YiBoard é um app web responsivo (PWA planejado), então roda em qualquer navegador móvel sem download.",
     "rulesCta": "Como jogar",
     "playCta": "Jogar agora",
-    "contactCta": "Fale conosco"
+    "contactCta": "Fale conosco",
+    "moreGamesTitle": "Experimente outro tabuleiro"
   },
   "blog": {
     "title": "Blog",
@@ -532,7 +539,14 @@
     "howToLink": "Novo no jogo?",
     "howToLinkCta": "Aprenda a jogar em 2 minutos",
     "cta": "Coloque em prática — jogue grátis",
-    "relatedTitle": "Guias de regras"
+    "relatedTitle": "Guias de regras",
+    "moreGamesTitle": "Experimente outro tabuleiro",
+    "nav": {
+      "gomokuRules": "Regras do Gomoku",
+      "renjuRules": "Regras de Renju",
+      "gomokuVsGo": "Gomoku vs Go",
+      "howTo": "Como jogar"
+    }
   },
   "replays": {
     "title": "Replay de Gomoku IA contra IA",

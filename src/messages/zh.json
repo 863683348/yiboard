@@ -66,6 +66,10 @@
     "gomokuRules": "五子棋规则",
     "renjuRules": "连珠规则",
     "gomokuVsGo": "五子棋 vs 围棋",
+    "xiangqi": "象棋",
+    "go": "围棋",
+    "reversi": "黑白棋",
+    "chess": "国际象棋",
     "games": "游戏"
   },
   "home": {
@@ -73,15 +77,15 @@
     "visitCount": "全球访问次数：{count}",
     "headline": "五子连珠。",
     "headlineAccent": "三千年也争不完。",
-    "sub": "从五分钟学会的五子棋开始，走进中国棋艺的完整世界。直接在下方棋盘落子——不用安装、不用注册。象棋与围棋随后上线。",
+    "sub": "从五分钟学会的五子棋开始，走进一整座策略棋艺的世界——五子棋、象棋、围棋、黑白棋、国际象棋与死活题。直接在下方棋盘落子——不用安装、不用注册。六种棋现已全部可玩。",
     "ctaPrimary": "开始一局",
     "ctaSecondary": "和好友对战",
     "reassurance": "你的进度会保存在此浏览器中 180 天。之后可绑定邮箱保留记录。",
     "boardCaption": "黑棋先手。横、竖、斜任意方向连成五子即胜。",
     "boardHint": "点击任意交叉点开始",
     "games": {
-      "title": "三种棋，一种棋盘文化",
-      "sub": "每一种都在教不同的思维方式。我们按最快让你上手玩到的顺序陆续上线。",
+      "title": "六种棋，一种棋盘文化",
+      "sub": "每一种都在教不同的思维方式——而且现在全部可玩，无需注册。",
       "statusLive": "现已可玩",
       "statusNext": "开发中",
       "statusPlanned": "规划中",
@@ -100,6 +104,21 @@
         "name": "围棋",
         "native": "围棋 · Wéiqí",
         "blurb": "围地而非擒王。两千多年来，规则几乎没变过，至今仍被按原样对弈。"
+      },
+      "reversi": {
+        "name": "黑白棋",
+        "native": "Reversi",
+        "blurb": "把棋盘翻转成你的颜色。寥寥数子就能翻盘——易学难精。"
+      },
+      "chess": {
+        "name": "国际象棋",
+        "native": "Chess",
+        "blurb": "经典西洋棋，完整规则：王车易位、吃过路兵、兵升变，对战凌厉的 alpha-beta 引擎。一枰棋，无穷变化。"
+      },
+      "tsumego": {
+        "name": "死活题",
+        "native": "Tsumego",
+        "blurb": "围棋死活题。一手正解即可提掉整块棋——锻炼决定胜负的读棋力。"
       }
     },
     "ladder": {
@@ -122,8 +141,8 @@
         "body": "五子棋对手使用 alpha-beta 剪枝搜索，在 500 毫秒预算内计算，全部在你本机完成。无往返、无排队、无限流。"
       },
       "language": {
-        "title": "用四种语言认真书写，而非机翻",
-        "body": "英语、西班牙语、日本語、Português do Brasil——规则、提示、错误信息全覆盖，不只是营销页。"
+        "title": "用五种语言认真书写，而非机翻",
+        "body": "英语、中文、西班牙语、日本語、Português do Brasil——规则、提示、错误信息全覆盖，不只是营销页。"
       },
       "noWall": {
         "title": "没有注册墙",
@@ -140,7 +159,10 @@
     "statsAi": "人机对局",
     "statsFriend": "在线对战",
     "ctaXiangqi": "开始象棋",
-    "ctaGo": "开始围棋"
+    "ctaGo": "开始围棋",
+    "ctaReversi": "开始黑白棋",
+    "ctaChess": "开始国际象棋",
+    "ctaTsumego": "做死活题"
   },
   "play": {
     "title": "五子棋",
@@ -223,6 +245,7 @@
     "winRate": "胜率",
     "empty": "还没有排位对局。来当第一个——邀请好友下一局。",
     "emptyAction": "开始好友对战",
+    "moreGamesTitle": "换个棋盘试试",
     "you": "你"
   },
   "howTo": {
@@ -249,7 +272,8 @@
     "blogLink": "策略博客",
     "glossaryLink": "五子棋术语表",
     "faqLink": "常见问题",
-    "faqTitle": "五子棋常见问题"
+    "faqTitle": "五子棋常见问题",
+    "moreGamesTitle": "换个棋盘试试"
   },
   "about": {
     "title": "关于弈界",
@@ -409,7 +433,8 @@
     "a7": "弈界是响应式网页（PWA 化规划中），手机浏览器直接玩，无需下载。",
     "rulesCta": "玩法",
     "playCta": "立即对局",
-    "contactCta": "联系我们"
+    "contactCta": "联系我们",
+    "moreGamesTitle": "换个棋盘试试"
   },
   "blog": {
     "title": "博客",
@@ -437,7 +462,7 @@
     "privacyNote": "涉及数据删除或账号问题，请附上你的访客 ID（可在「我的战绩」页查看）。"
   },
   "footer": {
-    "tagline": "今天五子棋。象棋与围棋随后。",
+    "tagline": "六种棋，一块棋盘。全部免费，无需注册。",
     "play": "开始对弈",
     "learn": "学习",
     "legal": "法律",
@@ -487,9 +512,20 @@
     "errGeneric": "出了点问题，请重试。"
   },
   "glossary": {
+    "chip": "术语表",
+    "title": "术语表",
+    "sub": "用白话解释五子棋的核心概念。每个术语都附带定义和一条下一盘就能用的实战技巧。",
     "howToLink": "刚接触这个游戏？",
     "howToLinkCta": "2 分钟学会玩法",
-    "relatedTitle": "规则指南"
+    "relatedTitle": "规则指南",
+    "nav": {
+      "gomokuRules": "五子棋规则",
+      "renjuRules": "连珠规则",
+      "gomokuVsGo": "五子棋与围棋",
+      "howTo": "如何对局"
+    },
+    "cta": "开始对局",
+    "moreGamesTitle": "换个棋盘试试"
   },
   "replays": {
     "resultDraw": "平局 — 棋盘已满",

@@ -67,6 +67,10 @@
     "gomokuRules": "Reglas de Gomoku",
     "renjuRules": "Reglas de Renju",
     "gomokuVsGo": "Gomoku vs Go",
+    "xiangqi": "Xiangqi",
+    "go": "Go",
+    "reversi": "Reversi",
+    "chess": "Ajedrez",
     "games": "Juegos",
     "signOut": "Cerrar sesión"
   },
@@ -124,8 +128,8 @@
         "body": "Nuestro rival de Gomoku busca con poda alfa-beta bajo un presupuesto estricto de 500 ms, en tu propia máquina. Sin ida y vuelta, sin cola, sin límite de peticiones."
       },
       "language": {
-        "title": "Escrito en cuatro idiomas, no pasado por un traductor",
-        "body": "English, Español, 日本語 y Português do Brasil. Reglas, ayudas y mensajes de error incluidos, no solo la página de marketing."
+        "title": "Escrito en cinco idiomas, no pasado por un traductor",
+        "body": "English, 中文, Español, 日本語 y Português do Brasil. Reglas, ayudas y mensajes de error incluidos, no solo la página de marketing."
       },
       "noWall": {
         "title": "Nada detrás de un muro de registro",
@@ -228,6 +232,7 @@
     "winRate": "% victorias",
     "empty": "Aún no hay partidas clasificadas. Sé el primero: invita a un amigo y juega una.",
     "emptyAction": "Empezar una partida de amigo",
+    "moreGamesTitle": "Prueba otro tablero",
     "you": "Tú"
   },
   "howTo": {
@@ -276,9 +281,9 @@
       }
     ],
     "blogLink": "Blog de estrategia",
-    "rulesLink": "Reglas y formas del Gomoku"
+    "rulesLink": "Reglas y formas del Gomoku",
+    "moreGamesTitle": "Prueba otro tablero"
   },
-  "about": {
     "title": "Sobre YiBoard",
     "lead": "Los juegos de tablero chinos no son difíciles de aprender. Lo difícil es encontrarlos en un formato que respete tu tiempo.",
     "p1": "Casi todos los sitios que enseñan Gomoku, Xiangqi o Go piden una cuenta antes de dejarte ver un tablero. Luego una descarga. Luego un tutorial que no puedes saltar. Nos parece el orden equivocado: primero juega, después decides si te importa.",
@@ -460,7 +465,8 @@
     "a7": "YiBoard es una app web responsive (PWA planificada), así que se juega en cualquier navegador móvil sin descargas.",
     "rulesCta": "Cómo jugar",
     "playCta": "Jugar ahora",
-    "contactCta": "Contáctanos"
+    "contactCta": "Contáctanos",
+    "moreGamesTitle": "Prueba otro tablero"
   },
   "blog": {
     "title": "Blog",
@@ -532,7 +538,14 @@
     "howToLink": "¿Nuevo en el juego?",
     "howToLinkCta": "Aprende a jugar en 2 minutos",
     "cta": "Ponlo en práctica — juega gratis",
-    "relatedTitle": "Guías de reglas"
+    "relatedTitle": "Guías de reglas",
+    "moreGamesTitle": "Prueba otro tablero",
+    "nav": {
+      "gomokuRules": "Reglas de Gomoku",
+      "renjuRules": "Reglas de Renju",
+      "gomokuVsGo": "Gomoku vs Go",
+      "howTo": "Cómo se juega"
+    }
   },
   "replays": {
     "title": "Repetición de Gomoku IA contra IA",

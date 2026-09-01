@@ -194,6 +194,10 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
             <RelatedLink href="/gomoku-rules" label={t('nav.gomokuRules')} />
             <RelatedLink href="/renju-rules" label={t('nav.renjuRules')} />
             <RelatedLink href="/gomoku-vs-go" label={t('nav.gomokuVsGo')} />
+            <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
+            <RelatedLink href="/go" label={t('nav.go')} />
+            <RelatedLink href="/reversi" label={t('nav.reversi')} />
+            <RelatedLink href="/chess" label={t('nav.chess')} />
           </div>
         </section>
 
@@ -220,6 +224,15 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
 
         {/* ---------------- CTA ---------------- */}
         <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
+          <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>
+            {t('moreGamesTitle')}
+          </h2>
+          <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-3)', marginBottom: 'var(--space-6)' }}>
+            <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
+            <RelatedLink href="/go" label={t('nav.go')} />
+            <RelatedLink href="/reversi" label={t('nav.reversi')} />
+            <RelatedLink href="/chess" label={t('nav.chess')} />
+          </div>
           <Link href="/play" className="yb-btn yb-btn-primary">
             {t('cta')}
           </Link>

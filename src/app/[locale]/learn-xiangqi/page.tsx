@@ -202,9 +202,15 @@ export default async function LearnXiangqiPage({ params }: { params: Promise<{ l
       <section style={{ marginTop: 'var(--space-12)', maxWidth: 820 }}>
         <h2 className="yb-h3">{isZh ? '象棋与国际象棋' : 'Xiangqi vs International Chess' }</h2>
         <p style={{ marginTop: 'var(--space-3)', color: 'var(--fg-2)', lineHeight: 1.8 }}>
-          {isZh
-            ? '两者都是两人对弈的皇家棋类，但差别明显：象棋用 9×10 棋盘和七种棋子，炮必须隔子吃，马有蹩腿，将帅不能对面，且没有"后"这种超强子力。想直接对战，打开 /xiangqi 即可。'
-            : 'Both are two-player royal games, but the differences are clear: Xiangqi uses a 9×10 board and seven piece types, the cannon captures by jumping a screen, the horse can be blocked, and the generals may not face each other — and there is no queen-like super-piece. To play right away, open /xiangqi.'}
+          {isZh ? (
+            <>
+              两者都是两人对弈的皇家棋类，但差别明显：象棋用 9×10 棋盘和七种棋子，炮必须隔子吃，马有蹩腿，将帅不能对面，且没有「后」这种超强子力。想直接对战，打开 /xiangqi 即可；想了解国际象棋的完整走法与特殊规则，请看 <Link href="/chess-rules">国际象棋规则</Link>。
+            </>
+          ) : (
+            <>
+              Both are two-player royal games, but the differences are clear: Xiangqi uses a 9×10 board and seven piece types, the cannon captures by jumping a screen, the horse can be blocked, and the generals may not face each other — and there is no queen-like super-piece. To play right away, open /xiangqi; for the international ruleset with castling and en passant, see <Link href="/chess-rules">Chess rules</Link>.
+            </>
+          )}
         </p>
       </section>
 

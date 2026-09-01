@@ -13,14 +13,14 @@ const META: Record<'en' | 'zh', { title: string; description: string; keywords: 
   en: {
     title: 'Gomoku Game Library — Shared Games & Best Plays',
     description:
-      'Browse Gomoku games shared by the YiBoard community: sharp tactical wins, comebacks, and puzzling endgames. Open any board to replay the full move sequence.',
-    keywords: ['gomoku games', 'shared gomoku', 'gomoku replays', 'five in a row games', 'gomoku community'],
+      'Browse Gomoku games shared by the YiBoard community: sharp tactical wins, comebacks, and puzzling endgames. Play gomoku game free in your browser — open any board to replay the full move sequence.',
+    keywords: ['gomoku game', 'gomoku games', 'shared gomoku', 'gomoku replays', 'five in a row games', 'gomoku community', 'play gomoku online'],
   },
   zh: {
     title: '五子棋棋谱库 — 玩家分享的精彩对局',
     description:
-      '浏览 YiBoard 社区分享的五子棋对局：犀利的战术杀招、翻盘好戏与烧脑残局。点开任意棋谱即可逐步复盘完整走法。',
-    keywords: ['五子棋棋谱', '五子棋分享', '五子棋复盘', '五子棋对局', '五子棋社区'],
+      '浏览 YiBoard 社区分享的五子棋对局：犀利的战术杀招、翻盘好戏与烧脑残局。免费在线玩五子棋——点开任意棋谱即可逐步复盘完整走法。',
+    keywords: ['五子棋游戏', '五子棋棋谱', '五子棋分享', '五子棋复盘', '五子棋对局', '五子棋社区', '在线五子棋'],
   },
 };
 

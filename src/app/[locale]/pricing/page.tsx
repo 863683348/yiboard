@@ -25,15 +25,18 @@ export default async function PricingPage(props: { params: Promise<{ locale: str
 
   const pricingSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: 'YiBoard Gomoku Online',
-    description: 'Free online Gomoku game with AI and multiplayer.',
+    '@type': 'SoftwareApplication',
+    name: 'YiBoard',
+    applicationCategory: 'GameApplication',
+    description:
+      'Free online board games (Gomoku, Xiangqi, Go, Reversi, Chess, Tsumego) with AI and multiplayer. Play instantly in your browser without signup.',
+    image: 'https://yiboardgame.com/og.png',
     brand: { '@type': 'Brand', name: 'YiBoard' },
-    offers: [
-      { '@type': 'Offer', name: 'Free Tier', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-      { '@type': 'Offer', name: 'Plus Plan', price: '4.99', priceCurrency: 'USD', availability: 'https://schema.org/ComingSoon', description: 'No ads, deep stats, game library' },
-      { '@type': 'Offer', name: 'Pro Plan', price: '7.99', priceCurrency: 'USD', availability: 'https://schema.org/ComingSoon', description: 'Early access to Xiangqi & Go, unlimited saves' },
-    ],
+    operatingSystem: 'Any browser',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    isAccessibleForFree: true,
+    // 注意：SoftwareApplication 不带 offers 时不会被 Google 当作"产品摘要"审核，
+    // 从而避免 availability/review/aggregateRating 的误报。Plus/Pro 上线后再决定是否加回 Product + offers。
   };
 
   return (

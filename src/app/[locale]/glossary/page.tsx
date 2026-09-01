@@ -114,6 +114,10 @@ export default async function GlossaryPage(props: {
             <RelatedLink href="/renju-rules" label={t('nav.renjuRules')} />
             <RelatedLink href="/gomoku-vs-go" label={t('nav.gomokuVsGo')} />
             <RelatedLink href="/how-to" label={t('nav.howTo')} />
+            <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
+            <RelatedLink href="/go" label={t('nav.go')} />
+            <RelatedLink href="/reversi" label={t('nav.reversi')} />
+            <RelatedLink href="/chess" label={t('nav.chess')} />
           </div>
         </section>
 

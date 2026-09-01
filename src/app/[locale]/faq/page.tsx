@@ -71,26 +71,51 @@ export default async function FaqPage(props: { params: Promise<{ locale: string 
           ))}
         </div>
 
-        <section
-          style={{
-            maxWidth: 760,
-            marginTop: 'var(--space-10)',
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 'var(--space-3)',
-          }}
-        >
+        <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
+          <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>
+            {t('moreGamesTitle')}
+          </h2>
+          <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-3)', marginBottom: 'var(--space-6)' }}>
+            <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
+            <RelatedLink href="/go" label={t('nav.go')} />
+            <RelatedLink href="/reversi" label={t('nav.reversi')} />
+            <RelatedLink href="/chess" label={t('nav.chess')} />
+          </div>
           <Link href="/how-to" className="yb-btn yb-btn-primary">
             {t('rulesCta')}
           </Link>
-          <Link href="/play" className="yb-btn yb-btn-outline">
+          <Link href="/play" className="yb-btn yb-btn-outline" style={{ marginLeft: 'var(--space-3)' }}>
             {t('playCta')}
           </Link>
-          <Link href="/contact" className="yb-btn yb-btn-outline">
+          <Link href="/contact" className="yb-btn yb-btn-outline" style={{ marginLeft: 'var(--space-3)' }}>
             {t('contactCta')}
           </Link>
         </section>
       </div>
     </>
+  );
+}
+
+function RelatedLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--surface-2)',
+        textDecoration: 'none',
+        color: 'var(--fg)',
+        fontSize: 'var(--text-base)',
+        fontWeight: 'var(--weight-emphasis)',
+      }}
+    >
+      {label}
+      <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
+    </Link>
   );
 }

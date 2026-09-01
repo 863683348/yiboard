@@ -106,6 +106,42 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
           <LeaderboardTabs all={allRows} week={weekRows} month={monthRows} />
         )}
       </div>
+
+      <section style={{ maxWidth: 760, marginTop: 'var(--space-12)' }}>
+        <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>
+          {t('moreGamesTitle')}
+        </h2>
+        <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-3)' }}>
+          <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
+          <RelatedLink href="/go" label={t('nav.go')} />
+          <RelatedLink href="/reversi" label={t('nav.reversi')} />
+          <RelatedLink href="/chess" label={t('nav.chess')} />
+        </div>
+      </section>
     </div>
+  );
+}
+
+function RelatedLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-md)',
+        background: 'var(--surface-2)',
+        textDecoration: 'none',
+        color: 'var(--fg)',
+        fontSize: 'var(--text-base)',
+        fontWeight: 'var(--weight-emphasis)',
+      }}
+    >
+      {label}
+      <span aria-hidden style={{ color: 'var(--accent)' }}>→</span>
+    </Link>
   );
 }

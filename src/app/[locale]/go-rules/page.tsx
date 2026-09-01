@@ -313,6 +313,7 @@ export default async function GoRulesPage(props: { params: Promise<{ locale: str
           <RelatedLink href="/gomoku-vs-go" label={lang === 'zh' ? '五子棋 vs 围棋' : 'Gomoku vs Go'} />
           <RelatedLink href="/gomoku-rules" label={lang === 'zh' ? '五子棋规则' : 'Gomoku rules'} />
           <RelatedLink href="/learn-xiangqi" label={lang === 'zh' ? '象棋学习指南' : 'Learn Xiangqi'} />
+          <RelatedLink href="/tsumego-rules" label={lang === 'zh' ? '围棋死活题' : 'Go Tsumego'} />
         </div>
       </section>
 

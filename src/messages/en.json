@@ -66,6 +66,10 @@
     "gomokuRules": "Gomoku rules",
     "renjuRules": "Renju rules",
     "gomokuVsGo": "Gomoku vs Go",
+    "xiangqi": "Xiangqi",
+    "go": "Go",
+    "reversi": "Reversi",
+    "chess": "Chess",
     "games": "Games"
   },
   "home": {
@@ -73,15 +77,15 @@
     "visitCount": "Global visits: {count}",
     "headline": "Five stones in a line.",
     "headlineAccent": "Three thousand years of arguing about it.",
-    "sub": "Start with Gomoku in five minutes. Stay for a thousand years of Chinese strategy. Open the board below and make a move — nothing to install, nothing to sign up for. Xiangqi and Go follow.",
+    "sub": "Start with Gomoku in five minutes. Stay for a few thousand years of strategy across six boards. Open the board below and make a move — nothing to install, nothing to sign up for. Xiangqi, Go, Reversi, Chess and Tsumego are all live now.",
     "ctaPrimary": "Start a match",
     "ctaSecondary": "Play a friend",
     "reassurance": "Your progress is saved to this browser for 180 days. Attach an email later if you want to keep it.",
     "boardCaption": "Black moves first. Get five in an unbroken line — horizontal, vertical or diagonal.",
     "boardHint": "Tap any intersection to start",
     "games": {
-      "title": "Three games, one board culture",
-      "sub": "Each one teaches a different way of thinking. We are shipping them in the order that gets you playing fastest.",
+      "title": "Six games, one board culture",
+      "sub": "Each one teaches a different way of thinking — and every one is playable right now, no account required.",
       "statusLive": "Playable now",
       "statusNext": "In development",
       "statusPlanned": "Planned",
@@ -100,6 +104,21 @@
         "name": "Go",
         "native": "围棋 · Wéiqí",
         "blurb": "You surround territory instead of capturing a king. Still played under essentially the same rules it had two millennia ago."
+      },
+      "reversi": {
+        "name": "Reversi",
+        "native": "黑白棋",
+        "blurb": "Flip the board in your favour. A handful of stones can swing the whole game — easy to learn, brutal to master."
+      },
+      "chess": {
+        "name": "Chess",
+        "native": "国际象棋",
+        "blurb": "The western classic, fully playable: castling, en passant and promotion, against a sharp alpha-beta engine. One board, infinite lines."
+      },
+      "tsumego": {
+        "name": "Tsumego",
+        "native": "死活题",
+        "blurb": "Go life-and-death puzzles. One correct move captures the group — train the reading that wins real games."
       }
     },
     "ladder": {
@@ -122,8 +141,8 @@
         "body": "Our Gomoku opponent searches with alpha-beta pruning under a hard 500 ms budget, on your machine. No round trip, no queue, no rate limit."
       },
       "language": {
-        "title": "Written in four languages, not poured through a translator",
-        "body": "English, Español, 日本語 and Português do Brasil. Rules, tooltips and error messages included — not just the marketing page."
+        "title": "Written in five languages, not poured through a translator",
+        "body": "English, 中文, Español, 日本語 and Português do Brasil. Rules, tooltips and error messages included — not just the marketing page."
       },
       "noWall": {
         "title": "Nothing behind a signup wall",
@@ -140,7 +159,10 @@
     "statsAi": "vs engine",
     "statsFriend": "vs players",
     "ctaXiangqi": "Play Xiangqi",
-    "ctaGo": "Play Go"
+    "ctaGo": "Play Go",
+    "ctaReversi": "Play Reversi",
+    "ctaChess": "Play Chess",
+    "ctaTsumego": "Solve Tsumego"
   },
   "play": {
     "title": "Gomoku",
@@ -223,6 +245,7 @@
     "winRate": "Win rate",
     "empty": "No ranked games yet. Be the first — invite a friend and play one.",
     "emptyAction": "Start a friend match",
+    "moreGamesTitle": "Try a different board",
     "you": "You"
   },
   "howTo": {
@@ -249,7 +272,8 @@
     "blogLink": "Strategy blog",
     "glossaryLink": "Gomoku Glossary",
     "faqLink": "FAQ",
-    "faqTitle": "Gomoku FAQ"
+    "faqTitle": "Gomoku FAQ",
+    "moreGamesTitle": "Try a different board"
   },
   "about": {
     "title": "About YiBoard",
@@ -309,7 +333,7 @@
     "notFoundCta": "Start a new game"
   },
   "footer": {
-    "tagline": "Gomoku today. Xiangqi and Go next.",
+    "tagline": "Six games, one board. All free, no account.",
     "play": "Play",
     "learn": "Learn",
     "legal": "Legal",
@@ -425,7 +449,8 @@
     "a7": "YiBoard is a responsive web app (PWA planned), so it plays in any mobile browser with no download.",
     "rulesCta": "How to play",
     "playCta": "Play now",
-    "contactCta": "Contact us"
+    "contactCta": "Contact us",
+    "moreGamesTitle": "Try a different board"
   },
   "blog": {
     "title": "Blog",
@@ -487,9 +512,20 @@
     "errGeneric": "Something went wrong. Please try again."
   },
   "glossary": {
+    "chip": "Glossary",
+    "title": "Glossary",
+    "sub": "The core ideas of Gomoku explained in plain language. Each term includes a definition and a practical tip you can use in your next game.",
     "howToLink": "New to the game?",
     "howToLinkCta": "Learn to play in 2 minutes",
-    "relatedTitle": "Rule guides"
+    "relatedTitle": "Rule guides",
+    "nav": {
+      "gomokuRules": "Gomoku rules",
+      "renjuRules": "Renju rules",
+      "gomokuVsGo": "Gomoku vs Go",
+      "howTo": "How to play"
+    },
+    "cta": "Start playing",
+    "moreGamesTitle": "Try a different board"
   },
   "replays": {
     "resultDraw": "Draw — board is full",
