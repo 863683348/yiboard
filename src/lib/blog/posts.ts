@@ -1906,6 +1906,82 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'what-signup-walled-platforms-get-wrong',
+    date: '2026-09-03',
+    tags: ['product', 'privacy'],
+    title: {
+      zh: '那些要注册的平台，错在哪',
+      en: 'What Signup-Walled Platforms Get Wrong',
+    },
+    description: {
+      zh: '注册墙拦掉的不是"随便看看的人"，而是每一个只想先玩一局的人。账号体系还带来数据责任。这篇拆解注册墙的真实代价，以及可选注册为什么是更好的折中。',
+      en: 'A signup wall does not filter out tire-kickers — it filters out everyone who just wanted one game. Accounts also come with data responsibilities. This post breaks down the real cost of signup walls and why optional accounts are the better compromise.',
+    },
+    keywords: ['no signup board games', 'game without account', 'privacy vs convenience', 'instant access games', 'play without registering'],
+    content: {
+      zh: [
+        '打开一个棋类网站，弹出的第一件事不是棋盘，而是"注册或登录"。输入邮箱、设置密码、查收验证邮件——十分钟过去，想下棋的那股劲已经凉了一半。这不是体验细节，这是产品决策：你在用一堵墙过滤用户，而墙拦掉的往往正是你最想要的那批人。本文拆解注册墙到底错在哪，以及为什么 yiboardgame.com 选择把它拆掉。',
+        { type: 'h2', text: '注册墙拦掉的不是"随便看看的人"' },
+        '做产品的常有个假设：注册能筛掉低质量用户，留下的都是认真的人。对内容社区或许成立，对棋类游戏基本不成立。棋盘游戏的需求是脉冲式的——午休 15 分钟、等车、睡前一把。这类用户的第一诉求是"立刻能玩"，第二诉求才是"保留记录"。注册墙恰好把两个诉求的顺序颠倒：先交数据，再谈体验。结果不是"劝退了随便看看的人"，而是劝退了每一个冲动想玩的人，留下的反而是那些已经被别处注册流程驯化、对数据麻木的存量用户。',
+        { type: 'h2', text: '账号体系是一笔被低估的负债' },
+        '账号不只是个登录框。注册了，你就开始收集密码哈希、邮箱、对局记录，可能还有支付信息。每一份数据都是责任：泄露了要背锅，被索取了要配合，政策变了要重写隐私条款。对一个小团队来说，这比服务器账单贵得多——服务器是花钱能解决的，信任是花时间都难修复的。更微妙的是，很多平台注册时承诺的"云同步战绩"，实际价值远低于用户交出的数据成本。用户要的只是别丢进度，你却让他用整个账号来换。',
+        { type: 'h2', text: '什么时候注册是值得的' },
+        {
+          type: 'ul',
+          items: [
+            '跨设备同步战绩和段位——这是真需求，也是注册唯一站得住的理由',
+            '多人匹配需要稳定的身份标识（防重名、防作弊封禁）',
+            '付费订阅和内容收藏，必须有账号才能兑现',
+          ],
+        },
+        '认清这一点很重要：不是所有注册都该被废除。没有账号体系，跨设备进度就无从谈起。这正是我们愿意承认的代价——在 YiBoard，[不注册](/play)意味着你的战绩留在当前浏览器，换台设备就得从头开始。这个取舍我们不藏。',
+        { type: 'h2', text: '可选注册：把选择权还给玩家' },
+        'YiBoard 的做法是让注册成为可选项而不是入口关卡。打开 [yiboardgame.com](https://yiboardgame.com) 就是棋盘，点[开始](/play)立即能下，人机对战和在线匹配都无需账号。想保留战绩、冲击[段位榜](/rankings)时，再花十秒绑定邮箱。这样"立刻玩"和"跨设备"两个需求都能被满足，只是顺序由玩家自己决定。和"[免费是一种设计选择](/blog/free-is-a-design-choice)"一脉相承：真正尊重用户的产品，把门槛放在用户自己认为值得的地方，而不是放在产品想收集数据的地方。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '在 YiBoard 玩需要注册吗？', a: '不需要。打开就能下棋，人机对战和在线匹配都免注册。注册只在你想要跨设备同步战绩时才是可选项。' },
+            { q: '不注册的代价是什么？', a: '战绩和段位只保存在当前浏览器里，换设备或清除缓存会丢失。这是无账号模式的诚实代价。' },
+            { q: '在线匹配也不要账号吗？', a: '不要。匿名即可匹配，我们不做强制身份绑定。' },
+            { q: '为什么别的平台都强制注册？', a: '账号能带来留存和二次触达的手段，但对只想玩一局的用户是负担。我们选择把注册变成增值选项而非门槛。' },
+          ],
+        },
+        { type: 'cta', text: '打开 yiboardgame.com，免注册下一局', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        'You open a board game site and the first thing you meet is not a board — it is a signup form. Email, password, verification link. Ten minutes later the urge to play one quick game has cooled into resignation. This is not a UX detail, it is a product decision: you are filtering users behind a wall, and the wall tends to reject exactly the people you want most. Here is what signup-walled platforms get wrong, and why yiboardgame.com tore the wall down.',
+        { type: 'h2', text: 'A signup wall does not filter out tire-kickers' },
+        "Product teams often assume registration filters out low-intent users and keeps the serious ones. That may hold for content communities; it barely holds for board games. Board game demand is pulsed — a 15-minute lunch break, a commute, one round before bed. Such users' first need is play now, and only secondarily keep my record. A signup wall inverts that order: hand over your data first, experience second. The result is not 'tire-kickers left'; it is every impulsive player left, while the people who stay are the ones already desensitized to handing over data by other platforms.",
+        { type: 'h2', text: 'An account system is a liability, not a feature' },
+        "An account is not just a login box. Once you register users, you collect password hashes, emails, match records, maybe payment details. Every field is a responsibility: leak it and you carry the blame, get subpoenaed and you comply, privacy law shifts and you rewrite your policy. For a small team this costs more than the server bill — servers are fixed with money, trust is not fixed with time. And many platforms sell 'cloud-synced progress' as the payoff, when users really just want to not lose their record. You make them trade an entire account for that.",
+        { type: 'h2', text: 'When accounts genuinely earn their place' },
+        {
+          type: 'ul',
+          items: [
+            'Cross-device rank and match history sync — the one reason registration can stand on its own',
+            'Stable identity for matchmaking (avoiding name collisions and evading bans)',
+            'Paid subscriptions and saved collections need an account to exist at all',
+          ],
+        },
+        "None of this means every signup wall should be abolished. Without accounts, cross-device progress is simply impossible — that is the honest cost we accept. On YiBoard, [playing without an account](/play) means your record lives in the current browser, and a new device starts fresh. We do not hide that trade-off.",
+        { type: 'h2', text: 'Optional accounts: give the choice to the player' },
+        'YiBoard treats registration as an optional add-on, not a gate. Opening [yiboardgame.com](https://yiboardgame.com) lands you on a board; hit [play](/play) and a match starts — human vs machine and online matchmaking both work without an account. Only when you want to keep your record and climb the [rankings](/rankings) do you spend ten seconds linking an email. Both needs — play instantly and play everywhere — get met, and the order is up to the player. It follows the same logic as [free as a design choice](/blog/free-is-a-design-choice): a product that respects its users places the hurdle where the user considers it worthwhile, not where the product wants to collect data.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Do I need to register to play on YiBoard?', a: 'No. Games start immediately — human vs machine and online matchmaking both work without an account. Registration is optional, only needed to sync your record across devices.' },
+            { q: 'What do I lose by not registering?', a: 'Your record and rank stay in the current browser; switching devices or clearing the cache loses them. That is the honest cost of a no-account mode.' },
+            { q: 'Does online matchmaking require an account?', a: 'No. You can match anonymously; we do not force identity binding.' },
+            { q: 'Why do other platforms force registration?', a: 'Accounts give platforms retention hooks and re-engagement channels, but they burden users who just want one game. We made registration a value-add instead of a gate.' },
+          ],
+        },
+        { type: 'cta', text: 'Open yiboardgame.com and play without signing up', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
