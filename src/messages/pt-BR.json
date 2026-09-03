@@ -219,7 +219,14 @@
     "hintClear": "Limpar dica",
     "boardSize": "Tamanho do tabuleiro",
     "winCount": "Vitória",
-    "variantNote": "Trocar o tamanho ou a vitória inicia uma nova partida."
+    "variantNote": "Trocar o tamanho ou a vitória inicia uma nova partida.",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Xadrez"
+    },
+    "moreGamesTitle": "Experimente outro tabuleiro"
   },
   "rankings": {
     "title": "Ranking de Gomoku – Do 9º Grau ao 9º Dan",
@@ -233,7 +240,13 @@
     "empty": "Ainda não há partidas ranqueadas. Seja o primeiro — convide um amigo e jogue uma.",
     "emptyAction": "Começar uma partida de amigo",
     "moreGamesTitle": "Experimente outro tabuleiro",
-    "you": "Você"
+    "you": "Você",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Xadrez"
+    }
   },
   "howTo": {
     "title": "Como Jogar Gomoku: Regras Grátis Online e Guia de Estratégia",
@@ -282,7 +295,16 @@
     ],
     "blogLink": "Blog de estratégia",
     "rulesLink": "Regras e formatos do Gomoku",
-    "moreGamesTitle": "Experimente outro tabuleiro"
+    "moreGamesTitle": "Experimente outro tabuleiro",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Xadrez",
+      "gomokuRules": "Regras do Gomoku",
+      "renjuRules": "Regras do Renju",
+      "gomokuVsGo": "Gomoku vs Go"
+    }
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -467,7 +489,13 @@
     "rulesCta": "Como jogar",
     "playCta": "Jogar agora",
     "contactCta": "Fale conosco",
-    "moreGamesTitle": "Experimente outro tabuleiro"
+    "moreGamesTitle": "Experimente outro tabuleiro",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Xadrez"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -545,7 +573,11 @@
       "gomokuRules": "Regras do Gomoku",
       "renjuRules": "Regras de Renju",
       "gomokuVsGo": "Gomoku vs Go",
-      "howTo": "Como jogar"
+      "howTo": "Como jogar",
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Xadrez"
     }
   },
   "replays": {

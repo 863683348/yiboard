@@ -232,7 +232,14 @@
     "hintClear": "清除提示",
     "boardSize": "棋盘尺寸",
     "winCount": "胜",
-    "variantNote": "更改棋盘尺寸或胜负条件会开始新对局。"
+    "variantNote": "更改棋盘尺寸或胜负条件会开始新对局。",
+    "moreGamesTitle": "换个棋盘试试",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "围棋",
+      "reversi": "黑白棋",
+      "chess": "国际象棋"
+    }
   },
   "rankings": {
     "title": "排行榜",
@@ -246,7 +253,13 @@
     "empty": "还没有排位对局。来当第一个——邀请好友下一局。",
     "emptyAction": "开始好友对战",
     "moreGamesTitle": "换个棋盘试试",
-    "you": "你"
+    "you": "你",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "围棋",
+      "reversi": "黑白棋",
+      "chess": "国际象棋"
+    }
   },
   "howTo": {
     "title": "五子棋怎么玩",
@@ -273,7 +286,16 @@
     "glossaryLink": "五子棋术语表",
     "faqLink": "常见问题",
     "faqTitle": "五子棋常见问题",
-    "moreGamesTitle": "换个棋盘试试"
+    "moreGamesTitle": "换个棋盘试试",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "围棋",
+      "reversi": "黑白棋",
+      "chess": "国际象棋",
+      "gomokuRules": "五子棋规则",
+      "renjuRules": "连珠规则",
+      "gomokuVsGo": "五子棋 vs 围棋"
+    }
   },
   "about": {
     "title": "关于弈界",
@@ -434,7 +456,13 @@
     "rulesCta": "玩法",
     "playCta": "立即对局",
     "contactCta": "联系我们",
-    "moreGamesTitle": "换个棋盘试试"
+    "moreGamesTitle": "换个棋盘试试",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "围棋",
+      "reversi": "黑白棋",
+      "chess": "国际象棋"
+    }
   },
   "blog": {
     "title": "博客",
@@ -522,7 +550,11 @@
       "gomokuRules": "五子棋规则",
       "renjuRules": "连珠规则",
       "gomokuVsGo": "五子棋与围棋",
-      "howTo": "如何对局"
+      "howTo": "如何对局",
+      "xiangqi": "象棋",
+      "go": "围棋",
+      "reversi": "黑白棋",
+      "chess": "国际象棋"
     },
     "cta": "开始对局",
     "moreGamesTitle": "换个棋盘试试"

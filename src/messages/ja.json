@@ -219,7 +219,14 @@
     "hintClear": "ヒントを消す",
     "boardSize": "盤のサイズ",
     "winCount": "連珠",
-    "variantNote": "サイズや連珠を変更すると新しい対局が始まります。"
+    "variantNote": "サイズや連珠を変更すると新しい対局が始まります。",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "囲碁",
+      "reversi": "リバーシ",
+      "chess": "チェス"
+    },
+    "moreGamesTitle": "別の盤にも挑戦"
   },
   "rankings": {
     "title": "五目並べランキング – 九級から九段へ",
@@ -233,7 +240,13 @@
     "empty": "まだランク対局がありません。最初の一局を友達とどうぞ。",
     "emptyAction": "友達対局を始める",
     "moreGamesTitle": "別の盤にも挑戦",
-    "you": "あなた"
+    "you": "あなた",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "囲碁",
+      "reversi": "リバーシ",
+      "chess": "チェス"
+    }
   },
   "howTo": {
     "title": "五目並べの遊び方：無料オンラインルールと戦略ガイド",
@@ -282,7 +295,16 @@
     ],
     "blogLink": "戦略ブログ",
     "rulesLink": "五目並べのルールと形",
-    "moreGamesTitle": "別の盤にも挑戦"
+    "moreGamesTitle": "別の盤にも挑戦",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "囲碁",
+      "reversi": "リバーシ",
+      "chess": "チェス",
+      "gomokuRules": "五目並べのルール",
+      "renjuRules": "連珠のルール",
+      "gomokuVsGo": "五目並べ対囲碁"
+    }
   },
   "about": {
     "title": "YiBoard について",
@@ -467,7 +489,13 @@
     "rulesCta": "遊び方",
     "playCta": "今すぐ対局",
     "contactCta": "お問い合わせ",
-    "moreGamesTitle": "別の盤にも挑戦"
+    "moreGamesTitle": "別の盤にも挑戦",
+    "nav": {
+      "xiangqi": "象棋",
+      "go": "囲碁",
+      "reversi": "リバーシ",
+      "chess": "チェス"
+    }
   },
   "blog": {
     "title": "ブログ",
@@ -545,7 +573,11 @@
       "gomokuRules": "五目並べのルール",
       "renjuRules": "連珠のルール",
       "gomokuVsGo": "五目並べ vs 囲碁",
-      "howTo": "ルール"
+      "howTo": "ルール",
+      "xiangqi": "象棋",
+      "go": "囲碁",
+      "reversi": "リバーシ",
+      "chess": "チェス"
     }
   },
   "replays": {

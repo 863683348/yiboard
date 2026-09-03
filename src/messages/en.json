@@ -232,7 +232,14 @@
     "hintClear": "Clear hint",
     "boardSize": "Board size",
     "winCount": "Win",
-    "variantNote": "Changing the board size or win condition starts a new game."
+    "variantNote": "Changing the board size or win condition starts a new game.",
+    "moreGamesTitle": "Try a different board",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Chess"
+    }
   },
   "rankings": {
     "title": "Rankings",
@@ -246,7 +253,13 @@
     "empty": "No ranked games yet. Be the first — invite a friend and play one.",
     "emptyAction": "Start a friend match",
     "moreGamesTitle": "Try a different board",
-    "you": "You"
+    "you": "You",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Chess"
+    }
   },
   "howTo": {
     "title": "How to play Gomoku",
@@ -273,7 +286,16 @@
     "glossaryLink": "Gomoku Glossary",
     "faqLink": "FAQ",
     "faqTitle": "Gomoku FAQ",
-    "moreGamesTitle": "Try a different board"
+    "moreGamesTitle": "Try a different board",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Chess",
+      "gomokuRules": "Gomoku rules",
+      "renjuRules": "Renju rules",
+      "gomokuVsGo": "Gomoku vs Go"
+    }
   },
   "about": {
     "title": "About YiBoard",
@@ -450,7 +472,13 @@
     "rulesCta": "How to play",
     "playCta": "Play now",
     "contactCta": "Contact us",
-    "moreGamesTitle": "Try a different board"
+    "moreGamesTitle": "Try a different board",
+    "nav": {
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Chess"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -522,7 +550,11 @@
       "gomokuRules": "Gomoku rules",
       "renjuRules": "Renju rules",
       "gomokuVsGo": "Gomoku vs Go",
-      "howTo": "How to play"
+      "howTo": "How to play",
+      "xiangqi": "Xiangqi",
+      "go": "Go",
+      "reversi": "Reversi",
+      "chess": "Chess"
     },
     "cta": "Start playing",
     "moreGamesTitle": "Try a different board"

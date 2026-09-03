@@ -214,7 +214,14 @@
     "hintClear": "힌트 지우기",
     "boardSize": "판 크기",
     "winCount": "승",
-    "variantNote": "판 크기나 승리 조건을 변경하면 새 대국이 시작됩니다."
+    "variantNote": "판 크기나 승리 조건을 변경하면 새 대국이 시작됩니다.",
+    "nav": {
+      "xiangqi": "장기",
+      "go": "바둑",
+      "reversi": "오셀로",
+      "chess": "체스"
+    },
+    "moreGamesTitle": "다른 판도 해보기"
   },
   "rankings": {
     "title": "Rankings",
@@ -228,7 +235,13 @@
     "empty": "No ranked games yet. Be the first — invite a friend and play one.",
     "emptyAction": "Start a friend match",
     "moreGamesTitle": "다른 판도 해보기",
-    "you": "You"
+    "you": "You",
+    "nav": {
+      "xiangqi": "장기",
+      "go": "바둑",
+      "reversi": "오셀로",
+      "chess": "체스"
+    }
   },
   "howTo": {
     "title": "How to play Gomoku",
@@ -255,7 +268,16 @@
     "glossaryLink": "오목 용어집",
     "faqLink": "자주 묻는 질문",
     "faqTitle": "오목 자주 묻는 질문",
-    "moreGamesTitle": "다른 판도 해보기"
+    "moreGamesTitle": "다른 판도 해보기",
+    "nav": {
+      "xiangqi": "장기",
+      "go": "바둑",
+      "reversi": "오셀로",
+      "chess": "체스",
+      "gomokuRules": "오목 규칙",
+      "renjuRules": "렌주 규칙",
+      "gomokuVsGo": "오목 대 바둑"
+    }
   },
   "about": {
     "title": "About YiBoard",
@@ -432,7 +454,13 @@
     "rulesCta": "게임 방법",
     "playCta": "지금 플레이",
     "contactCta": "문의하기",
-    "moreGamesTitle": "다른 판도 해보기"
+    "moreGamesTitle": "다른 판도 해보기",
+    "nav": {
+      "xiangqi": "장기",
+      "go": "바둑",
+      "reversi": "오셀로",
+      "chess": "체스"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -506,7 +534,11 @@
       "gomokuRules": "오목 규칙",
       "renjuRules": "렌주 규칙",
       "gomokuVsGo": "오목 vs 바둑",
-      "howTo": "규칙 배우기"
+      "howTo": "규칙 배우기",
+      "xiangqi": "장기",
+      "go": "바둑",
+      "reversi": "오셀로",
+      "chess": "체스"
     }
   },
   "replays": {

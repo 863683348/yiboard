@@ -13,7 +13,7 @@ export async function generateMetadata(props: {
   const meta = await getTranslations({ locale, namespace: 'meta' });
   return {
     title: t('title'),
-    description: t('description'),
+    description: meta('play.description'),
     alternates: localeAlternates('play', locale),
   };
 }
@@ -30,7 +30,6 @@ export default async function PlayPage(props: {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'play' });
-  const playT = await getTranslations({ locale, namespace: 'meta' });
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-8)' }}>
@@ -80,13 +79,13 @@ export default async function PlayPage(props: {
 
       <section style={{ maxWidth: 760, marginTop: 'var(--space-12)' }}>
         <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>
-          {playT('moreGamesTitle')}
+          {t('moreGamesTitle')}
         </h2>
         <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-3)' }}>
-          <RelatedLink href="/xiangqi" label={playT('nav.xiangqi')} />
-          <RelatedLink href="/go" label={playT('nav.go')} />
-          <RelatedLink href="/reversi" label={playT('nav.reversi')} />
-          <RelatedLink href="/chess" label={playT('nav.chess')} />
+          <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
+          <RelatedLink href="/go" label={t('nav.go')} />
+          <RelatedLink href="/reversi" label={t('nav.reversi')} />
+          <RelatedLink href="/chess" label={t('nav.chess')} />
         </div>
       </section>
     </div>
