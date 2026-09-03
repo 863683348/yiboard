@@ -1525,7 +1525,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: "keyboard-friendly-board-games",
     date: "2026-08-31",
-    tags: ["accessibility","keyboard controls","board games"],
+    tags: ["accessibility","keyboard-controls","board-games"],
     title: {
       zh: "键盘友好的棋类游戏： accessibility 为所有人",
       en: "Keyboard-Friendly Board Games",
@@ -1827,7 +1827,7 @@ export const POSTS: BlogPost[] = [
   {
     slug: 'online-vs-physical-board',
     date: '2026-09-02',
-    tags: ['online board game', 'physical board game', 'comparison'],
+    tags: ['online-board-game', 'physical-board-game', 'comparison'],
     title: {
       zh: '在线 vs 物理棋盘：真正的区别',
       en: 'Online vs Physical Board: The Real Differences',

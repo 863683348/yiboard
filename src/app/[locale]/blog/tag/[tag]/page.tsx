@@ -14,6 +14,9 @@ const TAG_LABELS: Record<string, { en: string; zh: string }> = {
   gomoku: { en: 'Gomoku', zh: '五子棋' },
   xiangqi: { en: 'Xiangqi', zh: '象棋' },
   go: { en: 'Go', zh: '围棋' },
+  reversi: { en: 'Reversi', zh: '黑白棋' },
+  chess: { en: 'Chess', zh: '国际象棋' },
+  tsumego: { en: 'Tsumego', zh: '死活题' },
   strategy: { en: 'Strategy', zh: '策略' },
   rules: { en: 'Rules', zh: '规则' },
   engineering: { en: 'Engineering', zh: '技术' },
@@ -21,6 +24,14 @@ const TAG_LABELS: Record<string, { en: string; zh: string }> = {
   privacy: { en: 'Privacy', zh: '隐私' },
   multilingual: { en: 'Multilingual', zh: '多语言' },
   ai: { en: 'AI', zh: '人工智能' },
+  learning: { en: 'Learning', zh: '学习' },
+  ranking: { en: 'Ranking', zh: '段位' },
+  comparison: { en: 'Comparison', zh: '对比' },
+  accessibility: { en: 'Accessibility', zh: '无障碍' },
+  'keyboard-controls': { en: 'Keyboard Controls', zh: '键盘操作' },
+  'board-games': { en: 'Board Games', zh: '棋类游戏' },
+  'online-board-game': { en: 'Online Board Game', zh: '在线棋盘' },
+  'physical-board-game': { en: 'Physical Board Game', zh: '实体棋盘' },
 };
 
 function tagLabel(tag: string, isZh: boolean): string {

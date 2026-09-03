@@ -17,9 +17,9 @@
       "keywords": "gomoku rankings, gomoku elo, gomoku leaderboard, gomoku ranks, five in a row ratings, gomoku ladder"
     },
     "howTo": {
-      "title": "How to Play Gomoku: Rules in 5 Minutes",
-      "description": "Learn gomoku rules fast: five in a row wins, black moves first, plus basic tactics like open fours and double threats. Start your first game right now.",
-      "keywords": "how to play gomoku, gomoku rules, five in a row rules, gomoku strategy, gomoku tactics, gomoku guide"
+      "title": "How to Play Six Board Games | YiBoard",
+      "description": "Learn the rules of Gomoku, Xiangqi, Go, Reversi, Chess and Tsumego on YiBoard. No signup required.",
+      "keywords": "gomoku rules, xiangqi rules, go rules, reversi rules, chess rules, tsumego rules, how to play"
     },
     "about": {
       "title": "About YiBoard — Free Browser Gomoku",
@@ -262,8 +262,8 @@
     }
   },
   "howTo": {
-    "title": "How to play Gomoku",
-    "sub": "Everything you need is on this page. It takes about two minutes.",
+    "title": "How to Play",
+    "sub": "YiBoard has six games. Each card below links to the rules and a live board you can play instantly.",
     "rulesTitle": "The rules",
     "rule1": "Black plays first. Players alternate, one stone per turn.",
     "rule2": "Stones go on the intersections of the grid, not inside the squares.",
@@ -279,7 +279,7 @@
     "tip3Body": "Beginners answer an open three. Stronger players answer an open two when it points at a strong direction. If you are always reacting, you have already lost the initiative.",
     "notationTitle": "Reading the notation",
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
-    "cta": "Try it against the engine",
+    "cta": "Start a game",
     "relatedTitle": "Go deeper",
     "rulesLink": "Gomoku rules & shapes",
     "blogLink": "Strategy blog",
@@ -295,7 +295,11 @@
       "gomokuRules": "Gomoku rules",
       "renjuRules": "Renju rules",
       "gomokuVsGo": "Gomoku vs Go"
-    }
+    },
+    "gamesTitle": "Six Games",
+    "featuredGameTitle": "Gomoku Rules in Detail",
+    "rulesCta": "Rules",
+    "playCta": "Play"
   },
   "about": {
     "title": "About YiBoard",
@@ -496,7 +500,8 @@
     "searchPlaceholder": "Search articles…",
     "searchButton": "Search",
     "clearSearch": "Clear",
-    "allPosts": "View all posts"
+    "allPosts": "View all posts",
+    "tagsTitle": "Browse by tag"
   },
   "contact": {
     "title": "Contact Us",

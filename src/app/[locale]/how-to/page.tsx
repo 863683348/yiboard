@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Lightbulb, ListNumbers, TextAlignLeft, BookOpen } from '@phosphor-icons/react/dist/ssr';
+import { Lightbulb, ListNumbers, TextAlignLeft, BookOpen, GameController } from '@phosphor-icons/react/dist/ssr';
 
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
@@ -9,15 +9,11 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
-  const tHowTo = await getTranslations({ locale, namespace: 'howTo' });
   const tMeta = await getTranslations({ locale, namespace: 'meta.howTo' });
-  const title = tMeta('title') || tHowTo('title');
-  const description = tMeta('description') || tHowTo('sub');
-  const keywords = tMeta('keywords') ? tMeta('keywords').split(',').map((k) => k.trim()) : undefined;
   return {
-    title,
-    description,
-    keywords,
+    title: tMeta('title'),
+    description: tMeta('description'),
+    keywords: tMeta('keywords'),
     alternates: localeAlternates('how-to', locale),
   };
 }
@@ -27,7 +23,8 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'howTo' });
-  const tMeta = await getTranslations({ locale, namespace: 'meta.howTo' });
+  const homeT = await getTranslations({ locale, namespace: 'home' });
+
   const rules = ['rule1', 'rule2', 'rule3', 'rule4', 'rule5'] as const;
   const tips = [
     { title: 'tip1Title', body: 'tip1Body' },
@@ -40,57 +37,66 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
     a: t(`faq.${i}.a`),
   }));
 
-  const howToSchema = {
+  const games = [
+    { key: 'gomoku', rulesHref: '/gomoku-rules', playHref: '/play' },
+    { key: 'xiangqi', rulesHref: '/learn-xiangqi', playHref: '/xiangqi' },
+    { key: 'go', rulesHref: '/go-rules', playHref: '/go' },
+    { key: 'reversi', rulesHref: '/reversi-rules', playHref: '/reversi' },
+    { key: 'chess', rulesHref: '/chess-rules', playHref: '/chess' },
+    { key: 'tsumego', rulesHref: '/tsumego-rules', playHref: '/tsumego' },
+  ] as const;
+
+  const jsonLd = {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'HowTo',
-        name: tMeta('title') || t('title'),
-        description: tMeta('description') || t('sub'),
-        totalTime: 'PT2M',
-        supply: [
-          { '@type': 'HowToSupply', name: 'Gomoku board (15x15)' },
-          { '@type': 'HowToSupply', name: 'Black and white stones' },
-        ],
-        step: [
-          { '@type': 'HowToStep', name: 'Set up the board', text: 'Place the 15x15 grid with black and white stones. Black moves first.' },
-          { '@type': 'HowToStep', name: 'Take turns placing stones', text: 'Players alternate, placing one stone on an intersection per turn.' },
-          { '@type': 'HowToStep', name: 'Goal: five in a row', text: 'First player to align five stones of their color horizontally, vertically, or diagonally wins immediately.' },
-          { '@type': 'HowToStep', name: 'Master double threats', text: 'Create two open threes that share a stone — your opponent can only block one.' },
-          { '@type': 'HowToStep', name: 'Block early and aggressively', text: 'Respond to open twos in strong directions, not just open threes.' },
-        ],
-      },
-      {
-        '@type': 'FAQPage',
-        mainEntity: faqItems.map((it) => ({
-          '@type': 'Question',
-          name: it.q,
-          acceptedAnswer: { '@type': 'Answer', text: it.a },
-        })),
-      },
-    ],
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((it) => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: { '@type': 'Answer', text: it.a },
+    })),
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
         <header style={{ maxWidth: '58ch' }}>
           <h1 className="yb-h2">{t('title')}</h1>
-          <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>
-            {t('sub')}
-          </p>
+          <p className="yb-lead" style={{ marginTop: 'var(--space-3)' }}>{t('sub')}</p>
         </header>
 
-        {/* ---------------- 规则 ---------------- */}
+        {/* ---------------- 六种棋入口 ---------------- */}
         <section className="yb-section" style={{ maxWidth: 760 }}>
-          <SectionHead
-            icon={<ListNumbers size={18} weight="bold" aria-hidden />}
-            title={t('rulesTitle')}
-          />
+          <SectionHead icon={<GameController size={18} weight="bold" aria-hidden />} title={t('gamesTitle')} />
+          <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-4)' }}>
+            {games.map((g) => (
+              <article
+                key={g.key}
+                className="yb-card"
+                style={{ padding: 'var(--card-pad)', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}
+              >
+                <h3 className="yb-h3" style={{ margin: 0, fontSize: 'var(--text-lg)' }}>
+                  {homeT(`games.${g.key}.name`)}
+                </h3>
+                <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--fg-2)', flex: 1 }}>
+                  {homeT(`games.${g.key}.blurb`)}
+                </p>
+                <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap' }}>
+                  <Link href={g.rulesHref} className="yb-btn yb-btn-outline" style={{ fontSize: 'var(--text-sm)' }}>
+                    {t('rulesCta')}
+                  </Link>
+                  <Link href={g.playHref} className="yb-btn yb-btn-primary" style={{ fontSize: 'var(--text-sm)' }}>
+                    {t('playCta')}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------------- 五子棋详解（保留最完整的内容） ---------------- */}
+        <section className="yb-section" style={{ maxWidth: 760 }}>
+          <SectionHead icon={<ListNumbers size={18} weight="bold" aria-hidden />} title={t('featuredGameTitle')} />
           <ol
             style={{
               listStyle: 'none',
@@ -191,13 +197,11 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
             title={t('relatedTitle')}
           />
           <div className="yb-grid yb-grid-1" style={{ gap: 'var(--space-3)' }}>
-            <RelatedLink href="/gomoku-rules" label={t('nav.gomokuRules')} />
+            {games.map((g) => (
+              <RelatedLink key={g.key} href={g.rulesHref} label={homeT(`games.${g.key}.name`)} />
+            ))}
             <RelatedLink href="/renju-rules" label={t('nav.renjuRules')} />
             <RelatedLink href="/gomoku-vs-go" label={t('nav.gomokuVsGo')} />
-            <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
-            <RelatedLink href="/go" label={t('nav.go')} />
-            <RelatedLink href="/reversi" label={t('nav.reversi')} />
-            <RelatedLink href="/chess" label={t('nav.chess')} />
           </div>
         </section>
 
@@ -228,10 +232,10 @@ export default async function HowToPage(props: { params: Promise<{ locale: strin
             {t('moreGamesTitle')}
           </h2>
           <div className="yb-grid yb-grid-2" style={{ gap: 'var(--space-3)', marginBottom: 'var(--space-6)' }}>
-            <RelatedLink href="/xiangqi" label={t('nav.xiangqi')} />
-            <RelatedLink href="/go" label={t('nav.go')} />
-            <RelatedLink href="/reversi" label={t('nav.reversi')} />
-            <RelatedLink href="/chess" label={t('nav.chess')} />
+            <RelatedLink href="/xiangqi" label={homeT('games.xiangqi.name')} />
+            <RelatedLink href="/go" label={homeT('games.go.name')} />
+            <RelatedLink href="/reversi" label={homeT('games.reversi.name')} />
+            <RelatedLink href="/chess" label={homeT('games.chess.name')} />
           </div>
           <Link href="/play" className="yb-btn yb-btn-primary">
             {t('cta')}

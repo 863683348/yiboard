@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { localeAlternates } from '@/i18n/metadata';
-import { POSTS } from '@/lib/blog/posts';
+import { POSTS, getAllTags } from '@/lib/blog/posts';
 import { routing, BLOG_LOCALES, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 
@@ -25,6 +25,34 @@ export async function generateMetadata(props: {
 }
 
 export const revalidate = 3600;
+
+const TAG_LABELS: Record<string, { en: string; zh: string }> = {
+  gomoku: { en: 'Gomoku', zh: '五子棋' },
+  xiangqi: { en: 'Xiangqi', zh: '象棋' },
+  go: { en: 'Go', zh: '围棋' },
+  reversi: { en: 'Reversi', zh: '黑白棋' },
+  chess: { en: 'Chess', zh: '国际象棋' },
+  tsumego: { en: 'Tsumego', zh: '死活题' },
+  strategy: { en: 'Strategy', zh: '策略' },
+  rules: { en: 'Rules', zh: '规则' },
+  engineering: { en: 'Engineering', zh: '技术' },
+  product: { en: 'Product', zh: '产品' },
+  privacy: { en: 'Privacy', zh: '隐私' },
+  multilingual: { en: 'Multilingual', zh: '多语言' },
+  ai: { en: 'AI', zh: '人工智能' },
+  learning: { en: 'Learning', zh: '学习' },
+  ranking: { en: 'Ranking', zh: '段位' },
+  comparison: { en: 'Comparison', zh: '对比' },
+  accessibility: { en: 'Accessibility', zh: '无障碍' },
+  'keyboard-controls': { en: 'Keyboard Controls', zh: '键盘操作' },
+  'board-games': { en: 'Board Games', zh: '棋类游戏' },
+  'online-board-game': { en: 'Online Board Game', zh: '在线棋盘' },
+  'physical-board-game': { en: 'Physical Board Game', zh: '实体棋盘' },
+};
+
+function tagLabel(tag: string, isZh: boolean): string {
+  return (isZh ? TAG_LABELS[tag]?.zh : TAG_LABELS[tag]?.en) ?? tag;
+}
 
 // 站内搜索：匹配标题 / 摘要 / 关键词（中英都算），供 sitelinks searchbox（SearchAction /blog?q=）真实使用。
 function matchPost(post: (typeof POSTS)[number], q: string): boolean {
@@ -57,6 +85,7 @@ export default async function BlogPage(props: {
 
   const t = await getTranslations({ locale, namespace: 'blog' });
   const blogHref = locale === routing.defaultLocale ? '/blog' : `/${locale}/blog`;
+  const tags = getAllTags();
 
   return (
     <div className="yb-container" style={{ paddingBlock: 'var(--space-12)' }}>
@@ -112,6 +141,30 @@ export default async function BlogPage(props: {
           </Link>
         )}
       </form>
+
+      <div style={{ marginTop: 'var(--space-6)' }}>
+        <p className="yb-meta" style={{ fontSize: 'var(--text-xs)', marginBottom: 'var(--space-2)' }}>
+          {t('tagsTitle')}
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+          {tags.map((tg) => (
+            <Link
+              key={tg}
+              href={`/blog/tag/${tg}`}
+              style={{
+                fontSize: 'var(--text-xs)',
+                padding: '2px var(--space-3)',
+                border: '1px solid var(--border)',
+                borderRadius: 999,
+                textDecoration: 'none',
+                color: 'var(--fg)',
+              }}
+            >
+              #{tagLabel(tg, isZh)}
+            </Link>
+          ))}
+        </div>
+      </div>
 
       {searching && (
         <p className="yb-meta" style={{ marginTop: 'var(--space-4)' }}>

@@ -24,9 +24,9 @@
       "keywords": "ranking gomoku, dan gomoku, grados gomoku, escalera gomoku"
     },
     "howTo": {
-      "title": "Cómo Jugar Gomoku: Reglas en 5 Minutos",
-      "description": "Aprende las reglas del gomoku rápido: cinco en línea gana, negras mueven primero, más tácticas básicas como cuatros abiertos y dobles amenazas. Comienza tu primera partida ahora.",
-      "keywords": "cómo jugar gomoku, reglas gomoku, gomoku para principiantes, juego gomoku online gratis, cinco en raya"
+      "title": "Cómo jugar seis juegos de mesa | YiBoard",
+      "description": "Aprende las reglas de Gomoku, Xiangqi, Go, Reversi, Ajedrez y Tsumego en YiBoard. Sin registro.",
+      "keywords": "reglas del gomoku, reglas del xiangqi, reglas del go, reglas del reversi, reglas del ajedrez, tsumego"
     },
     "play": {
       "description": "Tres formas de jugar Gomoku gratis: reta a la IA integrada, abre una sala con amigos o pulsa partida aleatoria para enfrentar a un jugador real. Sin registro.",
@@ -249,8 +249,8 @@
     }
   },
   "howTo": {
-    "title": "Cómo Jugar Gomoku: Reglas Gratis Online y Guía de Estrategia",
-    "sub": "Aprende las reglas del Gomoku en 2 minutos. Domina estrategias de apertura como dobles amenazas, tres abiertos y bloqueo temprano – juega gratis online ahora.",
+    "title": "Cómo jugar",
+    "sub": "YiBoard tiene seis juegos. Cada tarjeta lleva a las reglas y a un tablero listo para jugar.",
     "rulesTitle": "Las reglas",
     "rule1": "Las negras juegan primero. Los jugadores se alternan, una piedra por turno.",
     "rule2": "Las piedras se colocan en las intersecciones de la cuadrícula, no dentro de los cuadrados.",
@@ -266,7 +266,7 @@
     "tip3Body": "Los principiantes responden a un tres abierto. Los jugadores fuertes responden a un dos abierto cuando apunta en una dirección fuerte. Si siempre estás reaccionando, ya perdiste la iniciativa.",
     "notationTitle": "Cómo leer la notación",
     "notationBody": "Las columnas van de la A a la O desde la izquierda; las filas van del 1 al 15 desde abajo. El punto central es H8. Lo usamos en partidas compartidas y en tu historial.",
-    "cta": "Pruébalo contra el motor",
+    "cta": "Empezar a jugar",
     "glossaryLink": "Glosario de Gomoku",
     "faqLink": "Preguntas frecuentes",
     "relatedTitle": "Guías de reglas relacionadas",
@@ -304,7 +304,11 @@
       "gomokuRules": "Reglas de Gomoku",
       "renjuRules": "Reglas de Renju",
       "gomokuVsGo": "Gomoku vs Go"
-    }
+    },
+    "gamesTitle": "Seis juegos",
+    "featuredGameTitle": "Reglas detalladas del Gomoku",
+    "rulesCta": "Reglas",
+    "playCta": "Jugar"
   },
   "about": {
     "title": "Sobre YiBoard",
@@ -525,7 +529,8 @@
       "faq": "Preguntas frecuentes",
       "puzzle": "Puzzle diario",
       "games": "Biblioteca de partidas"
-    }
+    },
+    "tagsTitle": "Explorar por etiqueta"
   },
   "contact": {
     "title": "Contacto",

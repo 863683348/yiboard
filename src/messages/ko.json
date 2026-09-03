@@ -17,9 +17,9 @@
       "keywords": "오목 랭킹, 오목 elo, 오목 리더보드, 오목 단계, 5목 순위"
     },
     "howTo": {
-      "title": "오목 규칙 — 5분 만에 배우기",
-      "description": "오목 규칙 빠르게 배우기: 5개를 일렬로 놓으면 승리, 검은돌 선수, 오픈포와 더블스리 등 기본 전술. 지금 첫 게임을 시작하세요.",
-      "keywords": "오목 규칙, 오목 배우기, 오목 입문, 오목 전략, 5목 방법"
+      "title": "6가지 보드게임 방법 | YiBoard",
+      "description": "YiBoard에서 오목, 장기, 바둑, 오셀로, 체스, 사활문제의 규칙을 배워보세요. 가입 불필요.",
+      "keywords": "오목 규칙, 장기 규칙, 바둑 규칙, 오셀로 규칙, 체스 규칙, 사활문제"
     },
     "about": {
       "title": "YiBoard 소개 — 무료 브라우저 오목",
@@ -244,8 +244,8 @@
     }
   },
   "howTo": {
-    "title": "How to play Gomoku",
-    "sub": "Everything you need is on this page. It takes about two minutes.",
+    "title": "게임 방법",
+    "sub": "YiBoard에는 6가지 게임이 있습니다. 각 카드는 규칙과 즉시 플레이할 수 있는 판으로 연결됩니다.",
     "rulesTitle": "The rules",
     "rule1": "Black plays first. Players alternate, one stone per turn.",
     "rule2": "Stones go on the intersections of the grid, not inside the squares.",
@@ -261,7 +261,7 @@
     "tip3Body": "Beginners answer an open three. Stronger players answer an open two when it points at a strong direction. If you are always reacting, you have already lost the initiative.",
     "notationTitle": "Reading the notation",
     "notationBody": "Columns run A to O from the left; rows run 1 to 15 from the bottom. The centre point is H8. We use this in shared games and in your history.",
-    "cta": "Try it against the engine",
+    "cta": "게임 시작",
     "relatedTitle": "Go deeper",
     "rulesLink": "Gomoku rules & shapes",
     "blogLink": "Strategy blog",
@@ -277,7 +277,11 @@
       "gomokuRules": "오목 규칙",
       "renjuRules": "렌주 규칙",
       "gomokuVsGo": "오목 대 바둑"
-    }
+    },
+    "gamesTitle": "6가지 게임",
+    "featuredGameTitle": "오목 규칙 상세 설명",
+    "rulesCta": "규칙",
+    "playCta": "플레이"
   },
   "about": {
     "title": "About YiBoard",
@@ -478,7 +482,8 @@
     "searchPlaceholder": "글 검색…",
     "searchButton": "검색",
     "clearSearch": "지우기",
-    "allPosts": "모든 글 보기"
+    "allPosts": "모든 글 보기",
+    "tagsTitle": "태그로 보기"
   },
   "contact": {
     "title": "Contact Us",

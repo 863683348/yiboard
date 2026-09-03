@@ -24,9 +24,9 @@
       "keywords": "ranking gomoku, dan gomoku, graduações gomoku, escada gomoku"
     },
     "howTo": {
-      "title": "Como Jogar Gomoku: Regras e Estratégia em 5 Min",
-      "description": "Aprenda gomoku grátis: 5 em linha vence, pretas começam, táticas básicas (quatro abertos, ameaças duplas). Jogue online agora — sem download.",
-      "keywords": "como jogar gomoku, regras gomoku, gomoku para iniciantes, jogo gomoku online grátis, cinco em linha, gomoku estrategia"
+      "title": "Como jogar seis jogos de tabuleiro | YiBoard",
+      "description": "Aprenda as regras de Gomoku, Xiangqi, Go, Reversi, Xadrez e Tsumego no YiBoard. Sem cadastro.",
+      "keywords": "regras do gomoku, regras do xiangqi, regras do go, regras do reversi, regras do xadrez, tsumego"
     },
     "play": {
       "description": "Três formas de jogar Gomoku grátis: desafie a IA integrada, abra uma sala com amigos ou use a partida aleatória para enfrentar um jogador real. Sem cadastro.",
@@ -249,8 +249,8 @@
     }
   },
   "howTo": {
-    "title": "Como Jogar Gomoku: Regras Grátis Online e Guia de Estratégia",
-    "sub": "Aprenda as regras do Gomoku em 2 minutos. Domine estratégias de abertura como ameaças duplas, três abertos e bloqueio precoce – jogue grátis online agora.",
+    "title": "Como jogar",
+    "sub": "O YiBoard tem seis jogos. Cada card leva às regras e a um tabuleiro pronto para jogar.",
     "rulesTitle": "As regras",
     "rule1": "As pretas jogam primeiro. Os jogadores alternam, uma pedra por turno.",
     "rule2": "As pedras vão nas interseções da grade, não dentro dos quadrados.",
@@ -266,7 +266,7 @@
     "tip3Body": "Iniciantes respondem a um três aberto. Jogadores fortes respondem a um dois aberto quando ele aponta para uma direção forte. Se você está sempre reagindo, já perdeu a iniciativa.",
     "notationTitle": "Lendo a notação",
     "notationBody": "As colunas vão de A a O a partir da esquerda; as linhas vão de 1 a 15 a partir da base. O ponto central é H8. Usamos isso em partidas compartilhadas e no seu histórico.",
-    "cta": "Experimente contra o motor",
+    "cta": "Começar a jogar",
     "glossaryLink": "Glossário de Gomoku",
     "faqLink": "Perguntas frequentes",
     "relatedTitle": "Guias de regras relacionadas",
@@ -304,7 +304,11 @@
       "gomokuRules": "Regras do Gomoku",
       "renjuRules": "Regras do Renju",
       "gomokuVsGo": "Gomoku vs Go"
-    }
+    },
+    "gamesTitle": "Seis jogos",
+    "featuredGameTitle": "Regras detalhadas do Gomoku",
+    "rulesCta": "Regras",
+    "playCta": "Jogar"
   },
   "about": {
     "title": "Sobre o YiBoard",
@@ -525,7 +529,8 @@
       "faq": "Perguntas frequentes",
       "puzzle": "Puzzle diário",
       "games": "Biblioteca de partidas"
-    }
+    },
+    "tagsTitle": "Navegar por tag"
   },
   "contact": {
     "title": "Fale conosco",
