@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { localeAlternates } from '@/i18n/metadata';
 import ReversiGame from '@/components/ReversiGame';
 import { Link } from '@/i18n/navigation';
+import { MoreGames } from '@/components/MoreGames';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -119,6 +120,8 @@ export default async function ReversiPage({ params }: { params: Promise<{ locale
           ))}
         </dl>
       </section>
+
+      <MoreGames locale={locale} />
     </div>
   );
 }

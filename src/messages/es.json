@@ -106,7 +106,9 @@
         "name": "Go",
         "native": "围棋 · Wéiqí",
         "blurb": "Rodeas territorio en lugar de capturar a un rey. Se sigue jugando con prácticamente las mismas reglas de hace dos milenios."
-      }
+      },
+      "moreHeading": "Más juegos de tablero",
+      "learnAll": "Todas las guías"
     },
     "ladder": {
       "title": "Dieciocho peldaños, tomados del original",
@@ -224,7 +226,9 @@
       "xiangqi": "Xiangqi",
       "go": "Go",
       "reversi": "Reversi",
-      "chess": "Ajedrez"
+      "chess": "Ajedrez",
+      "tsumego": "Tsumego de Go",
+      "howTo": "Guías de instrucciones"
     },
     "moreGamesTitle": "Prueba otro tablero"
   },

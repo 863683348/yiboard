@@ -119,7 +119,9 @@
         "name": "死活题",
         "native": "Tsumego",
         "blurb": "围棋死活题。一手正解即可提掉整块棋——锻炼决定胜负的读棋力。"
-      }
+      },
+      "moreHeading": "更多棋类",
+      "learnAll": "完整玩法说明"
     },
     "ladder": {
       "title": "十八级阶梯，取法古制",
@@ -238,7 +240,9 @@
       "xiangqi": "象棋",
       "go": "围棋",
       "reversi": "黑白棋",
-      "chess": "国际象棋"
+      "chess": "国际象棋",
+      "tsumego": "围棋死活题",
+      "howTo": "玩法说明"
     }
   },
   "rankings": {

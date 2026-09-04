@@ -1757,7 +1757,7 @@ export const POSTS: BlogPost[] = [
     keywords: ['gomoku rank explained', 'gomoku rating system', 'how gomoku ranking works', 'gomoku elo rating', 'gomoku grade dan', 'yiboard rank'],
     content: {
       zh: [
-        '打开 YiBoard 的[排行榜](/rankings)你会看到一串数字：所有人都从 1200 分、六级起步，往九段的方向爬。但这个数字到底代表什么、一局棋怎么让它动？这篇用大白话把 YiBoard 的五子棋段位机制讲清楚。',
+        '打开 YiBoard 的[排行榜](/rankings)你会看到一串数字：所有人都从 1200 分、六级起步，往九段的方向爬。但这个数字到底代表什么、一局棋怎么让它动？这篇用大白话把 YiBoard 的五子棋段位机制讲清楚。想直接上手，先看[玩法说明](/how-to)。',
         { type: 'h2', text: '起点：1200 分，六级' },
         '每个新账号都从 1200 分开始，对应六级。你不选段位，也不会被丢进“新手专属”的小池子。1200 这个起点把你和所有人放在同一把尺子上，前几局胜负会很快把你送到真实水平附近。',
         { type: 'h2', text: '一局棋怎么改你的分数' },
@@ -1790,7 +1790,7 @@ export const POSTS: BlogPost[] = [
         { type: 'cta', text: '看看排行榜上你现在排第几', href: 'https://yiboardgame.com/rankings' },
       ],
       en: [
-        "If you have opened the YiBoard [leaderboard](/rankings) you have seen the numbers: everyone starts at 1200, Sixth Grade, and climbs toward Ninth Dan. But what does the number actually mean, and how does one game move it? This is the plain-English explanation of how YiBoard's gomoku rank works.",
+        "If you have opened the YiBoard [leaderboard](/rankings) you have seen the numbers: everyone starts at 1200, Sixth Grade, and climbs toward Ninth Dan. But what does the number actually mean, and how does one game move it? This is the plain-English explanation of how YiBoard's gomoku rank works. If you want to start playing, see the [how-to guides](/how-to).",
         { type: 'h2', text: 'The starting point: 1200, Sixth Grade' },
         'Every new YiBoard account begins at 1200 points, mapped to Sixth Grade. You do not pick a tier, and you are not dropped into a beginner-only pool. The 1200 start puts you on the same ruler as everyone else; your first wins and losses quickly find your real level.',
         { type: 'h2', text: 'How one game changes your score' },

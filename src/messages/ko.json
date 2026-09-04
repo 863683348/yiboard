@@ -104,7 +104,9 @@
         "name": "Go",
         "native": "围棋 · Wéiqí",
         "blurb": "You surround territory instead of capturing a king. Still played under essentially the same rules it had two millennia ago."
-      }
+      },
+      "moreHeading": "더 많은 보드게임",
+      "learnAll": "전체 게임 방법"
     },
     "ladder": {
       "title": "Eighteen rungs, borrowed from the real thing",
@@ -219,7 +221,9 @@
       "xiangqi": "장기",
       "go": "바둑",
       "reversi": "오셀로",
-      "chess": "체스"
+      "chess": "체스",
+      "tsumego": "바둑 죽수문제",
+      "howTo": "게임 방법 가이드"
     },
     "moreGamesTitle": "다른 판도 해보기"
   },

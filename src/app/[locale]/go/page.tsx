@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { localeAlternates } from '@/i18n/metadata'
 import GoGame from '@/components/GoGame'
+import { MoreGames } from '@/components/MoreGames'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -127,6 +128,8 @@ export default async function GoPage({ params }: { params: Promise<{ locale: str
           ))}
         </dl>
       </section>
+
+      <MoreGames locale={locale} />
     </div>
   )
 }

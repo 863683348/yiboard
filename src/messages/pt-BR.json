@@ -106,7 +106,9 @@
         "name": "Go",
         "native": "围棋 · Wéiqí",
         "blurb": "Você cerca território em vez de capturar um rei. Continua sendo jogado praticamente com as mesmas regras de dois mil anos atrás."
-      }
+      },
+      "moreHeading": "Mais jogos de tabuleiro",
+      "learnAll": "Todos os guias"
     },
     "ladder": {
       "title": "Dezoito degraus, emprestados do original",
@@ -224,7 +226,9 @@
       "xiangqi": "Xiangqi",
       "go": "Go",
       "reversi": "Reversi",
-      "chess": "Xadrez"
+      "chess": "Xadrez",
+      "tsumego": "Tsumego de Go",
+      "howTo": "Guias de instruções"
     },
     "moreGamesTitle": "Experimente outro tabuleiro"
   },

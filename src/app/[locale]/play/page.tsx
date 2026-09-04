@@ -86,6 +86,8 @@ export default async function PlayPage(props: {
           <RelatedLink href="/go" label={t('nav.go')} />
           <RelatedLink href="/reversi" label={t('nav.reversi')} />
           <RelatedLink href="/chess" label={t('nav.chess')} />
+          <RelatedLink href="/tsumego" label={t('nav.tsumego')} />
+          <RelatedLink href="/how-to" label={t('nav.howTo')} />
         </div>
       </section>
     </div>

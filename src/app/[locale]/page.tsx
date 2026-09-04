@@ -170,6 +170,13 @@ export default async function HomePage(props: { params: Promise<{ locale: string
             action={t('ctaTsumego')}
           />
         </div>
+
+        <div style={{ marginTop: 'var(--space-8)', textAlign: 'center' }}>
+          <Link href="/how-to" className="yb-btn yb-btn-outline">
+            {t('games.learnAll')}
+            <ArrowRight size={16} weight="bold" aria-hidden />
+          </Link>
+        </div>
       </section>
 
       <hr className="yb-rule" />
