@@ -1982,6 +1982,84 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'online-referee-vs-human-referee',
+    date: '2026-09-04',
+    tags: ['fair-play', 'referee', 'online-board-game', 'gomoku'],
+    title: {
+      zh: '在线裁判 vs 人工裁判：谁更公平',
+      en: 'Online Referee vs Human Referee: Which Is Fairer',
+    },
+    description: {
+      zh: '在线裁判和人工裁判，谁判规则更公平？从五子棋的禁手到胜负判定，看服务端裁判如何守住线上公平对局。',
+      en: 'Who calls the rules more fairly, an online referee or a human? From gomoku forbidden moves to win detection, see how server-side refereeing keeps board games fair.',
+    },
+    keywords: ['online referee vs human referee', 'fair play online', 'automated rules enforcement board game', 'machine referee gomoku', 'who decides the win in online board games'],
+    content: {
+      zh: [
+        '你坐下来开局，第一个问题往往在落子前就出现了：要是由谁来判定规则有没有被违反？过去答案通常是一个人，要么当裁判的朋友，要么比赛官员。线上棋类游戏改写了这一点。现在在线裁判盯着每一步，结果每次都一样。这正是「在线裁判 vs 人工裁判」争论的核心，而对线上公平对局来说，它改变的比想象中多。',
+        { type: 'h2', text: '裁判在棋类游戏里到底做什么' },
+        '五子棋或象棋里的裁判不是来下棋的。他们确认棋盘状态、抓出非法着手，并在双方有分歧时裁定胜负。家庭休闲局里，这活儿往往落在那个还在看棋的人头上。线上，同样的工作由一段永不走神、没有偏袒的代码完成。',
+        { type: 'h2', text: '人工裁判容易在哪出错' },
+        '人擅长处理微妙情况，却不擅长保持一致。人类裁判会累，会漏掉三步之前的着手，也会偏向朋友。关于规则的争吵，是一场友好对局最常以翻脸收场的原因。裁判记得的是自己读过的那版规则，而不是写下来的那版。这个缝隙，就是大多数争执的起点。',
+        { type: 'h2', text: '在线裁判如何守住规则' },
+        '在线裁判跑在服务器上，而不是某个玩家的屏幕里，所以任何一方都无法悄悄改棋盘。每一步落子落定的瞬间就被检查。非法着手在生效前就被驳回。你可以读我们写的一篇[服务端裁判与反作弊](/blog/server-side-refereeing-anti-cheat)了解它怎么搭起来。要点很简单：规则由同一套引擎对所有人、每一局、每一个时段一视同仁地执行。',
+        { type: 'h2', text: '机器比人判得更好的几种情况' },
+        {
+          type: 'ul',
+          items: [
+            '非法着手：当场抓住，而不是赛后争吵。',
+            '胜负判定：五子连珠就是五子连珠，不管谁领先。',
+            '禁手：五子棋的双三、双四规则人容易看错，代码核对起来轻而易举。',
+            '和棋与超时：计时不对任何人偏心，平局每次都按同一条线判。',
+          ],
+        },
+        { type: 'h2', text: '什么时候仍需要人' },
+        '代码不是全部答案。人依然负责规则覆盖不到的事：掉线的玩家、看着不对劲、像是 bug 的比分、需要判断的投诉。最好的线上棋类会留一个人在边界情况待命，日常判罚交给机器。想最快感受到差别，就[来一局](/play)让棋盘自己守住公平。',
+        { type: 'h2', text: '常见问题' },
+        {
+          type: 'faq',
+          items: [
+            { q: '在线裁判会出错吗？', a: '可能会，但通常是 bug 而非偏心。服务端判定是确定性的，同一局面永远返回同一结果。看着不对时，由人工复核边界情况。' },
+            { q: '自动判规则会毁掉棋类的社交感吗？', a: '不会。多数争吵是关于谁破坏了规则，而不是规则本身。去掉这块摩擦，反而留出更多空间给对局本身和旁边的闲聊。' },
+            { q: '玩家能骗过在线裁判吗？', a: '比骗人难。裁判跑在服务器上，单方改不了共享棋盘。主要风险是小号对局和掉线滥用，所以这些仍由人工盯着。' },
+          ],
+        },
+        { type: 'cta', text: '打开 yiboardgame.com，公平地来一局', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        'You sit down for a game and the question shows up before the first move: who decides whether a rule was broken? For years the answer was a person, a friend acting as judge or a tournament official. Online board games flipped that. An online referee now watches every move and calls the result the same way every time. This is the heart of the online referee versus human referee debate, and for fair play online it changes more than people expect.',
+        { type: 'h2', text: 'What a referee actually does in a board game' },
+        'An online referee in gomoku or chess is not there to play. The referee confirms the board state, spots an illegal move, and decides who won when the players disagree. In a casual home game that job falls to whoever is paying attention. Online, the same job is done by code that never blinks and never has a favorite.',
+        { type: 'h2', text: 'Where a human referee slips' },
+        'People are good at nuance and bad at consistency. A human judge gets tired, misses a move made three turns ago, or leans toward a friend. Arguments about rules are the most common reason a friendly match ends in a fight. The referee remembers the rule they read once, not the rule written down. That gap is where most disputes start.',
+        { type: 'h2', text: 'How an online referee keeps the rules' },
+        'An online referee runs on the server, not on one player screen, so neither side can quietly change the board. Every move is checked the instant it lands. If a move is illegal, it is rejected before it counts. You can read how this is built in our piece on [server-side refereeing and anti-cheat](/blog/server-side-refereeing-anti-cheat). The point is simple: the rules are applied by the same engine for everyone, on every game, at every hour.',
+        { type: 'h2', text: 'The calls a machine settles better than a person' },
+        {
+          type: 'ul',
+          items: [
+            'Illegal moves: caught at the moment, not argued about after the game.',
+            'Win detection: five in a row is five in a row, no matter who is winning.',
+            'Forbidden patterns: gomoku double-three and double-four rules are easy for a person to misread and simple for code to verify.',
+            'Tie and timeout: the clock does not favor anyone, and a draw is called by the same line every time.',
+          ],
+        },
+        { type: 'h2', text: 'When a human still helps' },
+        'Code is not the whole answer. A human still matters for the things rules do not cover: a player who disconnects, a score that looks off because of a bug, a complaint that needs judgment. The best online games keep a person on call for the edges while letting the machine handle the routine calls. And the fastest way to feel the difference is to [play a match](/play) where the board itself enforces fair play.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Does an online referee ever make mistakes?', a: 'It can, usually because of a bug rather than bias. Server-side checks are deterministic, so the same position always returns the same call. When something looks wrong, a human reviews the edge cases.' },
+            { q: 'Will automated rules kill the social side of board games?', a: 'No. Most arguments are about who broke the rules, not the rules themselves. Removing that friction leaves more room for the actual game and the chat around it.' },
+            { q: 'Can players cheat against an online referee?', a: 'Harder than against a person. Because the referee runs on the server, one player cannot alter the shared board. The main risks are multi-accounting and disconnect abuse, which is why a human stays in the loop for those.' },
+          ],
+        },
+        { type: 'cta', text: 'Open yiboardgame.com and play a fair match', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
