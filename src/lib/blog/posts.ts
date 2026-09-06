@@ -2060,6 +2060,68 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'web-vs-desktop-experience-gap',
+    date: '2026-09-06',
+    tags: ['web game', 'browser game', 'gomoku', 'product'],
+    title: {
+      zh: '网页版 vs 桌面版：体验对比',
+      en: 'Web vs Desktop: The Experience Gap',
+    },
+    description: {
+      zh: '网页版和桌面版玩棋体验差在哪？从开局等待、性能、离线到更新，摊开讲 web game vs desktop 的差距，并看 YiBoard 为什么选纯网页。',
+      en: 'How different is playing in a browser versus a desktop app? From the wait to performance, offline play, and updates, we lay out the web game vs desktop gap and why YiBoard stays browser-only.',
+    },
+    keywords: ['web game vs desktop', 'browser game performance', 'desktop app vs web', 'instant vs installed', 'play gomoku in browser', 'online board game vs app'],
+    content: {
+      zh: [
+        '网页版和桌面版，玩棋的体验差距到底有多大？很多人搜 web game vs desktop，本质是想搞清楚：点开就能下，和装一个 App 慢慢等，哪个更适合自己。YiBoard 从第一天起就把五子棋做成纯网页，打开 yiboardgame.com 的[对战页](/play)就能下，不用安装。这篇把网页版和桌面版的体验差距摊开讲。今天就去[对战页](/play)来一局，或看看[常见问题](/faq)。',
+        { type: 'h2', text: '开局的等待：即时 vs 安装' },
+        '桌面版要先下载、安装、更新，有时还要管理员权限；网页版点开链接就进棋盘。对第一次来的玩家，0 安装意味着没有放弃的理由。YiBoard 的[对战页](/play)不需要注册，浏览器里落子就能开始。',
+        { type: 'h2', text: '性能：浏览器真的够快吗' },
+        '过去网页游戏卡，是因为 JS 慢、网络往返多。现在不一样：YiBoard 的 AI 引擎跑在浏览器本地，500ms 内完成搜索，没有服务器排队。关于这块我们写过[浏览器里的 alpha-beta 引擎](/blog/alpha-beta-engine-in-browser)。桌面版理论上能调用更强算力，但对五子棋这种规模，网页版已经绰绰有余。',
+        { type: 'h2', text: '离线 vs 在线：断网时谁还在' },
+        '桌面版的卖点之一是离线可玩。网页版依赖网络，断网就停。但现实中，多数人对局发生在有网的环境，而且网页版的进度能跨设备同步。我们写过[离线思考，在线取胜](/blog/think-offline-win-online)，讲的就是这种分工。',
+        { type: 'h2', text: '更新：你不用管的事' },
+        '桌面版要你手动更新，或弹窗催你。网页版永远是最新的——我们改一版，所有人下一次打开就拿到。对玩家来说，这是零维护；对开发者来说，是少一个分发渠道的麻烦。想问的问题，都可以在[常见问题](/faq)找到。',
+        { type: 'h2', text: '到底选哪个' },
+        '如果你想要零门槛、随时来一局、设备间无缝切换，网页版是答案。如果你在地铁里没信号也想下，桌面版有它的位置。但对绝大多数人，网页版打开即玩的那几秒，比桌面版多出来的离线能力更值钱。',
+        { type: 'h2', text: '常见问题' },
+        {
+          type: 'faq',
+          items: [
+            { q: '网页版五子棋会不会很卡？', a: '不会。AI 在浏览器本地运行，500ms 内出招，没有服务器往返，也不排队。打开[对战页](/play)就能感觉到。' },
+            { q: '网页版和桌面版棋力一样吗？', a: 'YiBoard 的引擎逻辑一致，差别只在算力上限。网页版对五子棋已经足够强，普通玩家很难压出差别。' },
+            { q: '断网了还能下吗？', a: '纯网页版不行，这是它唯一的硬限制。常离线的人可以留一个桌面版备着，但多数人对局都有网。' },
+          ],
+        },
+        { type: 'cta', text: '打开 yiboardgame.com，免安装来一局', href: 'https://yiboardgame.com/play' },
+      ],
+      en: [
+        'How different is the experience of playing in a browser versus installing a desktop app? A lot of people search web game vs desktop because they want to know one thing: is tapping to play the same as downloading an app and waiting? YiBoard has been browser-only for gomoku from day one, and you can start a match on the [play page](/play) at yiboardgame.com with no install. This post lays out the real gap between the two. Go to the [play page](/play) and play a match now, or skim the [FAQ](/faq).',
+        { type: 'h2', text: 'The wait before the first move: instant vs install' },
+        'A desktop app asks you to download, install, update, sometimes grant admin rights. A web game opens the board the moment you click a link. For a first-time player, zero install means there is no reason to quit before the first move. YiBoard\u2019s [play page](/play) needs no sign-up, and the first stone drops in the browser.',
+        { type: 'h2', text: 'Performance: is the browser fast enough' },
+        'Web games used to lag because JavaScript was slow and every move bounced off a server. That changed. YiBoard\u2019s AI runs locally in the browser and finishes its search within 500ms, with no server queue. We wrote about the [alpha-beta engine in the browser](/blog/alpha-beta-engine-in-browser). A desktop app can in theory use more compute, but for gomoku\u2019s scale the web version is already plenty.',
+        { type: 'h2', text: 'Offline vs online: who is still there when the network drops' },
+        'One selling point of desktop apps is offline play. A web game depends on the network and stops when it drops. In practice most matches happen where there is signal, and the web version syncs progress across devices. We wrote about [thinking offline, winning online](/blog/think-offline-win-online), which is exactly this division of labor.',
+        { type: 'h2', text: 'Updates: the thing you never have to manage' },
+        'A desktop app nags you to update, or waits for you to. A web game is always current: the moment we ship a change, everyone gets it on their next open. For players that is zero maintenance; for us it is one less distribution channel to worry about. Most questions are answered in the [FAQ](/faq).',
+        { type: 'h2', text: 'So which should you pick' },
+        'If you want zero friction, a match anytime, and seamless switching between devices, the web version is the answer. If you play on the subway with no signal, a desktop app has its place. But for most people those few seconds of open-and-play beat the offline edge a desktop app adds.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Will the web version of gomoku lag?', a: 'No. The AI runs locally in the browser and moves within 500ms, with no server round-trip and no queue. You feel it the moment you open the [play page](/play).' },
+            { q: 'Is the web version as strong as a desktop one?', a: 'YiBoard\u2019s engine logic is the same; only the compute ceiling differs. For gomoku the web version is already strong enough that casual players rarely see the gap.' },
+            { q: 'Can I play if the network drops?', a: 'Not on a pure web version, that is its one hard limit. People who are often offline can keep a desktop app handy, but most matches happen online.' },
+          ],
+        },
+        { type: 'cta', text: 'Open yiboardgame.com and play without installing', href: 'https://yiboardgame.com/play' },
+      ],
+    },
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
