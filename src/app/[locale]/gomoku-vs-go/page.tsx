@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { setRequestLocale } from 'next-intl/server';
-import { SquaresFour, Stack, PuzzlePiece, Target, BookOpen } from '@phosphor-icons/react/dist/ssr';
+import { SquaresFour, Stack, PuzzlePiece, Target, BookOpen, Question } from '@phosphor-icons/react/dist/ssr';
 
 import { Link } from '@/i18n/navigation';
 import { localeAlternates } from '@/i18n/metadata';
@@ -11,6 +11,7 @@ const LOC = (locale: string): 'zh' | 'en' => (locale === 'zh' ? 'zh' : 'en');
 type Meta = { title: string; description: string; keywords: string };
 type Row = { k: string; gomoku: string; other: string };
 type Compare = { head: string; other: string; rows: Row[]; note: string };
+type FaqItem = { q: string; a: string };
 type Content = {
   meta: Meta;
   h1: string;
@@ -18,6 +19,7 @@ type Content = {
   go: Compare;
   connect4: Compare;
   connect6: Compare;
+  faq: FaqItem[];
   conclusion: string;
   cta: string;
 };
@@ -64,6 +66,13 @@ const EN: Content = {
     ],
     note: 'Connect 6 gives the first player a bigger edge by letting them place two stones per turn, which is why it skips forbidden moves.',
   },
+  faq: [
+    { q: 'Is gomoku the same as Go?', a: 'No. Gomoku is five-in-a-row on a 15×15 board; Go is territory control on a 19×19 board. They have different win conditions, and gomoku has no captures.' },
+    { q: 'Which is easier to learn, gomoku or Go?', a: 'Gomoku takes minutes to learn; Go takes months to play well. Gomoku is the quicker entry point.' },
+    { q: 'Is gomoku good practice before learning Go?', a: 'They build different skills, but pattern recognition and reading the lines overlap, so gomoku is a gentler on-ramp to board-game thinking.' },
+    { q: 'Why is gomoku played on 15×15 but Go on 19×19?', a: 'Board size follows the goal: gomoku needs tight line tactics (smaller board), while Go needs vast territory (larger board).' },
+    { q: 'Can you capture stones in gomoku?', a: 'No. Stones are never removed; you win by lining up five of your stones before your opponent does.' },
+  ],
   conclusion:
     'If you want a game you can learn in a minute yet keep studying for years, gomoku is the sweet spot: simpler than Go, deeper than Connect 4, and faster than both.',
   cta: 'Play Gomoku Free',
@@ -111,6 +120,13 @@ const ZH: Content = {
     ],
     note: '六子棋让先手方每回合落两子，优势更大，因此不设禁手来平衡。',
   },
+  faq: [
+    { q: '五子棋和围棋是一种棋吗？', a: '不是。五子棋在 15×15 棋盘上五子连珠取胜；围棋在 19×19 棋盘上以围地多者胜。两者胜负条件不同，且五子棋不吃子。' },
+    { q: '五子棋和围棋哪个好学？', a: '五子棋几分钟就能上手；围棋要数月才能下好。五子棋是更轻快的入门选择。' },
+    { q: '先下五子棋对学围棋有帮助吗？', a: '两者培养的能力不同，但棋形识别和连线计算有共通之处，所以五子棋是进入棋盘思维的更平缓台阶。' },
+    { q: '为什么五子棋用 15×15、围棋用 19×19？', a: '棋盘大小服务于目标：五子棋需要紧凑的连线战术（较小），围棋需要广阔的围地（较大）。' },
+    { q: '五子棋能吃子吗？', a: '不能。棋子从不被移除，谁先把自己的五枚棋子连成一线谁获胜。' },
+  ],
   conclusion:
     '如果你想找一款「一分钟学会、却能钻研多年」的游戏，五子棋正合适：比围棋简单，比四子棋深，速度也比两者都快。',
   cta: '免费玩五子棋',
@@ -155,6 +171,16 @@ export default async function GomokuVsGoPage(props: { params: Promise<{ locale: 
     author: { '@type': 'Organization', name: 'YiBoard' },
     publisher: { '@type': 'Organization', name: 'YiBoard' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://yiboardgame.com${PATH}` },
+  };
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: c.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   };
 
   const compares: Array<{ icon: ReactNode; data: Compare }> = [
@@ -232,6 +258,19 @@ export default async function GomokuVsGoPage(props: { params: Promise<{ locale: 
           <RelatedLink href="/how-to" label={lang === 'zh' ? '快速玩法说明' : 'How to play gomoku'} />
           <RelatedLink href="/go" label={lang === 'zh' ? '免费在线玩围棋' : 'Play Go online free'} />
           <RelatedLink href="/go-rules" label={lang === 'zh' ? '围棋规则' : 'Go rules'} />
+          <RelatedLink href="/gomoku-vs-xiangqi" label={lang === 'zh' ? '五子棋 vs 象棋' : 'Gomoku vs Xiangqi'} />
+        </div>
+      </section>
+
+      <section className="yb-section" style={{ maxWidth: 760 }}>
+        <SectionHead icon={<Question size={18} weight="bold" aria-hidden />} title={lang === 'zh' ? '常见问题' : 'FAQ'} />
+        <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+          {c.faq.map((f) => (
+            <div key={f.q} className="yb-card" style={{ padding: 'var(--card-pad)' }}>
+              <p style={{ margin: 0, fontWeight: 'var(--weight-emphasis)', color: 'var(--fg)' }}>{f.q}</p>
+              <p style={{ margin: 'var(--space-2) 0 0', fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>{f.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -242,6 +281,7 @@ export default async function GomokuVsGoPage(props: { params: Promise<{ locale: 
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </div>
   );
 }

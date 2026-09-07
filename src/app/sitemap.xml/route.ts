@@ -33,6 +33,7 @@ const PATHS = [
   '/gomoku-rules',
   '/renju-rules',
   '/gomoku-vs-go',
+  '/gomoku-vs-xiangqi',
   '/xiangqi',
   '/learn-xiangqi',
   '/xiangqi/openings',

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { localeAlternates } from '@/i18n/metadata'
+import { Link } from '@/i18n/navigation'
 import XiangqiGame from '@/components/XiangqiGame'
 import { MoreGames } from '@/components/MoreGames'
 
@@ -131,6 +132,22 @@ export default async function XiangqiPage({ params }: { params: Promise<{ locale
             </div>
           ))}
         </dl>
+      </section>
+
+      <section style={{ marginTop: 'var(--space-10)', maxWidth: 720 }}>
+        <h2 className="yb-h3">{isZh ? '五子棋 vs 象棋' : 'Gomoku vs Xiangqi'}</h2>
+        <p style={{ marginTop: 'var(--space-2)', color: 'var(--fg-2)', fontSize: 'var(--text-sm)' }}>
+          {isZh
+            ? '想知道五子棋和中国象棋到底差在哪？看一眼对比表就明白。'
+            : 'Curious how gomoku differs from Chinese chess? A quick comparison says it all.'}
+        </p>
+        <Link
+          href="/gomoku-vs-xiangqi"
+          className="yb-btn yb-btn-outline"
+          style={{ display: 'inline-flex', marginTop: 'var(--space-4)' }}
+        >
+          {isZh ? '对比五子棋与中国象棋 →' : 'Compare gomoku with Chinese chess →'}
+        </Link>
       </section>
 
       <MoreGames locale={locale} />
