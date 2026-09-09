@@ -2122,8 +2122,52 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
-];
 
+  {
+    slug: 'grades-vs-elo-ranking-systems',
+    date: '2026-09-08',
+    tags: ['ranking', 'gomoku', 'comparison'],
+    title: {
+      zh: '段位制 vs ELO 制：两种排名系统有何不同',
+      en: 'Grades and Dans vs ELO: What Is the Difference Between Ranking Systems',
+    },
+    description: {
+      zh: '五子棋用段位制，国际象棋用 ELO，围棋用等级和段位。这篇讲清楚三种排名系统的原理、适用场景和各自优劣。',
+      en: 'Gomoku uses dan grades, chess uses ELO, and go uses both rank and dan. This post explains how each ranking system works, where it fits best, and what each does well.',
+    },
+    keywords: ['elo vs dan system', 'gomoku rating systems', 'which ranking is better', 'board game ranking', 'gomoku dan grade explained'],
+    content: {
+      zh: [
+        '玩棋类游戏的玩家总会被一个问题困扰：我到底算强还是弱？不同游戏给答案的方式不一样。有的用数字，有的用称号，有的混着用。了解这些系统怎么运作的，能帮你更准确地评估自己、找到合适的对手。',
+        { type: 'h2', text: 'ELO 系统：国际象棋的标准' },
+        'ELO 是最流行的数字排名系统。每场比赛后，胜者从败者那里获得积分，获得多少取决于双方的预期胜率。打败高手得多分，输给低手扣得多。数字变化快，适合 matchmaking。',
+        { type: 'h2', text: '段位制：东亚棋类传统' },
+        '段位制用称号而非数字。从初学者的一级到高手的十段，每个段位代表一个技能门槛。通过比赛或考核升级。好处是一目了然，坏处是不精确。',
+        { type: 'h2', text: '混合系统：围棋的做法' },
+        '围棋同时用等级（kyu）和段位（dan）。等级是入门级别，段位数越高越强。这种设计让新手有目标，高手有传承。',
+        { type: 'h2', text: '哪种系统更好？' },
+        { type: 'ul', items: ['ELO 适合快速匹配和精确排名', '段位制适合建立社区认同和长期目标', '混合系统平衡了入门引导和高手认同'] },
+        { type: 'h2', text: 'FAQ' },
+        { type: 'faq', items: [{ q: '五子棋为什么用段位制？', a: '因为五子棋源自东亚，段位制符合文化传统。同时让新手有清晰的目标感。' }, { q: 'ELO 数字可以跨游戏比较吗？', a: '不可以。每个游戏的 ELO 基准不同，跨游戏比较没有意义。' }, { q: '如何从段位制转到 ELO？', a: '可以先用 ELO 测试赛定位，再转回段位制。YiBoard 正在考虑增加这种转换功能。' }] },
+        { type: 'cta', text: '在 YiBoard 体验段位系统', href: 'https://yiboardgame.com/rankings' },
+      ],
+      en: [
+        'Every board game player wonders at some point: am I good or not? Different games answer this differently. Some use numbers, some use titles, some mix both. Understanding how these systems work helps you evaluate yourself and find the right opponent.',
+        { type: 'h2', text: 'ELO: The Chess Standard' },
+        'ELO is the most popular numeric ranking system. After each match, the winner gains points from the loser, and how many depends on the expected win rate. Beat a strong player and you gain a lot; lose to a weak one and you lose more. Numbers change fast, making it great for matchmaking.',
+        { type: 'h2', text: 'Dan Grades: The East Asian Tradition' },
+        'Dan grading uses titles instead of numbers. From one-kyu beginner to ten-dan master, each grade represents a skill threshold. You advance through competition or examination. The benefit is clarity; the drawback is imprecision.',
+        { type: 'h2', text: 'Hybrid: How Go Does It' },
+        'Go uses both kyu (grades) and dan (degrees). Kyu is for beginners, dan numbers increase with skill. This design gives newcomers goals and masters a sense of legacy.',
+        { type: 'h2', text: 'Which system is better?' },
+        { type: 'ul', items: ['ELO excels at quick matching and precise ranking', 'Dan grades build community identity and long-term goals', 'Hybrid systems balance onboarding with master recognition'] },
+        { type: 'h2', text: 'FAQ' },
+        { type: 'faq', items: [{ q: 'Why does gomoku use dan grades?', a: 'Because gomoku comes from East Asia, and dan grades match the cultural tradition. They also give newcomers clear milestones.' }, { q: 'Can ELO numbers be compared across games?', a: 'No. Each game has its own ELO baseline, so cross-game comparison means nothing.' }, { q: 'How do I switch from dan grades to ELO?', a: 'You can take a test match to find your ELO level, then convert back. YiBoard is considering adding this feature.' }] },
+        { type: 'cta', text: 'Experience the dan system on YiBoard', href: 'https://yiboardgame.com/rankings' },
+      ],
+    },
+  },
+];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
 }
