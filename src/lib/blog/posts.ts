@@ -2167,6 +2167,132 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: "mobile-gomoku-ads-paywalls",
+    date: "2026-09-11",
+    title: { zh: "手游五子棋的陷阱：广告与内购", en: "The Mobile Gomoku Trap: Ads and Paywalls" },
+    description: { zh: "手游五子棋为什么总在最想继续时弹广告？拆解三个常见套路，以及免费网页版为什么不一样。", en: "Why mobile Gomoku apps fire ads exactly when you want to keep playing — three common tricks, and why the free web version is different." },
+    keywords: ["gomoku apps ads", "mobile game ads problem", "gomoku in-app purchase", "free gomoku alternative"],
+    tags: ["strategy", "mobile-gaming", "alternative"],
+    content: {
+      zh: [
+          "想在手机上下一盘五子棋，结果先看了 30 秒广告，点错两次才找到「跳过」，下完一局弹内购。这不是设计失误，这是商业模式。这篇拆一下手游五子棋的常见套路，以及免费网页版为什么是另一条路。",
+          {
+                "type": "h2",
+                "text": "套路一：广告插在决策点上"
+          },
+          "广告不是随机弹的，通常卡在你最想继续的时刻：刚想好下一步、刚输了一局想再来。此时你的点击意愿最高，广告收入也最高。",
+          {
+                "type": "h2",
+                "text": "套路二：把功能切碎卖"
+          },
+          {
+                "type": "ul",
+                "items": [
+                      "撤销一步：看广告或付费",
+                      "复盘功能：付费解锁",
+                      "去广告：订阅",
+                      "换棋子皮肤：内购"
+                ]
+          },
+          "每个动作单独收费，看起来每项都便宜，加起来远超一副实体棋。",
+          {
+                "type": "h2",
+                "text": "套路三：AI 难度当付费墙"
+          },
+          "免费档的 AI 故意做得弱，让你赢得轻松但没挑战；想跟强 AI 下，请付费。这是最常见也最难察觉的一种。",
+          {
+                "type": "h2",
+                "text": "网页版为什么不一样"
+          },
+          "浏览器里的棋类游戏不需要装 App、没有推送、也没有内购通道。像 YiBoard 就是纯网页的：打开即下，不装东西、不注册、不弹广告。",
+          {
+                "type": "h2",
+                "text": "常见问题"
+          },
+          {
+                "type": "faq",
+                "items": [
+                      {
+                            "q": "广告版为什么不能一次买断去广告？",
+                            "a": "因为订阅比买断赚得多，厂商没有动力提供买断。"
+                      },
+                      {
+                            "q": "网页版能离线玩吗？",
+                            "a": "首次加载后可以，规则和 AI 都在本地运行，不依赖服务器。"
+                      },
+                      {
+                            "q": "网页版有强 AI 吗？",
+                            "a": "YiBoard 的 AI 本地运行，难度可调，且不做付费墙。"
+                      }
+                ]
+          },
+          {
+                "type": "cta",
+                "text": "直接在浏览器里下一盘 →",
+                "href": "/"
+          }
+    ],
+      en: [
+          "You wanted one game of Gomoku on your phone. Instead you watched a 30-second ad, tapped the wrong thing twice before finding \"skip\", won, and got an in-app purchase prompt. That is not a design accident. That is the business model. Here is how mobile Gomoku apps are built, and why a free web version is a different path.",
+          {
+                "type": "h2",
+                "text": "Trick 1: Ads placed at decision points"
+          },
+          "Ads are not random. They fire exactly when you most want to keep playing: right after you spot your next move, or right after a loss when you want one more game. That is when your tap-through rate — and the ad revenue — is highest.",
+          {
+                "type": "h2",
+                "text": "Trick 2: Selling the game back to you in pieces"
+          },
+          {
+                "type": "ul",
+                "items": [
+                      "Undo a move: watch an ad or pay",
+                      "Game review: pay to unlock",
+                      "Remove ads: subscription",
+                      "Piece skins: in-app purchase"
+                ]
+          },
+          "Each item looks cheap in isolation. Together they cost far more than a physical board.",
+          {
+                "type": "h2",
+                "text": "Trick 3: AI difficulty as a paywall"
+          },
+          "The free-tier AI is deliberately weak. You win easily, so it never feels like a challenge; if you want a real opponent you have to pay. It is the most common trick and the hardest to notice.",
+          {
+                "type": "h2",
+                "text": "Why the web version is different"
+          },
+          "Board games in the browser need no install, send no push notifications, and have no purchase channel to monetize. YiBoard is web-only: open it and play. Nothing to install, no signup, no ads.",
+          {
+                "type": "h2",
+                "text": "FAQ"
+          },
+          {
+                "type": "faq",
+                "items": [
+                      {
+                            "q": "Why can't ad-supported apps offer a one-time \"remove ads\" purchase?",
+                            "a": "Because subscriptions earn more than a one-time fee. There is little incentive to offer it."
+                      },
+                      {
+                            "q": "Does the web version work offline?",
+                            "a": "After the first load, yes. Rules and AI run locally, with no server dependency."
+                      },
+                      {
+                            "q": "Is there a strong AI on the web version?",
+                            "a": "YiBoard's AI runs locally with adjustable difficulty, and it is not behind a paywall."
+                      }
+                ]
+          },
+          {
+                "type": "cta",
+                "text": "Play a game in your browser →",
+                "href": "/"
+          }
+    ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
