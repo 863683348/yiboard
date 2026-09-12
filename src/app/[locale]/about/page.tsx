@@ -65,11 +65,51 @@ export default async function AboutPage(props: { params: Promise<{ locale: strin
         </a>
       </section>
 
+      {/* ---------------- 常见问题（FAQ 正文随语言本地化，schema 统一英文，与 /faq 约定一致） ---------------- */}
+      <section className="yb-section" style={{ maxWidth: '62ch' }}>
+        <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>{t('faqHead')}</h2>
+        <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+          {(['1', '2', '3'] as const).map((i) => (
+            <details
+              key={i}
+              style={{
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-md)',
+                padding: 'var(--space-4)',
+                background: 'var(--surface-2)',
+              }}
+            >
+              <summary style={{ cursor: 'pointer', fontWeight: 'var(--weight-emphasis)', fontSize: 'var(--text-base)', color: 'var(--fg)' }}>
+                {t(`q${i}`)}
+              </summary>
+              <p style={{ marginTop: 'var(--space-3)', marginBottom: 0, fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
+                {t(`a${i}`)}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section style={{ maxWidth: '62ch', marginTop: 'var(--space-10)' }}>
         <Link href="/play" className="yb-btn yb-btn-primary">
           {nav('play')}
         </Link>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              { '@type': 'Question', name: 'Is YiBoard free to play?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Every game runs free in your browser with no account required. Optional extras such as the physical board line are separate and not yet on sale.' } },
+              { '@type': 'Question', name: 'Do I need to install anything?', acceptedAnswer: { '@type': 'Answer', text: 'No. YiBoard is a responsive web app — it opens in any desktop or mobile browser with no download, no install and no sign-up.' } },
+              { '@type': 'Question', name: 'Which board games can I play on YiBoard?', acceptedAnswer: { '@type': 'Answer', text: 'Six: gomoku (five-in-a-row), renju, xiangqi (Chinese chess), Go, reversi and tsumego — plus chess. Each one has rules, a live board and shared game replays.' } },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

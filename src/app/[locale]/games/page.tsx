@@ -26,6 +26,27 @@ const META: Record<'en' | 'zh', { title: string; description: string; keywords: 
 
 type Outcome = 'win' | 'loss' | 'draw';
 
+type FaqItem = { q: string; a: string };
+
+const FAQ: Record<'en' | 'zh', { head: string; items: FaqItem[] }> = {
+  en: {
+    head: 'Frequently Asked Questions',
+    items: [
+      { q: 'What is the Gomoku game library?', a: 'It is a public feed of gomoku games finished on YiBoard and shared by their players. Open any card to replay the full move sequence on a live board.' },
+      { q: 'Do I need an account to replay a shared game?', a: 'No. Every shared game opens straight in the browser with no sign-up, no download, and no install.' },
+      { q: 'Can I share my own gomoku game?', a: 'Yes. After a game ends, tap Share and it appears here with your name, rank and move count so others can study it.' },
+    ],
+  },
+  zh: {
+    head: '常见问题',
+    items: [
+      { q: '五子棋棋谱库是什么？', a: '它是 YiBoard 玩家在对局结束后公开分享的五子棋对局集合。点开任意棋谱，即可在棋盘上逐步复盘完整走法。' },
+      { q: '复盘分享的棋谱需要账号吗？', a: '不需要。每个分享对局都可直接在浏览器打开，无需注册、下载或安装。' },
+      { q: '我可以分享自己的五子棋对局吗？', a: '可以。对局结束后点击「分享」，它就会出现在这里，并带上你的昵称、段位与手数，供他人研习。' },
+    ],
+  },
+};
+
 function playerOutcome(payload: ShareCardPayload): Outcome {
   if (payload.result === 'draw') return 'draw';
   if (payload.playerColor === 'black') return payload.result === 'black' ? 'win' : 'loss';
@@ -70,6 +91,16 @@ export default async function GamesPage(props: { params: Promise<{ locale: strin
     mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://yiboardgame.com/games' },
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ.en.items.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
   const outcomeLabel: Record<Outcome, string> = l === 'zh'
     ? { win: '胜', loss: '负', draw: '和' }
     : { win: 'Won', loss: 'Lost', draw: 'Draw' };
@@ -79,6 +110,10 @@ export default async function GamesPage(props: { params: Promise<{ locale: strin
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(gamesJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <header style={{ maxWidth: '58ch' }}>
         <h1 className="yb-h2">{META[l].title}</h1>
@@ -199,6 +234,30 @@ export default async function GamesPage(props: { params: Promise<{ locale: strin
           })}
         </div>
       )}
+
+      <section className="yb-section" style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
+        <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>{FAQ[l].head}</h2>
+        <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+          {FAQ[l].items.map((f) => (
+            <details
+              key={f.q}
+              style={{
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-md)',
+                padding: 'var(--space-4)',
+                background: 'var(--surface-2)',
+              }}
+            >
+              <summary style={{ cursor: 'pointer', fontWeight: 'var(--weight-emphasis)', fontSize: 'var(--text-base)', color: 'var(--fg)' }}>
+                {f.q}
+              </summary>
+              <p style={{ marginTop: 'var(--space-3)', marginBottom: 0, fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
 
       <section style={{ maxWidth: 760, marginTop: 'var(--space-10)' }}>
         <Link href="/play" className="yb-btn yb-btn-primary">

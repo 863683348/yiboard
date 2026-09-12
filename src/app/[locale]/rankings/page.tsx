@@ -107,6 +107,31 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
         )}
       </div>
 
+      {/* ---------------- 常见问题（FAQ 正文随语言本地化，schema 统一英文，与 /faq 约定一致） ---------------- */}
+      <section className="yb-section" style={{ maxWidth: 760 }}>
+        <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>{t('faqHead')}</h2>
+        <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+          {(['1', '2', '3'] as const).map((i) => (
+            <details
+              key={i}
+              style={{
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-md)',
+                padding: 'var(--space-4)',
+                background: 'var(--surface-2)',
+              }}
+            >
+              <summary style={{ cursor: 'pointer', fontWeight: 'var(--weight-emphasis)', fontSize: 'var(--text-base)', color: 'var(--fg)' }}>
+                {t(`q${i}`)}
+              </summary>
+              <p style={{ marginTop: 'var(--space-3)', marginBottom: 0, fontSize: 'var(--text-sm)', color: 'var(--fg-2)' }}>
+                {t(`a${i}`)}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <section style={{ maxWidth: 760, marginTop: 'var(--space-12)' }}>
         <h2 className="yb-h3" style={{ marginBottom: 'var(--space-4)' }}>
           {t('moreGamesTitle')}
@@ -118,6 +143,21 @@ export default async function RankingsPage(props: { params: Promise<{ locale: st
           <RelatedLink href="/chess" label={t('nav.chess')} />
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              { '@type': 'Question', name: 'How does the YiBoard ranking work?', acceptedAnswer: { '@type': 'Answer', text: 'Only friend matches settle your ELO rating. Games against the engine build your record but never move your rating. Ratings map to eighteen grades and dans, from Ninth Grade to Ninth Dan.' } },
+              { '@type': 'Question', name: 'What rating do I start at?', acceptedAnswer: { '@type': 'Answer', text: 'Everyone starts at 1200, which corresponds to Sixth Grade. Win friend matches to climb toward Ninth Dan.' } },
+              { '@type': 'Question', name: 'Why is the leaderboard empty?', acceptedAnswer: { '@type': 'Answer', text: 'Only friend matches are ranked. Invite a friend, play one game, and you will be the first name on the board.' } },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

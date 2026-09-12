@@ -194,6 +194,17 @@ export default async function RenjuRulesPage(props: { params: Promise<{ locale: 
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://yiboardgame.com${PATH}` },
   };
 
+  // FAQ 正文随语言本地化，结构化数据统一用英文（与 /faq 既有约定一致）。
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is the Renju forbidden point?', acceptedAnswer: { '@type': 'Answer', text: 'A forbidden point is an intersection where Black\'s stone would create a double-three, double-four, or overline. Playing there is an immediate loss for Black.' } },
+      { '@type': 'Question', name: 'Does White have forbidden moves?', acceptedAnswer: { '@type': 'Answer', text: 'No. Only Black is restricted under Renju. White may play any legal five-in-a-row, including lines longer than five.' } },
+      { '@type': 'Question', name: 'Why does Renju have forbidden moves?', acceptedAnswer: { '@type': 'Answer', text: 'Without them, the first player (Black) can force a win through perfect play. The restrictions remove that forced win and keep Renju balanced.' } },
+    ],
+  };
+
   const sections: Array<{ icon: ReactNode; data: ListSection }> = [
     { icon: <Flag size={18} weight="bold" aria-hidden />, data: c.what },
     { icon: <Prohibit size={18} weight="bold" aria-hidden />, data: c.forbidden },
@@ -288,6 +299,7 @@ export default async function RenjuRulesPage(props: { params: Promise<{ locale: 
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </div>
   );
 }

@@ -17,22 +17,22 @@
       "keywords": "오목 랭킹, 오목 elo, 오목 리더보드, 오목 단계, 5목 순위"
     },
     "howTo": {
-      "title": "6가지 보드게임 방법 | YiBoard",
+      "title": "6가지 보드게임 방법",
       "description": "YiBoard에서 오목, 장기, 바둑, 오셀로, 체스, 사활문제의 규칙을 배워보세요. 가입 불필요.",
       "keywords": "오목 규칙, 장기 규칙, 바둑 규칙, 오셀로 규칙, 체스 규칙, 사활문제"
     },
     "about": {
-      "title": "YiBoard 소개 — 무료 브라우저 오목",
+      "title": "소개 — 광고 없는 무료 브라우저 보드게임",
       "description": "YiBoard는 무료 브라우저 오목: 방해를 주는 광고 없음, 정직하게 플레이, 모든 게임이 랭킹에 반영.",
       "keywords": "yiboard, 무료 오목, 브라우저 오목, 오목 앱, 광고 없는 오목"
     },
     "pricing": {
-      "title": "YiBoard 가격 — 영원히 무료, 광고 없음, 계정 없음",
+      "title": "가격 — 영원히 무료, 광고 없음, 계정 없음",
       "description": "YiBoard는 100% 무료입니다. 구독 없음, 광고 없음, 계정 불필요.",
       "keywords": "오목 무료, 오목 광고 없음, 오목 계정 없음, 무료 브라우저 게임"
     },
     "blog": {
-      "title": "오목 전략 & 팁 — YiBoard 블로그",
+      "title": "오목 전략과 팁, 오프닝 이론",
       "description": "오목 전략 가이드, 개구 이론, YiBoard 팀의 제품 업데이트.",
       "keywords": "오목 전략, 오목 팁, 오목 개구, 5목 가이드, 오목 이론"
     }
@@ -245,7 +245,14 @@
       "go": "바둑",
       "reversi": "오셀로",
       "chess": "체스"
-    }
+    },
+    "faqHead": "Frequently Asked Questions",
+    "q1": "How does the YiBoard ranking work?",
+    "a1": "Only friend matches settle your ELO rating. Games against the engine build your record but never move your rating. Ratings map to eighteen grades and dans, from Ninth Grade to Ninth Dan.",
+    "q2": "What rating do I start at?",
+    "a2": "Everyone starts at 1200, which corresponds to Sixth Grade. Win friend matches to climb toward Ninth Dan.",
+    "q3": "Why is the leaderboard empty?",
+    "a3": "Only friend matches are ranked. Invite a friend, play one game, and you will be the first name on the board."
   },
   "howTo": {
     "title": "게임 방법",
@@ -296,7 +303,14 @@
     "p4": "We are a small team. If something is broken, or a translation reads badly in your language, tell us and it gets fixed in the next release.",
     "shopTitle": "On physical boards",
     "shopBody": "We are working on a small line of well-made physical sets — Xiangqi in wood, Go stones in glass. Not merchandise with a logo on it. Details when they are ready.",
-    "contact": "Contact"
+    "contact": "Contact",
+    "faqHead": "Frequently Asked Questions",
+    "q1": "Is YiBoard free to play?",
+    "a1": "Yes. Every game runs free in your browser with no account required. Optional extras such as the physical board line are separate and not yet on sale.",
+    "q2": "Do I need to install anything?",
+    "a2": "No. YiBoard is a responsive web app — it opens in any desktop or mobile browser with no download, no install and no sign-up.",
+    "q3": "Which board games can I play on YiBoard?",
+    "a3": "Six: gomoku (five-in-a-row), renju, xiangqi (Chinese chess), Go, reversi and tsumego — plus chess. Each one has rules, a live board and shared game replays."
   },
   "profile": {
     "title": "Your record",

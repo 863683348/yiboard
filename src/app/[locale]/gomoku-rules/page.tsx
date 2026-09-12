@@ -31,10 +31,10 @@ const EN: Content = {
     title: 'Gomoku Rules — How to Play Five in a Row',
     description:
       'Learn the official gomoku (five-in-a-row) rules: win with five stones in any line, standard board sizes, turn order, and key shapes like the open four and broken three. Play free at YiBoard.',
-    keywords: 'gomoku rules, five in a row rules, how to play gomoku, gomoku board size, renju rules',
+    keywords: 'gomoku rules, five in a row rules, how to play gomoku, gomoku board size, renju rules, omok rules, 오목',
   },
   h1: 'Gomoku Rules',
-  lead: 'Gomoku — also called Five in a Row — is a two-player abstract strategy game. The rules are short to learn but the tactics run deep. Here is everything you need to set up a legal game and recognize the basic shapes.',
+  lead: 'Gomoku — also called Five in a Row, omok (오목) in Korean and wuziqi (五子棋) in Chinese — is a two-player abstract strategy game. The rules are short to learn but the tactics run deep. Here is everything you need to set up a legal game and recognize the basic shapes.',
   objective: {
     head: 'Objective',
     items: [
@@ -98,6 +98,10 @@ const EN: Content = {
       q: 'Who goes first in gomoku?',
       a: 'Black always moves first, then players alternate. Many casual games decide color by a coin flip or a "guess the stone" ritual.',
     },
+    {
+      q: 'Is omok the same as gomoku?',
+      a: 'Yes. Omok (오목) is the Korean name for gomoku, and wuziqi (五子棋) is the Chinese name. All three play five in a row on a 15×15 board with no captures — the rules are identical.',
+    },
   ],
 };
 
@@ -106,10 +110,10 @@ const ZH: Content = {
     title: '五子棋规则 — 五子连珠怎么玩',
     description:
       '学习五子棋（五子连珠）的正式规则：横竖斜任意方向连成五子即胜、标准棋盘尺寸、落子顺序，以及活四、眠三等基础棋形。来 YiBoard 免费对弈。',
-    keywords: '五子棋规则, 五子连珠规则, 五子棋怎么玩, 五子棋棋盘, 连珠规则',
+    keywords: '五子棋规则, 五子连珠规则, 五子棋怎么玩, 五子棋棋盘, 连珠规则, 五子棋英文, omok, 오목',
   },
   h1: '五子棋规则',
-  lead: '五子棋又称五子连珠，是一种两人对弈的抽象策略棋类。规则好学，门道却很深。下面把开局所需的全部规则与基础棋形讲清楚。',
+  lead: '五子棋又称五子连珠，英文常称 Gomoku，韩语称 omok（오목）。它是一种两人对弈的抽象策略棋类，规则好学，门道却很深。下面把开局所需的全部规则与基础棋形讲清楚。',
   objective: {
     head: '胜负目标',
     items: [
@@ -173,6 +177,10 @@ const ZH: Content = {
       q: '五子棋谁先走？',
       a: '黑棋永远先走，之后双方轮流。许多休闲对局通过猜拳或「猜先」来决定谁执黑。',
     },
+    {
+      q: 'omok（오목）和五子棋是同一种棋吗？',
+      a: '是。omok（오목）是韩语对五子棋的称呼，中文叫五子棋，英文常称 Gomoku。三者规则完全一致：在 15×15 棋盘上连成五子即胜，且不吃子。',
+    },
   ],
 };
 
@@ -215,6 +223,20 @@ export default async function GomokuRulesPage(props: { params: Promise<{ locale:
     author: { '@type': 'Organization', name: 'YiBoard' },
     publisher: { '@type': 'Organization', name: 'YiBoard' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://yiboardgame.com${PATH}` },
+  };
+
+  // FAQ 正文随语言本地化，结构化数据统一用英文（与 /faq 既有约定一致，
+  // 避免同一个 FAQPage 以多种语言出现造成歧义）。
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'Is gomoku the same as Go?', acceptedAnswer: { '@type': 'Answer', text: 'No. Go (Weiqi) is played on a 19x19 board where you capture stones and claim territory. Gomoku is played for five-in-a-row on a 15x15 board with no captures.' } },
+      { '@type': 'Question', name: 'Can Black win on the first move?', acceptedAnswer: { '@type': 'Answer', text: 'No. A single stone cannot make five in a row. Black\'s advantage shows up later, which is exactly why the Renju ruleset adds forbidden moves to keep the game balanced.' } },
+      { '@type': 'Question', name: 'Does five in a row have to be exactly five?', acceptedAnswer: { '@type': 'Answer', text: 'Under standard free gomoku, exactly five wins and a line of six or more is also a win. Under Renju, six or more (an overline) is a forbidden loss for Black.' } },
+      { '@type': 'Question', name: 'Who goes first in gomoku?', acceptedAnswer: { '@type': 'Answer', text: 'Black always moves first, then players alternate. Many casual games decide colour by a coin flip or a "guess the stone" ritual.' } },
+      { '@type': 'Question', name: 'Is omok the same as gomoku?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Omok is the Korean name for gomoku and wuziqi is the Chinese name. All three play five in a row on a 15x15 board with no captures — the rules are identical.' } },
+    ],
   };
 
   const listSections: Array<{ icon: ReactNode; data: { head: string; items: string[] } }> = [
@@ -334,6 +356,7 @@ export default async function GomokuRulesPage(props: { params: Promise<{ locale:
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
     </div>
   );
 }

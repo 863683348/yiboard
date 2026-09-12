@@ -72,6 +72,7 @@ const EN: Content = {
     { q: 'Is gomoku good practice before learning Go?', a: 'They build different skills, but pattern recognition and reading the lines overlap, so gomoku is a gentler on-ramp to board-game thinking.' },
     { q: 'Why is gomoku played on 15×15 but Go on 19×19?', a: 'Board size follows the goal: gomoku needs tight line tactics (smaller board), while Go needs vast territory (larger board).' },
     { q: 'Can you capture stones in gomoku?', a: 'No. Stones are never removed; you win by lining up five of your stones before your opponent does.' },
+    { q: 'Is omok the same as gomoku?', a: 'Yes. Omok (오목) is the Korean name for gomoku and wuziqi (五子棋) is the Chinese name — the same five-in-a-row game on a 15×15 board. So "omok vs go" is the same comparison as gomoku vs go.' },
   ],
   conclusion:
     'If you want a game you can learn in a minute yet keep studying for years, gomoku is the sweet spot: simpler than Go, deeper than Connect 4, and faster than both.',
@@ -126,6 +127,7 @@ const ZH: Content = {
     { q: '先下五子棋对学围棋有帮助吗？', a: '两者培养的能力不同，但棋形识别和连线计算有共通之处，所以五子棋是进入棋盘思维的更平缓台阶。' },
     { q: '为什么五子棋用 15×15、围棋用 19×19？', a: '棋盘大小服务于目标：五子棋需要紧凑的连线战术（较小），围棋需要广阔的围地（较大）。' },
     { q: '五子棋能吃子吗？', a: '不能。棋子从不被移除，谁先把自己的五枚棋子连成一线谁获胜。' },
+    { q: 'omok（오목）和五子棋是同一种棋吗？', a: '是。omok（오목）是韩语对五子棋的称呼，中文叫五子棋，英文常称 Gomoku；三者都是 15×15 棋盘上连成五子即胜的同一种棋。所以「omok vs go」与「gomoku vs go」是同一个对比。' },
   ],
   conclusion:
     '如果你想找一款「一分钟学会、却能钻研多年」的游戏，五子棋正合适：比围棋简单，比四子棋深，速度也比两者都快。',

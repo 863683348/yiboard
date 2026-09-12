@@ -4,8 +4,8 @@
     "description": "Jogue Gomoku online grátis contra IA ou amigos. Sem conta, sem download. Suba a escada de 18 degraus do 9º Grau ao 9º Dan. Xiangqi e Go em breve.",
     "ogAlt": "Um tabuleiro de Gomoku 15x15 com pedras pretas e brancas",
     "about": {
-      "title": "Sobre a YiBoard — Gomoku Grátis Online, Feito por Jogadores",
-      "description": "A YiBoard é uma plataforma de Gomoku grátis e sem download. Jogue contra IA ou amigos, suba do 9º Grau ao 9º Dan e aproveite um tabuleiro limpo e rápido em qualquer navegador.",
+      "title": "Sobre — Jogos de tabuleiro grátis no navegador",
+      "description": "A YiBoard é uma plataforma de Gomoku grátis e sem download. Jogue contra IA ou amigos e suba do 9º Grau ao 9º Dan, com um tabuleiro limpo e rápido.",
       "keywords": "gomoku, sobre yiboard, gomoku grátis, sistema de graduação gomoku"
     },
     "blog": {
@@ -19,24 +19,24 @@
       "title": "Gomoku Online Grátis — Cinco em linha contra IA ou jogadores reais"
     },
     "rankings": {
-      "title": "Ranking de Gomoku — Escada de 18 Degraus do 9º Grau ao 9º Dan",
+      "title": "Ranking de Gomoku — Escada de 18 Degraus",
       "description": "Suba a escada de ranking de Gomoku da YiBoard: 18 níveis do 9º Grau ao 9º Dan. Veja a tabela completa de graduações e como sua pontuação é calculada.",
       "keywords": "ranking gomoku, dan gomoku, graduações gomoku, escada gomoku"
     },
     "howTo": {
-      "title": "Como jogar seis jogos de tabuleiro | YiBoard",
+      "title": "Como jogar seis jogos de tabuleiro",
       "description": "Aprenda as regras de Gomoku, Xiangqi, Go, Reversi, Xadrez e Tsumego no YiBoard. Sem cadastro.",
       "keywords": "regras do gomoku, regras do xiangqi, regras do go, regras do reversi, regras do xadrez, tsumego"
     },
     "play": {
       "description": "Três formas de jogar Gomoku grátis: desafie a IA integrada, abra uma sala com amigos ou use a partida aleatória para enfrentar um jogador real. Sem cadastro.",
       "keywords": "play gomoku online, gomoku vs ai, gomoku two player, gomoku random match, gomoku friend room, gomoku multiplayer",
-      "title": "Jogue Gomoku Online — contra IA, amigos ou jogadores aleatórios"
+      "title": "Jogue Gomoku Online — contra IA ou amigos"
     },
     "pricing": {
       "description": "O YiBoard é 100% gratuito para jogar. Sem assinaturas, sem anúncios, sem conta.",
       "keywords": "gomoku free, gomoku no ads, gomoku no account, free browser game, free online board game",
-      "title": "Preços do YiBoard — Grátis para sempre, sem anúncios nem conta"
+      "title": "Preços — Grátis para sempre, sem anúncios"
     }
   },
   "brand": {
@@ -250,7 +250,14 @@
       "go": "Go",
       "reversi": "Reversi",
       "chess": "Xadrez"
-    }
+    },
+    "faqHead": "Perguntas frequentes",
+    "q1": "Como funciona o ranking do YiBoard?",
+    "a1": "Só partidas contra amigos alteram seu rating ELO. Partidas contra o motor aumentam seu histórico, mas nunca movem o rating. Os ratings correspondem a dezoito graus e dans, do Nono Grau ao Nono Dan.",
+    "q2": "Com que rating eu começo?",
+    "a2": "Todo mundo começa em 1200, o que corresponde ao Sexto Grau. Vença partidas contra amigos para subir rumo ao Nono Dan.",
+    "q3": "Por que a tabela está vazia?",
+    "a3": "Só partidas contra amigos são ranqueadas. Convide um amigo, jogue uma partida e você será o primeiro nome da tabela."
   },
   "howTo": {
     "title": "Como jogar",
@@ -323,7 +330,14 @@
     "p4": "Somos um time pequeno. Se algo estiver quebrado, ou uma tradução soar estranha no seu idioma, avise que a gente conserta na próxima versão.",
     "shopTitle": "Sobre os tabuleiros físicos",
     "shopBody": "Estamos preparando uma linha pequena de peças bem feitas: Xiangqi em madeira, pedras de Go em vidro. Não é brinde com logo em cima. Damos detalhes quando estiver pronto.",
-    "contact": "Contato"
+    "contact": "Contato",
+    "faqHead": "Perguntas frequentes",
+    "q1": "O YiBoard é gratuito?",
+    "a1": "Sim. Todos os jogos funcionam de graça no navegador, sem precisar de conta. Itens opcionais, como a linha de tabuleiros físicos, são à parte e ainda não estão à venda.",
+    "q2": "Preciso instalar alguma coisa?",
+    "a2": "Não. O YiBoard é um app web responsivo: abre em qualquer navegador de desktop ou celular, sem download, sem instalação e sem cadastro.",
+    "q3": "Quais jogos de tabuleiro posso jogar no YiBoard?",
+    "a3": "Seis: gomoku (cinco em linha), renju, xiangqi (xadrez chinês), Go, reversi e tsumego, além de xadrez. Cada um tem regras, tabuleiro ao vivo e replays de partidas compartilhadas."
   },
   "profile": {
     "title": "Seu histórico",
