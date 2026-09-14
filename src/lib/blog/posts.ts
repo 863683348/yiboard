@@ -2612,6 +2612,210 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    "slug": "go-platforms-what-works-what-does-not",
+  "date": "2026-09-14",
+  "title": {
+    "zh": "在线围棋平台：哪些做对了，哪些没有",
+    "en": "Go Platforms Online: What Works and What Does Not"
+  },
+  "description": {
+    "zh": "规则引擎早就是成熟问题，平台真正分出高下的是形势判断、悔棋、让子和认输的处理方式。按学棋、下棋、教棋三种用途分别说明怎么选。",
+    "en": "Every platform gets the rules right, so the real differences are the score estimate, undo, handicap support and how a resignation reads. How to pick for playing, learning or teaching."
+  },
+  "keywords": [
+  "go online platforms",
+  "play go online",
+  "go server review",
+  "ogs alternatives",
+  ],
+  "tags": [
+    "go",
+    "board games",
+    "online play",
+    "beginner guide"
+  ],
+  "content": {
+    "zh": [
+      "围棋是经典棋类里最容易\"在线下得很糟\"的一种。规则简单到任何平台都能完美支持，却仍然能让你下得一肚子火——因为围棋真正要紧的东西几乎都是社交性的：形势判断、悔棋、以及认输被怎么对待。",
+      {
+        "type": "h2",
+        "text": "每个平台都做对的部分"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "规则引擎。提子、打劫、双活、数子都是成熟问题，正规平台不会做错。",
+          "棋盘。能渲染、尺寸对、棋子看得清。",
+          "基础的通信用对局。按邮件或按回合下，几乎任何平台都撑得住。"
+        ]
+      },
+      "如果这些就是全部，那选择也太简单了。可惜不是。",
+      {
+        "type": "h2",
+        "text": "平台真正分出高下的地方"
+      },
+      {
+        "type": "h2",
+        "text": "1. 形势判断"
+      },
+      "实时的形势判断会改变初学者学棋的方式。有它的平台，你能在对局进行中看到某一手的代价；把它藏到最后的平台，你要在二十手之后才发现某场战斗早就输了。两者都不算错，但培养出的习惯完全不同。",
+      {
+        "type": "h2",
+        "text": "2. 悔棋与回退"
+      },
+      "通信用对局不需要它，实时教学对局需要。没有悔棋的平台不适合学棋，因为\"试一试\"的代价是整盘棋。",
+      {
+        "type": "h2",
+        "text": "3. 认输被怎么对待"
+      },
+      "听起来是小事，其实不是。有的平台把认输当成一条正式记录，有的把它当成一句\"算了\"。在教学场景里你需要后者，否则初学者会把输定的棋一路下完，白白耗掉两个人的时间。",
+      {
+        "type": "h2",
+        "text": "4. 让子支持"
+      },
+      "如果你想跟明显更强或更弱的人下，让子是唯一能让双方都觉得有意思的办法。很多平台支持让子，然后把它埋进三层菜单里。",
+      {
+        "type": "h2",
+        "text": "哪些做法不行"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "悄悄从别的服务器导入段位的等级分系统。你的分数会因为你看不见的原因变动。",
+          "对初学者没有读秒的用时规则。突然死亡制下，新手是输给计时器，不是输给棋盘。",
+          "手机上棋盘会跟着滚动的布局。棋盘在你读它的时候还在动，就是没法下。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "怎么选"
+      },
+      "先想清楚你在做什么。下通信用对局：几乎任何平台都行，按对手池来选。学棋：按悔棋、让子和可见的形势判断来选。教棋：按认输氛围，以及能不能跟学生对着一盘下完的棋复盘来选。",
+      {
+        "type": "h2",
+        "text": "常见问题"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "在线围棋平台会把规则做错吗？",
+            "a": "很少。提子、打劫、数子都已经定型。差异体现在等级分、悔棋、让子支持，以及平台怎么处理认输——这些在实际使用中影响更大。"
+          },
+          {
+            "q": "跟初学者下用让子值得吗？",
+            "a": "值得。不让子的话，强者要么压着水平下，要么每盘都赢，两种都没有教学价值。让子能把局面拉到值得思考的接近程度。"
+          },
+          {
+            "q": "学围棋用什么用时规则最好？",
+            "a": "任何带读秒的规则。突然死亡制会让初学者输给计时器而不是输给局面，教的东西是错的。"
+          }
+        ]
+      },
+      "你可以在 yiboardgame.com 的浏览器里直接试一整块 19 路棋盘，不用安装、不用注册，这是感受\"干净的棋盘加可见的形势判断\"能带来多大差别最快的方式。更多棋类笔记在博客里。",
+      {
+        "type": "cta",
+        "text": "在浏览器里下围棋 →",
+        "href": "/play"
+      },
+      {
+        "type": "cta",
+        "text": "更多棋类文章 →",
+        "href": "/blog"
+      }
+    ],
+    "en": [
+      "Go is the easiest of the classic board games to play online badly. The rules are simple enough that a platform can support them perfectly and still give you a miserable game, because almost everything that matters in Go is social: the score estimate, the undo, the way a resignation is read.",
+      {
+        "type": "h2",
+        "text": "What every platform gets right"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "The rules engine. Captures, ko, seki and scoring are solved problems, and no serious platform gets them wrong.",
+          "The board. It renders, it is the right size, the stones are legible.",
+          "Basic correspondence play. Play by email or by turn and almost any platform holds up."
+        ]
+      },
+      "If those were all that mattered, the choice would be trivial. They are not.",
+      {
+        "type": "h2",
+        "text": "Where platforms actually differ"
+      },
+      {
+        "type": "h2",
+        "text": "1. The score estimate"
+      },
+      "A live score estimate changes how beginners learn. On a platform that shows it, you can see the cost of a move while the game is still running. On one that hides it until the end, you find out twenty moves later that a fight was already lost. Neither is wrong, but they teach different habits.",
+      {
+        "type": "h2",
+        "text": "2. Undo and take-back"
+      },
+      "Correspondence games do not need it. Live teaching games do. A platform with no take-back is a poor place to learn, because the punishment for experimenting is the whole game.",
+      {
+        "type": "h2",
+        "text": "3. How a resignation reads"
+      },
+      "This sounds trivial and is not. Some platforms treat a resignation as a formal record; others treat it as a shrug. In a teaching context you want the second, because otherwise beginners play out lost games to the end, which wastes both players' time.",
+      {
+        "type": "h2",
+        "text": "4. Handicap support"
+      },
+      "If you want to play with someone much stronger or much weaker, handicap is the only thing that makes the game interesting for both sides. Plenty of platforms support it and then bury it three menus deep.",
+      {
+        "type": "h2",
+        "text": "What does not work"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ranking systems that import a rating from another server without saying so. Your number moves for reasons you cannot see.",
+          "Time controls with no increment for beginners. Under sudden death, new players lose to the clock, not to the board.",
+          "Mobile layouts where the board scrolls. A board that moves while you are reading it is unplayable."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "How to pick"
+      },
+      "Decide what you are actually doing first. Playing correspondence games: almost anything works, pick for the player pool. Learning: pick for undo, handicap and a visible score estimate. Teaching: pick for the resignation culture and the ability to review a finished game with the student.",
+      {
+        "type": "h2",
+        "text": "FAQ"
+      },
+      {
+        "type": "faq",
+        "items": [
+          {
+            "q": "Do online Go platforms get the rules wrong?",
+            "a": "Rarely. Captures, ko and scoring are settled. Differences show up in ranking, undo, handicap support and how the platform handles resignation, which matter more in practice."
+          },
+          {
+            "q": "Is handicap play worth using with beginners?",
+            "a": "Yes. Without handicap, a strong player either plays below their level or wins every game, and neither is instructive. Handicap makes the game close enough to be worth thinking about."
+          },
+          {
+            "q": "What time control is best for learning Go?",
+            "a": "Anything with an increment. Sudden death makes beginners lose to the clock instead of to the position, which teaches the wrong lesson."
+          }
+        ]
+      },
+      "You can try a full 19x19 board in the browser at yiboardgame.com with no install and no account, which is the fastest way to feel the difference a clean board and a visible score estimate make. More board game notes are on the blog.",
+      {
+        "type": "cta",
+        "text": "Play Go in your browser →",
+        "href": "/play"
+      },
+      {
+        "type": "cta",
+        "text": "More board game posts →",
+        "href": "/blog"
+      }
+    ]
+  }
+},
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
