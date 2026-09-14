@@ -2816,6 +2816,158 @@ export const POSTS: BlogPost[] = [
     ]
   }
 },
+{
+    "slug": "xiangqi-platform-gap",
+    "date": "2026-09-13",
+    "title": {
+      "zh": "象棋平台现状：为什么缺少好的",
+      "en": "The Xiangqi Platform Gap"
+    },
+    "description": {
+      "zh": "英文象棋平台又少又常写错规则。我们讲清这道缺口、蹩马腿为何难住应用，以及哪里能下规则正确的象棋。",
+      "en": "Xiangqi online platforms in English are thin and often rule-wrong. We explain the gap, why the legged horse breaks apps, and where to play xiangqi online."
+    },
+    "keywords": [
+      "xiangqi online platforms",
+      "chinese chess website",
+      "play xiangqi online",
+      "xiangqi app"
+    ],
+    "tags": [
+      "xiangqi",
+      "chinese chess",
+      "online play",
+      "board games"
+    ],
+    "content": {
+      "en": [
+        {
+          "type": "h2",
+          "text": "Western chess and Go tools never covered Xiangqi"
+        },
+        "Most English-language board-game infrastructure was built around chess and, later, Go. Xiangqi fell through the gap. The piece names are inconsistently romanised: the same horse is Ma, Maa, or Ma with tone marks depending on the site, and the cannon is Pao, Pao, or Pawn on bad translations. Rule sets differ too. The horse-leg block (a piece blocking the horse's diagonal step) and the elephant-river limit (elephants cannot cross the river) are easy to implement wrong, and several small apps get them wrong. Notation systems are not standardised in English the way algebraic chess notation is, so move lists from one site do not paste cleanly into another. When a site does support Xiangqi, the move validator is often a thin wrapper that misses edge cases the rulebook treats as basic.",
+        {
+          "type": "h2",
+          "text": "The strongest platforms are Chinese-language-first"
+        },
+        "The deepest Xiangqi engines and largest player pools live on Chinese services. For a newcomer who does not read the language, they are rough: account registration can require a local phone number, ad load is heavy, and the UI is dense with features aimed at serious players. A curious English speaker who wants to learn the game hits a wall of friction before they make a first move. Worse, some gate features behind a paid membership or a friend invite, which blocks a tourist who just wants a single casual game. The few English-facing options are thin, often abandonware, or missing the rule correctness that matters most.",
+        {
+          "type": "h2",
+          "text": "The openings library problem is harder than in chess"
+        },
+        "Chess has centuries of standardised opening theory with English names everyone agrees on. Xiangqi has rich opening theory too, but far fewer standardised English-language references. A player who wants to study the Screen Horse or Central Cannon openings must dig through scattered, inconsistently translated material. An opening explorer that works in English, with correct move trees, barely exists. There is no equivalent of a single trusted English reference like Modern Chess Openings that a beginner can buy and rely on, so the learning curve starts cold.",
+        {
+          "type": "h2",
+          "text": "What a good browser implementation needs"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Correct move validation, including the legged horse and the elephant's river limit, enforced on every move.",
+            "A readable board on mobile without scrolling, with pieces large enough to tap.",
+            "Undo for teaching, so a learner can step back through a line without losing the game.",
+            "An opening explorer and a local, offline mode that needs no account."
+          ]
+        },
+        "None of these are exotic, but together they are rare. Most projects nail one or two and skip the rest. The account-free offline mode is the one almost everyone drops, which is a shame because it is what makes the game teachable on a phone with bad signal. The legged horse in particular is the trap: many hobby projects validate the destination square but forget to check the adjacent orthogonal square, so illegal moves slip through.",
+        {
+          "type": "h2",
+          "text": "The opportunity: a no-install, no-account board"
+        },
+        "There is clear room for a board that opens in the browser, asks for nothing, and gets the rules exactly right. The value is not a stronger engine but a correct, calm place to learn: validate moves properly, show why a move is illegal, let players undo, and teach the openings as they play. You can try a full board in the browser at yiboardgame.com, with no install and no account. A small, correct board also lowers the bar for schools and parents who want to teach the game without handing a child a full social account. It also helps diaspora parents who grew up with the game but never learned the formal names in English, giving them a way to play with their kids. Start a game at /play, and read more strategy and platform notes at /blog.",
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Why are there so few good English Xiangqi platforms?",
+              "a": "The strongest engines are Chinese-language-first, with heavy account friction and dense UIs. English-facing options are thin or abandonware, and the rules are often implemented wrong."
+            },
+            {
+              "q": "What rule do Xiangqi apps get wrong most?",
+              "a": "The legged horse (a blocking piece cancels the horse's step) and the elephant's river limit. Both are easy to code incorrectly, and several small apps do."
+            },
+            {
+              "q": "Do I need an account to play on yiboardgame.com?",
+              "a": "No. The board opens in the browser with no install and no account, and it enforces the rules correctly including the legged horse."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Play Xiangqi in your browser →",
+          "href": "/play"
+        },
+        {
+          "type": "cta",
+          "text": "More board game posts →",
+          "href": "/blog"
+        }
+      ],
+      "zh": [
+        {
+          "type": "h2",
+          "text": "西方的象棋和围棋工具从未覆盖象棋"
+        },
+        "大多数英文棋盘游戏基础设施都是围绕国际象棋、后来再围绕围棋搭建的。象棋卡在了缝隙里。棋子名称的罗马化并不统一：同一匹马，在这个站叫 Ma，那个站叫 Maa，还有的带声调符号；炮在糟糕的翻译里甚至被叫成 Pawn。规则集也不同。蹩马腿（挡住马走日字斜步的棋子）和相不过河（象不能越过河界）很容易被写错，好几个小应用写错。记谱系统也不像国际象棋代数记谱那样有英文标准，所以一个站的导谱粘贴到另一个站会乱掉。",
+        {
+          "type": "h2",
+          "text": "最强的平台以中文为第一语言"
+        },
+        "最深的象棋引擎和最大的玩家群都在中文服务上。对一个不懂中文的新人来说，它们很粗暴：注册账号常常要本地手机号，广告很重，界面塞满面向高手的功能。一个想学棋的英文使用者，还没走第一步就被摩擦墙挡住。少数面向英文的选项是稀薄的，是弃坑软件，或缺少最关键的规则正确性。",
+        {
+          "type": "h2",
+          "text": "开局库问题比国际象棋更难"
+        },
+        "国际象棋有数百年标准化的开局理论，英文名称人尽皆知。象棋也有丰富的开局理论，但标准化的英文资料少得多。想研究“屏风马”或“中炮”的玩家，得在零散材料里翻找。一个能用英文工作、着法树正确的开局浏览器，几乎不存在。这既是内容问题，也是软件问题。",
+        {
+          "type": "h2",
+          "text": "一个好的浏览器实现需要什么"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "正确的走子校验，包括蹩马腿和相不过河，且每一步都强制执行。",
+            "手机上无需滚动就能看清的棋盘，棋子足够大以便点按。",
+            "用于教学的悔棋，让学习者能逐步回退而不丢失对局。",
+            "开局浏览器，以及一个无需账号的本地离线模式。"
+          ]
+        },
+        "这些单独看都不稀奇，合在一起却很少见。多数项目做好一两项就跳过了其余。几乎人人都丢掉的，是免账号的离线模式，这很可惜，因为它正是一台信号差的手机上能把棋教起来的关键。",
+        {
+          "type": "h2",
+          "text": "机会：免安装、免账号的棋盘"
+        },
+        "明显还缺一个在浏览器里打开、什么都不问、且规则绝对正确的棋盘。价值不在更强的引擎，而在一个正确、安静的学习场所：正确校验走子、说明某步为何非法、允许悔棋、并在对弈中教开局。你可以在 yiboardgame.com 的浏览器里试整块棋盘，免安装、免账号。到 /play 开一局，更多策略与平台笔记请看 /blog。",
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "为什么好的英文象棋平台这么少？",
+              "a": "最强的引擎以中文为第一语言，账号摩擦重、界面密集。面向英文的选项稀薄或已弃坑，规则还常常写错。"
+            },
+            {
+              "q": "象棋应用最常写错哪条规则？",
+              "a": "蹩马腿（挡子的棋子会取消马的那一步）和相不过河。两者都容易写错，好几个小应用都中招。"
+            },
+            {
+              "q": "在 yiboardgame.com 下棋需要账号吗？",
+              "a": "不需要。棋盘在浏览器里打开，免安装、免账号，并且正确执行包括蹩马腿在内的规则。"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "在浏览器里下象棋 →",
+          "href": "/play"
+        },
+        {
+          "type": "cta",
+          "text": "更多棋类文章 →",
+          "href": "/blog"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
