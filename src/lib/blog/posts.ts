@@ -2968,6 +2968,62 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: 'gomoku-go-family-history',
+    date: '2026-09-15',
+    title: { zh: '五子棋与围棋的家族史', en: 'The Family History of Gomoku and Go' },
+    description: { zh: '五子棋和围棋长得很像，常被当成亲戚。它们共用一张棋盘，除此之外几乎没有共同点。这篇把两者的真实关系讲清楚。', en: 'Gomoku and Go look like relatives and are often confused for each other. They share a board and almost nothing else. Here is the actual family tree.' },
+    keywords: ['gomoku history', 'origin of gomoku', 'gomoku vs go', 'five in a row history'],
+    tags: ['gomoku','go','history'],
+    content: {
+      zh: [
+        { type: 'h2', text: '混淆可以理解' },
+        '两者都用交点棋盘，都用黑白棋子，都没有隐藏信息。隔着一个房间看，它们像同一个游戏。',
+        '但在底层，它们解决的是相反的问题，而这个差别解释了后面的一切。',
+        { type: 'h2', text: '同一张棋盘，两个目标' },
+        { type: 'ul', items: ['围棋是地盘。棋盘从空开始，落子用来围出空间，当剩余着手无法改变比分时结束。', '五子棋是连接。棋盘同样从空开始，落子用来抢在对手之前连成五子。'] },
+        '围棋奖励耐心和缓慢积累，五子棋奖励模式识别和即时应对威胁。围棋下得好的人不会自动擅长五子棋。',
+        { type: 'h2', text: '五子棋的来源' },
+        '通行的说法是五子棋出自围棋的简化，至少是同一套「棋盘加棋子」传统里的产物。规则短到一句话能讲完，这也是它传播如此广的重要原因。',
+        '这种流行是双向的。规则极简意味着各地变体大量增生，叫法也随之变多。',
+        { type: 'h2', text: '各地的名字' },
+        { type: 'ul', items: ['中国：五子棋，字面就是五子连成一线', '日本：五目並べ，国际通用名 Gomoku 的来源', '韩国：오목，同一个游戏的独立传统', '英语：Gomoku 和 Five in a Row 两种叫法都在用'] },
+        { type: 'h2', text: '先手问题' },
+        '五子棋有一个围棋没有的公平性问题。不加限制时，在足够高的水平上先手有决定性优势，而且存在已被解出的开局定式。',
+        '应对方式是规则变体，而不是改动游戏本身。连珠为先行方设置了禁手，无禁手五子棋保留开放棋盘并接受这种不平衡，各类赛制对限制的程度各不相同。',
+        { type: 'h2', text: '常见问题' },
+        { type: 'faq', items: [
+          { q: '五子棋是简化版围棋吗？', a: '这是它起源的通说，但今天两者是独立的游戏。学会一个不会顺带学会另一个。' },
+          { q: '五子棋被解出了吗？', a: '15x15 的无禁手五子棋已被解出，结果对先手有利。连珠规则的目的就是削弱这个优势。' },
+          { q: '围棋和五子棋能共用棋盘吗？', a: '可以，而且经常共用。15 路或 19 路棋盘两边都能下，这也是它们容易被混淆的原因之一。' },
+        ] },
+        { type: 'cta', text: '两边都下一局，感受差别', href: '/play' },
+      ],
+      en: [
+        { type: 'h2', text: 'The confusion is understandable' },
+        'Both use a grid of intersections, both use black and white stones, and both are played without hidden information. Seen from across a room they look like the same game.',
+        'Underneath, they are solving opposite problems, and the difference explains everything else about them.',
+        { type: 'h2', text: 'One board, two goals' },
+        { type: 'ul', items: ['Go is about territory. The board starts empty, stones are placed to surround space, and the game ends when the remaining moves cannot change the score.', 'Gomoku is about connection. The board also starts empty, but stones are placed to form an unbroken line of five before the opponent does.'] },
+        'Go rewards patience and slow accumulation. Gomoku rewards pattern recognition and immediate threat handling. A strong Go player is not automatically strong at Gomoku.',
+        { type: 'h2', text: 'Where Gomoku came from' },
+        'The usual account is that Gomoku developed as a simplification of Go, or at least grew up in the same tradition of grid-and-stone games. The rules are short enough to teach in a sentence, which is a large part of why it travelled so widely.',
+        'That popularity cut both ways. Because the rules are minimal, regional variants multiplied, and so did the names.',
+        { type: 'h2', text: 'Names across regions' },
+        { type: 'ul', items: ['China: 五子棋 (wuziqi), literally five-in-a-row', 'Japan: 五目並べ (gomoku narabe), which is where the international name comes from', 'Korea: 오목 (omok), the same game in its own tradition', 'English: both Gomoku and Five in a Row are in common use'] },
+        { type: 'h2', text: 'The first-player problem' },
+        'Gomoku has a real fairness problem that Go does not. With no restrictions, the first player has a decisive advantage at a high enough level of play, and solved openings exist.',
+        'The response was rule variants rather than a rule change to the game itself. Renju adds forbidden moves for the first player. Free-style Gomoku keeps the board open and simply accepts the imbalance. Tournament formats vary in how much they restrict.',
+        { type: 'h2', text: 'FAQ' },
+        { type: 'faq', items: [
+          { q: 'Is Gomoku a simplified Go?', a: 'That is the usual account of its origin, but they are separate games today. Learning one does not teach the other.' },
+          { q: 'Is Gomoku solved?', a: 'Free-style Gomoku on a 15x15 board is solved in favour of the first player. Renju rules exist to reduce that advantage.' },
+          { q: 'Can Go and Gomoku use the same board?', a: 'Yes, and they often do. A 15x15 or 19x19 grid works for both, which is part of why they get confused.' },
+        ] },
+        { type: 'cta', text: 'Play both and feel the difference', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
