@@ -3024,6 +3024,84 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'go-game-history-territory',
+    date: '2026-09-17',
+    tags: ['weiqi', 'history'],
+    title: {
+      zh: '围棋的围：两千年的领土游戏',
+      en: 'Go: Two Thousand Years of Territory',
+    },
+    description: {
+      zh: '围棋的「围」就是它的名字。起源中国、传到日本韩国、再走向世界，规则三千年几乎没变。这篇讲围棋的历史脉络，以及为什么「围地」这个核心一直没被动摇。',
+      en: 'The Chinese name for go literally means the encircling game. Born in China, carried to Japan and Korea, then worldwide, its rules have barely changed in two thousand years. This post traces that history and why territory, the core idea, never moved.',
+    },
+    keywords: ['go game history', 'origin of go', 'weiqi history', 'go philosophy', 'ancient chinese board game'],
+    content: {
+      zh: [
+        '围棋在中文里的名字已经说出了它的本质：「围」。两个对手轮流落子，围住的空越多，得分越高。这个简单规则从春秋战国传到今天，三千年没有本质改变。它是世界上仍在流行、规则保存最完整的古老棋盘游戏。今天你就能在 yiboardgame.com 的[围棋页](/play/weiqi)体验这份遗产。',
+        { type: 'h2', text: '起源：中国，公元前' },
+        '关于围棋的起源，最常被引用的说法是把发明归于帝尧，用来教导儿子丹朱。这属于传说，缺乏考古支撑。可靠的证据是考古出土的棋盘：河北望都、甘肃敦煌等地都发现了汉代及更早的棋盘实物，说明围棋在西汉已经相当普及。',
+        { type: 'h2', text: '传到日本与韩国' },
+        '围棋在南北朝时期传入朝鲜半岛，唐代前后传到日本。日本把围棋推向了新的高度：江户时代，幕府设立「棋所」，职业棋士制度成型，本因坊等名号延续数百年。韩国的围棋传统同样深厚，现代棋坛长期被中、日、韩三国主导。',
+        { type: 'h2', text: '为什么规则几乎没变' },
+        {
+          type: 'ul',
+          items: [
+            '核心目标明确：围地多者胜，不需要棋子离场也能理解',
+            '规则足够「薄」：落子、气、提子、打劫，几条就讲完',
+            '复杂度藏在棋盘上：19 路的组合数远超宇宙原子数，变化来自棋盘而非规则',
+            '文化地位稳定：在中国是「琴棋书画」四艺之一，在日韩是竞技与修养的双重载体',
+          ],
+        },
+        { type: 'h2', text: '「围」为什么是围棋的灵魂' },
+        '象棋的核心是吃子与将军，围棋的核心是占地。吃子只是手段，围空才是目的。这种「以地论胜负」的取向，让围棋的策略天然偏向大局观：局部战斗输了，只要全局地势占优，依然可能赢。这也是围棋哲学里常说的「取势」与「取地」的平衡。',
+        { type: 'h2', text: '今天怎么开始下围棋' },
+        '围棋入门不难，规则几句话能讲清。难的是判断棋形与取舍，这需要大量对局积累。对新手来说，先在 9 路或 13 路小棋盘上练习，熟悉气与死活，再上 19 路。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '围棋的「围」到底是什么意思？', a: '围指围空。双方轮流落子，最后按各自围住的交叉点数计分，围得多的一方胜。' },
+            { q: '围棋有多少年历史？', a: '有考古证据的棋局可追溯到汉代前后，传说可上溯到尧舜时代，通常说有两千年以上的历史。' },
+            { q: '围棋和五子棋规则差很多吗？', a: '差很多。五子棋比谁先连成五子，围棋比谁围的地多，且涉及气、提子、打劫等规则。' },
+          ],
+        },
+        { type: 'cta', text: '在线下一局围棋，感受两千年的围', href: '/play/weiqi' },
+      ],
+      en: [
+        'The Chinese name for go says it all: weiqi, the encircling game. Two players take turns placing stones, and whoever surrounds more empty space wins. That simple rule has traveled from the Warring States period to today with almost no change, which makes go the oldest board game still played in its original form. You can try it right now on the [go page](/play/weiqi) at yiboardgame.com.',
+        { type: 'h2', text: 'Origins: China, centuries BC' },
+        'The most repeated story credits Emperor Yao with inventing go to teach his son Danzhu. That is legend, without archaeological support. What we have are actual boards: excavation finds in Wangdu, Hebei, and Dunhuang, Gansu, show that go was already common by the Han dynasty.',
+        { type: 'h2', text: 'The road to Japan and Korea' },
+        'Go reached the Korean peninsula during the Southern and Northern Dynasties and arrived in Japan around the Tang dynasty. Japan pushed it furthest: in the Edo period the shogunate established a system of professional players, and titles like Honinbo lasted for centuries. Korea shares a deep tradition, and modern go has long been dominated by China, Japan, and Korea.',
+        { type: 'h2', text: 'Why the rules barely changed' },
+        {
+          type: 'ul',
+          items: [
+            'The goal is transparent: more territory wins, understandable without any pieces leaving the board',
+            'The rules are thin: placing, liberties, capture, and ko cover most of it',
+            'The complexity lives on the board: the 19x19 grid offers more combinations than atoms in the universe, so depth comes from play, not rules',
+            'Cultural status stayed stable: one of the four arts in China, and both a sport and a discipline in Japan and Korea',
+          ],
+        },
+        { type: 'h2', text: 'Why territory is the soul of go' },
+        'Chess revolves around checkmate; go revolves around land. Capturing stones is a means, surrounding space is the end. That orientation pushes strategy toward the whole board: lose a local fight and still win if your global position holds. It is the balance between influence and territory that go players talk about constantly.',
+        { type: 'h2', text: 'How to start today' },
+        'Getting into go is easy; the rules fit in a few sentences. The hard part is reading shapes and making trade-offs, which takes many games. New players do better starting on a 9x9 or 13x13 board to learn liberties and life-and-death before moving to 19x19.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'What does the Chinese name for go mean?', a: 'It means encircling. Players surround empty intersections, and whoever controls more territory at the end wins.' },
+            { q: 'How old is go?', a: 'Boards with archaeological support go back to around the Han dynasty, and legend reaches further, so the game is usually called over two thousand years old.' },
+            { q: 'Is go very different from gomoku?', a: 'Very. Gomoku is a race to five in a row; go is a territorial game with liberties, capture, and ko.' },
+          ],
+        },
+        { type: 'cta', text: 'Play go online and feel two thousand years of territory', href: '/play/weiqi' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
