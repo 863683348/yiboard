@@ -3102,6 +3102,62 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: "eastern-vs-western-board-game-philosophy",
+    date: "2026-09-21",
+    tags: ["board games", "game design", "culture", "strategy"],
+    keywords: ["board games", "go strategy", "chess strategy", "game philosophy", "eastern vs western"],
+    title: {
+      zh: "东方与西方棋类哲学的差异：从围棋到国际象棋",
+      en: "Eastern vs Western Board Game Philosophy: From Go to Chess",
+    },
+    description: {
+      zh: "围棋讲究布局与势，国际象棋强调战术与征服。两种棋类哲学背后是两种文明对「胜负」与「过程」的根本理解差异。",
+      en: "Go rewards influence and patience; chess rewards tactics and conquest. Behind these two game philosophies lie two civilizations' fundamentally different ideas about winning, and about process itself.",
+    },
+    content: {
+      zh: [
+        "翻开任何一本棋类入门书，你都会看到同一句话：先学规则，再学战略。但规则本身已经预设了战略。围棋的规则只有一句话——轮流落子，围地多者胜。国际象棋的规则则需要几十页才能讲完，因为每种棋子都有各自的走法、吃法和限制。这种规则复杂度上的差异，直接塑造了两种完全不同的思考方式。",
+        { type: "h2", text: "棋盘观：空与满" },
+        "围棋从一个空棋盘开始，361 个交叉点全部留给玩家自己去定义。国际象棋则从一个满棋盘开始，32 枚棋子各就各位，玩家做的是调动和交换。前者是「创造秩序」，后者是「重组既有秩序」。这决定了围棋的对局前期像是播种，国际象棋的前期像是谈判。",
+        "一个直接的后果是：围棋的前 50 手常常看不出胜负，甚至看不出意图；而国际象棋的前 10 手已经能读出双方的性格。围棋允许你「浪费」一手棋去布局，因为它相信复利；国际象棋要求你每一手都有明确的战术或位置收益，因为它相信效率。",
+        { type: "h2", text: "胜负观：赢半目与将死" },
+        "围棋的胜负是连续的——可以赢半目，可以赢一百目，但只有胜负两种结局。国际象棋的胜负是离散的——要么将死，要么和棋，没有中间地带。这种差别导致围棋选手长期在「边际收益」上竞争，赢半目和赢一百目的积分差距，远小于它背后的技术差距。",
+        "实践意义在于：围棋的复盘重心是「哪一手的效率低了」，国际象棋的复盘重心是「哪一步埋下了致命的漏洞」。前者是持续优化，后者是风险控制。",
+        { type: "h2", text: "过程与结果的权重" },
+        "传统东亚棋类文化高度评价「棋品」——你如何赢，你如何输，比赢本身更重要。西方的棋类传统则更早地走向竞技化，胜负就是全部。这并非优劣之分，而是两套博弈传统在不同社会结构下自然演化的结果。",
+        { type: "h2", text: "两张对照表" },
+        { type: "ul", items: [
+          "目标：围棋 = 围地最大化 / 国际象棋 = 将死对方王",
+          "开局：围棋 = 空棋盘自主构建 / 国际象棋 = 满棋盘既定调度",
+          "节奏：围棋 = 长线复利 / 国际象棋 = 短促战术",
+          "复盘：围棋 = 效率优化 / 国际象棋 = 漏洞排查",
+        ]},
+                "如果你想在浏览器里直接体验这两种思路的碰撞，YiBoard 提供了围棋、中国象棋、五子棋等中文棋类的在线对局，无需下载、无需注册即可开局。",
+        { type: "cta", text: "免费试玩", href: "/games" },
+      ],
+      en: [
+        "Open any introductory book on board games and you will read the same line: learn the rules first, then learn strategy. But the rules already presuppose a strategy. The rules of Go fit in a single sentence - place stones alternately, and whoever surrounds more territory wins. The rules of chess take dozens of pages, because every piece has its own movement, capture, and restriction. That gap in rule complexity directly shapes two entirely different ways of thinking.",
+        { type: "h2", text: "The Board: Empty vs Full" },
+        "Go begins from an empty board, leaving all 361 intersections for the players to define. Chess begins from a full board, with 32 pieces already in place, and the players spend the game manoeuvring and trading them. The first is the creation of order; the second is the reorganisation of an order that already exists. This makes the opening of a Go game feel like sowing, and the opening of a chess game feel like negotiating.",
+        "A direct consequence: the first fifty moves of a Go game often reveal nothing about who is winning, or even what either side intends. The first ten moves of a chess game already tell you a lot about both players' personalities. Go permits you to spend a move on pure structure, because it believes in compounding. Chess demands that every move carry immediate tactical or positional value, because it believes in efficiency.",
+        { type: "h2", text: "Winning: Half a Point vs Checkmate" },
+        "Go outcomes are continuous - you can win by half a point, or by a hundred - yet only two outcomes exist: win or lose. Chess outcomes are discrete: checkmate, or a draw, with nothing in between. The result is that Go players compete perpetually on marginal advantage, and the rating gap between winning by half a point and winning by a hundred is far smaller than the skill gap behind it.",
+        "In practice: post-game review in Go centres on which move was inefficient; review in chess centres on which move planted a fatal weakness. The first is continuous optimisation, the second is risk control.",
+        { type: "h2", text: "Process vs Outcome" },
+        "Traditional East Asian game culture places high value on conduct - how you win and how you lose matters more than the win itself. The Western chess tradition turned competitive far earlier, and the result is all that counts. This is not a question of better or worse, but of two gaming traditions evolving under different social structures.",
+        { type: "h2", text: "Two Sides, Side by Side" },
+        { type: "ul", items: [
+          "Goal: Go = maximise surrounded territory / Chess = checkmate the king",
+          "Opening: Go = build from an empty board / Chess = deploy a fixed board",
+          "Tempo: Go = long-horizon compounding / Chess = short sharp tactics",
+          "Review: Go = optimise efficiency / Chess = hunt for blunders",
+        ]},
+                "If you want to feel that collision of approaches directly in a browser, YiBoard hosts Go, Chinese chess, and Gomoku for online play - no download and no signup required to start a game.",
+        { type: "cta", text: "Play free", href: "/games" },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
