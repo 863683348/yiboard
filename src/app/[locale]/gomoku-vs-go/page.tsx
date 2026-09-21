@@ -26,10 +26,11 @@ type Content = {
 
 const EN: Content = {
   meta: {
-    title: 'Gomoku vs Go vs Connect 4 — What’s the Difference?',
+    // P1-5：结论式对比标题——直接命中「gomoku vs go」查询意图（A+ 桶：67 曝光 / 排名 9.4 / 0 点击）
+    title: 'Gomoku vs Go: Rules, Board, and Win Conditions — Full Comparison',
     description:
-      'Compare gomoku with Go, Connect 4, and Connect 6. Boards, piece captures, win conditions, learning curve, and game length — find the right game for you.',
-    keywords: 'gomoku vs go, gomoku vs connect 4, connect 6, gomoku vs connect four, five in a row vs go',
+      'Gomoku vs Go at a glance: 15×15 vs 19×19 boards, no captures vs territory, five-in-a-row vs territory win — one table to see the difference, plus Connect 4 and Connect 6.',
+    keywords: 'gomoku vs go, go vs gomoku, gomoku vs connect 4, connect 6, gomoku vs connect four, five in a row vs go',
   },
   h1: 'Gomoku vs Go vs Connect 4',
   lead: 'People often mix up gomoku with Go or Connect 4 because the boards look similar. Here is a side-by-side look at how gomoku compares with three related games — and where each one shines.',
@@ -81,10 +82,11 @@ const EN: Content = {
 
 const ZH: Content = {
   meta: {
-    title: '五子棋 vs 围棋 vs 四子棋 — 区别在哪？',
+    // P1-5：结论式对比标题——直接命中「五子棋 vs 围棋 / 围棋 vs 五子棋」查询意图（A+ 桶）
+    title: '五子棋 vs 围棋：规则、棋盘、胜负条件全对比',
     description:
-      '对比五子棋与围棋、四子棋（Connect 4）、六子棋。棋盘、吃子、胜负条件、学习曲线与单局时长——帮你选对游戏。',
-    keywords: '五子棋 vs 围棋, 五子棋 vs 四子棋, 六子棋, 五子棋与围棋, 五子连珠对比',
+      '五子棋和围棋到底差在哪：15×15 对 19×19 棋盘、不吃子对可提子、五连对围地胜负——一张表看懂，另附四子棋、六子棋对比。',
+    keywords: '五子棋 vs 围棋, 围棋 vs 五子棋, 五子棋 vs 四子棋, 六子棋, 五子棋与围棋, 五子连珠对比',
   },
   h1: '五子棋 vs 围棋 vs 四子棋',
   lead: '因为棋盘长得像，很多人会把五子棋和围棋或四子棋搞混。下面把五子棋与三种相近游戏逐一对比，看看各自适合什么场景。',
