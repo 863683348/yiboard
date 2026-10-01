@@ -3158,6 +3158,191 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: "gomoku-defense-first",
+    date: "2026-10-02",
+    tags: ["gomoku", "strategy", "defense", "blocking"],
+    title: {
+      zh: "防守的艺术：先堵还是先攻",
+      en: "Defense First: Block or Attack",
+    },
+    description: {
+      zh: "五子棋防守不是看到三子就堵。这篇讲清哪些棋形必须立刻处理、哪些可以放着不管，以及怎样把防守的那一步下成反攻的起点。",
+      en: "Gomoku defense is not about blocking every three. This covers which shapes demand an immediate answer, which can be ignored, and how to turn a blocking stone into a counter attack.",
+    },
+    keywords: [
+      "gomoku defense",
+      "gomoku blocking strategy",
+      "defensive play gomoku",
+      "gomoku counter attacks",
+      "how to block open three in gomoku",
+      "gomoku defense vs attack",
+    ],
+    content: {
+      zh: [
+        "五子棋防守是新手最先遇到、也最容易搞错的一件事。绝大多数人的默认反应是看到对方三子就堵，结果一路被动，最后被对手用看似无关的落子连成五子。问题不在于堵得不够快，而在于没有区分哪些棋形必须立刻处理、哪些根本不用管，以及堵的那一步能不能顺带制造威胁。这篇讲清楚判断标准，以及怎样把防守子下成反攻的起点。",
+        { type: "h2", text: "先搞清一件事：不是每个活三都要堵" },
+        "五子棋里真正需要你响应的，只有活三。活三的定义是：再落一子就能形成活四，而活四是无法被防守的，因为两头都能成五。",
+        {
+          type: "ul",
+          items: [
+            "这三条线是不是连续的，中间没有空格",
+            "两端是否都还空着，并且延长一格后不会立刻被堵死",
+          ],
+        },
+        "如果一端已经被自己的子或棋盘边界挡住，那是眠三，形成冲四时只有一个成五点，是可以算清楚再处理的。很多新手把眠三当活三来堵，白白浪费一手。",
+        { type: "h2", text: "必须立刻处理的三种棋形" },
+        "按优先级排列，出现下面任何一种时，你的下一手基本没有别的选择。",
+        {
+          type: "ul",
+          items: [
+            "活四：已经无法防守，真正的应对是在对手形成活四之前就动手",
+            "活三：必须堵，但可以选堵哪一端",
+            "冲四：只有一个成五点，必须堵住那一点，这是强制的一手",
+          ],
+        },
+        "冲四的优先级高于活三，因为冲四下一手就成五。如果对手同时有冲四和活三，先挡冲四的成五点，再看活三是否还在。",
+        { type: "h2", text: "堵了就是输：被动防守的代价" },
+        "单纯跟着对手的棋形走，会陷入一种固定节奏：对手制造威胁，你回应，对手再制造新威胁。这种节奏下你永远慢一手，因为你的每一步都被对方的上一手决定。",
+        {
+          type: "ul",
+          items: [
+            "你的落子位置由对手决定，无法围绕自己的棋形做积累",
+            "对手可以在制造威胁的同时搭建自己的结构，一次落子两用",
+            "到中后盘，棋盘上会同时出现两三个威胁，你只能处理一个",
+          ],
+        },
+        "判断自己是否陷入被动，看一个简单的指标：回头数你的落子里有多少是落在对手上一手旁边的位置。超过一半就说明节奏在对方手里。",
+        { type: "h2", text: "反攻：把防守子变成威胁" },
+        "好的防守落子同时做两件事：堵住对方，并且形成自己的棋形。这正是防守反击的思路，也是五子棋里最容易被低估的一手。",
+        {
+          type: "ul",
+          items: [
+            "堵活三时优先选那一端，使你的子落在自己已有棋子的延长线上",
+            "优先选择能形成跳三或活二的位置，而不是仅仅贴着对方",
+            "如果堵的同时能形成活三，对方就必须反过来回应你，攻守易位",
+          ],
+        },
+        "这一步的收益不只是效率。当对手发现每制造一次威胁都会被你反过来威胁，他就不得不分心防守，节奏自然回到你这边。",
+        { type: "h2", text: "一个能直接套的判断顺序" },
+        "每次轮到你时，按这个顺序扫一遍棋盘，不需要长考。",
+        {
+          type: "ul",
+          items: [
+            "先看自己有没有成五点，有就直接落",
+            "再看对手有没有成五点，有就堵",
+            "检查自己能否一手形成活四，能就走",
+            "检查对手能否一手形成活四，能就堵住关键点",
+            "检查自己能否形成活三同时堵住对手的活三，这是最优解",
+            "以上都没有时，落在能同时延伸自己两个方向的位置",
+          ],
+        },
+        "这个顺序里有两条是关于自己的，说明进攻和防守的检查要交替进行，而不是先防完再想攻。",
+        { type: "h2", text: "新手最常见的三种防守误判" },
+        {
+          type: "ul",
+          items: [
+            "把眠三当活三堵，浪费一手且没有收益",
+            "堵在对方棋形的中间而不是两端，实际上没有消除威胁",
+            "只盯着对方最近落的一子，忽略棋盘另一侧已经成型的活二和活三",
+          ],
+        },
+        "第三种最致命。对手连续在左侧制造威胁吸引你的注意力，右侧的结构早已具备成五条件。",
+        {
+          type: "faq",
+          items: [
+            { q: "对手下出活四，还有救吗？", a: "没有。活四两头都能成五，堵住一头另一头立刻成五。能做的只有在活三阶段就处理掉。" },
+            { q: "禁手规则下防守有什么不同？", a: "黑棋有禁手限制，白棋可以利用逼迫黑棋落禁手点的方式来防守，这是白棋后手的主要补偿手段之一。" },
+            { q: "应该先学进攻还是先学防守？", a: "先学识别活三和冲四。这两件事决定你在哪一回合被迫回应，之后无论攻防都需要它。" },
+            { q: "怎么练习判断速度？", a: "用限时对局，每步不超过五秒，逼自己走完上面那个检查顺序。速度来自重复，不是来自长考。" },
+          ],
+        },
+        "上面这套判断顺序，最有效的练法是在真实对局里重复执行。yiboardgame.com 上有[在线对战页](/play)，不用注册就能开一局，浏览器里的 AI 对手会持续给你制造需要判断的棋形。规则细节见[五子棋规则](/gomoku-rules)，基础走法看[玩法说明](/how-to)。",
+        { type: "cta", text: "免费开一局", href: "/play" },
+      ],
+      en: [
+        "Gomoku defense is the first thing a new player gets wrong and the hardest thing to correct. The default reaction is to block every three in a row, which leads to a passive game and a loss to a line that looked unrelated. The problem is not blocking too slowly. It is failing to tell which shapes demand an immediate answer, which can be ignored, and whether your blocking stone can also create a threat. This covers the decision rule and how to turn a defensive move into the start of a counter attack.",
+        { type: "h2", text: "Not every three needs an answer" },
+        "The only shape that demands a response is an open three. An open three is one move away from an open four, and an open four cannot be defended because both ends complete five.",
+        {
+          type: "ul",
+          items: [
+            "Are the three stones continuous, with no gap in the middle",
+            "Are both ends empty, and does extending one space survive an immediate block",
+          ],
+        },
+        "If one end is already blocked by your own stone or the board edge, that is a closed three. It produces a straight four with a single completion point, which you can calculate and handle later. Treating closed threes as open threes wastes a move.",
+        { type: "h2", text: "Three shapes that demand an immediate move" },
+        "In priority order. If any of these appears, your next move is largely decided.",
+        {
+          type: "ul",
+          items: [
+            "Open four: already lost. The real answer is to act before the opponent reaches this shape.",
+            "Open three: must be blocked, but you can choose which end.",
+            "Straight four: one completion point, so blocking that point is forced.",
+          ],
+        },
+        "A straight four outranks an open three, because the next move completes five. If the opponent has both, take the straight four completion point first, then check whether the open three still stands.",
+        { type: "h2", text: "Blocking your way to a loss" },
+        "Following the opponent's shapes creates a fixed rhythm: they build a threat, you answer, they build another. You stay one move behind, because every move you make is decided by their previous one.",
+        {
+          type: "ul",
+          items: [
+            "Your stone placement is chosen by the opponent, so nothing accumulates around your own shape",
+            "The opponent builds structure while threatening, getting two uses from one stone",
+            "By the middle game, two or three threats exist at once and you can only answer one",
+          ],
+        },
+        "To measure whether you are passive, count how many of your stones sit adjacent to the opponent's previous move. More than half means they hold the tempo.",
+        { type: "h2", text: "Counter attacks: make the blocking stone a threat" },
+        "A strong defensive move does two jobs. It blocks, and it builds your own shape. That is the gomoku blocking strategy worth learning, and it is what defensive play in gomoku is built around.",
+        {
+          type: "ul",
+          items: [
+            "When blocking an open three, pick the end that puts your stone on the extension of your own existing stones",
+            "Prefer a position that creates a jump three or an open two over one that merely sits next to the opponent",
+            "If the block also forms an open three, the opponent must answer you, and the tempo flips",
+          ],
+        },
+        "The gain is not only efficiency. Once the opponent sees that every threat gets reversed into a threat against them, they have to spend moves defending, and the tempo comes back to you.",
+        { type: "h2", text: "A check order you can run every turn" },
+        "Scan the board in this order. It does not need long thinking.",
+        {
+          type: "ul",
+          items: [
+            "Check whether you have a five completion point. Take it.",
+            "Check whether the opponent has one. Block it.",
+            "Check whether you can form an open four in one move. Play it.",
+            "Check whether the opponent can. Block the key point.",
+            "Check whether you can form an open three that also blocks their open three. This is the best case.",
+            "If none apply, play a stone that extends your shape in two directions at once.",
+          ],
+        },
+        "Two of those six steps are about your own attack, which is the point. Offensive and defensive checks alternate rather than running defense first and attack later.",
+        { type: "h2", text: "Three defensive misreads new players make" },
+        {
+          type: "ul",
+          items: [
+            "Blocking a closed three as if it were open, spending a move for nothing",
+            "Blocking the middle of a shape instead of an end, which does not remove the threat",
+            "Watching only the opponent's most recent stone and missing an open two or three forming elsewhere",
+          ],
+        },
+        "The third one is fatal. Continuous threats on the left pull your attention while the right side quietly reaches a winning structure.",
+        {
+          type: "faq",
+          items: [
+            { q: "The opponent made an open four. Is there any save?", a: "No. Both ends complete five, so blocking one lets them finish at the other. The only real answer is to deal with the shape while it is still an open three." },
+            { q: "Does the forbidden-move rule change defense?", a: "Yes. Black is restricted by forbidden moves, so White can defend by forcing Black onto a forbidden point. That is one of the main compensations for moving second." },
+            { q: "Should I learn attack or defense first?", a: "Learn to recognise open threes and straight fours first. Those decide which turns force a response, and both attack and defense depend on that afterwards." },
+            { q: "How do I build speed at this?", a: "Play with a five second per move limit and force yourself through the check order above. Speed comes from repetition, not from thinking longer." },
+          ],
+        },
+        "The check order above only sticks if you repeat it in actual games. yiboardgame.com has an [online play page](/play) with no signup required, and the in-browser AI keeps producing shapes that force these decisions. Rules are on the [gomoku rules page](/gomoku-rules), and the basics are in [how to play](/how-to).",
+        { type: "cta", text: "Play free", href: "/play" },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
