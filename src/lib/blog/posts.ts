@@ -3343,6 +3343,195 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: "gomoku-double-three-fours",
+    date: "2026-10-03",
+    tags: ["gomoku", "strategy", "double-three", "forbidden-moves", "tactics"],
+    title: {
+      zh: "双三与双四：五子棋的必胜组合",
+      en: "Double Threes and Double Fours: Gomoku Winning Combinations",
+    },
+    description: {
+      zh: "五子棋双三是最容易上手的必胜组合：一步做出两个活三，对手只能堵一个。这篇讲清双三、双四和四三各自的取胜路径、禁手规则下的限制，以及怎么提前两三步把棋形搭出来。",
+      en: "A gomoku double three is the most teachable winning combination: one stone makes two open threes, the opponent can answer only one. How double threes, double fours and four-threes convert, what forbidden-move rules change, and how to build the shape early.",
+    },
+    keywords: [
+      "gomoku double three",
+      "double three win",
+      "gomoku combinations",
+      "fork tactics gomoku",
+      "gomoku double four",
+      "four three gomoku",
+      "gomoku forbidden moves double three",
+      "五子棋双三",
+    ],
+    content: {
+      zh: [
+        "五子棋双三是所有必胜组合里最容易上手的一个：一步棋同时做出两个活三，对手只能堵掉其中一个，剩下那个无论怎么走都会变成活四。理解它不难，难的是在实战里提前两三步把棋形搭出来，而不是等它偶然出现。这篇讲清双三、双四和四三各自的取胜路径、禁手规则下哪些组合被禁止，以及一份能照着练的搭建顺序。想真正记住，最有效的办法是在[在线对战页](/play)上试一局。",
+        { type: "h2", text: "双三为什么必然赢：对手只能堵一个" },
+        "活三的定义是再落一子就能形成活四。活四两头都能成五，堵住一头，另一头立刻成五，所以活四无法防守。这条性质直接推出双三的取胜路径。",
+        {
+          type: "ul",
+          items: [
+            "第一步：落一子同时形成两个活三，这一步叫双三",
+            "第二步：对手堵掉其中一个活三，另一个他顾不上",
+            "第三步：把剩下的那个活三延长成活四",
+            "第四步：对手堵一头，你从另一头成五",
+          ],
+        },
+        "关键在于第三步的活四是自己造出来的，不是对手送的。双三的价值不在棋形好看，而在于它把对手被迫的那一手回应，变成了你取胜流程里的一环。",
+        { type: "h2", text: "双四与四三：更快也更常见的两种" },
+        "双三要走四步才见分晓。双四和四三更快，实战里出现得也更频繁。",
+        {
+          type: "ul",
+          items: [
+            "双四：一步同时形成两个冲四，两个成五点不同，对手只能堵一个，下一手直接成五",
+            "四三：一步同时形成一个冲四和一个活三，对手必须先挡冲四，你再把活三补成活四",
+            "活四：单独出现就已经无法防守，不需要其他棋形配合",
+          ],
+        },
+        "按取胜速度排：活四最快，双四次之，四三再次，双三最慢。按能提前搭建的难易排正好反过来，双三可以用很安静的落子慢慢准备，双四和四三则常常需要对手的棋形配合才做得出来。",
+        { type: "h2", text: "怎么提前做出双三：棋形搭建顺序" },
+        "双三是结构，不是灵感。绝大多数双三由两个已经存在的活二交叉而成。",
+        {
+          type: "ul",
+          items: [
+            "先在两个不同方向各布一个活二，让两个活二的延长线相交",
+            "交点必须空着，并且落子后两个方向都能形成连续三子",
+            "优先选斜线配直线的组合，斜线是扫棋时最容易漏掉的方向",
+            "落子前确认交点不会被对手的冲四反逼，否则你会被迫先去防守",
+          ],
+        },
+        "一个能立刻用的自检方法：把棋盘上你自己的所有活二列出来，画出各自的延长线，两条线的交点就是候选的双三点。多数人找不到双三，是因为从来没有主动数过自己有几个活二。",
+        { type: "h2", text: "禁手规则下：黑棋不能随便做双三" },
+        "正式规则（Renju）为了抵消先手优势，对黑棋加了限制。黑棋一步同时形成两个活三属于禁手，判负；双四同样禁止；连成六子以上也不算赢。",
+        {
+          type: "ul",
+          items: [
+            "双三禁手：黑棋一步形成两个活三，判负",
+            "双四禁手：黑棋一步形成两个冲四或活四，判负",
+            "长连禁手：黑棋连成六子或更多，不算胜",
+            "白棋没有这些限制，可以自由使用双三和双四",
+          ],
+        },
+        "有个常被忽略的细节：四三不算禁手。黑棋一步形成冲四加活三是合法的，这也是禁手规则下黑棋最主要的取胜手段。要确认你正在用哪套规则，见[五子棋规则](/gomoku-rules)。",
+        { type: "h2", text: "白棋怎么用双三反打" },
+        "白棋没有禁手限制，双三因此成为后手最可靠的翻盘手段。做双三的最佳时机，是黑棋正把注意力压在一侧进攻的时候。",
+        {
+          type: "ul",
+          items: [
+            "黑棋在左侧连续制造威胁时，白棋在右侧安静地布两个活二",
+            "白棋的活二尽量避开黑棋的延长线，降低被顺手堵掉的概率",
+            "交点一旦出现就不要犹豫，被黑棋自己占掉就没有第二次机会",
+          ],
+        },
+        "白棋还有一条更隐蔽的路：逼黑棋落到禁手点上。当黑棋被迫去堵某个点，而那个点恰好构成双三时，黑棋不能落。这是后手补偿的一部分，更细的说明见[防守的艺术](/blog/gomoku-defense-first)。",
+        { type: "h2", text: "识别对手的双三：三步检查清单" },
+        {
+          type: "ul",
+          items: [
+            "数对手的所有活二，出现两个就要警惕",
+            "画出活二的延长线，找交点；交点空着就是威胁点",
+            "如果那个交点同时能让对手形成冲四，优先堵交点，而不是堵现有棋形",
+          ],
+        },
+        "第三条是关键。堵现有棋形只是延缓，堵交点才是消除威胁。很多人等到对手的双三已经做出来才开始堵，那时已经晚了；正确时机是对手刚布出第二个活二的那一手。",
+        {
+          type: "faq",
+          items: [
+            { q: "双三一定能赢吗？", a: "在对手没有更强威胁的前提下一定赢。如果对手同时握着冲四，他可以在你走完第三步之前先成五，所以每次都要按优先级先处理对方的冲四和活四。" },
+            { q: "黑棋做双三算禁手吗？", a: "在 Renju 禁手规则下算，判负。自由规则（freestyle）下不算，黑棋可以随意使用。开局前先确认当前用的是哪一套规则。" },
+            { q: "双三和四三哪个更实用？", a: "四三更实用。它只需要一个冲四加一个活三，成型条件比双三宽松，取胜更快，而且对黑棋是合法手段。" },
+            { q: "怎么练出找双三的眼力？", a: "每局结束后回放，数出哪些回合出现过两个活二共存却没人利用。平时用限时模式逼自己每步都扫一遍交点，速度来自重复而不是长考。" },
+          ],
+        },
+        "三种组合的取胜路径、禁手的边界、以及找交点的手法，都只能在真实对局里练出来。直接在[在线对战页](/play)开一局，不用注册，浏览器内的 AI 对手会持续给你出需要判断的棋形；基础走法见[玩法说明](/how-to)。",
+        { type: "cta", text: "免费开一局", href: "/play" },
+      ],
+      en: [
+        "A gomoku double three is the most teachable of all winning combinations: one stone creates two open threes at once, the opponent can answer only one, and the other turns into an open four no matter how the reply goes. Understanding it is easy. Building the shape two or three moves earlier, in a real game, is the part that takes practice. This covers how double threes, double fours and four-threes each convert into a win, which combinations forbidden-move rules take away, and a build order you can drill. The fastest way to make it stick is to try it in a [live game](/play).",
+        { type: "h2", text: "Why a double three cannot be answered" },
+        "An open three is one move away from an open four. An open four cannot be defended, because blocking one end leaves the other end completing five. That single property produces the whole forced line.",
+        {
+          type: "ul",
+          items: [
+            "Move one: place a stone that makes two open threes at once. That is the double three.",
+            "Move two: the opponent blocks one of them and has no move left for the other.",
+            "Move three: extend the surviving open three into an open four.",
+            "Move four: the opponent blocks one end, you complete five from the other.",
+          ],
+        },
+        "What matters is that the open four in move three is one you built, not one the opponent handed you. A double three earns its place not by looking clever but by turning a forced reply into a step of your own sequence.",
+        { type: "h2", text: "Double fours and four-threes, the faster versions" },
+        "A double three takes four moves to convert. Double fours and four-threes are faster, and they show up far more often in real games.",
+        {
+          type: "ul",
+          items: [
+            "Double four: one stone makes two straight fours with different completion points. The opponent blocks one, you complete the other on the next move.",
+            "Four-three: one stone makes a straight four and an open three. The opponent must answer the four, then you extend the three into an open four.",
+            "Open four: on its own it is already unstoppable and needs no support from another shape.",
+          ],
+        },
+        "Ranked by speed: open four first, double four second, four-three third, double three last. Ranked by how easily you can prepare it, the order reverses, because a double three can be set up with quiet moves while double fours and four-threes usually need the opponent's stones to cooperate.",
+        { type: "h2", text: "Building the shape two moves early" },
+        "A double three is structure, not inspiration. Almost every one of them comes from two existing open twos whose extension lines cross.",
+        {
+          type: "ul",
+          items: [
+            "Place an open two in two different directions so that their extension lines intersect.",
+            "The intersection must be empty, and a stone there must complete a continuous three in both directions.",
+            "Prefer a diagonal paired with a straight line, since diagonals are what players miss when scanning.",
+            "Check that the point is not one your opponent can answer with a straight four, or you will be forced to defend first.",
+          ],
+        },
+        "Here is a self-check you can run immediately: list every open two you have on the board, extend their lines, and look at where two lines meet. Those intersections are your double-three candidates. Most players never find them because they never count their own open twos.",
+        { type: "h2", text: "Under forbidden-move rules" },
+        "Formal Renju rules restrict black to offset the first-move advantage. A move that creates two open threes at once is forbidden for black and loses on the spot. So does a double four. So does an overline of six or more.",
+        {
+          type: "ul",
+          items: [
+            "Double three: black making two open threes with one stone loses.",
+            "Double four: black making two fours with one stone loses.",
+            "Overline: six or more in a row does not count as a win for black.",
+            "White has none of these restrictions and may use double threes and double fours freely.",
+          ],
+        },
+        "One detail gets missed often: a four-three is not forbidden. Black creating a straight four plus an open three with one move is legal, and it is black's main way to win under forbidden-move rules. Confirm which ruleset you are playing on the [gomoku rules page](/gomoku-rules).",
+        { type: "h2", text: "How white uses the double three" },
+        "White carries no forbidden moves, which makes the double three the most reliable way for the second player to turn a game around. The best moment to build one is while black is committed to attacking one side.",
+        {
+          type: "ul",
+          items: [
+            "While black builds threats on the left, settle two quiet open twos on the right.",
+            "Keep your open twos off black's extension lines so they are not blocked as a side effect.",
+            "Do not delay once the intersection exists. If black occupies it, the chance does not come back.",
+          ],
+        },
+        "White also has a quieter weapon: forcing black onto a forbidden point. When black has to block at a square that would also create a double three, black cannot play there at all. That is part of what compensates the second player, and the [defense guide](/blog/gomoku-defense-first) covers it in more detail.",
+        { type: "h2", text: "Spotting the opponent's double three" },
+        {
+          type: "ul",
+          items: [
+            "Count the opponent's open twos. Two of them means a threat exists.",
+            "Extend their lines and find the crossing point. If it is empty, that square is the threat.",
+            "If that square also gives the opponent a straight four, block the square rather than the existing shape.",
+          ],
+        },
+        "The third line is the one that matters. Blocking the shape only delays the threat; blocking the intersection removes it. Most players start defending after the double three already exists, which is too late. The correct moment is the move right after the opponent's second open two lands.",
+        {
+          type: "faq",
+          items: [
+            { q: "Does a double three always win?", a: "It wins as long as the opponent has no stronger threat. If they are holding a straight four, they complete five before you reach move three, so always clear the opponent's fours first." },
+            { q: "Is a double three a forbidden move for black?", a: "Under Renju forbidden-move rules, yes, and it loses immediately. Under freestyle rules it is not, and black may use it freely. Check the ruleset before you start." },
+            { q: "Which is more practical, a double three or a four-three?", a: "The four-three. It needs only a straight four plus an open three, so it is easier to construct, converts faster, and stays legal for black." },
+            { q: "How do I train the eye for finding them?", a: "Review each game afterwards and count the moments when two open twos coexisted and nobody used them. In play, use a time limit so you scan intersections every move. Speed comes from repetition, not from long thinking." },
+          ],
+        },
+        "All three combinations, the forbidden-move boundaries, and the habit of looking for intersections can only be trained in real games. Open a [live game](/play) with no sign-up; the AI running in your browser keeps producing shapes worth judging. Basic moves are on the [how to play](/how-to) page.",
+        { type: "cta", text: "Play free", href: "/play" },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
