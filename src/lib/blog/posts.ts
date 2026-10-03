@@ -3532,6 +3532,198 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: "gomoku-opening-first-move",
+    date: "2026-10-04",
+    tags: [
+      "gomoku",
+      "strategy",
+      "opening"
+    ],
+    title: {
+      zh: "五子棋开局：黑棋第一手与先手优势",
+      en: "Gomoku Openings: Black's First Stone and the First-Move Advantage"
+    },
+    description: {
+      zh: "黑先白后，黑棋在自由规则下被证明必胜，这不是玄学，是节奏问题。这篇讲清五子棋开局该抢哪些棋形、白棋前十手怎么应对，以及一份能照着练的练习顺序。",
+      en: "Black moves first and, under freestyle rules, black wins with perfect play. That is tempo, not magic. Here is which shapes to claim in the gomoku opening, how white answers, and a ten-move routine you can rehearse."
+    },
+    keywords: [
+      "gomoku opening theory",
+      "gomoku first move advantage",
+      "best gomoku opening",
+      "gomoku opening strategy",
+      "renju opening names"
+    ],
+    content: {
+      zh: [
+        "五子棋开局理论有一个让新手不太舒服的前提：黑先白后，在自由规则下黑棋被计算机搜索证明必胜。所以前十手对胜负的影响，比后面三十手加起来还大。五子棋开局不像国际象棋那样有一整套定式要背，它更像几组棋形，加上一个判断：现在轮到谁进攻。下面这些形状都可以在[对战页](/play)上直接试，不用注册。",
+        {
+          type: "h2",
+          text: "先手优势到底从哪来"
+        },
+        "计算机穷举给出的结论是：没有禁手时，先手方存在必胜路径。正式比赛改用连珠（Renju）规则、给黑棋加上双三与双四禁手，原因就在这里。先手优势本身并不神秘，它的本质是节奏。棋盘上黑棋永远比白棋多一颗子，而在连成五子就立刻结束的游戏里，多一个节奏就等于多一个对方来不及应的威胁。落到开局上，指导很直接：黑棋应该在前几手同时往两个方向铺棋形，白棋则要确保黑棋铺不成。",
+        {
+          type: "h2",
+          text: "决定开局的几种棋形"
+        },
+        {
+          type: "ul",
+          items: [
+            "活二：同线两子，两端都空，是所有进攻的基本单位。",
+            "活三：同线三子且两端皆空，再落一子就成活四，而活四无法防守。",
+            "交叉点：你两条延长线的交点且该点为空。提前占住它，两颗安静的子才会变成双重威胁。",
+            "斜线形：对手扫棋盘时先看直线，所以斜线上的棋形更容易被漏掉。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "定式的名字，以及它们证明了什么"
+        },
+        "连珠棋手会给开局起名字。直指开局把黑棋第二颗子放在与第一颗同线，斜指开局放在异线；花月、浦月、银月这类名字对应具体的黑棋棋形，其中若干已经被算成黑棋必胜。你不需要靠背名字下好棋。值得带走的是它们被整理出来的理由：正因为有足够多的定式被证明黑棋必胜，规则才必须改动。想确认自己这局用的是哪套规则，可以看[规则页](/gomoku-rules)上的禁手列表。",
+        {
+          type: "h2",
+          text: "白棋的前十手怎么下"
+        },
+        {
+          type: "ul",
+          items: [
+            "不要盲目对称模仿。跟着黑棋下，在黑棋做出利用中心点的棋形之前都成立，之后就崩了。",
+            "保住自己的活二。白棋赢棋的方式，是在黑棋的先手用完时，自己手上还留着一个威胁。",
+            "堵交叉点，而不是堵已有的棋形。堵活三只是延后，占住交点才是消除。",
+            "宁可局面稍差，也别丢节奏。五子棋没有子力，只有节奏。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "一份前十手的练习顺序"
+        },
+        {
+          type: "ul",
+          items: [
+            "第 1 到 3 手：占住中心或其邻位，所有子保持连接，不要把子撒开。",
+            "第 4 到 6 手：在另一个方向做出第二个活二。",
+            "第 7 到 10 手：先找出两条线的交叉点，再考虑延长其中任何一条。",
+            "每局之后：重放前十手，标出交叉点第一次出现的那一手。这一个习惯对开局的帮助，比读理论快得多。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "FAQ"
+        },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "黑棋一定赢吗？",
+              a: "自由规则下理论上是，计算机穷举已经证明。连珠禁手规则下双方平衡。开局前先确认这局用的是哪套规则。"
+            },
+            {
+              q: "新手用哪种开局最好？",
+              a: "落在中心或其旁边，并保持棋子连接。斜线活二通常比直线活二活得更久，因为对手扫视棋盘时先看直线。"
+            },
+            {
+              q: "需要背定式名字吗？",
+              a: "刚开始不需要。先记四种棋形，再养成找交叉点的习惯。等你开始和懂定式的人下，名字才有用。"
+            },
+            {
+              q: "一个人怎么练开局？",
+              a: "给自己定一个时间上限，和浏览器里的 AI 下，每局结束后复盘前十手。[对战页](/play)的引擎在本地运行，不用排队。"
+            }
+          ]
+        },
+        "开局、节奏和交换规则，只有在你因为它们输过几局之后才真正变清楚。打开一局[在线对战](/play)，不用注册，浏览器里的 AI 会不断给出值得判断的开局形状。基础规则在[玩法页](/how-to)，开局之后要处理的问题写在[防守的艺术](/blog/gomoku-defense-first)里。",
+        {
+          type: "cta",
+          text: "免费下一局五子棋",
+          href: "/play"
+        }
+      ],
+      en: [
+        "Gomoku opening theory starts with a fact players dislike: black moves first, and under freestyle rules black wins with perfect play. That is why the first ten stones decide more of the result than the thirty after them. A gomoku opening is not a memorised script the way a chess opening is. It is a small set of shapes plus one judgement: who is attacking right now. Every shape below can be tried on the [play page](/play) without signing up.",
+        {
+          type: "h2",
+          text: "Where the first-move advantage comes from"
+        },
+        "Computer search settled it: with no forbidden moves, the first player has a forced win. Competitive play switched to Renju rules for exactly that reason, restricting black with forbidden double threes and double fours. The advantage itself is not mystical, it is tempo. Black always has one more stone on the board than white, and in a game where five in a row ends everything on the spot, one spare tempo is one threat the opponent cannot answer. The practical reading is direct: black should spend the early moves building two directions at once, and white should spend them making sure black cannot.",
+        {
+          type: "h2",
+          text: "The shapes that decide an opening"
+        },
+        {
+          type: "ul",
+          items: [
+            "Open two: two stones in a line with both ends empty, the basic unit of every attack.",
+            "Live three: three in a line with both ends open, one move away from an open four that cannot be defended.",
+            "Crossing point: the empty square where two of your extension lines meet. Claiming it early is what turns two quiet stones into a double threat.",
+            "Diagonal shapes: opponents scan straight lines first, so a shape built on a diagonal is the one that gets missed."
+          ]
+        },
+        {
+          type: "h2",
+          text: "Named openings, and what they actually prove"
+        },
+        "Renju players label openings. Direct openings place black's second stone on the same line as the first; indirect openings place it off-line. Patterns carry names such as Huayue, Puyue and Yinyue, and several of them have been solved as forced black wins. You do not need the names to play well. Worth taking from them is the reason they were catalogued at all: enough named openings are proven black wins that the ruleset had to change. To confirm which ruleset a match uses, the [gomoku rules page](/gomoku-rules) lists the forbidden-move set.",
+        {
+          type: "h2",
+          text: "How white plays the first ten moves"
+        },
+        {
+          type: "ul",
+          items: [
+            "Do not mirror blindly. Copying black holds up until black builds a shape that uses the centre square, then it falls apart.",
+            "Keep your own open two alive. White wins by having a threat left in hand when black runs out of forcing moves.",
+            "Block the crossing point rather than the existing shape. Blocking a live three delays it; occupying the intersection removes it.",
+            "Accept a slightly worse position over a lost tempo. Gomoku has no material count, only tempo."
+          ]
+        },
+        {
+          type: "h2",
+          text: "A ten-move routine to rehearse"
+        },
+        {
+          type: "ul",
+          items: [
+            "Moves 1 to 3: take the centre or a square beside it, keep every stone connected, do not scatter stones across the board.",
+            "Moves 4 to 6: build a second open two in a direction different from the first.",
+            "Moves 7 to 10: find the crossing point of your two lines before extending either of them.",
+            "After the game: replay the first ten moves and mark the move where the crossing point first became available. That one habit improves openings faster than reading theory."
+          ]
+        },
+        {
+          type: "h2",
+          text: "FAQ"
+        },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "Does black always win in gomoku?",
+              a: "Under freestyle rules, yes in theory, and computer search has shown it. Under Renju forbidden-move rules the game is balanced. Check which ruleset a match uses before you start."
+            },
+            {
+              q: "What is the best gomoku opening for a beginner?",
+              a: "Play at or beside the centre and keep your stones connected. A diagonal open two usually survives longer than a straight one, because opponents read straight lines first."
+            },
+            {
+              q: "Should I memorise named openings?",
+              a: "Not at the start. Learn the four shapes first, then the habit of hunting crossing points. Names become useful once you are playing people who know them."
+            },
+            {
+              q: "How do I practise openings on my own?",
+              a: "Set yourself a time limit, play the browser AI, and review the first ten moves after each game. The engine on the [play page](/play) runs locally, so there is no queue."
+            }
+          ]
+        },
+        "Openings, tempo and the swap rule only become obvious once you have lost a few games to them. Open a [live game](/play) with no sign-up; the AI in your browser keeps producing opening shapes worth judging. The basics sit on the [how to play](/how-to) page, and what comes after the opening is covered in [Defense First](/blog/gomoku-defense-first).",
+        {
+          type: "cta",
+          text: "Play a free gomoku game",
+          href: "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
