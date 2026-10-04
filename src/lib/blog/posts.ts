@@ -3724,6 +3724,202 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: "evaluation-functions-judging-the-position",
+    date: "2026-10-05",
+    tags: [
+      "gomoku",
+      "ai",
+      "strategy"
+    ],
+    title: {
+      zh: "评估函数：怎么判断局势",
+      en: "Evaluation Functions: Judging the Position"
+    },
+    description: {
+      zh: "搜索会在半路停下，剩下那一半靠评估函数。这篇讲清局面评估在做什么、五子棋棋形怎么打分、启发式评分什么时候会骗人，以及怎么把引擎的判断用成自己的直觉。",
+      en: "Search stops halfway, and the other half is the evaluation function. Here is what board evaluation actually does, how gomoku shapes get scored, when heuristic scoring lies, and how to turn engine numbers into your own judgement."
+    },
+    keywords: [
+      "board evaluation",
+      "gomoku evaluation function",
+      "heuristic game scoring",
+      "position analysis",
+      "game ai evaluation"
+    ],
+    content: {
+      zh: [
+        "局面评估函数回答的是一个搜索答不上来的问题：棋局还没结束，现在谁占优？alpha-beta 剪枝负责决定读哪些变化，评估函数负责给读到的局面定价。如果你读过[浏览器里的搜索是怎么跑的](/blog/alpha-beta-engine-in-browser)，这就是同一个程序的另一半。",
+        {
+          type: "h2",
+          text: "搜索为什么必须停在半路"
+        },
+        "15 路棋盘有 225 个交叉点，完整博弈树的规模远超一个浏览器标签页能走完的量。搜索只能切在一个固定深度上，而那个深度的局面几乎从来不是胜负已分的状态，它是一盘有三四个方向同时在铺的乱局。必须有东西把这份乱局压成一个数字。",
+        "这个东西就是评估函数。它只看一条变化的终点局面，不看这条线是怎么走过来的，所以它必须便宜。一个耗时 1 毫秒的函数，在 500 毫秒预算里能被调用几十万次；耗时 10 毫秒的只能调用五万次，搜索反而变浅。这里的速度不是优化项，它直接决定引擎能想多深。",
+        {
+          type: "h2",
+          text: "棋形打分：一份能照抄的评分表"
+        },
+        "评估函数不看局面「好不好看」，它数棋形。下面这组分值是我们五子棋引擎内部量级的简化版，单位不重要，相对大小才重要。",
+        {
+          type: "ul",
+          items: [
+            "活四（两端皆空）：100000。防不住，直接按胜处理。",
+            "活三（三子同线，两端皆空）：10000。再走一步就是活四。",
+            "眠三（一端被堵）：1000。仍是威胁，但对方来得及应。",
+            "活二（两端皆空）：100。原材料，单独存在几乎没价值。",
+            "眠二（一端被堵）：10。",
+            "交叉点：把两条线同时计分，分数通常在这里跳一档，这也是双威胁比单威胁贵得多的原因。",
+            "对手的棋形用同一套分值扣掉；开局阶段防守的权重会比进攻略高一点。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "一个能写出来的五子棋评估函数"
+        },
+        "真正跑着的五子棋评估函数是「扫描棋形 + 求和」两件事。扫描沿四个方向（横、竖、两条斜线）滑过每一个长度为五的窗口，把窗口里的黑白子分布归类成上面那些棋形；求和把归类结果按权重加起来，再减去对手的。最后加上一个先手补偿，因为轮到谁走本身就值一点分。",
+        "写成一行就是：分数 = 我方棋形加权和 − 对方棋形加权和 + 先手补偿。它不预测未来，也不理解意图，只是把当前这盘棋上能看到的东西称一遍重量。听起来朴素，但配上足够深的搜索，它已经能在 500 毫秒内下出很难缠的棋。",
+        {
+          type: "h2",
+          text: "启发式评分什么时候会骗人"
+        },
+        "启发式游戏评分有三个固定的失效点，知道它们比知道分值更有用。",
+        {
+          type: "ul",
+          items: [
+            "地平线效应：引擎把一个输棋推到搜索深度之外，看起来暂时安全。它会选择慢输而不是立刻输，分数在深度边缘是最好看的，过了那条线就崩。",
+            "重复计数：一颗同时属于两条线的子会被数两次。紧凑的棋团因此比散开的棋团得分高，多数时候这个偏差是对的，但被对手从外侧封住时它就错了。",
+            "读不出意图：一个只有在对手漏看时才成立的棋形，会被打满分。评估函数默认对手看得见一切，也默认自己看得见一切，两边都不真。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "怎么用局面分析，又不全信它"
+        },
+        "500 毫秒跑出来的局面分析是第二意见，不是判决。最有用的用法是拿它验证一个你已经有的感觉：你觉得这手不行，看分数是不是也掉了；如果分数和你相反，先找出是哪条线被算进去了，再决定听谁的。",
+        {
+          type: "ul",
+          items: [
+            "先下你本来想下的那手，再看分数怎么变。反过来做，你会变成在抄答案。",
+            "盯住分数跳变的那一手，而不是盯着最终数字。跳变说明某个棋形成立了。",
+            "每局只复盘一到两个转折。全盘看分数，你什么也记不住。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "FAQ"
+        },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "什么是局面评估函数？",
+              a: "引擎里负责给局面打分的那一部分。搜索在固定深度停下之后，它读取终点局面并返回一个数字，用来比较不同变化的优劣。"
+            },
+            {
+              q: "为什么不直接搜到分出胜负？",
+              a: "博弈树太大。15 路五子棋有 225 个交叉点，完整搜索的规模超过一个浏览器标签页的预算，所以只能在固定深度截断，再靠评估函数补齐。"
+            },
+            {
+              q: "引擎的评分能帮我提高棋力吗？",
+              a: "能，前提是你用它检验判断而不是替代判断。先落你自己的那一手，再在[对战页](/play)上看分数变化，找出让数字跳变的那个棋形。"
+            }
+          ]
+        },
+        "引擎不会告诉你为什么输，它只会告诉你数字是从哪一手开始转向的。把这个数字和你自己的判断对上，靠的是对局量：打开[在线对战](/play)，不用注册，看着分数随棋形跳动。基础规则在[玩法页](/how-to)，搜索那一半写在[浏览器里的引擎](/blog/alpha-beta-engine-in-browser)里。",
+        {
+          type: "cta",
+          text: "免费下一局五子棋",
+          href: "/play"
+        }
+      ],
+      en: [
+        "Board evaluation is the function that answers a question the search cannot: the game is not over, so who is ahead? Alpha-beta pruning decides which lines are worth reading, and the evaluation function decides what those lines are worth once reading stops. If you have read how the search runs in [your browser](/blog/alpha-beta-engine-in-browser), this is the other half of the same program.",
+        {
+          type: "h2",
+          text: "Why the search has to stop halfway"
+        },
+        "A 15x15 board has 225 intersections, and the full game tree is far larger than anything a browser tab can walk. Search has to be cut off at a fixed depth, and the position at that depth is almost never settled. It is a messy board with three or four directions developing at once. Something has to compress that mess into one number.",
+        "That something is the evaluation function. It reads only the final board of a line, not the moves that produced it, so it has to be cheap. A function costing 1 ms can run a few hundred thousand times inside a 500 ms budget. One costing 10 ms runs fifty thousand times and the search gets shallower. Speed here is not an optimisation detail, it sets how deep the engine can think.",
+        {
+          type: "h2",
+          text: "Scoring shapes: the numbers behind board evaluation"
+        },
+        "The function does not judge whether a position looks pleasant. It counts shapes. The values below are a simplified version of the magnitudes inside our gomoku engine. The units do not matter, only the ratios do.",
+        {
+          type: "ul",
+          items: [
+            "Open four, both ends empty: 100000. It cannot be defended, so treat it as a win.",
+            "Live three, three in a line with both ends open: 10000. One move from an open four.",
+            "Sleeping three, one end blocked: 1000. Still a threat, but the opponent has time to answer.",
+            "Open two: 100. Raw material, worth almost nothing on its own.",
+            "Sleeping two: 10.",
+            "Crossing point: both lines are scored at once, which is usually where the number jumps. That is why a double threat costs far more than two single ones.",
+            "Opponent shapes use the same values subtracted, with defense weighted slightly higher than attack during the opening."
+          ]
+        },
+        {
+          type: "h2",
+          text: "A gomoku evaluation function, written out"
+        },
+        "A gomoku evaluation function in production does two things: scan for shapes, then sum them. The scan slides a five-square window along all four directions, horizontal, vertical, and both diagonals, and classifies what it finds into the shapes above. The sum applies the weights, subtracts the opponent's total, then adds a small tempo bonus, because the right to move is itself worth something.",
+        "Written on one line: score = weighted shapes for me, minus weighted shapes for you, plus tempo. It predicts nothing and understands no intent. It weighs what is visible on the board right now. That sounds plain, and paired with a deep enough search it produces play that is genuinely hard to beat in 500 ms.",
+        {
+          type: "h2",
+          text: "Where heuristic game scoring goes wrong"
+        },
+        "Heuristic game scoring has a few fixed failure modes, and knowing them matters more than knowing the values.",
+        {
+          type: "ul",
+          items: [
+            "Horizon effect: the engine pushes a loss just past its depth limit and calls the position fine. It will choose to lose slowly over losing now, because the score looks best right at the edge.",
+            "Double counting: a stone belonging to two lines gets counted twice, so a compact cluster outscores a spread one. That bias is usually right, and it breaks when the opponent seals you from the outside.",
+            "No reading of intent: a shape that only works if the opponent misses it still scores in full. The function assumes perfect vision on both sides, which is true of neither."
+          ]
+        },
+        {
+          type: "h2",
+          text: "Using position analysis without obeying it"
+        },
+        "Position analysis from a 500 ms engine is a second opinion, not a verdict. The useful way to read it is as a check on a feeling you already have: you think that move was weak, so see whether the number dropped too. If the number disagrees with you, find which line it counted before you decide who is right.",
+        {
+          type: "ul",
+          items: [
+            "Play the move you intended, then look at how the score moves. Doing it the other way round turns you into someone copying an answer key.",
+            "Watch the move where the score jumps, not the final number. A jump means a shape became real.",
+            "Review one or two turning points per game. Score-watching the whole board leaves you remembering nothing."
+          ]
+        },
+        {
+          type: "h2",
+          text: "FAQ"
+        },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "What is a board evaluation function?",
+              a: "The part of an engine that scores a position. Once the search stops at its depth limit, this function reads the resulting board and returns a single number used to compare candidate lines."
+            },
+            {
+              q: "Why not search until someone wins?",
+              a: "The tree is too large. Gomoku on a 15x15 board has 225 intersections, and exhaustive search exceeds what a browser tab can spend, so the search cuts off at a fixed depth and the evaluation function fills the gap."
+            },
+            {
+              q: "Can engine analysis actually make me a better player?",
+              a: "Yes, if you use it to test your judgement rather than in place of it. Play your own move first, then watch the score move on the [play page](/play) and find the shape that caused the jump."
+            }
+          ]
+        },
+        "The engine will not explain why you lost, only where the number turned against you. Closing the gap between that number and your own judgement takes games: open a match on the [play page](/play), no sign-up, and watch the score move with each shape. The rules sit on [how to play](/how-to), and the search half is covered in [the engine in your browser](/blog/alpha-beta-engine-in-browser).",
+        {
+          type: "cta",
+          text: "Play a free gomoku game",
+          href: "/play"
+        }
+      ],
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
