@@ -3920,6 +3920,195 @@ export const POSTS: BlogPost[] = [
       ],
     }
   },
+  {
+    slug: "how-ratings-work-starting-1200",
+    date: "2026-10-06",
+    tags: [
+      "gomoku",
+      "ranking",
+      "strategy"
+    ],
+    title: {
+      zh: "段位分怎么算：初始 1200",
+      en: "How Ratings Work: Starting at 1200"
+    },
+    description: {
+      zh: "1200 分起步，不代表所有人都一样强。这篇拆开 YiBoard 的评分算法：期望分的那行公式、赢了加多少输了减多少的真实数字、新手期为什么爬得快，以及分数和段位之间怎么换算。",
+      en: "A 1200 start does not mean everyone plays the same. Here is the rating algorithm behind YiBoard: the expected-score formula, the real numbers behind rating gain and loss, why a new account climbs faster, and how the score converts to grades and dans."
+    },
+    keywords: [
+      "rating algorithm",
+      "gomoku rating calculation",
+      "rating gain loss",
+      "elo-like system",
+      "yiboard rating",
+      "gomoku rank points"
+    ],
+    content: {
+      zh: [
+        "YiBoard 上每个新账号都从 1200 分、六级起步。头几局你会发现分数跳得没道理：赢一个高出 200 分的对手涨了二十多，赢一个低 200 分的对手只涨了个位。这不是随机抖动，是同一套评分算法（rating algorithm）在算一件事：按双方的分差，这一局你本来应该拿到多少。把它的算式读完，你就知道自己那个称号是凭什么来的。规则部分写在[玩法页](/how-to)，横向对比放在[段位制与 ELO](/blog/grades-vs-elo-ranking-systems) 那篇。",
+        {
+          type: "h2",
+          text: "期望分：所有的账都在这一行里"
+        },
+        "算法只做两步。先算出你按概率该拿多少，再拿实际结果减掉它，乘一个步长。前半步叫期望分，公式是 E = 1 / (1 + 10 ^ ((对手分 - 你的分) / 400))。两人同分时 E = 0.5，谁也不占便宜；对手高出 200 分，E 掉到 0.24 附近，长期看你能赢下的局不到四分之一。",
+        "后半步才给出你在意的那个数：新分 = 旧分 + K × (实际结果 - E)。赢记 1，输记 0，于是赢一局拿 K × (1 - E)，输一局赔 K × E。期望分越低，赢了赚得越多、输了赔得越少，这就是「赢强手加得多」的全部数学来源，没有别的门槛加成。",
+        {
+          type: "h2",
+          text: "三种对手的得失分对照"
+        },
+        {
+          type: "ul",
+          items: [
+            "对手高出 200 分：期望分 0.24。赢 +24，输 -8。",
+            "对手与你同分：期望分 0.50。赢 +16，输 -16。",
+            "对手低 200 分：期望分 0.76。赢 +8，输 -24。",
+            "以上按 K = 32 计算，取整到个位。分差每拉开 200 分，期望分就再往两头推一截。",
+            "所以连胜之后涨幅会自己缩水：赢过一轮，你的期望分跟着往上走，下一局的账就没那么好算了。"
+          ]
+        },
+        {
+          type: "h2",
+          text: "为什么新手期爬得快：K 值"
+        },
+        "K 决定一局能把你的分挪多远。YiBoard 常驻 K = 32，唯一例外是前 10 局，那段时间 K = 64，所有得失翻倍。这不是给新人的奖励礼包。1200 这个起点是猜的，高 K 值让前十局把误差快速烧掉，代价是分数会晃得厉害，换来的是第 11 局开始你匹配到的人接近真实水平。",
+        "收敛之后 K 回到 32，分数就稳下来。这时候往上一级要十几局的净胜积累。系统故意让这件事慢：两连胜的运气不该改变你的称号。",
+        {
+          type: "h2",
+          text: "分数怎么换算成段位"
+        },
+        "分数是连续的数，段位是它上面的刻度。级位每 50 分一级，段位每 100 分一段，两者在 1500 分处接上：",
+        {
+          type: "ul",
+          items: [
+            "1050 以下：九级",
+            "1150 上下：七级",
+            "1200：六级，所有新账号的起点",
+            "1300 上下：四级",
+            "1400 上下：二级",
+            "1450 上下：一级",
+            "1500：一段",
+            "1500 以上每段再加 100 分，2300 以上为九段"
+          ]
+        },
+        "换算在每局结束后自动更新，所以你看到的称号永远和数字同步。反过来，一个四段和一段之间的差距有时会在两百局里原样待着，那不是卡住了，是战绩只支持到这个距离。",
+        {
+          type: "h2",
+          text: "刷分为什么在这里划不来"
+        },
+        "所有这一类系统（elo-like system）都有两个洞：账号互相喂分，以及没人看着的对局。YiBoard 先堵第二个：每一步棋都送服务端校验，你没法用脚本自己造出一个结果；重复对手的对局再做加权衰减，同一个对手打五十遍，收益被压到接近零。",
+        "还有一层更朴素的防线：分差惩罚本身。要把小号顶上去，需要一个高分靶子，而高分靶子输给低分号，掉的正好是它每一分都舍不得的那些。系统不会替你判断这局是不是认真下的，它只是让成本和收益对不上。",
+        {
+          type: "h2",
+          text: "FAQ"
+        },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "赢一局到底加多少分？",
+              a: "看分差。K = 32 时，赢同分对手加 16 分；赢高出 200 分的对手加约 24 分；赢低 200 分的对手只加约 8 分。"
+            },
+            {
+              q: "输棋扣的是不是一样多？",
+              a: "不是。赢强手加 24 分，输给同一个强手只扣 8 分。你付的是期望分的账，期望越高，输的代价越大。"
+            },
+            {
+              q: "新手期多久，过了会掉回去吗？",
+              a: "前 10 局用 K = 64，目的是让 1200 这个估值尽快靠到你的真实水平，之后回到 K = 32，规则照旧。到期不会有回退，不存在补扣。"
+            }
+          ]
+        },
+        "把一个分数读懂，比盯着它涨有用。yiboardgame.com 上的每一局排位都跑这一套算式，浏览器里的[对战页](/play)不用注册也不用排队。想知道现在谁在顶端，去[排行榜](/rankings)；这套称号的来历写在[段位制从哪来](/blog/where-the-ladder-comes-from)，局面里那一半账写在[评估函数](/blog/evaluation-functions-judging-the-position)。",
+        {
+          type: "cta",
+          text: "下一局排位试试",
+          href: "/play"
+        }
+      ],
+      en: [
+        "Every new YiBoard account opens at 1200, Sixth Grade. Play a handful of games and the number moves in ways that look arbitrary: beat someone rated 200 above you and you pick up twenty-something points, beat someone 200 below and you get change. That is not noise. One rating algorithm runs every ranked game, and all it does is ask what you were supposed to score given the gap between the two of you. Read the formula once and you know where your title came from. The rules sit on the [how-to page](/how-to), and the side-by-side sits in [Grades and Dans vs ELO](/blog/grades-vs-elo-ranking-systems).",
+        {
+          type: "h2",
+          text: "The expected score, in one line"
+        },
+        "The math has two halves. First it works out what you were likely to get, then it bills you for the difference between that and what you got. The first half is the expected score: E = 1 / (1 + 10 ^ ((opponent - you) / 400)). Equal ratings give E = 0.5, nobody gets an edge. Face someone 200 points higher and E falls to about 0.24, meaning you were expected to win fewer than one game in four.",
+        "The second half produces the number you watch: new = old + K * (result - E). A win counts as 1, a loss as 0, so winning pays K * (1 - E) and losing costs K * E. Lower expected score means a bigger reward when you win and a smaller bill when you lose. That is the whole origin of beating stronger players being worth more. No daily bonuses, no multipliers hiding behind it.",
+        {
+          type: "h2",
+          text: "Rating gain and loss against three opponents"
+        },
+        {
+          type: "ul",
+          items: [
+            "Opponent rated 200 above you: E = 0.24. Win +24, lose -8.",
+            "Opponent rated the same as you: E = 0.50. Win +16, lose -16.",
+            "Opponent rated 200 below you: E = 0.76. Win +8, lose -24.",
+            "All figures assume K = 32, rounded to whole points. Every extra 200-point gap pushes E further toward whichever end it was heading.",
+            "The numbers match how it feels. Against someone you cannot beat, losing costs almost nothing. Against someone you should beat, winning pays almost nothing."
+          ]
+        },
+        {
+          type: "h2",
+          text: "Why new accounts climb faster: the K value"
+        },
+        "K sets how far a single game can move you. YiBoard holds it at 32. The exception is your first ten games, which run at K = 64, doubling every swing. That is not a welcome gift. Your 1200 start is a guess, and a large K burns the error off quickly, at the cost of a jittery first evening. What you get in return is opponents that fit you from game eleven onward.",
+        "Then K drops back to 32 and the numbers settle. Moving up one full dan takes a dozen-odd net wins. Slow on purpose: two lucky wins in a row should not hand you a new title.",
+        {
+          type: "h2",
+          text: "How the score becomes a grade or dan"
+        },
+        "The score is continuous; the grade is a tick mark on top of it. Grades step every 50 points, dans every 100, and the two bands meet at 1500:",
+        {
+          type: "ul",
+          items: [
+            "Below 1050: Ninth Grade",
+            "Around 1150: Seventh Grade",
+            "1200: Sixth Grade, where every new account begins",
+            "Around 1300: Fourth Grade",
+            "Around 1400: Second Grade",
+            "Around 1450: First Grade",
+            "1500: First Dan",
+            "Above 1500 each dan costs another 100 points; 2300 and up is Ninth Dan"
+          ]
+        },
+        "The conversion runs after every game, so the title never drifts from the number. The flip side is that a gap between Fourth Dan and First Dan can sit unchanged across two hundred games. Nothing is stuck; that distance is what the results support.",
+        {
+          type: "h2",
+          text: "Why farming the ladder pays nothing here"
+        },
+        "Elo-like systems share two holes: accounts feeding each other, and matches nobody refereed. YiBoard closes the second one by validating every move server-side, so you cannot script yourself a result. Repeat games between the same two accounts then get decayed, which flattens the return on playing one opponent fifty times.",
+        "The plainest defense is the gap penalty itself. Pushing a smurf upward needs a high-rated target, and when that target loses to a low-rated account it drops exactly the points it hurts most to lose. Nothing here decides whether you played seriously. It just stops the cost and the payoff from lining up.",
+        {
+          type: "h2",
+          text: "FAQ"
+        },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "How many points does a win actually add?",
+              a: "It depends on the gap. At K = 32, beating someone rated the same as you adds 16. Beating someone 200 points higher adds about 24. Beating someone 200 points lower adds about 8."
+            },
+            {
+              q: "Do losses cost the same?",
+              a: "No. Winning against a stronger player pays 24 and losing to that same player costs 8. You pay against your expected score, so the more you were supposed to win, the more a loss costs."
+            },
+            {
+              q: "How long does the provisional period last, and do I drop back after?",
+              a: "Ten games at K = 64, there to pull that 1200 estimate toward your real level fast. Then it returns to K = 32 and the same rules apply. Nothing rolls back when it ends, and nothing is clawed back later."
+            }
+          ]
+        },
+        "Reading your rating is more useful than watching it. Every ranked game on yiboardgame.com runs this same code, and the [play page](/play) opens one in your browser with no sign-up and no queue. The [leaderboard](/rankings) shows who currently sits on top. Two earlier posts fill in the rest: [Where the Ladder Comes From](/blog/where-the-ladder-comes-from) covers the names, and [Evaluation Functions](/blog/evaluation-functions-judging-the-position) covers what happens inside a position.",
+        {
+          type: "cta",
+          text: "Play a ranked gomoku game",
+          href: "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
