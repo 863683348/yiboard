@@ -4109,6 +4109,140 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: "is-gomoku-solved",
+    date: "2026-10-07",
+    tags: ["gomoku", "strategy", "theory"],
+    title: {
+      zh: "五子棋必胜策略存在吗",
+      en: "Does Gomoku Have a Solved Strategy"
+    },
+    description: {
+      zh: "无禁手五子棋在 1993 年就被证明先手必胜，\u201c五子棋有没有必胜策略\u201d其实有确定答案。这篇讲那个证明覆盖了什么、为什么它没法给你一条必赢的线路，以及真正决定胜负的还是什么。",
+      en: "Free-style gomoku was proved a first-player win in 1993, so the question of whether gomoku is solved has a real answer. Here is what the proof covers, why it does not hand you an unbeatable line, and what still decides your games."
+    },
+    keywords: ["is gomoku solved", "gomoku solved game", "unbeatable gomoku", "gomoku perfect play", "gomoku first player advantage"],
+    content: {
+      zh: [
+        "五子棋有没有必胜策略？有。无禁手的自由五子棋（15 路棋盘）在 1993 年由 Victor Allis 证明先手必胜：黑棋可以在白棋任何防守下连成五子。很多人原以为这项棋介于井字棋和国际象棋之间，其实它站在「已被解出」的那一边。而被解出这件事，和你实际怎么下棋之间，隔着真正有意思的部分。",
+        { type: "h2", text: "「解出」到底是什么意思" },
+        "一个棋种被解出，指的是从开局起、双方都走最优时结果已知，通常还附带你走到那个结果的方法。强解是每一个合法局面的胜负值都算了出来；弱解只知道开局的结果，并知道该往那个结果怎么走。Allis 的结果属于后者：他证明黑必胜，用的是威胁空间搜索，而不是把整棵博弈树跑一遍。",
+        { type: "h2", text: "1993 年那个证明，说人话" },
+        "Allis 用的是威胁空间搜索。他的程序不去遍历所有走法，只跟踪强制性的线路：必须应的活三、必须挡的冲四，以及最后那种根本挡不住的双威胁。五子棋特别适合这套办法，因为威胁会叠加。一颗子落在自己两颗子之间，常常同时造出两个麻烦，而防守方每回合只有一手。先手必胜就是从这种堆积里长出来的，不是统计意义上的优势。",
+        { type: "h2", text: "完美下法存在，不等于你能背下来" },
+        "知道「五子棋存在完美下法」和真的把它下出来，是两件事。Allis 证明了必胜存在，但那条线路要走几十手，分支取决于白棋怎么应，压力全程在黑棋这边。没人会给你一份十五手的脚本，让你边吃早饭边背。实力很强的棋手也常常在第三、四手就把线丢掉，这也是为什么那个证明改变的是规则的写法，而不是棋手们的开局习惯。",
+        { type: "h2", text: "连珠为什么加了禁手" },
+        {
+          type: "ul",
+          items: [
+            "无禁手时黑必胜，于是正式比赛开始限制黑棋：双三、双四判负，长连不算赢",
+            "开局规则走得更远。连珠里黑棋前三手有固定流程，白棋可以选择交换，把优势重新推回平衡点",
+            "去掉这些开局规则的「类连珠」棋种，János Wagner 与 István Virág 在 2001 年宣称也已解出，同样是先手必胜",
+            "所以「五子棋被解出了吗」的诚实答案取决于你下的是哪套规则：自由规则下是，带完整开局规则的连珠则不能这么说"
+          ]
+        },
+        { type: "h2", text: "这对你的下法意味着什么" },
+        {
+          type: "ul",
+          items: [
+            "认真对待开局。自由规则下既然先手有必赢，多数业余对局其实在前六手就定了",
+            "先数对手的强制手，再去欣赏自己的棋形。棋盘另一头那个你没看见的活三，比你在修的漂亮形状更值钱",
+            "别假设对手会走出完美。完美下法决定的是理论结果，你的对局由谁先找到双威胁决定",
+            "想找一条 unbeatable gomoku 的现成线路是找不到的，能迁移过来的是搜索依赖的那几个习惯"
+          ]
+        },
+        { type: "h2", text: "YiBoard 怎么处理先手问题" },
+        "YiBoard 下的是无禁手五子棋，裁判在服务器端，引擎每步固定 500 毫秒预算。这个预算是故意定的：对手强到能惩罚漏挡，又弱到一次像样的进攻仍能打成。理论上双方都走完美的话，棋在第一手就结束了，那样没人会来下第二盘。[开局第一手](/blog/gomoku-opening-first-move)讲了第一颗子该往哪放，[双三与双四](/blog/gomoku-double-three-fours)讲了证明里反复出现的那些叉子，[防守优先](/blog/gomoku-defense-first)讲了另一半。",
+        { type: "h2", text: "FAQ" },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "所有棋盘尺寸都被解出了吗？",
+              a: "1993 年的结果针对标准 15 路棋盘的自由规则。棋盘更大只会让先手更容易赢，因为造威胁的空间更多，但这不等于每一种尺寸、每一种自创规则组合都有现成的证明。"
+            },
+            {
+              q: "那网上对局黑棋是不是必胜？",
+              a: "不是。证明假设双方从第一手起都走最优。人做不到，有时间预算的引擎也做不到，而且只有握着优势并一直握住的那一方才有必胜。"
+            },
+            {
+              q: "我能把必胜的走法查出来直接用吗？",
+              a: "实际上不行。它不是一段能背下来的短序列。真正能迁移过来的是搜索依赖的那几个习惯：造双威胁、先应强制手、落子前先看棋盘另一头。"
+            },
+            {
+              q: "五子棋和连珠在这里的区别是什么？",
+              a: "连珠禁止黑棋下出双三、双四，长连不算赢，并且加了带交换选择的开局流程。这些规则之所以存在，就是因为无禁手的自由棋是先手必胜。"
+            }
+          ]
+        },
+        "yiboardgame.com 上的每一局都跑同一套裁判，[对战页](/play) 在浏览器里直接开一局，不用注册。排位对局会进入 [段位分怎么算](/blog/how-ratings-work-starting-1200) 里那套评分，[评估函数](/blog/evaluation-functions-judging-the-position) 讲引擎在搜不到终局时算的是什么。",
+        {
+          type: "cta",
+          text: "在 yiboardgame.com 免费下一局五子棋",
+          href: "/play"
+        }
+      ],
+      en: [
+        "Is gomoku solved? Yes, with one word doing most of the work. Free-style gomoku on a 15x15 board, no forbidden moves and no opening restrictions, was proved a first-player win by Victor Allis in 1993: black can force five in a row against any defence. Most people assume the game sits somewhere between tic-tac-toe and chess. It does not. It sits on the solved side of the line, and the distance between that fact and how you actually play is where the interesting part lives.",
+        { type: "h2", text: "What solved means for a gomoku solved game" },
+        "A solved game has a known outcome when both sides play perfectly from the start, usually with a method for reaching it. Strongly solved means every legal position has a computed win, draw or loss. Weakly solved means you know the result from the opening position and can play toward it, without a table for every branch. Allis produced the second kind: he proved black wins, using threat-space search rather than brute force over the whole tree.",
+        { type: "h2", text: "The 1993 proof, in plain terms" },
+        "Threat-space search does not walk every move. Allis tracked forcing lines instead: a live three that must be answered, an open four that must be blocked, and eventually a double threat with no answer at all. Gomoku suits this approach because threats accumulate. A stone dropped between two of your own often creates two problems at once, and the defender gets one move per turn. The first-player win grows out of that pile-up. It is not a statistical edge observed over many games.",
+        { type: "h2", text: "Perfect play exists, and you cannot memorise it" },
+        "Knowing gomoku perfect play exists and producing it are different things. Allis proved the win is there; the line itself runs through dozens of moves, branches on how white answers, and keeps the burden on black the whole way. Nobody hands you a fifteen-move script to recite over breakfast. Strong human players lose the thread three or four moves in, which is why the proof changed how the rules get written rather than how club players open their games.",
+        { type: "h2", text: "Why renju added forbidden moves" },
+        {
+          type: "ul",
+          items: [
+            "Black wins under free rules, so competitive play restricted black: double threes and double fours lose, and overlines do not count",
+            "Opening rules went further. In renju, black's first three moves follow a protocol that lets white swap sides, which pushes the advantage back toward even",
+            "A renju-like game without those opening rules was claimed solved by Janos Wagner and Istvan Virag in 2001, also as a first-player win",
+            "So the honest answer to whether gomoku is solved depends on your rule set. Free-style: yes. Renju with the full opening protocol: not settled the same way"
+          ]
+        },
+        { type: "h2", text: "What this changes about how you play" },
+        {
+          type: "ul",
+          items: [
+            "Take the opening seriously. If black has a forced win in the free game, most club games are decided inside the first six moves",
+            "Count your opponent's forcing moves before admiring your own shape. A live three on the far side of the board is worth more than the pattern you were building",
+            "Do not assume the opponent plays perfectly. Perfect play settles the theoretical result; your games are settled by whoever finds the double threat first",
+            "People hunt for an unbeatable gomoku line the way they hunt for a perfect chess opening. What transfers instead are the habits the search relies on"
+          ]
+        },
+        { type: "h2", text: "How YiBoard handles the first-move problem" },
+        "YiBoard plays free-style gomoku with a server-side referee, and the engine gets a fixed 500ms budget per move. That budget is deliberate: the opponent is strong enough to punish a missed block and weak enough that a well-built attack still lands. If both sides played perfectly the game would be over on move one, and nobody would come back for a second round. [The first move](/blog/gomoku-opening-first-move) covers where to put the first stone, [double threes and double fours](/blog/gomoku-double-three-fours) covers the forks the proof leans on, and [defence first](/blog/gomoku-defense-first) covers the other half.",
+        { type: "h2", text: "FAQ" },
+        {
+          type: "faq",
+          items: [
+            {
+              q: "Is gomoku solved on every board size?",
+              a: "The 1993 result covers free-style rules on the standard 15x15 board. Bigger boards make the first-player win easier rather than harder, since there is more room to build threats, but that is not the same as a published proof for every size and every rule combination you might invent."
+            },
+            {
+              q: "Does that mean black always wins online?",
+              a: "No. The proof assumes both sides play perfectly from move one. People do not, engines under a time budget do not, and the win is only forced for whoever holds the advantage and keeps holding it."
+            },
+            {
+              q: "Can I look up the winning line and use it?",
+              a: "Not in any practical way. It is not a short sequence you can memorise. What carries over are the habits the search depends on: build double threats, answer forcing moves, and check the far side of the board before you commit."
+            },
+            {
+              q: "What is the difference between gomoku and renju here?",
+              a: "Renju bans double threes, double fours and overlines for black, and adds an opening protocol with a swap option. Those rules exist because the free game is a first-player win."
+            }
+          ]
+        },
+        "Every game on yiboardgame.com runs the same referee, and the [play page](/play) opens one in your browser with no sign-up. Ranked games feed the rating described in [How Ratings Work: Starting at 1200](/blog/how-ratings-work-starting-1200), and [Evaluation Functions](/blog/evaluation-functions-judging-the-position) explains what the engine counts when it cannot search to the end.",
+        {
+          type: "cta",
+          text: "Play gomoku free on yiboardgame.com",
+          href: "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
