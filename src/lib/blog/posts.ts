@@ -4243,6 +4243,184 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    "slug": "gomoku-midgame-switching-to-attack",
+    "date": "2026-10-08",
+    "tags": [
+      "gomoku",
+      "strategy",
+      "tactics"
+    ],
+    "title": {
+      "zh": "中盘战术：从守转攻",
+      "en": "Midgame Tactics: Switching to Attack"
+    },
+    "description": {
+      "zh": "五子棋中盘最难的不是发现威胁，而是判断哪一手能结束被动防守。本文用强制手、双用途落子和两步验证法，讲清楚从守转攻的时机。",
+      "en": "Gomoku midgame play turns on one decision: when can you stop answering and make the opponent answer you? Use forcing moves, dual-purpose stones, and a two-move test to choose the moment."
+    },
+    "keywords": [
+      "gomoku midgame",
+      "gomoku middle game strategy",
+      "turn defense to offense",
+      "gomoku tactics",
+      "gomoku counterattack"
+    ],
+    "content": {
+      "zh": [
+        "五子棋中盘（gomoku midgame）常常从一段很憋屈的防守开始：对手造活二，你堵；对手把另一条线拉长，你又堵。真正的转折不在于突然看见一条五连，而在于找到一颗既能拆掉当前威胁、又能让对手下一手必须回应的棋子。那颗子会把回合的主动权交回来。下面这套判断法不靠背定式，任何残局前的拥挤局面都能用。",
+        {
+          "type": "h2",
+          "text": "先数强制手，再谈 gomoku middle game strategy"
+        },
+        "每次轮到你，先把盘面按紧急程度过一遍。对手已有冲四，只有封点，没有战略选择。对手有活三，通常也要立刻处理，因为他下一手能做成两端都挡不住的四。等这些一手就会输的威胁清掉，才轮到比较双方的潜力。很多所谓中盘失误，其实不是判断进攻方向错了，而是漏看了棋盘另一头的一条冲四。",
+        "我会把候选点分成两堆：只能防守的点，以及防守后还能接上自己棋形的点。两者都能挡住时，优先后者。比如对方沿横线做出活三，而其中一个封点正好贴着你斜线上的两颗子，落在那里既截断横线，也把自己的斜线变成活三胚子。对方下一手便不能随意换边。",
+        {
+          "type": "h2",
+          "text": "从守转攻：turn defense to offense 的两步测试"
+        },
+        "别因为自己出现一个活三就宣布反攻。先在脑子里替对手下最强的防守，再看自己还有没有第二个必须应的点。这就是两步测试：第一手攻击被挡后，第二手是否仍然能造冲四、活三或两个同时存在的威胁？答案是有，才算真正拿到先手；答案是没有，那只是把防守推迟了一回合。",
+        {
+          "type": "ul",
+          "items": [
+            "第一问：我不挡对方最强威胁，会不会下一手直接输？会，就先挡",
+            "第二问：这个封点能否连到自己的两颗或三颗子？能，就把它列为优先候选",
+            "第三问：对手挡住我的第一层攻击后，我是否还有强制手？没有，就别把松散棋形当成反攻",
+            "最后看空间：后续落点若被边线或旧棋子堵死，纸面上的活三不会长成活四"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Gomoku tactics：让一颗子干两件事"
+        },
+        "中盘最划算的棋通常有双重用途。它可以一边封住对方的延伸点，一边连接自己的断线；也可以造一个冲四，逼对方落在你预先选好的位置，再借那颗防守子形成新的活三。这里的重点不是多造威胁，而是控制对方的回应。只要每次回应的位置可预测，你就能提前读下一层。",
+        "反过来，只为攻击而落在远离战场的位置，往往给对手一手空档。他不必理你那条还差两手的线，会继续原来的攻势。判断很简单：如果这手棋下完，对方可以原计划不变，你还没有从守转攻。",
+        {
+          "type": "h2",
+          "text": "一个常见转折：封点变成反击起点"
+        },
+        "设想白棋横向已有连续三子，黑棋必须堵一端。左侧封点与黑棋原有的两颗斜子相邻，右侧封点却孤零零。两边都能救命，但左侧那手同时做出斜向活三的骨架。白棋挡斜线后，黑棋再从竖线做冲四；若白棋转去处理竖线，原来的斜线重新打开。转折来自第一颗封子的位置，不是后来某手突然变聪明。",
+        "这类题最好在复盘里练。暂停在你连续防守的第一手，遮住后续结果，只问盘上有没有双用途封点。[防守优先](/blog/gomoku-defense-first)解释该先挡什么，[双三与双四](/blog/gomoku-double-three-fours)讲两条威胁怎样同时成立，[评估函数](/blog/evaluation-functions-judging-the-position)则能帮你理解引擎为什么偏爱某个不起眼的交叉点。",
+        {
+          "type": "h2",
+          "text": "20 秒中盘检查表"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "扫全盘的冲四和活三，不只看上一手附近",
+            "圈出所有合法封点，优先连接己方棋子的那个",
+            "把对手最强回应放进脑内，再检查自己的下一手",
+            "数清后续空间，尤其是边线会不会截断延伸",
+            "两步后没有强制手，就继续稳住，不为反攻这个名字硬下"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "中盘从第几手开始？",
+              "a": "没有固定手数。开局定式结束、双方棋形开始互相碰撞时，中盘就开始了。有的对局第八手已进入中盘，有的到十五手仍在铺形。"
+            },
+            {
+              "q": "对手有活三时，我能用冲四反击吗？",
+              "a": "可以，但你的冲四必须真能强迫回应，而且回应后还要有后续。若只逼一手就断掉，对手接着补活三，你仍然处在防守方。"
+            },
+            {
+              "q": "怎样练习从防守转进攻？",
+              "a": "复盘自己连续防守的棋局，在第一手封堵处停下，找所有能同时连接己方棋子的封点。先练选点，再练向后读两手。"
+            }
+          ]
+        },
+        "yiboardgame.com 的[对战页](/play)可以直接开一局，不用注册。下一次被对手追着走时，先找双用途封点，再用两步测试确认反攻是不是成立。",
+        {
+          "type": "cta",
+          "text": "在 yiboardgame.com 练一局中盘转攻",
+          "href": "/play"
+        }
+      ],
+      "en": [
+        "Gomoku midgame positions often begin with an annoying run of defence. Your opponent makes an open two, you block it; they extend somewhere else, you block again. The turn does not come from spotting a sudden five. It comes from a stone that stops the current threat and gives your opponent something they must answer next. That one move hands the initiative back. The method below works without a memorised opening, even when the board has become crowded.",
+        {
+          "type": "h2",
+          "text": "Count forcing moves before using any gomoku middle game strategy"
+        },
+        "At the start of each turn, scan by urgency. If the opponent has a four with one winning point, that point is your move. An open three usually needs an immediate answer too, because the next stone can create a four that cannot be covered at both ends. Only after those one-move losses are gone should you compare the promise in each shape. Plenty of midgame mistakes are missed fours on the far side of the board, not bad strategic judgement.",
+        "I split candidate moves into two piles: stones that only defend, and stones that defend while touching my own shape. If both stop the loss, I prefer the second pile. Suppose an opponent has an open horizontal three, but one blocking point also meets two of your diagonal stones. Playing there cuts the row and leaves the frame of your own open three. The opponent no longer gets a free choice of direction.",
+        {
+          "type": "h2",
+          "text": "Turn defense to offense with a two-move test"
+        },
+        "Do not call it a counterattack just because you made one open three. Put the opponent's strongest reply on the board in your head, then ask whether you still have a move they must answer. That is the two-move test. If the first attack is blocked and the next stone can still make a four, an open three, or two threats at once, you have probably taken the initiative. If the line ends after one reply, you only postponed your defensive work.",
+        {
+          "type": "ul",
+          "items": [
+            "First ask whether ignoring the opponent's best threat loses on the next move. If it does, block",
+            "Check which legal block touches two or more of your stones and keep that point on the shortlist",
+            "Imagine the opponent stopping your first attack. If no forcing move remains, the attack is mostly decoration",
+            "Count open space beyond the shape. The edge and old stones can turn an apparent open three into a dead end"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Gomoku tactics built around dual-purpose stones"
+        },
+        "The best-value midgame stone usually has two jobs. It may close the opponent's extension while joining your broken line. It may also make a four that forces a block onto a square you chose, then use that blocking stone as the wall beside a new open three. The point is control, not a large number of threats. When the reply is predictable, you can read the next layer before committing.",
+        "A move played far from the fight often fails this test. If your line still needs two quiet moves, the opponent can ignore it and continue the original attack. Ask one plain question after placing the stone in your head: can the opponent keep following the same plan? If yes, you have not switched to attack yet.",
+        {
+          "type": "h2",
+          "text": "A common turn: the blocking point becomes the counterattack"
+        },
+        "Picture white with three consecutive stones across a row. Black must cover one end. The left blocking point touches two black stones on a diagonal, while the right point touches nothing. Either move survives, but the left one also lays the frame of a diagonal open three. White covers that diagonal; black makes a vertical four. If white turns to the vertical line, the diagonal opens again. The change of initiative began with the choice of blocking point, not with a clever move found later.",
+        "Replay is the cleanest place to practise this. Stop at the first move of a long defensive sequence, hide the result, and look for a dual-purpose block. [Defence First](/blog/gomoku-defense-first) covers threat priority. [Double Threes and Double Fours](/blog/gomoku-double-three-fours) shows when two lines become one problem. [Evaluation Functions](/blog/evaluation-functions-judging-the-position) explains why the engine often likes an ordinary-looking intersection.",
+        {
+          "type": "h2",
+          "text": "A 20-second midgame checklist"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Scan the whole board for fours and open threes, not only the last move",
+            "Mark every legal block and prefer one that connects to your stones",
+            "Place the opponent's strongest reply in your head, then inspect your next move",
+            "Check the space beyond each line, especially near an edge",
+            "If no forcing move remains two plies later, stay solid rather than forcing a counterattack"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "When does the gomoku midgame begin?",
+              "a": "There is no fixed move number. It begins when opening shapes start colliding and each move affects more than one line. Some games reach that point by move eight; others are still spreading out at move fifteen."
+            },
+            {
+              "q": "Can I answer an open three with a four?",
+              "a": "Yes, if your four forces a reply and leaves another forcing move afterward. If the sequence stops after one block, the opponent returns to the open three and you are defending again."
+            },
+            {
+              "q": "How should I practise switching from defence to attack?",
+              "a": "Replay a game where you defended several turns in a row. Stop at the first block and list every point that also connects to your own stones. Practise choosing the point first, then read two moves ahead."
+            }
+          ]
+        },
+        "The [play page](/play) on yiboardgame.com starts a game in your browser without registration. When the next opponent keeps you answering, look for the dual-purpose block and run the two-move test before calling it a counterattack.",
+        {
+          "type": "cta",
+          "text": "Practise a midgame switch on yiboardgame.com",
+          "href": "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
