@@ -4421,6 +4421,186 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    "slug": "gomoku-endgame-final-move",
+    "date": "2026-10-09",
+    "tags": [
+      "gomoku",
+      "strategy",
+      "endgame"
+    ],
+    "title": {
+      "zh": "残局：最后一手怎么下",
+      "en": "Endgame: The Final Move"
+    },
+    "description": {
+      "zh": "五子棋残局不是凭感觉找五连，而是按强制手顺序、空位长度和边线限制读出最后一手。本文给出一套可在 30 秒内执行的收官检查法。",
+      "en": "A gomoku endgame is won by reading forcing moves in order, measuring usable space, and checking the whole board before committing to the final move."
+    },
+    "keywords": [
+      "gomoku endgame",
+      "closing gomoku game",
+      "final winning move",
+      "gomoku finish",
+      "gomoku endgame strategy"
+    ],
+    "content": {
+      "zh": [
+        "五子棋残局（gomoku endgame）到了最后几手，棋盘看起来往往比实际更热闹。你可能只差一颗子连成五，却仍然会输，因为对手在另一条线上有更快的冲四。真正的残局判断不是找最漂亮的五连，而是先确认谁拥有下一手必须回应的威胁，再按顺序读到最后一颗棋。这个习惯能解决大多数 closing gomoku game 时的慌乱。",
+        {
+          "type": "h2",
+          "text": "Closing gomoku game：先扫全盘，再看眼前"
+        },
+        "残局最常见的错觉是视线被上一手吸住。对手刚在右下角落子，你自然会盯着右下角，但真正决定胜负的点可能在左侧旧棋形里。每次落子前都横、竖、两条斜线扫一遍，先找已经存在的冲四，再找下一手能变成冲四的活三。只要盘上有一手会立刻结束对局，其他计划都要让路。",
+        "扫盘时不要只数连续棋子，也要数两端还能不能落子。靠边的三连只有一侧可延伸，被旧棋子夹住的四连也可能没有合法赢点。残局里，空位和棋子同样重要。你看到的是一条线，真正能用的是线上的空格。",
+        {
+          "type": "h2",
+          "text": "Final winning move：按强制顺序读棋"
+        },
+        "寻找 final winning move 时，把候选手按强制程度排序。冲四通常要求对手立刻封堵；活三要看能否在下一手做成两端同时开放的四；松散的两子连接则通常还不够急。先算最强的手，能让搜索树变窄，也能避免在十几个普通点之间来回猜。",
+        {
+          "type": "ul",
+          "items": [
+            "一级：已经形成四子，只剩一个合法赢点，对手必须马上处理",
+            "二级：一手同时制造两个赢点，对手只有一手，通常无法全部封住",
+            "三级：活三可以长成两端开放的四，但要先确认延伸点没有被占用",
+            "四级：只能改善形状、却不强迫回应的棋，留到没有急迫威胁时再考虑"
+          ]
+        },
+        "顺序还会改变同一组落子的结果。先下一个普通连接，再做冲四，对手可能有空档完成自己的攻击；先用冲四逼他落在指定位置，再连接另一条线，防守子反而可能成为你第二条威胁旁边的墙。残局读棋读的不是几颗孤立的子，而是回应被迫发生的次序。",
+        {
+          "type": "h2",
+          "text": "Gomoku finish：边线、交叉点和剩余空间"
+        },
+        "干净的 gomoku finish 经常藏在交叉点上。一颗子若同时属于横线和斜线，对手封住其中一条，另一条就可能继续。这样的双用途点比单线上的第四颗子更难处理。不过，双线都必须有足够空间。若斜线已经贴边，或者横线另一端被旧棋堵死，看起来像双威胁的落子可能只有一个有效出口。",
+        "可以用一个很笨但可靠的方法核对：把候选点落下后，分别沿四个方向向两边数空格。每条线至少要容得下完整五连，才值得继续算。这个动作只花几秒，却能排除很多纸面上很凶、实际上长不出来的棋形。",
+        {
+          "type": "h2",
+          "text": "30 秒五子棋残局检查表"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "先找双方现成的冲四，确认有没有下一手直接结束对局的点",
+            "再找一手双威胁，检查两个赢点是否都合法且真的无法同时封住",
+            "沿横、竖和两条斜线数剩余空间，别把贴边死形当成活形",
+            "把对手最强回应放进脑中，再看自己的后续是否仍是强制手",
+            "如果赢线算不清，就先堵掉对手最急的威胁，不为收官而硬抢一手"
+          ]
+        },
+        "这份清单的目的不是让你把每个残局算到棋盘填满，而是尽快删掉不可能的候选手。最后通常只剩一两个点需要深读。你可以把它和[双三与双四](/blog/gomoku-double-three-fours)的分叉思路一起用，也可以回看[中盘从守转攻](/blog/gomoku-midgame-switching-to-attack)，确认主动权是在哪一手换边的。",
+        {
+          "type": "h2",
+          "text": "没有明确胜线时，先别替结局下结论"
+        },
+        "有些残局没有立刻获胜的手。双方都堵住主要线路后，最好的选择可能是保留两个延伸方向，而不是把全部棋子挤进一条死线。此时要比较的是谁能先造出必须回应的威胁。找不到强制线并不等于局面已输，只说明还没到最后一手。",
+        "在 yiboardgame.com 的[对战页](/play)开一局，遇到残局时停十秒，先扫全盘，再按强制顺序读两手。想复习攻击形状，可以从[玩法说明](/how-to)重新看活三、冲四和五连。",
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "五子棋残局应该先看进攻还是防守？",
+              "a": "先看一手就会结束对局的威胁。若对手已有冲四，你必须处理；若没有立即输棋的点，再比较自己的强制进攻。"
+            },
+            {
+              "q": "什么算最后一手？",
+              "a": "它不一定是连成五的那颗子。很多时候，最后一手是制造两个无法同时封住的赢点，对手在那一刻已经没有完整防守。"
+            },
+            {
+              "q": "靠边的活三还算活三吗？",
+              "a": "通常不算完整活三。活三需要能形成两端开放的四，边线或旧棋子堵住一端时，要按实际可用空间重新判断。"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "在 yiboardgame.com 练习五子棋残局",
+          "href": "/play"
+        }
+      ],
+      "en": [
+        "A gomoku endgame can look busier than it really is. You may be one stone away from five and still lose because the opponent has a faster four on the other side of the board. Endgame play is not a hunt for the prettiest line. It is a check of who owns the next threat that must be answered, followed by a move-by-move reading of the forced replies. That habit removes much of the panic from closing a gomoku game.",
+        {
+          "type": "h2",
+          "text": "Closing a gomoku game starts with a full-board scan"
+        },
+        "The last move pulls your eyes toward it. That is useful in the opening, but dangerous late in the game. An opponent may play in the lower right while an older shape on the left already contains a four. Before every endgame move, scan rows, columns, and both diagonals. Look for completed fours first, then open threes that can become a four on the next turn. If one move ends the game, every slower plan has to wait.",
+        "Do not count stones alone. Count the empty points beyond them. A three pressed against the edge has only one direction to grow. A line boxed in by old stones may look long while having no legal winning point. In the endgame, empty space is part of the shape.",
+        {
+          "type": "h2",
+          "text": "Find the final winning move by reading forcing order"
+        },
+        "When you search for the final winning move, sort candidates by how strongly they force a reply. A four normally demands an immediate block. An open three matters only if its next move can make a four with two usable ends. A loose connection between two stones is usually slower. Start with the moves that leave the opponent the fewest choices, and the calculation becomes much smaller.",
+        {
+          "type": "ul",
+          "items": [
+            "First priority: four stones with one legal winning point, which must be covered now",
+            "Second priority: one move that creates two legal winning points when the opponent has only one reply",
+            "Third priority: an open three that can become a two-ended four with clear extension points",
+            "Last priority: shape-building moves that improve your position but do not force an answer"
+          ]
+        },
+        "Move order changes the result even when the same points are involved. Play a quiet connection first and the opponent may have time to finish an attack. Make a four first and the forced block may land exactly where you wanted it, acting as the wall beside your second threat. Endgame reading is about the order of replies, not a collection of isolated stones.",
+        {
+          "type": "h2",
+          "text": "A clean gomoku finish depends on edges and space"
+        },
+        "A clean gomoku finish often starts at an intersection. One stone may belong to a horizontal line and a diagonal line at once. If the opponent covers one direction, the other keeps growing. These dual-purpose points are harder to answer than a fourth stone on a single line. Both directions still need room, though. If the diagonal meets the edge or an old stone closes the row, an apparent double threat may have only one working exit.",
+        "There is a plain way to verify it. Place the candidate in your head, then count outward in all four directions. Each useful line must have room for a complete five. This takes a few seconds and removes many shapes that look aggressive but cannot finish.",
+        {
+          "type": "h2",
+          "text": "A 30-second gomoku endgame checklist"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Find every existing four for both players and mark any point that ends the game next turn",
+            "Look for a double threat, then verify that both winning points are legal and cannot be covered together",
+            "Count space across rows, columns, and diagonals so an edge does not turn a live shape into a dead one",
+            "Put the opponent's strongest reply on the board in your head and check whether your next move still forces them",
+            "If the win is unclear, cover the opponent's fastest threat instead of rushing because the board feels nearly finished"
+          ]
+        },
+        "The checklist is not meant to calculate until every square is full. It removes impossible candidates quickly, leaving one or two moves worth deeper reading. Pair it with [Double Threes and Double Fours](/blog/gomoku-double-three-fours) for fork patterns, or revisit [Midgame Tactics](/blog/gomoku-midgame-switching-to-attack) to see where the initiative changed hands.",
+        {
+          "type": "h2",
+          "text": "When there is no winning line yet"
+        },
+        "Some endgames have no immediate win. Once the main lines are blocked, the best move may keep two extension routes open rather than crowding every stone into one closed row. The question then is who can create the next forcing move first. Failing to find a forced win does not mean the position is lost. It may simply mean the final move has not arrived.",
+        "Start a game on the [play page](/play) at yiboardgame.com. When the board reaches an endgame, pause for ten seconds, scan the whole board, and read the forcing order two moves ahead. The [how-to page](/how-to) is there if you want a quick refresher on open threes, fours, and five in a row.",
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Should I attack or defend first in a gomoku endgame?",
+              "a": "Check one-move losses first. If the opponent already has a four, cover it. If no immediate loss exists, compare your own forcing attacks."
+            },
+            {
+              "q": "What counts as the final move?",
+              "a": "It is not always the stone that makes five. Often it is the move that creates two winning points the opponent cannot cover at once."
+            },
+            {
+              "q": "Is a three beside the edge still an open three?",
+              "a": "Usually not a fully open one. An open three must be able to become a four with two usable ends, so the edge and old stones change the count."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Practise a gomoku endgame on yiboardgame.com",
+          "href": "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
