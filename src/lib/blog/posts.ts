@@ -4601,6 +4601,205 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    "slug": "gomoku-variants-renju-rules",
+    "date": "2026-10-11",
+    "tags": [
+      "gomoku",
+      "rules",
+      "strategy"
+    ],
+    "title": {
+      "zh": "五子棋变体：连珠的规则",
+      "en": "Gomoku Variants: Renju Rules"
+    },
+    "description": {
+      "zh": "同样是连成五子，自由规则、连珠（Renju）、Swap2 的胜负判据并不一样。这篇把各变体的禁手、换边与长连规则讲清楚，并给出开局前该确认的四件事。",
+      "en": "Five in a row is the goal in every variant; the arguments start at the edges. This guide covers freestyle gomoku, renju rules, the swap opening protocol and overline handling, plus four things to confirm before the first stone."
+    },
+    "keywords": [
+      "renju gomoku",
+      "renju rules explained",
+      "gomoku vs renju",
+      "freestyle gomoku",
+      "gomoku variants",
+      "gomoku forbidden moves"
+    ],
+    "content": {
+      "zh": [
+        "五子棋（gomoku）各变体的差别不在棋盘上，而在边界：哪些棋形算赢、哪些算禁手、开局能不能换边。自由规则（freestyle gomoku）最宽松，连珠（renju）给黑棋加了禁手，Swap2 这类开局协议再叠一层换边机制。下面按开局前要确认的顺序讲，读完可以在 yiboardgame.com 的[对战页](/play)自己数出当前用的是哪一套。",
+        {
+          "type": "h2",
+          "text": "自由规则 freestyle gomoku：最宽松的一档"
+        },
+        "自由规则只有三条：黑先白后、轮流落子、横竖斜任意方向连成五子即胜。黑棋可以做双三、做双四，连成六子也算赢。对新手来说这一档最友好，第一局不需要记任何例外。它的缺点就是它的特点：没有禁手时先手方存在必胜路径，高水平对局会退化为开局的记忆力比拼。",
+        {
+          "type": "h2",
+          "text": "Renju rules explained：黑棋的三条禁令"
+        },
+        "连珠只限制黑棋，白棋保留全部选择。黑棋一步同时形成两个活三（双三）、两个四（双四），或者连成六子及以上（长连），都判负。黑棋仍然可以做单个活三、单个四，也仍然靠恰好五子取胜。判定看的是落子之后盘面上的棋形，不是落子的意图，所以一颗子同时搭出两条活三，就算禁手。",
+        {
+          "type": "ul",
+          "items": [
+            "双三：一颗子同时造出两个活三，黑棋禁",
+            "双四：一颗子同时造出两个四（活四与冲四的组合也算），黑棋禁",
+            "长连：黑棋连成六子及以上不算赢，判禁手；白棋长连算赢",
+            "恰好五子：黑棋只有落出正好五连、且未触犯禁手才算胜",
+            "白棋没有禁手，双三、双四、长连都可以用来赢"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "gomoku vs renju：换规则之后打法怎么变"
+        },
+        "自由规则里最锋利的一手是一颗子两个意思，典型是双三，防守方只能堵一边。连珠把这类棋形直接判负，黑棋得改成一层一层地往上叠威胁。四三（同一手同时形成活四和活三）因此成为黑棋最干净的赢法：不触犯禁手，而且只留一个防守点。白棋的任务也变了，从拆掉一个双重威胁，变成判断黑棋哪一层威胁先落地。",
+        "另一个实际差别是对局长度。自由规则下很多棋十几手就结束；连珠因为禁令，黑棋要花更多手数把威胁叠成合法形状，中盘读棋的比重随之上升。从自由规则转过来的人，第一个要改掉的习惯是看到双三就想落子。",
+        {
+          "type": "h2",
+          "text": "Swap2 与开局协议：把先手优势压回去"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Swap（换边）：黑棋下完前三手后白棋可以选择交换黑白，逼黑棋把开局下得尽量平衡",
+            "Swap2：在换边之上再加一层选择权，固定套路的价值大幅下降",
+            "指定开局：部分比赛要求黑棋第一手落天元、限制第二手范围，用来砍掉已知必胜变化",
+            "棋盘规格：十五路是最常见的连珠盘，十九路多见于自由规则，盘越大先手优势越难兑现"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "开局前要确认的四件事"
+        },
+        "各平台的默认规则并不统一，yiboardgame.com 使用的规则写在[五子棋规则页](/gomoku-rules)。花十秒过一遍下面四条，能省掉大部分「这手到底算不算赢」的争论。规则一旦定下来，服务器裁判会在每一步做校验，不靠双方自觉。",
+        {
+          "type": "ul",
+          "items": [
+            "黑棋有没有禁手？有，就是连珠系；没有，是自由规则",
+            "长连算不算赢？黑棋长连在连珠里判负，白棋长连算胜",
+            "开局有没有换边协议？有换边，背下来的先手套路就不值钱了",
+            "棋盘是十五路还是十九路？路数决定先手优势兑现的速度"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "连珠和自由规则最大的区别是什么？",
+              "a": "连珠给黑棋加禁手：双三、双四、长连都判负，用来抵消先手优势。自由规则没有禁手，黑棋可以使用任何棋形。"
+            },
+            {
+              "q": "renju gomoku 比自由规则难吗？",
+              "a": "规则更难，棋本身不一定更难。你要记住三条例外，并改掉一颗子干两件事的习惯；作为补偿，先手方的必胜套路被削掉了，对局更接近公平。"
+            },
+            {
+              "q": "黑棋连成六子为什么不算赢？",
+              "a": "长连通常由双四或双三演变而来，禁掉长连能堵住黑棋靠重叠棋形取胜的路径。白棋不受此限，长连算胜。"
+            },
+            {
+              "q": "Swap2 和连珠是一回事吗？",
+              "a": "不是。连珠是禁手规则，Swap2 是开局换边协议。正式连珠比赛通常两者都用：先按协议换边，再按禁手下棋。"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "在 YiBoard 免费下一局五子棋",
+          "href": "/play"
+        }
+      ],
+      "en": [
+        "Gomoku variants differ at the edges, not on the board: which shapes count as a win, which are forbidden, and whether sides can be swapped after the opening. Freestyle gomoku is the loosest set, renju adds forbidden moves for black, and protocols such as Swap2 stack a swap on top. This page goes through them in the order you would check before a match, so you can tell which one you are playing on the [play page](/play) at yiboardgame.com.",
+        {
+          "type": "h2",
+          "text": "Freestyle gomoku: the loosest set"
+        },
+        "Freestyle runs on three rules: black moves first, players alternate, and five in a row in any direction wins. Black may play double threes and double fours, and an overline of six or more still counts. It is the friendliest set for a first game because there is nothing to memorise. The downside is the same fact said another way: with no forbidden moves the first player has a forced win, and strong play turns into a memory contest over openings.",
+        {
+          "type": "h2",
+          "text": "Renju rules explained: three bans on black"
+        },
+        "Renju restricts black only, and white keeps every option. Black loses on the spot for a double three (two open threes from one stone), a double four (two fours from one stone), or an overline of six or more. Black may still build a single open three, a single four, and win with exactly five. The test reads the shape on the board after the stone lands, not the intent behind it, so one stone that completes two live threes at once is forbidden even if you only meant one of them.",
+        {
+          "type": "ul",
+          "items": [
+            "Double three: one stone makes two open threes at once. Forbidden for black",
+            "Double four: one stone makes two fours, including a mix of open four and straight four. Forbidden for black",
+            "Overline: six or more in a row does not win for black, it loses. White may win with an overline",
+            "Exact five: black wins only by making exactly five without breaking a ban",
+            "White has no forbidden moves and may use double threes, double fours and overlines"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Gomoku vs renju: what changes in your play"
+        },
+        "The sharpest freestyle move is one stone with two meanings, usually a double three where the defender can only cover one side. Renju makes that shape an immediate loss, so black has to stack threats one layer at a time. The four-three, an open four plus an open three from the same stone, becomes the cleanest win available: it breaks no rule and leaves a single defensive point. White's job shifts too, from dismantling one doubled threat to judging which of black's layers lands first.",
+        "Games run longer as well. Freestyle matches can end inside fifteen moves. Under renju, black spends more moves assembling a legal stack, so midgame reading carries more of the result. If you are arriving from freestyle, the habit to drop first is reaching for a double three the moment you see one.",
+        {
+          "type": "h2",
+          "text": "Swap2 and the opening protocols that flatten the first move"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Swap: after black's first three stones, white may change sides, which pushes black toward a balanced opening",
+            "Swap2: a second layer of choice on top of swap, so fixed opening traps lose most of their value",
+            "Fixed opening placement: some rules put black's first stone on the centre point and restrict the second, cutting known winning lines",
+            "Board size: 15x15 is the usual renju board, 19x19 shows up more in freestyle, and a larger board makes the first-move edge harder to cash in"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Four things to confirm before the first stone"
+        },
+        "Default rules vary between platforms, and the set used on yiboardgame.com is listed on the [gomoku rules page](/gomoku-rules). Ten seconds on these four questions removes most arguments about whether a move actually won. Once the ruleset is fixed, the server referee checks every move, so nothing rests on goodwill.",
+        {
+          "type": "ul",
+          "items": [
+            "Does black have forbidden moves? If yes, you are on a renju set; if no, freestyle",
+            "Does an overline count? For black it loses under renju, for white it wins",
+            "Is there a swap protocol? With a swap in place, memorised first-player traps lose much of their edge",
+            "Is the board 15x15 or 19x19? The size changes how quickly the first-move advantage converts"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "What is the biggest difference between gomoku and renju?",
+              "a": "Renju adds forbidden moves for black: double three, double four and overline all lose immediately, which offsets the first-move advantage. Freestyle has none of those and lets black use any shape."
+            },
+            {
+              "q": "Is renju gomoku harder than freestyle?",
+              "a": "The rules are harder, the game is not necessarily. You memorise three exceptions and drop the habit of one stone doing two jobs. In exchange the first player loses the forced win and the match sits closer to fair."
+            },
+            {
+              "q": "Why does an overline of six not count as a win for black?",
+              "a": "Overlines usually grow out of a double four or a double three. Banning them closes the path where black wins by stacking overlapping shapes. White is not restricted and can win with six or more."
+            },
+            {
+              "q": "Are Swap2 and renju the same thing?",
+              "a": "No. Renju is a set of forbidden moves, Swap2 is an opening protocol for choosing sides. Formal renju events often use both: swap first, then play under the bans."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Practise gomoku variants on yiboardgame.com",
+          "href": "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
