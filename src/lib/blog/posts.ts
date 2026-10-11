@@ -4800,6 +4800,232 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    "slug": "winning-with-psychology",
+    "date": "2026-10-12",
+    "tags": [
+      "gomoku",
+      "strategy",
+      "psychology"
+    ],
+    "title": {
+      "zh": "用心理学赢棋：棋盘上的节奏与压力",
+      "en": "Winning With Psychology: Tempo and Pressure at the Board"
+    },
+    "description": {
+      "zh": "同一个棋形，两个人会走出不同的下一手。差距常常不在计算深度，而在节奏、耐性和习惯。这篇拆解五子棋里能练的心理层面：零成本施压、可读的对手习惯、以及该停止观察对手的时刻。",
+      "en": "Two players read the same stones and choose different moves. The gap is usually tempo, nerve and habit rather than calculation. This guide covers the mental side you can practise in gomoku: pressure that costs nothing, opponent habits worth reading, and the moment to stop watching them."
+    },
+    "keywords": [
+      "board game psychology strategy",
+      "psychological tactics chess",
+      "mind games board",
+      "pressure opponent gomoku",
+      "gomoku mental game"
+    ],
+    "content": {
+      "zh": [
+        "棋盘心理策略是五子棋规则里从来不写的那一部分。两个人盯着同一张十五路棋盘、同样几颗黑白子，却走出不同的下一手，差距往往不在算得深不深，而在节奏、耐性和习惯。这篇讲的是能练的那些部分：不花代价地施加压力、看出对手重复的棋形，以及什么时候该停止观察对手、回头数自己的威胁。这些想法都可以在 yiboardgame.com 的[五子棋对战页](/play)马上试一局，不用下载，也不用注册。",
+        {
+          "type": "h2",
+          "text": "棋盘心理策略在这里指什么"
+        },
+        "它不是盯着对手看，也不是故意下得快显得有把握。它指的是选择那些能让对手在下一步之前要多做几道题的走法。活三比慢慢铺棋更有效，因为活三必须被回应。想先把这些棋形的机械部分弄清楚，可以读[五子棋防守：先堵还是先攻](/blog/gomoku-defense-first)；这篇默认你已经知道活三和冲四长什么样。",
+        {
+          "type": "h2",
+          "text": "国际象棋的心理战术，哪些能搬到五子棋"
+        },
+        "国际象棋圈把这件事讲得更坦白，词汇也更好用。能原样搬过来的有三条：每一步都给对手出一个问题、让自己的棋形保持简单而让对面变乱、把局面带进他没练过的棋形。但心理战术只有在它同时也是一步好棋的时候才成立。为了显得有攻击性而落一步弱子，输的是棋局，连虚张声势也一起输了。",
+        {
+          "type": "ul",
+          "items": [
+            "每一步都逼出应答：冲四或活三会压缩他能想的范围",
+            "自己的棋形保持干净：一个没解决干净的威胁，不如三个半成品棋形",
+            "拆掉他最熟的套路：拿走他下得顺手的形状，去掉的是安全感",
+            "改变落子间隔：间隔一模一样的时候，即使棋子没问题，节奏也先被读出来了"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "别再玩的那些棋盘心理游戏"
+        },
+        "常见的错误是在一个没有任何隐藏信息的游戏里搞虚张声势。五子棋的每一颗子都摆在明面上，没有可以藏着的东西，也就没有什么可以唬人。看起来像唬人的那一步，多半只是一个对手没数清楚的威胁。当你发现自己落子纯粹是为了影响对面那个人，先检查这一步在棋盘上是不是同样成立。不成立的话，下那步简单的棋，等他自己走崩。",
+        {
+          "type": "h2",
+          "text": "施加压力，同时不弄坏自己的棋形"
+        },
+        "对对手施压最有效的形式是不花钱的那种：既逼迫应手、又顺手给自己搭结构的走法，成本是零；看起来华丽、却留下三颗孤子的走法，成本是一整盘。决定强攻之前，把自己的威胁清点数一遍（用手指帮忙也没关系）。如果你的攻势在四颗子之后就没地方继续了，那不叫压力，那叫送子。[段位分怎么算：初始 1200](/blog/how-ratings-work-starting-1200) 那篇解释了为什么这类对局的分数波动比多数人预想的大。",
+        {
+          "type": "ul",
+          "items": [
+            "先问一句：这一步能逼出应答吗？不能的话，它还称不上压力",
+            "算成本：对手应完之后，你手上还剩一个活三，还是棋子已经没有伸展空间了？",
+            "落子前先想他的应手：多数施压失败，是因为对手有一招比你预想的好答案",
+            "留一颗防守的子备用：没有把全部筹码压上去，由攻转守会容易得多"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "读习惯：四个值得看的痕迹"
+        },
+        "看棋盘，别看脸。所有习惯都会先在棋子上露出来，这也用不着摄像头。",
+        {
+          "type": "ul",
+          "items": [
+            "他每次都回应同一侧：应手集中在一边，就把第二个威胁安排到另一边",
+            "他堵得很晚：先顾自己的棋、才来应你的活三，说明他没在数你的冲四",
+            "他在模仿你：喜欢对着走的对手是在等你自乱，那就放慢节奏，把多出来的那一手先拿了",
+            "丢子之后反而下得更快：失误之后的快棋通常是慌了，不是想好了"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "心理层面的练习方法"
+        },
+        "每局只加一条规则的十盘棋，比五十盘随便下的收获大。",
+        {
+          "type": "ul",
+          "items": [
+            "第 1-2 盘：每一手要么堵住什么，要么造出一个威胁，不许下闲子",
+            "第 3-4 盘：下那步你自己最不想面对的棋，不管你认不认为它最好",
+            "第 5-6 盘：动手之前，把双方所有活三都数一遍",
+            "第 7-8 盘：选一个慢速开局然后守住它，对面做什么都不改",
+            "第 9-10 盘：每输一局，写一句话说明是哪颗子输的，再开下一局"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "对着电脑下棋，心理策略还有用吗？",
+              "a": "不完全是同一回事。yiboardgame.com 的 AI 不会累、不会上头、不会被催，所以建立在节奏上的施压没有落点。但这些逼迫应手的走法照样值得对着它练，然后把读棋和控节奏的习惯带回人类对局。"
+            },
+            {
+              "q": "新手最该先学哪一条心理战术？",
+              "a": "让他每一步都得回答问题。一直在应付的人永远不会有机会执行自己的计划，而多数计划都需要连续两手安静的时间。"
+            },
+            {
+              "q": "输了一盘狠的之后，怎么压住情绪？",
+              "a": "先停十分钟，把输棋的那一步写下来。多数上头都来自不知道自己为什么输。原因一旦落到纸上，下一盘通常会好很多。"
+            },
+            {
+              "q": "下得快算不算不礼貌？",
+              "a": "棋好就行。只有在不数棋的对手眼里，快才像压力；对手稍强一点，那些白送的子他就直接拿走了。"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "到 yiboardgame.com 免费来一局，试试这些想法",
+          "href": "/play"
+        }
+      ],
+      "en": [
+        "Board game psychology strategy is the part of gomoku that no rulebook writes down. Two players look at the same 15x15 board and the same black and white stones, then choose different moves, and the gap between those choices comes from tempo, nerve and habit more often than from calculation depth. This guide covers the parts you can practise: applying pressure that costs you nothing, spotting the patterns an opponent repeats, and knowing when to stop watching them and count your own threats. Every idea here can be tried the same minute in a free match at the [gomoku play page](/play) on yiboardgame.com, no download and no account.",
+        {
+          "type": "h2",
+          "text": "What board game psychology strategy means here"
+        },
+        "It is not staring at the other person, and it is not playing fast so you look sure of yourself. It means choosing moves that raise the number of problems they have to solve before their next stone lands. A live three does that better than a slow build, because a live three demands an answer. If you want the mechanical side of those shapes first, read [gomoku defense: block or attack](/blog/gomoku-defense-first). This piece assumes you already know what a live three and an open four look like.",
+        {
+          "type": "h2",
+          "text": "Psychological tactics chess players bring to gomoku"
+        },
+        "Chess players talk about this more openly than board game players do, so the vocabulary is worth borrowing. Three ideas transfer cleanly: put a question to the opponent on every move, keep your own position tidy while theirs gets messy, and walk the board into shapes they have not practised. The catch is that a psychological tactic only works when it is also a good move. Dropping a weak stone to look aggressive loses both the game and the bluff in one go.",
+        {
+          "type": "ul",
+          "items": [
+            "Force a reply every move: an open four or a live three narrows the range of what they can think about",
+            "Keep your own shape tidy: one clean unresolved threat beats three half-built ones",
+            "Take away their favourite pattern: removing the shape they play well costs them comfort, not stones",
+            "Vary your intervals: identical pauses give away your rhythm even when your moves do not"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Mind games board players should stop playing"
+        },
+        "The usual mistake is running a bluff in a game with nothing hidden. Every stone in gomoku sits in plain view, so there is no concealed information to bluff about. What looks like a bluff is almost always a threat the other side failed to count. When you catch yourself playing a move only for its effect on the person, check whether that move also holds up on the board. When it does not, take the simple move and wait for them to overreach.",
+        {
+          "type": "h2",
+          "text": "How to pressure an opponent without wrecking your shape"
+        },
+        "Pressure works best when it is free. A forcing move that also builds your own structure costs nothing, while a spectacular stone that leaves three loose ends behind costs the whole game. Before you commit to an attacking line, count your own threats out loud, or on your fingers if that helps. If your attack runs out of space four stones in, that was not pressure, that was a donation. [How ratings work: starting at 1200](/blog/how-ratings-work-starting-1200) explains why games like these swing harder than most players expect.",
+        {
+          "type": "ul",
+          "items": [
+            "Ask first: does this move force a reply? If not, it is not pressure yet",
+            "Check the cost: after their forced answer, do you still hold a live three, or has the shape run out of room?",
+            "Anticipate their answer before you commit: most pressure fails because the reply was better than expected",
+            "Hold one defensive stone back: switching from attack to defence is easier when you did not commit everything"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Reading habits: four tells worth watching"
+        },
+        "Read the board rather than the face. Every habit shows up in the stones first, and none of it needs a camera.",
+        {
+          "type": "ul",
+          "items": [
+            "They answer the same flank every time: their replies cluster on one side, so plan the second threat on the other",
+            "They block late: answering a live three only after building elsewhere means they are not counting your open fours",
+            "They mirror you: a player who mirrors is waiting for you to come apart, so slow the game down and take the extra tempo",
+            "They speed up after losing a stone: fast replies following a mistake usually mean panic rather than preparation"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "A practice routine for the mental side"
+        },
+        "Ten games with one rule each will teach you more than fifty games with none.",
+        {
+          "type": "ul",
+          "items": [
+            "Games 1-2: every move either blocks something or creates a threat. No quiet stones",
+            "Games 3-4: play the move you would least like to face, whether or not you think it is best",
+            "Games 5-6: count every live three on both sides before you touch the board",
+            "Games 7-8: pick a slow opening and hold it whatever they do",
+            "Games 9-10: after each loss, write one sentence naming the stone that lost it, then play again"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does board game psychology strategy work against a computer?",
+              "a": "Not in the same way. The AI on yiboardgame.com does not get tired, tilted or hurried, so pressure built on tempo has no target. Practise the forcing moves against it anyway, then carry the reading and pacing habits back to human games."
+            },
+            {
+              "q": "What is the most useful psychological tactic for a beginner?",
+              "a": "Make them answer something on every move. A player who is permanently reacting never gets to run their own plan, and most plans need two quiet moves in a row."
+            },
+            {
+              "q": "How do I stop tilting after a heavy loss?",
+              "a": "Stop for ten minutes and write down the move that lost it. Most tilt comes from not knowing why you lost. Once the reason is on paper, the next game usually goes better."
+            },
+            {
+              "q": "Is playing fast rude?",
+              "a": "Not when the moves are good. Speed only reads as pressure to someone who is not counting; a stronger player will simply collect the free stones."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Try these ideas in a free gomoku match on yiboardgame.com",
+          "href": "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
