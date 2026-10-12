@@ -5026,6 +5026,224 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    "slug": "from-1200-to-1800-rank-up-roadmap",
+    "date": "2026-10-13",
+    "tags": [
+      "gomoku",
+      "rating",
+      "improvement"
+    ],
+    "title": {
+      "zh": "从 1200 到 1800：升级路线",
+      "en": "From 1200 to 1800: A Rank-Up Roadmap"
+    },
+    "description": {
+      "zh": "想涨分的人先想着多下几盘，下满三百盘分数却没动。真正让分数往上走的是更窄的几件事：落子前先数双方的威胁、输定的棋也下完、把决定胜负的那一手写下来。这是从 1200 到 1800 的四周路线图，每个分段只改一条。",
+      "en": "Players who want to improve gomoku rating usually play more games, then find the number unchanged after three hundred of them. What actually moves it is narrower: count threats before your stone lands, finish losing games, and write down the move that decided the result. A four-week roadmap from 1200 to 1800, one fix per band."
+    },
+    "keywords": [
+      "improve gomoku rating",
+      "gomoku rank up tips",
+      "improve rating board game",
+      "climb ladder gomoku",
+      "gomoku rating 1800"
+    ],
+    "content": {
+      "zh": [
+        "想把五子棋段位分提上去的人，第一反应是多下几盘。下满三百盘再看分数，基本还在原地。真正让分数动起来的是更窄的几件事：落子前先把双方的威胁数一遍、输定的棋也下完、把决定胜负的那一手写下来。这篇路线图从 1200 起步，YiBoard 上每个账号都从这里开始，终点设在 1800 左右，也就是能自己读出四子连攻的水平。蒙着下大约要四百盘，带着复盘大约一百盘。想试哪一条，随时可以在 yiboardgame.com 的[五子棋对战页](/play)免费开一局，不用下载，也不用注册。",
+        {
+          "type": "h2",
+          "text": "1200 和 1800 分别在什么位置"
+        },
+        "YiBoard 上每个新账号都从 1200 起步，也就是级位里的六级。这套级位与段位的来历写在[段位制从哪来](/blog/where-the-ladder-comes-from)那篇。简短版本是：1200 是整条尺子的中间，不是骂人；1800 大约在初段附近。中间隔着 600 分，而分数越高，每赢一盘给的越少，所以最后 200 分比前 400 分要多花很多盘。连赢十个 1200 的对手，大约能涨 180 分；同样十盘赢 1700 的对手，涨得更少，学到的更多。想看清楚算法，读[段位分怎么算：初始 1200](/blog/how-ratings-work-starting-1200)。",
+        {
+          "type": "h2",
+          "text": "1400 以下真正有用的几条"
+        },
+        "1400 以下，几乎每盘输棋都是同一个形状：两三手之前，有个活三没人堵。改法不漂亮，但有效。",
+        {
+          "type": "ul",
+          "items": [
+            "先堵活三，再想自己的进攻。每一次都这样。",
+            "早占中心。角上只有一个方向可以发展，中心有四个。",
+            "去掉闲子。如果一手既不堵住什么、也不造出威胁，在这个阶段它就是浪费的一手。",
+            "输定的棋也下完。认输告诉评分系统一些东西，却教不会你任何东西。",
+            "把 AI 调到你能赢一半的水平。[和 AI 下五子棋](/blog/play-gomoku-against-ai)那篇讲了为什么势均力敌比难度更重要。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "1400 到 1600 那道墙，是数棋问题"
+        },
+        "到了 1400 上下，只堵不够了，因为对手开始同时造两个威胁，而你只能应一个。破掉这道墙的习惯是数棋：每次落子前，把双方的每一个活三和冲四都数一遍，念出声也没关系。接下来该怎么选，写在[五子棋防守：先堵还是先攻](/blog/gomoku-defense-first)。",
+        {
+          "type": "ul",
+          "items": [
+            "先数对手的威胁，再数自己的。这个阶段多数败局，都是应答晚了一手。",
+            "每盘刻意做一次双威胁。从 1400 到 1600，这是跨度最大的一步。",
+            "找不到威胁时，就把棋盘变小：走那些把对方连线切成两半的子，先换时间。",
+            "把最常见的一两个开局练到前十手不用想。[五子棋开局：第一手](/blog/gomoku-opening-first-move)可以从这里开始。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "输棋之后该看什么"
+        },
+        "复盘是最无聊的部分，也是唯一稳定能把分数推上去的部分。打开下完的那盘，找到胜率开始掉的那一手，写一句话。一句话就够，不用画分析树。二十盘之后这些句子会开始重复，而重复的那句就是你真正的弱点。我的是每次都应答同一侧。",
+        {
+          "type": "ul",
+          "items": [
+            "写那一手，不写心情：「第 18 手漏了他们的活三」比「下得烂」有用得多。",
+            "每次复盘三盘。再多就会从细看变成扫。",
+            "也复盘那些差点输掉才赢下来的棋。漏洞就在那里露出来。",
+            "把这张单子放在你会看到的地方。没人看的笔记不会改变任何事。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "四周计划：把分数往上推"
+        },
+        "大多数日子都下一点，四周就够看到分数动。盘数不如每周给自己定的那条规则重要。",
+        {
+          "type": "ul",
+          "items": [
+            "第 1 周，十盘：每一手要么堵住什么，要么造出威胁，不许下闲子。",
+            "第 2 周，十盘：每次落子前，先把双方的活三数一遍。",
+            "第 3 周，十盘：每盘刻意试一次双威胁，就算因此输掉也照做。",
+            "第 4 周，十盘：打你还打得过的最高 AI 等级，每次再加一篇复盘。",
+            "四周之后：重读[级位制与 Elo 评分的差别](/blog/grades-vs-elo-ranking-systems)，看看分数波动和你预想的是不是一样。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "从 1200 到 1800 要多久？",
+              "a": "不复盘地硬下，多数人需要几百盘，而且很多人到不了。每次下完写一篇复盘、对手分数略高于自己，三到六个月是现实的范围。前 300 分通常比后 300 分快，因为分数越高，每赢一盘给的越少。"
+            },
+            {
+              "q": "跟 AI 下能涨分吗？",
+              "a": "等级接近你的时候能。连赢弱引擎十盘，多半只是涨了没挣到的信心。把它调到你能赢一半的等级：yiboardgame.com 上的 AI 用 500ms 预算跑 alpha-beta 搜索，你留着不堵的威胁它都会吃，这恰好是你要练的习惯。"
+            },
+            {
+              "q": "为什么输一盘掉的分，比赢一盘涨的分多？",
+              "a": "分数按两个分数的差距来动。输给分数比你低的人，比输给分数高的人掉得多；赢了分数远低于你的人，几乎拿不到分。算法写在[级位制与 Elo 评分的差别](/blog/grades-vs-elo-ranking-systems)。"
+            },
+            {
+              "q": "要不要只专练一个开局？",
+              "a": "在 1200 到 1800 这一段，要。把一两个开局练到前十手不用想，注意力就能腾给中盘，而中盘才是你大部分分数被决定的地方。"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "到 yiboardgame.com 免费开一局，从第 1 周那条规则开始",
+          "href": "/play"
+        }
+      ],
+      "en": [
+        "Players who want to improve gomoku rating usually start by playing more, then find the number sitting in the same place after three hundred games. What moves it is narrower than that: counting threats before your stone lands, finishing the games you are losing, and naming the one move that decided the result. This roadmap starts at 1200, where every YiBoard account begins, and ends at 1800, roughly the point where a four-stone attack can be read without help. Blind volume needs about four hundred games to get there. Reviewed play needs closer to a hundred. Open a free match at the [gomoku board](/play) on yiboardgame.com whenever you want to test any of it, no download, no account.",
+        {
+          "type": "h2",
+          "text": "What 1200 and 1800 actually mean"
+        },
+        "YiBoard puts every new account at 1200, which is sixth kyu on the grade and dan scale. [Where the ladder comes from](/blog/where-the-ladder-comes-from) has the history behind it. The short version: 1200 is the middle of the scale rather than an insult, and 1800 sits near first dan. The gap is 600 points, and the system pays out fewer points per win as you climb, so the last 200 cost more games than the first 400. Ten wins in a row against 1200 opponents move you roughly 180 points. The same record against 1700 opponents moves less and teaches more. The arithmetic is in [how ratings work, starting at 1200](/blog/how-ratings-work-starting-1200).",
+        {
+          "type": "h2",
+          "text": "Gomoku rank up tips that hold below 1400"
+        },
+        "Below 1400 nearly every loss has the same shape: a live three nobody answered, two or three moves earlier. The fix is unglamorous and it works.",
+        {
+          "type": "ul",
+          "items": [
+            "Answer the live three first, then look at your own attack. Every single time.",
+            "Take the centre early. A corner gives you one direction to build in, the centre gives you four.",
+            "Cut out quiet stones. If a move neither blocks nor threatens, at this level it is a wasted tempo.",
+            "Play losing games to the end. Resigning tells the rating system something; it teaches you nothing.",
+            "Set the AI to a level you beat about half the time. [Playing gomoku against the AI](/blog/play-gomoku-against-ai) explains why even odds matter more than difficulty."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The wall between 1400 and 1600 is a counting problem"
+        },
+        "Blocking stops being enough somewhere around 1400, because opponents learn to build two threats at once and you can only answer one. The habit that breaks it is counting: before each of your moves, count every live three and open four on both sides, out loud if that keeps you honest. The choice that follows is covered in [gomoku defense: block or attack](/blog/gomoku-defense-first).",
+        {
+          "type": "ul",
+          "items": [
+            "Count their threats before yours. Most losses at this level are an answer that arrived one move late.",
+            "Build one deliberate double threat per game. It is the largest single jump available between 1400 and 1600.",
+            "When you cannot find a threat, shrink the board: stones that cut their lines in half buy you time.",
+            "Learn the two openings you meet most until the first ten moves are automatic. [The gomoku opening, first move](/blog/gomoku-opening-first-move) is a place to start."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What to review after a loss"
+        },
+        "Reviewing is the dull part and the only part that reliably moves the number. Open the finished game, find the move where your chances dropped, and write one sentence about it. One sentence, not an analysis tree. After twenty games the sentences start repeating, and the repeated one is your actual weakness. Mine was answering on the same flank every time.",
+        {
+          "type": "ul",
+          "items": [
+            "Name the move, not the mood: \"missed their live three on move 18\" beats \"played badly\".",
+            "Three reviews per session. Past that you stop reading carefully and start skimming.",
+            "Review the wins you nearly lost too. That is where the leak shows.",
+            "Keep the list somewhere you will see it. A note nobody reads changes nothing."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "A four-week plan to climb the ladder"
+        },
+        "Four weeks of play on most days is enough to see the number move. Volume matters less than the rule you attach to each week.",
+        {
+          "type": "ul",
+          "items": [
+            "Week 1, ten games: every move blocks something or threatens something. No quiet stones.",
+            "Week 2, ten games: count the live threes on both sides before each of your moves.",
+            "Week 3, ten games: try for one deliberate double threat in every game, even when it costs you the result.",
+            "Week 4, ten games: the strongest AI level you can still beat, plus one written review per session.",
+            "After week 4: re-read [how the grade and dan ladder compares to Elo](/blog/grades-vs-elo-ranking-systems) and check your point swings against what you expected."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "How long does it take to go from 1200 to 1800?",
+              "a": "Playing without review, most people need several hundred games and many never arrive. With one written review per session and opponents rated slightly above you, three to six months of regular play is realistic. Expect the first 300 points to come faster than the last 300, because the payout per win shrinks as your rating rises."
+            },
+            {
+              "q": "Does playing the AI help my rating?",
+              "a": "It helps when the level is close to yours. Beating a weak engine ten times mostly builds confidence you have not earned. Set it to a level you beat about half the time: the alpha-beta search on yiboardgame.com runs on a 500ms budget and punishes any threat you leave open, which is the habit worth building."
+            },
+            {
+              "q": "Why does a loss cost more points than a win gains?",
+              "a": "Points move with the gap between the two ratings. Losing to a lower-rated opponent costs more than losing to a higher-rated one, and beating a much lower-rated player pays very little. The arithmetic is in [grades vs Elo ranking systems](/blog/grades-vs-elo-ranking-systems)."
+            },
+            {
+              "q": "Should I specialise in one opening?",
+              "a": "For the 1200 to 1800 range, yes. Two openings known well enough to reach move ten without thinking frees up attention for the middle game, and the middle game is where most of your rating gets decided."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Start the week 1 rule in a free gomoku match on yiboardgame.com",
+          "href": "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
