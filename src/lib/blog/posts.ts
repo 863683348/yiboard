@@ -5244,6 +5244,202 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    "slug": "xiangqi-dev-log-cannons-and-the-river",
+    "date": "2026-10-14",
+    "tags": [
+      "xiangqi",
+      "chinese chess",
+      "development"
+    ],
+    "title": {
+      "zh": "象棋开发日志：炮与河",
+      "en": "Xiangqi Dev Log: Cannons and the River"
+    },
+    "description": {
+      "zh": "象棋开发停了两个月之后，被问得最多的是进展和上线时间。这篇开发日志回答这两件事：炮怎么吃子、河界到底改了什么、为什么最简单的兵卡着进度，以及一个不编出来的上线范围。",
+      "en": "After two quiet months, the questions about xiangqi development are about progress and release date. This dev log answers both: how the cannon captures, what the river changes, why the soldiers hold up the schedule, and an honest release window rather than an invented date."
+    },
+    "keywords": [
+      "xiangqi development",
+      "xiangqi progress",
+      "chinese chess dev",
+      "xiangqi release date",
+      "xiangqi cannon rules"
+    ],
+    "content": {
+      "en": [
+        "Xiangqi development at YiBoard went quiet for about two months while ratings, anti-cheat and the mobile board took the front seat, and the same two questions kept arriving: how much xiangqi progress is actually real, and when is the xiangqi release date. Here is the honest log. The cannon is finished and passes its tests. The river took three rewrites and still catches us out. The soldiers, which look like the simplest pieces on the board, are what holds the schedule. None of it runs anywhere special: it is the same browser board you already use for gomoku on yiboardgame.com, so you can open the [play page](/play) in another tab and check the parts that are already live.",
+        {
+          "type": "h2",
+          "text": "What is finished, and what is not"
+        },
+        "The rules engine is done: every legal move for all seven piece types is generated and validated, including the two that most apps get wrong, the blocked horse leg and the elephant that cannot cross the river. The board renders on a phone without scrolling. The AI plays near the strength of a casual club player and runs the same alpha-beta search as gomoku, described in [How the engine works](/blog/alpha-beta-engine-in-browser). Not finished: English names for the openings, game review, and the rating conversion. We would rather ship a correct board with fewer features than a wide one that misrules a cannon capture.",
+        {
+          "type": "h2",
+          "text": "The cannon: one piece with no Western equivalent"
+        },
+        "The cannon moves like a rook. It does not capture like one. To take a piece, the cannon has to jump over exactly one other piece, the screen, anywhere along the line. No screen, no capture. Two screens, also no capture. That single rule is why xiangqi stops feeling like chess once the middle game opens, and why a piece that looks useless in the opening becomes the one you watch in the last twenty moves.",
+        {
+          "type": "ul",
+          "items": [
+            "Moves: any distance along a rank or file, like a rook, as long as the path is clear.",
+            "Captures: only by jumping exactly one piece. The screen can be yours or the opponent.",
+            "Zero screens means it takes nothing on that line, even with a target one point away.",
+            "Two or more screens blocks the capture too. This is the case most hobby implementations miss.",
+            "Value drops in the endgame, when the board empties out and screens get scarce."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The river is a rule, not decoration"
+        },
+        "The board has 90 intersections and 32 pieces, and a line across the middle called the river. It is not drawn there for looks. Three things change depending on which side of it a piece stands on.",
+        {
+          "type": "ul",
+          "items": [
+            "Elephants cannot cross. Their two point diagonal step is also blocked by a piece on the midpoint, so they are defenders on a short leash.",
+            "Soldiers move one point forward only. After crossing the river they also move sideways one point at a time, and never backward.",
+            "Horses cross freely, but the horse leg block still applies: a piece on the adjacent orthogonal point cancels that step.",
+            "The two generals face each other across the river on files 4 and 6, each locked inside a 3 by 3 palace."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What we build next, in order"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "English opening names, starting with Central Cannon and Screen Horse.",
+            "Game review that marks the move where the evaluation turned, reusing the review view from gomoku.",
+            "A separate rating scale. Xiangqi will not start at 1200 on the same ladder; the reasons are in [Where the ladder comes from](/blog/where-the-ladder-comes-from).",
+            "Undo and takeback in teaching games, which is the first thing schools ask for."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Is there a xiangqi release date yet"
+        },
+        "Not a day, and we are not going to invent one. The honest range is a playable board with correct rules and a bot before the end of this year, with ratings and review after it. Two things could push that back: the rating conversion has to be calibrated against real games, and the opening library needs English names somebody can check. If you want the shape of the gap we are closing, [The Xiangqi Platform Gap](/blog/xiangqi-platform-gap) lays it out. Until the board ships, the live part of the site is the gomoku ladder on the [rankings page](/rankings).",
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is there a xiangqi release date for YiBoard?",
+              "a": "No fixed day. The next milestone is a playable board with correct rules, and ratings and review come after it. We publish progress here instead of naming a date we would then miss."
+            },
+            {
+              "q": "Will xiangqi use the same rating as gomoku?",
+              "a": "No, it gets its own scale. The 1200 starting point is calibrated for gomoku games, and putting both games on one ruler would make both numbers meaningless."
+            },
+            {
+              "q": "What makes the cannon hard to implement?",
+              "a": "The screen rule. A cannon captures only when exactly one piece sits between source and target, so the validator has to count pieces on the line instead of checking that the path is empty. Two screens is illegal, and several apps get that wrong."
+            },
+            {
+              "q": "Can I play xiangqi on yiboardgame.com today?",
+              "a": "Not yet. Gomoku is live with no sign-up and no install. The xiangqi board runs the same browser engine and will appear on the same play page once it is ready."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Open the free board on yiboardgame.com",
+          "href": "/play"
+        }
+      ],
+      "zh": [
+        "YiBoard 的象棋开发安静了大约两个月，段位分、反作弊和手机棋盘排在前面。这两个月被问得最多的是两件事：象棋到底进展到哪一步，什么时候能上（xiangqi release date）。这篇开发日志给一个不绕的回答。炮做完了，测试也过了；河界重写了三遍，到现在还会让我们出错；看起来最简单的兵，反倒卡着进度。这些全跑在你已经用来下五子棋的那个浏览器棋盘上，yiboardgame.com 的[对战页](/play)可以另开一个标签，边看边试已经上线的部分。",
+        {
+          "type": "h2",
+          "text": "哪些做完了，哪些还没有"
+        },
+        "规则引擎做完了：七种棋子的所有合法走法都能生成并校验，包括多数应用会写错的两个——蹩马腿，以及不能过河的象。棋盘在手机上不用滚动就能看全。AI 的强度大致接近一个休闲棋友，用的是和五子棋同一套 alpha-beta 搜索，原理写在[浏览器里的真 AI 引擎](/blog/alpha-beta-engine-in-browser)那篇。没做完的是开局的英文名、复盘，以及评分换算。我们宁愿先上一个规则正确、功能少的棋盘，也不想上一个把炮的吃子判错的大而全版本。",
+        {
+          "type": "h2",
+          "text": "炮：唯一没有西方对应物的棋子"
+        },
+        "炮走直线，像车。但它吃子完全不像车。吃子时，炮必须隔着、且只隔着一个棋子（炮架）跳过去，炮架在这条线上的任何位置都行。没有炮架，吃不了；隔着两个，也吃不了。就是这一条规则，让象棋在中盘之后不再像国际象棋，也让开局时看着没什么用的炮，变成最后二十手你要盯着的那个子。",
+        {
+          "type": "ul",
+          "items": [
+            "走子：沿横线或竖线走任意距离，路径必须为空，和车一样。",
+            "吃子：必须只隔一个棋子。炮架可以是自己的，也可以是对方的。",
+            "零个炮架时，这条线上什么都吃不到，哪怕目标只隔一个点。",
+            "两个及以上炮架同样不能吃。这一条是多数业余实现会漏掉的。",
+            "残局价值下降：棋盘变空，能当炮架的子也跟着变少。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "河界是一条规则，不是装饰"
+        },
+        "棋盘 90 个交叉点、32 枚棋子，中间横着一条叫「河」的线。它不是画着好看的。一个子站在河的哪一边，会改变三件事。",
+        {
+          "type": "ul",
+          "items": [
+            "象不能过河。它的「田」字步还会被中间那个点上的子堵住，所以它是拴着短绳的防守子。",
+            "兵（卒）只能向前一步。过河之后可以横着走，一次一点，但永远不能后退。",
+            "马可以自由过河，但蹩马腿照样生效：相邻的正交点上有子，这一步就没了。",
+            "两个将（帅）隔着河在四、六路互相对着，各自锁在 3x3 的九宫里出不来。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "接下来按这个顺序做"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "开局的英文名，先收「中炮」和「屏风马」两个。",
+            "复盘：标出胜率开始掉落的那一手，直接复用五子棋那套复盘视图。",
+            "独立的评分体系。象棋不会共用 1200 起步的那把尺子，原因写在[段位制从哪来](/blog/where-the-ladder-comes-from)。",
+            "教学对局里的悔棋与收回，学校问得最多的就是这个。"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "象棋什么时候上线"
+        },
+        "没有具体日子，我们也不打算编一个。诚实的范围是：规则正确的可玩棋盘加一个 AI 对手，会在今年内出来，段位分和复盘跟在后面。有两件事可能把它往后推：评分换算必须拿真实对局去校准；开局库需要有人能核对的英文名。想看我们到底在补哪道缺口，[象棋平台现状：为什么缺少好的](/blog/xiangqi-platform-gap)讲得比较全。棋盘上线之前，网站上真正跑着的部分还是[排行榜](/rankings)上那条五子棋天梯。",
+        {
+          "type": "h2",
+          "text": "FAQ"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "YiBoard 的象棋什么时候上线？",
+              "a": "没有定死的日期。下一个里程碑是规则正确的可玩棋盘，段位分和复盘在它之后。我们宁可在这里公开进度，也不想先给一个日子再失约。"
+            },
+            {
+              "q": "象棋会和五子棋共用段位分吗？",
+              "a": "不会，象棋有自己的尺子。1200 这个起点是按五子棋的对局校准的，两个棋种压在同一把尺子上，两边的数字都会失去意义。"
+            },
+            {
+              "q": "炮为什么难实现？",
+              "a": "难在炮架。炮只有在中间恰好隔着一个子时才能吃子，所以校验器要数起点和终点之间有几个子，而不是只看路径是否为空。隔两个不合法，好几个应用就错在这里。"
+            },
+            {
+              "q": "现在能在 yiboardgame.com 下象棋吗？",
+              "a": "还不行。五子棋已经可以免注册、免安装直接下。象棋用的是同一套浏览器引擎，做好之后会出现在同一个对战页上。"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "在 yiboardgame.com 打开免费棋盘",
+          "href": "/play"
+        }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
