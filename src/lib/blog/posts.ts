@@ -5440,6 +5440,122 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: 'go-roadmap',
+    date: '2026-10-15',
+    tags: ['weiqi', 'product', 'roadmap'],
+    title: {
+      zh: '围棋路线图：为什么最后做',
+      en: 'Go Roadmap: Why It Comes Last',
+    },
+    description: {
+      zh: '围棋排在我们的开发顺序最后，在五子棋、象棋、黑白棋之后。不是因为它不重要，而是因为它最贵。这篇摊开讲围棋开发计划：难点在哪、先做什么、上线前必须成立的条件是什么，以及为什么我们不给日期。',
+      en: 'Go sits last in our build order, behind gomoku, xiangqi and reversi. Not because it matters less, but because it costs the most to do properly. Here is the go development plan: the hard parts, the order we are building in, and what has to be true before it ships.',
+    },
+    keywords: ['go roadmap', 'when is go coming', 'go development plan', 'weiqi release', 'play go online'],
+    content: {
+      zh: [
+        '问我们围棋路线图的人比问什么都多，通常就是一句话：围棋什么时候来。短答案是，围棋排在我们的开发顺序最后，在五子棋、象棋、黑白棋之后。这不是不重视，是有意排的。这篇把 go development plan 摊开讲清楚：难点在哪、按什么顺序做、weiqi release（围棋上线）之前必须成立的条件有哪些。现在可以先在 yiboardgame.com 的[对战页](/play)下五子棋。',
+        { type: 'h2', text: '围棋排在开发顺序的第几位' },
+        '四个棋种的顺序是：五子棋（已上线）、象棋（开发中）、黑白棋（规划中）、围棋（最后）。排序依据不是人气，是每份工作量能让我们学到多少东西。五子棋教会我们裁判内核和浏览器里的搜索剪枝；象棋正在教我们棋子的走法、吃子，以及长将判负这类规则分支；黑白棋会教我们翻转结算和终局穷举。围棋排在最后，因为它要的东西，前面三个都教不了我们。',
+        { type: 'h2', text: '围棋难在哪' },
+        {
+          type: 'ul',
+          items: [
+            '胜负计算：中国数子法和日本比目法算出来的结果可能不一样，而玩家还会在终局时对哪些子是死棋产生分歧',
+            '打劫：同一个局面可以重复出现，裁判不能只看当前棋盘，得记住历史局面',
+            '死活判断：终局之后还要确认哪些棋块是死的。人可以点一下说这块死了，软件要么猜，要么问',
+            'AI：五子棋用 alpha-beta 加一份手写估值函数就能给出像样的对手。围棋的估值函数出了名地难手写，强的开源引擎走的是蒙特卡洛树搜索加神经网络，那是另一类工作',
+            '棋盘规模：19 路有 361 个交叉点，渲染、坐标标注、棋谱格式都要重做一遍',
+          ],
+        },
+        { type: 'h2', text: '能从五子棋直接搬过来的部分' },
+        {
+          type: 'ul',
+          items: [
+            '裁判内核：落子校验、局面状态、读秒控制',
+            '段位与评分系统',
+            '对局分享链接和棋谱回放',
+            '棋盘渲染层，换成更大的网格，加上星位标记',
+          ],
+        },
+        { type: 'h2', text: '围棋开发计划，按顺序' },
+        {
+          type: 'ul',
+          items: [
+            '第一步：9 路棋盘，完整规则，中国数子法。棋盘最小，规则可以先跑通',
+            '第二步：13 路、19 路，同一套引擎',
+            '第三步：死棋确认流程。终局后双方各自确认，确认完才出最终比分',
+            '第四步：让子与贴目',
+            '第五步：先做 9 路的 AI，等级随引擎的进展往上加',
+          ],
+        },
+        { type: 'h2', text: '围棋什么时候来' },
+        '我们不打算给一个月份。给了做不到，那句话会一直挂在那里，比延迟本身更久。能说的是上线前必须成立的三条：9 路规则通过我们的测试集；死棋确认在两个浏览器之间跑通；9 路的 AI 能下出像样的水平。三条都成立，围棋就上线。在那之前，[围棋规则页](/go)讲清气、提子、打劫这些基础，五子棋现在就能下。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '围棋什么时候上线？', a: '还没有日期。它是四个棋种里最后一个，前面要先做完象棋和黑白棋。上面写了上线前必须成立的三条，达成就会放出来。' },
+            { q: '现在 YiBoard 上能下围棋吗？', a: '还不能。可以先看[围棋规则页](/go)了解气、提子、打劫这些规则，五子棋已经可以免注册、免安装直接下。' },
+            { q: '会用中国规则还是日本规则？', a: '先从中国数子法开始。9 路棋盘上两种方法差别很小，先把规则跑通，之后再考虑加比目法。' },
+            { q: '围棋会有独立的段位吗？', a: '会。围棋和五子棋的评分池分开，两者的水平分布和成长曲线差得远，混在一起两边都不准。' },
+          ],
+        },
+        { type: 'cta', text: '在 yiboardgame.com 免费下一局五子棋', href: '/play' },
+      ],
+      en: [
+        'The question we get most often is about the go roadmap, and it usually arrives in one line: when is go coming. The short answer is that go sits last in our build order, behind gomoku, xiangqi and reversi. That order is deliberate, and it has nothing to do with how much we care about the game. This post lays out the go development plan in full: where the hard parts are, the order we are building in, and what has to hold before a weiqi release makes sense. While you read, gomoku is open on the [play page](/play) at yiboardgame.com.',
+        { type: 'h2', text: 'Where go sits in the build order' },
+        'Four games, in this order: gomoku, which has shipped; xiangqi, in progress; reversi, planned; go, last. Popularity did not decide that. What decided it is how much each game teaches us per unit of work. Gomoku taught us the referee kernel and how to run search pruning inside a browser tab. Xiangqi is teaching us piece movement, capture rules, and branches like perpetual check. Reversi will teach us flip resolution and exhaustive endgame solving. Go comes last because it needs things none of the other three teach.',
+        { type: 'h2', text: 'What makes go the hard one' },
+        {
+          type: 'ul',
+          items: [
+            'Scoring: Chinese area counting and Japanese territory counting can disagree, and players can also disagree at the end about which groups are dead',
+            'Ko: a position can repeat, so the referee has to track board history instead of only the current grid',
+            'Dead stones: the game ends and life and death still has to be settled. A person taps a group and says it is dead. Software has to guess, or ask',
+            'AI: alpha-beta with a hand-written evaluation function gives gomoku a decent opponent. Go evaluation functions are notoriously bad when written by hand, and the strong open engines run Monte Carlo tree search over neural networks. That is a different kind of work',
+            'Board size: 19x19 means 361 intersections, which changes rendering, coordinate labels and the replay format',
+          ],
+        },
+        { type: 'h2', text: 'What carries over from gomoku' },
+        {
+          type: 'ul',
+          items: [
+            'The referee kernel: move validation, game state, time control',
+            'The rating and dan-grade system',
+            'Game share links and the replay viewer',
+            'The board rendering layer, with a larger grid and star points',
+          ],
+        },
+        { type: 'h2', text: 'The go development plan, in order' },
+        {
+          type: 'ul',
+          items: [
+            'Step one: a 9x9 board with the full rule set and Chinese area scoring. The smallest board, so the rules get proven first',
+            'Step two: 13x13, then 19x19, on the same engine',
+            'Step three: dead stone resolution. Both players confirm after the game ends, and only then does the final score appear',
+            'Step four: handicap stones and komi',
+            'Step five: a 9x9 AI first, with stronger levels added as the engine improves',
+          ],
+        },
+        { type: 'h2', text: 'When is go coming' },
+        'We are not putting a month on it. A date we miss stays on the page far longer than the delay itself. What we can say is what has to hold first: the 9x9 rules pass our test suite, the dead stone flow works between two browsers, and the 9x9 AI plays at a level worth losing to. When those three are true, go ships. Until then the [go rules page](/go) covers liberties, capture and ko, and gomoku is ready now.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'When is go coming to YiBoard?', a: 'No date yet. Go is the last of the four games, after xiangqi and reversi. The three conditions that have to hold first are listed above, and it ships once they do.' },
+            { q: 'Can I play go on the site right now?', a: 'Not yet. The [go rules page](/go) explains liberties, capture and ko, and gomoku is open now with no signup and nothing to install.' },
+            { q: 'Will you use Chinese rules or Japanese rules?', a: 'Chinese area scoring first. On a 9x9 board the two methods rarely disagree, so it makes sense to prove the rules before adding territory scoring.' },
+            { q: 'Will go have its own ranking?', a: 'Yes. Go ratings sit in a separate pool from gomoku. The skill distribution and the improvement curve differ enough that one shared number would be wrong for both.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free game on yiboardgame.com', href: '/play' },
+      ],
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
