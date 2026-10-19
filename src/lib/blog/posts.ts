@@ -5556,6 +5556,104 @@ export const POSTS: BlogPost[] = [
       ],
     }
   },
+  {
+    slug: 'mobile-first-improvements',
+    date: '2026-10-20',
+    tags: ['mobile', 'product', 'roadmap'],
+    title: {
+      zh: '移动端专项优化：为单手而做的棋盘',
+      en: 'Mobile Game Optimization: A Board Built for One Hand',
+    },
+    description: {
+      zh: '我们的流量大半来自手机，而棋盘最初是照着鼠标画的。这篇是移动端专项优化清单：触摸热区怎么放大、棋盘在竖屏下怎么缩放、来电话时那一局怎么保住，以及我们决定不做的几件事。',
+      en: 'Most of our traffic arrives on a phone and the board was drawn for a mouse. This is the mobile game optimization list: touch targets, board scaling, what happens to a live match when a call comes in, and the things we decided not to build.',
+    },
+    keywords: ['mobile game optimization', 'touch interface board game', 'mobile chess usability', 'responsive game', 'play gomoku on phone'],
+    content: {
+      zh: [
+        '我们的流量大半来自手机，棋盘最初却是照着鼠标画的。移动端专项优化现在是工程清单上最大的一项：触摸热区（touch interface board game）怎么放大到手指按得准、棋盘在竖屏下怎么缩、来电话时那一局棋怎么保住。这篇把这些改动摊开讲，包括我们决定不做的部分。先在 yiboardgame.com 的[对战页](/play)用手机开一局，再看下去会更具体。',
+        { type: 'h2', text: '手机上，棋盘哪里会崩' },
+        '十五路棋盘在桌面浏览器上是舒服的 640 像素见方。放到 6.1 英寸的屏幕上，每格只剩约 21 像素，手指压根分不清自己按在哪条线的交点上。双指缩放能救回来一半，代价是看不到全局，而五子棋恰恰是需要看全局的游戏。这是这次移动端专项优化里最难取舍的一处。',
+        { type: 'h2', text: '触摸热区（touch interface board game）' },
+        '我们要做到的是 44 像素的有效热区，比格子本身还宽。手指落在两个交点之间时，取距离更近的那一个，而不是判这手无效。落子后留一个 300 毫秒的撤销窗口，专门给误触。',
+        {
+          type: 'ul',
+          items: [
+            '有效热区 44 像素，比线间距更宽',
+            '靠近两条线时取最近交点，手指不会白按',
+            '落子后 300 毫秒内可撤销，专治误触',
+            '长按预览落子点，手指不再挡住要看的位置',
+          ],
+        },
+        { type: 'h2', text: '响应式布局（responsive game）' },
+        '竖屏是棋盘的默认形态：棋盘在上，信息与操作在下。转横屏时棋盘左移，右侧让给计时和提示。刘海和底部手势条用安全区避开，不让系统手势吃掉你的一步棋。',
+        { type: 'h2', text: '手机上的象棋与 mobile chess usability' },
+        '象棋比五子棋难处理。棋子上带字，缩小之后笔画糊成一团；炮和车的走法要在小屏上画出来，又没有地方写解释。我们的做法是高亮可落子的点，把文字说明收进二级面板。这部分仍在开发中，也是 mobile chess usability 里最花时间的一段。',
+        { type: 'h2', text: '我们不做的几件事' },
+        {
+          type: 'ul',
+          items: [
+            '不做强制横屏。单手用手机是常态，横屏需要两只手',
+            '不做震动反馈之外的动效。棋盘上乱动的东西会干扰你判断棋形',
+            '不做手机专属付费项。手机和桌面是同一个免费游戏',
+            '不为排行榜在后台轮询。切走即暂停，电量留给玩家',
+          ],
+        },
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '手机上玩五子棋会小到看不清吗？', a: '不会。竖屏下棋盘占满宽度，双指可以放大看局部，松手回到全局视图。放大状态下落子依然判定到最近的那个交点。' },
+            { q: '来电话时那一局棋怎么办？', a: '对局在服务器端保留。只要不在同一账号下开新局，回到页面就能接着下。' },
+            { q: '需要下载 App 吗？', a: '不需要。浏览器打开就能玩，不用装任何东西，也不用注册。' },
+            { q: '象棋和围棋什么时候能在手机上玩？', a: '五子棋现在就能玩。象棋正在开发，手机上的走法提示是其中一部分；围棋排在开发顺序的最后。' },
+          ],
+        },
+        { type: 'cta', text: '用手机在 yiboardgame.com 开一局', href: '/play' },
+      ],
+      en: [
+        'Most of our traffic arrives on a phone, and the board was drawn for a mouse. Mobile game optimization is now the largest item on our engineering list: how a touch interface board game handles a fingertip wider than a grid cell, how the board scales in portrait, and what happens to a live match when a call comes in. Here is the full list, including the parts we decided not to build. Open the [play page](/play) on your phone first and the rest will read differently.',
+        { type: 'h2', text: 'Where the board breaks on a phone' },
+        'A fifteen-line board sits at a comfortable 640 pixels square on a desktop browser. On a 6.1 inch screen each cell drops to roughly 21 pixels, and a fingertip cannot tell which intersection it is over. Pinch zoom recovers half of that and costs you the whole-board view, which is what gomoku needs. It is the hardest trade-off in the mobile work.',
+        { type: 'h2', text: 'Touch targets on a touch interface board game' },
+        'The target we are building to is 44 effective pixels, wider than the grid itself. When a tap lands between two intersections the closer one wins instead of the move being rejected. After a stone is placed there is a 300 millisecond window to undo it, aimed squarely at mis-taps.',
+        {
+          type: 'ul',
+          items: [
+            '44 pixel effective targets, wider than the line spacing',
+            'Nearest intersection wins, so no tap is wasted',
+            '300ms undo window after a stone is placed',
+            'Press and hold to preview the point, so your finger stops covering it',
+          ],
+        },
+        { type: 'h2', text: 'Responsive game layout' },
+        'Portrait is the default: board on top, information and controls below. Turn the phone sideways and the board shifts left, with the right column taking the clock and the hints. Notches and the bottom gesture bar are handled with safe-area insets, so a system gesture never eats your move.',
+        { type: 'h2', text: 'Mobile chess usability, and why xiangqi is harder' },
+        'Xiangqi is a harder problem than gomoku. Each piece carries a character that turns to mush at phone scale, and the movement hints for cannons and chariots have to be drawn on a small board with no room for a written explanation. Our approach is to highlight the legal destination points and move the text into a second panel. It is in development, and it is the slowest part of the mobile chess usability work.',
+        { type: 'h2', text: 'What we are not doing' },
+        {
+          type: 'ul',
+          items: [
+            'No forced landscape. One-handed phone use is the common case, and landscape needs two hands',
+            'No animation beyond the haptic toggle. Things moving on the board get in the way of reading the shape',
+            'No mobile-only paid tier. It is the same free game on every screen',
+            'No background polling for the sake of the leaderboard. Switch away and the match pauses',
+          ],
+        },
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Is the board too small to read on a phone?', a: 'No. In portrait the board fills the width, and you can pinch into a section and release to return to the full view. While zoomed, placement still resolves to the nearest intersection.' },
+            { q: 'What happens to my match if a call comes in?', a: 'The game is held on the server. As long as you do not start another match on the same account, you can pick it up where you left it.' },
+            { q: 'Do I need to install an app?', a: 'No. Open the browser and play. There is nothing to install and no signup required.' },
+            { q: 'When will xiangqi and go work on mobile?', a: 'Gomoku works now. Xiangqi is in development with the mobile movement hints as part of that work, and go is last in the build order.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a game on your phone at yiboardgame.com', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
