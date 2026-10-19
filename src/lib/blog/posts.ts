@@ -5654,6 +5654,122 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'performance-work',
+    date: '2026-10-19',
+    tags: ['performance', 'engineering', 'roadmap'],
+    title: {
+      zh: '性能优化：让棋盘更丝滑',
+      en: 'Performance Work: A Smoother Board',
+    },
+    description: {
+      zh: '性能是没人会主动要求、但一卡就会被察觉的东西。这篇把 YiBoard 的性能优化摊开讲：中端安卓机上测到的四个数字、棋盘从 225 个 DOM 节点改成单个 canvas 的取舍、500 毫秒引擎预算怎么不再冻住棋盘，以及我们拒绝做的几项优化。',
+      en: 'Nobody asks for performance work, and everybody notices when it is missing. This is the YiBoard list: four numbers from a mid-range Android phone, why the board moved from 225 DOM nodes to one canvas, how the 500ms engine budget stopped freezing the board, and the optimizations we turned down.',
+    },
+    keywords: ['game performance optimization', 'web game performance', 'board rendering optimization', 'lag free game', 'browser game frame rate'],
+    content: {
+      zh: [
+        '性能优化是那种没人会主动提、直到棋盘卡一下才被察觉的工作。在 YiBoard 上它落到几个具体的数字：棋盘画出来要多久、手指按下到棋子出现要多久、引擎搜索的那半秒里画面还顺不顺。下面是我们在一台 2021 年中端安卓机、限速 4G 下测到的数字，由此引出的改动，以及几项我们拒绝做的优化。先去 yiboardgame.com 的[对战页](/play)落几颗子再往下读，这些数字会更有实感。',
+        { type: 'h2', text: '我们一开始测到的数字' },
+        '测试机是一台 2021 年的中端安卓机，网络限速到 4G，因为这比光纤上的笔记本更接近我们的真实流量。改动之前，棋盘首屏绘制 380 毫秒，一次落子平均在手指按下后 140 毫秒才出现，引擎搜索的那 500 毫秒里帧率掉到 41。没有一个数字能让游戏玩不了，但它们合在一起，让这个游戏显得比它实际的做工便宜。',
+        {
+          type: 'ul',
+          items: [
+            '棋盘首屏绘制：限速 4G 下 380 毫秒',
+            '手指按下到棋子出现：平均 140 毫秒',
+            '引擎搜索期间的帧率：41fps',
+            '能落第一颗子之前要下载的产物：gzip 后 214KB',
+          ],
+        },
+        { type: 'h2', text: '棋盘渲染优化：一个 canvas 换掉 225 个 div' },
+        '第一版棋盘是 225 个 DOM 节点，每个交点一个，网格用 CSS 边框画。它好改样式，可浏览器一重绘就散架。我们把网格和棋子搬到单个 canvas，DOM 只留棋盘外的界面。重画一颗子现在变成裁剪后重绘一格，不再是整块棋盘走一遍布局。这一项把首屏从 380 毫秒压到 190 毫秒，也是我们不做落子动画的原因之一。',
+        { type: 'h2', text: '网页游戏性能，与 500 毫秒的引擎预算' },
+        '五子棋引擎在浏览器里跑 alpha-beta，预算 500 毫秒。朴素的写法会把主线程整整吃掉半秒，于是我们把搜索挪进 worker，让棋盘在引擎思考时继续绘制；局面已经定了的时候，改成限制深度而不是限制时间。搜索本身的细节写在[引擎那篇](/blog/alpha-beta-engine-in-browser)。那台安卓机上的结果是：搜索期间帧率从 41 变成 58，棋盘也不再在对手落子之前冻住那一下。',
+        { type: 'h2', text: '一个不卡的游戏，还欠网络什么' },
+        '每一步都要送到服务器端校验，这正是作弊做不到的原因，也是延迟藏不住的原因。我们把每一手一个请求改成复用同一条连接，并让自己的棋子先在本地出现、服务器确认在后。如果服务器判定这一手不成立，棋子会被收回，并告诉你原因。猜错一次的代价是一段动画；每一步都等一个来回的代价是整局游戏。',
+        {
+          type: 'ul',
+          items: [
+            '每局复用一条连接，不再一手一个请求',
+            '自己的棋子先本地出现，服务器确认在后',
+            '断线重连重放棋谱，而不是重开一局',
+            '对局进行中不为排行榜做后台轮询',
+          ],
+        },
+        { type: 'h2', text: '我们拒绝做的优化' },
+        {
+          type: 'ul',
+          items: [
+            '不做落子动画。它在截图里好看，却会让一个快节奏的游戏显得慢',
+            '不预取对手的可能走法。猜错比多等 40 毫秒更糟糕',
+            '不用 WebGL 画棋盘。2D canvas 画 15×15 的网格，跑满 60 帧不需要着色器',
+            '不用 service worker 缓存对局状态。棋盘显示错了，比慢一点更难让人接受',
+          ],
+        },
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'AI 思考的时候，棋盘还会卡吗？', a: '这一轮之前会。搜索现在跑在 worker 里，我们测试用的那台中端机上棋盘可以保持 58 帧。桌面浏览器上前后其实都看不出差别。' },
+            { q: 'YiBoard 在移动网络下要用多少流量？', a: '落第一颗子之前约 214KB（gzip 后），之后除了棋步本身不再产生数据。没有广告，没有追踪脚本，也没有分析用的包跟着进来。' },
+            { q: '既要跑 worker 又要跑服务器，还能一直免费吗？', a: '能。免费在这里是设计选择，不是试用期。引擎跑在你自己的设备上，这正是服务器成本压得住的原因。' },
+            { q: '老一点的手机能享到这些改进吗？', a: '大部分能，只有一处例外：worker 需要大约 2018 年以后的浏览器。更老的设备会退回主线程，棋盘一样能下，只是保留原来那一下卡顿。' },
+          ],
+        },
+        { type: 'cta', text: '在 yiboardgame.com 开一局', href: '/play' },
+      ],
+      en: [
+        'Game performance optimization is the kind of work nobody asks for and everybody notices when it is missing. On YiBoard it comes down to a few concrete numbers: how long the board takes to draw, how long a tap takes to become a stone, and whether the picture stays smooth while the engine is searching. Below are the measurements from a 2021 mid-range Android phone on throttled 4G, the changes that came out of them, and the optimizations we turned down. Place a few stones on the [play page](/play) at yiboardgame.com first and the numbers will read differently.',
+        { type: 'h2', text: 'The numbers we started from' },
+        'We tested on a 2021 mid-range Android phone over a throttled 4G connection, because that is closer to our actual traffic than a laptop on fibre. Before any changes, the board took 380ms to first paint, an average move appeared 140ms after the tap, and the frame rate dropped to 41fps during the 500ms engine search. None of those numbers make the game unplayable. Together they make it feel cheaper than the work that went into it.',
+        {
+          type: 'ul',
+          items: [
+            'First paint of the board: 380ms on throttled 4G',
+            'Tap to stone on screen: 140ms average',
+            'Frame rate during engine search: 41fps',
+            'Payload before the first stone can be placed: 214KB gzipped',
+          ],
+        },
+        { type: 'h2', text: 'Board rendering optimization: one canvas instead of 225 divs' },
+        'The first board was 225 DOM nodes, one per intersection, with the grid drawn as CSS borders. It was easy to style and it fell apart the moment the browser had to repaint. We moved the grid and the stones onto a single canvas and kept the DOM for the interface around the board. Redrawing a stone is now a clipped repaint of one cell rather than a layout pass over the whole board. That change took first paint from 380ms to 190ms, and it is one of the reasons we do not animate stone drops.',
+        { type: 'h2', text: 'Web game performance and the 500ms engine budget' },
+        'The gomoku engine runs alpha-beta in the browser on a 500ms budget. Written the obvious way, it eats the main thread for the whole half second, so we moved the search into a worker and let the board keep drawing while the engine thinks. When the position is already settled we cap the depth instead of the time. The search itself is described in [the engine write-up](/blog/alpha-beta-engine-in-browser). On that Android phone the frame rate during search went from 41 to 58, and the board no longer freezes just before the reply lands.',
+        { type: 'h2', text: 'What a lag free game still owes the network' },
+        'Every move goes to the server for validation. That is why cheating does not work here, and it is also why latency is impossible to hide. We replaced one request per move with a single reused connection, and we let your own stone appear locally before the server confirms it. If the server rejects the move, the stone is taken back and you are told why. A wrong guess costs one animation, while waiting for a round trip on every move costs the whole match.',
+        {
+          type: 'ul',
+          items: [
+            'One reused connection per match, not one request per move',
+            'Your stone appears locally first, server confirmation second',
+            'Reconnect replays the move log instead of restarting the match',
+            'No background polling for the leaderboard while a match is open',
+          ],
+        },
+        { type: 'h2', text: 'Optimizations we turned down' },
+        {
+          type: 'ul',
+          items: [
+            'No animated stone drops. They look good in a screenshot and make a fast game feel slow',
+            'No prefetching the likely reply. Guessing wrong is worse than waiting another 40ms',
+            'No WebGL board. A 2D canvas draws a 15x15 grid at a full 60fps without a shader',
+            'No service worker caching of match state. A board showing the wrong position is worse than a slow one',
+          ],
+        },
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Does the board still stutter while the AI thinks?', a: 'It did before this round of work. The search now runs in a worker, and the board holds 58fps on the mid-range phone we test with. On a desktop browser you would not have noticed either way.' },
+            { q: 'How much mobile data does YiBoard use?', a: 'About 214KB gzipped before you can place your first stone, and nothing after that apart from the moves themselves. There are no ads, no tracking scripts and no analytics bundles riding along.' },
+            { q: 'With a worker and a server, can it really stay free?', a: 'Yes. Free is a design choice here, not a trial period. The engine runs on your own device, which is why we can keep the server cheap.' },
+            { q: 'Do older phones get these improvements?', a: 'Most of them, with one exception: the worker needs a browser from roughly 2018 or later. Anything older falls back to the main thread, plays the same game, and keeps the old stutter.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a game at yiboardgame.com', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
