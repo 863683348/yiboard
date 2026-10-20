@@ -5770,6 +5770,126 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'spectator-and-commentator-plans',
+    date: '2026-10-21',
+    tags: ['spectator', 'product', 'roadmap'],
+    title: {
+      zh: '观战与解说功能规划',
+      en: 'Spectator and Commentator Plans',
+    },
+    description: {
+      zh: '观战从第一局五子棋上线那天就写在愿望清单上，之后一直被排在后面。这篇是计划的老实版本：观战要做什么、为什么它先是隐私问题、解说席要怎么才不添乱，以及按什么顺序做。',
+      en: 'A game spectate feature has sat on our wishlist since the first gomoku match went live. Here is the honest plan: what watching a match has to do, why it is a privacy question first, how a commentator seat stays out of the way, and the order we would build it in.',
+    },
+    keywords: ['game spectate feature', 'watch games feature', 'board game casting', 'commentate matches', 'gomoku spectator mode'],
+    content: {
+      zh: [
+        '五子棋第一局上线那天，观战就被写进了愿望清单，之后一直被需求更多的人排到后面。这篇是这份计划的老实版本：一个 game spectate feature 在 YiBoard 上要做什么，为什么「看别人下棋」先是一个隐私问题、其次才是一个功能，以及 watch games feature（观战）和 commentate matches（解说）上线之前我们得先建好什么。五子棋现在就能在 yiboardgame.com 的[对战页](/play)开一局。',
+        { type: 'h2', text: '观战功能到底要做什么' },
+        'YiBoard 上一盘棋，服务器上存的就是一串落子和一个时钟，没有别的。所以观众看到的，理论上可以和两位对局者看到的完全一样，只差一件事：观众拿到的数据要晚。我们打算用按手数计的延迟，而不是按秒计，这样一场正在直播的棋局不可能被人拿来帮正在下棋的人。之前那篇[观战模式](/blog/spectator-mode-watch-and-learn)把它写成一个学棋的工具，它同时也是决定实时观战能不能安全存在的那块地基。',
+        { type: 'h2', text: '隐私那部分要排在前面' },
+        '半夜打开棋盘下两局的人，没有谁默认同意被围观。所以默认值是关的：一盘棋只对下棋的两个人可见，观战必须由其中一人主动分享出来的链接开启。这条链接带的是这盘棋，不是对局者的名字，也不是他们的段位记录，棋局结束链接就失效。棋谱回放是另一件事，要在棋下完之后，由分享的人再决定一次。',
+        {
+          type: 'ul',
+          items: [
+            '观战按每一局单独开启，不存在账号设置里默认开着的情况',
+            '分享链接只暴露棋谱，不暴露段位和账号',
+            '观众看到的棋盘比实战晚几手',
+            '对局双方随时能看到谁在看，也可以随时关掉',
+          ],
+        },
+        { type: 'h2', text: '棋局直播，为什么实时比录播难' },
+        '转播一盘棋和转播一款射击游戏不是一回事。屏幕上只有两个人在想，有意思的部分发生在他们脑子里，而观战界面上什么都没有。我们试过几种让空棋盘显得不那么空的办法，在截图里好看的那几个，全都让棋本身变得更难读。',
+        {
+          type: 'ul',
+          items: [
+            '落子动画：截图里好看，实际让人觉得棋下得慢，[性能优化那篇](/blog/performance-work)写过这个取舍',
+            '候选点高亮：观众以为那是提示，对局者以为那是泄密',
+            '胜率曲线：五子棋的估值函数是我们手写的，曲线抖得厉害，看了反而误导',
+            '聊天框：没有 moderator 就不开',
+          ],
+        },
+        { type: 'h2', text: '解说一盘棋，怎么不添乱' },
+        '解说要有用，前提是下棋的人看不到。所以解说席是单向的：解说员说话，观众读到，棋盘上的人什么都收不到。解说员也拿不到比观众更多的信息，双方的手数延迟对他是同一个值。这几条不是礼貌问题，是这个功能能不能存在的前提。',
+        { type: 'h2', text: '我们打算按这个顺序做' },
+        {
+          type: 'ul',
+          items: [
+            '第一步：棋谱回放链接。棋下完之后可以发出去的那条，带一个拖动条',
+            '第二步：带延迟的实时观战，只走邀请链接',
+            '第三步：解说角色。一个人说，观众看，对局者无感',
+            '第四步：公开观战房间，只有在第三步没有变成一份 moderation 工作之后才会做',
+          ],
+        },
+        { type: 'h2', text: '什么时候来' },
+        '在象棋之后。观战要建在裁判内核之上，而象棋正在把裁判内核改得更复杂，等它稳定下来再往上搭，比现在搭完再改一遍省事。在那之前，[排行榜](/rankings)是唯一能看到别人怎么下棋的地方，而下棋本身在[对战页](/play)一直是开着的。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '观战会暴露我的段位吗？', a: '不会。分享链接只带这盘棋的棋谱，不带账号和段位记录。' },
+            { q: '观众看到的棋局延迟多少？', a: '按手数算，几手棋。这样正在直播的棋局没法被用来帮正在下的人。' },
+            { q: '解说员能看到我看不到的东西吗？', a: '不能。他和观众用的是同一份延迟数据，只是多了一个说话的位置。' },
+            { q: '别人的棋局我能随便看吗？', a: '不能。观战必须由对局者之一分享出链接，公开房间还没有做。' },
+          ],
+        },
+        { type: 'cta', text: '在 yiboardgame.com 免费下一局五子棋', href: '/play' },
+      ],
+      en: [
+        'We put a game spectate feature on the wishlist the week the first gomoku match went live, and work that more people asked for has pushed it back ever since. This is the honest version of that plan: what watching a match has to do on YiBoard, why a watch games feature is a privacy question before it is a feature, and what has to exist before anyone can commentate matches. Gomoku is open right now on the [play page](/play) at yiboardgame.com.',
+        { type: 'h2', text: 'What a spectate feature has to do' },
+        'A match here is a list of moves and a clock. That is everything the server holds, so a watcher can in principle be shown the same thing the two players see, with one difference: the watcher gets it late. We plan to measure that delay in moves rather than seconds, so a game being cast live can never be used to help someone playing it right now. The [older post on spectator mode](/blog/spectator-mode-watch-and-learn) framed watching as a way to learn. It is also the part that decides whether live watching is safe at all.',
+        { type: 'h2', text: 'The privacy part comes first' },
+        'Nobody who opens a board at midnight has agreed to be watched. So the default is closed: a match is visible to the two people playing it, and watching needs a link one of them chose to share. That link carries the match, not the players\u2019 names and not their rating history, and it stops working when the game ends. Replays are a separate decision, made after the match, by whoever shared it.',
+        {
+          type: 'ul',
+          items: [
+            'Watching is opt-in per match. There is no account setting that leaves it on by default',
+            'The share link exposes the move log, not the rating and not the account',
+            'Watchers see the board a few moves behind the players',
+            'Both players can see who is watching and can end it at any point',
+          ],
+        },
+        { type: 'h2', text: 'Board game casting, and why live is harder' },
+        'Casting a board is not like casting a shooter. There are two people thinking and nothing else on screen, and the part worth watching happens where nobody can see it. We tried several ways to make an empty board look busy. The versions that looked good in a screenshot all made the game harder to read.',
+        {
+          type: 'ul',
+          items: [
+            'Animated stone drops: good in a still image, and they make a fast game feel slow, which is also why we turned them down in [the performance work](/blog/performance-work)',
+            'Highlighting candidate moves: watchers read it as a hint and players read it as a leak',
+            'A win probability curve: our gomoku evaluation function is hand-written and the line jumps around, so it misleads more than it informs',
+            'Chat: no moderators, no chat',
+          ],
+        },
+        { type: 'h2', text: 'Commentating a match without getting in the way' },
+        'Commentary is only useful if the players cannot see it. The commentator seat is one way: the commentator writes, watchers read, and the two people at the board receive nothing. The commentator also gets no more information than the watchers, on the same move delay. These are not rules of etiquette. They are the conditions under which the feature is allowed to exist.',
+        { type: 'h2', text: 'What we would build, in order' },
+        {
+          type: 'ul',
+          items: [
+            'Step one: replay links. A finished match you can send, with a scrubber over the move log',
+            'Step two: live watching with a delay, invite link only',
+            'Step three: a commentator role. One person writes, watchers read, players notice nothing',
+            'Step four: public spectator rooms, and only if step three has not turned into a moderation job',
+          ],
+        },
+        { type: 'h2', text: 'When this happens' },
+        'After xiangqi. Spectating sits on top of the referee kernel, and xiangqi is making that kernel more complicated right now. Building it once after that settles is less work than building it now and rebuilding it. Until then the [leaderboards](/rankings) are the only place to see how other people play, and the [play page](/play) has been open the whole time.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Does watching expose my rating?', a: 'No. The share link carries the move log for that match, and no account or rating data.' },
+            { q: 'How far behind are watchers?', a: 'A few moves, measured in moves instead of seconds, so a live game cannot be used to help someone playing it.' },
+            { q: 'Does the commentator see more than I do?', a: 'No. Same delayed data as the watchers, plus a place to type.' },
+            { q: 'Can I watch any match on the site?', a: 'No. Watching needs a link from one of the players, and public rooms are not built yet.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free gomoku match on YiBoard', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
