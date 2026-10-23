@@ -6114,6 +6114,106 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'privacy-promise-what-we-store',
+    date: '2026-10-23',
+    tags: ['product', 'privacy'],
+    title: {
+      zh: '隐私承诺的履行日志',
+      en: 'Privacy promise: what we actually store',
+    },
+    description: {
+      zh: '我们声称自己的游戏隐私政策短到能读完。这篇是它的履行日志：数据库里到底有哪些行、它们活多久、以及我们拒绝收集的三样东西。不写营销话，只列清单。',
+      en: 'We claim a game privacy policy short enough to read. This is the log behind it: which rows exist in our database, how long they live, and the three things we refuse to collect.',
+    },
+    keywords: ['game privacy policy', 'what data games store', 'no data collection game', 'privacy transparency', 'anonymous gomoku'],
+    content: {
+      zh: [
+        '我们声称自己的 game privacy policy（游戏隐私政策）短到能读完。这篇是它的履行日志：数据库里到底有哪些行、它们活多久、以及我们拒绝收集的三样东西。不写营销话，只列清单。想直接下棋，[对战页](/play)一直开着。',
+        { type: 'h2', text: '我们存了哪些行' },
+        {
+          type: 'ul',
+          items: [
+            '对局记录：棋盘尺寸、规则变体、着法序列、结果、时间戳。没有它，分享出去的复盘链接打不开。',
+            '段位历史：每位玩家每局一行，存对局前后的分数。',
+            '访客 ID：一串存在你自己浏览器里的随机字符串。没有账号，战绩靠它跟着你走。',
+            '聚合计数器：每天的对局数，只用于排行榜的时间窗口，不做任何按人的拆分。',
+          ],
+        },
+        '这就是全部表结构。没有邮箱列，没有姓名列，没有手机列，也没有广告标识符，因为我们从没开口要过这些。',
+        { type: 'h2', text: '我们拒绝收集的三样' },
+        {
+          type: 'ul',
+          items: [
+            '邮箱和手机号。没有注册表单，也就没有地方能填进去。',
+            '跨站追踪用的分析。页面计数在我们自己的服务器上做聚合。',
+            '对局页的聊天内容。就算以后加了，处理方式和着法序列一样：为了让功能跑起来才存，别的用途没有。',
+          ],
+        },
+        { type: 'h2', text: '这些东西活多久' },
+        '对局记录一直留着，直到你删掉它，或者那个访客 ID 对应的记录沉寂太久；具体窗口写在[隐私页](/privacy)上。段位历史要留到段位系统不再需要它为止，因为删掉一行会改变这个对手遇到过的所有人的分数。服务器访问日志活得最短，按天算，存在的意义是让我们能看出哪里坏了。',
+        { type: 'h2', text: '一个不收集数据的游戏，仍然必须做的事' },
+        '要让产品跑起来，有些数据非有不可。一局计分的棋需要结果记录，否则段位就是编的；一条复盘链接需要着法序列，否则没有东西可复盘。我们画的那条线是"用途"：如果某一行不是让某个功能跑起来所必需，我们就不创建它。这条规则比"什么都收、然后承诺会小心"要窄得多，也更好审计。',
+        '另一半是执行。反作弊在服务端跑，意味着每一步都会按规则校验。这个校验读的是盘面状态，不是你是谁，它只在对局旁边写一个通过或不通过的标记。除非结果被申诉，没人会去手工翻它。',
+        { type: 'h2', text: '还有哪些没堵上的地方' },
+        '两个，实话说。服务器日志里会短期保留 IP 地址，因为挡掉一波洪水请求没有别的办法。另外我们的托管商和所有托管商一样，能在网络层看到流量元数据，这部分不在我们能改的范围里。两样都写在[隐私页](/privacy)上，没有藏起来。',
+        '背后的理由我们早先在[零广告零追踪，只有棋](/blog/no-ads-no-tracking-just-games)那篇写过。这篇是后续：先把话说出来，再把磁盘上实际有什么列一遍。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 会存我的姓名或邮箱吗？', a: '不会。这里没有注册，所以我们从来没收到过这两样。你的战绩绑的是一串存在你自己浏览器里的随机访客 ID。' },
+            { q: '我能删掉自己的对局吗？', a: '能。在战绩页删除会移除对局记录和访客 ID。已经作用到别人身上的分数变动不会回退，理由和国际象棋的结果不会事后改判一样。' },
+            { q: '你们卖数据吗？', a: '不卖。表结构里没有值得买的东西，也没有广告标识符可以拿去对标。' },
+            { q: '隐私政策和这篇写的不一样吗？', a: '不应该不一样。政策页是有约束力的那一版，这篇存在的意义是把同一件事用大白话说一遍。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局', href: '/play' },
+      ],
+      en: [
+        'We claim a game privacy policy short enough to read. This is the log behind it: which rows exist in our database, how long they live, and the three things we refuse to collect. No marketing language, just the list. The [play page](/play) is open if you came here for a game.',
+        { type: 'h2', text: 'The rows we keep' },
+        {
+          type: 'ul',
+          items: [
+            'Match records: board size, ruleset, move list, result, timestamp. Without them the replay link does not open.',
+            'Rating history: one row per game per player, holding the rating before and after.',
+            'Guest id: a random string in your own browser storage. It is how your record follows you without an account.',
+            'Aggregate counters: games played per day, used for the leaderboard window. Nothing is broken down per person.',
+          ],
+        },
+        'That is the whole schema. There is no email column, no name column, no phone column and no advertising identifier, because we never ask for any of them.',
+        { type: 'h2', text: 'The three things we refuse to collect' },
+        {
+          type: 'ul',
+          items: [
+            'Email and phone number. There is no signup form, so there is nowhere to type one.',
+            'Analytics that follow you across other sites. Page counts are aggregated on our own server.',
+            'Chat content from the match page. If we ever add one, it gets the same treatment as the move list: stored to make the feature work, and for nothing else.',
+          ],
+        },
+        { type: 'h2', text: 'How long things live' },
+        'Match records stay until you delete them or until the record behind a guest id goes quiet for a long stretch; the exact window is on the [privacy page](/privacy). Rating history is kept as long as the ladder needs it, because dropping a row would change the ratings of everyone that player met. Server access logs are the shortest lived, counted in days, and exist so we can see when something breaks.',
+        { type: 'h2', text: 'What a no data collection game still has to do' },
+        'Some data has to exist for the product to run at all. A rated game needs a record of the result, or the rating is fiction. A replay link needs the move list, or there is nothing to replay. The line we draw is purpose: if a row is not needed to make a feature work, we do not create it. That is a narrower rule than collecting everything and promising to be careful, and it is far easier to audit.',
+        'The other half is enforcement. Anti-cheat runs on the server, which means every move gets checked against the rules. That check reads the board state, not who you are, and writes a pass or fail flag beside the game. Nobody reads it by hand unless a result is disputed.',
+        { type: 'h2', text: 'Where the gaps are' },
+        'Two, and we will say them plainly. IP addresses stay in server logs for a short window, because there is no other way to stop a flood of requests. And our host, like every host, can see traffic metadata at the network level, which is outside what we can change. Both are written on the [privacy page](/privacy) rather than buried.',
+        'We went through the reasoning earlier in [no ads, no tracking, just games](/blog/no-ads-no-tracking-just-games). This is the follow up: the claim first, then the list of what is actually on disk.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Does YiBoard store my name or email?', a: 'No. There is no signup, so we never receive either one. Your record is tied to a random guest id kept in your own browser.' },
+            { q: 'Can I delete my games?', a: 'Yes. Deleting from the profile page removes the match records and the guest id. Rating changes already applied to other players are not reversed, for the same reason a chess result is not changed after the fact.' },
+            { q: 'Do you sell data?', a: 'No. There is nothing in the schema worth buying, and no advertising identifier to sell it against.' },
+            { q: 'Is the privacy policy different from what this post says?', a: 'It should not be. The policy page is the binding version. This post exists to say the same thing in plain words.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
