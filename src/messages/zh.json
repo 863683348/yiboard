@@ -502,7 +502,19 @@
     "searchPlaceholder": "搜索文章…",
     "searchButton": "搜索",
     "clearSearch": "清除",
+    "noResults": "没有匹配「{q}」的文章。换个词试试，或者看全部文章。",
+    "resultsCount": "「{q}」找到 {count} 篇",
     "allPosts": "查看全部文章",
+    "explore": {
+      "title": "继续看",
+      "howTo": "怎么玩",
+      "rules": "五子棋规则",
+      "renju": "连珠规则",
+      "glossary": "术语表",
+      "faq": "常见问题",
+      "puzzle": "每日棋题",
+      "games": "棋谱库"
+    },
     "tagsTitle": "按标签浏览"
   },
   "contact": {

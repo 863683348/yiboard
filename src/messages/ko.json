@@ -500,7 +500,19 @@
     "searchPlaceholder": "글 검색…",
     "searchButton": "검색",
     "clearSearch": "지우기",
+    "noResults": "\"{q}\"에 해당하는 글이 없습니다. 다른 단어로 시도하거나 모든 글을 확인해 보세요.",
+    "resultsCount": "\"{q}\" 검색 결과 {count}개",
     "allPosts": "모든 글 보기",
+    "explore": {
+      "title": "계속 살펴보기",
+      "howTo": "게임 방법",
+      "rules": "오목 규칙",
+      "renju": "렌주 규칙",
+      "glossary": "용어 사전",
+      "faq": "자주 묻는 질문",
+      "puzzle": "오늘의 문제",
+      "games": "기보 라이브러리"
+    },
     "tagsTitle": "태그로 보기"
   },
   "contact": {

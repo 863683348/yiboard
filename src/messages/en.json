@@ -518,7 +518,19 @@
     "searchPlaceholder": "Search articles…",
     "searchButton": "Search",
     "clearSearch": "Clear",
+    "noResults": "No posts match \"{q}\". Try another term, or look through all posts.",
+    "resultsCount": "{count} result(s) for \"{q}\"",
     "allPosts": "View all posts",
+    "explore": {
+      "title": "Keep exploring",
+      "howTo": "How to play",
+      "rules": "Gomoku rules",
+      "renju": "Renju rules",
+      "glossary": "Glossary",
+      "faq": "FAQ",
+      "puzzle": "Daily puzzle",
+      "games": "Game library"
+    },
     "tagsTitle": "Browse by tag"
   },
   "contact": {
