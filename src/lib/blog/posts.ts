@@ -6214,6 +6214,118 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'iterating-on-user-feedback',
+    date: '2026-10-25',
+    tags: ['product', 'community'],
+    title: {
+      zh: '用户反馈驱动的迭代',
+      en: 'Iterating on user feedback',
+    },
+    description: {
+      zh: '我们怎么读玩家反馈：它从三条渠道来、按三个问题排序，以及哪些需求会被直接拒绝。附上真实的上线案例，还有为什么免注册这件事没有商量余地。',
+      en: 'How we read player feedback: the three channels it arrives on, the three questions we sort it by, and the requests we decline outright. With real examples of what shipped.',
+    },
+    keywords: ['game user feedback', 'feature requests board game', 'community driven development', 'player suggestions', 'board game feedback'],
+    content: {
+      zh: [
+        '多数 game user feedback（玩家反馈）是以一句话的形式到达的：匹配太慢、手机上棋盘太小、想再来一局。在 YiBoard，它通常还带着一个复盘 ID，这意味着我们能打开对方当时看到的具体局面，而不是从措辞里猜。这一个差别决定了我们怎么读 feature requests board game（棋类功能需求），也决定了我们的更新说明为什么短而具体，而不是像在写广告。只想下棋的话，[对战页](/play)一直开着。',
+        '三条渠道几乎承载了全部反馈，而每条渠道携带的证据类型都不同。它们彼此矛盾的次数也比想象中多：收件箱里声音最大的那条需求，很少和着法序列指向的是同一条。两者冲突时，我们先看重放。',
+        { type: 'h2', text: '玩家的建议从哪来' },
+        {
+          type: 'ul',
+          items: [
+            '[联系页](/contact)：消息最长、上下文最多，通常来自已经下过十局以上的人。',
+            '被分享出去的复盘链接：一个字都没有，但着法序列能告诉我们，没人在看的时候大家实际在用哪种规则变体。',
+            '段位数据：完全不说话，而且常常最先发现问题。让胜率失衡的改动，会在这里比任何人写信来得更早出现。',
+          ],
+        },
+        { type: 'h2', text: '棋类功能需求怎么排序' },
+        '我们用三个问题，按这个顺序问。第一个过不了，就不会走到第二个。',
+        {
+          type: 'ul',
+          items: [
+            '它会不会动到规则或裁判？规则改动推进得慢，因为服务器端裁判是唯一一处出错就会同时对所有人不公平的地方。',
+            '它能不能帮一个新玩家下完第一局？这类排在最前面，因为整个产品的主张就是有人能在一分钟内开局。',
+            '它是不是只对每天都下的人有意义？这类排在最后，其中有相当一部分永远不会做。',
+          ],
+        },
+        { type: 'h2', text: '社区驱动的开发在这里长什么样' },
+        '社区驱动的开发听起来很慷慨，直到你得公开说一次不。我们跑的版本更窄一点：公开需求、公开决定、公开理由。一条建议被否掉，说明里会写清楚它卡在三个问题中的哪一个，以及什么情况会让我们改答案。',
+        '这有个值得说清楚的副作用：玩家不再重复发同一条建议了，因为他们看得见它停在哪。开始公开决定之后，收件箱变小了，也更有用了，这是开始时没预料到的。',
+        { type: 'h2', text: '从建议到上线的几个例子' },
+        '举几个例子，好让上面的排序规则不只是一句口号。',
+        {
+          type: 'ul',
+          items: [
+            '键盘操作：提出的人不多，实现成本低，却替指针操作不精确的人移走了一道真实的门槛。',
+            '不用账号也能分享复盘：被反复要求，而且符合第二条，因为分享出来的一局是多数新玩家进来的入口。',
+            '十五路棋盘的移动端布局：三个人分别发来了同一处裁切问题的截图，这是最快的证据。',
+          ],
+        },
+        { type: 'h2', text: '我们拒绝什么' },
+        '两类需求是关着的，说在前面能替所有人省时间。任何会在棋盘上放广告的东西都不做，这个设计选择在[免费不是营销](/blog/free-is-a-design-choice)里讲过。任何要求先注册才能落第一子的东西也不做，因为免注册承诺是产品其余部分的地基。平台下一步往哪走，写在[开放 API 的设想](/blog/board-game-api-plans)里。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '我提的建议会有人看吗？', a: '会。每条发到联系页的需求都会被读，并且会得到一个决定：做、排队、或者不做。不做的时候会写明它卡在哪一个问题上。' },
+            { q: '为什么有些看起来很小的改动要等很久？', a: '因为只要碰到规则或服务器端裁判，改动就不是前端一个小补丁。裁判出错会让所有对局同时不公平，所以这类改动要重跑全部规则测试。' },
+            { q: '我该去哪里提需求？', a: '[联系页](/contact)最直接。如果你能附上复盘链接，我们就能直接看到你说的那一步。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局', href: '/play' },
+      ],
+      en: [
+        'Most game user feedback arrives as a sentence: the matchmaker feels slow, the board is too small on my phone, I want a rematch button. On YiBoard it usually arrives with a replay id attached, which means we can open the exact position someone was looking at instead of guessing from the wording. That one difference shapes how we read feature requests for a board game, and it is why our release notes are short and specific instead of promotional. If you only came here to play, the [play page](/play) is open.',
+        'Three channels carry nearly everything, and each one carries a different kind of evidence. They also disagree with each other more often than you would expect: the loudest request in the inbox is rarely the one the move lists point at. When the two disagree, we watch the replays first.',
+        { type: 'h2', text: 'Where player suggestions come from' },
+        {
+          type: 'ul',
+          items: [
+            'The [contact page](/contact): the longest messages and the most context, usually from players who have finished more than ten games.',
+            'Shared replay links: no words at all, but the move list shows which rule variant people actually pick when nobody is watching.',
+            'Ratings data: silent, and often first. A change that makes win rates lopsided shows up here days before anyone writes in.',
+          ],
+        },
+        { type: 'h2', text: 'How feature requests for a board game get sorted' },
+        'We ask three questions, in this order. A request that fails the first one does not reach the second.',
+        {
+          type: 'ul',
+          items: [
+            'Does it touch the rules or the referee? Rule changes move slowly, because the server-side referee is the one part where a mistake would be unfair to every player at once.',
+            'Does it help a new player reach a finished first game? Those go near the front, because the whole claim of the product is that someone can start a match in under a minute.',
+            'Does it only matter to people who already play daily? Those go last, and a fair number of them never ship.',
+          ],
+        },
+        { type: 'h2', text: 'What community driven development looks like here' },
+        'Community driven development sounds generous until you have to say no in public. The version we run is narrower: we publish the request, we publish the decision, and we publish the reason. If a suggestion is declined, the note says which of the three questions it failed and what would change our answer.',
+        'That has a side effect worth naming. Players stop sending the same request twice, because they can see where it sits. The inbox got smaller and more useful after we started posting the decisions, which is not what we expected when we began.',
+        { type: 'h2', text: 'Requests that became shipped changes' },
+        'A few examples, so the sorting rule is more than a slogan.',
+        {
+          type: 'ul',
+          items: [
+            'Keyboard play. Asked for by a handful of people, cheap to build, and it removed a real barrier for anyone who cannot use a pointer precisely.',
+            'Replay links without an account. Requested constantly, and it passed question two, because a shared game is how most new players arrive.',
+            'Mobile layout for the fifteen-line board. Three separate people sent screenshots of the same clipping problem, which is the fastest kind of evidence there is.',
+          ],
+        },
+        { type: 'h2', text: 'What we say no to' },
+        'Two categories are closed, and saying so up front saves everyone time. Anything that would put advertising on the board is out; that design choice is explained in [free is a design choice](/blog/free-is-a-design-choice). Anything that needs an account before the first move is out as well, because the no-signup promise is the ground the rest of the product stands on. Where the platform goes next is written up in [our open api thinking](/blog/board-game-api-plans).',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Will anyone read my suggestion?', a: 'Yes. Every request that reaches the contact page gets read, and it gets a decision: build it, queue it, or decline it. A decline comes with the question it failed.' },
+            { q: 'Why do changes that look small sometimes take months?', a: 'Because anything that touches the rules or the server-side referee is not a front-end patch. A referee bug makes every match unfair at once, so those changes rerun the full rule test suite.' },
+            { q: 'Where should I send a feature request?', a: 'The contact page is the most direct route. If you can include a replay link, we can look at the exact move you mean.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
