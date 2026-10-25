@@ -107,6 +107,21 @@
         "native": "围棋 · Wéiqí",
         "blurb": "Rodeas territorio en lugar de capturar a un rey. Se sigue jugando con prácticamente las mismas reglas de hace dos milenios."
       },
+      "reversi": {
+        "name": "Reversi",
+        "native": "黑白棋",
+        "blurb": "Da la vuelta al tablero a tu favor. Unas pocas fichas cambian toda la partida: fácil de aprender, brutal de dominar."
+      },
+      "chess": {
+        "name": "Ajedrez",
+        "native": "国际象棋",
+        "blurb": "El clásico occidental, completamente jugable: enroque, captura al paso y promoción, contra un motor alpha-beta afilado. Un tablero, líneas infinitas."
+      },
+      "tsumego": {
+        "name": "Tsumego",
+        "native": "死活题",
+        "blurb": "Problemas de vida y muerte de Go. Un movimiento correcto captura el grupo: entrena la lectura que gana partidas reales."
+      },
       "moreHeading": "Más juegos de tablero",
       "learnAll": "Todas las guías"
     },
@@ -148,7 +163,10 @@
     "statsAi": "vs motor",
     "statsFriend": "vs jugadores",
     "ctaGo": "Jugar al Go",
-    "ctaXiangqi": "Jugar al Xiangqi"
+    "ctaXiangqi": "Jugar al Xiangqi",
+    "ctaReversi": "Jugar al Reversi",
+    "ctaChess": "Jugar al Ajedrez",
+    "ctaTsumego": "Resolver Tsumego"
   },
   "play": {
     "title": "Juega Gomoku Online Gratis – vs IA o Amigos",

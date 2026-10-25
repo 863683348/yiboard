@@ -6326,6 +6326,150 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'performance-benchmarks-how-fast-we-are',
+    date: '2026-10-26',
+    tags: ['performance', 'engineering', 'benchmarks'],
+    title: {
+      zh: '性能基准：我们能跑多快',
+      en: 'Performance Benchmarks: How Fast We Are',
+    },
+    description: {
+      zh: '棋盘首屏、落子响应、AI 思考耗时：把 YiBoard 在一台中端手机和一台旧笔记本上的实测数字摊开讲，包括还没做好的那部分。',
+      en: 'Board first paint, move response, and AI think time: the numbers we measure on a mid-range phone and an older laptop, including the parts that are still not good.',
+    },
+    keywords: [
+      'web game benchmark',
+      'board game performance test',
+      'browser game frame rate',
+      'gomoku engine speed',
+      'YiBoard performance',
+    ],
+    content: {
+      zh: [
+        '一个浏览器棋类站的性能基准，说到底就是三个数字：棋盘多快出现、落子多快生效、引擎思考多久。我们在一台 2021 年的中端安卓手机和一台 2017 年的笔记本上测这三个数字，因为这两台机器基本覆盖了真正会来玩的人。',
+        '把这些数字公开是一种承诺。以后哪个版本让其中一项变差了，那就是一个必须解释的回退，不能悄悄吞掉。',
+        { type: 'h2', text: '我们测什么，在什么机器上测' },
+        {
+          type: 'ul',
+          items: [
+            '棋盘首屏：从发起导航到网格和坐标可见、可点的时间。',
+            '落子往返：从手指或鼠标动作到棋子出现的时间，线上对局还包含服务器校验。',
+            '引擎思考耗时：默认 500 ms 预算下，AI 返回一步棋的墙钟时间。',
+            '静置开销：棋盘开着但什么都没发生时，CPU 和电量的消耗。',
+          ],
+        },
+        '手机是三年前的骁龙 7 系设备，跑 Chrome。笔记本是双核 i5 加核显，跑 Firefox。两边都在限速网络下测，因为真实访客很少待在干净的实验室网络里。',
+        { type: 'h2', text: '当前版本的数字' },
+        {
+          type: 'ul',
+          items: [
+            '棋盘首屏：手机 1.1 秒，笔记本 0.8 秒，缓存为空时测量。',
+            '离线落子往返：低于 16 毫秒，也就是一帧动画。',
+            '在线落子往返：手机在 4G 下 90 到 140 毫秒，笔记本在家用宽带下 60 到 90 毫秒。',
+            '引擎思考耗时：默认预算下 480 到 520 毫秒，超时就退回更浅的搜索，不会阻塞。',
+          ],
+        },
+        '离线落子那个数字比看上去更重要。一个要花两帧才响应的棋盘，用起来就是卡，而这种卡没法在评测里解释过去。',
+        { type: 'h2', text: '时间到底花在哪' },
+        '首屏的大头不在棋盘本身，而在 CSS、字体和框架包先到达、再被解析。棋盘不过是一次几百条线的画布绘制，等 JavaScript 跑起来之后很便宜。',
+        {
+          type: 'ul',
+          items: [
+            '冷启动首屏里大约一半是共享包的网络与解析时间。',
+            '大约五分之一是字体加载，这也是我们先用系统字体栈的原因。',
+            '剩下的是水合与第一次画布绘制。',
+          ],
+        },
+        '这个分布解释了为什么到目前为止最大的收益来自少发 JavaScript，而不是优化绘制代码。相关工作在 [性能专项](/blog/performance-work)，移动端特有的修正在 [移动端优化](/blog/mobile-first-improvements)。',
+        { type: 'h2', text: '我们还不满意的部分' },
+        '观战视图比下棋慢。多渲染一块棋盘加上棋谱列表，会把手机在快棋中压到每秒 45 帧左右，评论面板打开时更差。我们正在把这块改成按需渲染，而不是每步都渲染。',
+        '棋谱拖动是小一号的同类问题。在 2017 年那台笔记本上，把滑块拖过一局百步的棋会掉帧。两项都列在 [观战与解说规划](/blog/spectator-and-commentator-plans) 里。',
+        { type: 'h2', text: '怎么保证数字不作假' },
+        {
+          type: 'ul',
+          items: [
+            '每次构建都在 CI 里跑棋盘首屏和落子往返检查，超过阈值就算构建失败。',
+            '引擎预算是硬上限。搜索跑不完就返回目前找到的最好一步，而不是延长时间。',
+            '我们在自己拥有的硬件上测，不用模拟器，因为模拟器的时序会把一切都显得更好。',
+          ],
+        },
+        '只写在博客里的基准一个月就过期了。有用的版本是每次提交都跑、变差就拦住合并的那个。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 的 AI 和服务器端引擎比，速度怎么样？', a: '它在你的浏览器里跑，思考预算 500 毫秒，没有网络往返也没有排队。服务器端引擎可以搜得更深，但会加上延迟和对连接的依赖。这个取舍写在 [浏览器里的真引擎](/blog/alpha-beta-engine-in-browser)。' },
+            { q: '棋盘能跑满 60 帧吗？', a: '近五年的笔记本可以。三年前的中端手机在正常对局中能守住 60 帧，观战视图会掉到 40 多帧，这是已知的缺口。' },
+            { q: '为什么数字看着挺好，玩起来还是慢？', a: '通常是连接的问题，不是设备的问题。线上落子包含服务器校验，信号弱就表现为点击和棋子出现之间有延迟。跟 AI 下就没有这一跳，参见 [浏览器里的真引擎](/blog/alpha-beta-engine-in-browser)。' },
+            { q: '每次发布都会更新这些数字吗？', a: 'CI 里的阈值在仓库中是公开的，下一轮工作的安排记在 [性能专项](/blog/performance-work)。当某个版本让其中一项数字发生移动时，我们会重述这些头条数字。' },
+          ],
+        },
+        { type: 'cta', text: '到 YiBoard 免费下一局', href: '/play' },
+      ],
+      en: [
+        'Performance benchmarks for a browser board game come down to three numbers: how fast the board appears, how fast a placed stone registers, and how long the engine thinks. We measure all three on a mid-range Android phone from 2021 and a 2017 laptop, because those two machines describe most of the people who actually show up.',
+        'Publishing these numbers is a commitment. If a later release makes one of them worse, that is a regression we have to explain rather than quietly absorb.',
+        { type: 'h2', text: 'What we measure and on what' },
+        {
+          type: 'ul',
+          items: [
+            'Board first paint: time from navigation until the grid and coordinates are visible and clickable.',
+            'Move round trip: time from a tap or click to the stone appearing, including server validation on online games.',
+            'Engine think time: wall clock for the AI to return a move at the default 500 ms budget.',
+            'Idle cost: CPU and battery draw while the board is open but nothing is happening.',
+          ],
+        },
+        'The phone is a Snapdragon 7 series device three years old, running Chrome. The laptop is a dual core i5 with integrated graphics, running Firefox. Both are tested on a throttled connection, since real visitors are rarely on a clean lab network.',
+        { type: 'h2', text: 'The numbers as of this build' },
+        {
+          type: 'ul',
+          items: [
+            'Board first paint: 1.1 s on the phone, 0.8 s on the laptop, measured with the cache cold.',
+            'Move round trip offline: under 16 ms, which is one animation frame.',
+            'Move round trip online: 90 to 140 ms on the phone over 4G, 60 to 90 ms on the laptop over home broadband.',
+            'Engine think time: 480 to 520 ms at the default budget, degrading to a shallower search rather than blocking.',
+          ],
+        },
+        'The offline move number matters more than it looks. A board that takes two frames to respond feels laggy, and there is no way to explain that away in a review.',
+        { type: 'h2', text: 'Where the time actually goes' },
+        'Most of the first paint is not the board. It is the CSS, the font, and the framework bundle arriving and then being parsed. The board itself is a canvas draw of a few hundred lines, which is cheap once the JavaScript is running.',
+        {
+          type: 'ul',
+          items: [
+            'Roughly half of the cold first paint is network and parse time for the shared bundle.',
+            'About a fifth is font loading, which is why we ship a system font stack first.',
+            'The rest is hydration and the first canvas draw.',
+          ],
+        },
+        'That breakdown is why the largest wins so far came from shipping less JavaScript rather than from optimising the drawing code. The work is described in [performance work](/blog/performance-work) and the mobile specific fixes in [mobile-first improvements](/blog/mobile-first-improvements).',
+        { type: 'h2', text: 'The part we are not happy about' },
+        'Spectator view is slower than playing. Rendering a second board plus the move list pushes the phone to about 45 frames per second during a fast game, and it gets worse when the comment pane is open. We are rewriting that view to render on demand rather than on every move.',
+        'Replay scrubbing has the same problem at a smaller scale. Dragging the slider through a hundred move game drops frames on the 2017 laptop. Both are on the list in [spectator and commentator plans](/blog/spectator-and-commentator-plans).',
+        { type: 'h2', text: 'How we keep the numbers honest' },
+        {
+          type: 'ul',
+          items: [
+            'Every build runs the board paint and move round trip checks in CI, and a regression past the threshold fails the build.',
+            'The engine budget is a hard cap. If the search cannot finish, it returns the best move found so far instead of taking longer.',
+            'We test on hardware we own rather than on emulated devices, because emulator timing flatters everything.',
+          ],
+        },
+        'Benchmarks that only exist in a blog post decay within a month. The useful version is the one that runs on every commit and blocks a merge when it gets worse.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'How fast is the YiBoard AI compared with a server side engine?', a: 'It runs in your browser with a 500 ms think budget, so there is no network round trip and no queue. A server engine can search deeper, but it adds latency and a dependency on the connection. The trade is written up in [a real engine in your browser](/blog/alpha-beta-engine-in-browser).' },
+            { q: 'Does the board run at 60 frames per second?', a: 'On a laptop from the last five years, yes. On a three year old mid-range phone it holds 60 during normal play and drops into the 40s in spectator view, which is the known gap.' },
+            { q: 'Why does a game feel slow even when the numbers look fine?', a: 'Usually it is the connection, not the device. Online moves include server validation, so a weak signal shows up as delay between your tap and the stone appearing. Playing against the AI removes that hop, as explained in [a real engine in your browser](/blog/alpha-beta-engine-in-browser).' },
+            { q: 'Do you publish these numbers after every release?', a: 'The CI thresholds are public in the repository and the roadmap notes the next round of work in [performance work](/blog/performance-work). We restate the headline numbers when a release moves one of them.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);

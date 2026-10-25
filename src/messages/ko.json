@@ -105,6 +105,21 @@
         "native": "围棋 · Wéiqí",
         "blurb": "You surround territory instead of capturing a king. Still played under essentially the same rules it had two millennia ago."
       },
+      "reversi": {
+        "name": "리버시",
+        "native": "黑白棋",
+        "blurb": "보드를 자기 색으로 뒤집으세요. 돌 몇 개로 판세가 바뀝니다. 배우기는 쉽고, 마스터하기는 가혹합니다."
+      },
+      "chess": {
+        "name": "체스",
+        "native": "国际象棋",
+        "blurb": "서양의 고전을 완전히 구현했습니다: 캐슬링, 앙파상, 프로모션까지. 날카로운 alpha-beta 엔진이 상대합니다. 하나의 보드, 무한한 변화."
+      },
+      "tsumego": {
+        "name": "사활 문제",
+        "native": "死活题",
+        "blurb": "바둑 사활 문제입니다. 정답 한 수로 대마를 잡을 수 있습니다. 실전을 이기는 읽는 힘을 기르세요."
+      },
       "moreHeading": "더 많은 보드게임",
       "learnAll": "전체 게임 방법"
     },
@@ -146,7 +161,10 @@
     "statsAi": "vs engine",
     "statsFriend": "vs players",
     "ctaXiangqi": "Play Xiangqi",
-    "ctaGo": "바둑 하기"
+    "ctaGo": "바둑 하기",
+    "ctaReversi": "리버시 하기",
+    "ctaChess": "체스 하기",
+    "ctaTsumego": "사활 문제 풀기"
   },
   "play": {
     "title": "Gomoku",
