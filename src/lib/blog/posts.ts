@@ -6470,6 +6470,120 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'why-we-are-open-source',
+    date: '2026-10-29',
+    tags: ['open-source', 'product', 'community'],
+    title: {
+      zh: '为什么我们开源',
+      en: 'Why We Are Open Source'
+    },
+    description: {
+      zh: 'YiBoard 的全部代码都在公开仓库里：裁判、引擎、界面、五种语言。这篇讲我们为什么这么选、代价是什么、你能拿它做什么。',
+      en: 'The whole YiBoard repository is public: referee, engine, interface, five languages. Why we chose that, what it costs us, and what you are allowed to do with the code.'
+    },
+    keywords: ['open source game project', 'open source board game', 'github game', 'transparent code', 'open source gomoku engine'],
+    content: {
+      zh: [
+        'YiBoard 是一个开源棋类项目，这句话是决定，不是口号，而且它有成本。整个仓库都是公开的：裁判逻辑、alpha-beta 引擎、五种语言的词条、段位算法。一场棋的胜负是怎么判定的，谁都能读到，也可以在 issue 里跟我们吵。这篇讲我们为什么这么选、代价是什么、以及你能拿这份代码做什么。',
+        { type: 'h2', text: '公开的部分具体有哪些' },
+        {
+          type: 'ul',
+          items: [
+            '裁判：判断落子是否合法、胜负如何成立的那一层，站内所有棋种共用',
+            '五子棋引擎：跑在浏览器里的 alpha-beta 剪枝，单次搜索预算 500 毫秒',
+            '界面：路由、棋盘渲染、键盘操作的处理',
+            '五种语言的词条文件，包括还没翻完的那些',
+            '没有统计脚本，也没有广告标签，这点你不信我们的话可以自己翻源码确认'
+          ]
+        },
+        '仓库按职责分目录，规则、引擎、界面、翻译各自独立。想看懂胜负是怎么判的，从规则那部分开始读最快。',
+        { type: 'h2', text: '为什么把源码放出来' },
+        {
+          type: 'ul',
+          items: [
+            '棋类规则天生会被争论。裁判代码公开，争议可以在代码里解决，而不是在评论区里吵',
+            '作弊指控需要证据。引擎公开之后，"对面是不是用了软件"这个问题有可查的答案',
+            '别人可以把引擎挪到自己的项目里，不必重新实现一遍',
+            '我们没有客服团队。问题公开在 issue 里，答过一次之后别人搜得到'
+          ]
+        },
+        { type: 'h2', text: '开源解决不了什么' },
+        '要说实话：开源不等于有人维护。一个公开仓库如果只有一个人在提交，巴士系数还是一。放出源码也不代表我们接受每一个补丁，合并进去意味着以后要一直维护它，有时候我们判断不值得。另外，代码公开对不懂代码的人没有任何帮助，这一点我们很清楚，所以界面本身做得足够简单，让人不用读代码也能玩。',
+        { type: 'h2', text: '你可以拿它做什么' },
+        {
+          type: 'ul',
+          items: [
+            '读：不需要注册，也不需要申请加入什么组织',
+            '自己部署一份，保留署名和许可声明即可',
+            '发现规则判错了就开 issue，附上对局记录，这比在别处抱怨有用得多',
+            '提交补丁。我们会看，但不一定合并'
+          ]
+        },
+        '如果你只想下棋，这些都不重要。打开 [对战页](/play) 直接开一局就行，开源是给想查的人准备的。团队的想法写在 [关于页](/about)。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 真的开源吗？', a: '仓库是公开的，裁判、引擎、界面、翻译都在里面，许可条款写在仓库里。你不需要注册账号就能读。' },
+            { q: '我能自己搭一份吗？', a: '可以。保留署名和许可声明就行。我们不提供托管支持，部署和运维是你自己的事。' },
+            { q: '把引擎公开了，是不是更容易作弊？', a: '公开让玩家能研究引擎，但对局结果仍然由服务端裁判判定，单靠读代码改不了别人的对局。引擎那一层的设计思路在 /blog/open-source-board-engine-ecosystem 里讲过。' },
+            { q: '既然免费又开源，靠什么维持？', a: '目前是几个人的业余项目，没有广告、没有付费墙。为什么这么选，/blog/free-is-a-design-choice 里写得更细，[常见问题](/faq) 也有。' }
+          ]
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局', href: '/play' }
+      ],
+      en: [
+        'YiBoard is an open source game project, and that sentence describes a decision with costs attached, not a slogan. The whole repository is public: the referee, the alpha-beta engine, the five language files, the ranking maths. Anyone can read how a win gets decided and argue with us in an issue thread. This post covers why we chose it, what it costs, and what you are allowed to do with the code.',
+        { type: 'h2', text: 'What is actually public' },
+        {
+          type: 'ul',
+          items: [
+            'The referee: the layer that decides whether a move is legal and when a game is won, shared by every game on the site',
+            'The Gomoku engine: alpha-beta pruning running in your browser with a 500 ms search budget',
+            'The interface: routing, board rendering, keyboard handling',
+            'Localisation files for all five languages, including the strings we have not finished',
+            'No analytics scripts and no ad tags, which you can confirm by reading the source instead of taking our word for it'
+          ]
+        },
+        'The repository is grouped by job: rules, engine, interface, translations. If you want to understand how a win is decided, start with the rules directory.',
+        { type: 'h2', text: 'Why we published the source' },
+        {
+          type: 'ul',
+          items: [
+            'Board game rules get argued about by nature. A public referee settles the argument in code rather than in a comment section',
+            'Cheating accusations need evidence. With the engine public, the question of whether an opponent used software has an answer someone can check',
+            'Other developers can port the engine instead of writing another one',
+            'We have no support team. An issue answered once stays searchable for everyone after us'
+          ]
+        },
+        { type: 'h2', text: 'What open source does not fix' },
+        'Being honest here: public code is not the same as maintained code. A repository with one committer still has a bus factor of one. Publishing the source also does not mean we merge every patch, because merging means carrying it forever, and sometimes we judge that it is not worth it. And open source does nothing for someone who does not read code, which we know perfectly well, so the interface has to stand on its own.',
+        { type: 'h2', text: 'What you can do with it' },
+        {
+          type: 'ul',
+          items: [
+            'Read it: no account, no request to join anything',
+            'Run your own instance, as long as attribution and the licence notice stay in place',
+            'Open an issue with the game record attached when a rule looks wrong, which does more good than complaining elsewhere',
+            'Send a patch. We read them, we do not merge all of them'
+          ]
+        },
+        'None of this matters if you only want to play. Open the [play page](/play) and start a match; the repository is there for whoever wants to check. What the team is trying to do is on the [about page](/about).',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Is YiBoard really open source?', a: 'The repository is public and holds the referee, engine, interface and translations, with the licence stated inside it. You can read it without an account.' },
+            { q: 'Can I host my own copy?', a: 'Yes, as long as attribution and the licence notice stay in place. We do not offer hosting support, so deployment and uptime are on you.' },
+            { q: 'Does publishing the engine make cheating easier?', a: 'It lets players study the engine, but match results are still decided by the server side referee, so reading code cannot alter someone else\u2019s game. The design of that engine layer is described in /blog/open-source-board-engine-ecosystem.' },
+            { q: 'If it is free and open, how do you keep going?', a: 'Right now it is a few people\u2019s side project, with no ads and no paywall. /blog/free-is-a-design-choice goes into why, and the [FAQ page](/faq) covers the practical side.' }
+          ]
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
