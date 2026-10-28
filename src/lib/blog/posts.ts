@@ -6696,6 +6696,122 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: 'board-design-language',
+    date: '2026-10-27',
+    tags: ['game design', 'board games', 'product'],
+    title: {
+      zh: '设计语言：为什么棋盘长这样',
+      en: 'Design Language: Why the Board Looks This Way'
+    },
+    description: {
+      zh: '线宽多少、棋子对比多强、间距留多少、为什么我们砍掉了拟物木纹。这篇讲 YiBoard 棋盘背后的取舍，每一条都有具体理由。',
+      en: 'Line weight, stone contrast, spacing, and why the faux wood texture got cut. The reasoning behind every choice on the YiBoard board.'
+    },
+    keywords: ['board game design', 'minimal board design', 'game ui design', 'board aesthetics', 'gomoku board layout'],
+    content: {
+      zh: [
+        '好的棋类界面设计，标准是让人忘了界面。棋盘上不该有任何东西需要你先理解才能下棋：线是线，子是子，上一手在哪一眼看得到。下面这些取舍看起来都是小事，加起来决定了你第一局是不是顺畅。',
+        { type: "h2", text: "先画线，别的都往后放" },
+        '棋盘的第一要素是网格本身。线的粗细决定了棋子的可读性：线太粗会和黑子抢注意力，太细在小屏上会消失。我们取的值是让格子和棋子之间留出可见的空隙，棋子压在交叉点上时，四边都还能看到线。',
+        {
+          type: 'ul',
+          items: [
+            '线宽固定，不随棋盘尺寸缩放：19 路和 15 路用同一套视觉重量',
+            '星位只保留真正有规则含义的那几个，装饰性的点全部去掉',
+            '棋盘边缘的留白按棋子直径的一半算，最外一圈落子不会贴边'
+          ]
+        },
+        { type: "h2", text: "棋子对比度与上一手标记" },
+        '黑白子的对比是棋盘上唯一必须一眼分得清的信息。我们不用纯黑和纯白，纯白在亮屏上会刺眼，纯黑会压过网格。实际用的是略偏暖的白和略偏冷的深灰，长时间看不累。',
+        {
+          type: 'ul',
+          items: [
+            '上一手用细标记，不盖住棋子本身，随时能看出对手走了哪里',
+            '禁手和胜负连线用同一套颜色语言，不引入第三种强调色',
+            '悬停预览是半透明的，落子之前你能看到结果，但不能误以为已经落了'
+          ]
+        },
+        { type: "h2", text: "间距是个手指问题，不是审美问题" },
+        '触屏上最小的可靠点击区域比很多设计稿里的格子大得多。我们把间距按手指而不是按眼睛来定：相邻交叉点的中心距要保证拇指点中间时不会误触旁边。代价是 19 路棋盘在小屏上会偏挤，这种情况我们建议横屏。',
+        { type: "h2", text: "我们砍掉了什么" },
+        {
+          type: 'ul',
+          items: [
+            '拟物木纹：第一版有，看起来有质感，但木纹的纹理会和网格线打架，深色棋子在木纹背景上边界变模糊',
+            '落子音效的多种变体：只保留一种，多种音效反而让人分心',
+            '棋子阴影：投影让棋子更立体，也让相邻棋子的边界更难判断',
+            '坐标标注：默认关闭，需要复盘的人可以打开，日常对局它是噪音'
+          ]
+        },
+        '每次想加东西，先问一句：它让下一手更容易看清，还是更难。多数加不进去的回答都是后者。',
+        { type: "h2", text: "键盘和读屏是同一个问题" },
+        '键盘操作逼我们把落子顺序做得可预测，屏幕阅读器需要同样的顺序信息。这两件事最后收敛到一套焦点逻辑上，做完之后键盘玩家和读屏用户走的是同一条路径。细节在 /blog/keyboard-friendly-board-games。',
+        '如果你只想看效果，[对战页](/play) 直接开一局最快，上手时间参考 /blog/one-minute-to-play。棋类界面在浏览器里复兴的背景在 /blog/board-games-browser-revival，团队想法见 [关于页](/about)。',
+        { type: "h2", text: "FAQ" },
+        {
+          type: 'faq',
+          items: [
+            { q: '为什么不用木质棋盘的样子？', a: '试过。木纹的纹理和网格线方向接近，深色棋子在木纹上边界会变模糊，对局时需要多花一瞬确认棋子位置，这个代价不值得。' },
+            { q: '19 路棋盘在手机上能玩吗？', a: '能，但竖屏偏挤。交叉点间距是按手指可靠点击的最小尺寸定的，缩到更小会开始误触，所以这种情况建议横屏。' },
+            { q: '上一手的标记可以关掉吗？', a: '可以关。默认开着是因为大多数人在思考时会反复看对手上一手在哪，但如果你习惯自己记，关掉会少一层视觉噪音。' },
+            { q: '以后会换配色吗？', a: '会加主题，不会改默认配色。默认这套的对比度是反复调过的，新主题会作为可选项加在旁边。' }
+          ]
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局', href: '/play' }
+      ],
+      en: [
+        'Good board game design is measured by how quickly you stop noticing the interface. Nothing on the board should need explaining before your first move: lines are lines, stones are stones, and the last move is obvious at a glance. Each choice below looks small on its own, and together they decide whether your first game feels smooth.',
+        { type: "h2", text: "The grid comes first" },
+        'The grid is the first thing that has to be right. Line weight decides how readable the stones are, since thick lines compete with the black stones and thin ones vanish on a small screen. We settled on a weight that leaves a visible gap between the stone and the lines, so a stone sitting on an intersection still shows line on all four sides.',
+        {
+          type: 'ul',
+          items: [
+            'Fixed line weight that does not scale with board size: the 19 line and 15 line boards carry the same visual weight',
+            'Star points only where the rules actually need them, decorative dots removed',
+            'Outer margin set to half a stone diameter, so a stone on the edge never touches the border'
+          ]
+        },
+        { type: "h2", text: "Stone contrast and the last move marker" },
+        'Telling black from white is the one piece of information that has to be instant. We do not use pure black and pure white: pure white glares on a bright display and pure black overpowers the grid. The actual pair is a slightly warm white against a slightly cool dark grey, which is easier to stare at for an hour.',
+        {
+          type: 'ul',
+          items: [
+            'The last move gets a thin marker that never covers the stone, so you can always see where the opponent played',
+            'Forbidden moves and the winning line share one color language rather than introducing a third accent',
+            'Hover preview stays translucent: you see the result before committing, without mistaking it for a placed stone'
+          ]
+        },
+        { type: "h2", text: "Spacing is a finger problem, not a taste problem" },
+        'The smallest reliable touch target on a phone is far bigger than the grid cells in most mockups. We sized spacing for thumbs rather than for eyes, so the distance between neighbouring intersections keeps a thumb from hitting the wrong one. The trade is that a 19 line board gets tight on a small screen, and for that case we suggest turning the phone sideways.',
+        { type: "h2", text: "What we cut" },
+        {
+          type: 'ul',
+          items: [
+            'Faux wood grain: it was in the first build and looked nice, but the texture runs close to the grid direction and dark stones lose their edge against it',
+            'Multiple stone sounds: one sample only, since a set of variants pulls attention away from the board',
+            'Stone shadows: they add depth and make the boundary between adjacent stones harder to read',
+            'Coordinate labels: off by default, available for people reviewing a game, otherwise it is noise'
+          ]
+        },
+        'Every time someone proposes adding something, the question is whether it makes the next move easier to see. Usually the honest answer is no.',
+        { type: "h2", text: "Keyboard and screen readers are the same problem" },
+        'Keyboard support forced us to make the move order predictable, and a screen reader needs that same ordering. Both collapsed into one focus model, so keyboard players and screen reader users now follow the same path. The details are in /blog/keyboard-friendly-board-games.',
+        'If you just want to see the result, the fastest check is a match on the [play page](/play), and /blog/one-minute-to-play covers how long the first game takes. Background on board games returning to the browser is in /blog/board-games-browser-revival, and the [about page](/about) covers the team.',
+        { type: "h2", text: "FAQ" },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Why not make it look like a wooden board?', a: 'We tried it. The grain runs close to the grid direction, dark stones lose their edge against it, and reading a position costs an extra beat. Not worth the trade.' },
+            { q: 'Does a 19 line board work on a phone?', a: 'It works, but portrait is cramped. Intersection spacing is set to the smallest reliably tappable distance, and going below that starts producing mistaps, so holding the phone sideways works better there.' },
+            { q: 'Can I turn off the last move marker?', a: 'Yes. It is on by default because most people keep looking back at where the opponent just played, but if you track it yourself, turning it off removes a layer of visual noise.' },
+            { q: 'Will the color scheme change later?', a: 'Themes will be added, the default will not change. The contrast on this pair was tuned over several rounds; new themes arrive as options beside it.' }
+          ]
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
