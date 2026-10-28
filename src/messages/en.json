@@ -1,5 +1,7 @@
 {
   "meta": {
+    "title": "YiBoard — Play Gomoku Free Online · No Download",
+    "description": "Play Gomoku free online against the AI or a friend. No account, no download. Climb the 18-step ladder from Ninth Grade to Ninth Dan. Xiangqi and Go are on the way.",
     "ogAlt": "A 15 by 15 Gomoku grid with black and white stones",
     "home": {
       "title": "Gomoku Online Free — Five in a Row vs AI or Real Players",
@@ -190,6 +192,7 @@
     "turnTheirs": "Engine is thinking",
     "turnOpponent": "Waiting for your opponent",
     "moveCount": "Move {count}",
+    "thinkingLine": "Thinking: depth {depth} · {nodes} nodes · {ms} ms",
     "thinkingTime": "{ms} ms",
     "newGame": "New game",
     "undo": "Undo",
@@ -230,7 +233,9 @@
     "aiWhite": "AI (White)",
     "replayReady": "Replay saved",
     "watchReplay": "Watch replay",
+    "hint": "Hint",
     "hintLoading": "Thinking…",
+    "hintDone": "Suggested: {notation}",
     "hintClear": "Clear hint",
     "boardSize": "Board size",
     "winCount": "Win",
@@ -297,6 +302,28 @@
     "glossaryLink": "Gomoku Glossary",
     "faqLink": "FAQ",
     "faqTitle": "Gomoku FAQ",
+    "faq": [
+      {
+        "q": "How many stones in a row do you need to win at Gomoku?",
+        "a": "Five of your stones in a line, horizontal, vertical or diagonal, win immediately. Black plays first."
+      },
+      {
+        "q": "Is Gomoku the same as Connect 4 or Go?",
+        "a": "No. Gomoku is five in a row on a 15x15 board; Connect 4 drops pieces vertically into a 7x6 grid; Go is about surrounding territory rather than lining up."
+      },
+      {
+        "q": "Does six in a row count as a win in Gomoku?",
+        "a": "In free-style Gomoku it does, since a longer line still wins, and on YiBoard you can even set the win condition to 6 or 7. Under renju rules an overline by black is forbidden."
+      },
+      {
+        "q": "Which board size is best for beginners?",
+        "a": "The 9x9 is fast and good for practising tactics; the 13x13 balances casual and strategic play; the 15x15 is the classic tournament size. YiBoard lets you switch between the three."
+      },
+      {
+        "q": "Is YiBoard free?",
+        "a": "Yes. Free, no account and no download: play against the engine or a friend right in your browser."
+      }
+    ],
     "moreGamesTitle": "Try a different board",
     "nav": {
       "xiangqi": "Xiangqi",
@@ -595,7 +622,13 @@
     "moreGamesTitle": "Try a different board"
   },
   "replays": {
+    "title": "Gomoku AI vs AI Replay",
+    "subtitle": "Watch two engines battle",
+    "resultBlack": "Black won in {count} moves",
+    "resultWhite": "White won in {count} moves",
     "resultDraw": "Draw — board is full",
+    "meta": "Gomoku AI vs AI replay — watch the full engine battle, move by move.",
+    "cta": "Play Gomoku free",
     "notFound": "Replay not found",
     "notFoundCta": "Go play"
   }

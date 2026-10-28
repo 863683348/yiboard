@@ -1,5 +1,7 @@
 {
   "meta": {
+    "title": "YiBoard — 免费在线五子棋 · 无需下载",
+    "description": "免费在线下五子棋，可以和 AI 或朋友对局。无需注册，无需下载。从九级到九段共十八级段位可爬。象棋与围棋即将上线。",
     "ogAlt": "15×15 五子棋棋盘,黑白棋子",
     "home": {
       "title": "五子棋在线免费玩——对战AI或真人匹配",
@@ -190,6 +192,7 @@
     "turnTheirs": "引擎思考中",
     "turnOpponent": "等待对手落子",
     "moveCount": "第 {count} 手",
+    "thinkingLine": "思考：深度 {depth} · {nodes} 节点 · {ms} 毫秒",
     "thinkingTime": "{ms} 毫秒",
     "newGame": "新对局",
     "undo": "悔棋",
@@ -230,7 +233,9 @@
     "aiWhite": "AI（白方）",
     "replayReady": "复盘已保存",
     "watchReplay": "观看复盘",
+    "hint": "提示",
     "hintLoading": "思考中…",
+    "hintDone": "推荐手：{notation}",
     "hintClear": "清除提示",
     "boardSize": "棋盘尺寸",
     "winCount": "胜",
@@ -297,6 +302,28 @@
     "glossaryLink": "五子棋术语表",
     "faqLink": "常见问题",
     "faqTitle": "五子棋常见问题",
+    "faq": [
+      {
+        "q": "五子棋要连几个子才算赢？",
+        "a": "横、竖、斜任意方向连成五子即刻获胜，黑方先手。"
+      },
+      {
+        "q": "五子棋和 Connect 4、围棋是一回事吗？",
+        "a": "不是。五子棋是 15×15 棋盘上连五；Connect 4 是把棋子竖着落进 7×6 的格子；围棋比的是围地，不是连线。"
+      },
+      {
+        "q": "连六个算赢吗？",
+        "a": "自由规则下算，更长的连线仍然获胜，YiBoard 还支持把胜利条件设成 6 或 7。连珠规则下黑方长连是禁手。"
+      },
+      {
+        "q": "新手适合哪种棋盘尺寸？",
+        "a": "9×9 节奏快，适合练战术；13×13 兼顾休闲与策略；15×15 是经典比赛尺寸。YiBoard 三种都能随时切换。"
+      },
+      {
+        "q": "YiBoard 免费吗？",
+        "a": "免费。不用账号、不用下载，在浏览器里就能和引擎或朋友对局。"
+      }
+    ],
     "moreGamesTitle": "换个棋盘试试",
     "nav": {
       "xiangqi": "象棋",
@@ -595,7 +622,13 @@
     "moreGamesTitle": "换个棋盘试试"
   },
   "replays": {
+    "title": "五子棋 AI 对 AI 复盘",
+    "subtitle": "观看两个引擎对局",
+    "resultBlack": "黑方 {count} 手获胜",
+    "resultWhite": "白方 {count} 手获胜",
     "resultDraw": "平局 — 棋盘已满",
+    "meta": "五子棋 AI 对 AI 复盘 — 逐手观看两个引擎的完整对局。",
+    "cta": "免费下五子棋",
     "notFound": "未找到复盘",
     "notFoundCta": "去对局"
   }
