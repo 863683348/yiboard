@@ -6584,6 +6584,118 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: 'one-year-of-yiboard',
+    date: '2026-10-28',
+    tags: ['product', 'community', 'roadmap'],
+    title: {
+      zh: '一周年回顾与展望',
+      en: 'One Year of YiBoard: A Look Back'
+    },
+    description: {
+      zh: '一年下来，YiBoard 从一个棋种长成了一套东西。这篇清点做成了什么、哪些判断错了、以及明年明确不做的事。',
+      en: 'A year in, YiBoard went from one game to a set of parts that hold together. What shipped, which calls were wrong, and what we have decided not to build.'
+    },
+    keywords: ['game anniversary', 'year in review game', 'milestone update', 'what we built', 'yiboard roadmap'],
+    content: {
+      zh: [
+        '一个游戏项目的周年纪念，通常是发一条高光集锦的时刻。我们换个写法：先把判断错的事列出来，再说做成了什么。YiBoard 这一年从"能不能把五子棋跑起来"长成了"换一个棋种要多久"，这两个问题差着整个架构。',
+        { type: "h2", text: "这一年做出来的东西" },
+        {
+          type: 'ul',
+          items: [
+            '裁判层：判断落子合法性与胜负，对所有棋种通用，换棋种不用重写',
+            '浏览器里的 alpha-beta 引擎，单次搜索预算 500 毫秒，不依赖服务器算力',
+            '段位与等级分：1200 分起步，六级，一局一结算',
+            '五种语言，从第一天就一起上，不是事后补的',
+            '观众模式、对局分享链接、键盘操作'
+          ]
+        },
+        '回头看，真正值钱的不是五子棋这个棋种，而是裁判和段位那两层能被复用。加上一个新棋种的工作量，比一年前小了一个数量级。',
+        { type: "h2", text: "判断错的地方" },
+        {
+          type: 'ul',
+          items: [
+            '以为移动端只是把界面缩小。实际上触屏落子的精度问题逼我们重做了落子确认',
+            '低估了翻译的维护成本。界面改一个词，五种语言都要跟上，现在还没完全追平',
+            '早期给新手的默认难度偏高，头几周掉了一批人，后来调过一次'
+          ]
+        },
+        { type: "h2", text: "用户实际在用的功能" },
+        '用得最多的是不注册直接开一局，这个我们一开始就猜对了。第二是分享对局链接，超出预期，一开始只是当调试工具做的。观众模式的用量比想象中低，但留下来的人看得很久，所以我们继续留着。',
+        { type: "h2", text: "明年明确不做的事" },
+        {
+          type: 'ul',
+          items: [
+            '不做广告，不做付费墙。棋类游戏的变现压力会把规则设计带偏',
+            '不为了凑数加棋种。每加一个都要能复用裁判和段位层，否则宁可不加',
+            '不做强制注册。跨设备保存战绩值得注册，下棋本身不值得',
+            '不做观战聊天。没有能力做 moderation，就不开这个口子'
+          ]
+        },
+        '路线图上的具体条目在 /blog/go-roadmap，改动的依据大多来自 /blog/iterating-on-user-feedback，性能那几轮的实测数字在 /blog/performance-work。团队和项目的背景写在 [关于页](/about)。',
+        { type: "h2", text: "FAQ" },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 上线多久了？', a: '从第一行代码到现在一年。这一年的主要工作是把裁判层和段位系统做成可以复用的，而不是把单个棋种打磨到极致。' },
+            { q: '这一年最大的变化是什么？', a: '换棋种的成本。第一版五子棋花了很长时间，现在加一个新棋种主要是写规则，架构部分已经现成。' },
+            { q: '接下来会有哪些棋种？', a: '象棋和围棋在路线图上，具体顺序看 /blog/go-roadmap。我们的原则是不为了凑数量发布。' },
+            { q: '一周年会有活动吗？', a: '没有排行榜清零，也没有限定皮肤。周年对玩家这边应该是透明的，照常下棋就行。' }
+          ]
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局', href: '/play' }
+      ],
+      en: [
+        'A game anniversary is usually the moment a studio posts a montage of its best moments. Let us run it the other way round: the wrong calls first, then what actually shipped. Over this year YiBoard moved from "can we get Gomoku running at all" to "how long does a new game take", and those two questions sit on opposite sides of an architecture. The first question is about one board. The second is about everything underneath it, which is where most of the work went.',
+        { type: 'h2', text: 'What got built in year one' },
+        {
+          type: 'ul',
+          items: [
+            'The referee layer: legality and win detection written once for every game, so a new board does not mean a rewrite',
+            'An alpha-beta engine running in the browser with a 500 ms search budget, which keeps server compute out of the picture',
+            'Grades and ratings: everyone starts at 1200, Sixth Grade, settled one game at a time',
+            'Five languages shipped together from day one rather than bolted on later',
+            'Spectator mode, shareable match links, and full keyboard play'
+          ]
+        },
+        'Looking back, the part that mattered was never Gomoku itself. It was the referee and ranking layers underneath, which carry over. Adding another game now costs an order of magnitude less work than it did a year ago, and that is the single number we watch when deciding what to build next.',
+        { type: 'h2', text: 'Calls we got wrong' },
+        {
+          type: 'ul',
+          items: [
+            'We treated mobile as a smaller layout. Touch accuracy on stone placement was its own problem and forced a rebuild of move confirmation',
+            'We underestimated translation upkeep. One changed interface string touches five languages, and we are still catching up',
+            'The starting difficulty was too high for beginners, and we lost people in the first weeks before adjusting it'
+          ]
+        },
+        { type: 'h2', text: 'What people actually use' },
+        'Playing without an account is the top path, and we guessed that correctly from the start. Sharing a match link came in second, which surprised us since it began as a debugging feature. Spectator mode sees less traffic than expected, but the people who use it stay for a long time, so it stays.',
+        { type: 'h2', text: 'What we have decided not to build' },
+        {
+          type: 'ul',
+          items: [
+            'No ads and no paywall. Monetisation pressure on a board game pulls the rules design off centre',
+            'No games added for the sake of a bigger list. Each one has to reuse the referee and ranking layers, or it waits',
+            'No forced signup. Carrying a record across devices is worth an account; playing a game is not',
+            'No spectator chat. If we cannot moderate it, we do not open it'
+          ]
+        },
+        'The concrete roadmap items live in /blog/go-roadmap, most of the changes came out of /blog/iterating-on-user-feedback, and the measured numbers from the performance rounds are in /blog/performance-work. Background on the team and the project is on the [about page](/about).',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'How long has YiBoard been running?', a: 'A year from the first commit. Most of that year went into making the referee and ranking layers reusable rather than polishing one game into perfection.' },
+            { q: 'What changed the most this year?', a: 'The cost of adding a game. The first version of Gomoku took a long stretch of work; a new board now mostly means writing its rules, because the structure underneath already exists.' },
+            { q: 'Which games come next?', a: 'Xiangqi and Go are on the roadmap, and /blog/go-roadmap has the order. We would rather not ship one just to make the list longer.' },
+            { q: 'Is there an anniversary event?', a: 'No rating reset and no limited cosmetics. An anniversary should be invisible to the person who just wants to play.' }
+          ]
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' }
+      ]
+    }
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
