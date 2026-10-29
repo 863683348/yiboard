@@ -6812,6 +6812,120 @@ export const POSTS: BlogPost[] = [
       ]
     }
   },
+  {
+    slug: 'fair-leaderboard-design',
+    date: '2026-10-30',
+    tags: [
+      'ranking',
+      'fairness',
+      'matchmaking',
+      'product'
+    ],
+    title: {
+      zh: '排行榜的公平性设计',
+      en: 'Designing Fair Leaderboards'
+    },
+    description: {
+      zh: '排行榜要么奖励时间多的人，要么奖励专挑弱对手的人。这篇讲 YiBoard 在排名公平、反小号设计和匹配公平上的取舍，包括目前还没解决的两处问题。',
+      en: 'A leaderboard rewards either whoever plays most or whoever farms weaker opponents. Here is how YiBoard handles ranking fairness, anti-smurf design and matchmaking fairness, plus two problems still open.'
+    },
+    keywords: [
+      'fair leaderboard',
+      'ranking fairness',
+      'anti-smurf design',
+      'matchmaking fairness',
+      'leaderboard design',
+      'ranked matchmaking board games'
+    ],
+    content: {
+      zh: [
+        '一个公平的排行榜，本质上是在回答谁有资格上这张榜。我们做之前看过的排名系统，奖励的无非是两件事之一：玩得够多，或者专门打赢比自己弱的人。两种都能做出一张看着很权威、实际没什么意义的榜。YiBoard 的榜小，问题暴露得快，所以在写任何代码之前，我们先花了不少时间在排名公平上，最后的大部分决定都来自观察玩家拿到一张开放的榜之后会做什么。',
+        { type: 'h2', text: '没人盯着的时候，排名公平指的是什么' },
+        '排名公平听起来像数学问题，直到你看见有人钻空子。最典型的失败是积分榜：赢一局得一分，于是榜首属于空闲时间最多的人。第二种失败是有实力评分但不管对手是谁，这就招来了小号。新号从底部开始，连赢二十局新手，拿到的分数说明不了它跟榜二打会是什么结果。这张榜记的是机会，跟水平关系不大，玩得够久的人都能感觉到。',
+        { type: 'h2', text: '反小号设计从建号那一步开始' },
+        '反小号设计通常被当成审核问题，于是排在流程末尾。我们把它提到了最前面。YiBoard 没有注册墙，点一下就能开局，这意味着我们不能拿身份当控制手段。能做的是盯着前几局。',
+        {
+          type: 'ul',
+            items: [
+              '置信区间放宽：新账号的不确定性范围更大，早期结果让它变化快，后期结果让它变化慢',
+              '对手加权：打赢远低于自己的人几乎不加分，刷低分对手就没了意义',
+              '异常标记：连胜大量弱对手的账号在进入公开榜之前会被检查一遍',
+              '不活跃衰减：长期不打的分数会慢慢回到中间，老小号不再占据榜首',
+              '不提供重置按钮：小号最想要的就是重新开始，我们不给这个'
+            ]
+        },
+        { type: 'h2', text: '匹配公平排在排行榜公平前面' },
+        '匹配公平要排在前面，因为它决定了这个分数到底在测量什么。如果配对是随机的，分数记录的是运气加水平，上面再怎么算都分不开这两者。我们先按分数配对，等待时间排第二，这样局面接近，排队也短。接近的对局还有一个好处：每局结果带来的分数变化最小，而这正是让一张榜稳定的性质。段位和等级分的区分写在 /blog/gomoku-rank-explained，两套并行的原因在 /blog/grades-vs-elo-ranking-systems。',
+        { type: 'h2', text: '几个吵过的决定' },
+        '有四件事反复被提出来，我们的处理方式不是所有人都会同意。',
+        {
+          type: 'ul',
+            items: [
+              '显示每个名次背后的对局数：12 胜 0 负和 240 胜 60 负不是同一种成绩，藏掉局数会诱导错误的比较',
+              '不做全局赛季重置：重置流行是因为它能让一张僵住的榜动起来，代价是丢掉一整年积累下来的信号',
+              '不让玩家自己挑对手：自由挑选会把天梯变成筛选有利对局的工具',
+              '让子棋单独计分：让子的规则在 /blog/handicap-stones-explained-beginner-guide，把这类结果混进主榜会让数字失去可比性'
+            ]
+        },
+        { type: 'h2', text: '这张榜现在还有哪些问题' },
+        '还有两个问题，我们宁愿写出来，也不假装这套系统已经完工。玩家池小的时候，冷门时段想等一个公平配对可能要几分钟，我们现在是放宽范围而不是让人干等，这牺牲了准确度。另外进步很快的玩家爬榜仍然比自己预期的慢，因为分数本来就被设计成移动缓慢。这两个都是我们主动选的取舍，不是漏掉的 bug。整套天梯的思路在 /blog/where-the-ladder-comes-from，反作弊那部分在 /blog/server-side-refereeing-anti-cheat。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+            items: [
+              { q: '不注册的话，YiBoard 怎么保证排行榜公平？', a: '靠统计而不是身份。新号不确定性范围大、变化快，打赢远弱于自己的对手几乎不计分，长期不打会往中间回落。这些都不需要知道你是谁。' },
+              { q: '为什么赢了一局分数几乎没动？', a: '因为对手分数比你低。分数是一种预测，预测之内的胜利能提供的信息很少。打赢同级别或者更高分的人，变化会大得多。' },
+              { q: '可以重置分数重来吗？', a: '不行。重置是养小号的主要工具，提供这个会抵消其他反小号的工作。长期不打分数会衰减，这已经覆盖了大多数人想要重置的场景。' },
+              { q: '让子棋计入排名吗？', a: '单独计分。让子局测量的东西和分先局不同，放在同一张榜上会让数字难以比较。' }
+            ]
+        },
+        { type: 'cta', text: '在 YiBoard 下一局公平的对局', href: '/play' }
+      ],
+      en: [
+        'A fair leaderboard is mostly an argument about who gets to be on it. Every ranking system we looked at before building ours rewarded one of two things: playing a lot, or beating people who are worse than you. Both produce a board that looks authoritative and means very little. YiBoard\'s board is small enough that the problem shows up fast, so we spent a long stretch on ranking fairness before writing any code, and most of what we decided came from watching what players actually do once an open ladder exists.',
+        { type: 'h2', text: 'What ranking fairness means when nobody is watching' },
+        'Ranking fairness sounds like a maths problem until you watch people game it. The classic failure is a points ladder: win a game, get a point, so the top of the board belongs to whoever has the most free time. The second failure is a strength rating with no guard on who you play, which invites smurfing. A new account starts at the bottom, wins twenty games against other beginners, and arrives at a number that says nothing about how it would do against the player in second place. The board then records opportunity rather than skill, and anyone who has played long enough can feel it.',
+        { type: 'h2', text: 'Anti-smurf design starts at account creation' },
+        'Anti-smurf design is usually treated as a moderation problem, which puts it at the end of the pipeline. We moved it to the front. There is no signup wall on YiBoard, so a game starts in one click, and that means we cannot lean on identity as a control. What we can do instead is watch the early games.',
+        {
+          type: 'ul',
+            items: [
+              'Confidence widening: a new account carries a wide uncertainty range, so early results move it quickly and later results move it slowly',
+              'Opponent weighting: beating someone far below you barely moves your rating, which removes the point of farming low opponents',
+              'Anomaly flagging: accounts that win long streaks against much weaker players get reviewed before they reach the public board',
+              'Decay on inactivity: a rating nobody has played on drifts back toward the middle, so old smurfs stop sitting at the top',
+              'No reset button: the thing a smurf wants most is a fresh start, and we do not offer one'
+            ]
+        },
+        { type: 'h2', text: 'Matchmaking fairness before leaderboard fairness' },
+        'Matchmaking fairness comes first because it decides what the rating measures at all. If pairings are random, a rating records luck plus skill, and no maths stacked on top will separate the two. We pair on rating first and wait time second, which keeps games close and queue times short. Close games carry one more property that matters: each result moves the number by less, and that is what makes a board stable. The split between grades and rating points is written up in /blog/gomoku-rank-explained, and /blog/grades-vs-elo-ranking-systems goes through why we run both.',
+        { type: 'h2', text: 'Decisions we argued about' },
+        'Four things came up repeatedly, and the way we settled them will not suit everyone.',
+        {
+          type: 'ul',
+            items: [
+              'We show the number of games behind each rank: 12-0 and 240-60 are not the same achievement, and hiding the games played invites the wrong comparison',
+              'We do not run a global season reset: resets are popular because they make a stale board move again, and the price is throwing away a year of accumulated signal',
+              'We do not let a player choose their opponent: open choice turns a ladder into a filter for favourable matchups',
+              'Handicap games are rated separately: the stones are explained in /blog/handicap-stones-explained-beginner-guide, and mixing those results into the main board would make the numbers impossible to compare'
+            ]
+        },
+        { type: 'h2', text: 'Where the board is still wrong' },
+        'Two problems remain, and we would rather name them than pretend the system is finished. When the player pool is thin, waiting for a fair pairing at an odd hour can take minutes, and we currently widen the range instead of making people wait, which costs accuracy. And a player who improves fast still climbs slower than they expect, because the rating is built to move slowly. Both are trade-offs we picked on purpose, not bugs we missed. The thinking behind the whole ladder is in /blog/where-the-ladder-comes-from, and the anti-cheat side is in /blog/server-side-refereeing-anti-cheat.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+            items: [
+              { q: 'How does YiBoard keep the leaderboard fair without requiring an account?', a: 'By leaning on statistics instead of identity. New accounts carry wide uncertainty and move fast, wins against much weaker opponents barely count, and inactive ratings drift back toward the middle. None of that needs to know who you are.' },
+              { q: 'Why does my rating barely move after a win?', a: 'Because the opponent was rated below you. A rating is a prediction, and a win the prediction already expected tells it very little. Beating someone at or above your level moves it far more.' },
+              { q: 'Can I reset my rating and start over?', a: 'No. A reset is the main tool for building a smurf account, and offering one would undo the rest of the anti-smurf work. Ratings decay when inactive, which covers the case most people want a reset for.' },
+              { q: 'Are handicap games ranked?', a: 'They are rated on a separate board. A handicap result measures something different from an even game, and putting both on one ladder makes the numbers hard to compare.' }
+            ]
+        },
+        { type: 'cta', text: 'Play a fair match on YiBoard', href: '/play' }
+      ]
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
