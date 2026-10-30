@@ -6926,6 +6926,110 @@ export const POSTS: BlogPost[] = [
       ]
     },
   },
+  {
+    slug: 'community-tournaments',
+    date: '2026-10-31',
+    tags: ['community', 'product', 'ranking'],
+    title: {
+      zh: '社区棋赛：在线锦标赛设想',
+      en: 'Community Tournaments: The Dream'
+    },
+    description: {
+      zh: '在线锦标赛的难点在时间，不在报名流程：一盘棋就是一盘棋，没人愿意为了等对手多坐三分钟。这篇列出我们画过的几种赛制、各自要付多少服务器时间和多少耐心，以及为什么起点放在社区自办活动上。',
+      en: 'Running an online board game tournament is less about the sign-up form and more about time: one game takes as long as it takes, and nobody wants to sit for three minutes waiting on an opponent. The formats we sketched, what each costs in server time and patience, and why community-run events come first.'
+    },
+    keywords: ['online board game tournament', 'gomoku tournament', 'online chess tournament', 'community events', 'tournament format design'],
+    content: {
+      zh: [
+        '每隔几周就有人问，YiBoard 什么时候办在线锦标赛（online board game tournament）。老实说，我们有一版还算喜欢的方案，和一个没解决的问题：公开赛要求很多盘棋同时推进，而五子棋一盘接一盘打，一轮就要一个晚上。这篇把我们画过的几种赛制摊开说，包括每一种要付多少服务器时间和多少耐心，以及为什么起点放在社区自办的活动上。想先下棋的话，[对战页](/play)一直开着。',
+        { type: 'h2', text: '为什么官方比赛到现在还没办' },
+        '三件事把进度拖住了。人数排在第一个：要想排出可信的种子，参赛池至少得有几十人同时在线，而我们的活跃高峰集中在两三个小时里。时区排第二，欧洲的晚上是亚洲的凌晨，强行定一个开赛时间等于先把一半人排除掉。作弊动机排第三，哪怕只是榜单上的一个名次，头衔感也会把人引过来，服务器端校验挡得住改客户端的做法，挡不住两台设备对着下，这部分取舍写在 [服务器端裁判](/blog/server-side-refereeing-anti-cheat) 里。',
+        { type: 'h2', text: '白板上画过的几种赛制' },
+        '下面四种都被反复画过又擦掉。判断标准只有两条：多少盘棋能把名次收敛到一个可信的结果，以及参与者需要在屏幕前端坐多久。',
+        {
+          type: 'ul',
+          items: [
+            '瑞士轮五轮，64 人：每人下五盘，全场约 160 局。按我们平均一局四分钟算，同时开场的话一个晚上能打完，名次也比淘汰赛更接近真实水平',
+            '单败淘汰，32 人：31 局就出结果，组织起来最省事，代价是一半人在第一盘之后就结束旅程',
+            '阶梯赛季，跨几周：没有固定开赛时间，双方约好就打，结束时按战绩排名，适合时区分得散的社区，缺点是战线拖长容易半途掉人',
+            '公开挑战板：任何人都能挂挑战，摩擦最小，公平性最差，拿来当热身活动不错'
+          ]
+        },
+        { type: 'h2', text: '一场五子棋锦标赛要服务器付出什么' },
+        '五子棋单局短、胜负判定清晰，天生适合密度高的赛制；它同时给服务端提了两个要求。第一个是每一步的校验延迟要够稳，五分钟能下完的棋被拖成二十分钟，人会中途退出。第二个是对局要能留档，争议局面事后要能复盘。我们已经有的能力分散在几篇里：[服务器端裁判](/blog/server-side-refereeing-anti-cheat)讲校验流程，[排行榜公平性设计](/blog/fair-leaderboard-design)讲分区怎么避免把强手挤进同一个半区，[对局链接怎么归档](/blog/share-gomoku-game-link)讲留档那部分。',
+        { type: 'h2', text: '五子棋赛和象棋网络赛不是一套时间表' },
+        '换个棋种，同一套赛制的时间账完全不一样。gomoku tournament 里一盘快棋三到四分钟，online chess tournament 里一盘十五到三十分钟，围棋比两头都长。所以每个棋种该有自己的日程，而不是共用一张表：五子棋能在一个晚上跑完五轮瑞士轮，象棋分两天打单败更现实，围棋社区通常只做慢棋联赛。什么算公平也不一样，这也是 [段位和积分两套系统并存](/blog/grades-vs-elo-ranking-systems) 的原因。',
+        { type: 'h2', text: '先从社区自办活动开始' },
+        '我们倾向的第一步是把工具交出去，而不是由我们直接办官方赛。一个群里要办周末棋赛，需要的东西其实不多。',
+        {
+          type: 'ul',
+          items: [
+            '一张公开报名表：写清棋种、用时限制（每方 10 分钟包干就很好用）和开赛时间',
+            '一份参与前就能读懂的计分规则：胜 3 分、和 1 分、负 0 分，同分时先看相互胜负',
+            '1 到 3 个裁判：轮空处理、争议局面判定都由人说了算，技术服务不了这部分',
+            '对局归档：每盘结束自动生成链接，观众事后能点开复盘，我们在 [观战和讲解计划](/blog/spectator-and-commentator-plans) 里写的那套接口就是为这件事准备的',
+            '结果公示：前三名的对局链接收进 [社区归档](/blog/tag/community)，下一届办的人能直接照着做'
+          ]
+        },
+        '关于 YiBoard：五子棋已经在 https://yiboardgame.com 免费开放，不用注册也不用安装，象棋开发中，围棋在路线图上。想练手就去 [对战页](/play)，规则在 [玩法页](/how-to) 三十秒看完，[排行榜](/rankings) 则是这套种子排位的数据来源。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 会办官方锦标赛吗？', a: '会，但不是现在。自动配对要等同时在线人数起来，种子排位要等 [排行榜](/rankings) 的数据够厚，在这之前人工排名和一个周末群里自办的比赛没有区别。' },
+            { q: '没有排名的新手能参加吗？', a: '能。没有账号的玩家按 1200 暂定分入场，配对时放进下半区；这个起始值的来历在 [段位体系怎么读](/blog/gomoku-rank-explained) 里写清楚了。' },
+            { q: '线上比赛怎么防作弊？', a: '每一步都在服务器端校验，改客户端不改变判定结果。浏览器里堵不住的是一个人同时开两台设备，所以我们更倾向长时限加赛后复盘关键棋局，而不是单靠棋力筛选，细节在 [服务器端裁判](/blog/server-side-refereeing-anti-cheat)。' },
+            { q: '我现在就能自己组织一场棋赛吗？', a: '可以，而且这正是我们希望的起点。一张报名表、上面那份计分规则、加上自动生成的对局链接就够用。想让我们在站内露出的话，从 [联系页](/contact) 发一句话过来。' }
+          ]
+        },
+        { type: 'cta', text: '在 YiBoard 下一局公平的对局', href: '/play' }
+      ],
+      en: [
+        'Every few weeks somebody asks when YiBoard will run an online board game tournament. We have a design we like and one problem we have not solved. An open tournament needs many games to advance at the same time, while gomoku played one board at a time eats an evening per round. This post puts the formats we sketched on the table, along with what each costs in server time and in patience, and why we would rather start with events the community runs itself. If you came here to play, [the board is open](/play).',
+        { type: 'h2', text: 'Why there is no official cup yet' },
+        'Three constraints hold this back. The field comes first: seeding anyone with any confidence needs a few dozen players online at once, and our peak traffic lands inside two or three hours. Time zones come second, since prime time in Europe is the middle of the night in Asia, and a fixed start time excludes half the field before a move is played. Incentives come third. Even a purely symbolic title attracts cheating, and while validating every move on the server stops anyone tampering with the client, it does not stop one person with two devices. Those trade-offs are written up in [how we referee on the server](/blog/server-side-refereeing-anti-cheat).',
+        { type: 'h2', text: 'Formats sketched on a whiteboard' },
+        'These four have been drawn and erased more than once. Only two questions decide whether a format survives: how many games it takes before the standings converge on a believable result, and how long anyone has to sit in front of the screen.',
+        {
+          type: 'ul',
+          items: [
+            'Swiss over five rounds, 64 players: five games each and roughly 160 games total. At our average of four minutes a game, running boards concurrently finishes inside one evening, and the standings track real strength far better than a bracket',
+            'Single elimination, 32 players: 31 games decide it, the easiest format to run, and half the field goes home after one game',
+            'Ladder season over several weeks: no fixed start time, players arrange games whenever both are free, results ranked at the end, which suits scattered time zones and loses people along the way',
+            'Open challenge board: anyone can post a challenge, the lowest friction of the four and the weakest fairness, good enough as a warm-up'
+          ]
+        },
+        { type: 'h2', text: 'What a gomoku tournament asks of the server' },
+        'Gomoku games run short and the win condition is unambiguous, which suits dense formats. It also puts two demands on our side. Every move gets validated, so validation has to stay fast enough that a five minute game does not stretch into twenty, because players leave when it does. Games also need a durable record, since disputed positions get reviewed after the fact. The pieces that exist today are spread across a few posts: [server-side refereeing](/blog/server-side-refereeing-anti-cheat) covers validation, [keeping strong players out of one half of the draw](/blog/fair-leaderboard-design) covers seeding fairness, and [archiving games as links](/blog/share-gomoku-game-link) covers the record.',
+        { type: 'h2', text: 'A gomoku tournament and an online chess tournament share nothing' },
+        'Change the game and the same format stops working. A quick gomoku game runs three or four minutes, an online chess tournament and xiangqi sit between fifteen and thirty, and go runs longer than either. So each game gets its own schedule instead of one shared calendar: five rounds of Swiss finishes in a single evening for gomoku, xiangqi works better as a two-day bracket, and go communities usually prefer a slow league. What counts as a fair result shifts with it, which is why [grades sit alongside rating points](/blog/grades-vs-elo-ranking-systems) rather than replacing them.',
+        { type: 'h2', text: 'Starting with community events' },
+        'The first step we favour is handing over the tools instead of running an official cup ourselves. A group that wants a weekend event needs less than they expect.',
+        {
+          type: 'ul',
+          items: [
+            'An open sign-up sheet stating the game, the time control (ten minutes per side, sudden death, works well) and the start time',
+            'Scoring rules anyone can read before joining: three points for a win, one for a draw, none for a loss, head-to-head as first tiebreak',
+            'One to three human referees, since ruling on disputes and byes is not something we can solve with a server call',
+            'Archived games, since each game already produces a shareable link, and the interface described in [the spectator plans](/blog/spectator-and-commentator-plans) is what we intend to build that on',
+            'A public result post, with the top three games filed in the [community archive](/blog/tag/community) so whoever organises the next one can copy what worked'
+          ]
+        },
+        'About YiBoard: gomoku is free at https://yiboardgame.com with no sign-up and nothing to install, xiangqi is in development, and go sits on the roadmap. Practice belongs on [the play page](/play), the rules take thirty seconds on [the how-to page](/how-to), and [the rankings board](/rankings) is where the seeding numbers come from.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Will YiBoard run an official tournament?', a: 'Yes, later. Automatic pairing depends on concurrent players, and reliable seeding depends on thicker data in [the rankings board](/rankings). Until both exist we would be ranking people by hand, which is no better than any group running its own weekend event.' },
+            { q: 'Can I enter without a ranking?', a: 'Yes. A player with no account enters as provisional at 1200 and is paired in the lower half of the draw. Where that starting number comes from is explained in [how the gomoku rank works](/blog/gomoku-rank-explained).' },
+            { q: 'How is cheating handled in an online tournament?', a: 'Every move is validated on the server, so editing the client changes nothing about the result. What we cannot close from inside a browser is one player using two devices, which is why longer time controls and a review of the top boards afterwards carry more weight than flagging strong moves. The details are in [the anti-cheat post](/blog/server-side-refereeing-anti-cheat).' },
+            { q: 'Can I organise an event now?', a: 'You can, and it is the start we would pick. A sign-up sheet, the scoring rule above and the links each game generates cover most of it. If you want the event listed on the site, send a line through [the contact page](/contact).' }
+          ]
+        },
+        { type: 'cta', text: 'Play a fair match on YiBoard', href: '/play' }
+      ]
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
