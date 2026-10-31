@@ -7030,6 +7030,130 @@ export const POSTS: BlogPost[] = [
       ]
     },
   },
+  {
+    slug: "sync-game-progress-across-devices",
+    date: "2026-11-01",
+    tags: ["product", "sync", "roadmap"],
+    title: {
+      zh: "多设备同步：进度跟着你",
+      en: "Sync Across Devices",
+    },
+    description: {
+      zh: "换手机、换电脑、平板上接着下：YiBoard 的进度同步到底同步什么、不同步什么，以及两台设备同时开一个账号时会发生什么。",
+      en: "What YiBoard syncs across your phone, laptop and tablet, what stays on the device, and what happens when two devices open one account mid-game.",
+    },
+    keywords: [
+      "sync game progress",
+      "cross device game",
+      "save game cloud",
+      "progress everywhere",
+      "gomoku cross platform",
+    ],
+    content: {
+      zh: [
+        "只存在一台设备上的进度，换手机的当天就丢了。YiBoard 默认把对局和战绩放在浏览器里，不注册也能玩；账号只为一件事存在：让你的进度跟着你走。这篇讲清楚哪些东西会同步、哪些留在本地，以及两台设备同时打开一个账号、棋还没下完时会发生什么。现在去[对战页](/play)下一局，战绩会跟着你。",
+        { type: "h2", text: "进度存在哪里" },
+        "登录之后，段位、胜负记录、对局归档和棋盘设置都写在服务端。正在下的那一局不一样：它先留在浏览器内存和本地快照里，因为每一步都往服务端写一次，等于给每次落子加一次网络往返，弱网下会明显卡顿。棋局结束的那一刻才落库，中途关掉页面则从本地快照恢复。这是个折中，而且是我们故意选的：响应快、不用等网络的棋盘，比每一步都等一次往返的棋盘好。",
+        {
+          type: "ul",
+          items: [
+            "已登录：段位、胜负、对局归档、界面设置，以及未下完那局的最后一个局面",
+            "未登录：全部留在这个浏览器里，清掉站点数据就一起清掉",
+            "对局链接：分享出去的那一条永远有效，它不依赖你的账号，也不依赖某台设备",
+          ],
+        },
+        { type: "h2", text: "注册是可选的，它只负责跨设备" },
+        "我们刻意把注册做成可选：下棋这件事本身不该被一道表单挡住。账号承担的是跨设备这一件事，除此之外没有额外权限、没有广告画像。为什么坚持不设注册墙，[这篇写得更细](/blog/why-no-signup-needed)。",
+        { type: "h2", text: "换设备的三种真实场景" },
+        {
+          type: "ul",
+          items: [
+            "午饭用手机、晚上用电脑：最常见的一种。换到更大的屏幕上继续，段位和对手池都不变",
+            "家里共用一台平板：各人登录各人的账号，段位互不干扰，本地记录不会串",
+            "换了新手机：登录即恢复归档，不需要导出，也不需要记得旧设备在哪",
+          ],
+        },
+        { type: "h2", text: "同步的边界：什么跟得上，什么跟不上" },
+        "同步不是把所有东西搬上云。我们只搬那些离开设备就没意义的，其余的留在本地，既省流量也少一份数据。",
+        {
+          type: "ul",
+          items: [
+            "段位与战绩：同步，这是账号存在的理由",
+            "没下完的人机对局：局面同步，计时从暂停处接着走，不会重置",
+            "同一块屏幕上的双人对战：它从没离开过这台设备，没有可同步的东西",
+            "棋盘主题、音效一类设置：同步，存起来几乎不占空间",
+            "访客会话：不同步，这是设计，不是缺失",
+          ],
+        },
+        { type: "h2", text: "两台设备同时开一个账号会怎样" },
+        "人机对局里，服务端只认最后落子的那一台。两台设备同时下同一局时，先提交的一步生效，另一台会在下一次轮询时收到局面更新并提示刷新，已提交的那一步不会回滚。真人对局另有安排：一场对局绑定一个连接，第二个连接进来只能观战，这也是[观战模式](/blog/spectator-mode-watch-and-learn)复用同一套局面的原因。",
+        "关于 YiBoard：五子棋免费、不用注册、不用安装，象棋在开发中，围棋在路线图上。战绩主页在[个人页](/profile)，开一局在[对战页](/play)，我们存什么、存多久写在[隐私那篇](/blog/privacy-promise-what-we-store)里。",
+        { type: "h2", text: "FAQ" },
+        {
+          type: "faq",
+          items: [
+            { q: "换了手机，原来的段位还在吗？", a: "在。段位和胜负记录存在账号下，登录新设备即可恢复。没有账号的老对局留在旧设备的浏览器里，恢复不了，这也是我们建议花十秒建一个账号的原因。" },
+            { q: "不注册会丢进度吗？", a: "只要不清理浏览器数据，进度一直在这台设备上；清理站点数据、换浏览器或者换设备，它就没了。注册只影响跨设备这一件事，不注册照样能下棋。" },
+            { q: "两台设备同时用一个账号下棋，会不会互相顶掉？", a: "人机对局里先提交的一步生效，另一台收到局面更新后提示刷新。真人对局只允许一个连接落子，第二个连接自动转为观战，不会把对手踢下线。" },
+            { q: "对局数据存多久？", a: "归档的对局长期保留，因为分享链接指向它们，删掉就等于制造死链。具体条目和保留期限列在[隐私那篇](/blog/privacy-promise-what-we-store)里。" },
+            { q: "离线时能下棋吗？", a: "人机对局可以，引擎跑在浏览器里，断网也能落子。同步会等到恢复网络后再进行，段位更新可能晚几分钟出现在榜单上。" },
+          ],
+        },
+        { type: "cta", text: "在 YiBoard 下一局，进度跟着你", href: "/play" },
+      ],
+      en: [
+        "Progress that lives on one device is progress you lose the day you change phones. YiBoard keeps your games and record in the browser by default, and playing costs you nothing. The account exists for exactly one job: carrying your progress across devices. Here is what syncs, what stays local, and what happens when two devices open one account with a game still on the board. Start a match on the [play page](/play) and your record follows you.",
+        { type: "h2", text: "Where your progress actually lives" },
+        "Once you sign in, your rating, win and loss counts, game archive and board settings are written to the server. The game in progress works differently. It stays in browser memory and a local snapshot, because writing every move to the server would add a network round trip to each placement, and on a weak connection you would feel it. The result is committed when the game ends, and if you close the tab midway, the local snapshot restores it. That is a compromise, and we picked it on purpose: a board that answers instantly beats one that waits on the network between stones.",
+        {
+          type: "ul",
+          items: [
+            "Signed in: rating, results, game archive, interface settings, and the last known position of an unfinished game",
+            "Not signed in: everything stays in this browser, and clearing site data clears it too",
+            "Shared game links: the link you shared keeps working, since it depends on neither your account nor any single device"
+          ]
+        },
+        { type: "h2", text: "Sign-up is optional, and it only handles devices" },
+        "Making an account optional was deliberate. A form should not stand between you and a game. The account carries one responsibility, moving your progress between devices, and it asks for nothing else: no extra permissions, no advertising profile. [This post goes into more detail](/blog/why-no-signup-needed) on why we keep the signup wall down.",
+        { type: "h2", text: "Three ways people switch devices" },
+        {
+          type: "ul",
+          items: [
+            "Phone at lunch, laptop at night: the common one. You pick up on the bigger screen with the same rating and the same pool of opponents",
+            "A tablet shared by the household: each person signs into their own account, ratings stay separate, and local records never mix",
+            "A new phone: sign in and the archive comes back. Nothing to export, and no need to remember where the old device ended up"
+          ]
+        },
+        { type: "h2", text: "The edges of sync: what follows you and what does not" },
+        "Sync does not mean pushing everything into the cloud. We move the things that mean nothing without your other devices and leave the rest local, which saves traffic and keeps one more copy of your data off a server.",
+        {
+          type: "ul",
+          items: [
+            "Rating and results: synced, since this is the reason the account exists",
+            "An unfinished game against the AI: the position syncs and the clock resumes from where it paused, it does not restart",
+            "A two-player game on one screen: it never left the device, so there is nothing to move",
+            "Board theme and sound settings: synced, they cost almost nothing to store",
+            "Guest sessions: not synced, by design rather than oversight"
+          ]
+        },
+        { type: "h2", text: "Two devices, one account, one game" },
+        "Against the AI, the server accepts whichever device submits a move first. If two devices are playing the same game, the earlier move stands, and the other device picks up the updated position on its next poll and shows a refresh prompt. Nothing that was submitted gets rolled back. Human matches work another way: a game binds to one connection, and a second connection can only watch, which is why [spectator mode](/blog/spectator-mode-watch-and-learn) reads the same position.",
+        "About YiBoard: gomoku is free with no sign-up and nothing to install, xiangqi is in development, and go sits on the roadmap. Your record lives on [the profile page](/profile), a game starts on [the play page](/play), and what we store and for how long is written out in [the privacy post](/blog/privacy-promise-what-we-store).",
+        { type: "h2", text: "FAQ" },
+        {
+          type: "faq",
+          items: [
+            { q: "I changed phones. Is my old rating still there?", a: "Yes, if you had an account. Ratings and results live under the account and come back the moment you sign in. Games played without an account stayed in the old browser, and those are gone, which is the reason we suggest spending ten seconds on an account." },
+            { q: "Do I lose progress if I never register?", a: "Your progress stays on that device until you clear browser data. Clearing site data, switching browsers or moving to a new device takes it with them. Registering only affects the across-device part, and you can play either way." },
+            { q: "What happens if two devices use one account at the same time?", a: "Against the AI, the first submitted move stands and the other device is prompted to refresh on its next poll. In a human match only one connection may place stones, and a second connection drops into spectator mode instead of pushing your opponent offline." },
+            { q: "How long are my games kept?", a: "Archived games are kept indefinitely, because shared links point at them and deleting one would turn that link into a dead end. The full list of fields and retention periods is in [the privacy post](/blog/privacy-promise-what-we-store)." },
+            { q: "Can I play offline?", a: "Against the AI, yes. The engine runs in your browser, so stones land without a connection. Sync waits until you are back online, which means a rating change can show up on the leaderboard a few minutes late." }
+          ]
+        },
+        { type: "cta", text: "Play a game on YiBoard, your progress comes along", href: "/play" }
+      ]
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
