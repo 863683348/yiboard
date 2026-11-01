@@ -7154,6 +7154,100 @@ export const POSTS: BlogPost[] = [
       ]
     },
   },
+  {
+    slug: 'viral-match-how-games-spread',
+    date: '2026-11-02',
+    tags: ['product', 'online-board-game'],
+    title: {
+      zh: '邀请裂变：一局棋怎么传播',
+      en: 'The Viral Match: How Games Spread'
+    },
+    description: {
+      zh: '棋类平台的传播不靠奖励，靠一盘值得转发的棋。这篇讲清楚 YiBoard 的分享链接里装了什么、为什么链接不做过期、为什么我们跳过拉人返利，以及什么样的对局真的会被人转走。',
+      en: 'Board games do not spread on referral bonuses. They spread on a match worth forwarding. What sits inside a YiBoard share link, why links do not expire, why invite rewards are skipped here, and the kind of game people actually pass on.'
+    },
+    keywords: ['shareable game link', 'viral game design', 'share match', 'growth loop games', 'gomoku replay link', 'share board game online'],
+    content: {
+      zh: [
+        '一局棋能传多远，看的是它结束后留下什么。比分截图会被划走，一条能拖着复盘的棋谱链接会留在群里，第二天早上还有人点开。做 YiBoard 的分享功能时，我们反复回到一个很窄的问题：一个人下完一盘好棋，他手上有什么可以发出去。想先试试，[对战页](/play)一直开着。',
+        { type: 'h2', text: '分享出去的是棋，不是比分' },
+        '链接指向那盘棋本身：每一步都存着，点开就能从头拖到尾。收到的人不用注册，不用装东西，也不用先懂五子棋规则，他能直接看见黑子是怎么一步步把白子逼到边上的。比分只说谁赢了，棋谱说的是这盘棋为什么这么赢，后者才值得转发。',
+        { type: 'h2', text: '链接要短，打开要快' },
+        {
+          type: 'ul',
+          items: [
+          '不设门槛：收到链接的人点开就是棋谱，中间没有注册墙',
+          '复盘可以拖：想争论第 37 手该不该挡，把进度条拉回第 37 手就行',
+          '长期有效：旧棋局我们不做清理，删掉一局等于把别人已经发出去的链接变成死路',
+          '不追踪来访者：谁点开、看到第几手，我们不记录',
+          ],
+        },
+        { type: 'h2', text: '为什么没做邀请奖励' },
+        '拉人有奖是最常见的增长手段，我们不打算用。奖励会招来一批只为奖励存在的账号，而段位榜是最先被弄脏的地方。段位从 1200 分起步，靠真实对局往上爬；掺进几百个打假棋的号之后，花在清理上的时间会超过这些账号带来的价值。棋类平台的用户量本来就不大，一个没人信的榜比一个名字少一点的榜更糟。',
+        { type: 'h2', text: '什么样的对局会被转走' },
+        {
+          type: 'ul',
+          items: [
+          '翻盘局：前面落后一大截，靠一手冲四扳回来',
+          '短局：两三分钟内结束，看的人不需要耐心',
+          '有一句话可说的：一手明显的好棋，或者一个明显的漏着，转发时配得上正文',
+          '熟人局：两个互相认识的人下，转发的动力来自人情，不来自棋盘',
+          ],
+        },
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '分享棋局需要注册吗？', a: '下棋不需要注册，链接由下完的那盘棋生成。收到链接的人不用有账号也能看，注册只影响一件事：你的战绩能不能跨设备跟着你。' },
+            { q: '分享的链接会过期吗？', a: '我们不会让它过期。棋局按存档保存，因为链接一旦发出去就成了别人的东西，我们删档等于替发链接的人做决定。' },
+            { q: '别人能看到我的账号信息吗？', a: '能看到那盘棋和当时用的名字。邮箱、密码、跨设备的战绩记录都不在分享页上。' },
+            { q: '邀请朋友有奖励吗？', a: '没有。我们不做拉人返利，段位只按真实对局走，理由写在这篇的上半部分。' }
+          ],
+        },
+        '关于 YiBoard：yiboardgame.com 是一个打开浏览器就能下棋的地方，五子棋免费、不用注册、没有广告，象棋在开发，围棋在路线图上。想让别人看你下过的那盘棋，从[分享棋局](/blog/share-gomoku-game-link)开始；想找人一起下，[社区棋赛](/blog/community-tournaments)写了我们的打算；[对战页](/play)现在就开着。',
+        { type: 'cta', text: '在 YiBoard 下一局，把棋谱发给朋友', href: '/play' }
+      ],
+      en: [
+        'A game travels as far as what it leaves behind. A screenshot of the result gets swiped past. A link to the actual match sits in the group chat, and somebody opens it the next morning. When we built sharing for YiBoard we kept coming back to one narrow question: after a player finishes a good game, what does he have to send? The [play page](/play) is open if you want to try it first.',
+        { type: 'h2', text: 'What gets shared is the game, not the score' },
+        'The link points at the game itself. Every move is stored, and opening it lets you scrub from the first stone to the last. Whoever receives it needs no account, nothing installed, and no prior knowledge of gomoku to follow how black squeezed white against the edge. A result says who won. A record says why, and the why is the part worth forwarding.',
+        { type: 'h2', text: 'Short links, no waiting' },
+        {
+          type: 'ul',
+          items: [
+          'No gate: the link opens straight into the record, with no sign-up wall in between',
+          'Scrubbing works: to argue about move 37, drag the bar back to move 37',
+          'Links stay live: old games are not pruned, because deleting one turns a link somebody already sent into a dead end',
+          'No visitor tracking: who opened it and how far they got is not something we log',
+          ],
+        },
+        { type: 'h2', text: 'Why there is no invite bonus' },
+        'Paying people to bring people in is the standard growth trick, and we are skipping it. Bonuses attract accounts that exist to collect the bonus, and the ladder is the first thing they ruin. It starts at 1200 and climbs on real games. A few hundred fake accounts in there costs more time to clean out than the sign-ups are worth. Board game sites are small by nature, and a ladder nobody believes in is worse than a ladder with fewer names on it.',
+        { type: 'h2', text: 'The games people actually forward' },
+        {
+          type: 'ul',
+          items: [
+          'Comebacks: a player down by a lot who finds one move that turns it around',
+          'Short games: finished inside two or three minutes, so watching takes no patience',
+          'Something to say: one clearly good move or one obvious miss, which gives the sender a line to write',
+          'Games between people who know each other: the reason to forward is the relationship, not the board',
+          ],
+        },
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Do I need an account to share a game?', a: 'Playing needs no account, and the link is generated from the finished game. Whoever opens it can watch without one. An account matters only if you want your record to follow you across devices.' },
+            { q: 'Do shared links expire?', a: 'We do not expire them. Games are kept as archive, because once a link is out in the world it belongs to the person who sent it, and deleting the game would be deciding that for them.' },
+            { q: 'Can people see my account details?', a: 'They see the game and the name used in it. Email, password and the cross-device record stay off the share page.' },
+            { q: 'Is there a reward for inviting friends?', a: 'There is no referral bonus. The ladder moves only on real games, and the reasoning is written out above.' }
+          ],
+        },
+        'About YiBoard: yiboardgame.com is a place to play in the browser, gomoku free with no sign-up and no ads, xiangqi in development, go on the roadmap. To show someone a game you played, start with [sharing a match](/blog/share-gomoku-game-link). To find people to play against, [community tournaments](/blog/community-tournaments) lays out what we have in mind. The [play page](/play) is open now.',
+        { type: 'cta', text: 'Play a game on YiBoard and send the record to a friend', href: '/play' }
+      ]
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
