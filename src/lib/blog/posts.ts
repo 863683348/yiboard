@@ -7248,6 +7248,84 @@ export const POSTS: BlogPost[] = [
       ]
     },
   },
+  {
+    slug: 'why-we-call-it-yiboard',
+    date: '2026-11-03',
+    tags: ['brand', 'product', 'board games'],
+    title: {
+      zh: '为什么叫 YiBoard：一个名字的来历',
+      en: 'The Story Behind YiBoard',
+    },
+    description: {
+      zh: '弈，是下棋；Board，是棋盘。YiBoard 的名字就是这么来的。这篇讲清 yi 的出处、我们扔掉的四个备选，以及为什么留下的是一个大多数英语使用者第一次念不对的名字。',
+      en: 'Yi means to play a board game; board is the surface it happens on. This is the board game brand story behind YiBoard: where yi comes from, the four names we rejected, and why we kept two syllables most English speakers mispronounce the first time.',
+    },
+    keywords: ['board game brand story', 'product naming story', 'yi meaning', 'brand origin', 'yiboard name'],
+    content: {
+      zh: [
+        '每个棋类品牌的开头，都有一句要在会议室里被人问住的话。我们被问住的是名字。这篇讲的是 YiBoard 的命名经过：yi 从哪来、我们试过哪些、以及为什么留下的是这两个音节，尽管大多数英语使用者第一次都念不对。',
+        { type: 'h2', text: 'yi 是什么意思' },
+        'yi 取自「弈」（yì），古汉语里下围棋、下棋的那个字。它不只是名词，也是一个动词：弈，就是坐下来下一盘。这一点比听起来重要，因为多数棋类网站把自己描述成大厅或平台，而我们想要一个描述动作的字。它之外还有第二层读法：「一」（yī），一张棋盘、一个对手，一局一局来。两种读法都成立，读者取哪一种我们都接受。',
+        { type: 'h2', text: '品牌起点：一个浏览器里的棋盘，不是一家公司' },
+        '这个品牌的起点没什么戏剧性。YiBoard 最初只是一个五子棋页面，做它是为了解决一场争论：浏览器里的 AI 在没有服务器的情况下，能不能把开局下得像样。没有发布计划，没有 logo，头一个月连名字都没有，只有一个叫 yi 的文件夹。那段时期留下的东西现在还在产品里：不用安装，不用注册，引擎跑在你自己的机器上。完整版本写在[关于页](/about)，[首页](/)打开就是棋盘。',
+        { type: 'h2', text: '命名经过：我们扔掉了什么' },
+        {
+          type: 'ul',
+          items: [
+            '「弈棋」：准确，但听过一遍之后，中文圈之外没几个人能拼对',
+            '「Yi Board Games」：字面上没错，读起来却像个卖棋盒的店，而我们不做那个',
+            '「Gomoku Hub」：在我们自己的关键词笔记里表现很好，代价是把产品锁死在一个棋种上，而象棋和围棋早就在计划里',
+            '凭空造一个词：好记，但对第一次来的人什么都没说',
+            '「YiBoard」：短到适合做域名，能被搜索到，而且弈的影子留在头两个字母里',
+          ],
+        },
+        { type: 'h2', text: '这个名字对产品提出了什么要求' },
+        '名字建在弈上，等于给自己立了一条要一直够到的线。我们后来加的每一种棋，都必须是中华棋类或与之直接相关的，所以路线图是五子棋、象棋、围棋，而不是扑克。它也决定了我们不做什么：没有聊天室，没有赌博，没有把注意力从棋盘上挪走的东西。完整理由写在[关于页](/about)，简短版是一句话：一个关于下棋的名字，应该描述一个真的在下棋的地方。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'YiBoard 的 Yi 是什么意思？', a: '取自「弈」（yì），古汉语里下棋的那个字。另一层读法是「一」（yī）。两种都贴切：下棋这个动作，以及一次只下一盘。' },
+            { q: 'YiBoard 只有五子棋吗？', a: '不是。五子棋先上线是因为它最容易上手。象棋在开发，围棋在路线图上，当初选这个名字就是为了同时容纳三者，而不是只装一个。' },
+            { q: '为什么不干脆只用中文名？', a: '我们想触达的大多数人没听过弈。保留 Yi 的拉丁字母写法，让它可以被输入、被搜索；汉字本身留在[关于页](/about)，想溯源的人看得到。' },
+            { q: 'YiBoard 怎么念？', a: '大致是「伊-博德」，yi 读平声。念得不太准没关系，域名照样打得开。' },
+          ],
+        },
+        { type: 'cta', text: '在 YiBoard 免费下一局', href: '/play' },
+      ],
+      en: [
+        'Every board game brand story starts with a decision someone has to defend in a room. Ours was a name. This is the product naming story behind YiBoard: where yi comes from, what we tried before it, and why we kept two syllables that most English speakers get wrong on the first try.',
+        { type: 'h2', text: 'What yi means' },
+        'Yi comes from “弈” (yì), the classical Chinese word for playing weiqi or chess. It works as a verb as much as a noun: to yi is to sit down and play a game. That mattered more than it sounds, because most board game sites describe themselves as lobbies or platforms, and we wanted a word for the act. There is a second reading too, 一 (yī), one: one board, one opponent, one game at a time. Both readings are legitimate and we are happy for you to pick either.',
+        { type: 'h2', text: 'Brand origin: a board in a browser, not a studio' },
+        'The brand origin is unglamorous. YiBoard started as a single Gomoku page built to settle an argument about whether browser AI could play a decent opening with no server behind it. There was no launch plan, no logo, and for the first month no name beyond a folder called yi. What survived from that period is still in the product: no install, no account needed, the engine running on your own machine. The long version sits on the [about page](/about), and the [home page](/) opens straight onto a board.',
+        { type: 'h2', text: 'The product naming story: what we rejected' },
+        {
+          type: 'ul',
+          items: [
+            'Yiqi (“弈棋”): accurate, and almost nobody outside Chinese-speaking circles could spell it after hearing it once',
+            'Yi Board Games: correct on paper, though it reads like a shop selling boxes, which is not what we make',
+            'Gomoku Hub: scored well in our own keyword notes and trapped us inside one game, with Xiangqi and Go already planned',
+            'An invented word with no roots: memorable, and it tells a first-time visitor nothing at all',
+            'YiBoard: short enough to be a domain, searchable, and the chess radical stays visible in the first two letters',
+          ],
+        },
+        { type: 'h2', text: 'What the name asks of the product' },
+        'A name built on 弈 sets a line we have to keep reaching. Every game we add has to be a Chinese board game or closely related to one, which is why the roadmap runs Gomoku, then Xiangqi, then Go, and not poker. It also decided what we leave out: no chat rooms and no gambling, nothing that pulls attention off the board. The full reasoning is on the [about page](/about). The short version is that a name about playing should describe a place where people actually play.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'What does Yi mean in YiBoard?', a: 'It comes from 弈 (yì), the classical Chinese word for playing weiqi or chess. A second reading is 一 (yī), one. Both fit: the act of playing, and one board at a time.' },
+            { q: 'Is YiBoard only about Gomoku?', a: 'No. Gomoku shipped first because it is the quickest to learn. Xiangqi is in development and Go is on the roadmap, and the name was picked to cover all three rather than one of them.' },
+            { q: 'Why not use a Chinese-language name only?', a: 'Most of the people we want to reach have never heard of 弈. Keeping Yi in Latin letters makes it typeable and searchable, while the character itself stays on the [about page](/about) for anyone who wants the source.' },
+            { q: 'How do you pronounce YiBoard?', a: 'Roughly yee-board, with a flat high tone on yi. Getting it slightly wrong costs nothing, since the URL works either way.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free game on YiBoard', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
