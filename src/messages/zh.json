@@ -68,6 +68,7 @@
     "gomokuRules": "五子棋规则",
     "renjuRules": "连珠规则",
     "gomokuVsGo": "五子棋 vs 围棋",
+    "tsumego": "死活题",
     "xiangqi": "象棋",
     "go": "围棋",
     "reversi": "黑白棋",

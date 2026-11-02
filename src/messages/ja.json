@@ -67,6 +67,7 @@
     "gomokuRules": "五目並べのルール",
     "renjuRules": "連珠のルール",
     "gomokuVsGo": "五目並べ vs 囲碁",
+    "tsumego": "詰碁",
     "xiangqi": "象棋",
     "go": "囲碁",
     "reversi": "リバーシ",
