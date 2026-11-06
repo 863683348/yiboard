@@ -7402,6 +7402,102 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'how-to-contribute-to-yiboard',
+    date: '2026-11-07',
+    tags: ['open-source', 'product', 'community'],
+    title: {
+      zh: '贡献指南：怎么参与 YiBoard 开发',
+      en: 'How to Contribute: Getting Involved in YiBoard Development',
+    },
+    description: {
+      zh: 'YiBoard 的 open source contribution guide：从 clone 仓库、跑通本地环境到提交第一个 PR，以及不写代码也能参与的翻译、测试与规则考证路径。dev onboarding 一次走完。',
+      en: 'An open source contribution guide for YiBoard: clone the repo, get a local build running, pick a first issue and ship a pull request. Dev onboarding also covers translators, testers and rule researchers who never touch code.',
+    },
+    keywords: ['contribute open source', 'contribute to game', 'open source contribution guide', 'dev onboarding', 'yiboard open source'],
+    content: {
+      zh: [
+        'YiBoard 是一个可以 contribute open source 的棋类平台：代码公开、路线图公开、不少产品决策直接写在博客里。参与开发不需要什么仪式感，也不用先成为棋力高手——改一个翻译错别字和调 AI 的剪枝参数，在我们眼里是同一种贡献。这份 open source contribution guide 带你走完 dev onboarding 的完整路径：跑起本地环境、挑第一个 issue、提交第一个 PR。完全不会写代码也有位置，翻译和实测反馈同样是开发的一部分。想先了解我们为什么开源，从[这篇](/blog/why-we-are-open-source)读起。',
+        { type: 'h2', text: '为什么值得把时间花在 YiBoard 上' },
+        '市面上的在线棋类大多是闭源产品，你能扮演的角色只有用户。YiBoard 反过来：引擎参数怎么调的、排行榜怎么做防作弊的、为什么坚持免注册，全都摊在桌面上。你能看到每个决定背后的取舍，也因此真的能影响这些决定。我们对 contribute to game 的理解很宽——棋种玩法、界面交互、文档、社区活动，都算开发。仓库的 issue 列表是开放的，想法也可以直接走[联系页](/contact)。',
+        { type: 'h2', text: '开发环境：半小时跑起来' },
+        '标准的 dev onboarding 只有四步：',
+        {
+          type: 'ul',
+          items: [
+            'clone 仓库后安装依赖：前端是 Next.js 应用，包管理器照 README 的说明来',
+            '跑本地 dev server，打开 localhost 就能看到完整站点',
+            '改动前先跑一遍 tsc 自检，确认基线是干净的',
+            '提交前先同步 main，避免无谓的冲突',
+          ],
+        },
+        '环境跑起来之后，建议先花一局棋的时间把[玩法页](/how-to)过一遍。先当一次完整用户再写代码，提的意见会实际得多。',
+        { type: 'h2', text: '第一个 issue 怎么挑' },
+        '新手最常见的卡点是一上来就挑"重构整个引擎"级别的大任务。更稳的做法：',
+        {
+          type: 'ul',
+          items: [
+            '优先找带 good first issue 标记的小任务，通常半天内能交',
+            '文案和翻译类任务改起来快，还能顺便熟悉代码结构',
+            '修 bug 前先在 issue 里把复现步骤重走一遍，确认问题还在',
+            '拿不准就在 issue 下留言说想认领，避免和别人撞车',
+          ],
+        },
+        { type: 'h2', text: '提 PR 的几条规矩' },
+        '这是 open source contribution guide 的最后一公里。一条 PR 只做一件事；提交信息写清楚改了什么、为什么改；大改动（新棋种、新引擎）先开 issue 对齐方向再动手，不然可能整段返工。改动涉及引擎或排行榜这类核心逻辑时，附上对比数据最有说服力——之前 alpha-beta 剪枝的优化 PR 就是因为带了基准测试结果，当天就合了。第一轮 review 通常一两天内到，改完意见 ping 一次就够，不用反复催。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '不会写代码，能参与吗？', a: '能。翻译、文档纠错、新棋种规则考证、真实对局测试都算贡献。好几个规则页的第一版就来自玩家来信。' },
+            { q: '大改动要不要先开 issue？', a: '要。超出小修小补或涉及产品方向的改动，先在 issue 里对齐方向，再动手写代码，避免整段返工。' },
+            { q: 'PR 提交后多久有回音？', a: '通常一两天内会有第一轮 review。没有回音就在原 issue 下 ping 一次，不要重复开新 issue。' },
+          ],
+        },
+        { type: 'cta', text: '先来一局，再决定从哪个 issue 开始', href: '/play' },
+      ],
+      en: [
+        'YiBoard is a board game platform you can contribute open source work to: the code is public, the roadmap is public, and most product decisions get written up in the blog. You do not need to be a strong player to help. Fixing a translation typo and tuning the AI\u2019s pruning both count, and nobody ranks them. This open source contribution guide walks through the full dev onboarding path: getting a local build running, picking a first issue, and shipping a pull request. If you never write code, there is still room; translation and real-game testing are part of development too. For why the project is open at all, start with [this post](/blog/why-we-are-open-source).',
+        { type: 'h2', text: 'Why spend your time here' },
+        'Most online board games are closed products where the only role available is user. YiBoard runs the other way: how the engine parameters get tuned, how the leaderboard fights cheating, why accounts stay optional, all of it is on the table. You can see the tradeoffs behind every decision, so you can actually move them. We read contribute to game broadly: game variants, interface work, documentation, community events. The issue list is open, and ideas also land through the [contact page](/contact).',
+        { type: 'h2', text: 'Dev onboarding: running a local build' },
+        'The standard setup takes four steps:',
+        {
+          type: 'ul',
+          items: [
+            'Clone the repo and install dependencies; it is a Next.js app and the README covers the package manager',
+            'Start the dev server and open localhost to see the full site',
+            'Run a tsc check before changing anything, so you know the baseline is clean',
+            'Pull from main before you commit to avoid pointless conflicts',
+          ],
+        },
+        'Once it runs, spend one full match on the [how-to page](/how-to) before touching code. Contributing as a user first makes every later suggestion more practical.',
+        { type: 'h2', text: 'Picking your first issue' },
+        'The common beginner mistake is grabbing a huge refactor and stalling. A steadier path:',
+        {
+          type: 'ul',
+          items: [
+            'Look for tasks tagged good first issue; most land within a day',
+            'Copy and translation fixes are quick wins that also teach you the code layout',
+            'Before fixing a bug, replay the reproduction steps in the issue and confirm it still exists',
+            'If unsure, comment that you want to take it, so nobody doubles up',
+          ],
+        },
+        { type: 'h2', text: 'Pull request etiquette' },
+        'This is the last mile of the open source contribution guide. One pull request does one thing. Commit messages say what changed and why. Large changes, like a new game variant or engine work, need an issue first so the direction gets agreed before code exists. When touching core logic such as the engine or ranking, attach comparison numbers; the alpha-beta pruning PR landed the day it arrived because it carried benchmark results. First review usually comes within a day or two. Address the comments, then ping once.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Can I contribute without writing code?', a: 'Yes. Translation, documentation fixes, rule research for new variants and real-game testing all count. Several rules pages started as player emails.' },
+            { q: 'Should large changes open an issue first?', a: 'Yes. Anything beyond a small fix or touching product direction gets agreed in an issue before code exists.' },
+            { q: 'How fast do pull requests get reviewed?', a: 'Usually within a day or two. If nothing happens, ping the original issue once; do not open duplicates.' },
+          ],
+        },
+        { type: 'cta', text: 'Play a free match first, then pick your first issue', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
