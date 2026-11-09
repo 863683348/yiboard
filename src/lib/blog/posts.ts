@@ -7498,6 +7498,245 @@ export const POSTS: BlogPost[] = [
       ],
     },
   },
+  {
+    slug: 'game-creator-assets-kit',
+    date: '2026-11-10',
+    tags: ['product', 'community', 'creators'],
+    title: {
+      zh: '给创作者的素材包：YiBoard 媒体资料库',
+      en: 'Assets for Creators: The YiBoard Media Kit',
+    },
+    description: {
+      zh: '做棋类内容的创作者常年缺干净素材：缩略图要棋盘渲染图，视频要对局动图，文案要可靠数据。YiBoard 现在直接开放媒体资料库，注明出处即可自由使用，这篇讲清楚里面有什么、怎么用。',
+      en: 'Creators covering classic board games keep hitting the same wall: no clean creator assets for thumbnails, no short match animations, no reliable numbers to put on screen. The YiBoard media kit opens all of that up, free to use with attribution. This post covers what is inside and how to use it.',
+    },
+    keywords: ['game creator assets', 'streamer assets', 'content creator kit', 'game media kit', 'board game content ideas'],
+    content: {
+      zh: [
+        '做棋类内容的创作者，最难的部分往往不是讲棋，而是找素材：缩略图需要一张干净的棋盘渲染图，短视频需要一段五连瞬间，口播需要几个可靠的数字。向厂商申请授权动辄几周，从别人视频里截图又糊又有借用的味道。YiBoard 现在把游戏创作者素材直接打包开放：注明出处即可使用，商用内容也在允许范围内。这篇把资料库的构成、用法和几条简单的规则讲清楚。',
+        { type: 'h2', text: '资料库里有什么' },
+        {
+          type: 'ul',
+          items: [
+            '棋盘渲染图：当前界面亮色、暗色与透明底三版，覆盖缩略图与竖屏视频的尺寸',
+            '对局瞬间：经典棋形的导出动图，从双三陷阱到教科书式的连续冲四收官',
+            '事实卡：单屏数字，比如三千年的历史脉络和一句话规则介绍',
+            '标识包：SVG 与 PNG 双格式的字标和图标',
+            '演示录像：与内置引擎完整对局一局的浏览器录屏',
+          ],
+        },
+        { type: 'h2', text: '对局链接是主播最便宜的道具' },
+        '直播里最好用的从来不是贴图，是互动。把一个对局链接丢进聊天区，让观众轮流来挑战，内容自己就产生了；分享系统的机制在[对局分享](/blog/share-gomoku-game-link)一文里有完整拆解，这类对局如何病毒式扩散也有专文分析。观战模式则适合解说场景：你解说，链接里的两个人下棋，观众两边都能看清，细节见[观战模式](/blog/spectator-mode-watch-and-learn)。',
+        { type: 'h2', text: '使用规则：署名与两条底线' },
+        '资料库的授权只有两条底线：一是注明来源，在视频简介或图注里带上 YiBoard 与链接即可；二是不要用素材暗示官方代言或合作关系，比如把它放进商业产品的宣传图里。改色、裁剪、二次创作都不需要额外授权。棋盘视觉的设计逻辑在[棋盘设计语言](/blog/board-design-language)一文里，做衍生视觉时读它会省很多力气。',
+        { type: 'h2', text: '三条视频的起步方案' },
+        {
+          type: 'ul',
+          items: [
+            '第一条：用事实卡在六十秒内讲完规则，覆盖完全不懂的观众',
+            '第二条：收集观众发来的对局链接，做一期真实的复盘反应视频',
+            '第三条：挑战内置最强引擎，全程口播自己的思考过程',
+          ],
+        },
+        '这套方案的成本是零：素材全部来自资料库，对局全部来自免费对战页。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '商业化视频需要单独授权吗？', a: '不需要。带署名的商业化使用（含平台激励、贴片广告）都在允许范围内，只有暗示官方合作这条线不能碰。' },
+            { q: '可以把素材用于棋类之外的题材吗？', a: '可以，素材本身不限制题材，只要署名规范。做设计类、教育类内容时棋盘渲染图反而经常被拿去当案例。' },
+            { q: '发现渲染图或动图有问题，向谁反馈？', a: '通过[联系页](/contact)直接反馈即可，素材问题通常比代码问题的修复周期更短。' },
+          ],
+        },
+        { type: 'cta', text: '先领素材包，再来一局值得讲的对局', href: '/play' },
+      ],
+      en: [
+        'For creators covering board games, the hardest part is rarely the talking. It is the creator assets: a clean board render for the thumbnail, a short clip of a five-in-a-row finish, a handful of numbers you can put on screen without checking three sources. Permission requests take weeks, and screenshots lifted from other channels look blurry and borrowed. YiBoard now ships its media kit as an open package: use it with attribution, including on monetized content. This post walks through what is inside, how to use it, and the two rules that come with it.',
+        { type: 'h2', text: 'What is inside the kit' },
+        {
+          type: 'ul',
+          items: [
+            'Board renders: the current board in light, dark, and transparent-background versions, sized for thumbnails and vertical video',
+            'Match moments: exported animations of classic shapes, from the double-three trap to a textbook sequence of forced fours',
+            'Fact cards: one-screen numbers, such as the three-thousand-year history arc and the rules-in-one-sentence pitch',
+            'Logo pack: wordmark and icon in SVG and PNG',
+            'Demo footage: a browser recording of a full match against the built-in engine',
+          ],
+        },
+        { type: 'h2', text: 'Match links are the cheapest studio prop you own' },
+        'The best streaming device is not a graphic, it is interaction. Drop a match link into chat, let viewers queue up to challenge you, and the content produces itself; the share system is covered in the [game link guide](/blog/share-gomoku-game-link), and the way these matches spread is analyzed in the [viral match piece](/blog/viral-match-how-games-spread). For casted matches, spectator mode lets you commentate while both sides stay visible to the audience; the setup is in the [spectator mode post](/blog/spectator-mode-watch-and-learn).',
+        { type: 'h2', text: 'The rules: attribution and two lines' },
+        'The license has two lines, not twenty. First, attribute: put YiBoard and a link in the video description or caption. Second, do not use the assets to imply endorsement or partnership, such as placing them in promotional material for another product. Recoloring, cropping, and derivative art all need no extra permission. The thinking behind the board itself is in the [board design language post](/blog/board-design-language), which saves real time when you build derivative visuals.',
+        { type: 'h2', text: 'A three-video starter plan' },
+        {
+          type: 'ul',
+          items: [
+            'Video one: teach the rules in sixty seconds using the fact cards',
+            'Video two: collect match links from your audience and react to five of them',
+            'Video three: challenge the strongest built-in engine and narrate every decision',
+          ],
+        },
+        'The plan costs nothing: every asset comes from the kit and every match comes from the free [play page](/play).',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Do monetized videos need separate permission?', a: 'No. Monetized use, including platform revenue and sponsorships, is covered as long as the attribution is present. The only line is implying an official partnership that does not exist.' },
+            { q: 'Can I use the assets outside board game content?', a: 'Yes. The assets carry no topic restriction; design and education channels regularly use the board renders as case material, with attribution intact.' },
+            { q: 'A render or animation looks off. Where do I report it?', a: 'Use the [contact page](/contact). Asset fixes usually land faster than code fixes.' },
+          ],
+        },
+        { type: 'cta', text: 'Grab the kit, then play a match worth covering', href: '/play' },
+      ],
+    },
+  },
+  {
+    slug: 'board-game-clubs-go-online',
+    date: '2026-11-09',
+    tags: ['community', 'product', 'online-board-game'],
+    title: {
+      zh: '校园社团：棋类俱乐部的线上化实操',
+      en: 'Board Game Clubs Go Online: A Practical Guide',
+    },
+    description: {
+      zh: '大学棋社每学期都会撞上同一堵墙：三十个人、两块棋盘。把社团的一部分搬到线上不是取消周会，而是消灭排队等待。这份实操指南讲清楚俱乐部需要什么、成本几何、以及怎么留住第一局就想走的萌新。',
+      en: 'Every university chess club and board game society hits the same wall each semester: thirty people, two boards. Moving part of the club online does not replace the weekly meeting; it removes the waiting. This practical guide covers what a board game club actually needs, what it costs, and how to keep beginners past their first game.',
+    },
+    keywords: ['board game club', 'university chess club online', 'board game society', 'club tools', 'online board game club'],
+    content: {
+      zh: [
+        '棋类社团的现状很一致：招新周收三十份报名表，第一场活动只摆得开四副棋，剩下的人围观一小时然后离开。线上化不是要取代每周的线下聚会，而是把等待从社团里删掉：想下棋的人随时有对手，段位表学期末还在更新，新生在宿舍就能下完第一局。一个棋类俱乐部要解决的三件事，恰好都是 YiBoard 已经做好的部分。',
+        { type: 'h2', text: '俱乐部真正需要的三样东西' },
+        {
+          type: 'ul',
+          items: [
+            '一个免安装、免注册的对战场所：注册墙在招新场景下的流失率非常难看，原因拆解见[注册墙分析](/blog/what-signup-walled-platforms-get-wrong)',
+            '一张学期末还能对得上的段位表：胜负记录自动累计，不靠任何人手工记账',
+            '一条从群聊直达对局的链接：一次点击进入，而不是一次安装加一次注册',
+          ],
+        },
+        { type: 'h2', text: '不写文档也能跑的积分榜' },
+        '社团积分榜通常死在第三周：没人愿意每周手工记分。把对局全部放进 YiBoard 的排行系统之后，记分这件事就不存在了，棋社要做的只是在周会上宣布本周榜首。积分榜的公平性设计（连胜保护、同段位匹配）在[排行榜设计](/blog/fair-leaderboard-design)一文里，段位体系与 Elo 的取舍对比见[段位与 Elo](/blog/grades-vs-elo-ranking-systems)。线下比赛的胜负也可以补录进同一条梯子，线上线下共用一套数据。',
+        { type: 'h2', text: '比赛之夜：一块投影两块屏幕' },
+        '每月一次的比赛之夜是社团留存率最高的活动，线上化让它更省事：签录用共享文档，对阵用链接，淘汰赛一轮一轮发群。围观的同学开观战模式比挤在棋盘后面看得清楚得多，观赛的配置方法见[观战模式](/blog/spectator-mode-watch-and-learn)；完整一场校园锦标赛的执行清单在[社团锦标赛](/blog/community-tournaments)一文里，直接照抄就能办。',
+        { type: 'h2', text: '留住下完第一局就想走的人' },
+        '新生流失最快的窗口是第一局结束后的十分钟。两个做法实测有效：第一，把[一分钟上手](/blog/one-minute-to-play)的口诀印在招新海报上，把预期压到合理；第二，老带新的第一局让新手执先手或用让子，让首胜的概率拉高，让子的原理见[让子指南](/blog/handicap-stones-explained-beginner-guide)。规则本身有疑问时，[规则页](/gomoku-rules)和[玩法指南](/blog/how-to-play-gomoku)可以当社团的官方教材转发。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '社员必须都注册账号吗？', a: '不需要。YiBoard 无账号即可对战，段位记录只对想上梯子的社员开放，其余人随时来随时走。' },
+            { q: '线下比赛的成绩怎么进线上积分榜？', a: '比赛组织者在系统中补录胜负即可，记录落在同一条梯子上，学期末的数据是完整的。' },
+            { q: '社团要求开源或自建服务器吗？', a: '不要求，托管服务免费且无广告。有技术兴趣的社团可以读[开源贡献指南](/blog/how-to-contribute-to-yiboard)自行部署。' },
+          ],
+        },
+        { type: 'cta', text: '把俱乐部链接发进群聊，先来一局', href: '/play' },
+      ],
+      en: [
+        'The state of a typical club is consistent: thirty sign-up sheets in recruitment week, four boards at the first meeting, and an hour of spectating for everyone else. Taking a board game club partially online does not replace the weekly meeting; it deletes the waiting. Members find an opponent whenever they want, the ladder keeps updating until finals week, and a freshman finishes their first game from the dorm. The three things a club needs happen to be the three things YiBoard already built.',
+        { type: 'h2', text: 'The three things a club actually needs' },
+        {
+          type: 'ul',
+          items: [
+            'A place to play with no install and no account: sign-up walls bleed hard in recruitment scenarios, as broken down in the [signup wall analysis](/blog/what-signup-walled-platforms-get-wrong)',
+            'A ladder that still reconciles at the end of the semester: results accumulate on their own, with nobody keeping score by hand',
+            'One link from the group chat straight into a game: one tap, not one install plus one registration',
+          ],
+        },
+        { type: 'h2', text: 'A ladder without paperwork' },
+        'Club leaderboards usually die in week three, when the volunteer who kept score quits. Once matches live inside the YiBoard rankings, scorekeeping stops existing; the club only announces the weekly leader at the meeting. How the ladder stays honest, with streak protection and same-tier matching, is covered in the [leaderboard design post](/blog/fair-leaderboard-design), and the trade-offs between grades and Elo are compared in the [grades vs Elo piece](/blog/grades-vs-elo-ranking-systems). Over-the-board tournament results can be entered into the same ladder afterward, so one dataset spans both worlds.',
+        { type: 'h2', text: 'Tournament night: one projector, two screens' },
+        'The monthly tournament night has the best retention of any club event, and the online layer removes its friction: check-in in a shared doc, pairings as links, each round posted to the group chat. Spectators on spectator mode see more than the crowd huddled behind a physical board; the setup is in the [spectator mode post](/blog/spectator-mode-watch-and-learn). A full campus tournament checklist, ready to copy, lives in the [community tournaments guide](/blog/community-tournaments).',
+        { type: 'h2', text: 'Keeping beginners past game one' },
+        'The fastest churn window is the ten minutes after a beginner\u2019s first loss. Two moves measurably help. Put the promise from the [one-minute-to-play post](/blog/one-minute-to-play) on the recruitment poster so expectations start realistic. And give the newcomer first move or handicap stones in their first mentor match, which raises the odds of an early win; the mechanics are in the [handicap guide](/blog/handicap-stones-explained-beginner-guide). When rule questions come up, the [rules page](/gomoku-rules) and the [how-to-play guide](/blog/how-to-play-gomoku) work as the club\u2019s official teaching material.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Do all members need accounts?', a: 'No. Matches need no account at all; the ladder only matters to members who want ranked standing, and everyone else can come and go.' },
+            { q: 'How do over-the-board results enter the online ladder?', a: 'An organizer enters the results after the event, and they land in the same dataset, so end-of-term numbers stay complete.' },
+            { q: 'Does the club need to self-host anything?', a: 'No. Hosting is free and ad-free. Technically inclined clubs can read the [contribution guide](/blog/how-to-contribute-to-yiboard) if they want to deploy their own instance.' },
+          ],
+        },
+        { type: 'cta', text: 'Send the club a link and play the first game', href: '/play' },
+      ],
+    },
+  },
+  {
+    slug: 'game-server-costs-sustainability',
+    date: '2026-11-08',
+    tags: ['product', 'privacy', 'engineering'],
+    title: {
+      zh: '服务器成本与可持续性：YiBoard 的真实账单',
+      en: 'Game Server Costs: What YiBoard Actually Pays',
+    },
+    description: {
+      zh: '每个免费在线游戏最后都要回答同一个问题：服务器账单谁来付？YiBoard 的答案是账单小而平，原因是架构而非情怀。这篇拆解真实的 game server cost 构成，以及浏览器本地引擎如何把计算成本压到零。',
+      en: 'Every free online game eventually answers the same question: who pays for the servers? For YiBoard the honest answer is a small, flat bill, and the reason is architectural rather than sentimental. This post breaks down a real game server cost structure and how a browser-local engine keeps compute costs at zero.',
+    },
+    keywords: ['game server cost', 'server hosting cost game', 'sustainable indie game', 'browser game running costs', 'indie game sustainability'],
+    content: {
+      zh: [
+        '免费在线游戏的可持续性，本质上是一道算术题：账单涨得比用户快，项目就会死于自己的成功。YiBoard 的账单小而且平，是因为我们把最贵的那部分计算放回了玩家的设备上。这篇把真实的 game server cost 构成摊开来讲：钱花在哪、为什么用户增长几乎不推高成本、以及这一切如何影响我们对免费的定义。',
+        { type: 'h2', text: '钱实际花在哪' },
+        {
+          type: 'ul',
+          items: [
+            '流量：应用外壳与静态资源的分发，账单上最大的一项，好在资源总量是固定的',
+            '算力：段位更新与排行榜计算，一条细线，因为对局本身不消耗服务器 CPU',
+            '存储：分享对局的棋谱记录，几 GB 的量级，增长缓慢',
+            '固定杂项：域名、监控、备份，加起来不超过一杯咖啡',
+          ],
+        },
+        { type: 'h2', text: '引擎跑在玩家的浏览器里，不在我们的账单上' },
+        '每一局的每一步棋，都是由玩家自己设备上的 alpha-beta 引擎算出来的，工作原理在[浏览器引擎](/blog/alpha-beta-engine-in-browser)一文里拆解过。这意味着一千个人同时在对战，服务器侧的 CPU 增量约等于零；引擎在普通笔记本上稳定守住 500ms 思考预算的数据见[性能基准](/blog/performance-benchmarks-how-fast-we-are)。这是可持续 indie game 架构的核心：把随用户线性增长的成本，变成随用户增长几乎不变的成本。',
+        { type: 'h2', text: '有账单，免费意味着什么' },
+        '账单存在，但结构健康，所以免费可以是真的免费：无广告、无追踪、无注册墙，这三条的承诺分别写在[免费是一种设计选择](/blog/free-is-a-design-choice)、[为什么不需要注册](/blog/why-no-signup-needed)和[隐私承诺](/blog/privacy-promise-what-we-store)里。可持续的关键不是收入，是成本曲线的形状：只要账单不随用户数线性上涨，一个没有收入的项目也能活很多年。',
+        { type: 'h2', text: '如果用户涨十倍会怎样' },
+        '静态资源用 CDN 分发，涨十倍用户的第一反应是多付流量费，数额仍然可预算。真正需要预案的是棋谱存储与排行计算，两者的扩展路径都是成熟方案（对象存储加批处理），不需要重写架构。最坏情形的预案也很简单：砍掉的是历史对局的保存时长，而不是对战功能本身。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '网站会为了覆盖成本上广告吗？', a: '不会。无广告是产品承诺的一部分，具体立场写在[无广告无追踪](/blog/no-ads-no-tracking-just-games)一文里。' },
+            { q: '玩家可以做点什么支持项目？', a: '写代码、改翻译、反馈对局 Bug 都算支持，开源参与方式见[开源贡献](/blog/why-we-are-open-source)一文。' },
+            { q: '如果有一天账单真的付不起呢？', a: '预案是把项目完全开源化由社区接管，代码已经开源，接管的技术门槛比一般在线服务低得多。' },
+          ],
+        },
+        { type: 'cta', text: '零成本架构欢迎你来验证，先下一局', href: '/play' },
+      ],
+      en: [
+        'The sustainability of a free online game is arithmetic before it is anything else: if the bill grows faster than the audience, the project dies of its own success. The YiBoard bill is small and flat because the most expensive computation was pushed back onto player devices. This post lays out the real game server cost structure: where the money goes, why user growth barely moves it, and what that means for what free means here.',
+        { type: 'h2', text: 'Where the money actually goes' },
+        {
+          type: 'ul',
+          items: [
+            'Egress: serving the app shell and static assets, the largest line item, though the total payload is fixed',
+            'Compute: rating and leaderboard updates, a thin slice, because matches themselves consume no server CPU',
+            'Storage: records of shared matches, a few gigabytes growing slowly',
+            'Boring fixed costs: domain, monitoring, backups, together less than a coffee per month',
+          ],
+        },
+        { type: 'h2', text: 'The engine lives in the player\u2019s browser, not on our bill' },
+        'Every move in every match is computed on the player\u2019s own machine by the alpha-beta engine, whose mechanics are broken down in the [browser engine post](/blog/alpha-beta-engine-in-browser). A thousand simultaneous matches therefore add roughly zero server CPU; the data showing the engine holds its 500ms budget on ordinary laptops is in the [performance benchmarks](/blog/performance-benchmarks-how-fast-we-are). That is the core of a sustainable indie game architecture: turning a cost that normally grows linearly with users into one that barely moves.',
+        { type: 'h2', text: 'What free means when the bill exists' },
+        'The bill exists, but its shape is healthy, so free can be genuinely free: no ads, no tracking, no sign-up wall. Each promise has its own write-up: [free as a design choice](/blog/free-is-a-design-choice), [why there is no sign-up](/blog/why-no-signup-needed), and the [privacy promise](/blog/privacy-promise-what-we-store). Sustainability here is not about revenue; it is about the shape of the cost curve. As long as the bill does not scale linearly with users, a project with zero revenue can live for years.',
+        { type: 'h2', text: 'What happens if the audience grows tenfold' },
+        'Static assets ride a CDN, so ten times the users means a larger but fully budgetable egress line. The parts that need a plan are match storage and rating computation, and both scale with boring, proven tools: object storage plus batch jobs, no rewrite required. The worst-case plan is equally simple: shorten how long historical matches are kept, never touch the ability to play.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Will ads be added to cover costs?', a: 'No. Ad-free is part of the product promise, argued in full in the [no ads, no tracking post](/blog/no-ads-no-tracking-just-games).' },
+            { q: 'What can players do to support the project?', a: 'Code, translations, and bug reports from real matches all count; the entry points are in the [open source post](/blog/why-we-are-open-source).' },
+            { q: 'What if the bill someday becomes unpayable?', a: 'The fallback is handing the project fully to the community, since the code is already open source; the takeover effort is far lower than for a typical online service.' },
+          ],
+        },
+        { type: 'cta', text: 'Verify the zero-cost architecture yourself, play a match', href: '/play' },
+      ],
+    },
+  },
+
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
