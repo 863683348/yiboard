@@ -7737,6 +7737,82 @@ export const POSTS: BlogPost[] = [
     },
   },
 
+  {
+    slug: '100-days-gomoku-first-story',
+    date: '2026-11-11',
+    tags: ['product', 'gomoku'],
+    title: {
+      zh: '百日回顾：从五子棋开始的故事',
+      en: '100 Days: The Gomoku-First Story',
+    },
+    description: {
+      zh: '100 天博客计划的收官复盘：上线了什么、踩了哪些坑、象棋和围棋走到哪一步。一份写给玩家也写给自己的 project retrospective。',
+      en: 'The closing retrospective of our 100-day blog plan: what shipped, what we learned, and where Xiangqi and Go stand. A 100 day review written for players and for ourselves.',
+    },
+    keywords: ['100 day review', 'project retrospective', 'what we learned', 'roadmap check', 'gomoku first strategy'],
+    content: {
+      zh: [
+        '百日回顾写到这一天，正好是第 100 篇。一百天，四十多篇博客，一款从五子棋长出来的棋类平台。这篇 100 day review 把三件事一次讲完：上线了什么、学到了什么、路线图现在走到哪里。写给玩家，也写给我们自己。',
+        { type: 'h2', text: '一百天里上线了什么' },
+        {
+          type: 'ul',
+          items: [
+            '五子棋完整可玩：服务器端裁判、浏览器内 AI、真实段位，起点是 [为什么五子棋先上线](/blog/why-gomoku-ships-first) 那篇立下的承诺',
+            '公平性写进架构：反作弊和排名设计的思路分别见 [服务器端裁判](/blog/server-side-refereeing-anti-cheat) 与 [排行榜公平设计](/blog/fair-leaderboard-design)',
+            '五语覆盖：规则、报错、博客导航全部翻译，来龙去脉在 [五语从第一天做起](/blog/five-languages-from-day-one)',
+            '引擎与性能公开：AI 原理和基准数据分别在 [浏览器内引擎](/blog/alpha-beta-engine-in-browser) 和 [性能基准](/blog/performance-benchmarks-how-fast-we-are)',
+            '开源与成本透明：代码开放、账单公开，见 [我们为什么开源](/blog/why-we-are-open-source) 和 [服务器成本与可持续性](/blog/game-server-costs-sustainability)',
+          ],
+        },
+        { type: 'h2', text: 'What we learned：三条写代码之外的教训' },
+        '第一，规则简单的棋反而最需要解释。"五子连线就赢"一句话讲完，但禁手、段位、服务器裁判这些让人放心下棋的东西，每一样都值得单独一篇。第二，写作是最好的需求调研。评论区问得最多的问题，后来都变成了博客选题，比任何问卷都诚实。第三，小团队的优势是敢说真话：能公开成本结构、公开引擎局限，是因为船小，调头快。',
+        { type: 'h2', text: 'Roadmap check：象棋与围棋走到哪一步' },
+        '百日规划的句点也是路线图的中途站。象棋的对局框架已经复用五子棋的裁判内核在开发，围棋还停在规划层，但 [围棋路线图](/blog/go-roadmap) 里的优先级判断没有变：先把规则引擎做扎实，再谈功能。开发节奏会慢于博客节奏——写一篇博客只要一天，做对一套裁判逻辑要几周。我们接受这个差距，因为平台的核心资产是公平，不是速度。',
+        { type: 'h2', text: '下一步：让老玩家有事做，新玩家有路走' },
+        '接下来的重心有两块：一是把 [一年规划](/blog/one-year-of-yiboard) 里承诺的功能按优先级排进日程，二是把这一百天沉淀的教学内容串成新手路径——从规则页到入门博客再到对战页，一条线走完。如果你是这一百天里的老读者，欢迎在下一局棋里告诉我们什么最重要。',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: '100 天之后博客还会更新吗？', a: '会，只是频率从日更改成按选题更新。路线图进展、规则深讲、对局复盘这些栏目都会保留。' },
+            { q: '为什么叫 Gomoku-First 策略？', a: '五子棋规则最简单、上手最快，是验证整个平台架构（裁判、段位、分享）成本最低的棋种。先用它把地基打牢，再盖象棋和围棋两层楼。' },
+            { q: '读者能在复盘里提需求吗？', a: '随时可以。反馈入口和开源参与方式都写在站内，评论区提的问题我们每条都看，很多已经变成了排期。' },
+          ],
+        },
+        { type: 'cta', text: '读完故事，来下一局', href: '/play' },
+      ],
+      en: [
+        'This 100 day review closes a hundred days and a hundred posts: one blog plan, forty-some articles, and a board game platform that grew out of Gomoku. Three things get covered in this project retrospective: what shipped, what we learned, and where the roadmap stands today. Written for players, and for us.',
+        { type: 'h2', text: 'What a hundred days shipped' },
+        {
+          type: 'ul',
+          items: [
+            'Gomoku fully playable: server-side refereeing, an in-browser AI, and real grades. The promise made in [why Gomoku ships first](/blog/why-gomoku-ships-first)',
+            'Fairness built into the architecture: anti-cheat in [server-side refereeing](/blog/server-side-refereeing-anti-cheat), ranking in [fair leaderboard design](/blog/fair-leaderboard-design)',
+            'Five languages across rules, errors, and blog navigation, told in [five languages from day one](/blog/five-languages-from-day-one)',
+            'Engine and performance in the open: mechanics in [the in-browser engine](/blog/alpha-beta-engine-in-browser), numbers in [the performance benchmarks](/blog/performance-benchmarks-how-fast-we-are)',
+            'Open source and transparent costs: see [why we are open source](/blog/why-we-are-open-source) and [server costs and sustainability](/blog/game-server-costs-sustainability)',
+          ],
+        },
+        { type: 'h2', text: 'What we learned beyond the code' },
+        'First, the simplest games need the most explaining. "Five in a row wins" is one sentence, but refreezing rules, grades, and server refereeing each earned their own post. Second, writing is the best requirements research. Questions from comments became posts, and they were more honest than any survey. Third, a small team can afford to tell the truth: publishing cost structures and engine limitations is possible because the ship is small and turns fast.',
+        { type: 'h2', text: 'Roadmap check: where Xiangqi and Go stand' },
+        'Day 100 is a waypoint, not a finish line. Xiangqi is in development on the refereeing core Gomoku already proved, and Go remains in planning, but the priorities set in [the Go roadmap](/blog/go-roadmap) have not changed: get the rules engine solid before adding features. Blog speed will outrun development speed, one post per day versus weeks per referee, and we accept that gap because the platform\u2019s core asset is fairness, not pace.',
+        { type: 'h2', text: 'What comes next for players' },
+        'Two things get priority now: scheduling the features promised in [the one-year plan](/blog/one-year-of-yiboard), and stitching a hundred days of teaching content into a beginner path from rules pages to intro posts to the match board. If you have been reading along, the best feedback is a game and tell us what matters over the board.',
+        { type: 'h2', text: 'FAQ' },
+        {
+          type: 'faq',
+          items: [
+            { q: 'Does the blog continue after day 100?', a: 'Yes, at a topic-driven pace instead of daily. Roadmap updates, deep rule explainers, and match retrospectives all stay on the calendar.' },
+            { q: 'Why call it a Gomoku-first strategy?', a: 'Gomoku has the shortest rules and the fastest onboarding, making it the cheapest game for proving the whole platform: refereeing, grades, sharing. Build the foundation with it, then add Xiangqi and Go on top.' },
+            { q: 'Can readers request features in this retrospective?', a: 'Any time. Feedback and open source entry points are linked on the site, every comment gets read, and several have already been scheduled.' },
+          ],
+        },
+        { type: 'cta', text: 'Enough reading, play a match', href: '/play' },
+      ],
+    },
+  },
 ];
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return POSTS.find((p) => p.slug === slug);
